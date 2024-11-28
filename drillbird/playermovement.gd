@@ -6,6 +6,7 @@ var facingDir= Directions.RIGHT
 @export var SPEED = 100.0
 @export var JUMP_VELOCITY = -200.0
 
+
 func _ready() -> void:
 	Update_Animations("idle")
 
@@ -44,7 +45,8 @@ func _physics_process(delta: float) -> void:
 			facingDir=Directions.DOWN
 			newanim="idle_down"
 			
-		
+		if Input.is_action_pressed ("drill"):
+			newanim="drill_side"
 
 	move_and_slide()
 	Update_Animations(newanim)
@@ -59,3 +61,5 @@ func Update_Animations(newanim):
 	if newanim !=animstate:
 		animstate=newanim
 		$AnimatedSprite2D.animation=animstate
+
+	
