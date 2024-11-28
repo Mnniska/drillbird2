@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://e3titjk1as46"]
+[gd_scene load_steps=17 format=3 uid="uid://e3titjk1as46"]
 
 [ext_resource type="Script" path="res://playermovement.gd" id="1_llgr2"]
 [ext_resource type="Texture2D" uid="uid://dxl75lcwwomf8" path="res://player character/anim_drill/anim_DrillSide1.png" id="2_xjbwl"]
@@ -8,25 +8,16 @@
 [ext_resource type="Texture2D" uid="uid://dv0o3qvoidx8f" path="res://player character/anim_drill/anim_DrillSide3.png" id="4_2tosm"]
 [ext_resource type="Texture2D" uid="uid://bfu8nuidtv2fd" path="res://player character/anim_drill/anim_DrillSide4.png" id="5_73frj"]
 [ext_resource type="Texture2D" uid="uid://cscjl2l1unje3" path="res://player character/anim_drill/anim_DrillSide5.png" id="6_li722"]
+[ext_resource type="Texture2D" uid="uid://l1dya62lckhv" path="res://player character/birdy_idle_down.png" id="8_pgi1o"]
 [ext_resource type="Texture2D" uid="uid://b4oe7gr5h25gw" path="res://player character/anim_Run1.png" id="9_aurpt"]
 [ext_resource type="Texture2D" uid="uid://cghvbkkjjm3i7" path="res://player character/anim_Run2.png" id="10_1ey0x"]
 [ext_resource type="Texture2D" uid="uid://br6j25q4duhb6" path="res://player character/anim_Run3.png" id="11_tqmmp"]
+[ext_resource type="Texture2D" uid="uid://bne1hheyw13my" path="res://player character/birdy_idle_up.png" id="13_5fdn4"]
 [ext_resource type="Texture2D" uid="uid://dufocv1m0ls2c" path="res://player character/anim_Run5.png" id="13_bbiad"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w3etx"]
 radius = 5.0
 height = 14.0
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_vpoqy"]
-load_path = "res://.godot/imported/spritesheet_birdy.png-15b13280e1419fa0f71429aa85e1bb4d.ctex"
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rhns2"]
-atlas = SubResource("CompressedTexture2D_vpoqy")
-region = Rect2(16, 16, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7sy22"]
-atlas = SubResource("CompressedTexture2D_vpoqy")
-region = Rect2(0, 16, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3vbtj"]
 animations = [{
@@ -60,7 +51,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rhns2")
+"texture": ExtResource("8_pgi1o")
 }],
 "loop": true,
 "name": &"idle_down",
@@ -68,7 +59,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7sy22")
+"texture": ExtResource("13_5fdn4")
 }],
 "loop": true,
 "name": &"idle_up",
@@ -100,11 +91,17 @@ script = ExtResource("1_llgr2")
 JUMP_VELOCITY = -250.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-2, 1)
+position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_w3etx")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_3vbtj")
-animation = &"run"
+animation = &"idle_up"
 autoplay = "idle"
-frame_progress = 0.484807
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(15, 0)
+hit_from_inside = true
+
+[node name="DebugRaycastLine" type="Line2D" parent="."]
+width = 1.0
