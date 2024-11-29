@@ -7,7 +7,7 @@ var facingDir= Directions.RIGHT
 @export var JUMP_VELOCITY = -200.0
 @onready var raycast_drill = $RayCast2D
 @onready var debugLine= $DebugRaycastLine
-@onready var tilemap = get_parent().get_node("TileMapLayer")
+@onready var tilemap: TileMapLayer = get_parent().get_node("TileMapLayer")
 
 
 func _ready() -> void:
@@ -75,18 +75,23 @@ func TryDrilling():
 	raycast_drill.target_position= raycastTarget
 	
 	debugLine.set_point_position(0,raycast_drill.position)
-	debugLine.set_point_position(1,(raycast_drill.target_position))
+	#debugLine.set_point_position(1,(raycast_drill.target_position))
 	
 	
 	if raycast_drill.is_colliding():
 		var collider=raycast_drill.get_collider()
 		var col_point = raycast_drill.get_collision_point()
+		var extrudedpoint = col_point+ (raycast_drill.get_collision_normal()*-2) 
+		debugLine.set_point_position(1,(extrudedpoint))
 
+		
 		debugLine.default_color=Color.RED
 		debugLine.set_point_position(1,(to_local( col_point)))
 
-		
-		tilemap.set_cell(tilemap.local_to_map(tilemap.to_local(col_point)),-1,Vector2i(-1,-1),-1)
+		tilemap.set_cell(tilemap.local_to_map(tilemap.to_local(extrudedpoint)),-1,Vector2i(-1,-1),-1)
+
+#		tilemap.set_cell(tilemap.local_to_map(tilemap.to_local(col_point)),-1,Vector2i(-1,-1),-1)
+
 #figure out why tilemap removal isn't working
 
 		#tilemap.erase_cell(tilemap.local_to_map(col_point))
