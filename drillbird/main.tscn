@@ -8,4 +8,4 @@
 [node name="TileMapLayer" parent="." instance=ExtResource("1_8r3q3")]
 
 [node name="Player" parent="." instance=ExtResource("2_esoh2")]
-position = Vector2(53, 42)
+position = Vector2(134, -34)
