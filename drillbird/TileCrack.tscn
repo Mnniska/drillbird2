@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://0iy1qmgd0p6y"]
+
+[ext_resource type="Script" path="res://crack_script.gd" id="1_v8gnq"]
+[ext_resource type="Texture2D" uid="uid://l1dya62lckhv" path="res://player character/birdy_idle_down.png" id="2_qwedm"]
+
+[node name="TileCrack" type="Node2D"]
+script = ExtResource("1_v8gnq")
+
+[node name="cracksprite" type="Sprite2D" parent="."]
+modulate = Color(1, 0.12549, 0, 0.403922)
+texture = ExtResource("2_qwedm")
+
+[node name="DiggingCountdown" type="Timer" parent="."]
+
+[connection signal="timeout" from="DiggingCountdown" to="." method="_on_digging_countdown_timeout"]

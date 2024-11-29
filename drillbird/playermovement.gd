@@ -16,6 +16,8 @@ var facingDir= Directions.RIGHT
 @onready var tilemap: TileMapLayer = get_parent().get_node("TileMapLayer")
 var facing_right: bool = true
 
+var TileCrackScene = preload("res://TileCrack.tscn")
+
 
 func _ready() -> void:
 	Update_Animations("idle")
@@ -105,7 +107,7 @@ func _physics_process(delta: float) -> void:
 				
 		TryDrilling()
 			
-		
+
 
 	move_and_slide()
 	Update_Animations(newanim)
@@ -129,8 +131,6 @@ func TryDrilling():
 	debugLine.set_point_position(0,raycast_drill.position)
 	#debugLine.set_point_position(1,(raycast_drill.target_position))
 	
-
-	
 	if raycast_drill.is_colliding(): 
 		#TODO: Implement different tiles and crack destruction
 		var collider=raycast_drill.get_collider()
@@ -143,6 +143,11 @@ func TryDrilling():
 		debugLine.set_point_position(1,(to_local( col_point)))
 
 		#tells tile at collision point to delete itself
+		
+		var test= TileCrackScene.instantiate()
+		get_parent().add_child(test)
+		
+		
 		tilemap.set_cell(tilemap.local_to_map(tilemap.to_local(extrudedpoint)),-1,Vector2i(-1,-1),-1)
 		#TODO: Tell surrounding tiles to update themselves
 		
@@ -151,6 +156,8 @@ func TryDrilling():
 
 	
 	pass
+
+
 
 func Update_Animations(newanim):
 
