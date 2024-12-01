@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
-
+signal playerStoppedDrillingTile
+signal newTileCrack
 
 var animstate=""
 enum Directions {LEFT, RIGHT, UP, DOWN}
@@ -15,6 +16,8 @@ var facingDir= Directions.RIGHT
 @onready var debugLine= $DebugRaycastLine
 @onready var tilemap: TileMapLayer = get_parent().get_node("TileMapLayer")
 var facing_right: bool = true
+var player_is_drilling_tile: bool = false
+var drillDirection=Directions.RIGHT
 
 var TileCrackScene = preload("res://TileCrack.tscn")
 
@@ -105,17 +108,20 @@ func _physics_process(delta: float) -> void:
 			Directions.DOWN:
 				newanim="drill_down"
 				
-		TryDrilling()
-			
+		PlayerIsDrilling()
+	else:
+		player_is_drilling_tile =false
+		playerStoppedDrillingTile.emit()
+		#tells crack script to stop timer
 
 
 	move_and_slide()
 	Update_Animations(newanim)
-	
-func TryDrilling(): 
+
+
+func PlayerIsDrilling(): 
 	
 	var raycastTarget = Vector2i(0,0)
-
 	match facingDir:
 		Directions.LEFT:
 			raycastTarget=Vector2(-15,0)			
@@ -125,38 +131,30 @@ func TryDrilling():
 			raycastTarget=Vector2(0,-15)
 		Directions.DOWN:
 			raycastTarget=Vector2(0,15)
+	
 	raycast_drill.target_position= raycastTarget
 	raycast_drill.force_raycast_update()
-	
-	debugLine.set_point_position(0,raycast_drill.position)
-	#debugLine.set_point_position(1,(raycast_drill.target_position))
-	
+	debugLine.set_point_position(0,raycast_drill.position)	
 	if raycast_drill.is_colliding(): 
-		#TODO: Implement different tiles and crack destruction
-		var collider=raycast_drill.get_collider()
-		var col_point = raycast_drill.get_collision_point()
-		var extrudedpoint = col_point+ (raycast_drill.get_collision_normal()*-2) 
-		debugLine.set_point_position(1,(extrudedpoint))
-
-		
-		debugLine.default_color=Color.RED
-		debugLine.set_point_position(1,(to_local( col_point)))
-
-		#tells tile at collision point to delete itself
-		
-		var test= TileCrackScene.instantiate()
-		get_parent().add_child(test)
-		
-		
-		tilemap.set_cell(tilemap.local_to_map(tilemap.to_local(extrudedpoint)),-1,Vector2i(-1,-1),-1)
-		#TODO: Tell surrounding tiles to update themselves
-		
+		if not player_is_drilling_tile:
+			player_is_drilling_tile=true
+			drillDirection=facingDir
+			
+			var col_point = raycast_drill.get_collision_point()
+			var extrudedpoint = col_point+ (raycast_drill.get_collision_normal()*-2) 
+			
+			newTileCrack.emit(extrudedpoint)
+			
+			debugLine.set_point_position(1,(extrudedpoint))
+			#debugLine.default_color=Color.RED
+			#debugLine.set_point_position(1,(to_local( col_point)))
+		elif drillDirection != facingDir:
+			player_is_drilling_tile =false
+			playerStoppedDrillingTile.emit()
 	else:
-		debugLine.default_color=Color.GREEN
-
-	
+		player_is_drilling_tile=false
+		debugLine.default_color=Color.GREEN		
 	pass
-
 
 
 func Update_Animations(newanim):

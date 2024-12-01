@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://d2wv7igie5stg"]
+[gd_scene load_steps=5 format=3 uid="uid://d2wv7igie5stg"]
 
 [ext_resource type="PackedScene" uid="uid://betiditnstr2c" path="res://TileMapTest.tscn" id="1_8r3q3"]
 [ext_resource type="PackedScene" uid="uid://e3titjk1as46" path="res://player.tscn" id="2_esoh2"]
 [ext_resource type="Script" path="res://CameraScript.gd" id="3_inekp"]
+[ext_resource type="PackedScene" uid="uid://0iy1qmgd0p6y" path="res://TileCrack.tscn" id="4_hsmlm"]
 
 [node name="Node" type="Node"]
 
@@ -14,3 +15,8 @@ position = Vector2(134, -34)
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("character")]
 script = ExtResource("3_inekp")
 character = NodePath("../Player")
+
+[node name="TileCrack" parent="." instance=ExtResource("4_hsmlm")]
+
+[connection signal="newTileCrack" from="Player" to="TileCrack" method="_on_player_new_tile_crack"]
+[connection signal="playerStoppedDrillingTile" from="Player" to="TileCrack" method="_on_player_player_stopped_drilling_tile"]
