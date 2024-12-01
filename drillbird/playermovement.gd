@@ -141,7 +141,7 @@ func PlayerIsDrilling():
 			drillDirection=facingDir
 			
 			var col_point = raycast_drill.get_collision_point()
-			var extrudedpoint = col_point+ (raycast_drill.get_collision_normal()*-2) 
+			var extrudedpoint = col_point+ (raycast_drill.get_collision_normal()*-2.5) 
 			
 			newTileCrack.emit(extrudedpoint)
 			

@@ -1,14 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://0iy1qmgd0p6y"]
+[gd_scene load_steps=6 format=3 uid="uid://0iy1qmgd0p6y"]
 
 [ext_resource type="Script" path="res://crack_script.gd" id="1_v8gnq"]
-[ext_resource type="Texture2D" uid="uid://l1dya62lckhv" path="res://player character/birdy_idle_down.png" id="2_qwedm"]
+[ext_resource type="Texture2D" uid="uid://cw1o82vk05uwm" path="res://effects/crack1.png" id="3_tfjsd"]
+[ext_resource type="Texture2D" uid="uid://cokne62lu57vb" path="res://effects/crack2.png" id="4_yhnyr"]
+[ext_resource type="Texture2D" uid="uid://dg6uc1lqfrisv" path="res://effects/crack3.png" id="5_b8co2"]
+[ext_resource type="Texture2D" uid="uid://81lximwfajib" path="res://effects/crack4.png" id="6_w8b0p"]
 
 [node name="TileCrack" type="Node2D"]
 script = ExtResource("1_v8gnq")
+crack_sprites = Array[Texture]([ExtResource("3_tfjsd"), ExtResource("4_yhnyr"), ExtResource("5_b8co2"), ExtResource("6_w8b0p")])
 
 [node name="cracksprite" type="Sprite2D" parent="."]
-modulate = Color(1, 0.12549, 0, 0.403922)
-texture = ExtResource("2_qwedm")
+texture = ExtResource("3_tfjsd")
 
 [node name="DiggingCountdown" type="Timer" parent="."]
 
