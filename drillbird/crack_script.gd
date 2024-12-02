@@ -24,7 +24,6 @@ func _process(delta: float) -> void:
 		if currentSprite>crack_sprites.size()-1:
 			currentSprite=crack_sprites.size()-1
 		cracksprite.texture=crack_sprites[currentSprite]
-		print_debug(currentSprite)
 
 	
 	
@@ -34,7 +33,7 @@ func _on_player_new_tile_crack(drill_position:Vector2i) -> void:
 	NewTarget(drill_position)
 
 func SetCrackPosition():
-	
+	cracksprite.show()
 	var xpos = (ceil( drillPosition.x/16 )*16)+8
 	var ypos = (ceil( drillPosition.y/16 )*16)+8
 	
@@ -53,23 +52,24 @@ func NewTarget(drill_position:Vector2i):
 	
 	print_debug("New Target!")
 	isDrillingActive=true
-	SetCrackPosition()
+	
 
-	cracksprite.show()
+
 
 	var digtime=3.0
 	var diggable=true
 	
 	match affectedTile.terrain:
 		0: #dirt
-			digtime=4
+			digtime=1
 		1: #sand
-			digtime=0.5
-		2: #solid 
 			diggable = false
-	
+		2: #solid 
+			digtime=0.2
+
 	if(diggable):
 		diggingCountdown.start(digtime)
+		SetCrackPosition()
 	
 	#else play particle effects 
 	

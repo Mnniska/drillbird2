@@ -9,14 +9,16 @@
 
 [node name="TileMapLayer" parent="." instance=ExtResource("1_8r3q3")]
 
+[node name="TileCrack" parent="." instance=ExtResource("4_hsmlm")]
+
+[node name="TileCrack2" parent="." instance=ExtResource("4_hsmlm")]
+
 [node name="Player" parent="." instance=ExtResource("2_esoh2")]
 position = Vector2(134, -34)
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("character")]
 script = ExtResource("3_inekp")
 character = NodePath("../Player")
-
-[node name="TileCrack" parent="." instance=ExtResource("4_hsmlm")]
 
 [connection signal="newTileCrack" from="Player" to="TileCrack" method="_on_player_new_tile_crack"]
 [connection signal="playerStoppedDrillingTile" from="Player" to="TileCrack" method="_on_player_player_stopped_drilling_tile"]
