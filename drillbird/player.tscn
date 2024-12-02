@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://e3titjk1as46"]
+[gd_scene load_steps=29 format=3 uid="uid://e3titjk1as46"]
 
 [ext_resource type="Script" path="res://playermovement.gd" id="1_llgr2"]
 [ext_resource type="Texture2D" uid="uid://c7n0clrpvwdrd" path="res://player character/anim_drill/drilling_down.png" id="2_rgthg"]
@@ -21,6 +21,10 @@
 [ext_resource type="Texture2D" uid="uid://bne1hheyw13my" path="res://player character/birdy_idle_up.png" id="13_5fdn4"]
 [ext_resource type="Texture2D" uid="uid://dufocv1m0ls2c" path="res://player character/anim_Run5.png" id="13_bbiad"]
 [ext_resource type="Texture2D" uid="uid://81n1lnktnc8q" path="res://player character/jump.png" id="16_2l53o"]
+[ext_resource type="Texture2D" uid="uid://bcgi21gdpsssy" path="res://effects/sprite_jumpCrystal1.png" id="22_o05ot"]
+[ext_resource type="Texture2D" uid="uid://cttmuwrkyqgjq" path="res://effects/sprite_jumpCrystal2.png" id="23_6w68x"]
+[ext_resource type="Texture2D" uid="uid://bdnsaxsutvhq8" path="res://effects/sprite_jumpCrystal3.png" id="24_nofj5"]
+[ext_resource type="Texture2D" uid="uid://d1fxkvrdmxu4l" path="res://effects/sprite_jumpCrystal4.png" id="25_ehp6o"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w3etx"]
 radius = 5.0
@@ -139,9 +143,30 @@ animations = [{
 "speed": 15.0
 }]
 
-[node name="Player" type="CharacterBody2D"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_xfwt0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("22_o05ot")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_6w68x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_nofj5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_ehp6o")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("jump_crystals")]
 script = ExtResource("1_llgr2")
 JUMP_VELOCITY = -250.0
+jump_crystals = [NodePath("AnimatedSprite2D/jumpCrystal1"), NodePath("AnimatedSprite2D/jumpCrystal2"), NodePath("AnimatedSprite2D/jumpCrystal3")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
@@ -155,6 +180,31 @@ hit_from_inside = true
 sprite_frames = SubResource("SpriteFrames_3vbtj")
 animation = &"fall"
 autoplay = "idle"
+
+[node name="jumpCrystal1" type="AnimatedSprite2D" parent="AnimatedSprite2D"]
+position = Vector2(-5, 11)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_xfwt0")
+animation = &"idle"
+autoplay = "idle"
+frame = 3
+frame_progress = 1.0
+
+[node name="jumpCrystal2" type="AnimatedSprite2D" parent="AnimatedSprite2D"]
+position = Vector2(0, 11)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_xfwt0")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.580166
+
+[node name="jumpCrystal3" type="AnimatedSprite2D" parent="AnimatedSprite2D"]
+position = Vector2(4, 11)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_xfwt0")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.580166
 
 [node name="DebugRaycastLine" type="Line2D" parent="."]
 visible = false

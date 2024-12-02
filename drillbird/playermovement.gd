@@ -9,9 +9,14 @@ enum States {IDLE, DRILLING, AIR}
 var state = States.IDLE
 
 var facingDir= Directions.RIGHT
-@export var SPEED = 80.0
+@export var SPEED = 100.0
 @export var DRILLSPEED= 40.0
-@export var JUMP_VELOCITY = -200.0
+@export var JUMP_VELOCITY = -130.0
+var maxJumps: int =3
+var jumpsMade:int =0
+@export var jump_crystals: Array[AnimatedSprite2D]
+var justJumped:bool=false
+
 @onready var raycast_drill = $RayCast2D
 @onready var debugLine= $DebugRaycastLine
 @onready var tilemap: TileMapLayer = get_parent().get_node("TileMapLayer")
@@ -34,10 +39,19 @@ func _physics_process(delta: float) -> void:
 	
 	
 	# Check for jump input and add velocity.
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-		newanim= "jump"
-		
+	if Input.is_action_just_pressed("jump"):  
+		if is_on_floor() or jumpsMade <= maxJumps:
+			
+			velocity.y = JUMP_VELOCITY
+			newanim= "jump"
+			justJumped=true
+			print_debug(jumpsMade)
+
+			for index in jump_crystals.size():
+				jump_crystals[index].show()
+				if index+1>maxJumps-jumpsMade:
+					jump_crystals[index].hide()
+		jumpsMade+=1
 	# Add the gravity to player and update anims depending on velocity
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -45,6 +59,12 @@ func _physics_process(delta: float) -> void:
 			newanim= "jump"
 		if velocity.y > 0:
 			newanim= "fall"
+	elif !justJumped:
+		jumpsMade=0
+		for n in jump_crystals:
+			n.hide()
+	else:
+		justJumped=false
 
 
 	# Get the input direction and handle the movement/deceleration.
