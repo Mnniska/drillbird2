@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://e3titjk1as46"]
+[gd_scene load_steps=40 format=3 uid="uid://e3titjk1as46"]
 
 [ext_resource type="Script" path="res://playermovement.gd" id="1_llgr2"]
 [ext_resource type="Texture2D" uid="uid://drpdhaamkld6q" path="res://characters/anim_drill/drilling_down1.png" id="2_mrx7e"]
@@ -202,8 +202,10 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ivl4d"]
+size = Vector2(12, 12)
+
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("jump_crystals")]
-collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_llgr2")
 JUMP_VELOCITY = -250.0
@@ -251,3 +253,13 @@ frame_progress = 0.580166
 [node name="DebugRaycastLine" type="Line2D" parent="."]
 visible = false
 width = 1.0
+
+[node name="OreCollider" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OreCollider"]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_ivl4d")
+
+[connection signal="body_entered" from="OreCollider" to="." method="_on_player_collider_body_entered"]

@@ -19,7 +19,7 @@ var justJumped:bool=false
 
 @onready var raycast_drill = $RayCast2D
 @onready var debugLine= $DebugRaycastLine
-@onready var tilemap: TileMapLayer = get_parent().get_node("TileMapLayer")
+@onready var tilemap: TileMapLayer = get_parent().get_node("TilemapEnvironment")
 var facing_right: bool = true
 var player_is_drilling_tile: bool = false
 var drillDirection=Directions.RIGHT
@@ -187,3 +187,14 @@ func Update_Animations(newanim):
 	if newanim !=animstate:
 		animstate=newanim
 		$AnimatedSprite2D.animation=animstate
+
+
+func _on_player_collider_body_entered(body: Node2D) -> void:
+	
+	#Todo: Check which ore was collected
+	#Todo: Cannot collect ore if the inventory is full
+	#todo: If you want inventory management n free dropping of ores, then figure UX for that that does not suck 
+	#todo: UI juice
+	body.queue_free()
+	
+	pass # Replace with function body.

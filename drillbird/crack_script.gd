@@ -3,12 +3,14 @@ extends Node2D
 var diggingTime=0.0
 
 @onready var diggingCountdown: Timer =$DiggingCountdown
-@onready var tilemap: TileMapLayer = get_parent().get_node("TileMapLayer")
+@onready var tilemap: TileMapLayer = get_parent().get_node("TilemapEnvironment")
+@onready var oreTilemap: TileMapLayer = get_parent().get_node("TilemapOres")
+
 @onready var cracksprite: Sprite2D = $cracksprite
 @export var crack_sprites: Array[Texture]
  
 var affectedTile:TileData
-var drillPosition:Vector2i
+var cellLocation:Vector2i
 var isDrillingActive:bool=false
 
 # Called when the node enters the scene tree for the first time.
@@ -32,7 +34,7 @@ func _process(delta: float) -> void:
 func _on_player_new_tile_crack(drill_position:Vector2i) -> void:
 	NewTarget(drill_position)
 
-func SetCrackPosition():
+func SetCrackPosition(drillPosition:Vector2i):
 	cracksprite.show()
 	
 	var xx =8
@@ -50,8 +52,7 @@ func SetCrackPosition():
 
 func NewTarget(drill_position:Vector2i):
 		
-	drillPosition=drill_position
-	var cellLocation = tilemap.local_to_map(tilemap.to_local(drillPosition))
+	cellLocation = tilemap.local_to_map(tilemap.to_local(drill_position))
 	affectedTile= tilemap.get_cell_tile_data(cellLocation)
 	
 	print_debug("New Target!")
@@ -60,10 +61,10 @@ func NewTarget(drill_position:Vector2i):
 	var digtime=3.0
 	var diggable=true
 	
-	if affectedTile.terrain!=null:
+	if affectedTile!=null:
 		match affectedTile.terrain:
 			0: #dirt
-				digtime=1
+				digtime=0.3
 			1: #solid
 				diggable = false
 			2: #sand 
@@ -71,7 +72,7 @@ func NewTarget(drill_position:Vector2i):
 
 		if(diggable):
 			diggingCountdown.start(digtime)
-			SetCrackPosition()
+			SetCrackPosition(drill_position)
 	
 	#else play particle effects 
 	
@@ -90,11 +91,24 @@ func abortDig():
 
 func _on_digging_countdown_timeout() -> void:
 	
-	tilemap.set_cell(tilemap.local_to_map(tilemap.to_local(drillPosition)),-1,Vector2i(-1,-1),-1)
+	tilemap.set_cell (cellLocation,-1,Vector2i(-1,-1),-1)
 	cracksprite.hide()
 	diggingCountdown.stop()
 	isDrillingActive=false
+	
+	var cell = oreTilemap.get_cell_tile_data(cellLocation)
+	if cell!=null: #is there an ore tile on top of destroyed tile?
+		oreTilemap.set_cell(cellLocation,-1,Vector2i(-1,-1),-1)
+		#SPAWN AN ORE!
+		var scene = load("res://Object_Ore.tscn") # Will load when the script is instanced.
+		var node = scene.instantiate()
+		node.transform.origin = position
 
+		get_parent().add_child(node)
+		
+		
+		
+		pass
 
 	pass # Replace with function body.
 

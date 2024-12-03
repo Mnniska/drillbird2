@@ -1,0 +1,98 @@
+[gd_scene load_steps=16 format=3 uid="uid://splm2us27kop"]
+
+[ext_resource type="Texture2D" uid="uid://cm6brf3xofttr" path="res://environment/Collectibles/Ore_idle1.png" id="1_v7vr6"]
+[ext_resource type="Script" path="res://object_ore.gd" id="1_xjb71"]
+[ext_resource type="Texture2D" uid="uid://blbf04fbcty8k" path="res://environment/Collectibles/Ore_idle2.png" id="2_f7mr0"]
+[ext_resource type="Texture2D" uid="uid://vbgushuifb6n" path="res://environment/Collectibles/Ore_idle3.png" id="3_o7hwy"]
+[ext_resource type="Texture2D" uid="uid://bcjwce13n0fol" path="res://environment/Collectibles/Ore_idle4.png" id="4_7v3al"]
+[ext_resource type="Texture2D" uid="uid://07wffqw8mdx5" path="res://environment/Collectibles/Ore_spawn1.png" id="5_tjtf6"]
+[ext_resource type="Texture2D" uid="uid://bsbvo0m63rbtk" path="res://environment/Collectibles/Ore_spawn3.png" id="7_bwhmv"]
+[ext_resource type="Texture2D" uid="uid://dgoy0r4c15vr7" path="res://environment/Collectibles/Ore_spawn5.png" id="9_71wbx"]
+[ext_resource type="Texture2D" uid="uid://up8tksm5gril" path="res://environment/Collectibles/Ore_spawn6.png" id="10_xpbwr"]
+[ext_resource type="Texture2D" uid="uid://p70pe7mektqd" path="res://environment/Collectibles/Ore_spawn7.png" id="11_stq2b"]
+[ext_resource type="Texture2D" uid="uid://t4j836wbw1bi" path="res://environment/Collectibles/Ore_spawn8.png" id="12_816wp"]
+[ext_resource type="Texture2D" uid="uid://ba2i5n1rb82gf" path="res://environment/Collectibles/Ore_spawn9.png" id="13_ce4l7"]
+[ext_resource type="Texture2D" uid="uid://beujfy2hpmdxi" path="res://environment/Collectibles/Ore_spawn10.png" id="14_ejgcx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rnnxs"]
+size = Vector2(10, 9)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wnmh3"]
+animations = [{
+"frames": [{
+"duration": 8.0,
+"texture": ExtResource("1_v7vr6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_f7mr0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_o7hwy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_7v3al")
+}, {
+"duration": 12.0,
+"texture": ExtResource("1_v7vr6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_f7mr0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_o7hwy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_7v3al")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_tjtf6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_bwhmv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_71wbx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_xpbwr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_stq2b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_816wp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_ce4l7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_ejgcx")
+}],
+"loop": false,
+"name": &"spawn",
+"speed": 12.0
+}]
+
+[node name="OreBody" type="RigidBody2D"]
+collision_layer = 4
+collision_mask = 6
+can_sleep = false
+script = ExtResource("1_xjb71")
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2.5)
+shape = SubResource("RectangleShape2D_rnnxs")
+
+[node name="Animation" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_wnmh3")
+animation = &"spawn"
+autoplay = "spawn"
+frame = 7
+frame_progress = 1.0
+
+[connection signal="animation_finished" from="Animation" to="." method="_on_animation_animation_finished"]
