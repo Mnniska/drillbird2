@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2jmtis3f2gb6"
-path="res://.godot/imported/tilemap_environment.png-38d119a0116bc94bfa473eb150eb5545.ctex"
+uid="uid://bfu8nuidtv2fd"
+path="res://.godot/imported/anim_DrillSide4.png-a4c479cce2b3932e060b41595897325c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://environment/tilemap_environment.png"
-dest_files=["res://.godot/imported/tilemap_environment.png-38d119a0116bc94bfa473eb150eb5545.ctex"]
+source_file="res://characters/anim_drill/anim_DrillSide4.png"
+dest_files=["res://.godot/imported/anim_DrillSide4.png-a4c479cce2b3932e060b41595897325c.ctex"]
 
 [params]
 

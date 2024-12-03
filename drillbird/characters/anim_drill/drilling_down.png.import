@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dxl75lcwwomf8"
-path="res://.godot/imported/anim_DrillSide1.png-5b3f4ddf80079d9e9dd9c71857657910.ctex"
+uid="uid://c7n0clrpvwdrd"
+path="res://.godot/imported/drilling_down.png-a8905ca491b7878f7ba8ffea66018229.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://player character/anim_drill/anim_DrillSide1.png"
-dest_files=["res://.godot/imported/anim_DrillSide1.png-5b3f4ddf80079d9e9dd9c71857657910.ctex"]
+source_file="res://characters/anim_drill/drilling_down.png"
+dest_files=["res://.godot/imported/drilling_down.png-a8905ca491b7878f7ba8ffea66018229.ctex"]
 
 [params]
 

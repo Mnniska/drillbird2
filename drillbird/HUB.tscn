@@ -1,0 +1,75 @@
+[gd_scene load_steps=8 format=4 uid="uid://by1nty5cd2dk7"]
+
+[ext_resource type="Texture2D" uid="uid://dmqas3iik38qr" path="res://environment/tileset_hub.png" id="1_rywbq"]
+[ext_resource type="Texture2D" uid="uid://d2eicrw0h3oxj" path="res://characters/shopkeeper1.png" id="2_32db8"]
+[ext_resource type="Texture2D" uid="uid://v5xg50n0pcht" path="res://characters/shopkeeper2.png" id="3_kcv0d"]
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_8fu2r"]
+tile_data = PackedInt32Array(262144, 1, 0, 262145, 65537, 0, 262146, 65537, 0, 3, 1, 0, 65539, 1, 1, 131075, 1, 0, 196611, 1, 1, 262147, 65537, 0, 4, 65537, 0, 131076, 65537, 0, 262148, 65537, 0, 5, 65537, 0, 131077, 131073, 0, 196613, 1, 0, 262149, 65537, 0, 6, 65537, 0, 196614, 65537, 0, 262150, 65537, 0, 7, 131073, 0, 65543, 131073, 1, 131079, 131073, 1, 196615, 65537, 0, 262151, 65537, 0, 196616, 131073, 0, 262152, 65537, 0, 262153, 65537, 0, 262154, 65537, 0, 262155, 131073, 0)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bkgv4"]
+texture = ExtResource("1_rywbq")
+0:0/0 = 0
+0:0/0/terrain_set = 0
+0:0/0/terrain = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, -3, -8, -3)
+0:0/0/physics_layer_0/polygon_0/one_way = true
+0:0/0/terrains_peering_bit/right_side = 0
+0:0/0/terrains_peering_bit/bottom_side = 0
+1:0/0 = 0
+1:0/0/terrain_set = 0
+1:0/0/terrain = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, -3, -8, -3)
+1:0/0/physics_layer_0/polygon_0/one_way = true
+1:0/0/terrains_peering_bit/right_side = 0
+1:0/0/terrains_peering_bit/left_side = 0
+2:0/0 = 0
+2:0/0/terrain_set = 0
+2:0/0/terrain = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, -3, -8, -3)
+2:0/0/physics_layer_0/polygon_0/one_way = true
+2:0/0/terrains_peering_bit/bottom_side = 0
+2:0/0/terrains_peering_bit/left_side = 0
+3:0/0 = 0
+3:0/0/terrain_set = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:1/0 = 0
+0:1/0/terrain_set = 0
+0:1/0/terrain = 0
+0:1/0/terrains_peering_bit/top_side = 0
+2:1/0 = 0
+2:1/0/terrain_set = 0
+2:1/0/terrain = 0
+2:1/0/terrains_peering_bit/top_side = 0
+
+[sub_resource type="TileSet" id="TileSet_g5kfv"]
+physics_layer_0/collision_layer = 1
+terrain_set_0/mode = 2
+terrain_set_0/terrain_0/name = "wood"
+terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
+sources/1 = SubResource("TileSetAtlasSource_bkgv4")
+pattern_0 = SubResource("TileMapPattern_8fu2r")
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r0a63"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_32db8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_kcv0d")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[node name="HUB" type="TileMapLayer"]
+tile_map_data = PackedByteArray("AAAAAP//AQAAAAAAAAACAP//AQABAAAAAAD9////AQABAAAAAAD+////AQACAAAAAAD/////AQAAAAEAAAABAP//AQABAAAAAAADAP//AQABAAAAAAAEAP//AQABAAAAAAAFAP//AQABAAAAAAAGAP//AQACAAAAAAAAAP3/AQAAAAAAAAACAPz/AQAAAAAAAAADAPz/AQABAAAAAAADAP3/AQACAAAAAAAFAPz/AQACAAAAAAAFAP3/AQACAAEAAAAAAP7/AQAAAAEAAAABAP3/AQABAAAAAAACAP3/AQABAAAAAAADAP7/AQACAAEAAAAEAPz/AQABAAAAAAAFAP7/AQACAAEAAAD///r/AQAAAAAAAAACAPr/AQACAAAAAAACAPv/AQACAAEAAAABAPr/AQABAAAAAAAAAPr/AQABAAAAAAD///v/AQAAAAEAAAD///z/AQAAAAEAAAD///3/AQAAAAEAAAD///7/AQAAAAEAAAD8////AQABAAAAAAD7////AQAAAAAAAAD8//3/AQABAAAAAAD9//3/AQACAAAAAAD7//3/AQAAAAAAAAD7//7/AQAAAAEAAAD9//7/AQACAAEAAAA=")
+tile_set = SubResource("TileSet_g5kfv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(19, -24)
+sprite_frames = SubResource("SpriteFrames_r0a63")
+autoplay = "default"
+frame_progress = 0.987965

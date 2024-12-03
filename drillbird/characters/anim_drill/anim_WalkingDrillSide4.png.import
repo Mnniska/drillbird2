@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://l1dya62lckhv"
-path="res://.godot/imported/birdy_idle_down.png-c7baf71ee26c1ecc6735dc6c18d0afed.ctex"
+uid="uid://bmfwcjvm3dwbc"
+path="res://.godot/imported/anim_WalkingDrillSide4.png-e1b33394202dd7116c86700f2390e0fd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://player character/birdy_idle_down.png"
-dest_files=["res://.godot/imported/birdy_idle_down.png-c7baf71ee26c1ecc6735dc6c18d0afed.ctex"]
+source_file="res://characters/anim_drill/anim_WalkingDrillSide4.png"
+dest_files=["res://.godot/imported/anim_WalkingDrillSide4.png-e1b33394202dd7116c86700f2390e0fd.ctex"]
 
 [params]
 

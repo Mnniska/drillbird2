@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://d2wv7igie5stg"]
+[gd_scene load_steps=6 format=4 uid="uid://d2wv7igie5stg"]
 
+[ext_resource type="PackedScene" uid="uid://by1nty5cd2dk7" path="res://HUB.tscn" id="1_4bp86"]
 [ext_resource type="PackedScene" uid="uid://betiditnstr2c" path="res://TileMapTest.tscn" id="1_8r3q3"]
 [ext_resource type="PackedScene" uid="uid://e3titjk1as46" path="res://player.tscn" id="2_esoh2"]
 [ext_resource type="Script" path="res://CameraScript.gd" id="3_inekp"]
@@ -7,14 +8,15 @@
 
 [node name="Node" type="Node"]
 
+[node name="HUB" parent="." instance=ExtResource("1_4bp86")]
+tile_map_data = PackedByteArray("AAAAAP//AQAAAAAAAAACAP//AQABAAAAAAD9////AQABAAAAAAD+////AQACAAAAAAD/////AQAAAAEAAAABAP//AQABAAAAAAADAP//AQABAAAAAAAEAP//AQABAAAAAAAFAP//AQABAAAAAAAGAP//AQACAAAAAAAAAP3/AQAAAAAAAAACAPz/AQAAAAAAAAADAPz/AQABAAAAAAADAP3/AQACAAAAAAAFAPz/AQACAAAAAAAFAP3/AQACAAEAAAAAAP7/AQAAAAEAAAABAP3/AQABAAAAAAACAP3/AQABAAAAAAADAP7/AQACAAEAAAAEAPz/AQABAAAAAAAFAP7/AQACAAEAAAD///r/AQAAAAAAAAACAPr/AQACAAAAAAACAPv/AQACAAEAAAABAPr/AQABAAAAAAAAAPr/AQABAAAAAAD///v/AQAAAAEAAAD///z/AQAAAAEAAAD///3/AQAAAAEAAAD///7/AQAAAAEAAAD8////AQABAAAAAAD7////AQAAAAAAAAA=")
+
 [node name="TileMapLayer" parent="." instance=ExtResource("1_8r3q3")]
 
 [node name="TileCrack" parent="." instance=ExtResource("4_hsmlm")]
 
-[node name="TileCrack2" parent="." instance=ExtResource("4_hsmlm")]
-
 [node name="Player" parent="." instance=ExtResource("2_esoh2")]
-position = Vector2(157, -400)
+position = Vector2(0, -156)
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("character")]
 script = ExtResource("3_inekp")

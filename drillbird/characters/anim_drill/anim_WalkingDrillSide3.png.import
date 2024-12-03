@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cghvbkkjjm3i7"
-path="res://.godot/imported/anim_Run2.png-ac5ead743f96a8684e32dbee6c642e0d.ctex"
+uid="uid://d0ynn407go18u"
+path="res://.godot/imported/anim_WalkingDrillSide3.png-c8f107c7be32c5881219135875104f40.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://player character/anim_Run2.png"
-dest_files=["res://.godot/imported/anim_Run2.png-ac5ead743f96a8684e32dbee6c642e0d.ctex"]
+source_file="res://characters/anim_drill/anim_WalkingDrillSide3.png"
+dest_files=["res://.godot/imported/anim_WalkingDrillSide3.png-c8f107c7be32c5881219135875104f40.ctex"]
 
 [params]
 

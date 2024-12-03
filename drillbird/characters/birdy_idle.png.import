@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4oe7gr5h25gw"
-path="res://.godot/imported/anim_Run1.png-fd94d71d341d27e1b83c88e2c5148e5a.ctex"
+uid="uid://dskhetp3joq3y"
+path="res://.godot/imported/birdy_idle.png-dc77b721624e618a0e1cc6f3dfc6b599.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://player character/anim_Run1.png"
-dest_files=["res://.godot/imported/anim_Run1.png-fd94d71d341d27e1b83c88e2c5148e5a.ctex"]
+source_file="res://characters/birdy_idle.png"
+dest_files=["res://.godot/imported/birdy_idle.png-dc77b721624e618a0e1cc6f3dfc6b599.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bne1hheyw13my"
-path="res://.godot/imported/birdy_idle_up.png-6ca3997007a2e84f75d69486247eef7d.ctex"
+uid="uid://d2eicrw0h3oxj"
+path="res://.godot/imported/shopkeeper1.png-189ea5f8d8a0e39b2f2f69f78a910fa8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://player character/birdy_idle_up.png"
-dest_files=["res://.godot/imported/birdy_idle_up.png-6ca3997007a2e84f75d69486247eef7d.ctex"]
+source_file="res://characters/shopkeeper1.png"
+dest_files=["res://.godot/imported/shopkeeper1.png-189ea5f8d8a0e39b2f2f69f78a910fa8.ctex"]
 
 [params]
 

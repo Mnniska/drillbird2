@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c7n0clrpvwdrd"
-path="res://.godot/imported/drilling_down.png-8ce2af66b981c519e2962fa5babdc903.ctex"
+uid="uid://dmqas3iik38qr"
+path="res://.godot/imported/tileset_hub.png-ce7f0918c5ef96959744496d121c0ea4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://player character/anim_drill/drilling_down.png"
-dest_files=["res://.godot/imported/drilling_down.png-8ce2af66b981c519e2962fa5babdc903.ctex"]
+source_file="res://environment/tileset_hub.png"
+dest_files=["res://.godot/imported/tileset_hub.png-ce7f0918c5ef96959744496d121c0ea4.ctex"]
 
 [params]
 
