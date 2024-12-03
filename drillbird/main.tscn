@@ -14,7 +14,7 @@
 [node name="TileCrack2" parent="." instance=ExtResource("4_hsmlm")]
 
 [node name="Player" parent="." instance=ExtResource("2_esoh2")]
-position = Vector2(134, -34)
+position = Vector2(157, -400)
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("character")]
 script = ExtResource("3_inekp")

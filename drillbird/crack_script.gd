@@ -34,14 +34,18 @@ func _on_player_new_tile_crack(drill_position:Vector2i) -> void:
 
 func SetCrackPosition():
 	cracksprite.show()
-	var xpos = (ceil( drillPosition.x/16 )*16)+8
-	var ypos = (ceil( drillPosition.y/16 )*16)+8
 	
+	var xx =8
+	if drillPosition.x<0:
+		xx*=-1
+	var xpos = (ceil( drillPosition.x/16 )*16)+xx
 	
-	var snappedPos = snapped(drillPosition, Vector2i(8, 8))
-	
+	var yy=8
+	if drillPosition.y <0:
+		yy*=-1
+	var ypos = (ceil( drillPosition.y/16 )*16)+yy
+		
 	self.position=Vector2i(xpos,ypos)
-	#self.position = snappedPos
 	
 
 func NewTarget(drill_position:Vector2i):
@@ -53,9 +57,6 @@ func NewTarget(drill_position:Vector2i):
 	print_debug("New Target!")
 	isDrillingActive=true
 	
-
-
-
 	var digtime=3.0
 	var diggable=true
 	

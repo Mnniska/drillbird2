@@ -26,9 +26,8 @@
 [ext_resource type="Texture2D" uid="uid://bdnsaxsutvhq8" path="res://effects/sprite_jumpCrystal3.png" id="24_nofj5"]
 [ext_resource type="Texture2D" uid="uid://d1fxkvrdmxu4l" path="res://effects/sprite_jumpCrystal4.png" id="25_ehp6o"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w3etx"]
-radius = 5.0
-height = 14.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pdge5"]
+size = Vector2(10, 11)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3vbtj"]
 animations = [{
@@ -169,11 +168,11 @@ JUMP_VELOCITY = -250.0
 jump_crystals = [NodePath("AnimatedSprite2D/jumpCrystal1"), NodePath("AnimatedSprite2D/jumpCrystal2"), NodePath("AnimatedSprite2D/jumpCrystal3")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 1)
-shape = SubResource("CapsuleShape2D_w3etx")
+position = Vector2(0, 2.5)
+shape = SubResource("RectangleShape2D_pdge5")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-target_position = Vector2(15, 0)
+target_position = Vector2(18, 0)
 hit_from_inside = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

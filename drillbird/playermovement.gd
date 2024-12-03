@@ -11,7 +11,7 @@ var state = States.IDLE
 var facingDir= Directions.RIGHT
 @export var SPEED = 100.0
 @export var DRILLSPEED= 40.0
-@export var JUMP_VELOCITY = -130.0
+@export var JUMP_VELOCITY = -100.0
 var maxJumps: int =3
 var jumpsMade:int =0
 @export var jump_crystals: Array[AnimatedSprite2D]
@@ -141,16 +141,17 @@ func _physics_process(delta: float) -> void:
 
 func PlayerIsDrilling(): 
 	
+	var length:int=18
 	var raycastTarget = Vector2i(0,0)
 	match facingDir:
 		Directions.LEFT:
-			raycastTarget=Vector2(-15,0)			
+			raycastTarget=Vector2(-length,0)			
 		Directions.RIGHT:
-			raycastTarget=Vector2(15,0)
+			raycastTarget=Vector2(length,0)
 		Directions.UP:
-			raycastTarget=Vector2(0,-15)
+			raycastTarget=Vector2(0,-length)
 		Directions.DOWN:
-			raycastTarget=Vector2(0,15)
+			raycastTarget=Vector2(0,length)
 	
 	raycast_drill.target_position= raycastTarget
 	raycast_drill.force_raycast_update()
