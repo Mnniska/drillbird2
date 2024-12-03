@@ -60,17 +60,18 @@ func NewTarget(drill_position:Vector2i):
 	var digtime=3.0
 	var diggable=true
 	
-	match affectedTile.terrain:
-		0: #dirt
-			digtime=1
-		1: #sand
-			diggable = false
-		2: #solid 
-			digtime=0.2
+	if affectedTile.terrain!=null:
+		match affectedTile.terrain:
+			0: #dirt
+				digtime=1
+			1: #solid
+				diggable = false
+			2: #sand 
+				digtime=0.2
 
-	if(diggable):
-		diggingCountdown.start(digtime)
-		SetCrackPosition()
+		if(diggable):
+			diggingCountdown.start(digtime)
+			SetCrackPosition()
 	
 	#else play particle effects 
 	
