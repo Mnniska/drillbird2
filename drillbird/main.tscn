@@ -1,12 +1,15 @@
-[gd_scene load_steps=12 format=4 uid="uid://d2wv7igie5stg"]
+[gd_scene load_steps=15 format=4 uid="uid://d2wv7igie5stg"]
 
 [ext_resource type="PackedScene" uid="uid://e3titjk1as46" path="res://player.tscn" id="2_esoh2"]
 [ext_resource type="Script" path="res://CameraScript.gd" id="3_inekp"]
+[ext_resource type="Texture2D" uid="uid://un5elq1p64iv" path="res://ui/ui_slotLeftSide.png" id="3_is2ac"]
 [ext_resource type="PackedScene" uid="uid://0iy1qmgd0p6y" path="res://TileCrack.tscn" id="4_hsmlm"]
+[ext_resource type="Texture2D" uid="uid://bw25xygruk6rd" path="res://ui/ui_slotRightSide.png" id="4_wapma"]
 [ext_resource type="Texture2D" uid="uid://dmqas3iik38qr" path="res://environment/tileset_hub.png" id="6_1u6a2"]
 [ext_resource type="Texture2D" uid="uid://d2eicrw0h3oxj" path="res://characters/shopkeeper1.png" id="6_skws1"]
 [ext_resource type="Texture2D" uid="uid://b2j2onxpyskty" path="res://tileset_environment.png" id="7_hqxo0"]
 [ext_resource type="Texture2D" uid="uid://v5xg50n0pcht" path="res://characters/shopkeeper2.png" id="7_t8q8u"]
+[ext_resource type="PackedScene" uid="uid://b7wk3v7f1tprr" path="res://UI_InventorySlot.tscn" id="10_ibl00"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vgyal"]
 texture = ExtResource("6_1u6a2")
@@ -279,10 +282,6 @@ animations = [{
 
 [node name="Node" type="Node"]
 
-[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("character")]
-script = ExtResource("3_inekp")
-character = NodePath("../Player")
-
 [node name="TilemapHUB" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAD6//3/AQAAAAAAAAD6//7/AQAAAAEAAAD6////AQAAAAAAAAD7//3/AQABAAAAAAD7////AQABAAAAAAD8//3/AQACAAAAAAD8//7/AQACAAEAAAD8////AQABAAAAAAD9////AQACAAAAAAD+//r/AQAAAAAAAAD+//v/AQAAAAEAAAD+//z/AQAAAAEAAAD+//3/AQAAAAEAAAD+//7/AQAAAAEAAAD+////AQAAAAEAAAD///r/AQABAAAAAAD///3/AQAAAAAAAAD///7/AQAAAAEAAAD/////AQAAAAAAAAAAAPr/AQABAAAAAAAAAP3/AQABAAAAAAAAAP//AQABAAAAAAABAPr/AQACAAAAAAABAPv/AQACAAEAAAABAPz/AQAAAAAAAAABAP3/AQABAAAAAAABAP//AQABAAAAAAACAPz/AQABAAAAAAACAP3/AQACAAAAAAACAP7/AQACAAEAAAACAP//AQABAAAAAAADAPz/AQABAAAAAAADAP//AQABAAAAAAAEAPz/AQACAAAAAAAEAP3/AQACAAEAAAAEAP7/AQACAAEAAAAEAP//AQABAAAAAAAFAP//AQACAAAAAAA=")
 tile_set = SubResource("TileSet_otgxp")
@@ -304,6 +303,28 @@ position = Vector2(0, -156)
 position = Vector2(19, -24)
 sprite_frames = SubResource("SpriteFrames_h8s68")
 autoplay = "default"
+
+[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("character")]
+position = Vector2(-162, -172)
+script = ExtResource("3_inekp")
+character = NodePath("../Player")
+
+[node name="ui_leftSide" type="Sprite2D" parent="Camera2D"]
+position = Vector2(-33, 88)
+texture = ExtResource("3_is2ac")
+
+[node name="ui_rightSide" type="Sprite2D" parent="Camera2D"]
+position = Vector2(31, 88)
+texture = ExtResource("4_wapma")
+
+[node name="InventorySlot" parent="Camera2D" instance=ExtResource("10_ibl00")]
+position = Vector2(-17, 80)
+
+[node name="InventorySlot2" parent="Camera2D" instance=ExtResource("10_ibl00")]
+position = Vector2(-1, 80)
+
+[node name="InventorySlot3" parent="Camera2D" instance=ExtResource("10_ibl00")]
+position = Vector2(15, 80)
 
 [connection signal="newTileCrack" from="Player" to="TileCrack" method="_on_player_new_tile_crack"]
 [connection signal="playerStoppedDrillingTile" from="Player" to="TileCrack" method="_on_player_player_stopped_drilling_tile"]
