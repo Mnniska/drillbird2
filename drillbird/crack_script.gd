@@ -91,7 +91,14 @@ func abortDig():
 
 func _on_digging_countdown_timeout() -> void:
 	
+	var cells:Array[Vector2i]
+	cells.append(cellLocation)
+	tilemap.set_cells_terrain_connect(cells, 0, 0,false)
 	tilemap.set_cell (cellLocation,-1,Vector2i(-1,-1),-1)
+	tilemap.set_cells_terrain_connect(cells, 0, -1,false)
+
+#● Vector2i get_neighbor_cell(coords: Vector2i, neighbor: TileSet.CellNeighbor) const
+	
 	cracksprite.hide()
 	diggingCountdown.stop()
 	isDrillingActive=false
@@ -105,6 +112,7 @@ func _on_digging_countdown_timeout() -> void:
 		node.transform.origin = position
 
 		get_parent().add_child(node)
+		
 		
 		
 		
