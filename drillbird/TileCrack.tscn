@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://0iy1qmgd0p6y"]
 
-[ext_resource type="Script" path="res://crack_script.gd" id="1_v8gnq"]
+[ext_resource type="Script" path="res://Scripts/crack_script.gd" id="1_v8gnq"]
 [ext_resource type="Texture2D" uid="uid://cw1o82vk05uwm" path="res://effects/crack1.png" id="3_tfjsd"]
 [ext_resource type="Texture2D" uid="uid://cokne62lu57vb" path="res://effects/crack2.png" id="4_yhnyr"]
 [ext_resource type="Texture2D" uid="uid://dg6uc1lqfrisv" path="res://effects/crack3.png" id="5_b8co2"]

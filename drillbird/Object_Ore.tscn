@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=3 uid="uid://splm2us27kop"]
 
 [ext_resource type="Texture2D" uid="uid://cm6brf3xofttr" path="res://environment/Collectibles/Ore_idle1.png" id="1_v7vr6"]
-[ext_resource type="Script" path="res://object_ore.gd" id="1_xjb71"]
+[ext_resource type="Script" path="res://Scripts/object_ore.gd" id="1_xjb71"]
 [ext_resource type="Texture2D" uid="uid://blbf04fbcty8k" path="res://environment/Collectibles/Ore_idle2.png" id="2_f7mr0"]
 [ext_resource type="Texture2D" uid="uid://vbgushuifb6n" path="res://environment/Collectibles/Ore_idle3.png" id="3_o7hwy"]
 [ext_resource type="Texture2D" uid="uid://bcjwce13n0fol" path="res://environment/Collectibles/Ore_idle4.png" id="4_7v3al"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=4 uid="uid://d2wv7igie5stg"]
 
 [ext_resource type="PackedScene" uid="uid://e3titjk1as46" path="res://player.tscn" id="2_esoh2"]
-[ext_resource type="Script" path="res://CameraScript.gd" id="3_inekp"]
+[ext_resource type="Script" path="res://Scripts/CameraScript.gd" id="3_inekp"]
 [ext_resource type="Texture2D" uid="uid://un5elq1p64iv" path="res://ui/ui_slotLeftSide.png" id="3_is2ac"]
 [ext_resource type="PackedScene" uid="uid://0iy1qmgd0p6y" path="res://TileCrack.tscn" id="4_hsmlm"]
 [ext_resource type="Texture2D" uid="uid://bw25xygruk6rd" path="res://ui/ui_slotRightSide.png" id="4_wapma"]
