@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cm6brf3xofttr" path="res://environment/Collectibles/Ore_idle1.png" id="2_rds1q"]
 [ext_resource type="Texture2D" uid="uid://cu776x7f8qdd5" path="res://ui/ui_slotBottom.png" id="3_2onun"]
 [ext_resource type="Texture2D" uid="uid://bhau6gqnrgjsd" path="res://ui/num11.png" id="5_upb4o"]
-[ext_resource type="PackedScene" uid="uid://buvk7y6smvo3v" path="res://num_displayer.tscn" id="6_6imk4"]
+[ext_resource type="PackedScene" uid="uid://buvk7y6smvo3v" path="res://Scenes/num_displayer.tscn" id="6_6imk4"]
 
 [node name="InventorySlot" type="Node2D"]
 position = Vector2(8, 8)

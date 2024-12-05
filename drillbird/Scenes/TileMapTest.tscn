@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=4 uid="uid://betiditnstr2c"]
 
-[ext_resource type="Texture2D" uid="uid://dmqas3iik38qr" path="res://environment/tileset_hub.png" id="1_xqp1r"]
-[ext_resource type="Texture2D" uid="uid://b2j2onxpyskty" path="res://tileset_environment.png" id="2_ex41c"]
+[ext_resource type="Texture2D" uid="uid://dmqas3iik38qr" path="res://environment/tileset_hub.png" id="1_2m3xy"]
+[ext_resource type="Texture2D" uid="uid://b2j2onxpyskty" path="res://tileset_environment.png" id="2_rddv4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vgyal"]
-texture = ExtResource("1_xqp1r")
+texture = ExtResource("1_2m3xy")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, -3, -8, -3)
 0:0/0/physics_layer_0/polygon_0/one_way = true
@@ -20,7 +20,7 @@ texture = ExtResource("1_xqp1r")
 2:1/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cw2tn"]
-texture = ExtResource("2_ex41c")
+texture = ExtResource("2_rddv4")
 0:0/0 = 0
 0:0/0/terrain_set = 0
 0:0/0/terrain = 0

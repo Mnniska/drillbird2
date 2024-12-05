@@ -1,16 +1,16 @@
 [gd_scene load_steps=16 format=4 uid="uid://d2wv7igie5stg"]
 
-[ext_resource type="PackedScene" uid="uid://e3titjk1as46" path="res://player.tscn" id="2_esoh2"]
+[ext_resource type="PackedScene" uid="uid://e3titjk1as46" path="res://Scenes/player.tscn" id="2_esoh2"]
 [ext_resource type="Script" path="res://Scripts/CameraScript.gd" id="3_inekp"]
 [ext_resource type="Texture2D" uid="uid://un5elq1p64iv" path="res://ui/ui_slotLeftSide.png" id="3_is2ac"]
-[ext_resource type="PackedScene" uid="uid://0iy1qmgd0p6y" path="res://TileCrack.tscn" id="4_hsmlm"]
+[ext_resource type="PackedScene" uid="uid://0iy1qmgd0p6y" path="res://Scenes/TileCrack.tscn" id="4_hsmlm"]
 [ext_resource type="Texture2D" uid="uid://bw25xygruk6rd" path="res://ui/ui_slotRightSide.png" id="4_wapma"]
 [ext_resource type="Texture2D" uid="uid://dmqas3iik38qr" path="res://environment/tileset_hub.png" id="6_1u6a2"]
 [ext_resource type="Texture2D" uid="uid://d2eicrw0h3oxj" path="res://characters/shopkeeper1.png" id="6_skws1"]
 [ext_resource type="Texture2D" uid="uid://b2j2onxpyskty" path="res://tileset_environment.png" id="7_hqxo0"]
 [ext_resource type="Texture2D" uid="uid://v5xg50n0pcht" path="res://characters/shopkeeper2.png" id="7_t8q8u"]
-[ext_resource type="PackedScene" uid="uid://b7wk3v7f1tprr" path="res://UI_InventorySlot.tscn" id="10_ibl00"]
-[ext_resource type="Script" path="res://inventory_handler.gd" id="10_vexj6"]
+[ext_resource type="PackedScene" uid="uid://b7wk3v7f1tprr" path="res://Scenes/UI_InventorySlot.tscn" id="10_ibl00"]
+[ext_resource type="Script" path="res://Scenes/inventory_handler.gd" id="10_vexj6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vgyal"]
 texture = ExtResource("6_1u6a2")

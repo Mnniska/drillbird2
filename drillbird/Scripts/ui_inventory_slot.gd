@@ -4,8 +4,8 @@ extends Node2D
 The InventorySlot keeps track of the ores it has and updates itself visually
 """
 var oreTex:Texture2D
-@onready var current = $current
-@onready var max = $max
+@onready var numberVisual_current = $current
+@onready var numberVisual_max = $max
 var new_ore: abstract_ore
 var chosen_ore: abstract_ore
 var maxItems:int =3
@@ -18,15 +18,27 @@ func GiveOre(_newore:abstract_ore):
 	if(currentItems==0):
 		chosen_ore=new_ore
 			
-	if(maxItems>currentItems):
-		
+	if(currentItems<maxItems):
 		currentItems+=1
-		
+		UpdateVisuals()
+	else:
+		return false
 		
 	
 	pass
+	
+func RemoveOre():
+	if currentItems<=0:
+		return false
+	else:
+		currentItems-=1
+		if(currentItems==0):
+			chosen_ore=null
+		UpdateVisuals()
 
-
+func UpdateVisuals():
+	numberVisual_current.setNumber(currentItems)
+	numberVisual_max.setNumber(maxItems)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

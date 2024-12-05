@@ -24,7 +24,7 @@ var facing_right: bool = true
 var player_is_drilling_tile: bool = false
 var drillDirection=Directions.RIGHT
 
-var TileCrackScene = preload("res://TileCrack.tscn")
+var TileCrackScene = preload("res://Scenes/TileCrack.tscn")
 
 
 func _ready() -> void:

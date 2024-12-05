@@ -107,7 +107,7 @@ func _on_digging_countdown_timeout() -> void:
 	if cell!=null: #is there an ore tile on top of destroyed tile?
 		oreTilemap.set_cell(cellLocation,-1,Vector2i(-1,-1),-1)
 		#SPAWN AN ORE!
-		var scene = load("res://Object_Ore.tscn") # Will load when the script is instanced.
+		var scene = load("res://Scenes/Object_Ore.tscn") # Will load when the script is instanced.
 		var node = scene.instantiate()
 		node.transform.origin = position
 

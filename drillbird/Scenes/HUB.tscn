@@ -1,14 +1,14 @@
 [gd_scene load_steps=8 format=4 uid="uid://by1nty5cd2dk7"]
 
-[ext_resource type="Texture2D" uid="uid://dmqas3iik38qr" path="res://environment/tileset_hub.png" id="1_rywbq"]
-[ext_resource type="Texture2D" uid="uid://d2eicrw0h3oxj" path="res://characters/shopkeeper1.png" id="2_32db8"]
-[ext_resource type="Texture2D" uid="uid://v5xg50n0pcht" path="res://characters/shopkeeper2.png" id="3_kcv0d"]
+[ext_resource type="Texture2D" uid="uid://dmqas3iik38qr" path="res://environment/tileset_hub.png" id="1_opdba"]
+[ext_resource type="Texture2D" uid="uid://d2eicrw0h3oxj" path="res://characters/shopkeeper1.png" id="2_gwje6"]
+[ext_resource type="Texture2D" uid="uid://v5xg50n0pcht" path="res://characters/shopkeeper2.png" id="3_7xpil"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_8fu2r"]
 tile_data = PackedInt32Array(262144, 1, 0, 262145, 65537, 0, 262146, 65537, 0, 3, 1, 0, 65539, 1, 1, 131075, 1, 0, 196611, 1, 1, 262147, 65537, 0, 4, 65537, 0, 131076, 65537, 0, 262148, 65537, 0, 5, 65537, 0, 131077, 131073, 0, 196613, 1, 0, 262149, 65537, 0, 6, 65537, 0, 196614, 65537, 0, 262150, 65537, 0, 7, 131073, 0, 65543, 131073, 1, 131079, 131073, 1, 196615, 65537, 0, 262151, 65537, 0, 196616, 131073, 0, 262152, 65537, 0, 262153, 65537, 0, 262154, 65537, 0, 262155, 131073, 0)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bkgv4"]
-texture = ExtResource("1_rywbq")
+texture = ExtResource("1_opdba")
 0:0/0 = 0
 0:0/0/terrain_set = 0
 0:0/0/terrain = 0
@@ -54,10 +54,10 @@ pattern_0 = SubResource("TileMapPattern_8fu2r")
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_32db8")
+"texture": ExtResource("2_gwje6")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_kcv0d")
+"texture": ExtResource("3_7xpil")
 }],
 "loop": true,
 "name": &"default",
