@@ -311,7 +311,7 @@ position = Vector2(27, 5)
 availableOres = Array[ExtResource("4_ty25h")]([ExtResource("5_noxwc"), ExtResource("6_2xtvr"), ExtResource("7_5r844")])
 
 [node name="Player" parent="." instance=ExtResource("2_esoh2")]
-position = Vector2(26, 5)
+position = Vector2(74, 134)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(19, -24)

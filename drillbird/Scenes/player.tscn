@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://e3titjk1as46"]
+[gd_scene load_steps=43 format=3 uid="uid://e3titjk1as46"]
 
 [ext_resource type="Script" path="res://Scripts/playermovement.gd" id="1_llgr2"]
 [ext_resource type="Texture2D" uid="uid://drpdhaamkld6q" path="res://Art/characters/anim_drill/drilling_down1.png" id="2_mrx7e"]
@@ -35,6 +35,9 @@
 [ext_resource type="Texture2D" uid="uid://cttmuwrkyqgjq" path="res://Art/effects/sprite_jumpCrystal2.png" id="23_6w68x"]
 [ext_resource type="Texture2D" uid="uid://bdnsaxsutvhq8" path="res://Art/effects/sprite_jumpCrystal3.png" id="24_nofj5"]
 [ext_resource type="Texture2D" uid="uid://d1fxkvrdmxu4l" path="res://Art/effects/sprite_jumpCrystal4.png" id="25_ehp6o"]
+[ext_resource type="Texture2D" uid="uid://beyq2av5d3uiy" path="res://Art/characters/birdy_idle_up_left.png" id="26_g33rb"]
+[ext_resource type="Texture2D" uid="uid://b7v65uf6i5ql3" path="res://Art/characters/birdy_idle_up_right.png" id="27_svafw"]
+[ext_resource type="FontFile" uid="uid://bvh0dsp2kmrr0" path="res://m5x7.ttf" id="38_b1wbk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pdge5"]
 size = Vector2(10, 11)
@@ -155,6 +158,22 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("26_g33rb")
+}],
+"loop": true,
+"name": &"idle_up_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("27_svafw")
+}],
+"loop": true,
+"name": &"idle_up_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("16_2l53o")
 }],
 "loop": true,
@@ -221,9 +240,8 @@ hit_from_inside = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_3vbtj")
-animation = &"idle"
+animation = &"idle_up_left"
 autoplay = "idle"
-frame_progress = 0.327204
 
 [node name="jumpCrystal1" type="AnimatedSprite2D" parent="AnimatedSprite2D"]
 position = Vector2(-5, 11)
@@ -261,5 +279,26 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OreCollider"]
 position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_ivl4d")
+
+[node name="debug1" type="Label" parent="."]
+offset_top = -43.0
+offset_right = 40.0
+offset_bottom = -20.0
+theme_override_fonts/font = ExtResource("38_b1wbk")
+text = "mod:"
+
+[node name="debug2" type="Label" parent="."]
+offset_top = -33.0
+offset_right = 40.0
+offset_bottom = -10.0
+theme_override_fonts/font = ExtResource("38_b1wbk")
+text = "mod:"
+
+[node name="debug3" type="Label" parent="."]
+offset_top = -22.0
+offset_right = 40.0
+offset_bottom = 1.0
+theme_override_fonts/font = ExtResource("38_b1wbk")
+text = "mod:"
 
 [connection signal="body_entered" from="OreCollider" to="." method="_on_player_collider_body_entered"]

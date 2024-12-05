@@ -22,6 +22,10 @@ var justJumped:bool=false
 @onready var tilemap: TileMapLayer = get_parent().get_node("TilemapEnvironment")
 @onready var oreInventory = $"../Camera2D/InventoryHandler"
 
+@onready var debug1= $debug1
+@onready var debug2= $debug2
+@onready var debug3= $debug3
+
 var facing_right: bool = true
 var player_is_drilling_tile: bool = false
 var drillDirection=Directions.RIGHT
@@ -99,7 +103,33 @@ func _physics_process(delta: float) -> void:
 		
 			if Input.is_action_pressed("up"):
 				facingDir=Directions.UP
-				newanim="idle_up"
+				var offset:int = 5
+				var mod = abs(int(position.x)) % 16
+				debug1.text="modus: "+str(mod)
+				
+				var rightAnim
+				var leftAnim
+				
+				var test:int=0
+				if position.x<0:
+					rightAnim="idle_up_left"
+					leftAnim="idle_up_right"
+				else:
+					rightAnim="idle_up_right"
+					leftAnim="idle_up_left"
+					
+				if  mod > 16 - offset:
+					newanim=leftAnim
+					test-=1
+				elif mod % 16 < offset:
+					newanim=rightAnim
+					test+=1
+				else:
+					newanim="idle_up"
+					test=-1
+					
+				debug2.text="animDir: "+str(test)
+				debug3.text="position X: "+str(abs(int(position.x)))
 			elif  Input.is_action_pressed("down"):
 				facingDir=Directions.DOWN
 				newanim="idle_down"
@@ -181,6 +211,9 @@ func PlayerIsDrilling():
 
 
 func Update_Animations(newanim):
+
+	if(facingDir==Directions.UP or facingDir ==Directions.DOWN):
+		$AnimatedSprite2D.flip_h=false
 
 	if facingDir == Directions.LEFT or facingDir == Directions.RIGHT:
 		$AnimatedSprite2D.flip_h = !facing_right
