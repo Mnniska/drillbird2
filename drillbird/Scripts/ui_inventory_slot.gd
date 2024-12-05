@@ -6,27 +6,41 @@ The InventorySlot keeps track of the ores it has and updates itself visually
 var oreTex:Texture2D
 @onready var numberVisual_current = $current
 @onready var numberVisual_max = $max
-var new_ore: abstract_ore
+@onready var slashVisual=$txt_slash
+@onready var oreVisual=$ore
 var chosen_ore: abstract_ore
 var maxItems:int =3
 var currentItems: int =0
 var occupied:bool = false
 
-func GiveOre(_newore:abstract_ore):
-	new_ore =_newore
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	#TODO: Maybe save inventory down the line
+	chosen_ore=null
+	UpdateVisuals()
 	
-	if(currentItems==0):
-		chosen_ore=new_ore
+	pass # Replace with function body.
+
+func GiveOre(_newore:abstract_ore):
+
+	if(currentItems<0):
+		AssignOre(_newore)
 			
-	if(currentItems<maxItems):
+	if(currentItems<maxItems && chosen_ore.name==_newore.name):
 		currentItems+=1
 		UpdateVisuals()
+		return true
 	else:
 		return false
 		
-	
-	pass
-	
+
+func AssignOre(_newore:abstract_ore):
+	chosen_ore=_newore
+	maxItems=chosen_ore.stackSize
+	oreVisual.texture=chosen_ore.texture
+	currentItems=0
+	UpdateVisuals()
+
 func RemoveOre():
 	if currentItems<=0:
 		return false
@@ -37,16 +51,21 @@ func RemoveOre():
 		UpdateVisuals()
 
 func UpdateVisuals():
+	if(chosen_ore==null):
+		oreVisual.hide()
+		currentItems=-1
+		maxItems=-1
+		slashVisual.hide()
+	else:
+		oreVisual.show()
+		slashVisual.show()
+		
 	numberVisual_current.setNumber(currentItems)
 	numberVisual_max.setNumber(maxItems)
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	chosen_ore=null
-	
-	pass # Replace with function body.
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass

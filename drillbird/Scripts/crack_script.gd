@@ -8,6 +8,7 @@ var diggingTime=0.0
 
 @onready var cracksprite: Sprite2D = $cracksprite
 @export var crack_sprites: Array[Texture]
+@export var availableOres: Array[abstract_ore]
  
 var affectedTile:TileData
 var cellLocation:Vector2i
@@ -17,7 +18,7 @@ var isDrillingActive:bool=false
 func _ready() -> void:
 	pass # Replace with function body.
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if(isDrillingActive):
 		var process = 1 - diggingCountdown.time_left/ diggingCountdown.wait_time 
 		
@@ -107,11 +108,16 @@ func _on_digging_countdown_timeout() -> void:
 	if cell!=null: #is there an ore tile on top of destroyed tile?
 		oreTilemap.set_cell(cellLocation,-1,Vector2i(-1,-1),-1)
 		#SPAWN AN ORE!
+		var newOre:abstract_ore = availableOres[ randi()%availableOres.size()]
+		
+		
 		var scene = load("res://Scenes/Object_Ore.tscn") # Will load when the script is instanced.
 		var node = scene.instantiate()
+		
 		node.transform.origin = position
 
 		get_parent().add_child(node)
+		node.SetOreType(newOre)
 		
 		
 		

@@ -1,18 +1,19 @@
-[gd_scene load_steps=16 format=3 uid="uid://splm2us27kop"]
+[gd_scene load_steps=17 format=3 uid="uid://splm2us27kop"]
 
 [ext_resource type="Script" path="res://Scripts/object_ore.gd" id="1_dogya"]
-[ext_resource type="Texture2D" uid="uid://cm6brf3xofttr" path="res://environment/Collectibles/Ore_idle1.png" id="2_nioco"]
-[ext_resource type="Texture2D" uid="uid://blbf04fbcty8k" path="res://environment/Collectibles/Ore_idle2.png" id="3_dbawl"]
-[ext_resource type="Texture2D" uid="uid://vbgushuifb6n" path="res://environment/Collectibles/Ore_idle3.png" id="4_g34xn"]
-[ext_resource type="Texture2D" uid="uid://bcjwce13n0fol" path="res://environment/Collectibles/Ore_idle4.png" id="5_y2gd6"]
-[ext_resource type="Texture2D" uid="uid://07wffqw8mdx5" path="res://environment/Collectibles/Ore_spawn1.png" id="6_n7d2q"]
-[ext_resource type="Texture2D" uid="uid://bsbvo0m63rbtk" path="res://environment/Collectibles/Ore_spawn3.png" id="7_s4ly6"]
-[ext_resource type="Texture2D" uid="uid://dgoy0r4c15vr7" path="res://environment/Collectibles/Ore_spawn5.png" id="8_se52a"]
-[ext_resource type="Texture2D" uid="uid://up8tksm5gril" path="res://environment/Collectibles/Ore_spawn6.png" id="9_8u63o"]
-[ext_resource type="Texture2D" uid="uid://p70pe7mektqd" path="res://environment/Collectibles/Ore_spawn7.png" id="10_vw0d8"]
-[ext_resource type="Texture2D" uid="uid://t4j836wbw1bi" path="res://environment/Collectibles/Ore_spawn8.png" id="11_k57oy"]
-[ext_resource type="Texture2D" uid="uid://ba2i5n1rb82gf" path="res://environment/Collectibles/Ore_spawn9.png" id="12_gvoi1"]
-[ext_resource type="Texture2D" uid="uid://beujfy2hpmdxi" path="res://environment/Collectibles/Ore_spawn10.png" id="13_mxxt5"]
+[ext_resource type="Texture2D" uid="uid://cm6brf3xofttr" path="res://Art/Collectibles/Ore_idle1.png" id="2_nioco"]
+[ext_resource type="Texture2D" uid="uid://blbf04fbcty8k" path="res://Art/Collectibles/Ore_idle2.png" id="3_dbawl"]
+[ext_resource type="Texture2D" uid="uid://bjo3ij85d33yx" path="res://Art/Collectibles/ore_gold.png" id="3_qt77j"]
+[ext_resource type="Texture2D" uid="uid://vbgushuifb6n" path="res://Art/Collectibles/Ore_idle3.png" id="4_g34xn"]
+[ext_resource type="Texture2D" uid="uid://bcjwce13n0fol" path="res://Art/Collectibles/Ore_idle4.png" id="5_y2gd6"]
+[ext_resource type="Texture2D" uid="uid://07wffqw8mdx5" path="res://Art/Collectibles/Ore_spawn1.png" id="6_n7d2q"]
+[ext_resource type="Texture2D" uid="uid://bsbvo0m63rbtk" path="res://Art/Collectibles/Ore_spawn3.png" id="7_s4ly6"]
+[ext_resource type="Texture2D" uid="uid://dgoy0r4c15vr7" path="res://Art/Collectibles/Ore_spawn5.png" id="8_se52a"]
+[ext_resource type="Texture2D" uid="uid://up8tksm5gril" path="res://Art/Collectibles/Ore_spawn6.png" id="9_8u63o"]
+[ext_resource type="Texture2D" uid="uid://p70pe7mektqd" path="res://Art/Collectibles/Ore_spawn7.png" id="10_vw0d8"]
+[ext_resource type="Texture2D" uid="uid://t4j836wbw1bi" path="res://Art/Collectibles/Ore_spawn8.png" id="11_k57oy"]
+[ext_resource type="Texture2D" uid="uid://ba2i5n1rb82gf" path="res://Art/Collectibles/Ore_spawn9.png" id="12_gvoi1"]
+[ext_resource type="Texture2D" uid="uid://beujfy2hpmdxi" path="res://Art/Collectibles/Ore_spawn10.png" id="13_mxxt5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rnnxs"]
 size = Vector2(10, 9)
@@ -89,10 +90,14 @@ position = Vector2(0, 2.5)
 shape = SubResource("RectangleShape2D_rnnxs")
 
 [node name="Animation" type="AnimatedSprite2D" parent="."]
+visible = false
 sprite_frames = SubResource("SpriteFrames_wnmh3")
 animation = &"spawn"
 autoplay = "spawn"
 frame = 7
 frame_progress = 1.0
+
+[node name="oreSprite" type="Sprite2D" parent="."]
+texture = ExtResource("3_qt77j")
 
 [connection signal="animation_finished" from="Animation" to="." method="_on_animation_animation_finished"]

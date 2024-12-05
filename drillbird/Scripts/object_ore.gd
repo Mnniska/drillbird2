@@ -1,15 +1,25 @@
 extends RigidBody2D
 @onready var anim: AnimatedSprite2D =$Animation
-
+@export var oreType:abstract_ore
+@onready var oreSprite:Sprite2D = $oreSprite
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
 
+func GetOre():
+	if abstract_ore:
+		return abstract_ore
+	else:
+		push_warning("Tried to access a null oretype")
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func SetOreType(ore:abstract_ore):
+	if(oreType==null):
+		oreType=ore
+		oreSprite.texture=oreType.texture
 	pass
+
+
 
 
 func _on_animation_animation_finished() -> void:

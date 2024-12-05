@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="abstract_ore" load_steps=3 format=3 uid="uid://diuura7tbgl01"]
+
+[ext_resource type="Script" path="res://Scripts/abstract_ore.gd" id="1_a8u57"]
+[ext_resource type="Texture2D" uid="uid://cm6brf3xofttr" path="res://Art/Collectibles/Ore_idle1.png" id="2_nk26k"]
+
+[resource]
+script = ExtResource("1_a8u57")
+value = 4
+texture = ExtResource("2_nk26k")
+name = "Lapis"
+stackSize = 4

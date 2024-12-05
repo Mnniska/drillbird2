@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="abstract_ore" load_steps=3 format=3 uid="uid://bk0jhhovlw4gg"]
+
+[ext_resource type="Script" path="res://Scripts/abstract_ore.gd" id="1_4ie30"]
+[ext_resource type="Texture2D" uid="uid://bjo3ij85d33yx" path="res://Art/Collectibles/ore_gold.png" id="2_eq3en"]
+
+[resource]
+script = ExtResource("1_4ie30")
+value = 10
+texture = ExtResource("2_eq3en")
+name = "Gold"
+stackSize = 2
