@@ -14,6 +14,14 @@ var slotAmount:int=9
 @onready var UIvisual_left = $ui_leftSide
 @onready var UIvisual_right = $ui_rightSide
 
+func SellOres():
+	var gainedMoney:int=0
+	for n in inventorySlots:
+		gainedMoney+=n.SellOres()
+		#get money from sell fucntion in the ore slot
+	return gainedMoney
+	
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	
@@ -52,7 +60,3 @@ func AddOreRequest(ore:abstract_ore):
 			break
 	
 	return oreAdded
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass

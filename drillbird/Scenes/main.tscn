@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://d2wv7igie5stg"]
+[gd_scene load_steps=23 format=4 uid="uid://d2wv7igie5stg"]
 
 [ext_resource type="PackedScene" uid="uid://e3titjk1as46" path="res://Scenes/player.tscn" id="2_esoh2"]
 [ext_resource type="Script" path="res://Scripts/CameraScript.gd" id="3_inekp"]
@@ -14,6 +14,9 @@
 [ext_resource type="Texture2D" uid="uid://b2j2onxpyskty" path="res://Art/environment/tileset_environment.png" id="7_hqxo0"]
 [ext_resource type="Texture2D" uid="uid://v5xg50n0pcht" path="res://Art/characters/shopkeeper2.png" id="7_t8q8u"]
 [ext_resource type="Script" path="res://Scenes/inventory_handler.gd" id="10_vexj6"]
+[ext_resource type="PackedScene" uid="uid://bn0n2vspeyioq" path="res://Scenes/EconomyHandler.tscn" id="15_g1gtq"]
+[ext_resource type="Texture2D" uid="uid://c2fj0vknmdoys" path="res://Art/ui/money_symbol.png" id="16_4c0h3"]
+[ext_resource type="FontFile" uid="uid://bvh0dsp2kmrr0" path="res://m5x7.ttf" id="16_kyoto"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vgyal"]
 texture = ExtResource("6_1u6a2")
@@ -285,6 +288,10 @@ animations = [{
 "speed": 2.0
 }]
 
+[sub_resource type="Theme" id="Theme_ush66"]
+default_font = ExtResource("16_kyoto")
+default_font_size = 16
+
 [node name="Node" type="Node"]
 
 [node name="TilemapHUB" type="TileMapLayer" parent="."]
@@ -327,6 +334,29 @@ texture = ExtResource("3_is2ac")
 [node name="ui_rightSide" type="Sprite2D" parent="Camera2D/InventoryHandler"]
 position = Vector2(31, -8)
 texture = ExtResource("4_wapma")
+
+[node name="CashHolder" type="Node2D" parent="Camera2D"]
+position = Vector2(128, -96)
+
+[node name="cash symbol" type="Sprite2D" parent="Camera2D/CashHolder"]
+position = Vector2(-7, 8)
+texture = ExtResource("16_4c0h3")
+
+[node name="cashNumber" type="Label" parent="Camera2D/CashHolder"]
+layout_direction = 2
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -70.485
+offset_right = -10.84
+offset_bottom = 13.91
+grow_horizontal = 0
+theme = SubResource("Theme_ush66")
+text = "0"
+horizontal_alignment = 2
+
+[node name="EconomyHandler" parent="." instance=ExtResource("15_g1gtq")]
+position = Vector2(88, -37)
 
 [connection signal="newTileCrack" from="Player" to="TileCrack" method="_on_player_new_tile_crack"]
 [connection signal="playerStoppedDrillingTile" from="Player" to="TileCrack" method="_on_player_player_stopped_drilling_tile"]

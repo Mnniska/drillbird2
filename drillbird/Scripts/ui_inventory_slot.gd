@@ -41,6 +41,18 @@ func AssignOre(_newore:abstract_ore):
 	currentItems=0
 	UpdateVisuals()
 
+func SellOres():
+	var gainedMoney:int =0
+	if(currentItems>0):
+		gainedMoney+=currentItems*chosen_ore.value
+	currentItems=-1
+	maxItems=-1
+	chosen_ore=null
+	UpdateVisuals()
+	return gainedMoney
+	
+	pass
+
 func RemoveOre():
 	if currentItems<=0:
 		return false

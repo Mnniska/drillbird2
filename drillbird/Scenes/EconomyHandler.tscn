@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bn0n2vspeyioq"]
+
+[ext_resource type="Script" path="res://EconomyScript.gd" id="1_3jqx0"]
+[ext_resource type="Texture2D" uid="uid://cdqdrj3f4n7ev" path="res://Art/ui/sell_placeholder.png" id="2_tiq3e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v1w5h"]
+size = Vector2(16, 16)
+
+[node name="EconomyHandler" type="Node2D"]
+script = ExtResource("1_3jqx0")
+
+[node name="Selling" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Selling"]
+shape = SubResource("RectangleShape2D_v1w5h")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_tiq3e")
+
+[connection signal="body_shape_entered" from="Selling" to="." method="_on_area_2d_body_shape_entered"]
