@@ -11,22 +11,23 @@
 script = ExtResource("1_vxsy3")
 
 [node name="frame_top" type="Sprite2D" parent="."]
+position = Vector2(8, 0)
 texture = ExtResource("1_hmdhr")
 
 [node name="ore" type="Sprite2D" parent="."]
-position = Vector2(0, -3)
+position = Vector2(8, -3)
 texture = ExtResource("2_rds1q")
 
 [node name="frame_bottom" type="Sprite2D" parent="."]
-position = Vector2(0, 16)
+position = Vector2(8, 16)
 texture = ExtResource("3_2onun")
 
 [node name="txt_slash" type="Sprite2D" parent="."]
-position = Vector2(0, 10)
+position = Vector2(8, 10)
 texture = ExtResource("5_upb4o")
 
 [node name="current" parent="." instance=ExtResource("6_6imk4")]
-position = Vector2(-5, 10)
+position = Vector2(3, 10)
 
 [node name="max" parent="." instance=ExtResource("6_6imk4")]
-position = Vector2(4, 10)
+position = Vector2(12, 10)

@@ -10,7 +10,9 @@ TLDR inventory_handler manages inventory size as well as adding and removing ore
 
 var inventorySlots : Array[Node2D]
 #var inventorySlots =Array[preload("res://Scenes/UI_InventorySlot.tscn")]
-var slotAmount:int=4
+var slotAmount:int=9
+@onready var UIvisual_left = $ui_leftSide
+@onready var UIvisual_right = $ui_rightSide
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -24,8 +26,22 @@ func _ready() -> void:
 		
 		inventorySlots.append(node)
 		pass
-	
+	UpdateInventoryPositions()
 	pass # Replace with function body.
+
+func UpdateInventoryPositions():
+	var offset:int=0
+	offset=(floor(inventorySlots.size())/2)*16
+	if(inventorySlots.size()%2>0):
+		offset+=8
+		pass
+	var index:int =0 
+	for n in inventorySlots:
+		n.position.x=self.position.x- offset+(16*index)
+		index+=1
+	
+	UIvisual_left.position.x=-offset-8
+	UIvisual_right.position.x=-offset+((inventorySlots.size()+1)*16)-8
 
 func AddOreRequest(ore:abstract_ore):
 	var oreAdded:bool=false
