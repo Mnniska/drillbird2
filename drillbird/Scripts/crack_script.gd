@@ -65,7 +65,7 @@ func NewTarget(drill_position:Vector2i):
 	if affectedTile!=null:
 		match affectedTile.terrain:
 			0: #dirt
-				digtime=0.3
+				digtime=1
 			1: #solid
 				diggable = false
 			2: #sand 
@@ -76,9 +76,6 @@ func NewTarget(drill_position:Vector2i):
 			SetCrackPosition(drill_position)
 	
 	#else play particle effects 
-	
-
-	
 	#var tile: TileData =tilemap.get_cell_tile_data(tilemap.local_to_map( tilemap.to_local( location)))
 
 	

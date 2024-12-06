@@ -10,7 +10,7 @@ TLDR inventory_handler manages inventory size as well as adding and removing ore
 
 var inventorySlots : Array[Node2D]
 #var inventorySlots =Array[preload("res://Scenes/UI_InventorySlot.tscn")]
-var slotAmount:int=9
+var slotAmount:int=3
 @onready var UIvisual_left = $ui_leftSide
 @onready var UIvisual_right = $ui_rightSide
 
