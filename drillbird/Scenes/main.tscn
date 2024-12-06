@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://d2wv7igie5stg"]
+[gd_scene load_steps=26 format=4 uid="uid://d2wv7igie5stg"]
 
 [ext_resource type="PackedScene" uid="uid://e3titjk1as46" path="res://Scenes/player.tscn" id="2_esoh2"]
 [ext_resource type="Script" path="res://Scripts/CameraScript.gd" id="3_inekp"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://b2j2onxpyskty" path="res://Art/environment/tileset_environment.png" id="7_hqxo0"]
 [ext_resource type="Texture2D" uid="uid://v5xg50n0pcht" path="res://Art/characters/shopkeeper2.png" id="7_t8q8u"]
 [ext_resource type="Script" path="res://Scenes/inventory_handler.gd" id="10_vexj6"]
+[ext_resource type="Texture2D" uid="uid://cp6xuvmo0rguj" path="res://Art/ui/UI_BlackBorder.png" id="12_xculf"]
 [ext_resource type="PackedScene" uid="uid://bn0n2vspeyioq" path="res://Scenes/EconomyHandler.tscn" id="15_g1gtq"]
 [ext_resource type="Texture2D" uid="uid://c2fj0vknmdoys" path="res://Art/ui/money_symbol.png" id="16_4c0h3"]
 [ext_resource type="FontFile" uid="uid://bvh0dsp2kmrr0" path="res://m5x7.ttf" id="16_kyoto"]
@@ -320,11 +321,11 @@ tile_map_data = PackedByteArray("AADl/xEABAAAAAQAAADl/xIABAAAAAUAAADl/xMABAAAAAU
 tile_set = SubResource("TileSet_otgxp")
 
 [node name="TilemapOres" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAABAAQABAAIAAAAAAADAAcABAAIAAAAAAACAAkABAAIAAAAAAD//woABAAIAAAAAAACAA0ABAAIAAAAAAD9/wwABAAIAAAAAAD8/wgABAAIAAAAAAAEAAwABAAIAAAAAAD7/w8ABAAIAAAAAAD1/w8ABAAIAAAAAAAMAAEABAAIAAAAAAD6/wMABAAIAAAAAAAGABEABAAIAAAAAAAFABEABAAIAAAAAAAEABEABAAIAAAAAAADAAQABAAIAAAAAAABAAkABAAIAAEAAAD7/wEABAAIAAEAAAAAAAEABAAIAAAAAAD9/yIABAAIAAAAAAD8/yIABAAIAAAAAADy/yEABAAIAAAAAADy/yAABAAIAAAAAADy/x8ABAAIAAAAAADw/x0ABAAIAAAAAADz/xkABAAIAAAAAAD0/xcABAAIAAAAAAD1/xcABAAIAAAAAAABAB8ABAAIAAAAAAABACAABAAIAAAAAAA=")
+tile_map_data = PackedByteArray("AAADAAcABAAIAAAAAAACAAkABAAIAAAAAAD//woABAAIAAAAAAACAA0ABAAIAAAAAAD9/wwABAAIAAAAAAD8/wgABAAIAAAAAAAEAAwABAAIAAAAAAD7/w8ABAAIAAAAAAD1/w8ABAAIAAAAAAAMAAEABAAIAAAAAAD6/wMABAAIAAAAAAAGABEABAAIAAAAAAAFABEABAAIAAAAAAAEABEABAAIAAAAAAABAAkABAAIAAEAAAD7/wEABAAIAAEAAAAAAAEABAAIAAAAAAD9/yIABAAIAAAAAAD8/yIABAAIAAAAAADy/yEABAAIAAAAAADy/yAABAAIAAAAAADy/x8ABAAIAAAAAADw/x0ABAAIAAAAAADz/xkABAAIAAAAAAD0/xcABAAIAAAAAAD1/xcABAAIAAAAAAABAB8ABAAIAAAAAAABACAABAAIAAAAAAADAAQABAAIAAAAAAACAAQABAAIAAAAAAACAAMABAAIAAAAAAACAAIABAAIAAAAAAABAAIABAAIAAAAAAABAAMABAAIAAAAAAACAAEABAAIAAAAAAAAAAIABAAIAAAAAAAAAAMABAAIAAAAAAAEAAMABAAIAAAAAAADAAMABAAIAAAAAAADAAIABAAIAAAAAAA=")
 tile_set = SubResource("TileSet_otgxp")
 
 [node name="TileCrack" parent="." instance=ExtResource("4_hsmlm")]
-position = Vector2(27, 5)
+position = Vector2(25, 39)
 availableOres = Array[ExtResource("4_ty25h")]([ExtResource("5_noxwc"), ExtResource("6_2xtvr"), ExtResource("7_5r844")])
 
 [node name="Player" parent="." instance=ExtResource("2_esoh2")]
@@ -340,29 +341,46 @@ position = Vector2(19, -24)
 sprite_frames = SubResource("SpriteFrames_h8s68")
 autoplay = "default"
 
+[node name="EconomyHandler" parent="." instance=ExtResource("15_g1gtq")]
+position = Vector2(88, -37)
+
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("character")]
 position = Vector2(-162, -172)
 script = ExtResource("3_inekp")
 character = NodePath("../Player")
 
+[node name="topUI" type="Sprite2D" parent="Camera2D"]
+position = Vector2(0, -104)
+texture = ExtResource("12_xculf")
+
+[node name="bottomUI" type="Sprite2D" parent="Camera2D"]
+position = Vector2(0, 97)
+texture = ExtResource("12_xculf")
+
+[node name="bottomUI2" type="Sprite2D" parent="Camera2D"]
+position = Vector2(0, 113)
+texture = ExtResource("12_xculf")
+
 [node name="InventoryHandler" type="Node2D" parent="Camera2D"]
 z_index = 2
-position = Vector2(0, 98)
+position = Vector2(0, 113)
 script = ExtResource("10_vexj6")
 
 [node name="ui_leftSide" type="Sprite2D" parent="Camera2D/InventoryHandler"]
+visible = false
 z_index = 2
 position = Vector2(-33, -8)
 texture = ExtResource("3_is2ac")
 
 [node name="ui_rightSide" type="Sprite2D" parent="Camera2D/InventoryHandler"]
+visible = false
 z_index = 2
 position = Vector2(31, -8)
 texture = ExtResource("4_wapma")
 
 [node name="CashHolder" type="Node2D" parent="Camera2D"]
 z_index = 2
-position = Vector2(128, -96)
+position = Vector2(128, -112)
 
 [node name="cash symbol" type="Sprite2D" parent="Camera2D/CashHolder"]
 z_index = 2
@@ -383,9 +401,6 @@ theme = SubResource("Theme_ush66")
 text = "0"
 horizontal_alignment = 2
 metadata/_edit_use_anchors_ = true
-
-[node name="EconomyHandler" parent="." instance=ExtResource("15_g1gtq")]
-position = Vector2(88, -37)
 
 [connection signal="newTileCrack" from="Player" to="TileCrack" method="_on_player_new_tile_crack"]
 [connection signal="playerStoppedDrillingTile" from="Player" to="TileCrack" method="_on_player_player_stopped_drilling_tile"]

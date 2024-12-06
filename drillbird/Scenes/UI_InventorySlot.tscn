@@ -19,6 +19,7 @@ position = Vector2(8, -3)
 texture = ExtResource("2_rds1q")
 
 [node name="frame_bottom" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(8, 16)
 texture = ExtResource("3_2onun")
 

@@ -270,7 +270,6 @@ script = ExtResource("36_2s8wb")
 lightTexture = ExtResource("37_nqmfy")
 
 [node name="light_full" type="PointLight2D" parent="LightManager"]
-scale = Vector2(0.979, 1)
 blend_mode = 1
 range_z_max = 0
 texture = ExtResource("37_nqmfy")
