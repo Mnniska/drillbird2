@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://d2wv7igie5stg"]
+[gd_scene load_steps=30 format=4 uid="uid://d2wv7igie5stg"]
 
 [ext_resource type="PackedScene" uid="uid://e3titjk1as46" path="res://Scenes/player.tscn" id="2_esoh2"]
 [ext_resource type="Script" path="res://Scripts/CameraScript.gd" id="3_inekp"]
@@ -18,6 +18,10 @@
 [ext_resource type="PackedScene" uid="uid://bn0n2vspeyioq" path="res://Scenes/EconomyHandler.tscn" id="15_g1gtq"]
 [ext_resource type="Texture2D" uid="uid://c2fj0vknmdoys" path="res://Art/ui/money_symbol.png" id="16_4c0h3"]
 [ext_resource type="FontFile" uid="uid://bvh0dsp2kmrr0" path="res://m5x7.ttf" id="16_kyoto"]
+[ext_resource type="Texture2D" uid="uid://buh3ysmbicdnm" path="res://Art/ui/UI_LightBar_darkness.png" id="19_64pqd"]
+[ext_resource type="Texture2D" uid="uid://b7scxroc66kxr" path="res://Art/ui/UI_LightBar_frame.png" id="20_cqo8h"]
+[ext_resource type="Texture2D" uid="uid://dnp2fif0h4l4" path="res://Art/ui/UI_LightBar_bulbDark.png" id="20_qxuqg"]
+[ext_resource type="Texture2D" uid="uid://1so80dql7icj" path="res://Art/ui/UI_LightBar_light.png" id="21_dajmx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vgyal"]
 texture = ExtResource("6_1u6a2")
@@ -350,14 +354,17 @@ script = ExtResource("3_inekp")
 character = NodePath("../Player")
 
 [node name="topUI" type="Sprite2D" parent="Camera2D"]
+z_index = 2
 position = Vector2(0, -104)
 texture = ExtResource("12_xculf")
 
 [node name="bottomUI" type="Sprite2D" parent="Camera2D"]
+z_index = 2
 position = Vector2(0, 97)
 texture = ExtResource("12_xculf")
 
 [node name="bottomUI2" type="Sprite2D" parent="Camera2D"]
+z_index = 2
 position = Vector2(0, 113)
 texture = ExtResource("12_xculf")
 
@@ -401,6 +408,40 @@ theme = SubResource("Theme_ush66")
 text = "0"
 horizontal_alignment = 2
 metadata/_edit_use_anchors_ = true
+
+[node name="LightHandler" type="Node2D" parent="Camera2D"]
+position = Vector2(0, -104)
+
+[node name="lightbar_dark" type="Sprite2D" parent="Camera2D/LightHandler"]
+z_index = 2
+texture = ExtResource("19_64pqd")
+
+[node name="lightbar_bulb" type="Sprite2D" parent="Camera2D/LightHandler"]
+z_index = 2
+position = Vector2(-4, -4)
+texture = ExtResource("20_qxuqg")
+
+[node name="lightbar_bulb2" type="Sprite2D" parent="Camera2D/LightHandler"]
+z_index = 2
+position = Vector2(4, -4)
+texture = ExtResource("20_qxuqg")
+
+[node name="lightbar_frame" type="Sprite2D" parent="Camera2D/LightHandler"]
+z_index = 2
+texture = ExtResource("20_cqo8h")
+
+[node name="Control" type="Control" parent="Camera2D/LightHandler"]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = -38.0
+offset_right = 38.0
+offset_bottom = 7.0
+
+[node name="lightbar_light" type="Sprite2D" parent="Camera2D/LightHandler/Control"]
+z_index = 2
+position = Vector2(38, 0)
+texture = ExtResource("21_dajmx")
 
 [connection signal="newTileCrack" from="Player" to="TileCrack" method="_on_player_new_tile_crack"]
 [connection signal="playerStoppedDrillingTile" from="Player" to="TileCrack" method="_on_player_player_stopped_drilling_tile"]
