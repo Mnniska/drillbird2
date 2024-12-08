@@ -265,11 +265,11 @@ collision_mask = 4
 position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_ivl4d")
 
-[node name="LightManager" type="Node2D" parent="."]
+[node name="PlayerDarkness" type="Node2D" parent="."]
 script = ExtResource("36_2s8wb")
 lightTexture = ExtResource("37_nqmfy")
 
-[node name="light_full" type="PointLight2D" parent="LightManager"]
+[node name="light_full" type="PointLight2D" parent="PlayerDarkness"]
 blend_mode = 1
 range_z_max = 0
 texture = ExtResource("37_nqmfy")

@@ -20,19 +20,11 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	
-	if Input.is_action_just_pressed('addLight'):
-		test+=0.1
-		test =clamp(test,minLight,maxLight)
-		SetLight(test)
-	
-	if Input.is_action_just_pressed('removeLight'):
-		test-=0.1
-		test =clamp(test,minLight,maxLight)
-		SetLight(test)
-	
 	pass
 
 func SetLight(lightstr):
+	
+	var test =clamp(lightstr,minLight,maxLight)
 	
 	var a :float = maxLight*lightstr+minLight*(1-lightstr)
 	
