@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=4 uid="uid://d2wv7igie5stg"]
+[gd_scene load_steps=31 format=4 uid="uid://d2wv7igie5stg"]
 
 [ext_resource type="PackedScene" uid="uid://e3titjk1as46" path="res://Scenes/player.tscn" id="2_esoh2"]
 [ext_resource type="Script" path="res://Scripts/CameraScript.gd" id="3_inekp"]
@@ -21,7 +21,6 @@
 [ext_resource type="Texture2D" uid="uid://buh3ysmbicdnm" path="res://Art/ui/UI_LightBar_darkness.png" id="19_64pqd"]
 [ext_resource type="Script" path="res://Scenes/LightManager.gd" id="19_dnto4"]
 [ext_resource type="Texture2D" uid="uid://b7scxroc66kxr" path="res://Art/ui/UI_LightBar_frame.png" id="20_cqo8h"]
-[ext_resource type="Texture2D" uid="uid://dnp2fif0h4l4" path="res://Art/ui/UI_LightBar_bulbDark.png" id="20_qxuqg"]
 [ext_resource type="Texture2D" uid="uid://1so80dql7icj" path="res://Art/ui/UI_LightBar_light.png" id="21_dajmx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vgyal"]
@@ -345,7 +344,7 @@ position = Vector2(25, 39)
 availableOres = Array[ExtResource("4_ty25h")]([ExtResource("5_noxwc"), ExtResource("6_2xtvr"), ExtResource("7_5r844")])
 
 [node name="Player" parent="." instance=ExtResource("2_esoh2")]
-position = Vector2(113, -25)
+position = Vector2(21, 190)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(19, -24)
@@ -419,20 +418,11 @@ metadata/_edit_use_anchors_ = true
 [node name="LightHandler" type="Node2D" parent="Camera2D"]
 position = Vector2(0, -104)
 script = ExtResource("19_dnto4")
+bulbAmount = 2
 
 [node name="lightbar_dark" type="Sprite2D" parent="Camera2D/LightHandler"]
 z_index = 2
 texture = ExtResource("19_64pqd")
-
-[node name="lightbar_bulb" type="Sprite2D" parent="Camera2D/LightHandler"]
-z_index = 2
-position = Vector2(-4, -4)
-texture = ExtResource("20_qxuqg")
-
-[node name="lightbar_bulb2" type="Sprite2D" parent="Camera2D/LightHandler"]
-z_index = 2
-position = Vector2(4, -4)
-texture = ExtResource("20_qxuqg")
 
 [node name="UI_LightSlider" type="HSlider" parent="Camera2D/LightHandler"]
 z_index = 2
@@ -445,20 +435,6 @@ theme_override_icons/grabber_disabled = SubResource("ImageTexture_fjwsv")
 theme_override_styles/slider = SubResource("StyleBoxTexture_fddwt")
 theme_override_styles/grabber_area = SubResource("StyleBoxTexture_shfji")
 editable = false
-
-[node name="Control" type="Control" parent="Camera2D/LightHandler"]
-visible = false
-clip_contents = true
-layout_mode = 3
-anchors_preset = 0
-offset_left = -38.0
-offset_right = 37.0
-offset_bottom = 7.0
-
-[node name="lightbar_light" type="Sprite2D" parent="Camera2D/LightHandler/Control"]
-z_index = 2
-position = Vector2(38, 0)
-texture = ExtResource("21_dajmx")
 
 [connection signal="newTileCrack" from="Player" to="TileCrack" method="_on_player_new_tile_crack"]
 [connection signal="playerStoppedDrillingTile" from="Player" to="TileCrack" method="_on_player_player_stopped_drilling_tile"]
