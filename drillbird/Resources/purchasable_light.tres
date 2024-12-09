@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="abstract_purchasable" load_steps=8 format=3 uid="uid://cgdqluba62y80"]
+
+[ext_resource type="Texture2D" uid="uid://qsvd23d34rp7" path="res://Art/ui/Shop/UI_Shop_icon_light.png" id="1_1bg5o"]
+[ext_resource type="Script" path="res://Scripts/abstract_item_upgrade.gd" id="2_c8a6s"]
+[ext_resource type="Script" path="res://Scripts/abstract_purchasable.gd" id="3_mne0x"]
+
+[sub_resource type="Resource" id="Resource_ldy6v"]
+script = ExtResource("2_c8a6s")
+cost = 0
+power = 1
+name = ""
+
+[sub_resource type="Resource" id="Resource_nookp"]
+script = ExtResource("2_c8a6s")
+cost = 10
+power = 2
+name = ""
+
+[sub_resource type="Resource" id="Resource_aum1u"]
+script = ExtResource("2_c8a6s")
+cost = 100
+power = 3
+name = ""
+
+[sub_resource type="Resource" id="Resource_l4iij"]
+script = ExtResource("2_c8a6s")
+cost = 150
+power = 4
+name = ""
+
+[resource]
+script = ExtResource("3_mne0x")
+icon = ExtResource("1_1bg5o")
+itemName = "Light"
+itemDescription = "Keep darkness at bay longer"
+items = Array[ExtResource("2_c8a6s")]([SubResource("Resource_ldy6v"), SubResource("Resource_nookp"), SubResource("Resource_aum1u"), SubResource("Resource_l4iij")])
+currentUpgradeLevel = 2
