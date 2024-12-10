@@ -37,6 +37,12 @@ func _ready() -> void:
 	
 
 func _physics_process(delta: float) -> void:
+	
+	#skips player physics update if in shop
+	if GlobalVariables.playerStatus==GlobalVariables.playerStatusEnum.SHOP:
+		return
+		
+		
 	var newanim=animstate
 	
 	

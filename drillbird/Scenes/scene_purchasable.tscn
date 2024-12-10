@@ -1,0 +1,86 @@
+[gd_scene load_steps=14 format=3 uid="uid://3d04qrtunccs"]
+
+[ext_resource type="Script" path="res://Scenes/Purchasable.gd" id="1_gej8r"]
+[ext_resource type="Texture2D" uid="uid://boy08vwlonxv5" path="res://Art/ui/Shop/UI_Shop_select_on.png" id="2_cxk1t"]
+[ext_resource type="Texture2D" uid="uid://bjvkj4tdobv14" path="res://Art/ui/Shop/UI_Shop_select_off.png" id="3_265ke"]
+[ext_resource type="Texture2D" uid="uid://d20lbc17xts0c" path="res://Art/ui/Shop/UI_Shop_IconHolder_off.png" id="4_2yrwy"]
+[ext_resource type="Texture2D" uid="uid://1rmh550r7gjp" path="res://Art/ui/Shop/UI_Shop_IconHolder_on.png" id="5_wytr4"]
+[ext_resource type="Texture2D" uid="uid://bueyua1ex8gq0" path="res://Art/ui/Shop/UI_Shop_button_on_cannotAfford.png" id="6_k7iay"]
+[ext_resource type="Texture2D" uid="uid://boulllpt4vy8" path="res://Art/ui/Shop/UI_Shop_button_on_canAfford.png" id="7_0oi30"]
+[ext_resource type="Texture2D" uid="uid://de2ouaamnu8d0" path="res://Art/ui/Shop/UI_Shop_button_off_unavailable.png" id="8_sik50"]
+[ext_resource type="Texture2D" uid="uid://bhl0wrpfdjcmt" path="res://Art/ui/Shop/UI_Shop_button_off_canAfford.png" id="9_iepxl"]
+[ext_resource type="Texture2D" uid="uid://dd5qv322e1hvn" path="res://Art/ui/Shop/UI_Shop_icon_inventory.png" id="10_odim8"]
+[ext_resource type="Theme" uid="uid://bfr5y4lo7m1ux" path="res://Resources/fontTheme.tres" id="11_hei2b"]
+[ext_resource type="Texture2D" uid="uid://5j8n4l5xcmt2" path="res://Art/ui/Shop/UI_Shop_knob_on.png" id="12_ebvh8"]
+[ext_resource type="Texture2D" uid="uid://dk4nbwbyqwktv" path="res://Art/ui/Shop/UI_Shop_knob_off.png" id="13_4jry6"]
+
+[node name="Purchasable1" type="Node2D"]
+z_index = 2
+position = Vector2(0, -44)
+script = ExtResource("1_gej8r")
+tex_bg_on = ExtResource("2_cxk1t")
+tex_bg_off = ExtResource("3_265ke")
+tex_icon_off = ExtResource("4_2yrwy")
+tex_icon_on = ExtResource("5_wytr4")
+tex_btn_selected_expensive = ExtResource("6_k7iay")
+tex_btn_selected_affordable = ExtResource("7_0oi30")
+tex_btn_inactive_expensive = ExtResource("8_sik50")
+tex_btn_inactive_affordable = ExtResource("9_iepxl")
+tex_knob_active = ExtResource("12_ebvh8")
+tex_knob_inactive = ExtResource("13_4jry6")
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = 2
+texture = ExtResource("3_265ke")
+
+[node name="IconContainer" type="Sprite2D" parent="."]
+z_index = 2
+position = Vector2(-112, 0)
+texture = ExtResource("4_2yrwy")
+
+[node name="icon" type="Sprite2D" parent="IconContainer"]
+z_index = 2
+texture = ExtResource("10_odim8")
+
+[node name="StatHeader" type="Label" parent="."]
+z_index = 2
+offset_left = -101.0
+offset_top = -13.0
+offset_right = -23.0
+theme = ExtResource("11_hei2b")
+theme_override_colors/font_color = Color(0.184314, 0, 0, 1)
+text = "Header"
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="StatExplanation" type="Label" parent="."]
+z_index = 2
+offset_left = -101.0
+offset_top = -3.0
+offset_right = 64.0
+offset_bottom = 20.0
+theme = ExtResource("11_hei2b")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Upgrade description"
+metadata/_edit_use_anchors_ = true
+
+[node name="PurchaseButton" type="Sprite2D" parent="."]
+z_index = 2
+position = Vector2(95, 1)
+texture = ExtResource("8_sik50")
+
+[node name="Cost" type="Label" parent="PurchaseButton"]
+z_index = 2
+offset_left = -23.0
+offset_top = -9.0
+offset_right = 25.0
+offset_bottom = 8.0
+theme = ExtResource("11_hei2b")
+text = "243"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="KnobStartPos" type="Node2D" parent="."]
+z_index = 2
+position = Vector2(-42, -5)

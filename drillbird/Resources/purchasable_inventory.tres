@@ -8,30 +8,27 @@
 script = ExtResource("2_air0l")
 cost = 0
 power = 2
-name = ""
 
 [sub_resource type="Resource" id="Resource_nookp"]
 script = ExtResource("2_air0l")
 cost = 10
 power = 3
-name = ""
 
 [sub_resource type="Resource" id="Resource_aum1u"]
 script = ExtResource("2_air0l")
-cost = 100
+cost = 22
 power = 4
-name = ""
 
 [sub_resource type="Resource" id="Resource_l4iij"]
 script = ExtResource("2_air0l")
 cost = 150
 power = 5
-name = ""
 
 [resource]
 script = ExtResource("1_hrpxn")
+type = 1
 icon = ExtResource("1_sdygc")
 itemName = "Inventory"
 itemDescription = "Fit more stuff before ascending"
 items = Array[ExtResource("2_air0l")]([SubResource("Resource_ldy6v"), SubResource("Resource_nookp"), SubResource("Resource_aum1u"), SubResource("Resource_l4iij")])
-currentUpgradeLevel = 2
+currentUpgradeLevel = 0

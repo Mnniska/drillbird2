@@ -10,7 +10,8 @@ extends Node2D
 @export var tex_btn_inactive_affordable:Texture2D
 
 
-@export var purchasable:abstract_purchasable
+
+var purchasable:abstract_purchasable
 
 #onready prep:
 @onready var background=$Background
@@ -21,13 +22,65 @@ extends Node2D
 @onready var purchaseBtn= $PurchaseButton
 @onready var cost=$PurchaseButton/Cost
 
+#upgrade knobs 
+#@onready var KnobStartPos=$KnobStartPos
+@export var tex_knob_active:Texture2D
+@export var tex_knob_inactive:Texture2D
+var knobArray:Array[Sprite2D]
+
 #economy
 @export var playerMoney:int
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	Setup()
 	pass # Replace with function body.
+
+func AttemptToPurchase():
+	#CAN PLAYER AFFORD UPGRADE?
+	
+	if purchasable.items[purchasable.currentUpgradeLevel+1] != null:
+		var cost:int=purchasable.items[purchasable.currentUpgradeLevel+1].cost
+		if GlobalVariables.playerMoney>=cost:
+			GlobalVariables.playerMoney-=cost
+			return true
+			pass
+		else:
+			var diff:int=cost- GlobalVariables.playerMoney
+			print_debug("Cannot afford upgrade! You need "+str(cost)+" more dollars!")
+			return false
+	
+
+func SetupKnobs():
+	
+	var dist_off:int=4
+	var dist_on:int=6
+	var offset:int=0
+	
+	var index:int=0
+	for n in purchasable.items.size():
+		var sprite = Sprite2D.new()
+		sprite.z_index=2
+		$KnobStartPos.add_child(sprite) 
+		knobArray.append(sprite)
+		
+		sprite.position.x=offset
+		
+	
+		if index < purchasable.currentUpgradeLevel:
+			sprite.texture=tex_knob_active
+			offset+=dist_on
+		else:
+			sprite.texture=tex_knob_inactive
+			offset+=dist_off
+
+			pass
+
+		
+		index+=1
+		
+	
+	
+	pass
 
 func SetSelected(selected:bool):
 	
@@ -54,13 +107,14 @@ func SetSelected(selected:bool):
 			
 	
 
-func Setup():
+func Setup(_purchasable:abstract_purchasable):
+	purchasable=_purchasable
 	icon.texture=purchasable.icon
 	Header.text=purchasable.itemName
 	Description.text=purchasable.itemDescription
-	cost.text=str( purchasable.items[purchasable.currentUpgradeLevel].cost)
-	
-	SetSelected(true)
+	cost.text=str( purchasable.items[purchasable.currentUpgradeLevel+1].cost)
+	SetupKnobs()
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

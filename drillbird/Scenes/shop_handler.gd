@@ -1,0 +1,93 @@
+extends Node2D
+
+#handling the shop
+@onready var moneyUI=$"../CashHolder/cashNumber"
+@onready var seller = $"../InventoryHandler"
+
+
+@export var UI_purchasables:Array[Node2D]
+@export var abstract_purchasables:Array[abstract_purchasable]
+var shopActive:bool=true
+#playerstats 
+var currentSelection:int=0
+
+# Called when the node enters the scene tree for the first time.
+
+func _ready():
+	SetupShop()
+
+func SetupShop():
+	var index:int=0
+	for n in UI_purchasables:
+		n.Setup(abstract_purchasables[index])
+		n.SetSelected( index==currentSelection)
+		index+=1
+			
+
+func SetActive(active:bool):
+	shopActive=active
+	
+	if active:
+		show()
+		GlobalVariables.playerStatus=GlobalVariables.playerStatusEnum.SHOP
+		
+	else:
+		GlobalVariables.playerStatus=GlobalVariables.playerStatusEnum.DIG
+		hide()
+		
+
+func UpdateShop():
+	var index:int=0
+	for n in UI_purchasables:
+		n.SetSelected( index==currentSelection)
+		index+=1
+			
+
+func PurchaseSelectedItem():
+	if UI_purchasables[currentSelection].AttemptToPurchase():
+		moneyUI.text=str(GlobalVariables.playerMoney)
+		#If player can afford the item, the money will be deducted and return true
+		pass
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	if !shopActive:
+		return 
+	
+	#Check if player wants to move up or down
+	var changeDone:bool=false
+	if Input.is_action_just_pressed("up"):
+		currentSelection-=1
+		changeDone=true
+	if Input.is_action_just_pressed("down"):
+		currentSelection+=1
+		changeDone=true
+
+	if changeDone:
+		if currentSelection<0:
+			currentSelection=abstract_purchasables.size()-1
+		if currentSelection>abstract_purchasables.size()-1:
+			currentSelection=0
+		UpdateShop()
+	
+
+	if Input.is_action_just_pressed("jump"):
+		PurchaseSelectedItem()
+	pass
+	
+	
+	if Input.is_action_just_pressed("drill"):
+		SetActive(false)
+	pass
+
+
+func _on_area_2d_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
+	SetActive(true)
+	pass # Replace with function body.
+
+
+func _on_sell_collision_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
+	GlobalVariables.playerMoney+= seller.SellOres()
+	print_debug("Player now has "+str(GlobalVariables.playerMoney)+" money!")
+	moneyUI.text=str(GlobalVariables.playerMoney)
+	pass # Replace with function body.

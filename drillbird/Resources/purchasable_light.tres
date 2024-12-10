@@ -8,28 +8,25 @@
 script = ExtResource("2_c8a6s")
 cost = 0
 power = 1
-name = ""
 
 [sub_resource type="Resource" id="Resource_nookp"]
 script = ExtResource("2_c8a6s")
 cost = 10
 power = 2
-name = ""
 
 [sub_resource type="Resource" id="Resource_aum1u"]
 script = ExtResource("2_c8a6s")
 cost = 100
 power = 3
-name = ""
 
 [sub_resource type="Resource" id="Resource_l4iij"]
 script = ExtResource("2_c8a6s")
 cost = 150
 power = 4
-name = ""
 
 [resource]
 script = ExtResource("3_mne0x")
+type = 3
 icon = ExtResource("1_1bg5o")
 itemName = "Light"
 itemDescription = "Keep darkness at bay longer"
