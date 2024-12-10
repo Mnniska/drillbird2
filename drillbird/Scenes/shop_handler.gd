@@ -7,7 +7,7 @@ extends Node2D
 
 @export var UI_purchasables:Array[Node2D]
 @export var abstract_purchasables:Array[abstract_purchasable]
-var shopActive:bool=true
+var shopActive:bool=false
 #playerstats 
 var currentSelection:int=0
 
@@ -18,6 +18,7 @@ func _ready():
 
 func SetupShop():
 	var index:int=0
+	moneyUI.text=str(GlobalVariables.playerMoney)
 	for n in UI_purchasables:
 		n.Setup(abstract_purchasables[index])
 		n.SetSelected( index==currentSelection)
@@ -55,8 +56,11 @@ func PurchaseSelectedItem():
 		if upgrade!=null:
 			GlobalVariables.SetPlayerUpgradeLevel(type,playerUpgradeLvl+1)
 			UI_purchasables[currentSelection].UpdateStats()
+			UpdateShop()
 			#Tell UI to update itself
 		pass
+
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

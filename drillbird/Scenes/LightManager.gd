@@ -7,7 +7,8 @@ extends Node2D
 var lightBulbArray:Array[Sprite2D]
 
 #Time variables
-@export var time_TimerLength:int=60
+@export var time_TimerLength:int=30
+#todo: Figure out if this is how you wanna do time
 var time_Countdown:float
 var darknessClose:bool=false
 var maxSize:int=75
@@ -21,6 +22,8 @@ var internal_upd_counter:int=0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	GlobalVariables.upgradeChange_Light.connect(upgradeChangeLight)
+	
 	time_Countdown=time_TimerLength
 	
 	for n in lightUpgrade:
@@ -79,16 +82,35 @@ func _process(delta: float) -> void:
 		GetNextLightbulb()
 	pass
 	
-func handleInputs():
-
-	if Input.is_action_just_pressed('addLight'):
-		for n in lightBulbArray:
-			n.SetActive(true)
+func RefillLight():
+	for n in lightBulbArray:
+		n.SetActive(true)
 		time_Countdown=time_TimerLength
 		darknessClose=false
 		PlayerLight.SetLight(1)
+
+func handleInputs():
+
+	if Input.is_action_just_pressed('addLight'):
+		RefillLight()
 
 		pass
 
 	if Input.is_action_just_pressed('removeLight'):
 		pass
+	
+	pass # Replace with function body.
+
+func AddLightbulbRequest():
+	var scene = load("res://Scenes/lightbulb.tscn") 
+	var node = scene.instantiate()
+	var offset= Vector2(0,-4)
+	lightBulbArray.append(node)
+	node.transform.origin =  offset
+	add_child(node)
+	RefillLight()
+	UpdateLightbulbLocations()
+
+func upgradeChangeLight():
+	AddLightbulbRequest()
+	pass

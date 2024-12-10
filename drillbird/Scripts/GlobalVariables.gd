@@ -3,10 +3,26 @@ enum typeEnum{DRILL, INVENTORY, HEALTH, LIGHT}
 
 enum playerStatusEnum {DIG,SHOP}
 var playerStatus = playerStatusEnum.DIG
-var playerMoney:int=150
+var playerMoney:int=15
 
-var upgradeLevel_light:int=0
-var upgradeLevel_inventory:int=0
+signal upgradeChange_Light
+var upgradeLevel_light:int=0:
+	get:
+		return upgradeLevel_light
+	set(value):
+		upgradeLevel_light=value
+		upgradeChange_Light.emit()
+		pass
+		
+signal upgradeChange_Inventory
+var upgradeLevel_inventory:int=0:
+	get:
+		return upgradeLevel_inventory
+	set(value):
+		upgradeLevel_inventory=value
+		upgradeChange_Inventory.emit()
+
+
 var upgradeLevel_health:int=0
 var upgradeLevel_drill:int=0
 
