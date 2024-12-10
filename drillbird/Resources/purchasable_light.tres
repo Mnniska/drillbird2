@@ -16,12 +16,12 @@ power = 2
 
 [sub_resource type="Resource" id="Resource_aum1u"]
 script = ExtResource("2_c8a6s")
-cost = 100
+cost = 11
 power = 3
 
 [sub_resource type="Resource" id="Resource_l4iij"]
 script = ExtResource("2_c8a6s")
-cost = 150
+cost = 12
 power = 4
 
 [resource]
@@ -31,4 +31,3 @@ icon = ExtResource("1_1bg5o")
 itemName = "Light"
 itemDescription = "Keep darkness at bay longer"
 items = Array[ExtResource("2_c8a6s")]([SubResource("Resource_ldy6v"), SubResource("Resource_nookp"), SubResource("Resource_aum1u"), SubResource("Resource_l4iij")])
-currentUpgradeLevel = 2

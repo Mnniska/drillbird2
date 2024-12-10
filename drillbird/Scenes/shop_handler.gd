@@ -44,9 +44,18 @@ func UpdateShop():
 			
 
 func PurchaseSelectedItem():
+	
 	if UI_purchasables[currentSelection].AttemptToPurchase():
+		
 		moneyUI.text=str(GlobalVariables.playerMoney)
-		#If player can afford the item, the money will be deducted and return true
+		var type = abstract_purchasables[currentSelection].type
+		var playerUpgradeLvl=GlobalVariables.GetPlayerUpgradeLevel(type)
+		
+		var upgrade= abstract_purchasables[currentSelection].items[playerUpgradeLvl+1]
+		if upgrade!=null:
+			GlobalVariables.SetPlayerUpgradeLevel(type,playerUpgradeLvl+1)
+			UI_purchasables[currentSelection].UpdateStats()
+			#Tell UI to update itself
 		pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

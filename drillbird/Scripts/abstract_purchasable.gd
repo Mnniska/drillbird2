@@ -7,4 +7,3 @@ class_name abstract_purchasable
 @export var itemDescription ="default description"
 
 @export var items:Array[abstract_item_upgrade]
-@export var currentUpgradeLevel:int=0

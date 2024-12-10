@@ -224,9 +224,8 @@ hit_from_inside = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 1
 sprite_frames = SubResource("SpriteFrames_3vbtj")
-animation = &"idle"
+animation = &"drill_down"
 autoplay = "idle"
-frame_progress = 0.327204
 
 [node name="jumpCrystal1" type="AnimatedSprite2D" parent="AnimatedSprite2D"]
 position = Vector2(-5, 11)

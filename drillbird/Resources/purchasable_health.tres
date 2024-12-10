@@ -16,12 +16,12 @@ power = 3
 
 [sub_resource type="Resource" id="Resource_aum1u"]
 script = ExtResource("2_wg2lt")
-cost = 55
+cost = 11
 power = 4
 
 [sub_resource type="Resource" id="Resource_l4iij"]
 script = ExtResource("2_wg2lt")
-cost = 150
+cost = 12
 power = 5
 
 [resource]
@@ -31,4 +31,3 @@ icon = ExtResource("1_74wfm")
 itemName = "Health"
 itemDescription = "Make more mistakes before death"
 items = Array[ExtResource("2_wg2lt")]([SubResource("Resource_ldy6v"), SubResource("Resource_nookp"), SubResource("Resource_aum1u"), SubResource("Resource_l4iij")])
-currentUpgradeLevel = 0
