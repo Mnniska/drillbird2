@@ -6,6 +6,9 @@ class_name abstract_ore_region
 @export var oreRegionID:int
 
 func _ready():
+	if potentialOres.size()!=spawnChances.size():
+		push_error("chance array does not match up with ore array in"+str(self))
+	
 	var x=0
 	for n in spawnChances:
 		x+=n

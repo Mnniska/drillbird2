@@ -68,7 +68,7 @@ func NewTarget(drill_position:Vector2i):
 			#get the tile's health and reduce it by player upgrade lvl
 			tilehealth =GetHealthForTerrain(affectedTile.terrain)-GlobalVariables.upgradeLevel_drill
 			if tilehealth<1&&tilehealth>=0:
-				tilehealth=0.8
+				tilehealth=0.5
 			digtime= tilehealth*minimumDigTime
 
 		else:
@@ -131,6 +131,8 @@ func _on_digging_countdown_timeout() -> void:
 		for n in oreRegions:
 			if n.oreRegionID==oreRegion:
 				newOre=n.GetOreToSpawn()
+		if newOre==null:
+			push_error("Crack script was unable to find a good ore!")
 		
 		var scene = load("res://Scenes/Object_Ore.tscn") # Will load when the script is instanced.
 		var node = scene.instantiate()

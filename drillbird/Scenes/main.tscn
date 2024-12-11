@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=4 uid="uid://d2wv7igie5stg"]
+[gd_scene load_steps=49 format=4 uid="uid://d2wv7igie5stg"]
 
 [ext_resource type="Texture2D" uid="uid://b7yxja4qntm66" path="res://Art/environment/tileset_ores.png" id="1_yef2y"]
 [ext_resource type="PackedScene" uid="uid://e3titjk1as46" path="res://Scenes/player.tscn" id="2_esoh2"]
@@ -7,14 +7,16 @@
 [ext_resource type="PackedScene" uid="uid://0iy1qmgd0p6y" path="res://Scenes/TileCrack.tscn" id="4_hsmlm"]
 [ext_resource type="Texture2D" uid="uid://bw25xygruk6rd" path="res://Art/ui/ui_slotRightSide.png" id="4_wapma"]
 [ext_resource type="Script" path="res://Scripts/abstract_ore_region.gd" id="5_4itl6"]
-[ext_resource type="Resource" uid="uid://m45xt15irfdd" path="res://Resources/ore_region_1.tres" id="5_hdnxv"]
+[ext_resource type="Resource" path="res://Resources/ore_region_1.tres" id="5_hdnxv"]
 [ext_resource type="Texture2D" uid="uid://dmqas3iik38qr" path="res://Art/environment/tileset_hub.png" id="6_1u6a2"]
-[ext_resource type="Resource" uid="uid://bb3ecu6biq6vg" path="res://Resources/ore_region_2.tres" id="6_fhqxb"]
+[ext_resource type="Resource" path="res://Resources/ore_region_2.tres" id="6_fhqxb"]
 [ext_resource type="Texture2D" uid="uid://d2eicrw0h3oxj" path="res://Art/characters/shopkeeper1.png" id="6_skws1"]
 [ext_resource type="Texture2D" uid="uid://b2j2onxpyskty" path="res://Art/environment/tileset_environment.png" id="7_hqxo0"]
 [ext_resource type="Texture2D" uid="uid://v5xg50n0pcht" path="res://Art/characters/shopkeeper2.png" id="7_t8q8u"]
+[ext_resource type="Resource" uid="uid://d35o56m1lfg6p" path="res://Resources/ore_region_3.tres" id="8_mvtuw"]
 [ext_resource type="Script" path="res://Scripts/abstract_terrain_info.gd" id="8_v8wrc"]
 [ext_resource type="Resource" uid="uid://cq6ru2d4e7bgd" path="res://Resources/terrainInfo_sand.tres" id="9_838vt"]
+[ext_resource type="Resource" path="res://Resources/ore_region_4.tres" id="9_ursej"]
 [ext_resource type="Resource" uid="uid://b1vx03cr2okgm" path="res://Resources/terrainInfo_solid.tres" id="10_fmoxo"]
 [ext_resource type="Script" path="res://Scenes/inventory_handler.gd" id="10_vexj6"]
 [ext_resource type="Resource" uid="uid://cjif6ylwd1rdw" path="res://Resources/terrainInfo_dirt1.tres" id="11_2gabb"]
@@ -385,12 +387,12 @@ tile_map_data = PackedByteArray("AADl/xEABAAAAAQAAADl/xIABAAAAAUAAADl/xMABAAAAAU
 tile_set = SubResource("TileSet_otgxp")
 
 [node name="TilemapOres" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAADAAcABAAIAAAAAAACAAkABAAIAAAAAAD//woABAAIAAAAAAACAA0ABAAIAAAAAAD9/wwABAAIAAAAAAD8/wgABAAIAAAAAAAEAAwABAAIAAAAAAD7/w8ABAAIAAAAAAD1/w8ABAAIAAAAAAAMAAEABAAIAAAAAAD6/wMABAAIAAAAAAAGABEABAAIAAAAAAAFABEABAAIAAAAAAAEABEABAAIAAAAAAABAAkABAAIAAEAAAD7/wEABAAIAAEAAAAAAAEABAAIAAAAAAD9/yIABAAIAAAAAAD8/yIABAAIAAAAAADy/yEABAAIAAAAAADy/yAABAAIAAAAAADy/x8ABAAIAAAAAADw/x0ABAAIAAAAAADz/xkABAAIAAAAAAD0/xcABAAIAAAAAAD1/xcABAAIAAAAAAABAB8ABAAIAAAAAAABACAABAAIAAAAAAADAAQABAAIAAAAAAAAAAMABAAIAAAAAAAEAAMABAAIAAAAAAADAAMABAAIAAAAAAADAAIABAAIAAAAAAD4/w0ABAAIAAAAAADy/wkABAAIAAAAAADy/wgABAAIAAAAAADv/wUABAAIAAAAAAABAP3/AAABAAAAAAALAAEAAAAAAAAAAAANAAEAAAABAAAAAADs//7/AAAAAAAAAADr//7/AAABAAAAAADq//7/AAACAAAAAADq//3/AAACAAAAAADr//3/AAABAAAAAADs//3/AAAAAAAAAADs//z/AAAAAAAAAADr//z/AAABAAAAAADq//z/AAACAAAAAAA=")
+tile_map_data = PackedByteArray("AAADAAcABAAIAAAAAAACAAkABAAIAAAAAAD//woABAAIAAAAAAACAA0ABAAIAAAAAAD9/wwABAAIAAAAAAD8/wgABAAIAAAAAAAEAAwABAAIAAAAAAD7/w8ABAAIAAAAAAD1/w8ABAAIAAAAAAAMAAEABAAIAAAAAAD6/wMABAAIAAAAAAAGABEABAAIAAAAAAAFABEABAAIAAAAAAAEABEABAAIAAAAAAABAAkABAAIAAEAAAD7/wEABAAIAAEAAAAAAAEABAAIAAAAAAD9/yIABAAIAAAAAAD8/yIABAAIAAAAAADy/yEABAAIAAAAAADy/yAABAAIAAAAAADy/x8ABAAIAAAAAADw/x0ABAAIAAAAAADz/xkABAAIAAAAAAD0/xcABAAIAAAAAAD1/xcABAAIAAAAAAABAB8ABAAIAAAAAAABACAABAAIAAAAAAADAAQABAAIAAAAAAAAAAMABAAIAAAAAAAEAAMABAAIAAAAAAADAAMABAAIAAAAAAADAAIABAAIAAAAAAD4/w0ABAAIAAAAAADy/wkABAAIAAAAAADy/wgABAAIAAAAAADv/wUABAAIAAAAAAABAP3/AAABAAAAAAALAAEAAAAAAAAAAAANAAEAAAABAAAAAADs//7/AAAAAAAAAADs//z/AAAAAAAAAAA=")
 tile_set = SubResource("TileSet_otgxp")
 
 [node name="TileCrack" parent="." instance=ExtResource("4_hsmlm")]
 position = Vector2(25, 39)
-oreRegions = Array[ExtResource("5_4itl6")]([ExtResource("5_hdnxv"), ExtResource("6_fhqxb")])
+oreRegions = Array[ExtResource("5_4itl6")]([ExtResource("5_hdnxv"), ExtResource("6_fhqxb"), ExtResource("8_mvtuw"), ExtResource("9_ursej")])
 GameTerrains = Array[ExtResource("8_v8wrc")]([ExtResource("9_838vt"), ExtResource("10_fmoxo"), ExtResource("11_2gabb")])
 
 [node name="Player" parent="." instance=ExtResource("2_esoh2")]
