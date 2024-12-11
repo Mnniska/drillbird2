@@ -3,7 +3,7 @@ enum typeEnum{DRILL, INVENTORY, HEALTH, LIGHT}
 
 enum playerStatusEnum {DIG,SHOP}
 var playerStatus = playerStatusEnum.DIG
-var playerMoney:int=15
+var playerMoney:int=0
 
 signal upgradeChange_Light
 var upgradeLevel_light:int=0:

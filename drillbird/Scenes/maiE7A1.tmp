@@ -1,12 +1,11 @@
-[gd_scene load_steps=47 format=4 uid="uid://d2wv7igie5stg"]
+[gd_scene load_steps=46 format=4 uid="uid://d2wv7igie5stg"]
 
-[ext_resource type="Texture2D" uid="uid://b7yxja4qntm66" path="res://Art/environment/tileset_ores.png" id="1_yef2y"]
+[ext_resource type="Texture2D" uid="uid://b7yxja4qntm66" path="res://Art/environment/workfile_Ores.png" id="1_yef2y"]
 [ext_resource type="PackedScene" uid="uid://e3titjk1as46" path="res://Scenes/player.tscn" id="2_esoh2"]
 [ext_resource type="Script" path="res://Scripts/CameraScript.gd" id="3_inekp"]
 [ext_resource type="Texture2D" uid="uid://un5elq1p64iv" path="res://Art/ui/ui_slotLeftSide.png" id="3_is2ac"]
 [ext_resource type="PackedScene" uid="uid://0iy1qmgd0p6y" path="res://Scenes/TileCrack.tscn" id="4_hsmlm"]
 [ext_resource type="Texture2D" uid="uid://bw25xygruk6rd" path="res://Art/ui/ui_slotRightSide.png" id="4_wapma"]
-[ext_resource type="Script" path="res://Scripts/abstract_ore_region.gd" id="5_4itl6"]
 [ext_resource type="Resource" uid="uid://m45xt15irfdd" path="res://Resources/ore_region_1.tres" id="5_hdnxv"]
 [ext_resource type="Texture2D" uid="uid://dmqas3iik38qr" path="res://Art/environment/tileset_hub.png" id="6_1u6a2"]
 [ext_resource type="Resource" uid="uid://bb3ecu6biq6vg" path="res://Resources/ore_region_2.tres" id="6_fhqxb"]
@@ -390,7 +389,7 @@ tile_set = SubResource("TileSet_otgxp")
 
 [node name="TileCrack" parent="." instance=ExtResource("4_hsmlm")]
 position = Vector2(25, 39)
-oreRegions = Array[ExtResource("5_4itl6")]([ExtResource("5_hdnxv"), ExtResource("6_fhqxb")])
+oreRegions = Array[Object]([ExtResource("5_hdnxv"), ExtResource("6_fhqxb")])
 GameTerrains = Array[ExtResource("8_v8wrc")]([ExtResource("9_838vt"), ExtResource("10_fmoxo"), ExtResource("11_2gabb")])
 
 [node name="Player" parent="." instance=ExtResource("2_esoh2")]

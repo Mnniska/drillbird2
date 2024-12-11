@@ -8,7 +8,7 @@ signal PlayerDrillingSolid
 
 @onready var cracksprite: Sprite2D = $cracksprite
 @export var crack_sprites: Array[Texture]
-@export var availableOres: Array[abstract_ore]
+@export var oreRegions: Array[abstract_ore_region]
 @export var minimumDigTime:float = 0.6
 @export var GameTerrains:Array[abstract_terrain_info]
 
@@ -123,8 +123,14 @@ func _on_digging_countdown_timeout() -> void:
 	if cell!=null: #is there an ore tile on top of destroyed tile?
 		oreTilemap.set_cell(cellLocation,-1,Vector2i(-1,-1),-1)
 		
+		var oreRegion:int=cell.get_custom_data("ore_region")
+		
+		
 		#Todo: This should be based on ore rarity determined by area player is in
-		var newOre:abstract_ore = availableOres[ randi()%availableOres.size()]
+		var newOre=null
+		for n in oreRegions:
+			if n.oreRegionID==oreRegion:
+				newOre=n.GetOreToSpawn()
 		
 		var scene = load("res://Scenes/Object_Ore.tscn") # Will load when the script is instanced.
 		var node = scene.instantiate()
