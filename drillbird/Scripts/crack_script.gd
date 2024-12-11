@@ -9,7 +9,9 @@ signal PlayerDrillingSolid
 @onready var cracksprite: Sprite2D = $cracksprite
 @export var crack_sprites: Array[Texture]
 @export var availableOres: Array[abstract_ore]
- 
+@export var minimumDigTime:float = 0.6
+@export var GameTerrains:Array[abstract_terrain_info]
+
 var affectedTile:TileData
 var cellLocation:Vector2i
 var isDrillingActive:bool=false
@@ -60,13 +62,18 @@ func NewTarget(drill_position:Vector2i):
 	var diggable=true
 	
 	if affectedTile!=null:
-		match affectedTile.terrain:
-			0: #dirt
-				digtime=1
-			1: #solid
-				diggable = false
-			2: #sand 
-				digtime=0.2
+		var tilehealth=0
+		#<0 indicates player is drilling a solid tile
+		if GetHealthForTerrain(affectedTile.terrain)>0:
+			#get the tile's health and reduce it by player upgrade lvl
+			tilehealth =GetHealthForTerrain(affectedTile.terrain)-GlobalVariables.upgradeLevel_drill
+			if tilehealth<1&&tilehealth>=0:
+				tilehealth=0.8
+			digtime= tilehealth*minimumDigTime
+
+		else:
+			diggable = false
+		
 
 		if(diggable):
 			diggingCountdown.start(digtime)
@@ -79,6 +86,15 @@ func NewTarget(drill_position:Vector2i):
 	#var tile: TileData =tilemap.get_cell_tile_data(tilemap.local_to_map( tilemap.to_local( location)))
 
 	
+	pass
+
+func GetHealthForTerrain(terrain:int):
+	for n in GameTerrains:
+		if n.terrainIdentifier==terrain:
+			return n.terrainHP
+	
+	return -1 
+	push_error("Gave an invalid int to terrain list - have you added all of the terrains to the TileCrack Game Terrains array?")
 	pass
 
 func abortDig():

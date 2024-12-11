@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=4 uid="uid://d2wv7igie5stg"]
+[gd_scene load_steps=46 format=4 uid="uid://d2wv7igie5stg"]
 
 [ext_resource type="PackedScene" uid="uid://e3titjk1as46" path="res://Scenes/player.tscn" id="2_esoh2"]
 [ext_resource type="Script" path="res://Scripts/CameraScript.gd" id="3_inekp"]
@@ -13,7 +13,11 @@
 [ext_resource type="Resource" uid="uid://bir1i467inivj" path="res://Resources/ore_3.tres" id="7_5r844"]
 [ext_resource type="Texture2D" uid="uid://b2j2onxpyskty" path="res://Art/environment/tileset_environment.png" id="7_hqxo0"]
 [ext_resource type="Texture2D" uid="uid://v5xg50n0pcht" path="res://Art/characters/shopkeeper2.png" id="7_t8q8u"]
+[ext_resource type="Script" path="res://Scripts/abstract_terrain_info.gd" id="8_v8wrc"]
+[ext_resource type="Resource" uid="uid://cq6ru2d4e7bgd" path="res://Resources/terrainInfo_sand.tres" id="9_838vt"]
+[ext_resource type="Resource" uid="uid://b1vx03cr2okgm" path="res://Resources/terrainInfo_solid.tres" id="10_fmoxo"]
 [ext_resource type="Script" path="res://Scenes/inventory_handler.gd" id="10_vexj6"]
+[ext_resource type="Resource" uid="uid://cjif6ylwd1rdw" path="res://Resources/terrainInfo_dirt1.tres" id="11_2gabb"]
 [ext_resource type="Texture2D" uid="uid://b63sh7j5jc1j7" path="res://Art/ui/shop_placeholder.png" id="12_dsj5d"]
 [ext_resource type="Texture2D" uid="uid://cp6xuvmo0rguj" path="res://Art/ui/UI_BlackBorder.png" id="12_xculf"]
 [ext_resource type="Texture2D" uid="uid://cdqdrj3f4n7ev" path="res://Art/ui/sell_placeholder.png" id="13_qkl1t"]
@@ -355,6 +359,7 @@ tile_set = SubResource("TileSet_otgxp")
 [node name="TileCrack" parent="." instance=ExtResource("4_hsmlm")]
 position = Vector2(25, 39)
 availableOres = Array[ExtResource("4_ty25h")]([ExtResource("5_noxwc"), ExtResource("6_2xtvr"), ExtResource("7_5r844")])
+GameTerrains = Array[ExtResource("8_v8wrc")]([ExtResource("9_838vt"), ExtResource("10_fmoxo"), ExtResource("11_2gabb")])
 
 [node name="Player" parent="." instance=ExtResource("2_esoh2")]
 position = Vector2(-30, -143)
