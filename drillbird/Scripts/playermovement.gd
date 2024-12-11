@@ -66,7 +66,10 @@ func _physics_process(delta: float) -> void:
 		if velocity.y<=0:
 			newanim= "jump"
 		if velocity.y > 0:
-			newanim= "fall"
+			if Input.is_action_pressed("down"):
+				newanim= "fall_drilldown"
+			else:
+				newanim= "fall"
 	elif !justJumped:
 		jumpsMade=0
 		for n in jump_crystals:

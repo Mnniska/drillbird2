@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://e3titjk1as46"]
+[gd_scene load_steps=43 format=3 uid="uid://e3titjk1as46"]
 
 [ext_resource type="Script" path="res://Scripts/playermovement.gd" id="1_llgr2"]
 [ext_resource type="Texture2D" uid="uid://drpdhaamkld6q" path="res://Art/characters/anim_drill/drilling_down1.png" id="2_mrx7e"]
@@ -33,6 +33,7 @@
 [ext_resource type="Texture2D" uid="uid://d0fswexrw2wu5" path="res://Art/characters/anim_drill/drilling_up8.png" id="18_a6x6k"]
 [ext_resource type="Texture2D" uid="uid://bcgi21gdpsssy" path="res://Art/effects/sprite_jumpCrystal1.png" id="22_o05ot"]
 [ext_resource type="Texture2D" uid="uid://cttmuwrkyqgjq" path="res://Art/effects/sprite_jumpCrystal2.png" id="23_6w68x"]
+[ext_resource type="Texture2D" uid="uid://c4kbqht4juyov" path="res://Art/characters/anim_drill/drilling_down_fall.png" id="23_fmdch"]
 [ext_resource type="Texture2D" uid="uid://bdnsaxsutvhq8" path="res://Art/effects/sprite_jumpCrystal3.png" id="24_nofj5"]
 [ext_resource type="Texture2D" uid="uid://d1fxkvrdmxu4l" path="res://Art/effects/sprite_jumpCrystal4.png" id="25_ehp6o"]
 [ext_resource type="Script" path="res://Scenes/Light.gd" id="36_2s8wb"]
@@ -133,6 +134,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("23_fmdch")
+}],
+"loop": true,
+"name": &"fall_drilldown",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("3_lhddu")
 }],
 "loop": true,
@@ -224,7 +233,7 @@ hit_from_inside = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 1
 sprite_frames = SubResource("SpriteFrames_3vbtj")
-animation = &"drill_down"
+animation = &"fall_drilldown"
 autoplay = "idle"
 
 [node name="jumpCrystal1" type="AnimatedSprite2D" parent="AnimatedSprite2D"]
