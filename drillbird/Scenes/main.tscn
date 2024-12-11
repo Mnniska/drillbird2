@@ -512,6 +512,7 @@ theme = ExtResource("26_jq6uv")
 text = "[Jump] to buy. [Drill] to exit."
 horizontal_alignment = 1
 
+[connection signal="PlayerDrillingSolid" from="TileCrack" to="Player" method="_on_tile_crack_player_drilling_solid"]
 [connection signal="newTileCrack" from="Player" to="TileCrack" method="_on_player_new_tile_crack"]
 [connection signal="playerStoppedDrillingTile" from="Player" to="TileCrack" method="_on_player_player_stopped_drilling_tile"]
 [connection signal="body_shape_entered" from="ShopTrigger/Area2D" to="Camera2D/ShopHandler" method="_on_area_2d_body_shape_entered"]

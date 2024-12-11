@@ -21,13 +21,13 @@ var justJumped:bool=false
 @onready var debugLine= $DebugRaycastLine
 @onready var tilemap: TileMapLayer = get_parent().get_node("TilemapEnvironment")
 @onready var oreInventory = $"../Camera2D/InventoryHandler"
+@onready var particles=$DrillingParticles
 
 var facing_right: bool = true
 var player_is_drilling_tile: bool = false
 var drillDirection=Directions.RIGHT
 
-var TileCrackScene = preload("res://Scenes/TileCrack.tscn")
-
+var playerDrillingSolid:bool=false
 
 func _ready() -> void:
 	Update_Animations("idle")
@@ -154,20 +154,32 @@ func PlayerIsDrilling():
 	
 	var length:int=18
 	var raycastTarget = Vector2i(0,0)
+	var rotationDegrees:int=0
 	match facingDir:
 		Directions.LEFT:
-			raycastTarget=Vector2(-length,0)			
+			raycastTarget=Vector2(-length,0)
+			rotationDegrees=90
 		Directions.RIGHT:
 			raycastTarget=Vector2(length,0)
+			rotationDegrees=270
 		Directions.UP:
 			raycastTarget=Vector2(0,-length)
+			rotationDegrees=180
 		Directions.DOWN:
 			raycastTarget=Vector2(0,length)
+			rotationDegrees=0
 	
+
 	raycast_drill.target_position= raycastTarget
 	raycast_drill.force_raycast_update()
 	debugLine.set_point_position(0,raycast_drill.position)	
+
+	#align particles	
+	particles.position=raycastTarget
+	particles.rotation=deg_to_rad(rotationDegrees)
+	
 	if raycast_drill.is_colliding(): 
+		#once the game knows it has a valid target, it will not recheck whether it's drilling the same thing every frame.
 		if not player_is_drilling_tile:
 			player_is_drilling_tile=true
 			drillDirection=facingDir
@@ -191,6 +203,12 @@ func PlayerIsDrilling():
 
 func Update_Animations(newanim):
 
+	if playerDrillingSolid:
+		if !player_is_drilling_tile:
+			particles.emitting=false
+			playerDrillingSolid=false
+
+
 	if facingDir == Directions.LEFT or facingDir == Directions.RIGHT:
 		$AnimatedSprite2D.flip_h = !facing_right
 
@@ -199,6 +217,11 @@ func Update_Animations(newanim):
 		animstate=newanim
 		$AnimatedSprite2D.animation=animstate
 
+func _on_tile_crack_player_drilling_solid() -> void:
+	particles.emitting=true
+	playerDrillingSolid=true		
+
+	pass # Replace with function body.
 
 func _on_player_collider_body_entered(body: Node2D) -> void:
 	
