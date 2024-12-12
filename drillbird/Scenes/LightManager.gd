@@ -3,7 +3,6 @@ extends Node2D
 #this will be given on load game, updated via the SHOP as well 
 @export var bulbAmount:int
 
-@export var lightUpgrade:int =2
 var lightBulbArray:Array[Sprite2D]
 
 #Time variables
@@ -16,7 +15,7 @@ var minSize:int=1
 var internal_upd_interval:int=60
 var internal_upd_counter:int=0
 
-@onready var PlayerLight=$"../../Player/PlayerDarkness"
+@onready var PlayerLight=$"../../PlayerDarkness"
 @onready var LightSlider=$UI_LightSlider
 
 
@@ -26,17 +25,18 @@ func _ready() -> void:
 	
 	time_Countdown=time_TimerLength
 	
-	for n in lightUpgrade:
+	for n in GlobalVariables.upgradeLevel_light:
 		var scene = load("res://Scenes/lightbulb.tscn") 
 		var node = scene.instantiate()
 		node.SetActive(true)
 		lightBulbArray.append(node)
-		
 		var offset= Vector2(0,-4)
 		
 		node.transform.origin = offset
 		add_child(node)
 	UpdateLightbulbLocations()
+	if GlobalVariables.upgradeLevel_light==0:
+		darknessClose=true
 
 func UpdateLightbulbLocations():
 	var offset:int=0

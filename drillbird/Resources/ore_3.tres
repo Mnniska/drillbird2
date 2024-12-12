@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_drl2k")
-value = 100
+value = 2
 texture = ExtResource("2_6l28s")
 name = "sparkle"
 stackSize = 5

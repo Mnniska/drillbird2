@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_4ie30")
-value = 10
+value = 6
 texture = ExtResource("2_eq3en")
 name = "Gold"
 stackSize = 2

@@ -1,0 +1,61 @@
+[gd_scene load_steps=11 format=3 uid="uid://bjaykfdp1s4y"]
+
+[ext_resource type="Texture2D" uid="uid://xrxcywko8b64" path="res://Art/Objects/torch1.png" id="1_l208o"]
+[ext_resource type="Texture2D" uid="uid://4s4rhxqdc344" path="res://Art/Objects/torch2.png" id="2_epl3g"]
+[ext_resource type="Texture2D" uid="uid://b35op6yylkv6" path="res://Art/Objects/torch3.png" id="3_0fdmg"]
+[ext_resource type="Texture2D" uid="uid://c0ujrgbr2eope" path="res://Art/Objects/torch4.png" id="4_cc0fi"]
+[ext_resource type="Texture2D" uid="uid://bdgjho1gmjjee" path="res://Art/Objects/torch5.png" id="5_fb52e"]
+[ext_resource type="Texture2D" uid="uid://wvdr6s5euli0" path="res://Art/Objects/torch6.png" id="6_bkmo1"]
+[ext_resource type="Texture2D" uid="uid://d4dmalvbv0a5j" path="res://Art/Objects/torch7.png" id="7_57sxs"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ram07"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_l208o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_epl3g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_0fdmg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_cc0fi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_fb52e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_bkmo1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_57sxs")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_jfgkg"]
+offsets = PackedFloat32Array(0, 0.536432)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_oiv50"]
+gradient = SubResource("Gradient_jfgkg")
+width = 400
+height = 400
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="Torch" type="Node2D"]
+
+[node name="torchAnimation" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ram07")
+autoplay = "default"
+frame = 6
+frame_progress = 1.0
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+blend_mode = 2
+texture = SubResource("GradientTexture2D_oiv50")
