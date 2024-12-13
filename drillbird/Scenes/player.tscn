@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://e3titjk1as46"]
+[gd_scene load_steps=44 format=3 uid="uid://e3titjk1as46"]
 
 [ext_resource type="Script" path="res://Scripts/playermovement.gd" id="1_llgr2"]
 [ext_resource type="Texture2D" uid="uid://drpdhaamkld6q" path="res://Art/characters/anim_drill/drilling_down1.png" id="2_mrx7e"]
@@ -36,8 +36,6 @@
 [ext_resource type="Texture2D" uid="uid://c4kbqht4juyov" path="res://Art/characters/anim_drill/drilling_down_fall.png" id="23_fmdch"]
 [ext_resource type="Texture2D" uid="uid://bdnsaxsutvhq8" path="res://Art/effects/sprite_jumpCrystal3.png" id="24_nofj5"]
 [ext_resource type="Texture2D" uid="uid://d1fxkvrdmxu4l" path="res://Art/effects/sprite_jumpCrystal4.png" id="25_ehp6o"]
-[ext_resource type="Script" path="res://Scenes/Light.gd" id="36_2s8wb"]
-[ext_resource type="Texture2D" uid="uid://ct20o1j7iuiva" path="res://Resources/LightTexture.tres" id="37_nqmfy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pdge5"]
 size = Vector2(10, 11)
@@ -292,15 +290,6 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OreCollider"]
 position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_ivl4d")
-
-[node name="PlayerDarkness" type="Node2D" parent="."]
-script = ExtResource("36_2s8wb")
-lightTexture = ExtResource("37_nqmfy")
-
-[node name="light_full" type="PointLight2D" parent="PlayerDarkness"]
-blend_mode = 1
-range_z_max = 0
-texture = ExtResource("37_nqmfy")
 
 [node name="DrillingParticles" type="GPUParticles2D" parent="."]
 z_index = 1

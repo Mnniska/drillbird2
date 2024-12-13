@@ -23,6 +23,8 @@ var justJumped:bool=false
 @onready var oreInventory = $"../Camera2D/InventoryHandler"
 @onready var particles=$DrillingParticles
 
+var lightSources:int=0
+
 var facing_right: bool = true
 var player_is_drilling_tile: bool = false
 var drillDirection=Directions.RIGHT
