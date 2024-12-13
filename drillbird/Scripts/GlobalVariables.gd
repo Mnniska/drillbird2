@@ -6,7 +6,7 @@ var playerStatus = playerStatusEnum.DIG
 var playerMoney:int=0
 
 signal upgradeChange_Light
-var upgradeLevel_light:int=0:
+var upgradeLevel_light:int=4:
 	get:
 		return upgradeLevel_light
 	set(value):

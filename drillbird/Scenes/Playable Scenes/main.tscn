@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=4 uid="uid://d2wv7igie5stg"]
+[gd_scene load_steps=55 format=4 uid="uid://d2wv7igie5stg"]
 
 [ext_resource type="TileSet" uid="uid://grpd2pyu7pgk" path="res://Resources/MainTileset.tres" id="1_1imtu"]
 [ext_resource type="PackedScene" uid="uid://0iy1qmgd0p6y" path="res://Scenes/TileCrack.tscn" id="2_c10yv"]
@@ -37,6 +37,14 @@
 [ext_resource type="Script" path="res://Scripts/Light.gd" id="35_54gud"]
 [ext_resource type="Texture2D" uid="uid://ct20o1j7iuiva" path="res://Resources/LightTexture.tres" id="36_yw5ht"]
 [ext_resource type="PackedScene" uid="uid://bjaykfdp1s4y" path="res://Scenes/Torch_scene.tscn" id="37_jv1l8"]
+[ext_resource type="Script" path="res://Scripts/HomeScript.gd" id="38_rumsg"]
+[ext_resource type="Texture2D" uid="uid://xpp18icbqb1y" path="res://Art/environment/Home/nest_back.png" id="38_skd3y"]
+[ext_resource type="Texture2D" uid="uid://es25bpukcdqn" path="res://Art/environment/Home/egg_smol.png" id="39_tc4lo"]
+[ext_resource type="Texture2D" uid="uid://jm41e4072rxr" path="res://Art/environment/Home/nest_front.png" id="40_uqnu4"]
+[ext_resource type="Texture2D" uid="uid://b8kr3el8v0jp4" path="res://Art/UI/UI_IconBG_left.png" id="41_7lncn"]
+[ext_resource type="Texture2D" uid="uid://d1w53bq8x5lhq" path="res://Art/UI/UI_IconBG_mid.png" id="42_4u68i"]
+[ext_resource type="Texture2D" uid="uid://dorh0qxx8p2ha" path="res://Art/UI/UI_IconBG_right.png" id="43_qbleu"]
+[ext_resource type="Texture2D" uid="uid://dcleif1cn1ru2" path="res://Art/UI/buttonSymbol_top.png" id="44_q6oco"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sxwg7"]
 size = Vector2(16, 16)
@@ -78,14 +86,15 @@ expand_margin_right = 1.0
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_q5j7g"]
+radius = 9.05539
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d3sup"]
+size = Vector2(65, 68)
+
 [node name="Node" type="Node"]
 
 [node name="Tilemap_Background" type="TileMapLayer" parent="."]
-tile_set = ExtResource("1_1imtu")
-
-[node name="TilemapHUB" type="TileMapLayer" parent="."]
-position = Vector2(5, -1)
-tile_map_data = PackedByteArray("AAD8//j/AQAAAAAAAAD8//n/AQAAAAEAAAD8//r/AQAAAAEAAAD8//v/AQAAAAEAAAD8//z/AQAAAAEAAAD8//3/AQAAAAEAAAD9//j/AQABAAAAAAD9//v/AQAAAAAAAAD9//z/AQAAAAEAAAD///n/AQACAAEAAAADAP3/AQACAAAAAAD5////AQAAAAAAAAD6////AQABAAAAAAD7////AQACAAAAAAD8//7/AQAAAAEAAAD8////AQAAAAEAAAD9//3/AQAAAAAAAAD9//7/AQAAAAEAAAD9////AQAAAAEAAAD+//j/AQABAAAAAAD+//v/AQABAAAAAAD+//3/AQABAAAAAAD///j/AQACAAAAAAD///r/AQAAAAAAAAD///v/AQABAAAAAAD///3/AQABAAAAAAAAAPr/AQABAAAAAAAAAPv/AQACAAAAAAAAAPz/AQACAAEAAAAAAP3/AQABAAAAAAABAPr/AQABAAAAAAABAP3/AQABAAAAAAACAPr/AQACAAAAAAACAPv/AQACAAEAAAACAPz/AQACAAEAAAACAP3/AQABAAAAAAADAP7/AQACAAEAAAADAP//AQACAAEAAAA=")
 tile_set = ExtResource("1_1imtu")
 
 [node name="TilemapEnvironment" type="TileMapLayer" parent="."]
@@ -116,7 +125,7 @@ shape = SubResource("RectangleShape2D_sxwg7")
 texture = ExtResource("13_cx0rg")
 
 [node name="SellTrigger" type="Node2D" parent="."]
-position = Vector2(-27, -160)
+position = Vector2(-50, -51)
 
 [node name="SellCollision" type="Area2D" parent="SellTrigger"]
 
@@ -269,16 +278,130 @@ range_z_max = 0
 texture = ExtResource("36_yw5ht")
 
 [node name="Torch" parent="." instance=ExtResource("37_jv1l8")]
-position = Vector2(61, -57)
+position = Vector2(60, -8)
 
 [node name="Torch2" parent="." instance=ExtResource("37_jv1l8")]
-position = Vector2(-6, -137)
+position = Vector2(-126, -8)
 
 [node name="Torch3" parent="." instance=ExtResource("37_jv1l8")]
-position = Vector2(-65, -25)
+position = Vector2(282, -24)
+
+[node name="Home" type="Node2D" parent="."]
+script = ExtResource("38_rumsg")
+
+[node name="nest_back" type="Sprite2D" parent="Home"]
+position = Vector2(0, -8)
+texture = ExtResource("38_skd3y")
+
+[node name="nest_front" type="Sprite2D" parent="Home"]
+z_index = 2
+position = Vector2(0, -8)
+texture = ExtResource("40_uqnu4")
+
+[node name="InteractButton_depositOres" type="Node2D" parent="Home"]
+position = Vector2(0, -95)
+
+[node name="bg_start" type="Sprite2D" parent="Home/InteractButton_depositOres"]
+position = Vector2(-41, 0)
+texture = ExtResource("41_7lncn")
+
+[node name="bg" type="Sprite2D" parent="Home/InteractButton_depositOres"]
+position = Vector2(-25, 0)
+texture = ExtResource("42_4u68i")
+
+[node name="bg2" type="Sprite2D" parent="Home/InteractButton_depositOres"]
+position = Vector2(-9, 0)
+texture = ExtResource("42_4u68i")
+
+[node name="bg3" type="Sprite2D" parent="Home/InteractButton_depositOres"]
+position = Vector2(7, 0)
+texture = ExtResource("42_4u68i")
+
+[node name="bg4" type="Sprite2D" parent="Home/InteractButton_depositOres"]
+position = Vector2(23, 0)
+texture = ExtResource("42_4u68i")
+
+[node name="bg5" type="Sprite2D" parent="Home/InteractButton_depositOres"]
+position = Vector2(39, 0)
+texture = ExtResource("42_4u68i")
+
+[node name="bg6" type="Sprite2D" parent="Home/InteractButton_depositOres"]
+position = Vector2(55, 0)
+texture = ExtResource("43_qbleu")
+
+[node name="icon" type="Sprite2D" parent="Home/InteractButton_depositOres"]
+position = Vector2(-40, 0)
+texture = ExtResource("44_q6oco")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Home/InteractButton_depositOres"]
+offset_left = -30.0
+offset_top = -8.0
+offset_right = 90.0
+offset_bottom = 9.0
+theme = ExtResource("34_hpp27")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+text = "Deposit ores"
+
+[node name="InteractButton_EndDay" type="Node2D" parent="Home"]
+visible = false
+position = Vector2(0, -66)
+
+[node name="bg_start" type="Sprite2D" parent="Home/InteractButton_EndDay"]
+position = Vector2(-28, 0)
+texture = ExtResource("41_7lncn")
+
+[node name="bg" type="Sprite2D" parent="Home/InteractButton_EndDay"]
+position = Vector2(-12, 0)
+texture = ExtResource("42_4u68i")
+
+[node name="bg2" type="Sprite2D" parent="Home/InteractButton_EndDay"]
+position = Vector2(4, 0)
+texture = ExtResource("42_4u68i")
+
+[node name="bg3" type="Sprite2D" parent="Home/InteractButton_EndDay"]
+position = Vector2(20, 0)
+texture = ExtResource("42_4u68i")
+
+[node name="bg6" type="Sprite2D" parent="Home/InteractButton_EndDay"]
+position = Vector2(36, 0)
+texture = ExtResource("43_qbleu")
+
+[node name="icon" type="Sprite2D" parent="Home/InteractButton_EndDay"]
+position = Vector2(-27, 0)
+texture = ExtResource("44_q6oco")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Home/InteractButton_EndDay"]
+offset_left = -17.0
+offset_top = -8.0
+offset_right = 103.0
+offset_bottom = 9.0
+theme = ExtResource("34_hpp27")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+text = "End Day"
+
+[node name="Node2D" type="Node2D" parent="Home"]
+
+[node name="egg" type="Sprite2D" parent="Home/Node2D"]
+z_index = 2
+position = Vector2(0, -40)
+texture = ExtResource("39_tc4lo")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Home/Node2D/egg"]
+position = Vector2(0, 33)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Home/Node2D/egg/StaticBody2D"]
+shape = SubResource("CircleShape2D_q5j7g")
+
+[node name="NestCollider" type="Area2D" parent="Home"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Home/NestCollider"]
+position = Vector2(0.5, -24)
+shape = SubResource("RectangleShape2D_d3sup")
 
 [connection signal="PlayerDrillingSolid" from="TileCrack" to="Player" method="_on_tile_crack_player_drilling_solid"]
 [connection signal="newTileCrack" from="Player" to="TileCrack" method="_on_player_new_tile_crack"]
 [connection signal="playerStoppedDrillingTile" from="Player" to="TileCrack" method="_on_player_player_stopped_drilling_tile"]
 [connection signal="body_shape_entered" from="ShopTrigger/Area2D" to="Camera2D/ShopHandler" method="_on_area_2d_body_shape_entered"]
 [connection signal="body_shape_entered" from="SellTrigger/SellCollision" to="Camera2D/ShopHandler" method="_on_sell_collision_body_shape_entered"]
+[connection signal="body_shape_entered" from="Home/NestCollider" to="Home" method="_on_nest_collider_body_shape_entered"]
+[connection signal="body_shape_exited" from="Home/NestCollider" to="Home" method="_on_nest_collider_body_shape_exited"]
