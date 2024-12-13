@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="abstract_purchasable" load_steps=8 format=3 uid="uid://deqhaf8e1onhf"]
 
-[ext_resource type="Texture2D" uid="uid://c5xh2pfbu6ujs" path="res://Art/ui/Shop/UI_Shop_icon_drill.png" id="1_fetex"]
+[ext_resource type="Texture2D" uid="uid://c5xh2pfbu6ujs" path="res://Art/UI/Shop/UI_Shop_icon_drill.png" id="1_fetex"]
 [ext_resource type="Script" path="res://Scripts/abstract_item_upgrade.gd" id="2_dkkpi"]
 [ext_resource type="Script" path="res://Scripts/abstract_purchasable.gd" id="3_8hyme"]
 

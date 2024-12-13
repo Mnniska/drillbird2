@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bcgi21gdpsssy"
-path="res://.godot/imported/sprite_jumpCrystal1.png-a9143088e6a9626c1f66ebf8f932050b.ctex"
+path="res://.godot/imported/sprite_jumpCrystal1.png-3fe07fbc9f4e04ed4a950a22fc3151c2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/effects/sprite_jumpCrystal1.png"
-dest_files=["res://.godot/imported/sprite_jumpCrystal1.png-a9143088e6a9626c1f66ebf8f932050b.ctex"]
+source_file="res://Art/Effects/sprite_jumpCrystal1.png"
+dest_files=["res://.godot/imported/sprite_jumpCrystal1.png-3fe07fbc9f4e04ed4a950a22fc3151c2.ctex"]
 
 [params]
 

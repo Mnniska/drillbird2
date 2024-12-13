@@ -1,12 +1,12 @@
 [gd_scene load_steps=11 format=3 uid="uid://bjaykfdp1s4y"]
 
-[ext_resource type="Texture2D" uid="uid://xrxcywko8b64" path="res://Art/Objects/torch1.png" id="1_l208o"]
-[ext_resource type="Texture2D" uid="uid://4s4rhxqdc344" path="res://Art/Objects/torch2.png" id="2_epl3g"]
-[ext_resource type="Texture2D" uid="uid://b35op6yylkv6" path="res://Art/Objects/torch3.png" id="3_0fdmg"]
-[ext_resource type="Texture2D" uid="uid://c0ujrgbr2eope" path="res://Art/Objects/torch4.png" id="4_cc0fi"]
-[ext_resource type="Texture2D" uid="uid://bdgjho1gmjjee" path="res://Art/Objects/torch5.png" id="5_fb52e"]
-[ext_resource type="Texture2D" uid="uid://wvdr6s5euli0" path="res://Art/Objects/torch6.png" id="6_bkmo1"]
-[ext_resource type="Texture2D" uid="uid://d4dmalvbv0a5j" path="res://Art/Objects/torch7.png" id="7_57sxs"]
+[ext_resource type="Texture2D" uid="uid://xrxcywko8b64" path="res://Art/Objects/Torch/torch1.png" id="1_l208o"]
+[ext_resource type="Texture2D" uid="uid://4s4rhxqdc344" path="res://Art/Objects/Torch/torch2.png" id="2_epl3g"]
+[ext_resource type="Texture2D" uid="uid://b35op6yylkv6" path="res://Art/Objects/Torch/torch3.png" id="3_0fdmg"]
+[ext_resource type="Texture2D" uid="uid://c0ujrgbr2eope" path="res://Art/Objects/Torch/torch4.png" id="4_cc0fi"]
+[ext_resource type="Texture2D" uid="uid://bdgjho1gmjjee" path="res://Art/Objects/Torch/torch5.png" id="5_fb52e"]
+[ext_resource type="Texture2D" uid="uid://wvdr6s5euli0" path="res://Art/Objects/Torch/torch6.png" id="6_bkmo1"]
+[ext_resource type="Texture2D" uid="uid://d4dmalvbv0a5j" path="res://Art/Objects/Torch/torch7.png" id="7_57sxs"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ram07"]
 animations = [{

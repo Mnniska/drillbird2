@@ -6,7 +6,7 @@ extends Node2D
 var lightBulbArray:Array[Sprite2D]
 
 #Time variables
-@export var time_TimerLength:int=30
+@export var time_TimerLength:int=60
 #todo: Figure out if this is how you wanna do time
 var time_Countdown:float
 var darknessClose:bool=false
