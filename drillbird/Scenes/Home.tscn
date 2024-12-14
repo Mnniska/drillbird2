@@ -1,0 +1,125 @@
+[gd_scene load_steps=11 format=3 uid="uid://ckl0ibm5pfs7u"]
+
+[ext_resource type="Script" path="res://Scripts/HomeScript.gd" id="1_qel16"]
+[ext_resource type="Texture2D" uid="uid://xpp18icbqb1y" path="res://Art/environment/Home/nest_back.png" id="2_4e54y"]
+[ext_resource type="Texture2D" uid="uid://jm41e4072rxr" path="res://Art/environment/Home/nest_front.png" id="3_erd2o"]
+[ext_resource type="Texture2D" uid="uid://b8kr3el8v0jp4" path="res://Art/ui/UI_IconBG_left.png" id="4_wgulb"]
+[ext_resource type="Texture2D" uid="uid://d1w53bq8x5lhq" path="res://Art/ui/UI_IconBG_mid.png" id="5_ce8fm"]
+[ext_resource type="Texture2D" uid="uid://dorh0qxx8p2ha" path="res://Art/ui/UI_IconBG_right.png" id="6_f4gen"]
+[ext_resource type="Texture2D" uid="uid://dcleif1cn1ru2" path="res://Art/ui/buttonSymbol_top.png" id="7_37yhr"]
+[ext_resource type="Theme" uid="uid://bfr5y4lo7m1ux" path="res://Resources/fontTheme.tres" id="8_k4jyb"]
+[ext_resource type="Texture2D" uid="uid://es25bpukcdqn" path="res://Art/environment/Home/egg_smol.png" id="9_xckrn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d3sup"]
+size = Vector2(65, 68)
+
+[node name="Home" type="Node2D"]
+script = ExtResource("1_qel16")
+
+[node name="nest_back" type="Sprite2D" parent="."]
+position = Vector2(0, -8)
+texture = ExtResource("2_4e54y")
+
+[node name="Egg pivot" type="Node2D" parent="."]
+
+[node name="egg sprite" type="Sprite2D" parent="Egg pivot"]
+position = Vector2(0, -40)
+texture = ExtResource("9_xckrn")
+
+[node name="nest_front" type="Sprite2D" parent="."]
+z_index = 2
+position = Vector2(0, -8)
+texture = ExtResource("3_erd2o")
+
+[node name="InteractButton_depositOres" type="Node2D" parent="."]
+visible = false
+position = Vector2(0, -95)
+
+[node name="bg_start" type="Sprite2D" parent="InteractButton_depositOres"]
+position = Vector2(-41, 0)
+texture = ExtResource("4_wgulb")
+
+[node name="bg" type="Sprite2D" parent="InteractButton_depositOres"]
+position = Vector2(-25, 0)
+texture = ExtResource("5_ce8fm")
+
+[node name="bg2" type="Sprite2D" parent="InteractButton_depositOres"]
+position = Vector2(-9, 0)
+texture = ExtResource("5_ce8fm")
+
+[node name="bg3" type="Sprite2D" parent="InteractButton_depositOres"]
+position = Vector2(7, 0)
+texture = ExtResource("5_ce8fm")
+
+[node name="bg4" type="Sprite2D" parent="InteractButton_depositOres"]
+position = Vector2(23, 0)
+texture = ExtResource("5_ce8fm")
+
+[node name="bg5" type="Sprite2D" parent="InteractButton_depositOres"]
+position = Vector2(39, 0)
+texture = ExtResource("5_ce8fm")
+
+[node name="bg6" type="Sprite2D" parent="InteractButton_depositOres"]
+position = Vector2(55, 0)
+texture = ExtResource("6_f4gen")
+
+[node name="icon" type="Sprite2D" parent="InteractButton_depositOres"]
+position = Vector2(-40, 0)
+texture = ExtResource("7_37yhr")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="InteractButton_depositOres"]
+offset_left = -30.0
+offset_top = -8.0
+offset_right = 90.0
+offset_bottom = 9.0
+theme = ExtResource("8_k4jyb")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+text = "Deposit ores"
+
+[node name="InteractButton_EndDay" type="Node2D" parent="."]
+visible = false
+position = Vector2(0, -66)
+
+[node name="bg_start" type="Sprite2D" parent="InteractButton_EndDay"]
+position = Vector2(-28, 0)
+texture = ExtResource("4_wgulb")
+
+[node name="bg" type="Sprite2D" parent="InteractButton_EndDay"]
+position = Vector2(-12, 0)
+texture = ExtResource("5_ce8fm")
+
+[node name="bg2" type="Sprite2D" parent="InteractButton_EndDay"]
+position = Vector2(4, 0)
+texture = ExtResource("5_ce8fm")
+
+[node name="bg3" type="Sprite2D" parent="InteractButton_EndDay"]
+position = Vector2(20, 0)
+texture = ExtResource("5_ce8fm")
+
+[node name="bg6" type="Sprite2D" parent="InteractButton_EndDay"]
+position = Vector2(36, 0)
+texture = ExtResource("6_f4gen")
+
+[node name="icon" type="Sprite2D" parent="InteractButton_EndDay"]
+position = Vector2(-27, 0)
+texture = ExtResource("7_37yhr")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="InteractButton_EndDay"]
+offset_left = -17.0
+offset_top = -8.0
+offset_right = 103.0
+offset_bottom = 9.0
+theme = ExtResource("8_k4jyb")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+text = "End Day"
+
+[node name="NestCollider" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NestCollider"]
+position = Vector2(0.5, -24)
+shape = SubResource("RectangleShape2D_d3sup")
+
+[connection signal="body_shape_entered" from="NestCollider" to="." method="_on_nest_collider_body_shape_entered"]
+[connection signal="body_shape_exited" from="NestCollider" to="." method="_on_nest_collider_body_shape_exited"]

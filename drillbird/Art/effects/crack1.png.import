@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cw1o82vk05uwm"
-path="res://.godot/imported/crack1.png-0281969ae2d2f31684a7dd730e7a01ee.ctex"
+path="res://.godot/imported/crack1.png-fa57d1200b40b818869709ed88bbfd96.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Effects/crack1.png"
-dest_files=["res://.godot/imported/crack1.png-0281969ae2d2f31684a7dd730e7a01ee.ctex"]
+source_file="res://Art/effects/crack1.png"
+dest_files=["res://.godot/imported/crack1.png-fa57d1200b40b818869709ed88bbfd96.ctex"]
 
 [params]
 

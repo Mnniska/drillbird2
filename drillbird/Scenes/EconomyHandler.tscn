@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bn0n2vspeyioq"]
 
 [ext_resource type="Script" path="res://Scripts/EconomyScript.gd" id="1_3jqx0"]
-[ext_resource type="Texture2D" uid="uid://cdqdrj3f4n7ev" path="res://Art/UI/Shop/sell_placeholder.png" id="2_tiq3e"]
+[ext_resource type="Texture2D" uid="uid://cdqdrj3f4n7ev" path="res://Art/ui/Shop/sell_placeholder.png" id="2_tiq3e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v1w5h"]
 size = Vector2(16, 16)

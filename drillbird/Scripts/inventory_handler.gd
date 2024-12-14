@@ -14,6 +14,13 @@ var slotAmount:int=2
 @onready var UIvisual_left = $ui_leftSide
 @onready var UIvisual_right = $ui_rightSide
 
+func GetIsThereAnythingSellable():
+	for n in inventorySlots:
+		if n.currentItems>0:
+			return true
+	return false
+	pass
+
 func SellOres():
 	var gainedMoney:int=0
 	for n in inventorySlots:

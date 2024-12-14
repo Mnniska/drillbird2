@@ -1,50 +1,43 @@
-[gd_scene load_steps=55 format=4 uid="uid://d2wv7igie5stg"]
+[gd_scene load_steps=46 format=4 uid="uid://d2wv7igie5stg"]
 
 [ext_resource type="TileSet" uid="uid://grpd2pyu7pgk" path="res://Resources/MainTileset.tres" id="1_1imtu"]
 [ext_resource type="PackedScene" uid="uid://0iy1qmgd0p6y" path="res://Scenes/TileCrack.tscn" id="2_c10yv"]
 [ext_resource type="Script" path="res://Scripts/abstract_ore_region.gd" id="3_flbkc"]
-[ext_resource type="Resource" uid="uid://m45xt15irfdd" path="res://Resources/ore_region_1.tres" id="4_t4dgp"]
-[ext_resource type="Resource" uid="uid://bb3ecu6biq6vg" path="res://Resources/ore_region_2.tres" id="5_a807m"]
+[ext_resource type="Resource" path="res://Resources/ore_region_1.tres" id="4_t4dgp"]
+[ext_resource type="Resource" path="res://Resources/ore_region_2.tres" id="5_a807m"]
 [ext_resource type="Resource" uid="uid://d35o56m1lfg6p" path="res://Resources/ore_region_3.tres" id="6_ehj3h"]
-[ext_resource type="Resource" uid="uid://qb85vcxt0k8u" path="res://Resources/ore_region_4.tres" id="7_10mi7"]
+[ext_resource type="Resource" path="res://Resources/ore_region_4.tres" id="7_10mi7"]
 [ext_resource type="Script" path="res://Scripts/abstract_terrain_info.gd" id="8_mmgsk"]
 [ext_resource type="Resource" uid="uid://cq6ru2d4e7bgd" path="res://Resources/terrainInfo_sand.tres" id="9_eqs1c"]
 [ext_resource type="Resource" uid="uid://b1vx03cr2okgm" path="res://Resources/terrainInfo_solid.tres" id="10_0hsbr"]
 [ext_resource type="Resource" uid="uid://cjif6ylwd1rdw" path="res://Resources/terrainInfo_dirt1.tres" id="11_dksi3"]
 [ext_resource type="PackedScene" uid="uid://e3titjk1as46" path="res://Scenes/player.tscn" id="12_u5tqu"]
-[ext_resource type="Texture2D" uid="uid://b63sh7j5jc1j7" path="res://Art/UI/Shop/shop_placeholder.png" id="13_cx0rg"]
-[ext_resource type="Texture2D" uid="uid://cdqdrj3f4n7ev" path="res://Art/UI/Shop/sell_placeholder.png" id="14_v3y1k"]
+[ext_resource type="Texture2D" uid="uid://b63sh7j5jc1j7" path="res://Art/ui/Shop/shop_placeholder.png" id="13_cx0rg"]
+[ext_resource type="Texture2D" uid="uid://cdqdrj3f4n7ev" path="res://Art/ui/Shop/sell_placeholder.png" id="14_v3y1k"]
 [ext_resource type="Script" path="res://Scripts/CameraScript.gd" id="15_sox0p"]
-[ext_resource type="Texture2D" uid="uid://cp6xuvmo0rguj" path="res://Art/UI/HUD/UI_BlackBorder.png" id="16_1smyb"]
+[ext_resource type="Texture2D" uid="uid://cp6xuvmo0rguj" path="res://Art/ui/HUD/UI_BlackBorder.png" id="16_1smyb"]
 [ext_resource type="Script" path="res://Scripts/inventory_handler.gd" id="17_84e5y"]
-[ext_resource type="Texture2D" uid="uid://un5elq1p64iv" path="res://Art/UI/HUD/ui_slotLeftSide.png" id="18_bc2sg"]
-[ext_resource type="Texture2D" uid="uid://bw25xygruk6rd" path="res://Art/UI/HUD/ui_slotRightSide.png" id="19_cf8tj"]
-[ext_resource type="Texture2D" uid="uid://c2fj0vknmdoys" path="res://Art/UI/Shop/money_symbol.png" id="20_b0cq8"]
+[ext_resource type="Texture2D" uid="uid://un5elq1p64iv" path="res://Art/ui/HUD/ui_slotLeftSide.png" id="18_bc2sg"]
+[ext_resource type="Texture2D" uid="uid://bw25xygruk6rd" path="res://Art/ui/HUD/ui_slotRightSide.png" id="19_cf8tj"]
+[ext_resource type="Texture2D" uid="uid://c2fj0vknmdoys" path="res://Art/ui/Shop/money_symbol.png" id="20_b0cq8"]
 [ext_resource type="FontFile" uid="uid://bvh0dsp2kmrr0" path="res://Resources/m5x7.ttf" id="21_tmb3o"]
 [ext_resource type="Script" path="res://Scripts/LightManager.gd" id="22_g5f37"]
-[ext_resource type="Texture2D" uid="uid://buh3ysmbicdnm" path="res://Art/UI/HUD/UI_LightBar_darkness.png" id="23_f24tq"]
-[ext_resource type="Texture2D" uid="uid://b7scxroc66kxr" path="res://Art/UI/HUD/UI_LightBar_frame.png" id="24_f65vo"]
-[ext_resource type="Texture2D" uid="uid://1so80dql7icj" path="res://Art/UI/HUD/UI_LightBar_light.png" id="25_8g8xu"]
+[ext_resource type="Texture2D" uid="uid://buh3ysmbicdnm" path="res://Art/ui/HUD/UI_LightBar_darkness.png" id="23_f24tq"]
+[ext_resource type="Texture2D" uid="uid://b7scxroc66kxr" path="res://Art/ui/HUD/UI_LightBar_frame.png" id="24_f65vo"]
+[ext_resource type="Texture2D" uid="uid://1so80dql7icj" path="res://Art/ui/HUD/UI_LightBar_light.png" id="25_8g8xu"]
 [ext_resource type="Script" path="res://Scripts/shop_handler.gd" id="26_mk1t6"]
 [ext_resource type="Script" path="res://Scripts/abstract_purchasable.gd" id="27_hx1y5"]
 [ext_resource type="Resource" uid="uid://b26ws3o4u42p3" path="res://Resources/purchasable_inventory.tres" id="28_iowjc"]
 [ext_resource type="Resource" uid="uid://cgdqluba62y80" path="res://Resources/purchasable_light.tres" id="29_cp1r6"]
 [ext_resource type="Resource" uid="uid://dd3l8ir1bmcm5" path="res://Resources/purchasable_health.tres" id="30_yx4wb"]
 [ext_resource type="Resource" uid="uid://deqhaf8e1onhf" path="res://Resources/purchasable_drill.tres" id="31_4ia3e"]
-[ext_resource type="Texture2D" uid="uid://bvonaof233dpd" path="res://Art/UI/Shop/UI_Shop_Background.png" id="32_0lm0s"]
+[ext_resource type="Texture2D" uid="uid://bvonaof233dpd" path="res://Art/ui/Shop/UI_Shop_Background.png" id="32_0lm0s"]
 [ext_resource type="PackedScene" uid="uid://3d04qrtunccs" path="res://Scenes/scene_purchasable.tscn" id="33_svcml"]
 [ext_resource type="Theme" uid="uid://bfr5y4lo7m1ux" path="res://Resources/fontTheme.tres" id="34_hpp27"]
 [ext_resource type="Script" path="res://Scripts/Light.gd" id="35_54gud"]
 [ext_resource type="Texture2D" uid="uid://ct20o1j7iuiva" path="res://Resources/LightTexture.tres" id="36_yw5ht"]
 [ext_resource type="PackedScene" uid="uid://bjaykfdp1s4y" path="res://Scenes/Torch_scene.tscn" id="37_jv1l8"]
-[ext_resource type="Script" path="res://Scripts/HomeScript.gd" id="38_rumsg"]
-[ext_resource type="Texture2D" uid="uid://xpp18icbqb1y" path="res://Art/environment/Home/nest_back.png" id="38_skd3y"]
-[ext_resource type="Texture2D" uid="uid://es25bpukcdqn" path="res://Art/environment/Home/egg_smol.png" id="39_tc4lo"]
-[ext_resource type="Texture2D" uid="uid://jm41e4072rxr" path="res://Art/environment/Home/nest_front.png" id="40_uqnu4"]
-[ext_resource type="Texture2D" uid="uid://b8kr3el8v0jp4" path="res://Art/UI/UI_IconBG_left.png" id="41_7lncn"]
-[ext_resource type="Texture2D" uid="uid://d1w53bq8x5lhq" path="res://Art/UI/UI_IconBG_mid.png" id="42_4u68i"]
-[ext_resource type="Texture2D" uid="uid://dorh0qxx8p2ha" path="res://Art/UI/UI_IconBG_right.png" id="43_qbleu"]
-[ext_resource type="Texture2D" uid="uid://dcleif1cn1ru2" path="res://Art/UI/buttonSymbol_top.png" id="44_q6oco"]
+[ext_resource type="PackedScene" uid="uid://ckl0ibm5pfs7u" path="res://Scenes/Home.tscn" id="38_pj4ey"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sxwg7"]
 size = Vector2(16, 16)
@@ -85,12 +78,6 @@ expand_margin_left = 2.0
 expand_margin_right = 1.0
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_q5j7g"]
-radius = 9.05539
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_d3sup"]
-size = Vector2(65, 68)
 
 [node name="Node" type="Node"]
 
@@ -181,6 +168,7 @@ z_index = 2
 position = Vector2(128, -112)
 
 [node name="cash symbol" type="Sprite2D" parent="Camera2D/CashHolder"]
+visible = false
 z_index = 2
 position = Vector2(-7, 8)
 texture = ExtResource("20_b0cq8")
@@ -286,122 +274,10 @@ position = Vector2(-126, -8)
 [node name="Torch3" parent="." instance=ExtResource("37_jv1l8")]
 position = Vector2(282, -24)
 
-[node name="Home" type="Node2D" parent="."]
-script = ExtResource("38_rumsg")
-
-[node name="nest_back" type="Sprite2D" parent="Home"]
-position = Vector2(0, -8)
-texture = ExtResource("38_skd3y")
-
-[node name="nest_front" type="Sprite2D" parent="Home"]
-z_index = 2
-position = Vector2(0, -8)
-texture = ExtResource("40_uqnu4")
-
-[node name="InteractButton_depositOres" type="Node2D" parent="Home"]
-position = Vector2(0, -95)
-
-[node name="bg_start" type="Sprite2D" parent="Home/InteractButton_depositOres"]
-position = Vector2(-41, 0)
-texture = ExtResource("41_7lncn")
-
-[node name="bg" type="Sprite2D" parent="Home/InteractButton_depositOres"]
-position = Vector2(-25, 0)
-texture = ExtResource("42_4u68i")
-
-[node name="bg2" type="Sprite2D" parent="Home/InteractButton_depositOres"]
-position = Vector2(-9, 0)
-texture = ExtResource("42_4u68i")
-
-[node name="bg3" type="Sprite2D" parent="Home/InteractButton_depositOres"]
-position = Vector2(7, 0)
-texture = ExtResource("42_4u68i")
-
-[node name="bg4" type="Sprite2D" parent="Home/InteractButton_depositOres"]
-position = Vector2(23, 0)
-texture = ExtResource("42_4u68i")
-
-[node name="bg5" type="Sprite2D" parent="Home/InteractButton_depositOres"]
-position = Vector2(39, 0)
-texture = ExtResource("42_4u68i")
-
-[node name="bg6" type="Sprite2D" parent="Home/InteractButton_depositOres"]
-position = Vector2(55, 0)
-texture = ExtResource("43_qbleu")
-
-[node name="icon" type="Sprite2D" parent="Home/InteractButton_depositOres"]
-position = Vector2(-40, 0)
-texture = ExtResource("44_q6oco")
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Home/InteractButton_depositOres"]
-offset_left = -30.0
-offset_top = -8.0
-offset_right = 90.0
-offset_bottom = 9.0
-theme = ExtResource("34_hpp27")
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-text = "Deposit ores"
-
-[node name="InteractButton_EndDay" type="Node2D" parent="Home"]
-visible = false
-position = Vector2(0, -66)
-
-[node name="bg_start" type="Sprite2D" parent="Home/InteractButton_EndDay"]
-position = Vector2(-28, 0)
-texture = ExtResource("41_7lncn")
-
-[node name="bg" type="Sprite2D" parent="Home/InteractButton_EndDay"]
-position = Vector2(-12, 0)
-texture = ExtResource("42_4u68i")
-
-[node name="bg2" type="Sprite2D" parent="Home/InteractButton_EndDay"]
-position = Vector2(4, 0)
-texture = ExtResource("42_4u68i")
-
-[node name="bg3" type="Sprite2D" parent="Home/InteractButton_EndDay"]
-position = Vector2(20, 0)
-texture = ExtResource("42_4u68i")
-
-[node name="bg6" type="Sprite2D" parent="Home/InteractButton_EndDay"]
-position = Vector2(36, 0)
-texture = ExtResource("43_qbleu")
-
-[node name="icon" type="Sprite2D" parent="Home/InteractButton_EndDay"]
-position = Vector2(-27, 0)
-texture = ExtResource("44_q6oco")
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Home/InteractButton_EndDay"]
-offset_left = -17.0
-offset_top = -8.0
-offset_right = 103.0
-offset_bottom = 9.0
-theme = ExtResource("34_hpp27")
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-text = "End Day"
-
-[node name="Node2D" type="Node2D" parent="Home"]
-
-[node name="egg" type="Sprite2D" parent="Home/Node2D"]
-z_index = 2
-position = Vector2(0, -40)
-texture = ExtResource("39_tc4lo")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Home/Node2D/egg"]
-position = Vector2(0, 33)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Home/Node2D/egg/StaticBody2D"]
-shape = SubResource("CircleShape2D_q5j7g")
-
-[node name="NestCollider" type="Area2D" parent="Home"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Home/NestCollider"]
-position = Vector2(0.5, -24)
-shape = SubResource("RectangleShape2D_d3sup")
+[node name="Home" parent="." instance=ExtResource("38_pj4ey")]
 
 [connection signal="PlayerDrillingSolid" from="TileCrack" to="Player" method="_on_tile_crack_player_drilling_solid"]
 [connection signal="newTileCrack" from="Player" to="TileCrack" method="_on_player_new_tile_crack"]
 [connection signal="playerStoppedDrillingTile" from="Player" to="TileCrack" method="_on_player_player_stopped_drilling_tile"]
 [connection signal="body_shape_entered" from="ShopTrigger/Area2D" to="Camera2D/ShopHandler" method="_on_area_2d_body_shape_entered"]
 [connection signal="body_shape_entered" from="SellTrigger/SellCollision" to="Camera2D/ShopHandler" method="_on_sell_collision_body_shape_entered"]
-[connection signal="body_shape_entered" from="Home/NestCollider" to="Home" method="_on_nest_collider_body_shape_entered"]
-[connection signal="body_shape_exited" from="Home/NestCollider" to="Home" method="_on_nest_collider_body_shape_exited"]

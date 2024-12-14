@@ -2,7 +2,6 @@ extends Node2D
 
 #handling the shop
 @onready var moneyUI=$"../CashHolder/cashNumber"
-@onready var seller = $"../InventoryHandler"
 
 
 @export var UI_purchasables:Array[Node2D]
@@ -18,7 +17,7 @@ func _ready():
 
 func SetupShop():
 	var index:int=0
-	moneyUI.text=str(GlobalVariables.playerMoney)
+	moneyUI.text=str(GlobalVariables.playerMoney)+" xp"
 	for n in UI_purchasables:
 		n.Setup(abstract_purchasables[index])
 		n.SetSelected( index==currentSelection)
@@ -48,7 +47,7 @@ func PurchaseSelectedItem():
 	
 	if UI_purchasables[currentSelection].AttemptToPurchase():
 		
-		moneyUI.text=str(GlobalVariables.playerMoney)
+		moneyUI.text=str(GlobalVariables.playerMoney)+" xp"
 		var type = abstract_purchasables[currentSelection].type
 		var playerUpgradeLvl=GlobalVariables.GetPlayerUpgradeLevel(type)
 		
@@ -96,11 +95,4 @@ func _process(delta: float) -> void:
 
 func _on_area_2d_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
 	SetActive(true)
-	pass # Replace with function body.
-
-
-func _on_sell_collision_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
-	GlobalVariables.playerMoney+= seller.SellOres()
-	print_debug("Player now has "+str(GlobalVariables.playerMoney)+" money!")
-	moneyUI.text=str(GlobalVariables.playerMoney)
 	pass # Replace with function body.

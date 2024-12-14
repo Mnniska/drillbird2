@@ -31,11 +31,11 @@
 [ext_resource type="Texture2D" uid="uid://bcsxl1c2pss7d" path="res://Art/characters/Drillbird/anim_drill/drilling_up6.png" id="16_ex31u"]
 [ext_resource type="Texture2D" uid="uid://b0w45mdcwkfkc" path="res://Art/characters/Drillbird/anim_drill/drilling_up7.png" id="17_x8kt8"]
 [ext_resource type="Texture2D" uid="uid://d0fswexrw2wu5" path="res://Art/characters/Drillbird/anim_drill/drilling_up8.png" id="18_a6x6k"]
-[ext_resource type="Texture2D" uid="uid://bcgi21gdpsssy" path="res://Art/Effects/sprite_jumpCrystal1.png" id="22_o05ot"]
-[ext_resource type="Texture2D" uid="uid://cttmuwrkyqgjq" path="res://Art/Effects/sprite_jumpCrystal2.png" id="23_6w68x"]
+[ext_resource type="Texture2D" uid="uid://bcgi21gdpsssy" path="res://Art/effects/sprite_jumpCrystal1.png" id="22_o05ot"]
+[ext_resource type="Texture2D" uid="uid://cttmuwrkyqgjq" path="res://Art/effects/sprite_jumpCrystal2.png" id="23_6w68x"]
 [ext_resource type="Texture2D" uid="uid://c4kbqht4juyov" path="res://Art/characters/Drillbird/anim_drill/drilling_down_fall.png" id="23_fmdch"]
-[ext_resource type="Texture2D" uid="uid://bdnsaxsutvhq8" path="res://Art/Effects/sprite_jumpCrystal3.png" id="24_nofj5"]
-[ext_resource type="Texture2D" uid="uid://d1fxkvrdmxu4l" path="res://Art/Effects/sprite_jumpCrystal4.png" id="25_ehp6o"]
+[ext_resource type="Texture2D" uid="uid://bdnsaxsutvhq8" path="res://Art/effects/sprite_jumpCrystal3.png" id="24_nofj5"]
+[ext_resource type="Texture2D" uid="uid://d1fxkvrdmxu4l" path="res://Art/effects/sprite_jumpCrystal4.png" id="25_ehp6o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pdge5"]
 size = Vector2(10, 11)
@@ -235,7 +235,8 @@ hue_variation_min = -0.87
 hue_variation_max = -0.55
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("jump_crystals")]
-collision_mask = 3
+collision_layer = 17
+collision_mask = 19
 script = ExtResource("1_llgr2")
 JUMP_VELOCITY = -250.0
 jump_crystals = [NodePath("AnimatedSprite2D/jumpCrystal1"), NodePath("AnimatedSprite2D/jumpCrystal2"), NodePath("AnimatedSprite2D/jumpCrystal3")]
