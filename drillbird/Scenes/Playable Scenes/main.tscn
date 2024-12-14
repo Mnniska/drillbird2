@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=4 uid="uid://d2wv7igie5stg"]
+[gd_scene load_steps=45 format=4 uid="uid://d2wv7igie5stg"]
 
 [ext_resource type="TileSet" uid="uid://grpd2pyu7pgk" path="res://Resources/MainTileset.tres" id="1_1imtu"]
 [ext_resource type="PackedScene" uid="uid://0iy1qmgd0p6y" path="res://Scenes/TileCrack.tscn" id="2_c10yv"]
@@ -12,8 +12,6 @@
 [ext_resource type="Resource" uid="uid://b1vx03cr2okgm" path="res://Resources/terrainInfo_solid.tres" id="10_0hsbr"]
 [ext_resource type="Resource" uid="uid://cjif6ylwd1rdw" path="res://Resources/terrainInfo_dirt1.tres" id="11_dksi3"]
 [ext_resource type="PackedScene" uid="uid://e3titjk1as46" path="res://Scenes/player.tscn" id="12_u5tqu"]
-[ext_resource type="Texture2D" uid="uid://b63sh7j5jc1j7" path="res://Art/ui/Shop/shop_placeholder.png" id="13_cx0rg"]
-[ext_resource type="Texture2D" uid="uid://cdqdrj3f4n7ev" path="res://Art/ui/Shop/sell_placeholder.png" id="14_v3y1k"]
 [ext_resource type="Script" path="res://Scripts/CameraScript.gd" id="15_sox0p"]
 [ext_resource type="Texture2D" uid="uid://cp6xuvmo0rguj" path="res://Art/ui/HUD/UI_BlackBorder.png" id="16_1smyb"]
 [ext_resource type="Script" path="res://Scripts/inventory_handler.gd" id="17_84e5y"]
@@ -38,9 +36,6 @@
 [ext_resource type="Texture2D" uid="uid://ct20o1j7iuiva" path="res://Resources/LightTexture.tres" id="36_yw5ht"]
 [ext_resource type="PackedScene" uid="uid://bjaykfdp1s4y" path="res://Scenes/Torch_scene.tscn" id="37_jv1l8"]
 [ext_resource type="PackedScene" uid="uid://ckl0ibm5pfs7u" path="res://Scenes/Home.tscn" id="38_pj4ey"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_sxwg7"]
-size = Vector2(16, 16)
 
 [sub_resource type="Gradient" id="Gradient_pvncr"]
 offsets = PackedFloat32Array(0, 0.536432)
@@ -79,6 +74,13 @@ expand_margin_right = 1.0
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
+[sub_resource type="Gradient" id="Gradient_m7jll"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ea32y"]
+gradient = SubResource("Gradient_m7jll")
+
 [node name="Node" type="Node"]
 
 [node name="Tilemap_Background" type="TileMapLayer" parent="."]
@@ -99,28 +101,6 @@ GameTerrains = Array[ExtResource("8_mmgsk")]([ExtResource("9_eqs1c"), ExtResourc
 
 [node name="Player" parent="." instance=ExtResource("12_u5tqu")]
 position = Vector2(-46, -390)
-
-[node name="ShopTrigger" type="Node2D" parent="."]
-position = Vector2(-83, -43)
-
-[node name="Area2D" type="Area2D" parent="ShopTrigger"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ShopTrigger/Area2D"]
-shape = SubResource("RectangleShape2D_sxwg7")
-
-[node name="Sprite2D" type="Sprite2D" parent="ShopTrigger"]
-texture = ExtResource("13_cx0rg")
-
-[node name="SellTrigger" type="Node2D" parent="."]
-position = Vector2(-50, -51)
-
-[node name="SellCollision" type="Area2D" parent="SellTrigger"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SellTrigger/SellCollision"]
-shape = SubResource("RectangleShape2D_sxwg7")
-
-[node name="Sprite2D" type="Sprite2D" parent="SellTrigger"]
-texture = ExtResource("14_v3y1k")
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("character")]
 position = Vector2(144, -553)
@@ -254,6 +234,13 @@ theme = ExtResource("34_hpp27")
 text = "[Jump] to buy. [Drill] to exit."
 horizontal_alignment = 1
 
+[node name="darkness" type="Sprite2D" parent="Camera2D"]
+visible = false
+z_index = 2
+position = Vector2(-1.19209e-05, -3.50001)
+scale = Vector2(1, 185)
+texture = SubResource("GradientTexture1D_ea32y")
+
 [node name="PlayerDarkness" type="Node2D" parent="."]
 position = Vector2(135, -53)
 script = ExtResource("35_54gud")
@@ -279,5 +266,4 @@ position = Vector2(282, -24)
 [connection signal="PlayerDrillingSolid" from="TileCrack" to="Player" method="_on_tile_crack_player_drilling_solid"]
 [connection signal="newTileCrack" from="Player" to="TileCrack" method="_on_player_new_tile_crack"]
 [connection signal="playerStoppedDrillingTile" from="Player" to="TileCrack" method="_on_player_player_stopped_drilling_tile"]
-[connection signal="body_shape_entered" from="ShopTrigger/Area2D" to="Camera2D/ShopHandler" method="_on_area_2d_body_shape_entered"]
-[connection signal="body_shape_entered" from="SellTrigger/SellCollision" to="Camera2D/ShopHandler" method="_on_sell_collision_body_shape_entered"]
+[connection signal="ShopClosed" from="Camera2D/ShopHandler" to="Home" method="_on_shop_handler_shop_closed"]

@@ -1,6 +1,7 @@
 extends Node2D
 
 #handling the shop
+signal ShopClosed
 @onready var moneyUI=$"../CashHolder/cashNumber"
 
 
@@ -32,7 +33,9 @@ func SetActive(active:bool):
 		GlobalVariables.playerStatus=GlobalVariables.playerStatusEnum.SHOP
 		
 	else:
-		GlobalVariables.playerStatus=GlobalVariables.playerStatusEnum.DIG
+		GlobalVariables.playerStatus=GlobalVariables.playerStatusEnum.NEWDAY
+		ShopClosed.emit()
+		
 		hide()
 		
 

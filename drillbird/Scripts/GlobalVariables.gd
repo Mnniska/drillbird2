@@ -1,7 +1,7 @@
 extends Node
 enum typeEnum{DRILL, INVENTORY, HEALTH, LIGHT}
 
-enum playerStatusEnum {DIG,SHOP}
+enum playerStatusEnum {DIG,SHOP,NEWDAY}
 var playerStatus = playerStatusEnum.DIG
 var playerMoney:int=0
 
