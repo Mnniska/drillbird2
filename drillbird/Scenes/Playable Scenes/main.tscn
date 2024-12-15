@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=4 uid="uid://d2wv7igie5stg"]
+[gd_scene load_steps=51 format=4 uid="uid://d2wv7igie5stg"]
 
 [ext_resource type="TileSet" uid="uid://grpd2pyu7pgk" path="res://Resources/MainTileset.tres" id="1_1imtu"]
 [ext_resource type="PackedScene" uid="uid://0iy1qmgd0p6y" path="res://Scenes/TileCrack.tscn" id="2_c10yv"]
@@ -27,11 +27,16 @@
 [ext_resource type="Script" path="res://Scripts/abstract_purchasable.gd" id="27_hx1y5"]
 [ext_resource type="Resource" uid="uid://b26ws3o4u42p3" path="res://Resources/purchasable_inventory.tres" id="28_iowjc"]
 [ext_resource type="Resource" uid="uid://cgdqluba62y80" path="res://Resources/purchasable_light.tres" id="29_cp1r6"]
+[ext_resource type="Resource" uid="uid://e48vh7omjgqd" path="res://Resources/purchasable_ContinueButton.tres" id="30_4yogw"]
 [ext_resource type="Texture2D" uid="uid://fsljdsvdyr3v" path="res://Art/ui/Shop/UI_Shop_DreamBackground.png" id="30_okg02"]
 [ext_resource type="Resource" uid="uid://dd3l8ir1bmcm5" path="res://Resources/purchasable_health.tres" id="30_yx4wb"]
 [ext_resource type="Resource" uid="uid://deqhaf8e1onhf" path="res://Resources/purchasable_drill.tres" id="31_4ia3e"]
+[ext_resource type="Script" path="res://Scenes/Playable Scenes/ButtonScript.gd" id="33_a1jua"]
 [ext_resource type="PackedScene" uid="uid://3d04qrtunccs" path="res://Scenes/scene_purchasable.tscn" id="33_svcml"]
+[ext_resource type="Texture2D" uid="uid://boulllpt4vy8" path="res://Art/ui/Shop/UI_Shop_button_on_canAfford.png" id="34_jlsrn"]
+[ext_resource type="Texture2D" uid="uid://de2ouaamnu8d0" path="res://Art/ui/Shop/UI_Shop_button_off_unavailable.png" id="34_nmxkn"]
 [ext_resource type="Script" path="res://Scripts/Light.gd" id="35_54gud"]
+[ext_resource type="FontFile" uid="uid://cicu24cmxgshq" path="res://Resources/Quinquefive-ALoRM.ttf" id="35_m1x1i"]
 [ext_resource type="Texture2D" uid="uid://ct20o1j7iuiva" path="res://Resources/LightTexture.tres" id="36_yw5ht"]
 [ext_resource type="Texture2D" uid="uid://bi6q51sklyetd" path="res://Art/environment/Home/background_space.png" id="37_6eo6t"]
 [ext_resource type="PackedScene" uid="uid://bjaykfdp1s4y" path="res://Scenes/Torch_scene.tscn" id="37_jv1l8"]
@@ -74,6 +79,10 @@ expand_margin_right = 1.0
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
+[sub_resource type="Theme" id="Theme_046mq"]
+default_font = ExtResource("35_m1x1i")
+default_font_size = 5
+
 [sub_resource type="Gradient" id="Gradient_8jrys"]
 offsets = PackedFloat32Array(0)
 colors = PackedColorArray(0, 0, 0, 1)
@@ -103,7 +112,7 @@ GameTerrains = Array[ExtResource("8_mmgsk")]([ExtResource("9_eqs1c"), ExtResourc
 position = Vector2(-140, -84)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(0, -83)
+position = Vector2(164, -549)
 script = ExtResource("15_sox0p")
 
 [node name="Darkness" type="PointLight2D" parent="Camera2D"]
@@ -190,10 +199,9 @@ theme_override_styles/grabber_area = SubResource("StyleBoxTexture_shfji")
 editable = false
 
 [node name="ShopHandler" type="Node2D" parent="Camera2D" node_paths=PackedStringArray("UI_purchasables")]
-visible = false
 script = ExtResource("26_mk1t6")
-UI_purchasables = [NodePath("Purchasable1"), NodePath("Purchasable2"), NodePath("Purchasable3"), NodePath("Purchasable4")]
-abstract_purchasables = Array[ExtResource("27_hx1y5")]([ExtResource("28_iowjc"), ExtResource("29_cp1r6"), ExtResource("30_yx4wb"), ExtResource("31_4ia3e")])
+UI_purchasables = [NodePath("Purchasable1"), NodePath("Purchasable2"), NodePath("Purchasable3"), NodePath("Purchasable4"), NodePath("Button_Continue")]
+abstract_purchasables = Array[ExtResource("27_hx1y5")]([ExtResource("28_iowjc"), ExtResource("29_cp1r6"), ExtResource("30_yx4wb"), ExtResource("31_4ia3e"), ExtResource("30_4yogw")])
 
 [node name="ShopBackground" type="Sprite2D" parent="Camera2D/ShopHandler"]
 z_index = -2
@@ -210,6 +218,25 @@ position = Vector2(0, -11)
 
 [node name="Purchasable4" parent="Camera2D/ShopHandler" instance=ExtResource("33_svcml")]
 position = Vector2(0, 19)
+
+[node name="Button_Continue" type="Node2D" parent="Camera2D/ShopHandler"]
+position = Vector2(71, 38)
+script = ExtResource("33_a1jua")
+texture_selected = ExtResource("34_jlsrn")
+texture_inactive = ExtResource("34_nmxkn")
+
+[node name="buttonFrame" type="Sprite2D" parent="Camera2D/ShopHandler/Button_Continue"]
+texture = ExtResource("34_nmxkn")
+centered = false
+
+[node name="text" type="Label" parent="Camera2D/ShopHandler/Button_Continue"]
+offset_left = 6.0
+offset_top = 1.0
+offset_right = 54.0
+offset_bottom = 19.0
+theme = SubResource("Theme_046mq")
+text = "awaken"
+vertical_alignment = 1
 
 [node name="darkness" type="Sprite2D" parent="Camera2D"]
 visible = false

@@ -26,6 +26,7 @@ power = 4
 
 [resource]
 script = ExtResource("3_mne0x")
+onlyAButton = false
 type = 3
 icon = ExtResource("1_1bg5o")
 itemName = "Light"

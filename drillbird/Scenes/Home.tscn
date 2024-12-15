@@ -175,6 +175,9 @@ one_shot = true
 [node name="CameraLerpPosition" type="Node2D" parent="."]
 position = Vector2(0, -83)
 
+[node name="PlayerWakeupPos" type="Node2D" parent="."]
+position = Vector2(0, -20)
+
 [connection signal="body_shape_entered" from="NestCollider" to="." method="_on_nest_collider_body_shape_entered"]
 [connection signal="body_shape_exited" from="NestCollider" to="." method="_on_nest_collider_body_shape_exited"]
 [connection signal="animation_finished" from="birdySleep" to="." method="_on_birdy_sleep_animation_finished"]

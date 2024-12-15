@@ -4,8 +4,9 @@ extends Node2D
 signal ShopClosed
 @onready var moneyUI=$"../CashHolder/cashNumber"
 
-
+#add continue button to UI_Purchasables
 @export var UI_purchasables:Array[Node2D]
+
 @export var abstract_purchasables:Array[abstract_purchasable]
 var shopActive:bool=false
 #playerstats 
@@ -20,10 +21,12 @@ func SetupShop():
 	var index:int=0
 	moneyUI.text=str(GlobalVariables.playerMoney)+" xp"
 	for n in UI_purchasables:
-		n.Setup(abstract_purchasables[index])
+		if index!=UI_purchasables.size()-1: #The last item is not setup since it's a simple btn
+			n.Setup(abstract_purchasables[index])
 		n.SetSelected( index==currentSelection)
 		index+=1
-			
+
+
 
 func SetActive(active:bool):
 	shopActive=active
@@ -42,11 +45,12 @@ func SetActive(active:bool):
 func UpdateShop():
 	var index:int=0
 	for n in UI_purchasables:
+		#ensure setselected is implemented
 		n.SetSelected( index==currentSelection)
 		index+=1
 			
 
-func PurchaseSelectedItem():
+func AttemptPurchaseSelectedItem():
 	
 	if UI_purchasables[currentSelection].AttemptToPurchase():
 		
@@ -85,15 +89,22 @@ func _process(delta: float) -> void:
 			currentSelection=0
 		UpdateShop()
 	
-
 	if Input.is_action_just_pressed("jump"):
-		PurchaseSelectedItem()
+		
+		#if current selection is a button, call that btn instead
+		PressCurrentItem()
+		
 	pass
 	
+func PressCurrentItem():
 	
-	if Input.is_action_just_pressed("drill"):
+	if UI_purchasables[currentSelection].isButton():
 		SetActive(false)
+	else:
+		AttemptPurchaseSelectedItem()
+	
 	pass
+	
 
 
 func _on_area_2d_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:

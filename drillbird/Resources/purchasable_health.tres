@@ -26,6 +26,7 @@ power = 5
 
 [resource]
 script = ExtResource("3_0yx2m")
+onlyAButton = false
 type = 2
 icon = ExtResource("1_74wfm")
 itemName = "Health"

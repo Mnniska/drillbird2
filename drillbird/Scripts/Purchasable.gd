@@ -83,13 +83,15 @@ func UpdateKnobs():
 		index+=1
 	pass
 
-
+func isButton():
+	#this is used by the shop to determine whether they're dealing with a shop item or a btnmm
+	return false
+	
 func SetSelected(selected:bool):
 	var canAfford:bool=false
 	if purchasable.items.size()>GetCurrentUpgrade()+1:
 		canAfford = purchasable.items[GetCurrentUpgrade()+1].cost<=GlobalVariables.playerMoney
 		pass
-
 	
 	if selected:
 		background.texture=tex_bg_on
@@ -119,7 +121,7 @@ func UpdateStats():
 	if purchasable.items.size()>playerLevel+1:
 		cost.text=str( purchasable.items[ playerLevel+1].cost)
 	else:
-		cost.text="Maxed out!"
+		cost.text="Max"
 	UpdateKnobs()
 
 func Setup(_purchasable:abstract_purchasable):

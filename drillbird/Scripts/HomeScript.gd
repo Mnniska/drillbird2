@@ -91,7 +91,7 @@ func GoToBed():
 
 func WakeUp():
 	Camera.SetFollowPlayer(true)
-
+	Player.position=$PlayerWakeupPos.position
 	Player.show()
 	animSleep.hide()
 	GlobalVariables.playerStatus=GlobalVariables.playerStatusEnum.DIG

@@ -26,6 +26,7 @@ power = 5
 
 [resource]
 script = ExtResource("1_hrpxn")
+onlyAButton = false
 type = 1
 icon = ExtResource("1_sdygc")
 itemName = "Inventory"

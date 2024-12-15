@@ -26,6 +26,7 @@ power = 5
 
 [resource]
 script = ExtResource("3_8hyme")
+onlyAButton = false
 type = 0
 icon = ExtResource("1_fetex")
 itemName = "Drill Power"
