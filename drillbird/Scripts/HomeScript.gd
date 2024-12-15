@@ -7,6 +7,7 @@ extends Node2D
 @onready var animSleep=$birdySleep
 @onready var Player=$"../Player"
 @onready var Shop = $"../Camera2D/ShopHandler"
+@onready var LightHandler=$"../Camera2D/LightHandler"
 
 
 enum states{IDLE,SELL,RESTPOSSIBLE}
@@ -83,9 +84,15 @@ func GoToBed():
 	$cutsceneTimer.start()
 
 func WakeUp():
+	ReplendishStats()
 	Player.show()
 	animSleep.hide()
 	GlobalVariables.playerStatus=GlobalVariables.playerStatusEnum.DIG
+	
+func ReplendishStats():
+	LightHandler.RefillLight()
+	pass
+	
 	
 func _on_nest_collider_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
 	CheckState()

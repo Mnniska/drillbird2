@@ -1,9 +1,17 @@
 extends Node
 enum typeEnum{DRILL, INVENTORY, HEALTH, LIGHT}
-
 enum playerStatusEnum {DIG,SHOP,NEWDAY}
 var playerStatus = playerStatusEnum.DIG
 var playerMoney:int=0
+var upgradeLevel_health:int=0
+var upgradeLevel_drill:int=0
+signal lightSourceChange
+var amountOfLightsourcesPlayerIsIn:int=0:
+	get:
+		return amountOfLightsourcesPlayerIsIn
+	set(value):
+		amountOfLightsourcesPlayerIsIn=value
+		lightSourceChange.emit()
 
 signal upgradeChange_Light
 var upgradeLevel_light:int=4:
@@ -23,8 +31,7 @@ var upgradeLevel_inventory:int=0:
 		upgradeChange_Inventory.emit()
 
 
-var upgradeLevel_health:int=0
-var upgradeLevel_drill:int=0
+
 
 func SetPlayerUpgradeLevel(upgradeType:typeEnum,_upgradeLevel:int):
 	match upgradeType:

@@ -6,7 +6,7 @@ extends Node2D
 var lightBulbArray:Array[Sprite2D]
 
 #Time variables
-@export var time_TimerLength:int=60
+@export var time_TimerLength:int=90
 #todo: Figure out if this is how you wanna do time
 var time_Countdown:float
 var darknessClose:bool=false
@@ -14,6 +14,7 @@ var maxSize:int=75
 var minSize:int=1
 var internal_upd_interval:int=60
 var internal_upd_counter:int=0
+var playerIsLit:bool=false
 
 @onready var PlayerLight=$"../../PlayerDarkness"
 @onready var LightSlider=$UI_LightSlider
@@ -22,9 +23,11 @@ var internal_upd_counter:int=0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	GlobalVariables.upgradeChange_Light.connect(upgradeChangeLight)
+	GlobalVariables.lightSourceChange.connect(lightsourceChangeLight)
 	
 	time_Countdown=time_TimerLength
 	
+	#create lightbulbs depending on player upgrade lvl
 	for n in GlobalVariables.upgradeLevel_light:
 		var scene = load("res://Scenes/lightbulb.tscn") 
 		var node = scene.instantiate()
@@ -65,9 +68,11 @@ func GetNextLightbulb():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	handleInputs()
+	if playerIsLit:
+		return
+		
 	if time_Countdown>0:
 		time_Countdown-=delta
-
 		internal_upd_counter+=1
 		if internal_upd_counter>internal_upd_interval:
 			internal_upd_counter=0
@@ -86,6 +91,7 @@ func RefillLight():
 	for n in lightBulbArray:
 		n.SetActive(true)
 		time_Countdown=time_TimerLength
+		LightSlider.value=100
 		darknessClose=false
 		PlayerLight.SetLight(1)
 
@@ -114,3 +120,10 @@ func AddLightbulbRequest():
 func upgradeChangeLight():
 	AddLightbulbRequest()
 	pass
+
+func lightsourceChangeLight():
+	if GlobalVariables.amountOfLightsourcesPlayerIsIn>0:
+		playerIsLit=true
+	else:
+		playerIsLit= false
+		pass

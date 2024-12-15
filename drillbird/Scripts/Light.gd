@@ -6,7 +6,6 @@ extends Node2D
 @export var maxLight:float = 0.9
 @onready var playerAvatar= $"../Player"
 
-var test:float =maxLight
 var dir:bool=false
 
 #0=complete darkness. 1=completely lit
@@ -15,7 +14,7 @@ var lightStrength:float=1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	SetLight(1)
+	SetLight(maxLight)
 	pass # Replace with function body.
 
 
