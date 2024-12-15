@@ -73,8 +73,7 @@ position = Vector2(0, -8)
 texture = ExtResource("3_erd2o")
 
 [node name="InteractButton_depositOres" type="Node2D" parent="."]
-visible = false
-position = Vector2(0, -95)
+position = Vector2(14, -66)
 
 [node name="bg_start" type="Sprite2D" parent="InteractButton_depositOres"]
 position = Vector2(-41, 0)
@@ -96,12 +95,8 @@ texture = ExtResource("5_ce8fm")
 position = Vector2(23, 0)
 texture = ExtResource("5_ce8fm")
 
-[node name="bg5" type="Sprite2D" parent="InteractButton_depositOres"]
+[node name="end" type="Sprite2D" parent="InteractButton_depositOres"]
 position = Vector2(39, 0)
-texture = ExtResource("5_ce8fm")
-
-[node name="bg6" type="Sprite2D" parent="InteractButton_depositOres"]
-position = Vector2(55, 0)
 texture = ExtResource("6_f4gen")
 
 [node name="icon" type="Sprite2D" parent="InteractButton_depositOres"]
@@ -115,10 +110,9 @@ offset_right = 90.0
 offset_bottom = 9.0
 theme = ExtResource("8_k4jyb")
 theme_override_colors/default_color = Color(0, 0, 0, 1)
-text = "Deposit ores"
+text = "Feed Ores"
 
 [node name="InteractButton_EndDay" type="Node2D" parent="."]
-visible = false
 position = Vector2(0, -66)
 
 [node name="bg_start" type="Sprite2D" parent="InteractButton_EndDay"]

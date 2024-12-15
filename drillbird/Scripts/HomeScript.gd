@@ -37,9 +37,6 @@ func _process(delta: float) -> void:
 	
 	CheckState()
 	UpdateButtons()
-	
-	
-	
 	pass
 
 func CheckState():

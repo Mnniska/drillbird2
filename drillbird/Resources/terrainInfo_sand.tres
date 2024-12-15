@@ -1,8 +1,8 @@
-[gd_resource type="Resource" script_class="abstract_terrain_info" load_steps=2 format=3 uid="uid://cq6ru2d4e7bgd"]
+[gd_resource type="Resource" script_class="abstract_terrain_info" load_steps=2 format=3 uid="uid://cjif6ylwd1rdw"]
 
-[ext_resource type="Script" path="res://Scripts/abstract_terrain_info.gd" id="1_uoo03"]
+[ext_resource type="Script" path="res://Scripts/abstract_terrain_info.gd" id="1_4703n"]
 
 [resource]
-script = ExtResource("1_uoo03")
-terrainIdentifier = 0
-terrainHP = 3
+script = ExtResource("1_4703n")
+terrainIdentifier = 2
+terrainHP = 1
