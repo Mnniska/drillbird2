@@ -8,18 +8,12 @@ extends Node2D
 @onready var Player=$"../Player"
 @onready var Shop = $"../Camera2D/ShopHandler"
 @onready var LightHandler=$"../Camera2D/LightHandler"
+@onready var Camera=$"../Camera2D"
+@onready var CameraLerpPosition=$CameraLerpPosition
 
 
-enum states{IDLE,SELL,RESTPOSSIBLE}
+enum states{IDLE,SELL,RESTPOSSIBLE,SLEEP}
 var state:states
-
-
-#take care of UI buttons
-#check player inventory and display deposit ores when in range 
-#call sell function when depositing ores 
-#add "rest day" btn if no ores to sell
-#implement "are you sure" popup when ending day
-#set up sell and shop screen 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -29,7 +23,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if state==states.IDLE:
+	if state==states.IDLE or state==states.SLEEP:
+		UpdateButtons()
 		return
 	
 	if state==states.SELL:
@@ -49,6 +44,9 @@ func _process(delta: float) -> void:
 
 func CheckState():
 	
+	if state==states.SLEEP:
+		return
+	
 	if inventory.GetIsThereAnythingSellable():
 		state=states.SELL
 		
@@ -60,11 +58,13 @@ func UpdateButtons():
 		states.SELL:
 			SellButton.show()
 			RestButton.hide()
-
 		states.RESTPOSSIBLE:
 			RestButton.show()
 			SellButton.hide()
 		states.IDLE:
+			RestButton.hide()
+			SellButton.hide()
+		states.SLEEP:
 			RestButton.hide()
 			SellButton.hide()
 
@@ -75,16 +75,23 @@ func SellOres():
 
 func GoToBed():
 	GlobalVariables.playerStatus=GlobalVariables.playerStatusEnum.SHOP
+	state=states.SLEEP
+	#hide stuff that only exists in reality
 	Player.hide()
 	
+	#birdy goes to bed anim
 	animSleep.show()
 	animSleep.animation="layingdown"
 	animSleep.play()
 	
+	#move camera
+	Camera.StartNewLerp(CameraLerpPosition.position, 0.5)
+	
 	$cutsceneTimer.start()
 
 func WakeUp():
-	ReplendishStats()
+	Camera.SetFollowPlayer(true)
+
 	Player.show()
 	animSleep.hide()
 	GlobalVariables.playerStatus=GlobalVariables.playerStatusEnum.DIG
@@ -115,6 +122,7 @@ func _on_birdy_sleep_animation_finished() -> void:
 
 func _on_cutscene_timer_timeout() -> void:
 	Shop.SetActive(true)
+	ReplendishStats()
 	pass # Replace with function body.
 
 

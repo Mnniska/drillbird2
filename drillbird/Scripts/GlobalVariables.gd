@@ -1,7 +1,14 @@
 extends Node
 enum typeEnum{DRILL, INVENTORY, HEALTH, LIGHT}
-enum playerStatusEnum {DIG,SHOP,NEWDAY}
-var playerStatus = playerStatusEnum.DIG
+enum playerStatusEnum {DIG,SLEEP,SHOP,NEWDAY}
+signal playerStatusChanged
+var playerStatus:playerStatusEnum = playerStatusEnum.DIG:
+	get:
+		return playerStatus
+	set(value):
+		playerStatus=value
+		playerStatusChanged.emit()
+
 var playerMoney:int=0
 var upgradeLevel_health:int=0
 var upgradeLevel_drill:int=0

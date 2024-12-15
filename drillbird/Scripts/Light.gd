@@ -5,7 +5,8 @@ extends Node2D
 @export var minLight:float =0.1
 @export var maxLight:float = 0.9
 @onready var playerAvatar= $"../Player"
-
+@onready var Camera=$"../Camera2D"
+var isFollowingPlayer:bool=true
 var dir:bool=false
 
 #0=complete darkness. 1=completely lit
@@ -14,13 +15,25 @@ var lightStrength:float=1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	
+	GlobalVariables.playerStatusChanged.connect(playerStateChanged)
 	SetLight(maxLight)
 	pass # Replace with function body.
 
+func playerStateChanged():
+	if GlobalVariables.playerStatus!=GlobalVariables.playerStatusEnum.DIG:
+		isFollowingPlayer=false
+	
+	if GlobalVariables.playerStatus==GlobalVariables.playerStatusEnum.DIG:
+		isFollowingPlayer=true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	self.position=playerAvatar.position
+	
+	if isFollowingPlayer:
+		self.position=playerAvatar.position
+	else:
+		self.position=Camera.position
 	pass
 
 func SetLight(lightstr):
