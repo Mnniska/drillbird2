@@ -12,12 +12,24 @@ var playerStatus:playerStatusEnum = playerStatusEnum.DIG:
 var playerMoney:int=0
 var upgradeLevel_health:int=0
 var upgradeLevel_drill:int=0
+
+#LIGHT
+signal playerLightStatusChange
+enum playerLightStatusEnum{LIT_BYPLAYER,LIT_EXTERNALLY,DARK}
+var playerLightStatus:playerLightStatusEnum=playerLightStatusEnum.LIT_BYPLAYER:
+	get:
+		return playerLightStatus
+	set(value):
+		playerLightStatus=value
+		playerLightStatusChange.emit()
+		
+
 signal lightSourceChange
 var amountOfLightsourcesPlayerIsIn:int=0:
 	get:
 		return amountOfLightsourcesPlayerIsIn
 	set(value):
-		amountOfLightsourcesPlayerIsIn=value
+		amountOfLightsourcesPlayerIsIn=value	
 		lightSourceChange.emit()
 
 signal upgradeChange_Light

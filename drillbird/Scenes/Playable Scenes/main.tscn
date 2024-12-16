@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=4 uid="uid://d2wv7igie5stg"]
+[gd_scene load_steps=52 format=4 uid="uid://d2wv7igie5stg"]
 
 [ext_resource type="TileSet" uid="uid://grpd2pyu7pgk" path="res://Resources/MainTileset.tres" id="1_1imtu"]
 [ext_resource type="PackedScene" uid="uid://0iy1qmgd0p6y" path="res://Scenes/TileCrack.tscn" id="2_c10yv"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://un5elq1p64iv" path="res://Art/ui/HUD/ui_slotLeftSide.png" id="18_bc2sg"]
 [ext_resource type="Texture2D" uid="uid://bw25xygruk6rd" path="res://Art/ui/HUD/ui_slotRightSide.png" id="19_cf8tj"]
 [ext_resource type="Texture2D" uid="uid://c2fj0vknmdoys" path="res://Art/ui/Shop/money_symbol.png" id="20_b0cq8"]
+[ext_resource type="Script" path="res://Scenes/Playable Scenes/ghost_manager.gd" id="21_mqj7b"]
 [ext_resource type="FontFile" uid="uid://bvh0dsp2kmrr0" path="res://Resources/m5x7.ttf" id="21_tmb3o"]
 [ext_resource type="Script" path="res://Scripts/LightManager.gd" id="22_g5f37"]
 [ext_resource type="Texture2D" uid="uid://buh3ysmbicdnm" path="res://Art/ui/HUD/UI_LightBar_darkness.png" id="23_f24tq"]
@@ -110,6 +111,12 @@ GameTerrains = Array[ExtResource("8_mmgsk")]([ExtResource("9_eqs1c"), ExtResourc
 
 [node name="Player" parent="." instance=ExtResource("12_u5tqu")]
 position = Vector2(-140, -84)
+
+[node name="GhostManager" type="Node2D" parent="."]
+position = Vector2(-156, -37)
+script = ExtResource("21_mqj7b")
+
+[node name="Home" parent="." instance=ExtResource("38_pj4ey")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(164, -549)
@@ -258,23 +265,23 @@ blend_mode = 2
 range_z_max = 0
 texture = ExtResource("36_yw5ht")
 
-[node name="Torch" parent="." instance=ExtResource("37_jv1l8")]
+[node name="Handplaced objects" type="Node" parent="."]
+
+[node name="Torch" parent="Handplaced objects" instance=ExtResource("37_jv1l8")]
 position = Vector2(47, -8)
 
-[node name="Torch2" parent="." instance=ExtResource("37_jv1l8")]
+[node name="Torch2" parent="Handplaced objects" instance=ExtResource("37_jv1l8")]
 position = Vector2(-45, -8)
 
-[node name="Torch3" parent="." instance=ExtResource("37_jv1l8")]
+[node name="Torch3" parent="Handplaced objects" instance=ExtResource("37_jv1l8")]
 position = Vector2(282, -24)
 
-[node name="Home" parent="." instance=ExtResource("38_pj4ey")]
-
-[node name="Sprites_HUBBackground" type="Node2D" parent="."]
+[node name="Sprites_HUBBackground" type="Node2D" parent="Handplaced objects"]
 z_index = -5
 texture_repeat = 2
 position = Vector2(0, -113)
 
-[node name="Sprite2D" type="Sprite2D" parent="Sprites_HUBBackground"]
+[node name="Sprite2D" type="Sprite2D" parent="Handplaced objects/Sprites_HUBBackground"]
 position = Vector2(-26, -10.5)
 scale = Vector2(2.67188, 1.32609)
 texture = ExtResource("37_6eo6t")
@@ -282,4 +289,5 @@ texture = ExtResource("37_6eo6t")
 [connection signal="PlayerDrillingSolid" from="TileCrack" to="Player" method="_on_tile_crack_player_drilling_solid"]
 [connection signal="newTileCrack" from="Player" to="TileCrack" method="_on_player_new_tile_crack"]
 [connection signal="playerStoppedDrillingTile" from="Player" to="TileCrack" method="_on_player_player_stopped_drilling_tile"]
+[connection signal="signal_pitch_dark" from="Camera2D/LightHandler" to="GhostManager" method="_on_light_handler_signal_pitch_dark"]
 [connection signal="ShopClosed" from="Camera2D/ShopHandler" to="Home" method="_on_shop_handler_shop_closed"]

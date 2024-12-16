@@ -55,7 +55,6 @@ func _physics_process(delta: float) -> void:
 			velocity.y = JUMP_VELOCITY
 			newanim= "jump"
 			justJumped=true
-			print_debug(jumpsMade)
 
 			for index in jump_crystals.size():
 				jump_crystals[index].show()

@@ -1,12 +1,14 @@
 extends Node2D
 
+signal signal_pitch_dark()
+
 #this will be given on load game, updated via the SHOP as well 
 @export var bulbAmount:int
 
 var lightBulbArray:Array[Sprite2D]
 
 #Time variables
-@export var time_TimerLength:int=90
+@export var time_TimerLength:int=5
 #todo: Figure out if this is how you wanna do time
 var time_Countdown:float
 var darknessClose:bool=false
@@ -15,6 +17,7 @@ var minSize:int=1
 var internal_upd_interval:int=60
 var internal_upd_counter:int=0
 var playerIsLit:bool=false
+var outOfLight:bool=false
 
 @onready var PlayerLight=$"../../PlayerDarkness"
 @onready var LightSlider=$UI_LightSlider
@@ -40,6 +43,7 @@ func _ready() -> void:
 	UpdateLightbulbLocations()
 	if GlobalVariables.upgradeLevel_light==0:
 		darknessClose=true
+	UpdatePlayerLightStatus()
 
 func UpdateLightbulbLocations():
 	var offset:int=0
@@ -64,6 +68,7 @@ func GetNextLightbulb():
 		if n.active:
 			return true
 	darknessClose=true
+	return false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -84,7 +89,14 @@ func _process(delta: float) -> void:
 				PlayerLight.SetLight(progress)
 			
 	else:
-		GetNextLightbulb()
+		#will only set itself to be out of light once
+		if !outOfLight: 
+			#returns false if there are no more lightbulbs. Here to not call every frame
+			if !GetNextLightbulb():
+				signal_pitch_dark.emit()
+				outOfLight=true
+				UpdatePlayerLightStatus()
+			pass
 	pass
 	
 func RefillLight():
@@ -94,6 +106,8 @@ func RefillLight():
 		LightSlider.value=100
 		darknessClose=false
 		PlayerLight.SetLight(1)
+		outOfLight=false
+		UpdatePlayerLightStatus()
 
 func handleInputs():
 
@@ -106,6 +120,22 @@ func handleInputs():
 		pass
 	
 	pass # Replace with function body.
+
+func UpdatePlayerLightStatus():
+	if GlobalVariables.amountOfLightsourcesPlayerIsIn>0:
+		playerIsLit=true
+		GlobalVariables.playerLightStatus=GlobalVariables.playerLightStatusEnum.LIT_EXTERNALLY
+	else:
+		playerIsLit= false
+		
+		if outOfLight:
+			GlobalVariables.playerLightStatus=GlobalVariables.playerLightStatusEnum.DARK
+		else:
+			GlobalVariables.playerLightStatus=GlobalVariables.playerLightStatusEnum.LIT_BYPLAYER
+	
+	print_debug("Player state is now: "+str(GlobalVariables.playerLightStatus))
+		
+	
 
 func AddLightbulbRequest():
 	var scene = load("res://Scenes/lightbulb.tscn") 
@@ -122,8 +152,4 @@ func upgradeChangeLight():
 	pass
 
 func lightsourceChangeLight():
-	if GlobalVariables.amountOfLightsourcesPlayerIsIn>0:
-		playerIsLit=true
-	else:
-		playerIsLit= false
-		pass
+	UpdatePlayerLightStatus()
