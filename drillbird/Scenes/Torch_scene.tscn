@@ -58,8 +58,8 @@ gradient = SubResource("Gradient_amnkd")
 fill = 1
 fill_from = Vector2(0.482906, 0.517094)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yc2cw"]
-size = Vector2(124, 106)
+[sub_resource type="CircleShape2D" id="CircleShape2D_e2adq"]
+radius = 55.4437
 
 [node name="Torch" type="Node2D"]
 script = ExtResource("1_sf08q")
@@ -82,7 +82,7 @@ collision_layer = 16
 collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("RectangleShape2D_yc2cw")
+shape = SubResource("CircleShape2D_e2adq")
 
 [connection signal="body_shape_entered" from="Area2D" to="." method="_on_area_2d_body_shape_entered"]
 [connection signal="body_shape_exited" from="Area2D" to="." method="_on_area_2d_body_shape_exited"]

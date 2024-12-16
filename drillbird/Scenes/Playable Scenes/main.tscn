@@ -113,7 +113,7 @@ GameTerrains = Array[ExtResource("8_mmgsk")]([ExtResource("9_eqs1c"), ExtResourc
 position = Vector2(-140, -84)
 
 [node name="GhostManager" type="Node2D" parent="."]
-position = Vector2(-156, -37)
+position = Vector2(0, 118)
 script = ExtResource("21_mqj7b")
 
 [node name="Home" parent="." instance=ExtResource("38_pj4ey")]

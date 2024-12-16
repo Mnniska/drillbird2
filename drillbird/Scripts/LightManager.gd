@@ -8,7 +8,7 @@ signal signal_pitch_dark()
 var lightBulbArray:Array[Sprite2D]
 
 #Time variables
-@export var time_TimerLength:int=5
+@export var time_TimerLength:int=10
 #todo: Figure out if this is how you wanna do time
 var time_Countdown:float
 var darknessClose:bool=false
@@ -100,14 +100,17 @@ func _process(delta: float) -> void:
 	pass
 	
 func RefillLight():
+	
+
 	for n in lightBulbArray:
 		n.SetActive(true)
-		time_Countdown=time_TimerLength
-		LightSlider.value=100
-		darknessClose=false
-		PlayerLight.SetLight(1)
-		outOfLight=false
-		UpdatePlayerLightStatus()
+	
+	time_Countdown=time_TimerLength
+	LightSlider.value=100
+	darknessClose = GlobalVariables.upgradeLevel_light==0
+	PlayerLight.SetLight(1)
+	outOfLight=false
+	UpdatePlayerLightStatus()
 
 func handleInputs():
 

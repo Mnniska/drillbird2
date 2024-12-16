@@ -29,6 +29,7 @@ func SpawnGhost():
 	ghostSpawned=true
 	ghostInScene = ghostRef.instantiate()
 	$"..".add_child(ghostInScene)
+	ghostInScene.position=global_position
 	ghostInScene.NewHaunting(player)
 	
 	pass
