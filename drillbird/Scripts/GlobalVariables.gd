@@ -10,6 +10,7 @@ var playerStatus:playerStatusEnum = playerStatusEnum.DIG:
 		playerStatusChanged.emit()
 
 var playerMoney:int=0
+var playerHealth:int=2 #This should be loaded in depending on current upgrade lvl in future
 var upgradeLevel_health:int=0
 var upgradeLevel_drill:int=0
 

@@ -1,7 +1,7 @@
 extends Node2D
 var hauntedObject:Node2D
 var playerPos:Vector2
-var SPEED:float=1.5
+var SPEED:float=2.8
 var  haunting:bool=false
 var lastpos:Vector2
 
@@ -9,10 +9,10 @@ var lastpos:Vector2
 func _ready() -> void:
 	pass # Replace with function body.
 
-func HauntObject():
+func HauntObject(delta:float):
 	
-	var speedmod=0.005
-	var s=SPEED*speedmod
+	var speedmod=10
+	var s=SPEED*speedmod*delta
 	#position=hauntedObject.position
 	position.x = move_toward(position.x, hauntedObject.position.x, s)
 	position.y = move_toward(position.y, hauntedObject.position.y, s)
@@ -44,5 +44,5 @@ func lerp(a,b,t):
 func _process(delta: float) -> void:
 	
 	if haunting && hauntedObject!=null:
-		HauntObject()
+		HauntObject(delta)
 	pass

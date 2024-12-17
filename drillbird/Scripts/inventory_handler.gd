@@ -84,5 +84,4 @@ func AddSlotRequest():
 
 func upgradeChangeInventory():
 	AddSlotRequest()
-	print_debug("Received signal change!!")
 	pass # Replace with function body.

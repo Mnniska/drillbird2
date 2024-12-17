@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://clvrvbyhgvgld"]
+
+[ext_resource type="Script" path="res://Scripts/HeartScript.gd" id="1_6ciuw"]
+[ext_resource type="Texture2D" uid="uid://bs35on34ynxiv" path="res://Art/ui/HUD/Health/HUD_Health_available.png" id="2_5ygl3"]
+[ext_resource type="Texture2D" uid="uid://cfgy4eebpl26v" path="res://Art/ui/HUD/Health/HUD_Health_empty.png" id="3_2c5u6"]
+[ext_resource type="Texture2D" uid="uid://c3717ycl1fxar" path="res://Art/ui/HUD/Health/HUD_Health_full.png" id="4_rqvoi"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qd07m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_5ygl3")
+}],
+"loop": true,
+"name": &"available",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_2c5u6")
+}],
+"loop": true,
+"name": &"empty",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_rqvoi")
+}],
+"loop": true,
+"name": &"full",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_rqvoi")
+}],
+"loop": true,
+"name": &"full_last",
+"speed": 5.0
+}]
+
+[node name="Health" type="Node2D"]
+script = ExtResource("1_6ciuw")
+
+[node name="HealthAnimation" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_qd07m")
+animation = &"full_last"
