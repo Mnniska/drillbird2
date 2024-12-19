@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=4 uid="uid://d2wv7igie5stg"]
+[gd_scene load_steps=53 format=4 uid="uid://d2wv7igie5stg"]
 
 [ext_resource type="TileSet" uid="uid://grpd2pyu7pgk" path="res://Resources/MainTileset.tres" id="1_1imtu"]
 [ext_resource type="PackedScene" uid="uid://0iy1qmgd0p6y" path="res://Scenes/TileCrack.tscn" id="2_c10yv"]
@@ -42,9 +42,7 @@
 [ext_resource type="Texture2D" uid="uid://bi6q51sklyetd" path="res://Art/environment/Home/background_space.png" id="37_6eo6t"]
 [ext_resource type="PackedScene" uid="uid://bjaykfdp1s4y" path="res://Scenes/Torch_scene.tscn" id="37_jv1l8"]
 [ext_resource type="PackedScene" uid="uid://ckl0ibm5pfs7u" path="res://Scenes/Home.tscn" id="38_pj4ey"]
-[ext_resource type="Texture2D" uid="uid://c3717ycl1fxar" path="res://Art/ui/HUD/Health/HUD_Health_full.png" id="39_ie21b"]
 [ext_resource type="Script" path="res://Scripts/HealthUIHandler.gd" id="39_j5e8v"]
-[ext_resource type="Texture2D" uid="uid://cfgy4eebpl26v" path="res://Art/ui/HUD/Health/HUD_Health_empty.png" id="40_o0v5x"]
 
 [sub_resource type="Gradient" id="Gradient_ekb11"]
 offsets = PackedFloat32Array(0, 0.536432)
@@ -260,21 +258,7 @@ texture = SubResource("GradientTexture1D_ea32y")
 z_index = 2
 position = Vector2(-120, -104)
 script = ExtResource("39_j5e8v")
-
-[node name="Health" type="Sprite2D" parent="Camera2D/HealthUIHandler"]
-texture = ExtResource("39_ie21b")
-
-[node name="Health2" type="Sprite2D" parent="Camera2D/HealthUIHandler"]
-position = Vector2(11, 0)
-texture = ExtResource("39_ie21b")
-
-[node name="Health3" type="Sprite2D" parent="Camera2D/HealthUIHandler"]
-position = Vector2(22, 0)
-texture = ExtResource("39_ie21b")
-
-[node name="Health4" type="Sprite2D" parent="Camera2D/HealthUIHandler"]
-position = Vector2(33, 0)
-texture = ExtResource("40_o0v5x")
+HealthUpgrades = ExtResource("30_yx4wb")
 
 [node name="PlayerDarkness" type="Node2D" parent="."]
 position = Vector2(135, -53)
