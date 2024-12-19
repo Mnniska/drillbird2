@@ -59,7 +59,7 @@ fill = 1
 fill_from = Vector2(0.482906, 0.517094)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e2adq"]
-radius = 55.4437
+radius = 71.0
 
 [node name="Torch" type="Node2D"]
 script = ExtResource("1_sf08q")
