@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://vd1oghkdp3nq"]
+[gd_scene load_steps=10 format=3 uid="uid://vd1oghkdp3nq"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy_Ghost.gd" id="1_0nsmt"]
+[ext_resource type="Resource" uid="uid://c6vtudcjdht1" path="res://Resources/collidable_enemy.tres" id="2_14dhu"]
 [ext_resource type="Texture2D" uid="uid://cfqueon1nbitt" path="res://Art/characters/Ghost/ghost_idle1.png" id="2_rfldp"]
 [ext_resource type="Texture2D" uid="uid://d1ojgl3ssl7jx" path="res://Art/characters/Ghost/ghost_idle2.png" id="3_andcq"]
 [ext_resource type="Texture2D" uid="uid://dufrjqla7um7r" path="res://Art/characters/Ghost/ghost_idle3.png" id="4_7jbq0"]
@@ -30,12 +31,22 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Ghost" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_2hsvd"]
+radius = 15.0
+
+[node name="Ghost" type="StaticBody2D"]
 z_index = 2
+collision_layer = 8
+collision_mask = 8
 script = ExtResource("1_0nsmt")
+collType = ExtResource("2_14dhu")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_c18y6")
 animation = &"idle"
 autoplay = "idle"
 frame_progress = 0.9095
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -1)
+shape = SubResource("CircleShape2D_2hsvd")

@@ -294,11 +294,11 @@ frame_progress = 0.580166
 visible = false
 width = 1.0
 
-[node name="OreCollider" type="Area2D" parent="."]
+[node name="CollisionDetection" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 4
+collision_mask = 12
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="OreCollider"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionDetection"]
 position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_ivl4d")
 
@@ -315,9 +315,10 @@ randomness = 1.0
 
 [node name="DebugLabel" type="Label" parent="."]
 z_index = 2
+offset_left = -51.0
 offset_top = 18.0
-offset_right = 40.0
+offset_right = -11.0
 offset_bottom = 41.0
 theme = ExtResource("38_sekb7")
 
-[connection signal="body_entered" from="OreCollider" to="." method="_on_player_collider_body_entered"]
+[connection signal="body_entered" from="CollisionDetection" to="." method="_on_player_collider_body_entered"]

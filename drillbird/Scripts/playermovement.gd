@@ -26,7 +26,7 @@ var isTakingDamage:bool=true
 var damageTimerCounter:float=0
 @export var damageStunTime:float=0.2
 @export var damageVelocity:float=100
-@export var invincibilityTime:float=2
+@export var invincibilityTime:float=3
 var invincibilityCounter:float=0
 var invincible:bool=true
 
@@ -71,8 +71,8 @@ func _physics_process(delta: float) -> void:
 	if invincible:
 		invincibilityCounter+=delta
 		if invincibilityCounter>invincibilityTime:
-			invincible=false
-			$AnimatedSprite2D.self_modulate=Color(Color.WHITE,1)
+			LoseInvincibility()
+
 
 	move_and_slide()
 	Update_Animations(newanim)
@@ -84,7 +84,6 @@ func TakeDamageMovement(delta:float,currentAnim:String):
 	damageTimerCounter+=delta
 	if damageTimerCounter>=damageStunTime:
 		isTakingDamage=false
-		$AnimatedSprite2D.self_modulate=Color(Color.WHITE,1)
 	return "damage"
 
 func RegularMovement(delta:float,currentAnim:String):
@@ -252,6 +251,20 @@ func DealPlayerDamage(amount:int):
 	healthManager.TakeDamage(amount)
 	pass
 
+func LoseInvincibility():
+	invincible=false
+	$AnimatedSprite2D.self_modulate=Color(Color.WHITE,1)
+	var collisions:Array[Node2D]= $CollisionDetection.get_overlapping_bodies()
+	
+	if collisions.size()>0:
+		var colltype:abstract_collidable
+		for n in collisions:
+			colltype=n.GetCollType()
+			if colltype.type==colltype.types.ENEMY:
+				DealPlayerDamage(1)
+	
+	pass
+
 func Update_Animations(newanim):
 
 	var playerAnim:AnimatedSprite2D=$AnimatedSprite2D
@@ -292,10 +305,20 @@ func _on_tile_crack_player_drilling_solid() -> void:
 
 func _on_player_collider_body_entered(body: Node2D) -> void:
 	
-	var oretype = body.oreType
+	$DebugLabel.text="Latest collision: "+str(body)
 	
-	if oreInventory.AddOreRequest(oretype):
-		body.queue_free()
+	var collider:abstract_collidable= body.GetCollType()
+	
+	#"match collider:
+	if collider.type==collider.types.ENEMY:
+		if !invincible:
+			DealPlayerDamage(1)
+	
+	if collider.type==collider.types.ORE:
+		var oretype = body.oreType
+		if oreInventory.AddOreRequest(oretype):
+			body.queue_free()
+
 
 	#var ore := body as abstract_ore
 

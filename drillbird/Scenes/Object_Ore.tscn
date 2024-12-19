@@ -1,7 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://splm2us27kop"]
+[gd_scene load_steps=18 format=3 uid="uid://splm2us27kop"]
 
 [ext_resource type="Script" path="res://Scripts/object_ore.gd" id="1_dogya"]
 [ext_resource type="Texture2D" uid="uid://cm6brf3xofttr" path="res://Art/Collectibles/Ore_idle1.png" id="2_nioco"]
+[ext_resource type="Resource" uid="uid://ns6ggxikg7cb" path="res://Resources/collidable_ore.tres" id="2_sqen4"]
 [ext_resource type="Texture2D" uid="uid://blbf04fbcty8k" path="res://Art/Collectibles/Ore_idle2.png" id="3_dbawl"]
 [ext_resource type="Texture2D" uid="uid://bjo3ij85d33yx" path="res://Art/Collectibles/ore_gold.png" id="3_qt77j"]
 [ext_resource type="Texture2D" uid="uid://vbgushuifb6n" path="res://Art/Collectibles/Ore_idle3.png" id="4_g34xn"]
@@ -84,6 +85,7 @@ collision_layer = 4
 collision_mask = 6
 can_sleep = false
 script = ExtResource("1_dogya")
+ObjectInfo = ExtResource("2_sqen4")
 
 [node name="Collider" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2.5)
