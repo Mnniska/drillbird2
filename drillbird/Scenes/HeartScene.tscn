@@ -51,4 +51,4 @@ script = ExtResource("1_6ciuw")
 [node name="HealthAnimation" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_qd07m")
 animation = &"full_last"
-frame_progress = 0.735423
+frame_progress = 0.385912

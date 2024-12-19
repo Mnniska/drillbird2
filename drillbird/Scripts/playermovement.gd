@@ -9,27 +9,37 @@ enum States {IDLE, DRILLING, AIR}
 var state = States.IDLE
 
 var facingDir= Directions.RIGHT
+var facing_right: bool = true
+
 @export var SPEED = 100.0
 @export var DRILLSPEED= 40.0
 @export var JUMP_VELOCITY = -100.0
+
+#Jump variables
 var maxJumps: int =3
 var jumpsMade:int =0
 @export var jump_crystals: Array[AnimatedSprite2D]
 var justJumped:bool=false
+
+#Damage variables
+var isTakingDamage:bool=true
+var damageTimerCounter:float=0
+@export var damageStunTime:float=0.2
+@export var damageVelocity:float=100
+@export var invincibilityTime:float=2
+var invincibilityCounter:float=0
+var invincible:bool=true
+
+var player_is_drilling_tile: bool = false
+var playerDrillingSolid:bool=false
+var drillDirection=Directions.RIGHT
 
 @onready var raycast_drill = $RayCast2D
 @onready var debugLine= $DebugRaycastLine
 @onready var tilemap: TileMapLayer = get_parent().get_node("TilemapEnvironment")
 @onready var oreInventory = $"../Camera2D/InventoryHandler"
 @onready var particles=$DrillingParticles
-
-var lightSources:int=0
-
-var facing_right: bool = true
-var player_is_drilling_tile: bool = false
-var drillDirection=Directions.RIGHT
-
-var playerDrillingSolid:bool=false
+@onready var healthManager=$"../Camera2D/HealthUIHandler"
 
 func _ready() -> void:
 	Update_Animations("idle")
@@ -40,6 +50,12 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	
+		#debug test
+	if Input.is_action_just_pressed("removeLight"):
+		DealPlayerDamage(1)
+	if Input.is_action_just_pressed("addLight"):
+		healthManager.RefillHealth()
+	
 	#skips player physics update if in shop
 	if GlobalVariables.playerStatus==GlobalVariables.playerStatusEnum.SHOP:
 		return
@@ -47,7 +63,32 @@ func _physics_process(delta: float) -> void:
 		
 	var newanim=animstate
 	
+	if !isTakingDamage:
+		newanim=RegularMovement(delta,newanim)
+	else:
+		newanim=TakeDamageMovement(delta,newanim)
+
+	if invincible:
+		invincibilityCounter+=delta
+		if invincibilityCounter>invincibilityTime:
+			invincible=false
+			$AnimatedSprite2D.self_modulate=Color(Color.WHITE,1)
+
+	move_and_slide()
+	Update_Animations(newanim)
+
 	
+func TakeDamageMovement(delta:float,currentAnim:String):
+	velocity.y=-damageVelocity #this should be based on the direction of the threat
+	
+	damageTimerCounter+=delta
+	if damageTimerCounter>=damageStunTime:
+		isTakingDamage=false
+		$AnimatedSprite2D.self_modulate=Color(Color.WHITE,1)
+	return "damage"
+
+func RegularMovement(delta:float,currentAnim:String):
+	var newanim=currentAnim
 	# Check for jump input and add velocity.
 	if Input.is_action_just_pressed("jump"):  
 		if is_on_floor() or jumpsMade <= maxJumps:
@@ -146,10 +187,7 @@ func _physics_process(delta: float) -> void:
 		playerStoppedDrillingTile.emit()
 		#tells crack script to stop timer
 
-
-	move_and_slide()
-	Update_Animations(newanim)
-
+	return newanim
 
 func PlayerIsDrilling(): 
 	
@@ -200,9 +238,23 @@ func PlayerIsDrilling():
 		player_is_drilling_tile=false
 		debugLine.default_color=Color.GREEN		
 	pass
+	
+func DealPlayerDamage(amount:int):
+	if isTakingDamage:
+		return false
 
+	isTakingDamage=true
+	damageTimerCounter=0
+	
+	invincible=true
+	invincibilityCounter=0
+
+	healthManager.TakeDamage(amount)
+	pass
 
 func Update_Animations(newanim):
+
+	var playerAnim:AnimatedSprite2D=$AnimatedSprite2D
 
 	if playerDrillingSolid:
 		if !player_is_drilling_tile:
@@ -211,12 +263,26 @@ func Update_Animations(newanim):
 
 
 	if facingDir == Directions.LEFT or facingDir == Directions.RIGHT:
-		$AnimatedSprite2D.flip_h = !facing_right
+		playerAnim.flip_h = !facing_right
 
-	
 	if newanim !=animstate:
 		animstate=newanim
-		$AnimatedSprite2D.animation=animstate
+		playerAnim.animation=animstate
+			
+	#Make player flash if they're invincible
+	if invincible:
+		var frequency:float = 25
+		var magnitude:float=1
+		var wave = cos(GlobalTime.time*frequency)
+		
+		var alpha:float
+		alpha = 0.4
+		if wave > 0:
+			alpha=1.0
+		playerAnim.self_modulate=Color(Color.WHITE,alpha)
+
+		
+
 
 func _on_tile_crack_player_drilling_solid() -> void:
 	particles.emitting=true

@@ -17,6 +17,7 @@ config/icon="res://Resources/icon.svg"
 
 [autoload]
 
+GlobalTime="*res://Scripts/GlobalTime.gd"
 GlobalVariables="*res://Scripts/GlobalVariables.gd"
 
 [display]

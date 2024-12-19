@@ -1,7 +1,8 @@
-[gd_scene load_steps=44 format=3 uid="uid://e3titjk1as46"]
+[gd_scene load_steps=46 format=3 uid="uid://e3titjk1as46"]
 
 [ext_resource type="Script" path="res://Scripts/playermovement.gd" id="1_llgr2"]
 [ext_resource type="Texture2D" uid="uid://drpdhaamkld6q" path="res://Art/characters/Drillbird/anim_drill/drilling_down1.png" id="2_mrx7e"]
+[ext_resource type="Texture2D" uid="uid://dudw10cl4yld" path="res://Art/characters/Drillbird/birdy_takedamage.png" id="2_nmlpn"]
 [ext_resource type="Texture2D" uid="uid://dxl75lcwwomf8" path="res://Art/characters/Drillbird/anim_drill/anim_DrillSide1.png" id="2_xjbwl"]
 [ext_resource type="Texture2D" uid="uid://bnrrqdby45b8g" path="res://Art/characters/Drillbird/anim_drill/drilling_down2.png" id="3_4klg5"]
 [ext_resource type="Texture2D" uid="uid://d38huht83wxip" path="res://Art/characters/Drillbird/anim_drill/anim_DrillSide2.png" id="3_je7w8"]
@@ -36,12 +37,21 @@
 [ext_resource type="Texture2D" uid="uid://c4kbqht4juyov" path="res://Art/characters/Drillbird/anim_drill/drilling_down_fall.png" id="23_fmdch"]
 [ext_resource type="Texture2D" uid="uid://bdnsaxsutvhq8" path="res://Art/effects/sprite_jumpCrystal3.png" id="24_nofj5"]
 [ext_resource type="Texture2D" uid="uid://d1fxkvrdmxu4l" path="res://Art/effects/sprite_jumpCrystal4.png" id="25_ehp6o"]
+[ext_resource type="Theme" uid="uid://bfr5y4lo7m1ux" path="res://Resources/fontTheme.tres" id="38_sekb7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pdge5"]
 size = Vector2(10, 11)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3vbtj"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_nmlpn")
+}],
+"loop": true,
+"name": &"damage",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_mrx7e")
@@ -252,7 +262,7 @@ hit_from_inside = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 1
 sprite_frames = SubResource("SpriteFrames_3vbtj")
-animation = &"fall_drilldown"
+animation = &"damage"
 autoplay = "idle"
 
 [node name="jumpCrystal1" type="AnimatedSprite2D" parent="AnimatedSprite2D"]
@@ -302,5 +312,12 @@ process_material = SubResource("ParticleProcessMaterial_8f2xg")
 lifetime = 0.3
 explosiveness = 0.26
 randomness = 1.0
+
+[node name="DebugLabel" type="Label" parent="."]
+z_index = 2
+offset_top = 18.0
+offset_right = 40.0
+offset_bottom = 41.0
+theme = ExtResource("38_sekb7")
 
 [connection signal="body_entered" from="OreCollider" to="." method="_on_player_collider_body_entered"]

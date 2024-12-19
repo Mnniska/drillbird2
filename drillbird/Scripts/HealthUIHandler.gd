@@ -12,12 +12,8 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 func _process(delta:float)->void: 
-	
-	#debug test
-	if Input.is_action_just_pressed("removeLight"):
-		TakeDamage(1)
-	if Input.is_action_just_pressed("addLight"):
-		RefillHealth()
+	pass
+
 	
 func HealthSetup():
 	
