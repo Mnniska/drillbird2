@@ -28,6 +28,10 @@ func SellOres():
 		#get money from sell fucntion in the ore slot
 	return gainedMoney
 	
+func PlayerDied():
+	for n in inventorySlots:
+		n.SellOres()
+	#later, we'll drop all of the ores when this happens. but for now just clear them
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -70,6 +74,9 @@ func AddOreRequest(ore:abstract_ore):
 			break
 	
 	return oreAdded
+
+
+	
 
 func AddSlotRequest():
 	var scene = load("res://Scenes/UI_InventorySlot.tscn") 

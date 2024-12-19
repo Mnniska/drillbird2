@@ -10,6 +10,7 @@ extends Node2D
 @onready var LightHandler=$"../Camera2D/LightHandler"
 @onready var Camera=$"../Camera2D"
 @onready var CameraLerpPosition=$CameraLerpPosition
+@onready var HealthHandler=$"../Camera2D/HealthUIHandler"
 
 
 enum states{IDLE,SELL,RESTPOSSIBLE,SLEEP}
@@ -95,8 +96,15 @@ func WakeUp():
 	
 func ReplendishStats():
 	LightHandler.RefillLight()
+	HealthHandler.RefillHealth()
 	pass
 	
+func Respawn():
+	ReplendishStats()
+	WakeUp()#temporary - will do a custom one later
+	Player.state=Player.States.IDLE
+	
+	pass
 	
 func _on_nest_collider_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
 	CheckState()

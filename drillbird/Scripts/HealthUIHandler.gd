@@ -4,6 +4,7 @@ var HealthArray:Array[Node2D] #I'd love for this to specify the heart script. Ma
 var HealthScene
 @export var HealthUpgrades:abstract_purchasable
 var HeartScene = preload("res://Scenes/HeartScene.tscn")
+@onready var UI_DeathPopup=$"../UI_Death"
 
 
 # Called when the node enters the scene tree for the first time.
@@ -17,6 +18,7 @@ func _process(delta:float)->void:
 	
 func HealthSetup():
 	
+	GlobalVariables.playerHealth=HealthUpgrades.items[GlobalVariables.upgradeLevel_health].power
 	var HeartAmount:int = HealthUpgrades.items[GlobalVariables.upgradeLevel_health].power
 	var offset:int=11
 	
@@ -33,9 +35,11 @@ func HealthSetup():
 func RefillHealth():
 	for n in HealthArray:
 		n.RefillHeart()
+	GlobalVariables.playerHealth=HealthUpgrades.items[GlobalVariables.upgradeLevel_health].power
 
 func TakeDamage(amount:int):
 
+	GlobalVariables.playerHealth-=amount #reduce player health
 	var DamageCounter:int=0
 	var index:int=0
 	var lastHeart:bool=false
@@ -48,20 +52,22 @@ func TakeDamage(amount:int):
 			lastHeart=index==HealthArray.size()-2
 			if lastHeart:
 				n.SetIsLastHeart()
-					
+				
 			DamageCounter+=1
 			if DamageCounter>=amount: #continue removing health until specified amount has been taken
 				break
 		index+=1
 	
-	var survived:bool=false
+	if GlobalVariables.playerHealth<=0:
+		UI_DeathPopup.ShowUI()
+	
+"	var survived:bool=false
 	for n in HealthArray:
 		if n.full:
 			survived=true
 	
 	if !survived:
-		print_debug("Player has DIED!")
-		pass
+		UI_DeathPopup.ShowUI()
+		pass"
+	
 		#Do death stuff!
-
-	pass

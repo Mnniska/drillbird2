@@ -5,7 +5,7 @@ signal newTileCrack
 
 var animstate=""
 enum Directions {LEFT, RIGHT, UP, DOWN}
-enum States {IDLE, DRILLING, AIR}
+enum States {IDLE, DRILLING, AIR, DEAD, DAMAGE}
 var state = States.IDLE
 
 var facingDir= Directions.RIGHT
@@ -22,13 +22,12 @@ var jumpsMade:int =0
 var justJumped:bool=false
 
 #Damage variables
-var isTakingDamage:bool=true
 var damageTimerCounter:float=0
 @export var damageStunTime:float=0.2
 @export var damageVelocity:float=100
-@export var invincibilityTime:float=3
+@export var invincibilityTime:float=3.5
 var invincibilityCounter:float=0
-var invincible:bool=true
+var invincible:bool=false
 
 var player_is_drilling_tile: bool = false
 var playerDrillingSolid:bool=false
@@ -63,10 +62,14 @@ func _physics_process(delta: float) -> void:
 		
 	var newanim=animstate
 	
-	if !isTakingDamage:
+	if !state==States.DAMAGE and !state==States.DEAD:
 		newanim=RegularMovement(delta,newanim)
-	else:
+	elif state==States.DAMAGE:
 		newanim=TakeDamageMovement(delta,newanim)
+	elif state==States.DEAD:
+		newanim=DeathMovement(delta, newanim)
+		LoseInvincibility()
+		newanim="dead"
 
 	if invincible:
 		invincibilityCounter+=delta
@@ -83,8 +86,25 @@ func TakeDamageMovement(delta:float,currentAnim:String):
 	
 	damageTimerCounter+=delta
 	if damageTimerCounter>=damageStunTime:
-		isTakingDamage=false
+		state=States.IDLE
+		
+	if GlobalVariables.playerHealth<=0:
+		PlayDead()
+	#$DebugLabel.text="playerHealth: "+str(GlobalVariables.playerHealth)
+	
 	return "damage"
+
+func PlayDead():
+	if state==States.DEAD:
+		return false
+	state=States.DEAD
+	oreInventory.PlayerDied()
+	
+
+func DeathMovement(delta:float,currentAnim:String):
+	if not is_on_floor():
+		velocity += get_gravity() * delta
+	velocity.x = move_toward(velocity.x, 0, SPEED)
 
 func RegularMovement(delta:float,currentAnim:String):
 	var newanim=currentAnim
@@ -239,19 +259,24 @@ func PlayerIsDrilling():
 	pass
 	
 func DealPlayerDamage(amount:int):
-	if isTakingDamage:
+	if state==States.DAMAGE or state==States.DEAD:
 		return false
-
-	isTakingDamage=true
+	state=States.DAMAGE
+	
 	damageTimerCounter=0
 	
 	invincible=true
 	invincibilityCounter=0
 
 	healthManager.TakeDamage(amount)
+	
 	pass
 
 func LoseInvincibility():
+	#only do once
+	if !invincible:
+		return false
+		
 	invincible=false
 	$AnimatedSprite2D.self_modulate=Color(Color.WHITE,1)
 	var collisions:Array[Node2D]= $CollisionDetection.get_overlapping_bodies()
@@ -304,8 +329,6 @@ func _on_tile_crack_player_drilling_solid() -> void:
 	pass # Replace with function body.
 
 func _on_player_collider_body_entered(body: Node2D) -> void:
-	
-	$DebugLabel.text="Latest collision: "+str(body)
 	
 	var collider:abstract_collidable= body.GetCollType()
 	

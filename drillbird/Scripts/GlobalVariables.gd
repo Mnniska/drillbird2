@@ -34,7 +34,7 @@ var amountOfLightsourcesPlayerIsIn:int=0:
 		lightSourceChange.emit()
 
 signal upgradeChange_Light
-var upgradeLevel_light:int=0:
+var upgradeLevel_light:int=1:
 	get:
 		return upgradeLevel_light
 	set(value):

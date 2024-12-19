@@ -58,17 +58,21 @@ func UpdateLightbulbLocations():
 		index+=1
 	
 func GetNextLightbulb():
+	
+	var foundBulb:bool=false
 	for n in lightBulbArray:
 		if n.active:
 			n.SetActive(false)
 			time_Countdown=time_TimerLength
+			foundBulb=true
 			break
 	
 	for n in lightBulbArray:
 		if n.active:
 			return true
+	
 	darknessClose=true
-	return false
+	return foundBulb
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

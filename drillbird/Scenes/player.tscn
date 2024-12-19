@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://e3titjk1as46"]
+[gd_scene load_steps=47 format=3 uid="uid://e3titjk1as46"]
 
 [ext_resource type="Script" path="res://Scripts/playermovement.gd" id="1_llgr2"]
 [ext_resource type="Texture2D" uid="uid://drpdhaamkld6q" path="res://Art/characters/Drillbird/anim_drill/drilling_down1.png" id="2_mrx7e"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bnrrqdby45b8g" path="res://Art/characters/Drillbird/anim_drill/drilling_down2.png" id="3_4klg5"]
 [ext_resource type="Texture2D" uid="uid://d38huht83wxip" path="res://Art/characters/Drillbird/anim_drill/anim_DrillSide2.png" id="3_je7w8"]
 [ext_resource type="Texture2D" uid="uid://dskhetp3joq3y" path="res://Art/characters/Drillbird/birdy_idle.png" id="3_lhddu"]
+[ext_resource type="Texture2D" uid="uid://dytqwq2hwht6a" path="res://Art/characters/Drillbird/dead_idle.png" id="3_wvi2i"]
 [ext_resource type="Texture2D" uid="uid://crf0vmvyj55mo" path="res://Art/characters/Drillbird/anim_Run4.png" id="4_1upbw"]
 [ext_resource type="Texture2D" uid="uid://dv0o3qvoidx8f" path="res://Art/characters/Drillbird/anim_drill/anim_DrillSide3.png" id="4_2tosm"]
 [ext_resource type="Texture2D" uid="uid://cdxk1cj2p7ub7" path="res://Art/characters/Drillbird/anim_drill/drilling_down3.png" id="4_dqj8j"]
@@ -50,6 +51,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"damage",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_wvi2i")
+}],
+"loop": true,
+"name": &"dead",
 "speed": 5.0
 }, {
 "frames": [{
@@ -260,9 +269,9 @@ target_position = Vector2(18, 0)
 hit_from_inside = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-z_index = 1
+z_index = 2
 sprite_frames = SubResource("SpriteFrames_3vbtj")
-animation = &"damage"
+animation = &"dead"
 autoplay = "idle"
 
 [node name="jumpCrystal1" type="AnimatedSprite2D" parent="AnimatedSprite2D"]

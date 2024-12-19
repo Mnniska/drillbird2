@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var lightTexture:GradientTexture2D
-@onready var lightSource=$light_full
+@export var lightSource:PointLight2D
 @export var minLight:float =0.1
 @export var maxLight:float = 0.9
 @onready var playerAvatar= $"../Player"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=4 uid="uid://d2wv7igie5stg"]
+[gd_scene load_steps=57 format=4 uid="uid://d2wv7igie5stg"]
 
 [ext_resource type="TileSet" uid="uid://grpd2pyu7pgk" path="res://Resources/MainTileset.tres" id="1_1imtu"]
 [ext_resource type="PackedScene" uid="uid://0iy1qmgd0p6y" path="res://Scenes/TileCrack.tscn" id="2_c10yv"]
@@ -43,6 +43,10 @@
 [ext_resource type="PackedScene" uid="uid://bjaykfdp1s4y" path="res://Scenes/Torch_scene.tscn" id="37_jv1l8"]
 [ext_resource type="PackedScene" uid="uid://ckl0ibm5pfs7u" path="res://Scenes/Home.tscn" id="38_pj4ey"]
 [ext_resource type="Script" path="res://Scripts/HealthUIHandler.gd" id="39_j5e8v"]
+[ext_resource type="Script" path="res://Scenes/Playable Scenes/ui_death.gd" id="40_0iomv"]
+[ext_resource type="Texture2D" uid="uid://bntebnpau35mm" path="res://Art/ui/UI_Death_background.png" id="41_o4kd7"]
+[ext_resource type="Theme" uid="uid://bfr5y4lo7m1ux" path="res://Resources/fontTheme.tres" id="42_e8s0s"]
+[ext_resource type="PackedScene" uid="uid://v1t8rfk5hqfa" path="res://Scenes/button.tscn" id="43_pwocf"]
 
 [sub_resource type="Gradient" id="Gradient_ekb11"]
 offsets = PackedFloat32Array(0, 0.536432)
@@ -120,6 +124,7 @@ script = ExtResource("21_mqj7b")
 [node name="Home" parent="." instance=ExtResource("38_pj4ey")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
+z_index = 2
 position = Vector2(164, -549)
 script = ExtResource("15_sox0p")
 
@@ -127,6 +132,7 @@ script = ExtResource("15_sox0p")
 position = Vector2(16.5, -78.5)
 scale = Vector2(2.78846, 1.71364)
 blend_mode = 2
+range_z_max = 0
 texture = SubResource("GradientTexture2D_ywsei")
 
 [node name="topUI" type="Sprite2D" parent="Camera2D"]
@@ -260,10 +266,45 @@ position = Vector2(-120, -104)
 script = ExtResource("39_j5e8v")
 HealthUpgrades = ExtResource("30_yx4wb")
 
-[node name="PlayerDarkness" type="Node2D" parent="."]
+[node name="UI_Death" type="Node2D" parent="Camera2D"]
+position = Vector2(0, -39)
+script = ExtResource("40_0iomv")
+
+[node name="Background" type="Sprite2D" parent="Camera2D/UI_Death"]
+texture = ExtResource("41_o4kd7")
+
+[node name="header" type="Label" parent="Camera2D/UI_Death/Background"]
+offset_left = -128.0
+offset_top = -36.0
+offset_right = 128.0
+offset_bottom = -10.0
+size_flags_horizontal = 0
+theme = ExtResource("42_e8s0s")
+theme_override_colors/font_color = Color(0.92549, 0.862745, 0.443137, 1)
+theme_override_font_sizes/font_size = 32
+text = "Birdy died!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="header2" type="Label" parent="Camera2D/UI_Death/Background"]
+offset_left = -93.0
+offset_top = -7.0
+offset_right = 115.0
+offset_bottom = 22.0
+size_flags_horizontal = 0
+theme = ExtResource("42_e8s0s")
+theme_override_colors/font_color = Color(0.670588, 0.447059, 0.341176, 1)
+text = "- All carried ores are lost
+- Birdy will respawn at the Nest"
+vertical_alignment = 1
+
+[node name="Button_Continue" parent="Camera2D/UI_Death" instance=ExtResource("43_pwocf")]
+
+[node name="PlayerDarkness" type="Node2D" parent="." node_paths=PackedStringArray("lightSource")]
 position = Vector2(135, -53)
 script = ExtResource("35_54gud")
 lightTexture = ExtResource("36_yw5ht")
+lightSource = NodePath("light_full")
 maxLight = 0.7
 
 [node name="light_full" type="PointLight2D" parent="PlayerDarkness"]

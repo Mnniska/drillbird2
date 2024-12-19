@@ -35,13 +35,13 @@ animations = [{
 radius = 15.0
 
 [node name="Ghost" type="StaticBody2D"]
-z_index = 2
 collision_layer = 8
 collision_mask = 8
 script = ExtResource("1_0nsmt")
 collType = ExtResource("2_14dhu")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
+z_index = 1
 sprite_frames = SubResource("SpriteFrames_c18y6")
 animation = &"idle"
 autoplay = "idle"
