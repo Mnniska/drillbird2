@@ -16,12 +16,12 @@ power = 3
 
 [sub_resource type="Resource" id="Resource_aum1u"]
 script = ExtResource("2_wg2lt")
-cost = 11
+cost = 15
 power = 4
 
 [sub_resource type="Resource" id="Resource_l4iij"]
 script = ExtResource("2_wg2lt")
-cost = 12
+cost = 25
 power = 5
 
 [resource]

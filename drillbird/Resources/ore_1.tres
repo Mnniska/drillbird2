@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="abstract_ore" load_steps=3 format=3 uid="uid://diuura7tbgl01"]
 
 [ext_resource type="Script" path="res://Scripts/abstract_ore.gd" id="1_a8u57"]
-[ext_resource type="Texture2D" uid="uid://cm6brf3xofttr" path="res://Art/Collectibles/Ore_idle1.png" id="2_nk26k"]
+[ext_resource type="Texture2D" uid="uid://cwvy2kg6pkkfl" path="res://Art/Collectibles/ore_1_pebble.png" id="2_p1ksc"]
 
 [resource]
 script = ExtResource("1_a8u57")
-value = 4
-texture = ExtResource("2_nk26k")
-name = "Lapis"
-stackSize = 4
+value = 2
+texture = ExtResource("2_p1ksc")
+name = "Pebbelite"
+stackSize = 5

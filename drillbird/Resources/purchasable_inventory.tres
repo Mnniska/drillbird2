@@ -11,17 +11,17 @@ power = 2
 
 [sub_resource type="Resource" id="Resource_nookp"]
 script = ExtResource("2_air0l")
-cost = 10
+cost = 8
 power = 3
 
 [sub_resource type="Resource" id="Resource_aum1u"]
 script = ExtResource("2_air0l")
-cost = 11
+cost = 20
 power = 4
 
 [sub_resource type="Resource" id="Resource_l4iij"]
 script = ExtResource("2_air0l")
-cost = 12
+cost = 35
 power = 5
 
 [resource]

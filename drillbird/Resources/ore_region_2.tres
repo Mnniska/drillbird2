@@ -1,11 +1,13 @@
-[gd_resource type="Resource" script_class="abstract_ore_region" load_steps=4 format=3 uid="uid://bb3ecu6biq6vg"]
+[gd_resource type="Resource" script_class="abstract_ore_region" load_steps=6 format=3 uid="uid://ctpj8pean13fh"]
 
 [ext_resource type="Script" path="res://Scripts/abstract_ore.gd" id="1_k7qvv"]
+[ext_resource type="Resource" uid="uid://bk0jhhovlw4gg" path="res://Resources/ore_2.tres" id="2_pejh2"]
+[ext_resource type="Resource" uid="uid://bcbdo5pvpevgy" path="res://Resources/ore_4.tres" id="3_cycg0"]
 [ext_resource type="Resource" uid="uid://bir1i467inivj" path="res://Resources/ore_3.tres" id="3_d3cbf"]
 [ext_resource type="Script" path="res://Scripts/abstract_ore_region.gd" id="4_grejt"]
 
 [resource]
 script = ExtResource("4_grejt")
-potentialOres = Array[ExtResource("1_k7qvv")]([ExtResource("3_d3cbf")])
-spawnChances = Array[float]([1.0])
+potentialOres = Array[ExtResource("1_k7qvv")]([ExtResource("2_pejh2"), ExtResource("3_d3cbf"), ExtResource("3_cycg0")])
+spawnChances = Array[float]([0.45, 0.4, 0.15])
 oreRegionID = 2

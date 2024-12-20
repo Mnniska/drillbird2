@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="abstract_ore" load_steps=3 format=3 uid="uid://bir1i467inivj"]
 
 [ext_resource type="Script" path="res://Scripts/abstract_ore.gd" id="1_drl2k"]
-[ext_resource type="Texture2D" uid="uid://07wffqw8mdx5" path="res://Art/Collectibles/Ore_spawn1.png" id="2_6l28s"]
+[ext_resource type="Texture2D" uid="uid://gvnhgn5vrd5e" path="res://Art/Collectibles/ore_3_red.png" id="2_cpoca"]
 
 [resource]
 script = ExtResource("1_drl2k")
-value = 2
-texture = ExtResource("2_6l28s")
-name = "sparkle"
-stackSize = 5
+value = 7
+texture = ExtResource("2_cpoca")
+name = "Ruby"
+stackSize = 3
