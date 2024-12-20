@@ -10,12 +10,25 @@ var HeartScene = preload("res://Scenes/HeartScene.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	HealthSetup()
+	GlobalVariables.upgradeChange_Health.connect(upgradeChangeHealth)
+
 	pass # Replace with function body.
 
 func _process(delta:float)->void: 
 	pass
 
-	
+func upgradeChangeHealth():
+	UpgradeHealth()
+	pass
+
+func UpgradeHealth():
+	for n in HealthArray:
+		n.queue_free()
+
+	HealthArray.clear()
+	HealthSetup()
+	pass
+
 func HealthSetup():
 	
 	GlobalVariables.playerHealth=HealthUpgrades.items[GlobalVariables.upgradeLevel_health].power
@@ -30,6 +43,7 @@ func HealthSetup():
 		pass
 	
 	RefillHealth()
+	print_debug("Array size: "+str(HealthArray.size()))
 	pass
 	
 func RefillHealth():

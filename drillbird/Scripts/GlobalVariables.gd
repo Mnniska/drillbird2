@@ -11,7 +11,16 @@ var playerStatus:playerStatusEnum = playerStatusEnum.DIG:
 
 var playerMoney:int=0
 var playerHealth:int=2 #This should be loaded in depending on current upgrade lvl in future
-var upgradeLevel_health:int=0
+
+signal upgradeChange_Health
+var upgradeLevel_health:int=0:
+	get:
+		return upgradeLevel_health
+	set(value):
+		upgradeLevel_health=value
+		upgradeChange_Health.emit()
+
+
 var upgradeLevel_drill:int=0
 
 #LIGHT
