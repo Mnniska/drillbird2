@@ -146,7 +146,7 @@ func UpdatePlayerLightStatus():
 		else:
 			GlobalVariables.playerLightStatus=GlobalVariables.playerLightStatusEnum.LIT_BYPLAYER
 	
-	print_debug("Player state is now: "+str(GlobalVariables.playerLightStatus))
+
 		
 	
 

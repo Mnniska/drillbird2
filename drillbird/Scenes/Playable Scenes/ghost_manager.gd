@@ -29,7 +29,7 @@ func SpawnGhost():
 	ghostSpawned=true
 	ghostInScene = ghostRef.instantiate()
 	$"..".add_child(ghostInScene)
-	ghostInScene.position=global_position
+	ghostInScene.position=player.global_position+Vector2(randi_range(-50,50),randi_range(130,200))
 	ghostInScene.NewHaunting(player)
 	
 	pass

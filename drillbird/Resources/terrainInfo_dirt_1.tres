@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource("1_uoo03")
-terrainIdentifier = 0
+terrainIdentifier = 2
 terrainHP = 3

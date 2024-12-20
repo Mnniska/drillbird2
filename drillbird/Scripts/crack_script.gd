@@ -55,7 +55,6 @@ func NewTarget(drill_position:Vector2i):
 	cellLocation = tilemap.local_to_map(tilemap.to_local(drill_position))
 	affectedTile= tilemap.get_cell_tile_data(cellLocation)
 	
-	print_debug("New Target!")
 	isDrillingActive=true
 	
 	var digtime=3.0
@@ -93,8 +92,9 @@ func GetHealthForTerrain(terrain:int):
 		if n.terrainIdentifier==terrain:
 			return n.terrainHP
 	
-	return -1 
+ 
 	push_error("Gave an invalid int to terrain list - have you added all of the terrains to the TileCrack Game Terrains array?")
+	return -1
 	pass
 
 func abortDig():
