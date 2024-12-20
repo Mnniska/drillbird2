@@ -64,6 +64,7 @@ texture = ExtResource("2_4e54y")
 [node name="Egg pivot" type="Node2D" parent="."]
 
 [node name="egg sprite" type="Sprite2D" parent="Egg pivot"]
+z_index = 1
 position = Vector2(0, -40)
 texture = ExtResource("9_xckrn")
 
@@ -73,14 +74,21 @@ position = Vector2(0, -8)
 texture = ExtResource("3_erd2o")
 
 [node name="InteractButton_depositOres" type="Node2D" parent="."]
-position = Vector2(14, -66)
+visible = false
+z_index = 2
+position = Vector2(22, -66)
 
 [node name="bg_start" type="Sprite2D" parent="InteractButton_depositOres"]
+position = Vector2(-71, 0)
+texture = ExtResource("4_wgulb")
+
+[node name="bg_start2" type="Sprite2D" parent="InteractButton_depositOres"]
 position = Vector2(-41, 0)
 texture = ExtResource("4_wgulb")
 
 [node name="bg" type="Sprite2D" parent="InteractButton_depositOres"]
 position = Vector2(-25, 0)
+scale = Vector2(5.16, 1)
 texture = ExtResource("5_ce8fm")
 
 [node name="bg2" type="Sprite2D" parent="InteractButton_depositOres"]
@@ -112,15 +120,44 @@ theme = ExtResource("8_k4jyb")
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 text = "Feed Ores"
 
+[node name="Label" type="Label" parent="InteractButton_depositOres"]
+offset_left = -76.0
+offset_top = -15.0
+offset_right = -36.0
+offset_bottom = 11.0
+theme = ExtResource("8_k4jyb")
+theme_override_colors/font_color = Color(0.318745, 0.216267, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "Q"
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="InteractButton_depositOres"]
+offset_left = -62.0
+offset_top = -15.0
+offset_right = -22.0
+offset_bottom = 11.0
+theme = ExtResource("8_k4jyb")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+text = "or"
+vertical_alignment = 1
+
 [node name="InteractButton_EndDay" type="Node2D" parent="."]
-position = Vector2(0, -66)
+visible = false
+z_index = 2
+position = Vector2(15, -66)
 
 [node name="bg_start" type="Sprite2D" parent="InteractButton_EndDay"]
 position = Vector2(-28, 0)
 texture = ExtResource("4_wgulb")
 
+[node name="bg_start2" type="Sprite2D" parent="InteractButton_EndDay"]
+position = Vector2(-57, 0)
+texture = ExtResource("4_wgulb")
+
 [node name="bg" type="Sprite2D" parent="InteractButton_EndDay"]
 position = Vector2(-12, 0)
+scale = Vector2(4.8, 1)
 texture = ExtResource("5_ce8fm")
 
 [node name="bg2" type="Sprite2D" parent="InteractButton_EndDay"]
@@ -148,6 +185,28 @@ theme = ExtResource("8_k4jyb")
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 text = "End Day"
 
+[node name="Label3" type="Label" parent="InteractButton_EndDay"]
+offset_left = -62.0
+offset_top = -15.0
+offset_right = -22.0
+offset_bottom = 11.0
+theme = ExtResource("8_k4jyb")
+theme_override_colors/font_color = Color(0.318745, 0.216267, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "Q"
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="InteractButton_EndDay"]
+offset_left = -48.0
+offset_top = -15.0
+offset_right = -8.0
+offset_bottom = 11.0
+theme = ExtResource("8_k4jyb")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+text = "or"
+vertical_alignment = 1
+
 [node name="NestCollider" type="Area2D" parent="."]
 visible = false
 collision_layer = 16
@@ -158,6 +217,7 @@ position = Vector2(0.5, -24)
 shape = SubResource("RectangleShape2D_d3sup")
 
 [node name="birdySleep" type="AnimatedSprite2D" parent="."]
+z_index = 1
 position = Vector2(1, -19)
 sprite_frames = SubResource("SpriteFrames_xb0mn")
 animation = &"asleep"

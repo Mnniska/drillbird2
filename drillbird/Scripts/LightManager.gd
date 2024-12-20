@@ -45,6 +45,12 @@ func _ready() -> void:
 		darknessClose=true
 	UpdatePlayerLightStatus()
 
+	#First Setup stuff - might move to its own function
+	PlayerLight.SetLight(1)
+	LightSlider.value=100
+
+
+
 func UpdateLightbulbLocations():
 	var offset:int=0
 	offset=(floor(lightBulbArray.size())/2)*8
