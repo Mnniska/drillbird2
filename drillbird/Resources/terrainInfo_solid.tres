@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource("1_lq3se")
-terrainIdentifier = 2
-terrainHP = 1
+terrainIdentifier = 0
+terrainHP = -1

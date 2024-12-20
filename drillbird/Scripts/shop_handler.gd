@@ -34,6 +34,7 @@ func SetActive(active:bool):
 	if active:
 		show()
 		GlobalVariables.playerStatus=GlobalVariables.playerStatusEnum.SHOP
+		UpdateShop()
 		
 	else:
 		GlobalVariables.playerStatus=GlobalVariables.playerStatusEnum.NEWDAY

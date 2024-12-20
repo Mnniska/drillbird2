@@ -45,6 +45,12 @@ func _ready() -> void:
 		darknessClose=true
 	UpdatePlayerLightStatus()
 
+	#First Setup stuff - might move to its own function
+	PlayerLight.SetLight(1)
+	LightSlider.value=100
+
+
+
 func UpdateLightbulbLocations():
 	var offset:int=0
 	offset=(floor(lightBulbArray.size())/2)*8
@@ -140,7 +146,7 @@ func UpdatePlayerLightStatus():
 		else:
 			GlobalVariables.playerLightStatus=GlobalVariables.playerLightStatusEnum.LIT_BYPLAYER
 	
-	print_debug("Player state is now: "+str(GlobalVariables.playerLightStatus))
+
 		
 	
 
