@@ -9,6 +9,7 @@ var lightBulbArray:Array[Sprite2D]
 
 #Time variables
 @export var time_TimerLength:int=3
+@export var time_DrillMultiplier:float=2
 #todo: Figure out if this is how you wanna do time
 var time_Countdown:float
 var darknessClose:bool=false
@@ -18,9 +19,10 @@ var internal_upd_interval:int=60
 var internal_upd_counter:int=0
 var playerIsLit:bool=false
 var outOfLight:bool=false
+var playerIsDrillingTile:bool=false
 
 @onready var PlayerLight=$"../../PlayerDarkness"
-@onready var LightSlider=$UI_LightSlider
+@onready var LightSlider:Slider=$UI_LightSlider
 
 
 # Called when the node enters the scene tree for the first time.
@@ -80,6 +82,13 @@ func GetNextLightbulb():
 	darknessClose=true
 	return foundBulb
 
+func SetLightPosition():
+	var offset:Vector2=Vector2(-40,5)
+	var size=76
+	var progress = size*(LightSlider.value/100)
+	$Particle_DrillLight.position=offset+Vector2(progress,0)
+	pass
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	handleInputs()
@@ -87,7 +96,17 @@ func _process(delta: float) -> void:
 		return
 		
 	if time_Countdown>0:
-		time_Countdown-=delta
+		var multiplier:float=1
+		if playerIsDrillingTile:
+			multiplier=time_DrillMultiplier
+			SetLightPosition()
+			$Particle_DrillLight.emitting=true
+		else:
+			$Particle_DrillLight.emitting=false
+		time_Countdown-=delta*multiplier
+		
+
+		
 		internal_upd_counter+=1
 		if internal_upd_counter>internal_upd_interval:
 			internal_upd_counter=0
@@ -105,6 +124,7 @@ func _process(delta: float) -> void:
 			if !GetNextLightbulb():
 				signal_pitch_dark.emit()
 				outOfLight=true
+				$Particle_DrillLight.emitting=false
 				UpdatePlayerLightStatus()
 			pass
 	pass
@@ -166,3 +186,9 @@ func upgradeChangeLight():
 
 func lightsourceChangeLight():
 	UpdatePlayerLightStatus()
+
+
+func _on_player_signal_is_drilling_tile_changed(value: bool) -> void:
+	playerIsDrillingTile=value
+	
+	pass # Replace with function body.

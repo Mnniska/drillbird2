@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 signal playerStoppedDrillingTile
+signal signal_IsDrillingTileChanged(value:bool)
 signal newTileCrack
 
 var animstate=""
@@ -29,7 +30,12 @@ var damageTimerCounter:float=0
 var invincibilityCounter:float=0
 var invincible:bool=false
 
-var player_is_drilling_tile: bool = false
+var player_is_drilling_tile: bool = false:
+	get:
+		return player_is_drilling_tile
+	set(value):
+		player_is_drilling_tile=value
+		signal_IsDrillingTileChanged.emit(player_is_drilling_tile)
 var playerDrillingSolid:bool=false
 var drillDirection=Directions.RIGHT
 
