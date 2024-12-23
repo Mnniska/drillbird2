@@ -30,6 +30,9 @@ var damageTimerCounter:float=0
 var invincibilityCounter:float=0
 var invincible:bool=false
 
+var playerIsDrilling:bool=false
+var playerIsOnLeftEdge:bool=false
+var playerIsOnRightEdge:bool=false
 var player_is_drilling_tile: bool = false:
 	get:
 		return player_is_drilling_tile
@@ -150,10 +153,21 @@ func RegularMovement(delta:float,currentAnim:String):
 	var direction := Input.get_axis("left", "right")
 	
 	if direction:
-		if animstate=="drill_side_walk":
-			velocity.x = direction * DRILLSPEED			
+		
+		var minclamp:float=-1
+		var maxclamp:float=1
+		
+		if playerIsDrilling:
+			if playerIsOnRightEdge:
+				maxclamp=0
+			elif playerIsOnLeftEdge:
+				minclamp=0
+		
+		if animstate=="drill_side_walk":			
+			velocity.x = clampf( direction,	minclamp,maxclamp) * DRILLSPEED
+		
 		else:
-			velocity.x = direction * SPEED	
+			velocity.x = clampf( direction,minclamp,maxclamp) * SPEED
 			
 		if velocity.x > 0:
 			facingDir=Directions.RIGHT
@@ -186,7 +200,6 @@ func RegularMovement(delta:float,currentAnim:String):
 				facingDir=Directions.LEFT
 				newanim="idle"
 				
-		
 	if is_on_floor() and Input.is_action_pressed ("drill"):
 		
 		match facingDir:
@@ -209,13 +222,14 @@ func RegularMovement(delta:float,currentAnim:String):
 		PlayerIsDrilling()
 	else:
 		player_is_drilling_tile =false
+		playerIsDrilling=false
 		playerStoppedDrillingTile.emit()
 		#tells crack script to stop timer
 
 	return newanim
 
 func PlayerIsDrilling(): 
-	
+	playerIsDrilling=true
 	var length:int=18
 	var raycastTarget = Vector2i(0,0)
 	var rotationDegrees:int=0
@@ -355,5 +369,42 @@ func _on_player_collider_body_entered(body: Node2D) -> void:
 	#Todo: Cannot collect ore if the inventory is full
 	#todo: If you want inventory management n free dropping of ores, then figure UX for that that does not suck 
 	#todo: UI juice
+	
+	pass # Replace with function body.
+
+
+func _on_block_below_checker_body_shape_exited(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
+	
+
+
+	if $BlockBelowChecker.get_overlapping_bodies().size()<=0:
+		
+		var blockleft:bool= $BlockBelowCheck_LEFT.get_overlapping_bodies().size()>0 
+		var blockRight:bool= $BlockBelowCheck_RIGHT.get_overlapping_bodies().size()>0 
+		var print=""
+		if blockleft and blockRight:
+			print="Can detect both blocks"
+
+		if blockleft and !blockRight:
+			print="FALL is on players right side"
+			playerIsOnRightEdge=true
+			playerIsOnLeftEdge=false
+		
+		if !blockleft and blockRight:
+			print="FALL is on players left side"
+			playerIsOnRightEdge=false
+			playerIsOnLeftEdge=true
+
+		#$DebugLabel.text=print
+	pass # Replace with function body.
+
+
+func _on_block_below_checker_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
+	if $BlockBelowChecker.get_overlapping_bodies().size()>=0:
+		playerIsOnRightEdge=false
+		playerIsOnLeftEdge=false
+
+	#	$DebugLabel.text="On edge: false"
+		
 	
 	pass # Replace with function body.

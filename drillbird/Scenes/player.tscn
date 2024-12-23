@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://e3titjk1as46"]
+[gd_scene load_steps=50 format=3 uid="uid://e3titjk1as46"]
 
 [ext_resource type="Script" path="res://Scripts/playermovement.gd" id="1_llgr2"]
 [ext_resource type="Texture2D" uid="uid://drpdhaamkld6q" path="res://Art/characters/Drillbird/anim_drill/drilling_down1.png" id="2_mrx7e"]
@@ -233,6 +233,15 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ivl4d"]
 size = Vector2(12, 12)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wui0f"]
+size = Vector2(4, 5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_delfk"]
+size = Vector2(3, 5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jj50k"]
+size = Vector2(3, 5)
+
 [sub_resource type="Curve" id="Curve_qawsn"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.831395, 0.626374), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
@@ -311,6 +320,32 @@ collision_mask = 12
 position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_ivl4d")
 
+[node name="BlockBelowChecker" type="Area2D" parent="."]
+position = Vector2(0, 14)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BlockBelowChecker"]
+position = Vector2(0, -1.5)
+shape = SubResource("RectangleShape2D_wui0f")
+
+[node name="BlockBelowCheck_LEFT" type="Area2D" parent="."]
+position = Vector2(-6, 14)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BlockBelowCheck_LEFT"]
+position = Vector2(1.5, -1.5)
+shape = SubResource("RectangleShape2D_delfk")
+debug_color = Color(0.43653, 0.59732, 0.154954, 0.42)
+
+[node name="BlockBelowCheck_RIGHT" type="Area2D" parent="."]
+position = Vector2(3, 14)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BlockBelowCheck_RIGHT"]
+position = Vector2(1.5, -1.5)
+shape = SubResource("RectangleShape2D_jj50k")
+debug_color = Color(0.43653, 0.59732, 0.154954, 0.42)
+
 [node name="DrillingParticles" type="GPUParticles2D" parent="."]
 z_index = 1
 position = Vector2(18, 0)
@@ -331,3 +366,5 @@ offset_bottom = 41.0
 theme = ExtResource("38_sekb7")
 
 [connection signal="body_entered" from="CollisionDetection" to="." method="_on_player_collider_body_entered"]
+[connection signal="body_shape_entered" from="BlockBelowChecker" to="." method="_on_block_below_checker_body_shape_entered"]
+[connection signal="body_shape_exited" from="BlockBelowChecker" to="." method="_on_block_below_checker_body_shape_exited"]
