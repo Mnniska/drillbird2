@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=4 uid="uid://d2wv7igie5stg"]
+[gd_scene load_steps=62 format=4 uid="uid://d2wv7igie5stg"]
 
 [ext_resource type="TileSet" uid="uid://grpd2pyu7pgk" path="res://Resources/MainTileset.tres" id="1_1imtu"]
 [ext_resource type="PackedScene" uid="uid://0iy1qmgd0p6y" path="res://Scenes/TileCrack.tscn" id="2_c10yv"]
@@ -48,6 +48,7 @@
 [ext_resource type="Texture2D" uid="uid://bntebnpau35mm" path="res://Art/ui/UI_Death_background.png" id="41_o4kd7"]
 [ext_resource type="Theme" uid="uid://bfr5y4lo7m1ux" path="res://Resources/fontTheme.tres" id="42_e8s0s"]
 [ext_resource type="PackedScene" uid="uid://v1t8rfk5hqfa" path="res://Scenes/button.tscn" id="43_pwocf"]
+[ext_resource type="PackedScene" uid="uid://cekam7s1prn2n" path="res://Scenes/Enemy_runner.tscn" id="49_0oijs"]
 
 [sub_resource type="Gradient" id="Gradient_ekb11"]
 offsets = PackedFloat32Array(0, 0.536432)
@@ -142,7 +143,7 @@ position = Vector2(-616, 232)
 script = ExtResource("21_mqj7b")
 
 [node name="Player" parent="." instance=ExtResource("12_u5tqu")]
-position = Vector2(-202, 38)
+position = Vector2(-195, 49)
 
 [node name="Home" parent="." instance=ExtResource("38_pj4ey")]
 
@@ -383,6 +384,9 @@ position = Vector2(-280, -168)
 
 [node name="Torch7" parent="Handplaced objects" instance=ExtResource("37_jv1l8")]
 position = Vector2(-488, -104)
+
+[node name="Enemy_Runner" parent="." instance=ExtResource("49_0oijs")]
+position = Vector2(-81, 308)
 
 [connection signal="PlayerDrillingSolid" from="TileCrack" to="Player" method="_on_tile_crack_player_drilling_solid"]
 [connection signal="newTileCrack" from="Player" to="TileCrack" method="_on_player_new_tile_crack"]

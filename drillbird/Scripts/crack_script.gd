@@ -66,6 +66,7 @@ func NewTarget(drill_position:Vector2i):
 		if GetHealthForTerrain(affectedTile.terrain)>0:
 			#get the tile's health and reduce it by player upgrade lvl
 			tilehealth =GetHealthForTerrain(affectedTile.terrain)-GlobalVariables.upgradeLevel_drill
+			tilehealth = clampi(tilehealth,0,100)
 			if tilehealth<1&&tilehealth>=0:
 				tilehealth=0.5
 			digtime= tilehealth*minimumDigTime

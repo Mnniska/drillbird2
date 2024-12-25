@@ -42,6 +42,10 @@ var player_is_drilling_tile: bool = false:
 var playerDrillingSolid:bool=false
 var drillDirection=Directions.RIGHT
 
+#Colliders
+@onready var collider_airborne=$Collider_airborne
+@onready var collider_grounded=$Collider_grounded
+
 @onready var raycast_drill = $RayCast2D
 @onready var debugLine= $DebugRaycastLine
 @onready var tilemap: TileMapLayer = get_parent().get_node("TilemapEnvironment")
@@ -54,6 +58,8 @@ func _ready() -> void:
 	debugLine.points.clear()
 	debugLine.add_point(raycast_drill.position)
 	debugLine.add_point((raycast_drill.target_position))
+	collider_airborne.disabled=true
+	collider_grounded.disabled=false
 	
 
 func _physics_process(delta: float) -> void:
@@ -132,6 +138,9 @@ func RegularMovement(delta:float,currentAnim:String):
 		jumpsMade+=1
 	# Add the gravity to player and update anims depending on velocity
 	if not is_on_floor():
+		collider_airborne.disabled=false
+		collider_grounded.disabled=true
+		
 		velocity += get_gravity() * delta
 		if velocity.y<=0:
 			newanim= "jump"
@@ -146,7 +155,10 @@ func RegularMovement(delta:float,currentAnim:String):
 			n.hide()
 	else:
 		justJumped=false
-
+		
+	#change collisions based on where player is
+	collider_airborne.disabled=is_on_floor()
+	collider_grounded.disabled=!is_on_floor()
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -299,7 +311,7 @@ func LoseInvincibility():
 		
 	invincible=false
 	$AnimatedSprite2D.self_modulate=Color(Color.WHITE,1)
-	var collisions:Array[Node2D]= $CollisionDetection.get_overlapping_bodies()
+	var collisions:Array[Node2D]= $"Collision detectors/Detector".get_overlapping_bodies()
 	
 	if collisions.size()>0:
 		var colltype:abstract_collidable
@@ -348,35 +360,9 @@ func _on_tile_crack_player_drilling_solid() -> void:
 
 	pass # Replace with function body.
 
-func _on_player_collider_body_entered(body: Node2D) -> void:
-	
-	var collider:abstract_collidable= body.GetCollType()
-	
-	#"match collider:
-	if collider.type==collider.types.ENEMY:
-		if !invincible:
-			DealPlayerDamage(1)
-	
-	if collider.type==collider.types.ORE:
-		var oretype = body.oreType
-		if oreInventory.AddOreRequest(oretype):
-			body.queue_free()
-
-
-	#var ore := body as abstract_ore
-
-	#Todo: Check which ore was collected
-	#Todo: Cannot collect ore if the inventory is full
-	#todo: If you want inventory management n free dropping of ores, then figure UX for that that does not suck 
-	#todo: UI juice
-	
-	pass # Replace with function body.
-
 
 func _on_block_below_checker_body_shape_exited(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
 	
-
-
 	if $BlockBelowChecker.get_overlapping_bodies().size()<=0:
 		
 		var blockleft:bool= $BlockBelowCheck_LEFT.get_overlapping_bodies().size()>0 
@@ -407,4 +393,19 @@ func _on_block_below_checker_body_shape_entered(body_rid: RID, body: Node2D, bod
 	#	$DebugLabel.text="On edge: false"
 		
 	
+	pass # Replace with function body.
+
+
+func _on_detector_body_entered(body: Node2D) -> void:
+	var collider:abstract_collidable= body.GetCollType()
+	
+	#"match collider:
+	if collider.type==collider.types.ENEMY:
+		if !invincible:
+			DealPlayerDamage(1)
+	
+	if collider.type==collider.types.ORE:
+		var oretype = body.oreType
+		if oreInventory.AddOreRequest(oretype):
+			body.queue_free()
 	pass # Replace with function body.

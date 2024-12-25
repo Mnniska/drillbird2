@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://e3titjk1as46"]
+[gd_scene load_steps=51 format=3 uid="uid://e3titjk1as46"]
 
 [ext_resource type="Script" path="res://Scripts/playermovement.gd" id="1_llgr2"]
 [ext_resource type="Texture2D" uid="uid://drpdhaamkld6q" path="res://Art/characters/Drillbird/anim_drill/drilling_down1.png" id="2_mrx7e"]
@@ -42,6 +42,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pdge5"]
 size = Vector2(10, 11)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wmago"]
+size = Vector2(8, 12)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3vbtj"]
 animations = [{
@@ -230,18 +233,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ivl4d"]
-size = Vector2(12, 12)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wui0f"]
-size = Vector2(4, 5)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_delfk"]
-size = Vector2(3, 5)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jj50k"]
-size = Vector2(3, 5)
-
 [sub_resource type="Curve" id="Curve_qawsn"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.831395, 0.626374), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
@@ -262,16 +253,34 @@ scale_curve = SubResource("CurveTexture_wv7p7")
 hue_variation_min = -0.87
 hue_variation_max = -0.55
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wui0f"]
+size = Vector2(4, 5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_delfk"]
+size = Vector2(3, 5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jj50k"]
+size = Vector2(3, 5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ivl4d"]
+size = Vector2(12, 12)
+
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("jump_crystals")]
-collision_layer = 17
+collision_layer = 16
 collision_mask = 19
 script = ExtResource("1_llgr2")
 JUMP_VELOCITY = -250.0
 jump_crystals = [NodePath("AnimatedSprite2D/jumpCrystal1"), NodePath("AnimatedSprite2D/jumpCrystal2"), NodePath("AnimatedSprite2D/jumpCrystal3")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Collider_grounded" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2.5)
 shape = SubResource("RectangleShape2D_pdge5")
+debug_color = Color(0.564706, 0.556863, 0, 0.552941)
+
+[node name="Collider_airborne" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_wmago")
+debug_color = Color(0.979594, 0.14234, 0, 0.42)
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 target_position = Vector2(18, 0)
@@ -280,7 +289,7 @@ hit_from_inside = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 2
 sprite_frames = SubResource("SpriteFrames_3vbtj")
-animation = &"dead"
+animation = &"jump"
 autoplay = "idle"
 
 [node name="jumpCrystal1" type="AnimatedSprite2D" parent="AnimatedSprite2D"]
@@ -312,13 +321,26 @@ frame_progress = 0.580166
 visible = false
 width = 1.0
 
-[node name="CollisionDetection" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 12
+[node name="DrillingParticles" type="GPUParticles2D" parent="."]
+z_index = 1
+position = Vector2(18, 0)
+rotation = 4.71239
+emitting = false
+amount = 12
+process_material = SubResource("ParticleProcessMaterial_8f2xg")
+lifetime = 0.3
+explosiveness = 0.26
+randomness = 1.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionDetection"]
-position = Vector2(0, 2)
-shape = SubResource("RectangleShape2D_ivl4d")
+[node name="DebugLabel" type="Label" parent="."]
+z_index = 2
+offset_left = -51.0
+offset_top = 18.0
+offset_right = -11.0
+offset_bottom = 41.0
+theme = ExtResource("38_sekb7")
+
+[node name="Collision detectors" type="Node" parent="."]
 
 [node name="BlockBelowChecker" type="Area2D" parent="."]
 position = Vector2(0, 14)
@@ -346,25 +368,14 @@ position = Vector2(1.5, -1.5)
 shape = SubResource("RectangleShape2D_jj50k")
 debug_color = Color(0.43653, 0.59732, 0.154954, 0.42)
 
-[node name="DrillingParticles" type="GPUParticles2D" parent="."]
-z_index = 1
-position = Vector2(18, 0)
-rotation = 4.71239
-emitting = false
-amount = 12
-process_material = SubResource("ParticleProcessMaterial_8f2xg")
-lifetime = 0.3
-explosiveness = 0.26
-randomness = 1.0
+[node name="Detector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 12
 
-[node name="DebugLabel" type="Label" parent="."]
-z_index = 2
-offset_left = -51.0
-offset_top = 18.0
-offset_right = -11.0
-offset_bottom = 41.0
-theme = ExtResource("38_sekb7")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detector"]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_ivl4d")
 
-[connection signal="body_entered" from="CollisionDetection" to="." method="_on_player_collider_body_entered"]
 [connection signal="body_shape_entered" from="BlockBelowChecker" to="." method="_on_block_below_checker_body_shape_entered"]
 [connection signal="body_shape_exited" from="BlockBelowChecker" to="." method="_on_block_below_checker_body_shape_exited"]
+[connection signal="body_entered" from="Detector" to="." method="_on_detector_body_entered"]
