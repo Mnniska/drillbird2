@@ -10,6 +10,7 @@ var playerStatus:playerStatusEnum = playerStatusEnum.DIG:
 		playerStatusChanged.emit()
 
 var playerMoney:int=0
+var totalExperienceGained:int=0 #set at startup to loaded in value
 var playerHealth:int=2 #This should be loaded in depending on current upgrade lvl in future
 
 signal upgradeChange_Health
@@ -59,8 +60,9 @@ var upgradeLevel_inventory:int=0:
 		upgradeLevel_inventory=value
 		upgradeChange_Inventory.emit()
 
-
-
+func GivePlayerMoney(value:int):
+	totalExperienceGained+=value
+	playerMoney+=value
 
 func SetPlayerUpgradeLevel(upgradeType:typeEnum,_upgradeLevel:int):
 	match upgradeType:

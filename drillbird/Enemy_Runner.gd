@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-
+@export var collType:abstract_collidable
 const SPEED = 50.0
 const JUMP_VELOCITY = -400.0
 var direction:float=1
@@ -26,6 +26,10 @@ func _physics_process(delta: float) -> void:
 func UpdateAnimations():
 
 	$AnimatedSprite2D.flip_h=direction <0
+
+func GetCollType():
+	return collType
+	
 
 func _on_timer_timeout() -> void:
 	
