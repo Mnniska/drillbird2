@@ -340,8 +340,6 @@ offset_right = -11.0
 offset_bottom = 41.0
 theme = ExtResource("38_sekb7")
 
-[node name="Collision detectors" type="Node" parent="."]
-
 [node name="BlockBelowChecker" type="Area2D" parent="."]
 position = Vector2(0, 14)
 collision_layer = 0

@@ -311,7 +311,7 @@ func LoseInvincibility():
 		
 	invincible=false
 	$AnimatedSprite2D.self_modulate=Color(Color.WHITE,1)
-	var collisions:Array[Node2D]= $"Collision detectors/Detector".get_overlapping_bodies()
+	var collisions:Array[Node2D]= $Detector.get_overlapping_bodies()
 	
 	if collisions.size()>0:
 		var colltype:abstract_collidable
@@ -390,9 +390,7 @@ func _on_block_below_checker_body_shape_entered(body_rid: RID, body: Node2D, bod
 		playerIsOnRightEdge=false
 		playerIsOnLeftEdge=false
 
-	#	$DebugLabel.text="On edge: false"
-		
-	
+
 	pass # Replace with function body.
 
 

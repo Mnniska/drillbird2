@@ -4,13 +4,14 @@ extends Node2D
 @onready var inventory = $"../Camera2D/InventoryHandler"
 @onready var seller=$"../Camera2D/InventoryHandler"
 @onready var moneyUI=$"../Camera2D/CashHolder/cashNumber"
-@onready var animSleep=$birdySleep
+@onready var animSleep=$Eggs/BirdySleepPositions/birdySleep
 @onready var Player=$"../Player"
 @onready var Shop = $"../Camera2D/ShopHandler"
 @onready var LightHandler=$"../Camera2D/LightHandler"
 @onready var Camera=$"../Camera2D"
 @onready var CameraLerpPosition=$CameraLerpPosition
 @onready var HealthHandler=$"../Camera2D/HealthUIHandler"
+@onready var EggHandler =$Eggs
 
 
 enum states{IDLE,SELL,RESTPOSSIBLE,SLEEP}
@@ -67,9 +68,10 @@ func UpdateButtons():
 			SellButton.hide()
 
 func SellOres():
-	GlobalVariables.playerMoney+= seller.SellOres()
+	GlobalVariables.GivePlayerMoney( seller.SellOres())
 	print_debug("Player now has "+str(GlobalVariables.playerMoney)+" money!")
-	moneyUI.text=str(GlobalVariables.playerMoney)+" xp"
+	EggHandler.UpdateSize()
+	
 
 func GoToBed():
 	GlobalVariables.playerStatus=GlobalVariables.playerStatusEnum.SHOP
