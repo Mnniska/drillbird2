@@ -6,7 +6,7 @@ signal newTileCrack
 
 var animstate=""
 enum Directions {LEFT, RIGHT, UP, DOWN}
-enum States {IDLE, DRILLING, AIR, DEAD, DAMAGE}
+enum States {IDLE, DRILLING, AIR, DEAD, DAMAGE, DEBUG_GHOST}
 var state = States.IDLE
 
 var facingDir= Directions.RIGHT
@@ -69,13 +69,26 @@ func _physics_process(delta: float) -> void:
 		DealPlayerDamage(1)
 	if Input.is_action_just_pressed("addLight"):
 		healthManager.RefillHealth()
-	
+		
+	if Input.is_action_just_pressed("debug_1"):
+		
+		if state==States.DEBUG_GHOST:
+			SetDebugMoveActive(false)
+		else:
+			SetDebugMoveActive(true)
+		
+		
 	#skips player physics update if in shop
 	if GlobalVariables.playerStatus==GlobalVariables.playerStatusEnum.SHOP:
 		return
 		
 		
 	var newanim=animstate
+	
+	if state==States.DEBUG_GHOST:
+		DebugGhostMovement(delta,newanim)
+		move_and_slide()
+		return
 	
 	if !state==States.DAMAGE and !state==States.DEAD:
 		newanim=RegularMovement(delta,newanim)
@@ -90,6 +103,7 @@ func _physics_process(delta: float) -> void:
 		invincibilityCounter+=delta
 		if invincibilityCounter>invincibilityTime:
 			LoseInvincibility()
+	
 
 
 	move_and_slide()
@@ -120,6 +134,33 @@ func DeathMovement(delta:float,currentAnim:String):
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	velocity.x = move_toward(velocity.x, 0, SPEED)
+	
+func SetDebugMoveActive(active:bool):
+	
+	if active:
+		#If mode is not active yet, perform first time setup
+		if state!=States.DEBUG_GHOST:
+			state=States.DEBUG_GHOST
+			collider_airborne.disabled=true
+			collider_grounded.disabled=true
+			
+			$GhostModeInfo.show()
+	else:
+		if state==States.DEBUG_GHOST:
+			collider_airborne.disabled=false
+			$GhostModeInfo.hide()
+			state=States.IDLE
+
+func DebugGhostMovement(delta:float,currentAnim:String):
+
+	
+	var directionX := Input.get_axis("left", "right")
+	var directionY:=Input.get_axis("up","down")
+	
+	velocity.x=directionX*SPEED
+	velocity.y=directionY*SPEED
+	
+	pass
 
 func RegularMovement(delta:float,currentAnim:String):
 	var newanim=currentAnim
@@ -399,7 +440,7 @@ func _on_detector_body_entered(body: Node2D) -> void:
 	
 	#"match collider:
 	if collider.type==collider.types.ENEMY:
-		if !invincible:
+		if !invincible && state!=States.DEBUG_GHOST:
 			DealPlayerDamage(1)
 	
 	if collider.type==collider.types.ORE:

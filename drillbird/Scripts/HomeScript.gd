@@ -69,6 +69,7 @@ func UpdateButtons():
 
 func SellOres():
 	GlobalVariables.GivePlayerMoney( seller.SellOres())
+	moneyUI.text=str(GlobalVariables.playerMoney)+"xp"
 	print_debug("Player now has "+str(GlobalVariables.playerMoney)+" money!")
 	EggHandler.UpdateSize()
 	
