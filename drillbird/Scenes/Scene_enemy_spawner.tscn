@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://chusq25ru0dl6"]
+
+[ext_resource type="Script" path="res://Scripts/enemy_spawner.gd" id="1_pp5rb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0p57p"]
+radius = 400.0
+
+[node name="EnemySpawner" type="Node2D"]
+script = ExtResource("1_pp5rb")
+
+[node name="SpawnDespawnRadius" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnDespawnRadius"]
+shape = SubResource("CircleShape2D_0p57p")
+
+[node name="DespawnTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="OnScreenNotifier" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="body_shape_entered" from="SpawnDespawnRadius" to="." method="_on_spawn_despawn_radius_body_shape_entered"]
+[connection signal="body_shape_exited" from="SpawnDespawnRadius" to="." method="_on_spawn_despawn_radius_body_shape_exited"]
+[connection signal="timeout" from="DespawnTimer" to="." method="_on_despawn_timer_timeout"]
+[connection signal="screen_entered" from="OnScreenNotifier" to="." method="_on_on_screen_notifier_screen_entered"]
+[connection signal="screen_exited" from="OnScreenNotifier" to="." method="_on_on_screen_notifier_screen_exited"]
