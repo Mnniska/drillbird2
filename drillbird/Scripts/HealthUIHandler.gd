@@ -30,7 +30,9 @@ func UpgradeHealth():
 	pass
 
 func HealthSetup():
-	
+	if GlobalVariables.upgradeLevel_health >HealthUpgrades.items.size()-1:
+		GlobalVariables.upgradeLevel_health=HealthUpgrades.items.size()-1
+		
 	GlobalVariables.playerHealth=HealthUpgrades.items[GlobalVariables.upgradeLevel_health].power
 	var HeartAmount:int = HealthUpgrades.items[GlobalVariables.upgradeLevel_health].power
 	var offset:int=11

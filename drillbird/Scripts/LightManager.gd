@@ -129,6 +129,17 @@ func _process(delta: float) -> void:
 			pass
 	pass
 	
+func DepleteLight():
+	
+	time_Countdown=0
+	darknessClose=true
+	for n in lightBulbArray:
+		n.SetActive(false)
+	PlayerLight.SetLight(0)
+	LightSlider.value=0
+
+	UpdatePlayerLightStatus()
+	
 func RefillLight():
 	
 
@@ -143,14 +154,6 @@ func RefillLight():
 	UpdatePlayerLightStatus()
 
 func handleInputs():
-
-	if Input.is_action_just_pressed('addLight'):
-		RefillLight()
-
-		pass
-
-	if Input.is_action_just_pressed('removeLight'):
-		pass
 	
 	pass # Replace with function body.
 

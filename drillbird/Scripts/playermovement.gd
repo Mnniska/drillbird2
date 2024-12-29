@@ -6,7 +6,7 @@ signal newTileCrack
 
 var animstate=""
 enum Directions {LEFT, RIGHT, UP, DOWN}
-enum States {IDLE, DRILLING, AIR, DEAD, DAMAGE, DEBUG_GHOST}
+enum States {IDLE, DRILLING, AIR, DEAD, DAMAGE, DEBUG_GHOST,PAUSE}
 var state = States.IDLE
 
 var facingDir= Directions.RIGHT
@@ -76,19 +76,29 @@ func _physics_process(delta: float) -> void:
 			SetDebugMoveActive(false)
 		else:
 			SetDebugMoveActive(true)
+
+	if Input.is_action_just_pressed("debug_2"):
 		
+		if !state==States.PAUSE:
+			state=States.PAUSE
+		else:
+			state=States.IDLE	
 		
 	#skips player physics update if in shop
 	if GlobalVariables.playerStatus==GlobalVariables.playerStatusEnum.SHOP:
 		return
 		
-		
+	if state==States.PAUSE:
+		return
+
 	var newanim=animstate
 	
 	if state==States.DEBUG_GHOST:
 		DebugGhostMovement(delta,newanim)
 		move_and_slide()
 		return
+	
+
 	
 	if !state==States.DAMAGE and !state==States.DEAD:
 		newanim=RegularMovement(delta,newanim)
