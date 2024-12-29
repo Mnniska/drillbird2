@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=4 uid="uid://d2wv7igie5stg"]
+[gd_scene load_steps=81 format=4 uid="uid://d2wv7igie5stg"]
 
 [ext_resource type="TileSet" uid="uid://grpd2pyu7pgk" path="res://Resources/MainTileset.tres" id="1_1imtu"]
 [ext_resource type="PackedScene" uid="uid://0iy1qmgd0p6y" path="res://Scenes/TileCrack.tscn" id="2_c10yv"]
@@ -48,6 +48,8 @@
 [ext_resource type="Texture2D" uid="uid://bntebnpau35mm" path="res://Art/ui/UI_Death_background.png" id="41_o4kd7"]
 [ext_resource type="Theme" uid="uid://bfr5y4lo7m1ux" path="res://Resources/fontTheme.tres" id="42_e8s0s"]
 [ext_resource type="PackedScene" uid="uid://v1t8rfk5hqfa" path="res://Scenes/button.tscn" id="43_pwocf"]
+[ext_resource type="Script" path="res://Scenes/Playable Scenes/DebugMenu.gd" id="47_igpia"]
+[ext_resource type="Script" path="res://Scripts/abstract_debugMenuOption.gd" id="48_cl8sw"]
 [ext_resource type="PackedScene" uid="uid://dtl6pfqyw8jki" path="res://Scenes/Enemy_mullvad.tscn" id="50_ib3ux"]
 
 [sub_resource type="Gradient" id="Gradient_ekb11"]
@@ -119,6 +121,108 @@ colors = PackedColorArray(0, 0, 0, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_ea32y"]
 gradient = SubResource("Gradient_8jrys")
+
+[sub_resource type="Resource" id="Resource_enldq"]
+script = ExtResource("48_cl8sw")
+name = "health_subtract"
+options = Array[ExtResource("48_cl8sw")]([])
+isAction = true
+
+[sub_resource type="Resource" id="Resource_q0tbu"]
+script = ExtResource("48_cl8sw")
+name = "health_add"
+options = Array[ExtResource("48_cl8sw")]([])
+isAction = true
+
+[sub_resource type="Resource" id="Resource_plsyt"]
+script = ExtResource("48_cl8sw")
+name = "health_kill"
+options = Array[ExtResource("48_cl8sw")]([])
+isAction = true
+
+[sub_resource type="Resource" id="Resource_1hwib"]
+script = ExtResource("48_cl8sw")
+name = "health_upgrade"
+options = Array[ExtResource("48_cl8sw")]([])
+isAction = true
+
+[sub_resource type="Resource" id="Resource_kj4c3"]
+script = ExtResource("48_cl8sw")
+name = "health_downgrade"
+options = Array[ExtResource("48_cl8sw")]([])
+isAction = true
+
+[sub_resource type="Resource" id="Resource_dq3mr"]
+script = ExtResource("48_cl8sw")
+name = "health"
+options = Array[ExtResource("48_cl8sw")]([SubResource("Resource_enldq"), SubResource("Resource_q0tbu"), SubResource("Resource_plsyt"), SubResource("Resource_1hwib"), SubResource("Resource_kj4c3")])
+isAction = false
+
+[sub_resource type="Resource" id="Resource_7d6q1"]
+script = ExtResource("48_cl8sw")
+name = "light_refill"
+options = Array[ExtResource("48_cl8sw")]([])
+isAction = true
+
+[sub_resource type="Resource" id="Resource_xepq7"]
+script = ExtResource("48_cl8sw")
+name = "light_deplete"
+options = Array[ExtResource("48_cl8sw")]([])
+isAction = true
+
+[sub_resource type="Resource" id="Resource_phj2b"]
+script = ExtResource("48_cl8sw")
+name = "light_upgrade_add"
+options = Array[ExtResource("48_cl8sw")]([])
+isAction = true
+
+[sub_resource type="Resource" id="Resource_daxfr"]
+script = ExtResource("48_cl8sw")
+name = "light_upgrade_remove"
+options = Array[ExtResource("48_cl8sw")]([])
+isAction = true
+
+[sub_resource type="Resource" id="Resource_5ornm"]
+script = ExtResource("48_cl8sw")
+name = "light"
+options = Array[ExtResource("48_cl8sw")]([SubResource("Resource_7d6q1"), SubResource("Resource_xepq7"), SubResource("Resource_phj2b"), SubResource("Resource_daxfr")])
+isAction = false
+
+[sub_resource type="Resource" id="Resource_raht3"]
+script = ExtResource("48_cl8sw")
+name = "drill_upgrade_add"
+options = Array[ExtResource("48_cl8sw")]([])
+isAction = true
+
+[sub_resource type="Resource" id="Resource_8i8uc"]
+script = ExtResource("48_cl8sw")
+name = "drill_upgrade_remove"
+options = Array[ExtResource("48_cl8sw")]([])
+isAction = true
+
+[sub_resource type="Resource" id="Resource_v3nii"]
+script = ExtResource("48_cl8sw")
+name = "drill"
+options = Array[ExtResource("48_cl8sw")]([SubResource("Resource_raht3"), SubResource("Resource_8i8uc")])
+isAction = false
+
+[sub_resource type="Resource" id="Resource_xfofi"]
+script = ExtResource("48_cl8sw")
+name = "inventory_upgrade_add"
+options = Array[ExtResource("48_cl8sw")]([])
+isAction = true
+
+[sub_resource type="Resource" id="Resource_kod01"]
+script = ExtResource("48_cl8sw")
+name = "inventory_upgrade_remove"
+options = Array[ExtResource("48_cl8sw")]([])
+isAction = true
+
+[sub_resource type="Resource" id="Resource_77at3"]
+script = ExtResource("48_cl8sw")
+name = "inventory"
+options = Array[ExtResource("48_cl8sw")]([SubResource("Resource_xfofi"), SubResource("Resource_kod01")])
+isAction = false
 
 [node name="Node" type="Node"]
 
@@ -245,6 +349,7 @@ editable = false
 z_index = 2
 position = Vector2(-1, 4)
 rotation = 1.5708
+emitting = false
 amount = 12
 process_material = SubResource("ParticleProcessMaterial_71bqk")
 lifetime = 0.3
@@ -352,6 +457,21 @@ position = Vector2(5, 0)
 blend_mode = 2
 range_z_max = 0
 texture = ExtResource("36_yw5ht")
+
+[node name="DebugFunctionality" type="Node2D" parent="."]
+position = Vector2(164, -549)
+script = ExtResource("47_igpia")
+menu = Array[ExtResource("48_cl8sw")]([SubResource("Resource_dq3mr"), SubResource("Resource_5ornm"), SubResource("Resource_v3nii"), SubResource("Resource_77at3")])
+
+[node name="RichTextLabel" type="RichTextLabel" parent="DebugFunctionality"]
+offset_left = -128.0
+offset_top = -96.0
+offset_right = 127.0
+offset_bottom = 7.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource("42_e8s0s")
+text = "hello and welcome to debug"
 
 [node name="Handplaced objects" type="Node" parent="."]
 
