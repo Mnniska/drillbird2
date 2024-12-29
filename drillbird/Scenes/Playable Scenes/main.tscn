@@ -151,6 +151,7 @@ position = Vector2(-105, -44)
 [node name="Camera2D" type="Camera2D" parent="."]
 z_index = 2
 position = Vector2(164, -549)
+process_callback = 0
 script = ExtResource("15_sox0p")
 
 [node name="Darkness" type="PointLight2D" parent="Camera2D"]
@@ -373,103 +374,13 @@ rotation = -6.28319
 [node name="Sprites_HUBBackground" type="Node2D" parent="Handplaced objects"]
 z_index = -5
 texture_repeat = 2
-position = Vector2(0, -113)
 
-[node name="Sprite2D" type="Sprite2D" parent="Handplaced objects/Sprites_HUBBackground"]
-position = Vector2(-607, -25.4998)
+[node name="Sprite_HUBBackground" type="Sprite2D" parent="Handplaced objects/Sprites_HUBBackground"]
+texture_repeat = 2
+position = Vector2(0, 256)
 texture = ExtResource("37_6eo6t")
-
-[node name="Sprite2D" type="Sprite2D" parent="Handplaced objects/Sprites_HUBBackground/Sprite2D"]
-position = Vector2(512, -0.500198)
-texture = ExtResource("37_6eo6t")
-
-[node name="Sprite2D" type="Sprite2D" parent="Handplaced objects/Sprites_HUBBackground/Sprite2D/Sprite2D"]
-position = Vector2(512, -0.500198)
-texture = ExtResource("37_6eo6t")
-
-[node name="Sprite2D2" type="Sprite2D" parent="Handplaced objects/Sprites_HUBBackground/Sprite2D"]
-position = Vector2(0, 255.5)
-texture = ExtResource("37_6eo6t")
-
-[node name="Sprite2D" type="Sprite2D" parent="Handplaced objects/Sprites_HUBBackground/Sprite2D/Sprite2D2"]
-position = Vector2(512, -0.500198)
-texture = ExtResource("37_6eo6t")
-
-[node name="Sprite2D" type="Sprite2D" parent="Handplaced objects/Sprites_HUBBackground/Sprite2D/Sprite2D2/Sprite2D"]
-position = Vector2(512, -0.500198)
-texture = ExtResource("37_6eo6t")
-
-[node name="Sprite2D2" type="Sprite2D" parent="Handplaced objects/Sprites_HUBBackground/Sprite2D/Sprite2D2"]
-position = Vector2(0, 255.5)
-texture = ExtResource("37_6eo6t")
-
-[node name="Sprite2D" type="Sprite2D" parent="Handplaced objects/Sprites_HUBBackground/Sprite2D/Sprite2D2/Sprite2D2"]
-position = Vector2(512, -0.500198)
-texture = ExtResource("37_6eo6t")
-
-[node name="Sprite2D" type="Sprite2D" parent="Handplaced objects/Sprites_HUBBackground/Sprite2D/Sprite2D2/Sprite2D2/Sprite2D"]
-position = Vector2(512, -0.500198)
-texture = ExtResource("37_6eo6t")
-
-[node name="Sprite2D2" type="Sprite2D" parent="Handplaced objects/Sprites_HUBBackground/Sprite2D/Sprite2D2/Sprite2D2"]
-position = Vector2(0, 255.5)
-texture = ExtResource("37_6eo6t")
-
-[node name="Sprite2D" type="Sprite2D" parent="Handplaced objects/Sprites_HUBBackground/Sprite2D/Sprite2D2/Sprite2D2/Sprite2D2"]
-position = Vector2(512, -0.500198)
-texture = ExtResource("37_6eo6t")
-
-[node name="Sprite2D" type="Sprite2D" parent="Handplaced objects/Sprites_HUBBackground/Sprite2D/Sprite2D2/Sprite2D2/Sprite2D2/Sprite2D"]
-position = Vector2(512, -0.500198)
-texture = ExtResource("37_6eo6t")
-
-[node name="Sprite2D2" type="Sprite2D" parent="Handplaced objects/Sprites_HUBBackground/Sprite2D/Sprite2D2/Sprite2D2/Sprite2D2"]
-position = Vector2(0, 255.5)
-texture = ExtResource("37_6eo6t")
-
-[node name="Sprite2D" type="Sprite2D" parent="Handplaced objects/Sprites_HUBBackground/Sprite2D/Sprite2D2/Sprite2D2/Sprite2D2/Sprite2D2"]
-position = Vector2(512, -0.500198)
-texture = ExtResource("37_6eo6t")
-
-[node name="Sprite2D" type="Sprite2D" parent="Handplaced objects/Sprites_HUBBackground/Sprite2D/Sprite2D2/Sprite2D2/Sprite2D2/Sprite2D2/Sprite2D"]
-position = Vector2(512, -0.500198)
-texture = ExtResource("37_6eo6t")
-
-[node name="Sprite2D2" type="Sprite2D" parent="Handplaced objects/Sprites_HUBBackground/Sprite2D/Sprite2D2/Sprite2D2/Sprite2D2/Sprite2D2"]
-position = Vector2(0, 255.5)
-texture = ExtResource("37_6eo6t")
-
-[node name="Sprite2D" type="Sprite2D" parent="Handplaced objects/Sprites_HUBBackground/Sprite2D/Sprite2D2/Sprite2D2/Sprite2D2/Sprite2D2/Sprite2D2"]
-position = Vector2(512, -0.500198)
-texture = ExtResource("37_6eo6t")
-
-[node name="Sprite2D" type="Sprite2D" parent="Handplaced objects/Sprites_HUBBackground/Sprite2D/Sprite2D2/Sprite2D2/Sprite2D2/Sprite2D2/Sprite2D2/Sprite2D"]
-position = Vector2(512, -0.500198)
-texture = ExtResource("37_6eo6t")
-
-[node name="Sprite2D3" type="Sprite2D" parent="Handplaced objects/Sprites_HUBBackground/Sprite2D"]
-position = Vector2(0, -511.5)
-texture = ExtResource("37_6eo6t")
-
-[node name="Sprite2D" type="Sprite2D" parent="Handplaced objects/Sprites_HUBBackground/Sprite2D/Sprite2D3"]
-position = Vector2(512, -0.500198)
-texture = ExtResource("37_6eo6t")
-
-[node name="Sprite2D" type="Sprite2D" parent="Handplaced objects/Sprites_HUBBackground/Sprite2D/Sprite2D3/Sprite2D"]
-position = Vector2(512, -0.500198)
-texture = ExtResource("37_6eo6t")
-
-[node name="Sprite2D2" type="Sprite2D" parent="Handplaced objects/Sprites_HUBBackground/Sprite2D/Sprite2D3"]
-position = Vector2(0, 255.5)
-texture = ExtResource("37_6eo6t")
-
-[node name="Sprite2D" type="Sprite2D" parent="Handplaced objects/Sprites_HUBBackground/Sprite2D/Sprite2D3/Sprite2D2"]
-position = Vector2(512, -0.500198)
-texture = ExtResource("37_6eo6t")
-
-[node name="Sprite2D" type="Sprite2D" parent="Handplaced objects/Sprites_HUBBackground/Sprite2D/Sprite2D3/Sprite2D2/Sprite2D"]
-position = Vector2(512, -0.500198)
-texture = ExtResource("37_6eo6t")
+region_enabled = true
+region_rect = Rect2(9.76, 7.525, 1500, 2000)
 
 [node name="Torch6" parent="Handplaced objects" instance=ExtResource("37_jv1l8")]
 position = Vector2(-280, -168)
