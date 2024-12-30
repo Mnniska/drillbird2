@@ -332,14 +332,6 @@ lifetime = 0.3
 explosiveness = 0.26
 randomness = 1.0
 
-[node name="DebugLabel" type="Label" parent="."]
-z_index = 2
-offset_left = -51.0
-offset_top = 18.0
-offset_right = -11.0
-offset_bottom = 41.0
-theme = ExtResource("38_sekb7")
-
 [node name="BlockBelowChecker" type="Area2D" parent="."]
 position = Vector2(0, 14)
 collision_layer = 0
@@ -373,6 +365,24 @@ collision_mask = 12
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Detector"]
 position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_ivl4d")
+
+[node name="DebugLabel" type="Label" parent="."]
+z_index = 2
+offset_left = -51.0
+offset_top = 18.0
+offset_right = -11.0
+offset_bottom = 41.0
+theme = ExtResource("38_sekb7")
+
+[node name="GhostModeInfo" type="Label" parent="."]
+visible = false
+offset_left = -21.0
+offset_top = -22.0
+offset_right = 23.0
+offset_bottom = 1.0
+theme = ExtResource("38_sekb7")
+text = "Ghosting"
+horizontal_alignment = 1
 
 [connection signal="body_shape_entered" from="BlockBelowChecker" to="." method="_on_block_below_checker_body_shape_entered"]
 [connection signal="body_shape_exited" from="BlockBelowChecker" to="." method="_on_block_below_checker_body_shape_exited"]
