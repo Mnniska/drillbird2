@@ -7,14 +7,12 @@ var spawnedEnemy
 var spawnedEnemies:Array[Node2D]
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("interact"):
-		SpawnAllEnemies()
-	
-	if Input.is_action_just_pressed("drill"):
-		DespawnAndSaveEnemyPositions()
+	pass
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	SpawnAllEnemies()
+	enemyTilemap.hide()
 	pass # Replace with function body.
 
 func SpawnAllEnemies():
