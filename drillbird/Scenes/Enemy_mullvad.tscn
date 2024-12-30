@@ -10,6 +10,7 @@
 [sub_resource type="Resource" id="Resource_pbycp"]
 script = ExtResource("2_uo7ew")
 type = 1
+enemyID = 0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_khmiv"]
 size = Vector2(12, 14)

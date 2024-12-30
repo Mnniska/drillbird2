@@ -7,7 +7,7 @@
 [ext_resource type="Resource" uid="uid://dr8sc3eaf14j5" path="res://Resources/ore_region_1.tres" id="4_t4dgp"]
 [ext_resource type="Resource" uid="uid://ctpj8pean13fh" path="res://Resources/ore_region_2.tres" id="5_a807m"]
 [ext_resource type="Resource" uid="uid://d35o56m1lfg6p" path="res://Resources/ore_region_3.tres" id="6_ehj3h"]
-[ext_resource type="Resource" path="res://Resources/ore_region_4.tres" id="7_10mi7"]
+[ext_resource type="Resource" uid="uid://qb85vcxt0k8u" path="res://Resources/ore_region_4.tres" id="7_10mi7"]
 [ext_resource type="Script" path="res://Scripts/abstract_terrain_info.gd" id="8_mmgsk"]
 [ext_resource type="Resource" uid="uid://cq6ru2d4e7bgd" path="res://Resources/terrainInfo_dirt_1.tres" id="9_eqs1c"]
 [ext_resource type="Resource" uid="uid://b1vx03cr2okgm" path="res://Resources/terrainInfo_solid.tres" id="10_0hsbr"]
