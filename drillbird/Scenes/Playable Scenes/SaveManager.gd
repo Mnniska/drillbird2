@@ -1,5 +1,6 @@
 extends Node
 
+@onready var TileDestroyer=$TileCrack
 var save_file_path = "user://save/"
 var save_file_name="DrillbirdPlayerSave.tres"
 
@@ -7,7 +8,8 @@ var PlayerData=abstract_savegame.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	
+	LoadDestroyedTiles()
+
 	pass # Replace with function body.
 
 func _init() -> void:
@@ -36,11 +38,22 @@ func SaveGame():
 	PlayerData.money=GlobalVariables.playerMoney
 	PlayerData.totalMoneyGained=GlobalVariables.totalExperienceGained
 	
+	SaveEnvironment()
+	
 	ResourceSaver.save(PlayerData,save_file_path+save_file_name)
 	print_debug("game saved")
 
 	pass
-	
+
+func SaveEnvironment():
+	#This will include ores and enemies in the future as well
+	PlayerData.destroyed_tiles=TileDestroyer.GetDestroyedTiles()
+	pass
+
+func LoadDestroyedTiles():
+	TileDestroyer.OnLoadDestroyDugTiles(PlayerData.destroyed_tiles)
+	pass
+
 func LoadGame():
 	if ResourceLoader.load(save_file_path+save_file_name)!=null:
 		PlayerData=ResourceLoader.load(save_file_path+save_file_name)
@@ -53,7 +66,6 @@ func LoadGame():
 	
 func SetGlobalVariablesToLoadedGame():
 	
-
 	GlobalVariables.upgradeLevel_light=PlayerData.upgrade_light
 	GlobalVariables.upgradeLevel_health=PlayerData.upgrade_health
 	GlobalVariables.upgradeLevel_inventory=PlayerData.upgrade_inventory
@@ -62,6 +74,5 @@ func SetGlobalVariablesToLoadedGame():
 	GlobalVariables.playerHealth=PlayerData.health
 	GlobalVariables.playerMoney=PlayerData.money
 	GlobalVariables.totalExperienceGained=PlayerData.totalMoneyGained
-	
 	
 	pass

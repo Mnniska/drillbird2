@@ -13,5 +13,4 @@ class_name abstract_savegame
 @export var upgrade_health:int=0
 @export var upgrade_inventory:int=0
 
-func SaveVariables():
-	pass
+@export var destroyed_tiles:Array[Vector2i]
