@@ -14,3 +14,4 @@ class_name abstract_savegame
 @export var upgrade_inventory:int=0
 
 @export var destroyed_tiles:Array[Vector2i]
+@export var enemies_to_spawn:Array[abstract_enemy]

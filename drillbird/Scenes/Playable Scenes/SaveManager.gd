@@ -1,6 +1,7 @@
 extends Node
 
 @onready var TileDestroyer=$TileCrack
+@onready var EnemySpawner=$EnemySpawner
 var save_file_path = "user://save/"
 var save_file_name="DrillbirdPlayerSave.tres"
 
@@ -8,13 +9,16 @@ var PlayerData=abstract_savegame.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	verify_save_directory(save_file_path)
+	LoadGame()
 	LoadDestroyedTiles()
-
+	GlobalVariables.InitialSetup=false
+	
 	pass # Replace with function body.
 
 func _init() -> void:
-	verify_save_directory(save_file_path)
-	LoadGame()
+	pass
+	
 
 func _process(delta: float) -> void:
 	pass
@@ -45,6 +49,19 @@ func SaveGame():
 
 	pass
 
+func SaveEnemyPositions():
+	#This is currently NOT USED
+	PlayerData.enemies_to_spawn.clear()
+
+	for n in EnemySpawner.UpdateEnemySpawnLocations():
+		PlayerData.enemies_to_spawn.append(n)
+		
+	pass
+
+func LoadEnemyPositions():
+	#This is currently NOT USED
+	EnemySpawner.LoadEnemySpawns(PlayerData.enemies_to_spawn)
+
 func SaveEnvironment():
 	#This will include ores and enemies in the future as well
 	PlayerData.destroyed_tiles=TileDestroyer.GetDestroyedTiles()
@@ -55,13 +72,14 @@ func LoadDestroyedTiles():
 	pass
 
 func LoadGame():
+	ResourceLoader.CACHE_MODE_IGNORE
 	if ResourceLoader.load(save_file_path+save_file_name)!=null:
 		PlayerData=ResourceLoader.load(save_file_path+save_file_name)
 	SetGlobalVariablesToLoadedGame()
 	
 	
 	print_debug("game loaded")
-	GlobalVariables.InitialSetup=false
+	
 	pass
 	
 func SetGlobalVariablesToLoadedGame():

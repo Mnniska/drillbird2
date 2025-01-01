@@ -4,7 +4,13 @@ enum typeEnum{DRILL, INVENTORY, HEALTH, LIGHT}
 enum playerStatusEnum {DIG,SLEEP,SHOP,NEWDAY}
 signal playerStatusChanged
 
-var InitialSetup:bool=true
+signal SetupComplete
+var InitialSetup:bool=true:
+	get:
+		return InitialSetup
+	set(value):
+		InitialSetup=value
+		SetupComplete.emit()
 
 var playerStatus:playerStatusEnum = playerStatusEnum.DIG:
 	get:

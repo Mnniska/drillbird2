@@ -1,4 +1,6 @@
-extends CharacterBody2D
+extends Resource
 class_name abstract_enemy
 
-var spawnLocation:Vector2
+enum enemyTypes{MOLE,RUNNER}
+@export var type:enemyTypes
+var spawnLocation:Vector2i

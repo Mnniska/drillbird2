@@ -1,36 +1,74 @@
 extends Node2D
 @export var potentialEnemyStrings:Array[String]
 
-var spawnedEnemy
+
 @onready var enemyTilemap:TileMapLayer=$"../Tilemap_Enemies"
 
+
+
 var spawnedEnemies:Array[Node2D]
+
+var enemiesToSpawnList:Array[abstract_enemy]
 
 func _process(delta: float) -> void:
 	pass
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	SpawnAllEnemies()
-	enemyTilemap.hide()
+	GlobalVariables.SetupComplete.connect(GameStart)
 	pass # Replace with function body.
 
-func SpawnAllEnemies():
+#called from savemanager
+func GameStart():
 	
-	spawnedEnemies.clear()
+	GenerateEnemySpawnsFromTilemap()
+
+	SpawnAllEnemies()
+	enemyTilemap.hide()
+	#enemyTilemap.hide()
+	pass
+
+func LoadEnemySpawns(spawns:Array[abstract_enemy]):
+	
+	enemiesToSpawnList.clear()
+	for n in spawns:
+		enemiesToSpawnList.append(n)
+	
+	pass
+
+func GenerateEnemySpawnsFromTilemap():
+	#Should only be done if there is no save data
+	#Creates a new abstract_enemy per spawn location and adds it to a list
+	enemiesToSpawnList.clear()
 	var enemySpawnLocations = enemyTilemap.get_used_cells()
 
 	var index=0
 	for n in enemySpawnLocations:
 		var tile:TileData = enemyTilemap.get_cell_tile_data(enemySpawnLocations[index])
+		var newEnemy=abstract_enemy.new()
+		newEnemy.type=tile.get_custom_data("enemy_type")
+		newEnemy.spawnLocation=enemySpawnLocations[index]
+		enemiesToSpawnList.append(newEnemy)
+		index+=1
+			
+	return enemiesToSpawnList
+	
+
+func SpawnAllEnemies():
+	
+	#Spawns all enemies in the EnemiesToSpawn list. This list is loaded from savefile or setup during first play
+	
+	var index=0
+	for n in enemiesToSpawnList:
 		
-		
-		var enemy = load(potentialEnemyStrings[tile.get_custom_data("enemy_type")])
+		var enemy = load(potentialEnemyStrings[enemiesToSpawnList[index].type])
 		var node = enemy.instantiate()
-		spawnedEnemies.append(node)		
-		
-		var globalSpawnPos= enemyTilemap.map_to_local(enemySpawnLocations[index]) 
+		spawnedEnemies.append(node)	
+		print_debug("Spawnpos: "+str(enemiesToSpawnList[index].spawnLocation))
+
+		var globalSpawnPos= enemyTilemap.map_to_local(enemiesToSpawnList[index].spawnLocation) 
 		var localSpawnPos = self.to_local(globalSpawnPos)
+		
 		
 		node.transform.origin = localSpawnPos
 		add_child(node)
@@ -38,29 +76,33 @@ func SpawnAllEnemies():
 			
 	pass
 
-func SpawnEnemy(pos:Vector2,enemyNumber:int):
+
+func UpdateEnemySpawnLocations():
 	
-
-
-	pass
-
-func DespawnAndSaveEnemyPositions():
+	var index=0
 	for n in spawnedEnemies:
 		
 		#This SHOULD return the enemy position in tilemap coordinates
-		var spawnpos:Vector2=enemyTilemap.local_to_map(enemyTilemap.to_local(n.GetSpawnPosition()))
-		var newpos:Vector2=enemyTilemap.local_to_map(enemyTilemap.to_local(n.position))
+		#var spawnpos:Vector2i=enemiesToSpawnList[index].spawnLocation
+		var spawnpos2:Vector2i=n.GetSpawnPosition()
+		
+		
+		var spawnpos:Vector2i=enemyTilemap.local_to_map(enemyTilemap.to_local(n.GetSpawnPosition()))
+		var newpos:Vector2i=enemyTilemap.local_to_map(enemyTilemap.to_local(n.position))
+		#Convert spawnpos to tilemap coordinates 
 		
 		if spawnpos!=newpos:
 			
+			#Updates enemy new spawn position according to its current position
+			#Assumes enemiestospawn list is same length as spawned enemies
+			
 			MoveTileToNewPos(spawnpos,newpos)
-			enemyTilemap.set_cell(spawnpos,-1,Vector2(-1,-1),-1)
+			enemiesToSpawnList[index].spawnLocation=n.position
 			
-			
-		n.queue_free()
 		
 		pass
-	
+		index+=1
+	return enemiesToSpawnList
 	pass
 	
 func MoveTileToNewPos(oldpos:Vector2,newpos:Vector2):
