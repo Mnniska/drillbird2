@@ -184,7 +184,8 @@ func AddLightbulbRequest():
 	UpdateLightbulbLocations()
 
 func upgradeChangeLight():
-	AddLightbulbRequest()
+	if !GlobalVariables.InitialSetup:
+		AddLightbulbRequest()
 	pass
 
 func lightsourceChangeLight():

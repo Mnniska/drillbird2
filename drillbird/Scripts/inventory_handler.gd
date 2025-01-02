@@ -8,6 +8,9 @@ The handler is also called when the player wants to drop something
 TLDR inventory_handler manages inventory size as well as adding and removing ores from the player's inventory
 """
 
+@export var upgradetree_inventory:abstract_purchasable
+
+
 var inventorySlots : Array[Node2D]
 #var inventorySlots =Array[preload("res://Scenes/UI_InventorySlot.tscn")]
 var slotAmount:int=2
@@ -39,7 +42,7 @@ func _ready() -> void:
 	
 	#Todo: Read the inventoryStat from globalVariables and figure out how much the player should have based on that
 	
-	for n in slotAmount:
+	for n in upgradetree_inventory.items[GlobalVariables.upgradeLevel_inventory].power:
 		var scene = load("res://Scenes/UI_InventorySlot.tscn") 
 		var node = scene.instantiate()
 		var offset= Vector2(-16,-16)
@@ -90,5 +93,6 @@ func AddSlotRequest():
 
 
 func upgradeChangeInventory():
-	AddSlotRequest()
+	if !GlobalVariables.InitialSetup:
+		AddSlotRequest()
 	pass # Replace with function body.

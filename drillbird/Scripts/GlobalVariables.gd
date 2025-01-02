@@ -1,7 +1,11 @@
 extends Node
+
 enum typeEnum{DRILL, INVENTORY, HEALTH, LIGHT}
 enum playerStatusEnum {DIG,SLEEP,SHOP,NEWDAY}
 signal playerStatusChanged
+
+var InitialSetup:bool=true
+
 var playerStatus:playerStatusEnum = playerStatusEnum.DIG:
 	get:
 		return playerStatus
@@ -9,20 +13,18 @@ var playerStatus:playerStatusEnum = playerStatusEnum.DIG:
 		playerStatus=value
 		playerStatusChanged.emit()
 
-var playerMoney:int=0
+signal playerMoneyChange
+var playerMoney:int=0:
+	get:
+		return playerMoney
+	set(value):
+		playerMoney=value
+		playerMoneyChange.emit()
+		
 var totalExperienceGained:int=0 #set at startup to loaded in value
 var playerHealth:int=2 #This should be loaded in depending on current upgrade lvl in future
 
-signal upgradeChange_Health
-var upgradeLevel_health:int=0:
-	get:
-		return upgradeLevel_health
-	set(value):
-		upgradeLevel_health=value
-		upgradeChange_Health.emit()
 
-
-var upgradeLevel_drill:int=0
 
 #LIGHT
 signal playerLightStatusChange
@@ -42,6 +44,25 @@ var amountOfLightsourcesPlayerIsIn:int=0:
 	set(value):
 		amountOfLightsourcesPlayerIsIn=value	
 		lightSourceChange.emit()
+
+
+#-----UPGRADES-----
+#The save game will only modify this file - the rest of the project will listen to it
+signal upgradeChange_Health
+var upgradeLevel_health:int=0:
+	get:
+		return upgradeLevel_health
+	set(value):
+		upgradeLevel_health=value
+		upgradeChange_Health.emit()
+
+signal upgradeChange_Drill
+var upgradeLevel_drill:int=0:
+	get:
+		return upgradeLevel_drill
+	set(value):
+		upgradeLevel_drill=value
+		upgradeChange_Drill.emit()
 
 signal upgradeChange_Light
 var upgradeLevel_light:int=0:
@@ -89,3 +110,7 @@ func GetPlayerUpgradeLevel(upgradeType:typeEnum):
 			return upgradeLevel_light
 	
 	pass
+	
+func LoadSaveData():
+	pass
+	

@@ -154,6 +154,11 @@ func ExecuteAction(action:String):
 			var lightE=GlobalVariables.typeEnum.LIGHT
 			var upgrade=GlobalVariables.GetPlayerUpgradeLevel(lightE)+1
 			GlobalVariables.SetPlayerUpgradeLevel(lightE,upgrade)
+			
+		"save_game":
+			$"../..".SaveGame()
+		"reset_save_data":
+			$"../..".ResetSaveData()
 
 			
 	pass

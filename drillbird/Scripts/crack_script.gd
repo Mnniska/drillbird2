@@ -12,6 +12,7 @@ signal PlayerDrillingSolid
 @export var minimumDigTime:float = 0.6
 @export var GameTerrains:Array[abstract_terrain_info]
 
+var destroyed_tiles:Array[Vector2i]
 var affectedTile:TileData
 var cellLocation:Vector2i
 var isDrillingActive:bool=false
@@ -104,14 +105,36 @@ func abortDig():
 	cracksprite.hide()
 	
 
+func GetDestroyedTiles():
+	return destroyed_tiles
+	
+func OnLoadDestroyDugTiles(tiles:Array[Vector2i]):
+	destroyed_tiles=tiles
+	
+	for n in destroyed_tiles:
+		DestroyTile(n)
+		
+		if oreTilemap.get_cell_tile_data(n):
+			oreTilemap.set_cell(n,-1,Vector2i(-1,-1),-1)
+
+		
+		pass
+	
+	pass
+
+func DestroyTile(position_in_grid:Vector2i):
+	var cells:Array[Vector2i]
+	cells.append(position_in_grid)
+	tilemap.set_cells_terrain_connect(cells, 0, 0,false)
+	tilemap.set_cell (position_in_grid,-1,Vector2i(-1,-1),-1)
+	tilemap.set_cells_terrain_connect(cells, 0, -1,false)
+	pass
+
 func _on_digging_countdown_timeout() -> void:
 	
 	#Remove target cell and make neighbors reconnect to one another
-	var cells:Array[Vector2i]
-	cells.append(cellLocation)
-	tilemap.set_cells_terrain_connect(cells, 0, 0,false)
-	tilemap.set_cell (cellLocation,-1,Vector2i(-1,-1),-1)
-	tilemap.set_cells_terrain_connect(cells, 0, -1,false)
+	DestroyTile(cellLocation)
+	destroyed_tiles.append(cellLocation)
 
 #● Vector2i get_neighbor_cell(coords: Vector2i, neighbor: TileSet.CellNeighbor) const
 	

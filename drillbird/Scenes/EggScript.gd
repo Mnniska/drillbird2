@@ -31,13 +31,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	
-	if Input.is_action_just_pressed("debug_2"):
-		GlobalVariables.GivePlayerMoney(5)
-		UpdateSize()
-	
-	pass
+
 
 func SetBirdyVisible(visible:bool):
 	if visible:

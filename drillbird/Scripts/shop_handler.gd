@@ -15,8 +15,13 @@ var currentSelection:int=0
 # Called when the node enters the scene tree for the first time.
 
 func _ready():
+	GlobalVariables.playerMoneyChange.connect(PlayerMoneyChanged)
+	
 	SetupShop()
 
+func PlayerMoneyChanged():
+	moneyUI.text=str(GlobalVariables.playerMoney)+" xp"
+	pass
 func SetupShop():
 	var index:int=0
 	moneyUI.text=str(GlobalVariables.playerMoney)+" xp"
