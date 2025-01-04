@@ -1,10 +1,15 @@
 extends TileMapLayer
 @onready var decotilemap=$"."
-var observers:Array[Node2D]
+@onready var tilemap_environment=$"../TilemapEnvironment"
+@onready var tileDestroyer=$"../TileCrack"
+var observers:Array[abstract_decoration]
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	
+	GenerateTilemapObservers()
+	tileDestroyer.TileDestroyed.connect(CheckDecorationDependenciesForPosition)
 	
 	#TODO:
 	"""
@@ -29,6 +34,25 @@ func _process(delta: float) -> void:
 	pass
 
 
+func CheckDecorationDependenciesForPosition(pos:Vector2i):
+	for n in isAnyObserverAtPosition(pos):
+		RemoveCell(n)
+	
+	pass
+
+func isAnyObserverAtPosition(pos:Vector2i):
+	
+	var affectedObservers:Array[abstract_decoration]
+	
+	for n in observers:
+		if n.active:
+			if pos.y==n.GetDependencyPosition().y:
+				if pos.x==n.GetDependencyPosition().x:
+					affectedObservers.append(n)
+		
+	return affectedObservers
+	
+
 func GenerateTilemapObservers():
 	#Should only be done if there is no save data
 	#Creates a new abstract_enemy per spawn location and adds it to a list
@@ -37,10 +61,29 @@ func GenerateTilemapObservers():
 
 	var index=0
 	for n in decorationLocations:
-		var tile:TileData = decotilemap.get_cell_tile_data(decorationLocations[index])
-		var newEnemy=abstract_enemy.new()
-		newEnemy.type=tile.get_custom_data("enemy_type")
-		newEnemy.spawnLocation=decorationLocations[index]
-		observers.append(newEnemy)
+		var tile:TileData = decotilemap.get_cell_tile_data(n)
+		var newObserver=abstract_decoration.new()
+		newObserver.dependencyVector=tile.get_custom_data("dir_dependency")
+		newObserver.deco_position=decorationLocations[index]
+		
+		#if new cell has a valid dependency tile, add it to the list. If not - remove it
+		if IsDecorationValid(newObserver):
+			observers.append(newObserver)
+		else:
+			RemoveCell(newObserver)
+
 		index+=1
 			
+func IsDecorationValid(tileToCheck:abstract_decoration):
+	if tilemap_environment.get_cell_tile_data(tileToCheck.GetDependencyPosition())==null:
+		return false
+	else:
+		return true
+		
+	#var tile:TileData=
+
+func RemoveCell(tile:abstract_decoration):
+	
+	decotilemap.set_cell (tile.deco_position,-1,Vector2i(-1,-1),-1)
+	tile.active=false
+	

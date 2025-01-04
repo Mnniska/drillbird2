@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="abstract_ore_region" load_steps=6 format=3 uid="uid://dr8sc3eaf14j5"]
 
-[ext_resource type="Script" path="res://Scripts/abstract_ore.gd" id="1_yeair"]
-[ext_resource type="Script" path="res://Scripts/abstract_ore_region.gd" id="2_1u5fv"]
+[ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_ore.gd" id="1_yeair"]
+[ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_ore_region.gd" id="2_1u5fv"]
 [ext_resource type="Resource" uid="uid://diuura7tbgl01" path="res://Resources/ore_1.tres" id="2_bhmdj"]
 [ext_resource type="Resource" uid="uid://bk0jhhovlw4gg" path="res://Resources/ore_2.tres" id="3_j3twf"]
 [ext_resource type="Resource" uid="uid://bir1i467inivj" path="res://Resources/ore_3.tres" id="4_58jr7"]

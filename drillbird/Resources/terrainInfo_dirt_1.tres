@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="abstract_terrain_info" load_steps=2 format=3 uid="uid://cq6ru2d4e7bgd"]
 
-[ext_resource type="Script" path="res://Scripts/abstract_terrain_info.gd" id="1_uoo03"]
+[ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_terrain_info.gd" id="1_uoo03"]
 
 [resource]
 script = ExtResource("1_uoo03")

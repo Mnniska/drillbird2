@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="abstract_collidable" load_steps=2 format=3 uid="uid://ns6ggxikg7cb"]
 
-[ext_resource type="Script" path="res://Scripts/abstract_collidable.gd" id="1_xmxpc"]
+[ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_collidable.gd" id="1_xmxpc"]
 
 [resource]
 script = ExtResource("1_xmxpc")

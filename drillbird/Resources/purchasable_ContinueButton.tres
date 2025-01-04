@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="abstract_purchasable" load_steps=3 format=3 uid="uid://e48vh7omjgqd"]
 
-[ext_resource type="Script" path="res://Scripts/abstract_item_upgrade.gd" id="2_sir5s"]
-[ext_resource type="Script" path="res://Scripts/abstract_purchasable.gd" id="3_3mnxg"]
+[ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_item_upgrade.gd" id="2_sir5s"]
+[ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_purchasable.gd" id="3_3mnxg"]
 
 [resource]
 script = ExtResource("3_3mnxg")

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="abstract_ore" load_steps=3 format=3 uid="uid://bk0jhhovlw4gg"]
 
-[ext_resource type="Script" path="res://Scripts/abstract_ore.gd" id="1_4ie30"]
+[ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_ore.gd" id="1_4ie30"]
 [ext_resource type="Texture2D" uid="uid://c1a6277712y7w" path="res://Art/Collectibles/ore_2_blue.png" id="2_xln1v"]
 
 [resource]
