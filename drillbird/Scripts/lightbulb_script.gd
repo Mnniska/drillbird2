@@ -18,3 +18,6 @@ func SetActive(_active:bool):
 		texture = tex_active
 	else:
 		texture = tex_off
+
+func SetDebugText(str:String):
+	$Label.text=str

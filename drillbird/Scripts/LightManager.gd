@@ -8,7 +8,7 @@ signal signal_pitch_dark()
 var lightBulbArray:Array[Sprite2D]
 
 #Time variables
-@export var time_TimerLength:int=3
+@export var time_TimerLength:int=135
 @export var time_DrillMultiplier:float=2
 #todo: Figure out if this is how you wanna do time
 var time_Countdown:float
@@ -22,7 +22,8 @@ var outOfLight:bool=false
 var playerIsDrillingTile:bool=false
 
 @onready var PlayerLight=$"../../PlayerDarkness"
-@onready var LightSlider:Slider=$UI_LightSlider
+@onready var LightSlider:Slider=$LightSliderParent/UI_LightSlider
+@onready var DrillLightParticle=$LightSliderParent/Particle_DrillLight
 
 
 # Called when the node enters the scene tree for the first time.
@@ -30,9 +31,13 @@ func _ready() -> void:
 	GlobalVariables.upgradeChange_Light.connect(upgradeChangeLight)
 	GlobalVariables.lightSourceChange.connect(lightsourceChangeLight)
 	
-	time_Countdown=time_TimerLength
+	#wait for game data to be loaded b4 accessing save data to set up light
+	GlobalVariables.SetupComplete.connect(SetupLightFunctionality)
 	
-	#create lightbulbs depending on player upgrade lvl
+func SetupLightFunctionality():
+	time_Countdown=time_TimerLength
+
+		#create lightbulbs depending on player upgrade lvl
 	for n in GlobalVariables.upgradeLevel_light:
 		var scene = load("res://Scenes/lightbulb.tscn") 
 		var node = scene.instantiate()
@@ -50,43 +55,62 @@ func _ready() -> void:
 	#First Setup stuff - might move to its own function
 	PlayerLight.SetLight(1)
 	LightSlider.value=100
-
-
+	pass
 
 func UpdateLightbulbLocations():
-	var offset:int=0
-	offset=(floor(lightBulbArray.size())/2)*8
-	offset-=4 #accounts for the pivot not being at the side
-	if(lightBulbArray.size()%2>0):
-		offset+=4
-		pass
-	var index:int =0 
-	for n in lightBulbArray:
-		n.position.x=self.position.x+ offset-(8*index)
-		index+=1
+	var lightSliderOffset:int=14
+	var bulbOffset=8
 	
+	var sliderlocation:int=0
+	var startingOffset:int=((lightBulbArray.size()*bulbOffset)+lightSliderOffset)/2
+
+	
+	var index:int =0 
+	
+	for n in range(lightBulbArray.size(),0,-1):
+		var lOffset:int=0
+		if lightBulbArray[n-1].active:
+			sliderlocation+=bulbOffset
+		else:
+			lOffset=lightSliderOffset
+		
+		lightBulbArray[n-1].position.x=-startingOffset+ (bulbOffset*index) + lOffset
+		lightBulbArray[n-1].position.y=0
+		index+=1
+
+	$LightSliderParent.position.x=-startingOffset+sliderlocation-3
+
 func GetNextLightbulb():
 	
 	var foundBulb:bool=false
+	
+	
+	for n in range(0,lightBulbArray.size(),1):
+	
+			break
+	
 	for n in lightBulbArray:
 		if n.active:
 			n.SetActive(false)
 			time_Countdown=time_TimerLength
 			foundBulb=true
+			
 			break
 	
 	for n in lightBulbArray:
 		if n.active:
+			UpdateLightbulbLocations()
 			return true
 	
 	darknessClose=true
+	UpdateLightbulbLocations()
 	return foundBulb
 
 func SetLightPosition():
-	var offset:Vector2=Vector2(-40,5)
-	var size=76
+	var offset:Vector2=Vector2(0,0)
+	var size=12
 	var progress = size*(LightSlider.value/100)
-	$Particle_DrillLight.position=offset+Vector2(progress,0)
+	DrillLightParticle.position=offset+Vector2(progress,0)
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -100,9 +124,9 @@ func _process(delta: float) -> void:
 		if playerIsDrillingTile:
 			multiplier=time_DrillMultiplier
 			SetLightPosition()
-			$Particle_DrillLight.emitting=true
+			$LightSliderParent/Particle_DrillLight.emitting=true
 		else:
-			$Particle_DrillLight.emitting=false
+			$LightSliderParent/Particle_DrillLight.emitting=false
 		time_Countdown-=delta*multiplier
 		
 
@@ -112,7 +136,12 @@ func _process(delta: float) -> void:
 			internal_upd_counter=0
 			
 			var progress=float(time_Countdown/time_TimerLength)
-			LightSlider.value=progress*100
+			
+			#The light sliders last 10% is hidden behind the border, so I am artificially having the light bar end at 10 instead of 0
+			var min=0
+			var max = LightSlider.max_value
+			var value= (max-min)*progress+min
+			LightSlider.value=value
 			
 			if darknessClose:
 				PlayerLight.SetLight(progress)
@@ -124,7 +153,7 @@ func _process(delta: float) -> void:
 			if !GetNextLightbulb():
 				signal_pitch_dark.emit()
 				outOfLight=true
-				$Particle_DrillLight.emitting=false
+				$LightSliderParent/Particle_DrillLight.emitting=false
 				UpdatePlayerLightStatus()
 			pass
 	pass
@@ -152,6 +181,7 @@ func RefillLight():
 	PlayerLight.SetLight(1)
 	outOfLight=false
 	UpdatePlayerLightStatus()
+	UpdateLightbulbLocations()
 
 func handleInputs():
 	
