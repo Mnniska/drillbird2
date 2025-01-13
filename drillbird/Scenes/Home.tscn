@@ -73,6 +73,7 @@ Eggs = [NodePath("Egg_smallest"), NodePath("Egg_medium"), NodePath("Egg_Big"), N
 sleepPositions = [NodePath("BirdySleepPositions/startPos_low"), NodePath("BirdySleepPositions/startPos_mid"), NodePath("BirdySleepPositions/startpos_large"), NodePath("BirdySleepPositions/pos_BIGGEST")]
 
 [node name="Egg_Biggest" type="Node2D" parent="Eggs"]
+visible = false
 
 [node name="egg_biggest" type="Sprite2D" parent="Eggs/Egg_Biggest"]
 z_index = 1
@@ -80,6 +81,7 @@ position = Vector2(-2, -40)
 texture = ExtResource("6_e0x4d")
 
 [node name="Egg_Big" type="Node2D" parent="Eggs"]
+visible = false
 position = Vector2(-2, 0)
 
 [node name="egg_big" type="Sprite2D" parent="Eggs/Egg_Big"]
@@ -88,6 +90,7 @@ position = Vector2(0, -40)
 texture = ExtResource("5_p1lmp")
 
 [node name="Egg_medium" type="Node2D" parent="Eggs"]
+visible = false
 position = Vector2(-1, 0)
 
 [node name="egg_medium" type="Sprite2D" parent="Eggs/Egg_medium"]

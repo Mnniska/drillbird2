@@ -21,18 +21,26 @@ func _ready() -> void:
 #called from savemanager
 func GameStart():
 	
-	GenerateEnemySpawnsFromTilemap()
+	if enemiesToSpawnList.size()<=0:
+		#If the save manager hasn't given the spawner any new data, generate enemy positions based on the tilemap
+		#The issue with this approach is that the save data completely overwrites the tilemap - so one has to reset
+		#save data in order to place new enemies
+		GenerateEnemySpawnsFromTilemap()
+
 
 	SpawnAllEnemies()
 	enemyTilemap.hide()
 	#enemyTilemap.hide()
 	pass
 
-func LoadEnemySpawns(spawns:Array[abstract_enemy]):
+func LoadEnemySpawns(spawnpos:Array[Vector2i],enemytype:Array[int]):
 	
 	enemiesToSpawnList.clear()
-	for n in spawns:
-		enemiesToSpawnList.append(n)
+	for n in spawnpos.size():
+		var enemy= abstract_enemy.new()
+		enemy.spawnLocation=spawnpos[n]
+		enemy.type=enemytype[n]
+		enemiesToSpawnList.append(enemy)
 	
 	pass
 
@@ -97,7 +105,7 @@ func UpdateEnemySpawnLocations():
 			#Assumes enemiestospawn list is same length as spawned enemies
 			
 			MoveTileToNewPos(spawnpos,newpos)
-			enemiesToSpawnList[index].spawnLocation=n.position
+			enemiesToSpawnList[index].spawnLocation=newpos
 			
 		
 		pass

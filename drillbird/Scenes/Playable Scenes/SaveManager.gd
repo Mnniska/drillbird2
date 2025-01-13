@@ -1,7 +1,7 @@
 extends Node
 
 @onready var TileDestroyer=$TileCrack
-@onready var EnemySpawner=$EnemySpawner
+@onready var EnemySpawner=$ObjectSpawner
 var save_file_path = "user://save/"
 var save_file_name="DrillbirdPlayerSave.tres"
 
@@ -43,6 +43,7 @@ func SaveGame():
 	PlayerData.totalMoneyGained=GlobalVariables.totalExperienceGained
 	
 	SaveEnvironment()
+	SaveEnemyPositions()
 	
 	ResourceSaver.save(PlayerData,save_file_path+save_file_name)
 	print_debug("game saved")
@@ -51,16 +52,22 @@ func SaveGame():
 
 func SaveEnemyPositions():
 	#This is currently NOT USED
-	PlayerData.enemies_to_spawn.clear()
 
-	for n in EnemySpawner.UpdateEnemySpawnLocations():
-		PlayerData.enemies_to_spawn.append(n)
+
+	PlayerData.enemyPositions.clear()
+	PlayerData.enemyTypes.clear()
+
+	for n:abstract_enemy in EnemySpawner.UpdateEnemySpawnLocations():
+		
+		PlayerData.enemyPositions.append(n.spawnLocation)
+		PlayerData.enemyTypes.append(n.type)
+	
 		
 	pass
 
 func LoadEnemyPositions():
 	#This is currently NOT USED
-	EnemySpawner.LoadEnemySpawns(PlayerData.enemies_to_spawn)
+	EnemySpawner.LoadEnemySpawns(PlayerData.enemyPositions,PlayerData.enemyTypes)
 
 func SaveEnvironment():
 	#This will include ores and enemies in the future as well
@@ -76,7 +83,7 @@ func LoadGame():
 	if ResourceLoader.load(save_file_path+save_file_name)!=null:
 		PlayerData=ResourceLoader.load(save_file_path+save_file_name)
 	SetGlobalVariablesToLoadedGame()
-	
+	LoadEnemyPositions()
 	
 	print_debug("game loaded")
 	

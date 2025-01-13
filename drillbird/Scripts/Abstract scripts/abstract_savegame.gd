@@ -15,3 +15,6 @@ class_name abstract_savegame
 
 @export var destroyed_tiles:Array[Vector2i]
 @export var enemies_to_spawn:Array[abstract_enemy]
+
+@export var enemyPositions:Array[Vector2i]
+@export var enemyTypes:Array[int]
