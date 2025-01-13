@@ -1,19 +1,29 @@
-[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://dtnsdsdm4123s"]
+[gd_resource type="TileSet" load_steps=7 format=3 uid="uid://dtnsdsdm4123s"]
 
 [ext_resource type="Texture2D" uid="uid://beoxc4h8wrylv" path="res://Art/characters/mullvad/mullvad_walk1.png" id="1_3lifu"]
 [ext_resource type="Texture2D" uid="uid://cbwnuk3jbgt7o" path="res://Art/characters/runner/runner_run1.png" id="2_dhcmn"]
+[ext_resource type="Texture2D" uid="uid://xrxcywko8b64" path="res://Art/Objects/Torch/torch1.png" id="3_5ihe6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s6f4x"]
 texture = ExtResource("1_3lifu")
 0:0/0 = 0
+0:0/0/custom_data_0 = 1
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_540t4"]
 texture = ExtResource("2_dhcmn")
 0:0/0 = 0
-0:0/0/custom_data_0 = 1
+0:0/0/custom_data_0 = 2
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lkgrp"]
+texture = ExtResource("3_5ihe6")
+0:0/0 = 0
+0:0/0/custom_data_1 = 1
 
 [resource]
 custom_data_layer_0/name = "enemy_type"
 custom_data_layer_0/type = 2
+custom_data_layer_1/name = "object_type"
+custom_data_layer_1/type = 2
 sources/0 = SubResource("TileSetAtlasSource_s6f4x")
 sources/1 = SubResource("TileSetAtlasSource_540t4")
+sources/2 = SubResource("TileSetAtlasSource_lkgrp")

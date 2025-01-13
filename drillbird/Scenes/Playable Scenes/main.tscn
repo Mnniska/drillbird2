@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=4 uid="uid://d2wv7igie5stg"]
+[gd_scene load_steps=85 format=4 uid="uid://d2wv7igie5stg"]
 
 [ext_resource type="TileSet" uid="uid://grpd2pyu7pgk" path="res://Resources/MainTileset.tres" id="1_1imtu"]
 [ext_resource type="Script" path="res://Scenes/Playable Scenes/SaveManager.gd" id="1_iickb"]
@@ -45,7 +45,6 @@
 [ext_resource type="FontFile" uid="uid://cicu24cmxgshq" path="res://Resources/Quinquefive-ALoRM.ttf" id="35_m1x1i"]
 [ext_resource type="Texture2D" uid="uid://ct20o1j7iuiva" path="res://Resources/LightTexture.tres" id="36_yw5ht"]
 [ext_resource type="Texture2D" uid="uid://bi6q51sklyetd" path="res://Art/environment/Home/background_space.png" id="37_6eo6t"]
-[ext_resource type="PackedScene" uid="uid://bjaykfdp1s4y" path="res://Scenes/Torch_scene.tscn" id="37_jv1l8"]
 [ext_resource type="PackedScene" uid="uid://ckl0ibm5pfs7u" path="res://Scenes/Home.tscn" id="38_pj4ey"]
 [ext_resource type="Script" path="res://Scripts/HealthUIHandler.gd" id="39_j5e8v"]
 [ext_resource type="Script" path="res://Scenes/Playable Scenes/ui_death.gd" id="40_0iomv"]
@@ -265,8 +264,8 @@ script = ExtResource("3_yj8n7")
 [node name="Tilemap_Background" type="TileMapLayer" parent="."]
 tile_set = ExtResource("1_1imtu")
 
-[node name="Tilemap_Enemies" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AADz/wMAAAAAAAAAAADx/wUAAAAAAAAAAAA=")
+[node name="Tilemap_EnemiesAndObjects" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AADz/wMAAAAAAAAAAADx/wUAAAAAAAAAAAD3/wEAAgAAAAAAAAD8////AgAAAAAAAAADAP//AgAAAAAAAADu//X/AgAAAAAAAADn//v/AgAAAAAAAADh//n/AgAAAAAAAADc/wIAAgAAAAAAAAA=")
 tile_set = ExtResource("2_qhh28")
 
 [node name="TilemapEnvironment" type="TileMapLayer" parent="."]
@@ -281,6 +280,7 @@ tile_set = ExtResource("1_1imtu")
 [node name="ObjectSpawner" type="Node2D" parent="."]
 script = ExtResource("53_0clb6")
 potentialEnemyStrings = Array[String](["res://Scenes/Enemy_mullvad.tscn", "res://Scenes/Enemy_runner.tscn"])
+potentialObjectStrings = Array[String](["res://Scenes/Torch_scene.tscn"])
 
 [node name="TileCrack" parent="." instance=ExtResource("2_c10yv")]
 position = Vector2(25, 39)
@@ -528,29 +528,6 @@ position = Vector2(0, 256)
 texture = ExtResource("37_6eo6t")
 region_enabled = true
 region_rect = Rect2(9.76, 7.525, 1500, 2000)
-
-[node name="Handplaced objects" type="Node2D" parent="."]
-
-[node name="Torch" parent="Handplaced objects" instance=ExtResource("37_jv1l8")]
-position = Vector2(47, -8)
-
-[node name="Torch2" parent="Handplaced objects" instance=ExtResource("37_jv1l8")]
-position = Vector2(-45, -8)
-
-[node name="Torch3" parent="Handplaced objects" instance=ExtResource("37_jv1l8")]
-position = Vector2(282, -24)
-
-[node name="Torch4" parent="Handplaced objects" instance=ExtResource("37_jv1l8")]
-position = Vector2(-568, 40)
-
-[node name="Torch5" parent="Handplaced objects" instance=ExtResource("37_jv1l8")]
-position = Vector2(-392, -72)
-
-[node name="Torch6" parent="Handplaced objects" instance=ExtResource("37_jv1l8")]
-position = Vector2(-280, -168)
-
-[node name="Torch7" parent="Handplaced objects" instance=ExtResource("37_jv1l8")]
-position = Vector2(-488, -104)
 
 [node name="Day counter" type="RichTextLabel" parent="."]
 offset_left = -46.0
