@@ -2,6 +2,8 @@ extends Node
 
 @onready var TileDestroyer=$TileCrack
 @onready var EnemySpawner=$ObjectSpawner
+@onready var Savetext=$"Camera2D/Day counter"
+
 var save_file_path = "user://save/"
 var save_file_name="DrillbirdPlayerSave.tres"
 
@@ -47,7 +49,9 @@ func SaveGame():
 	
 	ResourceSaver.save(PlayerData,save_file_path+save_file_name)
 	print_debug("game saved")
-
+	
+	Savetext.Activate(GlobalVariables.currentDay)
+	
 	pass
 
 func SaveEnemyPositions():

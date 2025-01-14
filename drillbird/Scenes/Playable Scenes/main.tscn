@@ -1,4 +1,4 @@
-[gd_scene load_steps=85 format=4 uid="uid://d2wv7igie5stg"]
+[gd_scene load_steps=86 format=4 uid="uid://d2wv7igie5stg"]
 
 [ext_resource type="TileSet" uid="uid://grpd2pyu7pgk" path="res://Resources/MainTileset.tres" id="1_1imtu"]
 [ext_resource type="Script" path="res://Scenes/Playable Scenes/SaveManager.gd" id="1_iickb"]
@@ -53,6 +53,7 @@
 [ext_resource type="PackedScene" uid="uid://v1t8rfk5hqfa" path="res://Scenes/button.tscn" id="43_pwocf"]
 [ext_resource type="Script" path="res://Scenes/Playable Scenes/DebugMenu.gd" id="47_igpia"]
 [ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_debugMenuOption.gd" id="48_cl8sw"]
+[ext_resource type="Script" path="res://Scenes/Playable Scenes/day_counter.gd" id="52_hrk5v"]
 [ext_resource type="Script" path="res://Scripts/enemy_spawner.gd" id="53_0clb6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b7p1b"]
@@ -505,6 +506,20 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 theme = ExtResource("42_e8s0s")
 
+[node name="Day counter" type="RichTextLabel" parent="Camera2D"]
+clip_contents = false
+offset_left = -124.0
+offset_top = -99.0
+offset_right = 23.0
+offset_bottom = -72.0
+theme = ExtResource("42_e8s0s")
+bbcode_enabled = true
+text = "Game saved! Day: [font_size={32}][shake rate=20.0 level=5 connected=1]1[/shake][/font_size]"
+scroll_active = false
+autowrap_mode = 0
+shortcut_keys_enabled = false
+script = ExtResource("52_hrk5v")
+
 [node name="PlayerDarkness" type="Node2D" parent="." node_paths=PackedStringArray("lightSource")]
 position = Vector2(135, -53)
 script = ExtResource("35_54gud")
@@ -528,19 +543,6 @@ position = Vector2(0, 256)
 texture = ExtResource("37_6eo6t")
 region_enabled = true
 region_rect = Rect2(9.76, 7.525, 1500, 2000)
-
-[node name="Day counter" type="RichTextLabel" parent="."]
-offset_left = -46.0
-offset_top = -118.0
-offset_right = 50.0
-offset_bottom = -39.0
-theme = ExtResource("42_e8s0s")
-bbcode_enabled = true
-text = "
-
-[center]Day: 
-[font_size={32}][shake rate=20.0 level=5 connected=1]1[/shake][/font_size][/center]"
-scroll_active = false
 
 [connection signal="PlayerDrillingSolid" from="TileCrack" to="Player" method="_on_tile_crack_player_drilling_solid"]
 [connection signal="newTileCrack" from="Player" to="TileCrack" method="_on_player_new_tile_crack"]

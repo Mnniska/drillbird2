@@ -91,6 +91,10 @@ func GoToBed():
 	$cutsceneTimer.start()
 
 func WakeUp():
+	GlobalVariables.currentDay+=1
+	$"..".SaveGame()
+	
+	
 	Camera.SetFollowPlayer(true)
 	Player.position=$PlayerWakeupPos.position
 	Player.show()

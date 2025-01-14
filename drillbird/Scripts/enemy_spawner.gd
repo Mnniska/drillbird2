@@ -33,7 +33,7 @@ func GameStart():
 	
 	GenerateObjectsFromTilemap()
 	
-	#enemyTilemap.hide()
+	EnemyObjectTilemap.hide()
 
 	pass
 
