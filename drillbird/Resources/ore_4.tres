@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("1_tfao0")
+ID = 3
 value = 6
 texture = ExtResource("2_8v316")
 name = "Star"

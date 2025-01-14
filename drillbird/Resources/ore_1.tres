@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("1_a8u57")
+ID = 0
 value = 2
 texture = ExtResource("2_p1ksc")
 name = "Pebbelite"

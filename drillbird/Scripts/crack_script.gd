@@ -5,11 +5,10 @@ signal PlayerDrillingSolid
 signal TileDestroyed(pos:Vector2i)
 @onready var diggingCountdown: Timer =$DiggingCountdown
 @onready var tilemap: TileMapLayer = get_parent().get_node("TilemapEnvironment")
-@onready var oreTilemap: TileMapLayer = get_parent().get_node("TilemapOres")
-
+@onready var OreSpawner=$"../TilemapOres"
 @onready var cracksprite: Sprite2D = $cracksprite
 @export var crack_sprites: Array[Texture]
-@export var oreRegions: Array[abstract_ore_region]
+
 @export var minimumDigTime:float = 0.6
 @export var GameTerrains:Array[abstract_terrain_info]
 
@@ -114,9 +113,9 @@ func OnLoadDestroyDugTiles(tiles:Array[Vector2i]):
 	
 	for n in destroyed_tiles:
 		DestroyTile(n)
-		
-		if oreTilemap.get_cell_tile_data(n):
-			oreTilemap.set_cell(n,-1,Vector2i(-1,-1),-1)
+	
+		if OreSpawner.get_cell_tile_data(n):
+			OreSpawner.set_cell(n,-1,Vector2i(-1,-1),-1)
 
 		
 		pass
@@ -145,28 +144,7 @@ func _on_digging_countdown_timeout() -> void:
 	isDrillingActive=false
 	
 	#handle ore spawning
-	var cell = oreTilemap.get_cell_tile_data(cellLocation)
-	if cell!=null: #is there an ore tile on top of destroyed tile?
-		oreTilemap.set_cell(cellLocation,-1,Vector2i(-1,-1),-1)
-		
-		var oreRegion:int=cell.get_custom_data("ore_region")
-		
-		
-		#Todo: This should be based on ore rarity determined by area player is in
-		var newOre=null
-		for n in oreRegions:
-			if n.oreRegionID==oreRegion:
-				newOre=n.GetOreToSpawn()
-		if newOre==null:
-			push_error("Crack script was unable to find a good ore!")
-		
-		var scene = load("res://Scenes/Object_Ore.tscn") # Will load when the script is instanced.
-		var node = scene.instantiate()
-		
-		node.transform.origin = position
-
-		get_parent().add_child(node)
-		node.SetOreType(newOre)
+	OreSpawner.TrySpawnOreFromEnvironment(cellLocation)
 
 	pass # Replace with function body.
 

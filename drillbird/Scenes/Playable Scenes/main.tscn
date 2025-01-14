@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=4 uid="uid://d2wv7igie5stg"]
+[gd_scene load_steps=93 format=4 uid="uid://d2wv7igie5stg"]
 
 [ext_resource type="TileSet" uid="uid://grpd2pyu7pgk" path="res://Resources/MainTileset.tres" id="1_1imtu"]
 [ext_resource type="Script" path="res://Scenes/Playable Scenes/SaveManager.gd" id="1_iickb"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://Scripts/DecorationScript.gd" id="3_yj8n7"]
 [ext_resource type="Resource" uid="uid://dr8sc3eaf14j5" path="res://Resources/ore_region_1.tres" id="4_t4dgp"]
 [ext_resource type="Resource" uid="uid://ctpj8pean13fh" path="res://Resources/ore_region_2.tres" id="5_a807m"]
+[ext_resource type="Script" path="res://Scenes/Playable Scenes/OreSpawner.gd" id="6_7b07q"]
 [ext_resource type="Resource" uid="uid://d35o56m1lfg6p" path="res://Resources/ore_region_3.tres" id="6_ehj3h"]
 [ext_resource type="Resource" uid="uid://qb85vcxt0k8u" path="res://Resources/ore_region_4.tres" id="7_10mi7"]
 [ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_terrain_info.gd" id="8_mmgsk"]
@@ -16,10 +17,16 @@
 [ext_resource type="Resource" uid="uid://b1vx03cr2okgm" path="res://Resources/terrainInfo_solid.tres" id="10_0hsbr"]
 [ext_resource type="Resource" uid="uid://cjif6ylwd1rdw" path="res://Resources/terrainInfo_sand.tres" id="11_dksi3"]
 [ext_resource type="Resource" uid="uid://bm6bqv8tss1g4" path="res://Resources/terrainInfo_dirt_2.tres" id="12_aoqkb"]
+[ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_ore.gd" id="12_d51cc"]
 [ext_resource type="PackedScene" uid="uid://e3titjk1as46" path="res://Scenes/player.tscn" id="12_u5tqu"]
+[ext_resource type="Resource" uid="uid://diuura7tbgl01" path="res://Resources/ore_1.tres" id="13_6wsyx"]
+[ext_resource type="Resource" uid="uid://bk0jhhovlw4gg" path="res://Resources/ore_2.tres" id="14_lu42v"]
+[ext_resource type="Resource" uid="uid://bir1i467inivj" path="res://Resources/ore_3.tres" id="15_a50cc"]
 [ext_resource type="Script" path="res://Scripts/CameraScript.gd" id="15_sox0p"]
 [ext_resource type="Texture2D" uid="uid://cp6xuvmo0rguj" path="res://Art/ui/HUD/UI_BlackBorder.png" id="16_1smyb"]
+[ext_resource type="Resource" uid="uid://bcbdo5pvpevgy" path="res://Resources/ore_4.tres" id="16_qo7l5"]
 [ext_resource type="Script" path="res://Scripts/inventory_handler.gd" id="17_84e5y"]
+[ext_resource type="Resource" uid="uid://k3uc1fryuwfc" path="res://Resources/ore_5.tres" id="17_ytjr0"]
 [ext_resource type="Texture2D" uid="uid://un5elq1p64iv" path="res://Art/ui/HUD/ui_slotLeftSide.png" id="18_bc2sg"]
 [ext_resource type="Texture2D" uid="uid://bw25xygruk6rd" path="res://Art/ui/HUD/ui_slotRightSide.png" id="19_cf8tj"]
 [ext_resource type="Texture2D" uid="uid://c2fj0vknmdoys" path="res://Art/ui/Shop/money_symbol.png" id="20_b0cq8"]
@@ -277,6 +284,9 @@ metadata/_edit_group_ = true
 [node name="TilemapOres" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AADy/wkAAAAAAAAAAADy/wgAAAAAAAAAAADv/wUAAAAAAAAAAAAFAAoAAAAAAAAAAAAEAAgAAAAAAAAAAAD1/xAAAAAAAAAAAAD0/xUAAAAAAAAAAAAEABgAAAABAAAAAAAJABcAAAABAAAAAAAJABAAAAABAAAAAAD//xgAAAABAAAAAAD2/xkAAAABAAAAAADz/xsAAAABAAAAAAD1/x4AAAABAAAAAAADACMAAAACAAAAAAD//yIAAAACAAAAAAADAB4AAAACAAAAAAAIACAAAAACAAAAAAD8/wYAAAABAAAAAADY//3/AAAAAAAAAADr//j/AAAAAAAAAADm//j/AAAAAAAAAAD1/wMAAAAAAAEAAAD0/wQAAAAAAAEAAAAPAAMAAAAAAAEAAAAPAA4AAAAAAAEAAAD9/xIAAAAAAAEAAADp/xoAAAACAAEAAADq/xoAAAAAAAEAAADu/+7/AAAAAAAAAAAQABkAAAABAAAAAAAEAB4AAAABAAAAAAAPABgAAAAAAAAAAAAZABYAAAACAAAAAAD+/yYAAAACAAAAAAABAC4AAAACAAAAAAAAAC4AAAACAAAAAAAFADUAAAACAAAAAAD7/zMAAAACAAAAAAD6/zQAAAACAAAAAAD4/yYAAAACAAAAAADw/yMAAAACAAAAAADt/y0AAAACAAAAAAAKADIAAAACAAAAAAAIADYAAAACAAAAAAACADYAAAACAAAAAAABADQAAAACAAAAAAD6/zcAAAACAAAAAAD1/zYAAAACAAAAAAD1/zMAAAACAAAAAADw/zUAAAACAAAAAADw/zIAAAACAAAAAADy/zkAAAACAAAAAAAEADkAAAACAAAAAADy/w8AAAAAAAAAAADv/xQAAAAAAAAAAADu/xUAAAAAAAAAAAASABAAAAABAAAAAAD8/x0AAAABAAAAAAA=")
 tile_set = ExtResource("1_1imtu")
+script = ExtResource("6_7b07q")
+oreRegions = Array[ExtResource("3_flbkc")]([ExtResource("4_t4dgp"), ExtResource("5_a807m"), ExtResource("6_ehj3h"), ExtResource("7_10mi7")])
+oreList = Array[ExtResource("12_d51cc")]([ExtResource("13_6wsyx"), ExtResource("14_lu42v"), ExtResource("15_a50cc"), ExtResource("16_qo7l5"), ExtResource("17_ytjr0")])
 
 [node name="ObjectSpawner" type="Node2D" parent="."]
 script = ExtResource("53_0clb6")
@@ -285,7 +295,6 @@ potentialObjectStrings = Array[String](["res://Scenes/Torch_scene.tscn"])
 
 [node name="TileCrack" parent="." instance=ExtResource("2_c10yv")]
 position = Vector2(25, 39)
-oreRegions = Array[ExtResource("3_flbkc")]([ExtResource("4_t4dgp"), ExtResource("5_a807m"), ExtResource("6_ehj3h"), ExtResource("7_10mi7")])
 GameTerrains = Array[ExtResource("8_mmgsk")]([ExtResource("10_0hsbr"), ExtResource("11_dksi3"), ExtResource("9_eqs1c"), ExtResource("12_aoqkb")])
 
 [node name="GhostManager" type="Node2D" parent="."]

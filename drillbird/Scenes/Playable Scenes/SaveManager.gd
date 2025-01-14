@@ -3,6 +3,7 @@ extends Node
 @onready var TileDestroyer=$TileCrack
 @onready var EnemySpawner=$ObjectSpawner
 @onready var Savetext=$"Camera2D/Day counter"
+@onready var OreSpawner=$TilemapOres
 
 var save_file_path = "user://save/"
 var save_file_name="DrillbirdPlayerSave.tres"
@@ -46,6 +47,7 @@ func SaveGame():
 	
 	SaveEnvironment()
 	SaveEnemyPositions()
+	SaveLeftoverOres()
 	
 	ResourceSaver.save(PlayerData,save_file_path+save_file_name)
 	print_debug("game saved")
@@ -54,9 +56,20 @@ func SaveGame():
 	
 	pass
 
-func SaveEnemyPositions():
-	#This is currently NOT USED
+func SaveLeftoverOres():
+	var a = OreSpawner.GetLeftoverOres()
+	var ids=a[0]
+	var locs=a[1]
+	
+	PlayerData.oreIDs=ids
+	PlayerData.oreLocations=locs
 
+func LoadLeftoverOres():
+	
+	OreSpawner.OnLoadSpawnSavedOres(PlayerData.oreIDs,PlayerData.oreLocations)
+	
+	pass
+func SaveEnemyPositions():
 
 	PlayerData.enemyPositions.clear()
 	PlayerData.enemyTypes.clear()
@@ -88,6 +101,7 @@ func LoadGame():
 		PlayerData=ResourceLoader.load(save_file_path+save_file_name)
 	SetGlobalVariablesToLoadedGame()
 	LoadEnemyPositions()
+	LoadLeftoverOres()
 	
 	print_debug("game loaded")
 	

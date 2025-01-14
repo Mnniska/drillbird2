@@ -18,3 +18,6 @@ class_name abstract_savegame
 
 @export var enemyPositions:Array[Vector2i]
 @export var enemyTypes:Array[int]
+
+@export var oreIDs:Array[int]
+@export var oreLocations:Array[Vector2i]

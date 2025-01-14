@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("1_4ie30")
+ID = 1
 value = 4
 texture = ExtResource("2_xln1v")
 name = "Lapis"

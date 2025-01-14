@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("1_drl2k")
+ID = 2
 value = 7
 texture = ExtResource("2_cpoca")
 name = "Ruby"
