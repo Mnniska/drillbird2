@@ -21,6 +21,7 @@ var maxJumps: int =3
 var jumpsMade:int =0
 @export var jump_crystals: Array[AnimatedSprite2D]
 var justJumped:bool=false
+var airborne:bool=false
 
 #Damage variables
 var damageTimerCounter:float=0
@@ -178,6 +179,10 @@ func RegularMovement(delta:float,currentAnim:String):
 	if Input.is_action_just_pressed("jump"):  
 		if is_on_floor() or jumpsMade <= maxJumps:
 			
+			if is_on_floor():
+				SoundManager.PlaySoundAtLocation(global_position,abstract_SoundEffectSetting.SoundEffectEnum.PLAYER_JUMP)
+			else:
+				SoundManager.PlaySoundAtLocation(global_position,abstract_SoundEffectSetting.SoundEffectEnum.PLAYER_JUMP_MIDAIR)
 			velocity.y = JUMP_VELOCITY
 			newanim= "jump"
 			justJumped=true
@@ -206,6 +211,12 @@ func RegularMovement(delta:float,currentAnim:String):
 			n.hide()
 	else:
 		justJumped=false
+
+	if is_on_floor() && airborne:
+		SoundManager.PlaySoundAtLocation(global_position,abstract_SoundEffectSetting.SoundEffectEnum.PLAYER_LAND)
+		airborne=false
+	if !is_on_floor():
+		airborne=true
 		
 	#change collisions based on where player is
 	collider_airborne.disabled=is_on_floor()
@@ -216,7 +227,9 @@ func RegularMovement(delta:float,currentAnim:String):
 	var direction := Input.get_axis("left", "right")
 	
 	if direction:
-		
+		#Play footstep sound loop
+	
+			
 		var minclamp:float=-1
 		var maxclamp:float=1
 		
@@ -243,7 +256,6 @@ func RegularMovement(delta:float,currentAnim:String):
 			newanim="run"
 			
 	else:
-		#if player is not moving - check if they're looking up or down
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		if is_on_floor():
 			
@@ -292,6 +304,11 @@ func RegularMovement(delta:float,currentAnim:String):
 	return newanim
 
 func PlayerIsDrilling(): 
+	#This sound should rise in pitch as one gets closer to breaking the block. 
+	#Giving up control to the soundmanager seems like a bad idea - hmm
+	#I like the idea of the sounds being stored in one place. But I will want plenty of audio fuckery to make the game
+	#feel good. Maybe ask for advice on how other people do it
+	SoundManager.PlaySoundAtLocation(global_position,abstract_SoundEffectSetting.SoundEffectEnum.PLAYER_DRILLING_BREAKABLE)
 	playerIsDrilling=true
 	var length:int=18
 	var raycastTarget = Vector2i(0,0)
@@ -402,8 +419,16 @@ func Update_Animations(newanim):
 			alpha=1.0
 		playerAnim.self_modulate=Color(Color.WHITE,alpha)
 
-		
+func _on_animated_sprite_2d_animation_looped() -> void:
+	if animstate=="run":
+		if randf()>0.5:
+			SoundManager.PlaySoundAtLocation(global_position,abstract_SoundEffectSetting.SoundEffectEnum.PLAYER_FOOTSTEP_ONE)
+		else:
+			SoundManager.PlaySoundAtLocation(global_position,abstract_SoundEffectSetting.SoundEffectEnum.PLAYER_FOOTSTEP_TWO)
 
+	
+	pass # Replace with function body.
+	
 
 func _on_tile_crack_player_drilling_solid() -> void:
 	particles.emitting=true

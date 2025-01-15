@@ -194,12 +194,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("9_aurpt")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10_1ey0x")
-}, {
-"duration": 1.0,
 "texture": ExtResource("11_tqmmp")
 }, {
 "duration": 1.0,
@@ -207,6 +201,12 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("13_bbiad")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_aurpt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_1ey0x")
 }],
 "loop": true,
 "name": &"run",
@@ -289,8 +289,9 @@ hit_from_inside = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 2
 sprite_frames = SubResource("SpriteFrames_3vbtj")
-animation = &"jump"
+animation = &"run"
 autoplay = "idle"
+frame_progress = 0.0217558
 
 [node name="jumpCrystal1" type="AnimatedSprite2D" parent="AnimatedSprite2D"]
 position = Vector2(-5, 11)
@@ -384,6 +385,7 @@ theme = ExtResource("38_sekb7")
 text = "Ghosting"
 horizontal_alignment = 1
 
+[connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_looped"]
 [connection signal="body_shape_entered" from="BlockBelowChecker" to="." method="_on_block_below_checker_body_shape_entered"]
 [connection signal="body_shape_exited" from="BlockBelowChecker" to="." method="_on_block_below_checker_body_shape_exited"]
 [connection signal="body_entered" from="Detector" to="." method="_on_detector_body_entered"]

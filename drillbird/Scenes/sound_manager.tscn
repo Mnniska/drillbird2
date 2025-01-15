@@ -1,0 +1,70 @@
+[gd_scene load_steps=16 format=3 uid="uid://55nba204ysws"]
+
+[ext_resource type="Script" path="res://Scripts/sound_manager.gd" id="1_kivlo"]
+[ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_SoundEffectSetting.gd" id="2_ba8up"]
+[ext_resource type="AudioStream" uid="uid://dgn5b645cgf0g" path="res://Audio/SFX/player_jump.wav" id="3_h0koe"]
+[ext_resource type="AudioStream" uid="uid://4rayg35rw2dp" path="res://Audio/SFX/player_land.wav" id="4_n7wlc"]
+[ext_resource type="AudioStream" uid="uid://bhh6x6vjouhmy" path="res://Audio/SFX/player_jump_midair_2.wav" id="5_uxrup"]
+[ext_resource type="AudioStream" uid="uid://bfvmlrplmud8y" path="res://Audio/SFX/player_footstep_1.wav" id="6_qyomo"]
+[ext_resource type="AudioStream" uid="uid://b81mjjhsuokha" path="res://Audio/SFX/player_footstep_2.wav" id="7_uj3o7"]
+[ext_resource type="AudioStream" uid="uid://dwwgwbaymbt4b" path="res://Audio/SFX/player_drilling_breakable.wav" id="8_gtuqd"]
+
+[sub_resource type="Resource" id="Resource_0hq0f"]
+script = ExtResource("2_ba8up")
+limit = 1
+type = 0
+sound_effect = ExtResource("3_h0koe")
+volume = 0
+pitch_randomness = 0.0
+
+[sub_resource type="Resource" id="Resource_4wqnx"]
+script = ExtResource("2_ba8up")
+limit = 5
+type = 1
+sound_effect = ExtResource("4_n7wlc")
+volume = -5
+pitch_randomness = 0.2
+
+[sub_resource type="Resource" id="Resource_560ql"]
+script = ExtResource("2_ba8up")
+limit = 5
+type = 2
+sound_effect = ExtResource("5_uxrup")
+volume = 0
+pitch_randomness = 0.0
+
+[sub_resource type="Resource" id="Resource_phbpy"]
+script = ExtResource("2_ba8up")
+limit = 5
+type = 3
+sound_effect = ExtResource("6_qyomo")
+volume = 5
+pitch_randomness = 0.0
+
+[sub_resource type="Resource" id="Resource_3bcde"]
+script = ExtResource("2_ba8up")
+limit = 5
+type = 4
+sound_effect = ExtResource("7_uj3o7")
+volume = 0
+pitch_randomness = 0.0
+
+[sub_resource type="Resource" id="Resource_nueb3"]
+script = ExtResource("2_ba8up")
+limit = 1
+type = 5
+sound_effect = ExtResource("8_gtuqd")
+volume = 0
+pitch_randomness = 0.0
+
+[sub_resource type="Resource" id="Resource_cpb5f"]
+script = ExtResource("2_ba8up")
+limit = 1
+type = 6
+sound_effect = ExtResource("8_gtuqd")
+volume = 0
+pitch_randomness = 0.0
+
+[node name="SoundManager" type="Node2D"]
+script = ExtResource("1_kivlo")
+SOUND_EFFECTS = Array[ExtResource("2_ba8up")]([SubResource("Resource_0hq0f"), SubResource("Resource_4wqnx"), SubResource("Resource_560ql"), SubResource("Resource_phbpy"), SubResource("Resource_3bcde"), SubResource("Resource_nueb3"), SubResource("Resource_cpb5f")])

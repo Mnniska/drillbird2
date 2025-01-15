@@ -19,6 +19,7 @@ config/icon="res://Resources/icon.svg"
 
 GlobalTime="*res://Scripts/GlobalTime.gd"
 GlobalVariables="*res://Scripts/GlobalVariables.gd"
+SoundManager="*res://Scenes/sound_manager.tscn"
 
 [display]
 
