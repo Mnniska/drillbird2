@@ -1,4 +1,4 @@
-[gd_scene load_steps=93 format=4 uid="uid://d2wv7igie5stg"]
+[gd_scene load_steps=88 format=4 uid="uid://d2wv7igie5stg"]
 
 [ext_resource type="TileSet" uid="uid://grpd2pyu7pgk" path="res://Resources/MainTileset.tres" id="1_1imtu"]
 [ext_resource type="Script" path="res://Scenes/Playable Scenes/SaveManager.gd" id="1_iickb"]
@@ -12,11 +12,6 @@
 [ext_resource type="Script" path="res://Scenes/Playable Scenes/OreSpawner.gd" id="6_7b07q"]
 [ext_resource type="Resource" uid="uid://d35o56m1lfg6p" path="res://Resources/ore_region_3.tres" id="6_ehj3h"]
 [ext_resource type="Resource" uid="uid://qb85vcxt0k8u" path="res://Resources/ore_region_4.tres" id="7_10mi7"]
-[ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_terrain_info.gd" id="8_mmgsk"]
-[ext_resource type="Resource" uid="uid://cq6ru2d4e7bgd" path="res://Resources/terrainInfo_dirt_1.tres" id="9_eqs1c"]
-[ext_resource type="Resource" uid="uid://b1vx03cr2okgm" path="res://Resources/terrainInfo_solid.tres" id="10_0hsbr"]
-[ext_resource type="Resource" uid="uid://cjif6ylwd1rdw" path="res://Resources/terrainInfo_sand.tres" id="11_dksi3"]
-[ext_resource type="Resource" uid="uid://bm6bqv8tss1g4" path="res://Resources/terrainInfo_dirt_2.tres" id="12_aoqkb"]
 [ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_ore.gd" id="12_d51cc"]
 [ext_resource type="PackedScene" uid="uid://e3titjk1as46" path="res://Scenes/player.tscn" id="12_u5tqu"]
 [ext_resource type="Resource" uid="uid://diuura7tbgl01" path="res://Resources/ore_1.tres" id="13_6wsyx"]
@@ -295,7 +290,6 @@ potentialObjectStrings = Array[String](["res://Scenes/Torch_scene.tscn"])
 
 [node name="TileCrack" parent="." instance=ExtResource("2_c10yv")]
 position = Vector2(25, 39)
-GameTerrains = Array[ExtResource("8_mmgsk")]([ExtResource("10_0hsbr"), ExtResource("11_dksi3"), ExtResource("9_eqs1c"), ExtResource("12_aoqkb")])
 
 [node name="GhostManager" type="Node2D" parent="."]
 position = Vector2(-616, 232)
@@ -303,6 +297,11 @@ script = ExtResource("21_mqj7b")
 
 [node name="Player" parent="." instance=ExtResource("12_u5tqu")]
 position = Vector2(-128, -3)
+SPEED = 100.0
+DRILLSPEED = 40.0
+damageStunTime = 0.2
+damageVelocity = 100.0
+invincibilityTime = 3.5
 
 [node name="Home" parent="." instance=ExtResource("38_pj4ey")]
 
@@ -553,7 +552,7 @@ texture = ExtResource("37_6eo6t")
 region_enabled = true
 region_rect = Rect2(9.76, 7.525, 1500, 2000)
 
-[connection signal="PlayerDrillingSolid" from="TileCrack" to="Player" method="_on_tile_crack_player_drilling_solid"]
+[connection signal="MaterialChanged" from="TileCrack" to="Player" method="_on_tile_crack_material_changed"]
 [connection signal="newTileCrack" from="Player" to="TileCrack" method="_on_player_new_tile_crack"]
 [connection signal="playerStoppedDrillingTile" from="Player" to="TileCrack" method="_on_player_player_stopped_drilling_tile"]
 [connection signal="signal_IsDrillingTileChanged" from="Player" to="Camera2D/LightHandler" method="_on_player_signal_is_drilling_tile_changed"]

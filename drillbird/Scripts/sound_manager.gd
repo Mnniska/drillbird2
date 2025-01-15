@@ -14,6 +14,29 @@ func _ready() -> void:
 
 func PlaySoundGlobal(sound:abstract_SoundEffectSetting.SoundEffectEnum):
 	pass
+	
+func CreatePersistentSound(location:Vector2,type:abstract_SoundEffectSetting.SoundEffectEnum):
+
+	#Creates a sound that will stay forever unless specifically deleted
+
+	var soundEffectSetting:abstract_SoundEffectSetting=SOUND_EFFECTS[type]
+
+	var new_2D_audio = AudioStreamPlayer2D.new()
+	add_child(new_2D_audio)
+	new_2D_audio.position=location
+	SetupCommonSoundSettings(soundEffectSetting,new_2D_audio)
+	return new_2D_audio
+	
+	pass
+
+func SetupCommonSoundSettings(soundEffectSetting:abstract_SoundEffectSetting,audio:AudioStreamPlayer2D):
+	audio.stream=soundEffectSetting.sound_effect
+	audio.volume_db=soundEffectSetting.volume
+	audio.pitch_scale+=randf_range(-soundEffectSetting.pitch_randomness,soundEffectSetting.pitch_randomness)
+	audio.bus=soundEffectSetting.AudioBusEnum.keys()[soundEffectSetting.audioBus]
+	return audio
+	
+	pass
 
 func PlaySoundAtLocation(location:Vector2,type:abstract_SoundEffectSetting.SoundEffectEnum):
 	
@@ -27,13 +50,11 @@ func PlaySoundAtLocation(location:Vector2,type:abstract_SoundEffectSetting.Sound
 			var new_2D_audio = AudioStreamPlayer2D.new()
 			add_child(new_2D_audio)
 			new_2D_audio.position=location
-			new_2D_audio.stream=soundEffectSetting.sound_effect
-			new_2D_audio.volume_db=soundEffectSetting.volume
-			new_2D_audio.pitch_scale+=randf_range(-soundEffectSetting.pitch_randomness,soundEffectSetting.pitch_randomness)
 			
+			new_2D_audio=SetupCommonSoundSettings(soundEffectSetting ,new_2D_audio)
+
 			new_2D_audio.finished.connect(soundEffectSetting.on_audio_finished) 
 			new_2D_audio.finished.connect(new_2D_audio.queue_free)
-			new_2D_audio.bus=soundEffectSetting.AudioBusEnum.keys()[soundEffectSetting.audioBus]
 			new_2D_audio.play()
 		
 		pass

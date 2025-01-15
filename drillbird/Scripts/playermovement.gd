@@ -62,6 +62,7 @@ func _ready() -> void:
 	collider_airborne.disabled=true
 	collider_grounded.disabled=false
 	
+	
 
 func _physics_process(delta: float) -> void:
 	
@@ -303,6 +304,7 @@ func RegularMovement(delta:float,currentAnim:String):
 
 	return newanim
 
+
 func PlayerIsDrilling(): 
 	#This sound should rise in pitch as one gets closer to breaking the block. 
 	#Giving up control to the soundmanager seems like a bad idea - hmm
@@ -430,11 +432,13 @@ func _on_animated_sprite_2d_animation_looped() -> void:
 	pass # Replace with function body.
 	
 
-func _on_tile_crack_player_drilling_solid() -> void:
-	particles.emitting=true
-	playerDrillingSolid=true		
+func _on_tile_crack_material_changed(terrain: abstract_terrain_info) -> void:
+	if terrain.terrainIdentifier==0: #Equals SOLID
+		particles.emitting=true
+		playerDrillingSolid=true		
 
 	pass # Replace with function body.
+
 
 
 func _on_block_below_checker_body_shape_exited(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:

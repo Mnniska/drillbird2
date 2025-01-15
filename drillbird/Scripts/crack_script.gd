@@ -1,13 +1,13 @@
 extends Node2D
 
 var diggingTime=0.0
-signal PlayerDrillingSolid
+signal PlayerDrillingMaterial(int:)
 signal TileDestroyed(pos:Vector2i)
 
 #Signals for the sound 
 signal StartedDrilling
 signal StoppedDrilling
-signal MaterialChanged(mat:int)
+signal MaterialChanged(terrain:abstract_terrain_info)
 
 
 @onready var diggingCountdown: Timer =$DiggingCountdown
@@ -44,6 +44,7 @@ func _process(_delta: float) -> void:
 			currentSprite=crack_sprites.size()-1
 		cracksprite.texture=crack_sprites[currentSprite]
 
+
 func _on_player_new_tile_crack(drill_position:Vector2i) -> void:
 	NewTarget(drill_position)
 
@@ -61,7 +62,7 @@ func SetCrackPosition(drillPosition:Vector2i):
 	var ypos = (ceil( drillPosition.y/16 )*16)+yy
 		
 	self.position=Vector2i(xpos,ypos)
-	
+
 
 func NewTarget(drill_position:Vector2i):
 		
@@ -76,6 +77,12 @@ func NewTarget(drill_position:Vector2i):
 	var diggable=true
 	
 	if affectedTile!=null:
+		
+		#Lets game know what material the player is drilling
+		for n in GameTerrains:
+			if n.terrainIdentifier==affectedTile.terrain:
+				MaterialChanged.emit(n) #emit signal that the player is drilling new mat
+		
 		var tilehealth=0
 		#<0 indicates player is drilling a solid tile
 		if GetHealthForTerrain(affectedTile.terrain)>0:
@@ -93,11 +100,6 @@ func NewTarget(drill_position:Vector2i):
 		if(diggable):
 			diggingCountdown.start(digtime)
 			SetCrackPosition(drill_position)
-			DrillSoundPlayer.MaterialChange(DrillSoundPlayer.MatEnum.BREAKABLE)
-		else:
-			DrillSoundPlayer.MaterialChange(DrillSoundPlayer.MatEnum.SOLID)
-			PlayerDrillingSolid.emit()
-			print_debug("Solid!!")
 	
 	#else play particle effects 
 	#var tile: TileData =tilemap.get_cell_tile_data(tilemap.local_to_map( tilemap.to_local( location)))
