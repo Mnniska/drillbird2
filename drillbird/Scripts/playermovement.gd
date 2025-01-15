@@ -308,7 +308,7 @@ func PlayerIsDrilling():
 	#Giving up control to the soundmanager seems like a bad idea - hmm
 	#I like the idea of the sounds being stored in one place. But I will want plenty of audio fuckery to make the game
 	#feel good. Maybe ask for advice on how other people do it
-	SoundManager.PlaySoundAtLocation(global_position,abstract_SoundEffectSetting.SoundEffectEnum.PLAYER_DRILLING_BREAKABLE)
+	#SoundManager.PlaySoundAtLocation(global_position,abstract_SoundEffectSetting.SoundEffectEnum.PLAYER_DRILLING_BREAKABLE)
 	playerIsDrilling=true
 	var length:int=18
 	var raycastTarget = Vector2i(0,0)

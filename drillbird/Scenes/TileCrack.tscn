@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://0iy1qmgd0p6y"]
+[gd_scene load_steps=9 format=3 uid="uid://0iy1qmgd0p6y"]
 
 [ext_resource type="Script" path="res://Scripts/crack_script.gd" id="1_biwd4"]
 [ext_resource type="Texture2D" uid="uid://cw1o82vk05uwm" path="res://Art/effects/crack1.png" id="2_d02o3"]
 [ext_resource type="Texture2D" uid="uid://cokne62lu57vb" path="res://Art/effects/crack2.png" id="3_ikpfl"]
 [ext_resource type="Texture2D" uid="uid://dg6uc1lqfrisv" path="res://Art/effects/crack3.png" id="4_j73nb"]
 [ext_resource type="Texture2D" uid="uid://81lximwfajib" path="res://Art/effects/crack4.png" id="5_lq347"]
+[ext_resource type="AudioStream" uid="uid://dwwgwbaymbt4b" path="res://Audio/SFX/player_drilling_breakable.wav" id="6_r2vk1"]
+[ext_resource type="Script" path="res://Scripts/DrillSoundScript.gd" id="7_k3njw"]
+[ext_resource type="AudioStream" uid="uid://jtsth86omeeo" path="res://Audio/SFX/player_drilling_solid.wav" id="8_2ouuv"]
 
 [node name="TileCrack" type="Node2D"]
 script = ExtResource("1_biwd4")
@@ -15,4 +18,16 @@ texture = ExtResource("2_d02o3")
 
 [node name="DiggingCountdown" type="Timer" parent="."]
 
+[node name="DrillSoundPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_r2vk1")
+volume_db = -10.0
+bus = &"SFX"
+script = ExtResource("7_k3njw")
+sound_air = ExtResource("8_2ouuv")
+sound_breakable = ExtResource("6_r2vk1")
+sound_solid = ExtResource("8_2ouuv")
+
+[connection signal="StartedDrilling" from="." to="DrillSoundPlayer" method="_on_tile_crack_started_drilling"]
+[connection signal="StoppedDrilling" from="." to="DrillSoundPlayer" method="_on_tile_crack_stopped_drilling"]
 [connection signal="timeout" from="DiggingCountdown" to="." method="_on_digging_countdown_timeout"]
+[connection signal="finished" from="DrillSoundPlayer" to="DrillSoundPlayer" method="_on_sound_finished"]

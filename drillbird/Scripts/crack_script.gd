@@ -3,9 +3,18 @@ extends Node2D
 var diggingTime=0.0
 signal PlayerDrillingSolid
 signal TileDestroyed(pos:Vector2i)
+
+#Signals for the sound 
+signal StartedDrilling
+signal StoppedDrilling
+signal MaterialChanged(mat:int)
+
+
 @onready var diggingCountdown: Timer =$DiggingCountdown
 @onready var tilemap: TileMapLayer = get_parent().get_node("TilemapEnvironment")
 @onready var OreSpawner=$"../TilemapOres"
+@onready var DrillSoundPlayer=$DrillSoundPlayer
+
 @onready var cracksprite: Sprite2D = $cracksprite
 @export var crack_sprites: Array[Texture]
 
@@ -24,6 +33,9 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if(isDrillingActive):
 		var process = 1 - diggingCountdown.time_left/ diggingCountdown.wait_time 
+		
+		#Tells audio to go up in pitch
+		DrillSoundPlayer.SetDrillProgress(process)
 		
 		#Set current sprite based on sprite amount & progress
 		var test:float = (crack_sprites.size()-1)*process
@@ -53,6 +65,8 @@ func SetCrackPosition(drillPosition:Vector2i):
 
 func NewTarget(drill_position:Vector2i):
 		
+	StartedDrilling.emit()
+	
 	cellLocation = tilemap.local_to_map(tilemap.to_local(drill_position))
 	affectedTile= tilemap.get_cell_tile_data(cellLocation)
 	
@@ -79,7 +93,9 @@ func NewTarget(drill_position:Vector2i):
 		if(diggable):
 			diggingCountdown.start(digtime)
 			SetCrackPosition(drill_position)
+			DrillSoundPlayer.MaterialChange(DrillSoundPlayer.MatEnum.BREAKABLE)
 		else:
+			DrillSoundPlayer.MaterialChange(DrillSoundPlayer.MatEnum.SOLID)
 			PlayerDrillingSolid.emit()
 			print_debug("Solid!!")
 	
@@ -100,6 +116,7 @@ func GetHealthForTerrain(terrain:int):
 	pass
 
 func abortDig():
+	StoppedDrilling.emit()
 	diggingCountdown.stop()
 	isDrillingActive=false
 	cracksprite.hide()
@@ -134,6 +151,7 @@ func DestroyTile(position_in_grid:Vector2i):
 func _on_digging_countdown_timeout() -> void:
 	
 	#Remove target cell and make neighbors reconnect to one another
+	StoppedDrilling.emit() #This is not true - this is only TILE CRACKS
 	DestroyTile(cellLocation)
 	destroyed_tiles.append(cellLocation)
 
