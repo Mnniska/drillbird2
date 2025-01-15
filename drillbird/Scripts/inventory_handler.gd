@@ -9,13 +9,27 @@ TLDR inventory_handler manages inventory size as well as adding and removing ore
 """
 
 @export var upgradetree_inventory:abstract_purchasable
-
+@onready var OreSpawner=$"../../TilemapOres"
 
 var inventorySlots : Array[Node2D]
 #var inventorySlots =Array[preload("res://Scenes/UI_InventorySlot.tscn")]
 var slotAmount:int=2
 @onready var UIvisual_left = $ui_leftSide
 @onready var UIvisual_right = $ui_rightSide
+
+func DropOresRequest(position:Vector2,velocity:Vector2):
+	var oresToDrop:Array[abstract_ore]
+	for n in inventorySlots:
+		for p in n.EmptyOres():
+			oresToDrop.append(p)
+
+	for n in oresToDrop:
+		var x=randf_range(-200,200)
+		var y = randf_range(-100,-200)
+		var v=Vector2(x,y)
+		
+		OreSpawner.SpawnOreAtLocation(position,n,v,true)
+
 
 func GetIsThereAnythingSellable():
 	for n in inventorySlots:

@@ -176,6 +176,11 @@ func DebugGhostMovement(delta:float,currentAnim:String):
 
 func RegularMovement(delta:float,currentAnim:String):
 	var newanim=currentAnim
+	
+	if Input.is_action_just_pressed("interact"):
+				
+		oreInventory.DropOresRequest(global_position,Vector2(0,0)) #Todo:Give player's dir
+	
 	# Check for jump input and add velocity.
 	if Input.is_action_just_pressed("jump"):  
 		if is_on_floor() or jumpsMade <= maxJumps:
@@ -448,16 +453,12 @@ func _on_block_below_checker_body_shape_exited(body_rid: RID, body: Node2D, body
 		var blockleft:bool= $BlockBelowCheck_LEFT.get_overlapping_bodies().size()>0 
 		var blockRight:bool= $BlockBelowCheck_RIGHT.get_overlapping_bodies().size()>0 
 		var print=""
-		if blockleft and blockRight:
-			print="Can detect both blocks"
 
 		if blockleft and !blockRight:
-			print="FALL is on players right side"
 			playerIsOnRightEdge=true
 			playerIsOnLeftEdge=false
 		
 		if !blockleft and blockRight:
-			print="FALL is on players left side"
 			playerIsOnRightEdge=false
 			playerIsOnLeftEdge=true
 
@@ -483,7 +484,9 @@ func _on_detector_body_entered(body: Node2D) -> void:
 			DealPlayerDamage(1)
 	
 	if collider.type==collider.types.ORE:
-		var oretype = body.oreType
-		if oreInventory.AddOreRequest(oretype):
-			body.queue_free()
+		
+		if !body.cooldown:
+			var oretype = body.oreType
+			if oreInventory.AddOreRequest(oretype):
+				body.queue_free()
 	pass # Replace with function body.

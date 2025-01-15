@@ -52,6 +52,17 @@ func SellOres():
 	return gainedMoney
 	
 	pass
+	
+func EmptyOres():
+	var oreList:Array[abstract_ore]
+	for n in currentItems:
+		oreList.append(chosen_ore)
+
+	currentItems=0
+	chosen_ore=null
+	UpdateVisuals()
+	
+	return oreList
 
 func RemoveOre():
 	if currentItems<=0:

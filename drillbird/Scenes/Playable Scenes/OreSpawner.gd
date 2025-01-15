@@ -27,18 +27,22 @@ func TrySpawnOreFromEnvironment(location:Vector2i):
 		if newOre==null:
 			push_error("Crack script was unable to find a good ore!")
 	
-		SpawnOreAtLocation(location,newOre)
+		var loc = map_to_local(location)
+		SpawnOreAtLocation(loc,newOre,Vector2(0,0),false)
 
 
-func SpawnOreAtLocation(location:Vector2,ore:abstract_ore):
+func SpawnOreAtLocation(location:Vector2,ore:abstract_ore,velocity:Vector2,cooldown:bool):
 	var scene = load("res://Scenes/Object_Ore.tscn") # Will load when the script is instanced.
 	var node = scene.instantiate()
 	
-	node.transform.origin = map_to_local(location)
+	node.transform.origin = location
 	
 	add_child(node)
+	#Give ore velocity here - shoooould be possible? 
+	
+	node.apply_central_impulse(velocity)
 	node.add_to_group("ores")
-	node.SetOreType(ore)
+	node.SetOreType(ore,cooldown)
 
 
 func GetLeftoverOres():
@@ -64,7 +68,7 @@ func OnLoadSpawnSavedOres(uniqueIDs:Array[int],locations:Array[Vector2i]):
 	for n in uniqueIDs.size():
 		for p in oreList:
 			if p.ID==uniqueIDs[n]:
-				SpawnOreAtLocation(locations[n],p)
+				SpawnOreAtLocation(map_to_local( locations[n]),p,Vector2(0,0),false)
 		pass
 	
 	pass

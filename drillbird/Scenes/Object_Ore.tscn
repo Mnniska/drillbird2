@@ -16,8 +16,8 @@
 [ext_resource type="Texture2D" uid="uid://ba2i5n1rb82gf" path="res://Art/Collectibles/Ore_spawn9.png" id="12_gvoi1"]
 [ext_resource type="Texture2D" uid="uid://beujfy2hpmdxi" path="res://Art/Collectibles/Ore_spawn10.png" id="13_mxxt5"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rnnxs"]
-size = Vector2(10, 9)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nj345"]
+size = Vector2(8, 9)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wnmh3"]
 animations = [{
@@ -82,14 +82,14 @@ animations = [{
 
 [node name="OreBody" type="RigidBody2D"]
 collision_layer = 4
-collision_mask = 6
+collision_mask = 3
 can_sleep = false
 script = ExtResource("1_dogya")
 ObjectInfo = ExtResource("2_sqen4")
 
 [node name="Collider" type="CollisionShape2D" parent="."]
-position = Vector2(0, 2.5)
-shape = SubResource("RectangleShape2D_rnnxs")
+position = Vector2(0, 3.5)
+shape = SubResource("RectangleShape2D_nj345")
 
 [node name="Animation" type="AnimatedSprite2D" parent="."]
 visible = false

@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://b7wk3v7f1tprr"]
 
-[ext_resource type="Texture2D" uid="uid://b6o75yvkrcut6" path="res://Art/UI/HUD/ui_emptySlot.png" id="1_hmdhr"]
+[ext_resource type="Texture2D" uid="uid://b6o75yvkrcut6" path="res://Art/ui/HUD/ui_emptySlot.png" id="1_hmdhr"]
 [ext_resource type="Script" path="res://Scripts/ui_inventory_slot.gd" id="1_vxsy3"]
 [ext_resource type="Texture2D" uid="uid://cm6brf3xofttr" path="res://Art/Collectibles/Ore_idle1.png" id="2_rds1q"]
-[ext_resource type="Texture2D" uid="uid://cu776x7f8qdd5" path="res://Art/UI/HUD/ui_slotBottom.png" id="3_2onun"]
-[ext_resource type="Texture2D" uid="uid://bhau6gqnrgjsd" path="res://Art/UI/Symbols/num11.png" id="5_upb4o"]
+[ext_resource type="Texture2D" uid="uid://cu776x7f8qdd5" path="res://Art/ui/HUD/ui_slotBottom.png" id="3_2onun"]
+[ext_resource type="Texture2D" uid="uid://bhau6gqnrgjsd" path="res://Art/ui/Symbols/num11.png" id="5_upb4o"]
 [ext_resource type="PackedScene" uid="uid://buvk7y6smvo3v" path="res://Scenes/single_num_displayer.tscn" id="6_6imk4"]
 
 [node name="InventorySlot" type="Node2D"]
