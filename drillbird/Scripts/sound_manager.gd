@@ -33,7 +33,7 @@ func PlaySoundAtLocation(location:Vector2,type:abstract_SoundEffectSetting.Sound
 			
 			new_2D_audio.finished.connect(soundEffectSetting.on_audio_finished) 
 			new_2D_audio.finished.connect(new_2D_audio.queue_free)
-			
+			new_2D_audio.bus=soundEffectSetting.AudioBusEnum.keys()[soundEffectSetting.audioBus]
 			new_2D_audio.play()
 		
 		pass

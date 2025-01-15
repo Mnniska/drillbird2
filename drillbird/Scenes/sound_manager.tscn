@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://55nba204ysws"]
+[gd_scene load_steps=16 format=3 uid="uid://c6kxrgykfp1c1"]
 
 [ext_resource type="Script" path="res://Scripts/sound_manager.gd" id="1_kivlo"]
 [ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_SoundEffectSetting.gd" id="2_ba8up"]
@@ -16,6 +16,7 @@ type = 0
 sound_effect = ExtResource("3_h0koe")
 volume = 0
 pitch_randomness = 0.0
+audioBus = 0
 
 [sub_resource type="Resource" id="Resource_4wqnx"]
 script = ExtResource("2_ba8up")
@@ -24,6 +25,7 @@ type = 1
 sound_effect = ExtResource("4_n7wlc")
 volume = -5
 pitch_randomness = 0.2
+audioBus = 0
 
 [sub_resource type="Resource" id="Resource_560ql"]
 script = ExtResource("2_ba8up")
@@ -32,6 +34,7 @@ type = 2
 sound_effect = ExtResource("5_uxrup")
 volume = 0
 pitch_randomness = 0.0
+audioBus = 0
 
 [sub_resource type="Resource" id="Resource_phbpy"]
 script = ExtResource("2_ba8up")
@@ -40,6 +43,7 @@ type = 3
 sound_effect = ExtResource("6_qyomo")
 volume = 5
 pitch_randomness = 0.0
+audioBus = 0
 
 [sub_resource type="Resource" id="Resource_3bcde"]
 script = ExtResource("2_ba8up")
@@ -48,6 +52,7 @@ type = 4
 sound_effect = ExtResource("7_uj3o7")
 volume = 0
 pitch_randomness = 0.0
+audioBus = 0
 
 [sub_resource type="Resource" id="Resource_nueb3"]
 script = ExtResource("2_ba8up")
@@ -56,6 +61,7 @@ type = 5
 sound_effect = ExtResource("8_gtuqd")
 volume = 0
 pitch_randomness = 0.0
+audioBus = 0
 
 [sub_resource type="Resource" id="Resource_cpb5f"]
 script = ExtResource("2_ba8up")
@@ -64,6 +70,7 @@ type = 6
 sound_effect = ExtResource("8_gtuqd")
 volume = 0
 pitch_randomness = 0.0
+audioBus = 0
 
 [node name="SoundManager" type="Node2D"]
 script = ExtResource("1_kivlo")
