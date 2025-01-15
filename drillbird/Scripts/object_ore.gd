@@ -48,6 +48,9 @@ func CooldownAnimation():
 		timeKeeper+=time*2
 		if timeKeeper>cooldownTime:
 			cooldown=false
+	
+
+
 			#TODO: Check if colliding with player once this happens
 
 

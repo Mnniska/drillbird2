@@ -22,6 +22,7 @@ var jumpsMade:int =0
 @export var jump_crystals: Array[AnimatedSprite2D]
 var justJumped:bool=false
 var airborne:bool=false
+var heavy:bool=false
 
 #Damage variables
 var damageTimerCounter:float=0
@@ -179,7 +180,8 @@ func RegularMovement(delta:float,currentAnim:String):
 	
 	if Input.is_action_just_pressed("interact"):
 				
-		oreInventory.DropOresRequest(global_position,Vector2(0,0)) #Todo:Give player's dir
+		oreInventory.DropOresRequest(global_position,Vector2(0,0)) 
+		heavy=false
 	
 	# Check for jump input and add velocity.
 	if Input.is_action_just_pressed("jump"):  
@@ -311,11 +313,7 @@ func RegularMovement(delta:float,currentAnim:String):
 
 
 func PlayerIsDrilling(): 
-	#This sound should rise in pitch as one gets closer to breaking the block. 
-	#Giving up control to the soundmanager seems like a bad idea - hmm
-	#I like the idea of the sounds being stored in one place. But I will want plenty of audio fuckery to make the game
-	#feel good. Maybe ask for advice on how other people do it
-	#SoundManager.PlaySoundAtLocation(global_position,abstract_SoundEffectSetting.SoundEffectEnum.PLAYER_DRILLING_BREAKABLE)
+
 	playerIsDrilling=true
 	var length:int=18
 	var raycastTarget = Vector2i(0,0)
@@ -397,6 +395,19 @@ func LoseInvincibility():
 	
 	pass
 
+func UpdateLightEffect():
+	var lightEffect:AnimatedSprite2D=$anim_LightEffect
+	if heavy:
+		lightEffect.hide()
+	else:
+		if airborne:
+			lightEffect.show()
+		else:
+			lightEffect.hide()
+	
+	if facingDir == Directions.LEFT or facingDir == Directions.RIGHT:
+		lightEffect.flip_h = !facing_right
+
 func Update_Animations(newanim):
 
 	var playerAnim:AnimatedSprite2D=$AnimatedSprite2D
@@ -413,7 +424,10 @@ func Update_Animations(newanim):
 	if newanim !=animstate:
 		animstate=newanim
 		playerAnim.animation=animstate
-			
+	
+	UpdateLightEffect()
+	#TODO: Consider only calling this when relevant
+	
 	#Make player flash if they're invincible
 	if invincible:
 		var frequency:float = 25
@@ -489,4 +503,7 @@ func _on_detector_body_entered(body: Node2D) -> void:
 			var oretype = body.oreType
 			if oreInventory.AddOreRequest(oretype):
 				body.queue_free()
-	pass # Replace with function body.
+				#Used to check if player can fly high
+				heavy=true 
+
+				

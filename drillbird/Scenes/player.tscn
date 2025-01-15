@@ -1,19 +1,25 @@
-[gd_scene load_steps=51 format=3 uid="uid://e3titjk1as46"]
+[gd_scene load_steps=58 format=3 uid="uid://e3titjk1as46"]
 
 [ext_resource type="Script" path="res://Scripts/playermovement.gd" id="1_llgr2"]
+[ext_resource type="Texture2D" uid="uid://dqsglx1jll3rm" path="res://Art/effects/BirdyLightEffect1.png" id="2_65ywu"]
 [ext_resource type="Texture2D" uid="uid://drpdhaamkld6q" path="res://Art/characters/Drillbird/anim_drill/drilling_down1.png" id="2_mrx7e"]
 [ext_resource type="Texture2D" uid="uid://dudw10cl4yld" path="res://Art/characters/Drillbird/birdy_takedamage.png" id="2_nmlpn"]
 [ext_resource type="Texture2D" uid="uid://dxl75lcwwomf8" path="res://Art/characters/Drillbird/anim_drill/anim_DrillSide1.png" id="2_xjbwl"]
 [ext_resource type="Texture2D" uid="uid://bnrrqdby45b8g" path="res://Art/characters/Drillbird/anim_drill/drilling_down2.png" id="3_4klg5"]
+[ext_resource type="Texture2D" uid="uid://b5wbxvhatncw8" path="res://Art/effects/BirdyLightEffect2.png" id="3_ivmh2"]
 [ext_resource type="Texture2D" uid="uid://d38huht83wxip" path="res://Art/characters/Drillbird/anim_drill/anim_DrillSide2.png" id="3_je7w8"]
 [ext_resource type="Texture2D" uid="uid://dskhetp3joq3y" path="res://Art/characters/Drillbird/birdy_idle.png" id="3_lhddu"]
 [ext_resource type="Texture2D" uid="uid://dytqwq2hwht6a" path="res://Art/characters/Drillbird/dead_idle.png" id="3_wvi2i"]
 [ext_resource type="Texture2D" uid="uid://crf0vmvyj55mo" path="res://Art/characters/Drillbird/anim_Run4.png" id="4_1upbw"]
 [ext_resource type="Texture2D" uid="uid://dv0o3qvoidx8f" path="res://Art/characters/Drillbird/anim_drill/anim_DrillSide3.png" id="4_2tosm"]
 [ext_resource type="Texture2D" uid="uid://cdxk1cj2p7ub7" path="res://Art/characters/Drillbird/anim_drill/drilling_down3.png" id="4_dqj8j"]
+[ext_resource type="Texture2D" uid="uid://fyrx1cps0tcv" path="res://Art/effects/BirdyLightEffect3.png" id="4_ip76s"]
 [ext_resource type="Texture2D" uid="uid://bfu8nuidtv2fd" path="res://Art/characters/Drillbird/anim_drill/anim_DrillSide4.png" id="5_73frj"]
+[ext_resource type="Texture2D" uid="uid://8sirseut41nu" path="res://Art/effects/BirdyLightEffect4.png" id="5_527b4"]
 [ext_resource type="Texture2D" uid="uid://dp4y4qqfqk5vv" path="res://Art/characters/Drillbird/anim_drill/drilling_down4.png" id="5_moafi"]
 [ext_resource type="Texture2D" uid="uid://3pwhb3v7bbi6" path="res://Art/characters/Drillbird/anim_drill/anim_WalkingDrillSide1.png" id="6_05axe"]
+[ext_resource type="Texture2D" uid="uid://bbn3bb2hk7j0c" path="res://Art/effects/BirdyLightEffect5.png" id="6_vdal2"]
+[ext_resource type="Texture2D" uid="uid://hnfpvp5yyc1p" path="res://Art/effects/BirdyLightEffect6.png" id="7_nla8m"]
 [ext_resource type="Texture2D" uid="uid://bg1rft51bd7wa" path="res://Art/characters/Drillbird/anim_drill/anim_WalkingDrillSide2.png" id="7_v0suf"]
 [ext_resource type="Texture2D" uid="uid://d0ynn407go18u" path="res://Art/characters/Drillbird/anim_drill/anim_WalkingDrillSide3.png" id="8_nghvx"]
 [ext_resource type="Texture2D" uid="uid://l1dya62lckhv" path="res://Art/characters/Drillbird/birdy_idle_down.png" id="8_pgi1o"]
@@ -45,6 +51,32 @@ size = Vector2(10, 11)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wmago"]
 size = Vector2(8, 12)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tv87d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_65ywu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ivmh2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ip76s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_527b4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_vdal2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_nla8m")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 8.0
+}]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3vbtj"]
 animations = [{
@@ -286,12 +318,19 @@ debug_color = Color(0.979594, 0.14234, 0, 0.42)
 target_position = Vector2(18, 0)
 hit_from_inside = true
 
+[node name="anim_LightEffect" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 6)
+scale = Vector2(-1, 1)
+sprite_frames = SubResource("SpriteFrames_tv87d")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.528581
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 2
 sprite_frames = SubResource("SpriteFrames_3vbtj")
-animation = &"run"
+animation = &"jump"
 autoplay = "idle"
-frame_progress = 0.0217558
 
 [node name="jumpCrystal1" type="AnimatedSprite2D" parent="AnimatedSprite2D"]
 position = Vector2(-5, 11)
