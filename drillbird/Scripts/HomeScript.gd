@@ -13,6 +13,7 @@ extends Node2D
 @onready var HealthHandler=$"../Camera2D/HealthUIHandler"
 @onready var EggHandler =$Eggs
 
+var ambienceSound:AudioStreamPlayer2D
 
 enum states{IDLE,SELL,RESTPOSSIBLE,SLEEP}
 var state:states
@@ -20,6 +21,10 @@ var state:states
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	animSleep.hide()
+	
+	ambienceSound=SoundManager.CreatePersistentSound(global_position,abstract_SoundEffectSetting.SoundEffectEnum.AMBIENCE_SURFACE)
+	ambienceSound.play()
+	ambienceSound.finished.connect(ambienceSound.play)
 	pass # Replace with function body.
 
 

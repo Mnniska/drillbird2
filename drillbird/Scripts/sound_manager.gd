@@ -24,10 +24,10 @@ func CreatePersistentSound(location:Vector2,type:abstract_SoundEffectSetting.Sou
 	var new_2D_audio = AudioStreamPlayer2D.new()
 	add_child(new_2D_audio)
 	new_2D_audio.position=location
+	new_2D_audio.max_distance=16*20
 	SetupCommonSoundSettings(soundEffectSetting,new_2D_audio)
 	return new_2D_audio
 	
-	pass
 
 func SetupCommonSoundSettings(soundEffectSetting:abstract_SoundEffectSetting,audio:AudioStreamPlayer2D):
 	audio.stream=soundEffectSetting.sound_effect

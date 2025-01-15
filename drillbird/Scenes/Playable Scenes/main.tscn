@@ -297,11 +297,6 @@ script = ExtResource("21_mqj7b")
 
 [node name="Player" parent="." instance=ExtResource("12_u5tqu")]
 position = Vector2(-128, -3)
-SPEED = 100.0
-DRILLSPEED = 40.0
-damageStunTime = 0.2
-damageVelocity = 100.0
-invincibilityTime = 3.5
 
 [node name="Home" parent="." instance=ExtResource("38_pj4ey")]
 

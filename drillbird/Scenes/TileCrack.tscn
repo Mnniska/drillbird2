@@ -25,7 +25,7 @@ texture = ExtResource("2_d02o3")
 
 [node name="DrillSoundPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_r2vk1")
-volume_db = -10.0
+volume_db = -25.0
 bus = &"SFX"
 script = ExtResource("7_k3njw")
 sound_air = ExtResource("8_2ouuv")
