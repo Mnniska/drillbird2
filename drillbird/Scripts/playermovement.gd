@@ -17,7 +17,7 @@ var facing_right: bool = true
 @export var JUMP_VELOCITY = -100.0
 
 #Jump variables
-var maxJumps: int =3
+var maxJumps: int =2
 var jumpsMade:int =0
 @export var jump_crystals: Array[AnimatedSprite2D]
 var justJumped:bool=false
@@ -185,7 +185,7 @@ func RegularMovement(delta:float,currentAnim:String):
 	
 	# Check for jump input and add velocity.
 	if Input.is_action_just_pressed("jump"):  
-		if is_on_floor() or jumpsMade <= maxJumps:
+		if is_on_floor() or jumpsMade <= maxJumps or !heavy:
 			
 			if is_on_floor():
 				SoundManager.PlaySoundAtLocation(global_position,abstract_SoundEffectSetting.SoundEffectEnum.PLAYER_JUMP)
@@ -194,12 +194,18 @@ func RegularMovement(delta:float,currentAnim:String):
 			velocity.y = JUMP_VELOCITY
 			newanim= "jump"
 			justJumped=true
-
-			for index in jump_crystals.size():
-				jump_crystals[index].show()
-				if index+1>maxJumps-jumpsMade:
-					jump_crystals[index].hide()
-		jumpsMade+=1
+			
+			if heavy:
+				for index in jump_crystals.size():
+					jump_crystals[index].show()
+					if index+1>maxJumps-jumpsMade:
+						jump_crystals[index].hide()
+				jumpsMade+=1
+			else:
+				SetLightEffectActive(true)
+				for n in jump_crystals:
+					n.hide()
+	
 	# Add the gravity to player and update anims depending on velocity
 	if not is_on_floor():
 		collider_airborne.disabled=false
@@ -215,6 +221,7 @@ func RegularMovement(delta:float,currentAnim:String):
 				newanim= "fall"
 	elif !justJumped:
 		jumpsMade=0
+		SetLightEffectActive(false)
 		for n in jump_crystals:
 			n.hide()
 	else:
@@ -395,16 +402,16 @@ func LoseInvincibility():
 	
 	pass
 
-func UpdateLightEffect():
+func SetLightEffectActive(active:bool):
 	var lightEffect:AnimatedSprite2D=$anim_LightEffect
-	if heavy:
-		lightEffect.hide()
-	else:
-		if airborne:
-			lightEffect.show()
-		else:
-			lightEffect.hide()
 	
+	if active:
+		lightEffect.show()
+		$JumpParticles.emitting=true
+	else:
+		lightEffect.hide()
+		$JumpParticles.emitting=false
+
 	if facingDir == Directions.LEFT or facingDir == Directions.RIGHT:
 		lightEffect.flip_h = !facing_right
 
@@ -420,12 +427,15 @@ func Update_Animations(newanim):
 
 	if facingDir == Directions.LEFT or facingDir == Directions.RIGHT:
 		playerAnim.flip_h = !facing_right
+		$anim_LightEffect.flip_h = !facing_right
+
+
 
 	if newanim !=animstate:
 		animstate=newanim
 		playerAnim.animation=animstate
 	
-	UpdateLightEffect()
+
 	#TODO: Consider only calling this when relevant
 	
 	#Make player flash if they're invincible

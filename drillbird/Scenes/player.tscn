@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://e3titjk1as46"]
+[gd_scene load_steps=63 format=3 uid="uid://e3titjk1as46"]
 
 [ext_resource type="Script" path="res://Scripts/playermovement.gd" id="1_llgr2"]
 [ext_resource type="Texture2D" uid="uid://dqsglx1jll3rm" path="res://Art/effects/BirdyLightEffect1.png" id="2_65ywu"]
@@ -77,6 +77,31 @@ animations = [{
 "name": &"idle",
 "speed": 8.0
 }]
+
+[sub_resource type="Curve" id="Curve_drsrd"]
+_data = [Vector2(0, 1), 0.0, -0.841543, 0, 0, Vector2(1, 1), -0.0833984, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_vrrys"]
+curve = SubResource("Curve_drsrd")
+
+[sub_resource type="Curve" id="Curve_24rin"]
+_data = [Vector2(0, 1), 0.0, -1.08966, 0, 0, Vector2(0.994949, 0), -1.12652, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_285yk"]
+curve = SubResource("Curve_24rin")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_s5mli"]
+lifetime_randomness = 0.8
+particle_flag_disable_z = true
+emission_shape = 2
+emission_sphere_radius = 3.06
+gravity = Vector3(0, 0, 0)
+scale_min = 0.4
+scale_max = 0.8
+scale_curve = SubResource("CurveTexture_285yk")
+alpha_curve = SubResource("CurveTexture_vrrys")
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3vbtj"]
 animations = [{
@@ -319,12 +344,23 @@ target_position = Vector2(18, 0)
 hit_from_inside = true
 
 [node name="anim_LightEffect" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, 6)
 scale = Vector2(-1, 1)
 sprite_frames = SubResource("SpriteFrames_tv87d")
 animation = &"idle"
 autoplay = "idle"
 frame_progress = 0.528581
+
+[node name="JumpParticles" type="GPUParticles2D" parent="."]
+z_index = 1
+position = Vector2(-2, 0)
+rotation = -1.5708
+emitting = false
+amount = 20
+process_material = SubResource("ParticleProcessMaterial_s5mli")
+texture = ExtResource("2_65ywu")
+lifetime = 0.3
+explosiveness = 0.26
+randomness = 1.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 2
@@ -333,7 +369,7 @@ animation = &"jump"
 autoplay = "idle"
 
 [node name="jumpCrystal1" type="AnimatedSprite2D" parent="AnimatedSprite2D"]
-position = Vector2(-5, 11)
+position = Vector2(-3, 10)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_xfwt0")
 animation = &"idle"
@@ -342,7 +378,7 @@ frame = 3
 frame_progress = 1.0
 
 [node name="jumpCrystal2" type="AnimatedSprite2D" parent="AnimatedSprite2D"]
-position = Vector2(0, 11)
+position = Vector2(3, 10)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_xfwt0")
 animation = &"idle"
@@ -350,7 +386,7 @@ autoplay = "idle"
 frame_progress = 0.580166
 
 [node name="jumpCrystal3" type="AnimatedSprite2D" parent="AnimatedSprite2D"]
-position = Vector2(4, 11)
+position = Vector2(6, 10)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_xfwt0")
 animation = &"idle"
