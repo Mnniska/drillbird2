@@ -17,7 +17,7 @@ var slotAmount:int=2
 @onready var UIvisual_left = $ui_leftSide
 @onready var UIvisual_right = $ui_rightSide
 
-func DropOresRequest(position:Vector2,velocity:Vector2):
+func DropOresRequest(position:Vector2):
 	var oresToDrop:Array[abstract_ore]
 	for n in inventorySlots:
 		for p in n.EmptyOres():
@@ -45,10 +45,9 @@ func SellOres():
 		#get money from sell fucntion in the ore slot
 	return gainedMoney
 	
-func PlayerDied():
-	for n in inventorySlots:
-		n.SellOres()
-	#later, we'll drop all of the ores when this happens. but for now just clear them
+func PlayerDied(playerPos:Vector2):
+	DropOresRequest(playerPos)
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

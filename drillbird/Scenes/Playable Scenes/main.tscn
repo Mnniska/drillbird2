@@ -482,15 +482,15 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="header2" type="Label" parent="Camera2D/UI_Death/Background"]
-offset_left = -93.0
+offset_left = -101.0
 offset_top = -7.0
-offset_right = 115.0
+offset_right = 107.0
 offset_bottom = 22.0
 size_flags_horizontal = 0
 theme = ExtResource("42_e8s0s")
 theme_override_colors/font_color = Color(0.670588, 0.447059, 0.341176, 1)
-text = "- All carried ores are lost
-- Birdy will respawn at the Nest"
+text = "- All ores were dropped
+- Birdy will respawn at Home next day"
 vertical_alignment = 1
 
 [node name="Button_Continue" parent="Camera2D/UI_Death" instance=ExtResource("43_pwocf")]

@@ -26,7 +26,7 @@ var heavy:bool=false
 
 #Damage variables
 var damageTimerCounter:float=0
-@export var damageStunTime:float=0.2
+@export var damageStunTime:float=0.6
 @export var damageVelocity:float=100
 @export var invincibilityTime:float=3.5
 var invincibilityCounter:float=0
@@ -124,7 +124,11 @@ func _physics_process(delta: float) -> void:
 
 	
 func TakeDamageMovement(delta:float,currentAnim:String):
-	velocity.y=-damageVelocity #this should be based on the direction of the threat
+	#velocity.y=-damageVelocity #this should be based on the direction of the threat
+	
+	if not is_on_floor():
+		velocity += get_gravity()*0.5 * delta
+	velocity.x = move_toward(velocity.x, 0, SPEED*0.2)
 	
 	damageTimerCounter+=delta
 	if damageTimerCounter>=damageStunTime:
@@ -140,7 +144,7 @@ func PlayDead():
 	if state==States.DEAD:
 		return false
 	state=States.DEAD
-	oreInventory.PlayerDied()
+	oreInventory.PlayerDied(global_position)
 	
 
 func DeathMovement(delta:float,currentAnim:String):
@@ -180,7 +184,7 @@ func RegularMovement(delta:float,currentAnim:String):
 	
 	if Input.is_action_just_pressed("interact"):
 				
-		oreInventory.DropOresRequest(global_position,Vector2(0,0)) 
+		oreInventory.DropOresRequest(global_position) 
 		heavy=false
 	
 	# Check for jump input and add velocity.
@@ -379,6 +383,10 @@ func DealPlayerDamage(amount:int):
 	
 	invincible=true
 	invincibilityCounter=0
+	var x = randf_range(200,-200)
+	var y = randf_range(-300,-400)
+	
+	self.velocity+=(Vector2(x,y))
 
 	healthManager.TakeDamage(amount)
 	
@@ -424,12 +432,9 @@ func Update_Animations(newanim):
 			particles.emitting=false
 			playerDrillingSolid=false
 
-
 	if facingDir == Directions.LEFT or facingDir == Directions.RIGHT:
 		playerAnim.flip_h = !facing_right
 		$anim_LightEffect.flip_h = !facing_right
-
-
 
 	if newanim !=animstate:
 		animstate=newanim
