@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://ckl0ibm5pfs7u"]
+[gd_scene load_steps=25 format=3 uid="uid://ckl0ibm5pfs7u"]
 
 [ext_resource type="Script" path="res://Scripts/HomeScript.gd" id="1_qel16"]
 [ext_resource type="Texture2D" uid="uid://xpp18icbqb1y" path="res://Art/environment/Home/nest_back.png" id="2_4e54y"]
@@ -57,6 +57,12 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d3sup"]
 size = Vector2(65, 68)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hr2gu"]
+size = Vector2(162, 51)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0svx2"]
+size = Vector2(14, 16)
 
 [node name="Home" type="Node2D"]
 script = ExtResource("1_qel16")
@@ -296,7 +302,25 @@ offset_right = 41.0
 offset_bottom = 49.0
 theme = ExtResource("8_k4jyb")
 
+[node name="Collider_Ores" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collider_Ores"]
+position = Vector2(0, -26.5)
+shape = SubResource("RectangleShape2D_hr2gu")
+
+[node name="collider_orePickup" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collider_orePickup"]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_0svx2")
+
 [connection signal="animation_finished" from="Eggs/BirdySleepPositions/birdySleep" to="." method="_on_birdy_sleep_animation_finished"]
 [connection signal="body_shape_entered" from="NestCollider" to="." method="_on_nest_collider_body_shape_entered"]
 [connection signal="body_shape_exited" from="NestCollider" to="." method="_on_nest_collider_body_shape_exited"]
 [connection signal="timeout" from="cutsceneTimer" to="." method="_on_cutscene_timer_timeout"]
+[connection signal="body_shape_entered" from="Collider_Ores" to="." method="OreEnteredCollider"]
+[connection signal="body_shape_entered" from="collider_orePickup" to="." method="_on_collider_ore_pickup_body_shape_entered"]

@@ -24,7 +24,7 @@ func DropOresRequest(position:Vector2):
 			oresToDrop.append(p)
 
 	for n in oresToDrop:
-		var x=randf_range(-200,200)
+		var x=randf_range(-100,100)
 		var y = randf_range(-100,-200)
 		var v=Vector2(x,y)
 		

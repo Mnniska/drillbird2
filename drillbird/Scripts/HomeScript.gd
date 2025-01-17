@@ -36,7 +36,8 @@ func _process(delta: float) -> void:
 	
 	if state==states.SELL:
 		if Input.is_action_just_pressed("interact"):
-			SellOres()
+			pass
+		#	SellOres()
 	
 	if state==states.RESTPOSSIBLE:
 		if Input.is_action_just_pressed("interact"):
@@ -77,7 +78,14 @@ func SellOres():
 	moneyUI.text=str(GlobalVariables.playerMoney)+"xp"
 	print_debug("Player now has "+str(GlobalVariables.playerMoney)+" money!")
 	EggHandler.UpdateSize()
+
+func SellOre(ore:abstract_ore):
+	GlobalVariables.GivePlayerMoney( ore.value)
+	moneyUI.text=str(GlobalVariables.playerMoney)+"xp"
+	print_debug("Player now has "+str(GlobalVariables.playerMoney)+" money!")
+	EggHandler.UpdateSize()
 	
+	pass
 
 func GoToBed():
 	GlobalVariables.playerStatus=GlobalVariables.playerStatusEnum.SHOP
@@ -145,4 +153,18 @@ func _on_cutscene_timer_timeout() -> void:
 
 func _on_shop_handler_shop_closed() -> void:
 	WakeUp()	
+	pass # Replace with function body.
+
+
+func OreEnteredCollider(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
+	body.MoveTowardsHome(self.global_position)
+	
+	pass # Replace with function body.
+
+
+func _on_collider_ore_pickup_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
+	
+	SellOre(body.oreType)
+	body.queue_free()
+	
 	pass # Replace with function body.
