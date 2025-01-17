@@ -9,8 +9,10 @@ enum SoundEffectEnum
 	PLAYER_FOOTSTEP_ONE,
 	PLAYER_FOOTSTEP_TWO,
 	
-	AMBIENCE_SURFACE
-	
+	AMBIENCE_SURFACE,
+	BLOCK_DESTROY,
+	ORE_GRABBED,
+	ORE_LAND
 }
 
 @export_range(0,10) var limit:int=5

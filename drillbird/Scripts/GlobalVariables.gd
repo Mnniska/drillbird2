@@ -3,8 +3,12 @@ extends Node
 enum typeEnum{DRILL, INVENTORY, HEALTH, LIGHT}
 enum playerStatusEnum {DIG,SLEEP,SHOP,NEWDAY}
 signal playerStatusChanged
-
 signal SetupComplete
+
+var PlayerController:CharacterBody2D
+func SetupPlayerReference(ctrl:CharacterBody2D):
+	PlayerController=ctrl
+
 var InitialSetup:bool=true:
 	get:
 		return InitialSetup
@@ -118,6 +122,5 @@ func GetPlayerUpgradeLevel(upgradeType:typeEnum):
 	
 	pass
 	
-func LoadSaveData():
-	pass
+
 	
