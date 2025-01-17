@@ -12,7 +12,8 @@ enum SoundEffectEnum
 	AMBIENCE_SURFACE,
 	BLOCK_DESTROY,
 	ORE_GRABBED,
-	ORE_LAND
+	ORE_LAND,
+	MUSIC_HOME
 }
 
 @export_range(0,10) var limit:int=5

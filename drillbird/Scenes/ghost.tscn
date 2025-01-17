@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://vd1oghkdp3nq"]
+[gd_scene load_steps=11 format=3 uid="uid://vd1oghkdp3nq"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy_Ghost.gd" id="1_0nsmt"]
 [ext_resource type="Resource" uid="uid://c6vtudcjdht1" path="res://Resources/collidable_enemy.tres" id="2_14dhu"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dufrjqla7um7r" path="res://Art/characters/Ghost/ghost_idle3.png" id="4_7jbq0"]
 [ext_resource type="Texture2D" uid="uid://dg1qn1g0kvssq" path="res://Art/characters/Ghost/ghost_idle4.png" id="5_sik3a"]
 [ext_resource type="Texture2D" uid="uid://ytksgvcq8cy6" path="res://Art/characters/Ghost/ghost_idle5.png" id="6_tefmn"]
+[ext_resource type="AudioStream" uid="uid://d0eo35f1t7kdx" path="res://Audio/MUSIC/mus_darkness.wav" id="8_7ui1h"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_c18y6"]
 animations = [{
@@ -50,3 +51,9 @@ frame_progress = 0.9095
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, -1)
 shape = SubResource("CircleShape2D_2hsvd")
+
+[node name="GhostMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_7ui1h")
+autoplay = true
+max_distance = 180.0
+bus = &"MUSIC"

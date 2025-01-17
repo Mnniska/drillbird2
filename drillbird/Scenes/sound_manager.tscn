@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://c6kxrgykfp1c1"]
+[gd_scene load_steps=23 format=3 uid="uid://c6kxrgykfp1c1"]
 
 [ext_resource type="Script" path="res://Scripts/sound_manager.gd" id="1_kivlo"]
 [ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_SoundEffectSetting.gd" id="2_ba8up"]
@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://bkn6d73ogba4u" path="res://Audio/SFX/ore_grabbed.wav" id="10_4crdv"]
 [ext_resource type="AudioStream" uid="uid://mkkn175q2oj0" path="res://Audio/SFX/ambience_surface.wav" id="10_l466u"]
 [ext_resource type="AudioStream" uid="uid://dalpro3l37ots" path="res://Audio/SFX/ore_land.wav" id="11_reqvu"]
+[ext_resource type="AudioStream" uid="uid://bkend8hbxki0p" path="res://Audio/MUSIC/mus_Home.wav" id="12_any0t"]
 
 [sub_resource type="Resource" id="Resource_0hq0f"]
 script = ExtResource("2_ba8up")
@@ -93,6 +94,15 @@ volume = 5
 pitch_randomness = 0.4
 audioBus = 0
 
+[sub_resource type="Resource" id="Resource_i15mf"]
+script = ExtResource("2_ba8up")
+limit = 1
+type = 9
+sound_effect = ExtResource("12_any0t")
+volume = 0
+pitch_randomness = 0.0
+audioBus = 1
+
 [node name="SoundManager" type="Node2D"]
 script = ExtResource("1_kivlo")
-SOUND_EFFECTS = Array[ExtResource("2_ba8up")]([SubResource("Resource_0hq0f"), SubResource("Resource_4wqnx"), SubResource("Resource_560ql"), SubResource("Resource_phbpy"), SubResource("Resource_3bcde"), SubResource("Resource_dy3hh"), SubResource("Resource_avwkg"), SubResource("Resource_gpl43"), SubResource("Resource_eecqi")])
+SOUND_EFFECTS = Array[ExtResource("2_ba8up")]([SubResource("Resource_0hq0f"), SubResource("Resource_4wqnx"), SubResource("Resource_560ql"), SubResource("Resource_phbpy"), SubResource("Resource_3bcde"), SubResource("Resource_dy3hh"), SubResource("Resource_avwkg"), SubResource("Resource_gpl43"), SubResource("Resource_eecqi"), SubResource("Resource_i15mf")])
