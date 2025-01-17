@@ -46,7 +46,7 @@ func SaveGame():
 	PlayerData.totalMoneyGained=GlobalVariables.totalExperienceGained
 	
 	SaveEnvironment()
-	SaveEnemyPositions()
+	SaveEnemies()
 	SaveLeftoverOres()
 	
 	ResourceSaver.save(PlayerData,save_file_path+save_file_name)
@@ -69,22 +69,25 @@ func LoadLeftoverOres():
 	OreSpawner.OnLoadSpawnSavedOres(PlayerData.oreIDs,PlayerData.oreLocations)
 	
 	pass
-func SaveEnemyPositions():
+func SaveEnemies():
 
-	PlayerData.enemyPositions.clear()
+	PlayerData.enemySpawnPositions.clear()
 	PlayerData.enemyTypes.clear()
+	PlayerData.enemyDead.clear()
 
-	for n:abstract_enemy in EnemySpawner.UpdateEnemySpawnLocations():
+	for n:abstract_enemy in EnemySpawner.GetEnemyUpdate():
 		
-		PlayerData.enemyPositions.append(n.spawnLocation)
+		PlayerData.enemySpawnPositions.append(n.spawnLocation)
 		PlayerData.enemyTypes.append(n.type)
+		PlayerData.enemyDead.append(n.dead)
 	
+		print_debug("spawnpos "+ str(n.spawnLocation))
 		
 	pass
 
 func LoadEnemyPositions():
 	#This is currently NOT USED
-	EnemySpawner.LoadEnemySpawns(PlayerData.enemyPositions,PlayerData.enemyTypes)
+	EnemySpawner.LoadEnemySpawns(PlayerData.enemySpawnPositions,PlayerData.enemyTypes,PlayerData.enemyDead)
 
 func SaveEnvironment():
 	#This will include ores and enemies in the future as well

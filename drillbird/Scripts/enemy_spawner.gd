@@ -37,13 +37,14 @@ func GameStart():
 
 	pass
 
-func LoadEnemySpawns(spawnpos:Array[Vector2i],enemytype:Array[int]):
+func LoadEnemySpawns(spawnpos:Array[Vector2i],enemytype:Array[int],enemyDead:Array[bool]):
 	
 	enemiesToSpawnList.clear()
 	for n in spawnpos.size():
 		var enemy= abstract_enemy.new()
 		enemy.spawnLocation=spawnpos[n]
 		enemy.type=enemytype[n]
+		enemy.dead=enemyDead[n]
 		enemiesToSpawnList.append(enemy)
 	
 	pass
@@ -59,9 +60,7 @@ func GenerateObjectsFromTilemap():
 			var object = load(potentialObjectStrings[type-1]) 
 			var node = object.instantiate()
 
-			var globalSpawnPos= EnemyObjectTilemap.map_to_local(ObjectSpawnLocations[n]) 
-			var localSpawnPos = self.to_local(globalSpawnPos)
-			
+			var localSpawnPos= EnemyObjectTilemap.map_to_local(ObjectSpawnLocations[n]) 			
 			
 			node.transform.origin = localSpawnPos
 			add_child(node)
@@ -85,6 +84,7 @@ func GenerateEnemySpawnsFromTilemap():
 			var newEnemy=abstract_enemy.new()
 			newEnemy.type=tile.get_custom_data("enemy_type")
 			newEnemy.spawnLocation=enemySpawnLocations[index]
+			newEnemy.dead=false
 			enemiesToSpawnList.append(newEnemy)
 		index+=1
 			
@@ -101,41 +101,36 @@ func SpawnAllEnemies():
 		var enemy = load(potentialEnemyStrings[enemiesToSpawnList[index].type-1]) #The -1 is due to 0 acting as there being NO enemy
 		var node = enemy.instantiate()
 		spawnedEnemies.append(node)	
-		print_debug("Spawnpos: "+str(enemiesToSpawnList[index].spawnLocation))
 
-		var globalSpawnPos= EnemyObjectTilemap.map_to_local(enemiesToSpawnList[index].spawnLocation) 
-		var localSpawnPos = self.to_local(globalSpawnPos)
+		#We convert it to map coords so that enemy is spawned in the middle of the tile
+		var SpawnPositionInMapCoordinates= EnemyObjectTilemap.local_to_map(EnemyObjectTilemap.to_local(enemiesToSpawnList[index].spawnLocation))
+		var spawnPointInLocalCoords= EnemyObjectTilemap.map_to_local(SpawnPositionInMapCoordinates) 
 		
+		var spawnPosLocalCoords=EnemyObjectTilemap.map_to_local(enemiesToSpawnList[index].spawnLocation)
 		
-		node.transform.origin = localSpawnPos
+		node.Setup(n)
+		node.transform.origin = spawnPosLocalCoords
 		add_child(node)
 		index+=1
 			
 	pass
 
 
-func UpdateEnemySpawnLocations():
+func GetEnemyUpdate():
 	
 	var index=0
 	for n in spawnedEnemies:
 		
-		#This SHOULD return the enemy position in tilemap coordinates
-		#var spawnpos:Vector2i=enemiesToSpawnList[index].spawnLocation
-		var spawnpos2:Vector2i=n.GetSpawnPosition()
-		
-		
-		var spawnpos:Vector2i=EnemyObjectTilemap.local_to_map(EnemyObjectTilemap.to_local(n.GetSpawnPosition()))
+		enemiesToSpawnList[index].dead=n.enemyInfo.dead
+
+		#Converts enemy spawn position into closest tilemap coordinate
+		var spawnpos:Vector2i=EnemyObjectTilemap.local_to_map(EnemyObjectTilemap.to_local(n.GetLocalSpawnPosition()))
+		#Converts CURRENT position into tilemap coordinates
 		var newpos:Vector2i=EnemyObjectTilemap.local_to_map(EnemyObjectTilemap.to_local(n.position))
-		#Convert spawnpos to tilemap coordinates 
-		
+
 		if spawnpos!=newpos:
-			
-			#Updates enemy new spawn position according to its current position
-			#Assumes enemiestospawn list is same length as spawned enemies
-			
-			MoveTileToNewPos(spawnpos,newpos)
+			#MoveTileToNewPos(spawnpos,newpos)
 			enemiesToSpawnList[index].spawnLocation=newpos
-			
 		
 		pass
 		index+=1
