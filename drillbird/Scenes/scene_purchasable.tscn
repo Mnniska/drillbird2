@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://de2ouaamnu8d0" path="res://Art/ui/Shop/UI_Shop_button_off_unavailable.png" id="8_sik50"]
 [ext_resource type="Texture2D" uid="uid://bhl0wrpfdjcmt" path="res://Art/ui/Shop/UI_Shop_button_off_canAfford.png" id="9_iepxl"]
 [ext_resource type="Texture2D" uid="uid://dd5qv322e1hvn" path="res://Art/ui/Shop/UI_Shop_icon_inventory.png" id="10_odim8"]
-[ext_resource type="Theme" uid="uid://bfr5y4lo7m1ux" path="res://Resources/fontTheme.tres" id="11_hei2b"]
+[ext_resource type="Theme" uid="uid://bfr5y4lo7m1ux" path="res://Resources/Fonts/fontTheme.tres" id="11_hei2b"]
 [ext_resource type="Texture2D" uid="uid://5j8n4l5xcmt2" path="res://Art/ui/Shop/UI_Shop_knob_on.png" id="12_ebvh8"]
 [ext_resource type="Texture2D" uid="uid://dk4nbwbyqwktv" path="res://Art/ui/Shop/UI_Shop_knob_off.png" id="13_4jry6"]
 

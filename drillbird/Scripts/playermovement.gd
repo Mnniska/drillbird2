@@ -62,18 +62,14 @@ func _ready() -> void:
 	debugLine.add_point((raycast_drill.target_position))
 	collider_airborne.disabled=true
 	collider_grounded.disabled=false
-	
-	
+		
 
 func _physics_process(delta: float) -> void:
 	
-		#debug test
-	if Input.is_action_just_pressed("removeLight"):
-		DealPlayerDamage(1)
-	if Input.is_action_just_pressed("addLight"):
-		healthManager.RefillHealth()
-		
+	
+				
 	if Input.is_action_just_pressed("debug_1"):
+		
 		
 		if state==States.DEBUG_GHOST:
 			SetDebugMoveActive(false)
@@ -520,5 +516,15 @@ func _on_detector_body_entered(body: Node2D) -> void:
 				body.queue_free()
 				#Used to check if player can fly high
 				heavy=true 
+			else:
+				CreateInfoBubble("Inventory full!")
 
 				
+func CreateInfoBubble(text:String):
+	var txt=load("res://Scenes/text_bubble.tscn")
+	var node=txt.instantiate()
+	
+	add_child(node)
+	var offset=Vector2(0,-24)
+	node.position+=offset
+	node.Setup(text,abstract_textEffect.effectEnum.WAVE)

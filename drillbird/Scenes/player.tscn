@@ -44,7 +44,7 @@
 [ext_resource type="Texture2D" uid="uid://c4kbqht4juyov" path="res://Art/characters/Drillbird/anim_drill/drilling_down_fall.png" id="23_fmdch"]
 [ext_resource type="Texture2D" uid="uid://bdnsaxsutvhq8" path="res://Art/effects/sprite_jumpCrystal3.png" id="24_nofj5"]
 [ext_resource type="Texture2D" uid="uid://d1fxkvrdmxu4l" path="res://Art/effects/sprite_jumpCrystal4.png" id="25_ehp6o"]
-[ext_resource type="Theme" uid="uid://bfr5y4lo7m1ux" path="res://Resources/fontTheme.tres" id="38_sekb7"]
+[ext_resource type="Theme" uid="uid://bfr5y4lo7m1ux" path="res://Resources/Fonts/fontTheme.tres" id="38_sekb7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pdge5"]
 size = Vector2(10, 11)

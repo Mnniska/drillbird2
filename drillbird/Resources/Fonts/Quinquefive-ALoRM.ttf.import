@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://bvh0dsp2kmrr0"
-path="res://.godot/imported/m5x7.ttf-55f380983f075880ffa219ebcb9ded95.fontdata"
+uid="uid://cicu24cmxgshq"
+path="res://.godot/imported/Quinquefive-ALoRM.ttf-199cba6326c0bf8a2b2a621ae12191a4.fontdata"
 
 [deps]
 
-source_file="res://Resources/m5x7.ttf"
-dest_files=["res://.godot/imported/m5x7.ttf-55f380983f075880ffa219ebcb9ded95.fontdata"]
+source_file="res://Resources/Fonts/Quinquefive-ALoRM.ttf"
+dest_files=["res://.godot/imported/Quinquefive-ALoRM.ttf-199cba6326c0bf8a2b2a621ae12191a4.fontdata"]
 
 [params]
 

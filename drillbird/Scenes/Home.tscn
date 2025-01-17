@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bi2hexyd84ebw" path="res://Art/environment/Home/egg_biggest.png" id="6_e0x4d"]
 [ext_resource type="Texture2D" uid="uid://dorh0qxx8p2ha" path="res://Art/ui/UI_IconBG_right.png" id="6_f4gen"]
 [ext_resource type="Texture2D" uid="uid://dcleif1cn1ru2" path="res://Art/ui/buttonSymbol_top.png" id="7_37yhr"]
-[ext_resource type="Theme" uid="uid://bfr5y4lo7m1ux" path="res://Resources/fontTheme.tres" id="8_k4jyb"]
+[ext_resource type="Theme" uid="uid://bfr5y4lo7m1ux" path="res://Resources/Fonts/fontTheme.tres" id="8_k4jyb"]
 [ext_resource type="Texture2D" uid="uid://es25bpukcdqn" path="res://Art/environment/Home/egg_smol.png" id="9_xckrn"]
 [ext_resource type="Texture2D" uid="uid://da06hbcxbqbqh" path="res://Art/characters/Drillbird/Sleep/birdy_sleepAnim6.png" id="10_qca23"]
 [ext_resource type="Texture2D" uid="uid://bws0n7wulruiw" path="res://Art/characters/Drillbird/Sleep/birdy_sleepAnim7.png" id="11_12afj"]

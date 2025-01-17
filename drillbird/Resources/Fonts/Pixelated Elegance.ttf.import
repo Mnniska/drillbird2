@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://cicu24cmxgshq"
-path="res://.godot/imported/Quinquefive-ALoRM.ttf-d830591a1d6f5c1ae60481e7f3c15e34.fontdata"
+uid="uid://uexmj2mb3qjg"
+path="res://.godot/imported/Pixelated Elegance.ttf-268bcf21d00768fbe9d8caf643130620.fontdata"
 
 [deps]
 
-source_file="res://Resources/Quinquefive-ALoRM.ttf"
-dest_files=["res://.godot/imported/Quinquefive-ALoRM.ttf-d830591a1d6f5c1ae60481e7f3c15e34.fontdata"]
+source_file="res://Resources/Fonts/Pixelated Elegance.ttf"
+dest_files=["res://.godot/imported/Pixelated Elegance.ttf-268bcf21d00768fbe9d8caf643130620.fontdata"]
 
 [params]
 
