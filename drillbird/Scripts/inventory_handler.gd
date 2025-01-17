@@ -86,7 +86,7 @@ func AddOreRequest(ore:abstract_ore):
 	for n in inventorySlots:
 		if n.GiveOre(ore):
 			oreAdded=true
-			print_debug("Ore added!")
+			SoundManager.PlaySoundGlobal(abstract_SoundEffectSetting.SoundEffectEnum.ORE_GRABBED)
 			break
 	
 	return oreAdded

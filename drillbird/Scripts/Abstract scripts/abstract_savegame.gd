@@ -16,8 +16,9 @@ class_name abstract_savegame
 @export var destroyed_tiles:Array[Vector2i]
 @export var enemies_to_spawn:Array[abstract_enemy]
 
-@export var enemyPositions:Array[Vector2i]
+@export var enemySpawnPositions:Array[Vector2i]
 @export var enemyTypes:Array[int]
+@export var enemyDead:Array[bool]
 
 @export var oreIDs:Array[int]
 @export var oreLocations:Array[Vector2i]

@@ -160,7 +160,7 @@ func _on_digging_countdown_timeout() -> void:
 	DestroyTile(cellLocation)
 	destroyed_tiles.append(cellLocation)
 
-#● Vector2i get_neighbor_cell(coords: Vector2i, neighbor: TileSet.CellNeighbor) const
+	SoundManager.PlaySoundAtLocation(global_position,abstract_SoundEffectSetting.SoundEffectEnum.BLOCK_DESTROY)
 	
 	cracksprite.hide()
 	diggingCountdown.stop()

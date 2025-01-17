@@ -25,6 +25,10 @@ func _ready() -> void:
 	ambienceSound=SoundManager.CreatePersistentSound(global_position,abstract_SoundEffectSetting.SoundEffectEnum.AMBIENCE_SURFACE)
 	ambienceSound.play()
 	ambienceSound.finished.connect(ambienceSound.play)
+	
+	var HUBMusic:AudioStreamPlayer2D=SoundManager.CreatePersistentSound(global_position,abstract_SoundEffectSetting.SoundEffectEnum.MUSIC_HOME)
+	HUBMusic.play()
+	HUBMusic.finished.connect(HUBMusic.play)
 	pass # Replace with function body.
 
 

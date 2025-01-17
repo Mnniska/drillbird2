@@ -14,7 +14,6 @@ func _ready() -> void:
 
 func GetCollType():
 	
-	
 	return ObjectInfo
 
 func GetOre():
@@ -77,4 +76,10 @@ func MoveTowardsHome(pos:Vector2):
 
 func _on_animation_animation_finished() -> void:
 	anim.animation="idle"
+	pass # Replace with function body.
+
+
+func _on_body_entered(body: Node) -> void:
+	SoundManager.PlaySoundAtLocation(global_position,abstract_SoundEffectSetting.SoundEffectEnum.ORE_LAND)
+	
 	pass # Replace with function body.

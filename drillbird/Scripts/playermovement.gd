@@ -62,6 +62,8 @@ func _ready() -> void:
 	debugLine.add_point((raycast_drill.target_position))
 	collider_airborne.disabled=true
 	collider_grounded.disabled=false
+	
+	GlobalVariables.PlayerController=self
 		
 
 func _physics_process(delta: float) -> void:
