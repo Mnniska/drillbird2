@@ -34,11 +34,11 @@ func _process(delta: float) -> void:
 	pass
 
 
-func CheckDecorationDependenciesForPosition(pos:Vector2i):
+func CheckDecorationDependenciesForPosition(pos:Vector2i,tilemap:TileMapLayer):
 	for n in isAnyObserverAtPosition(pos):
 		RemoveCell(n)
 	
-	pass
+	
 
 func isAnyObserverAtPosition(pos:Vector2i):
 	

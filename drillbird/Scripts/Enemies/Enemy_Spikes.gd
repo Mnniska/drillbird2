@@ -2,8 +2,12 @@ extends Node2D
 @export var enemyInfo:abstract_enemy=abstract_enemy.new()
 @export var collType:abstract_collidable #MUST HAVE
 @onready var raycast=$RayCast2D
+@onready var tileDestroyer=$"../../TileCrack"
+
+@export var spriteVariations:Array[CompressedTexture2D]
+
 var spawnPositionLocal:Vector2
-var tilemap:TileMapLayer
+@onready var tilemap:TileMapLayer  =$"../../TilemapEnvironment"
 
 func GetCollType():
 	return collType
@@ -13,29 +17,41 @@ func _ready() -> void:
 	
 	await get_tree().create_timer(0.1).timeout #TODO: Figure out a way to do this that isn't timing dependent - need to wait for tilemaplayers to generate
 	
-	raycast.force_raycast_update()
-
-	var coll = raycast.get_collider()
-		
-	if coll:
-		tilemap=coll
-		tilemap.changed.connect(CheckIfTileExists) #TODO: Instead of this shit - could have the crack one check if there's any surrounding colliders and ask them to update when brekaing a block..but that wont allow enemies to break blocks
-	#tilemap
+	tileDestroyer.TileDestroyed.connect(TileDestroyed)
 	
-	CheckIfTileExists()
+	
+	SpikesSpawnSetup()
 	spawnPositionLocal=position
 	pass
 	
 	pass # Replace with function body.
 
-func CheckIfTileExists():
+func SpikesSpawnSetup():
 	raycast.force_raycast_update()
 	if raycast.is_colliding():
-		print_debug("Successfully detected floor")
+		var col:TileMapLayer =raycast.get_collider()
 
+		var spikePos=tilemap.local_to_map( tilemap.to_local( raycast.global_position) )
+		var affectedTile= tilemap.get_cell_tile_data(spikePos)
+		var terrain = affectedTile.terrain
+		
+		
+		
+		$Sprite2D.texture=spriteVariations[min(spriteVariations.size()-1,terrain) ] 
+		
+		
 		return true
 	else:
 		TurnEnemyOff()
+
+func TileDestroyed(pos:Vector2i,tilemap:TileMapLayer):
+	
+	if tilemap.local_to_map( tilemap.to_local( raycast.global_position) )==pos:
+		TurnEnemyOff()
+	
+	pass
+
+
 
 func TurnEnemyOff():
 	hide()

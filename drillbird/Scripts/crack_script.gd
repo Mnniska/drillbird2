@@ -2,7 +2,7 @@ extends Node2D
 
 var diggingTime=0.0
 signal PlayerDrillingMaterial(int:)
-signal TileDestroyed(pos:Vector2i)
+signal TileDestroyed(pos:Vector2i,tilemap:TileMapLayer)
 
 #Signals for the sound 
 signal StartedDrilling
@@ -150,7 +150,7 @@ func DestroyTile(position_in_grid:Vector2i):
 	tilemap.set_cells_terrain_connect(cells, 0, 0,false)
 	tilemap.set_cell (position_in_grid,-1,Vector2i(-1,-1),-1)
 	tilemap.set_cells_terrain_connect(cells, 0, -1,false)
-	TileDestroyed.emit(position_in_grid)
+	TileDestroyed.emit(position_in_grid,tilemap)
 	pass
 
 func _on_digging_countdown_timeout() -> void:

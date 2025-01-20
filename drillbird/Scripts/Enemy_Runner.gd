@@ -36,6 +36,8 @@ func TurnEnemyOff():
 	hide()
 	$CollisionShape2D.set_deferred("disabled",true)
 	$EnemyCollisionChecker.set_deferred("disabled",true)
+	$EnemyCollisionChecker.set_deferred("monitoring",false)
+
 	velocity=Vector2(0,0)
 	$Timer.stop()
 	
