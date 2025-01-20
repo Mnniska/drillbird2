@@ -275,7 +275,7 @@ tile_set = ExtResource("1_1imtu")
 
 [node name="Tilemap_EnemiesAndObjects" type="TileMapLayer" parent="."]
 rotation = -0.0006429
-tile_map_data = PackedByteArray("AADz/wMAAAAAAAAAAADx/wUAAAAAAAAAAAD3/wEAAgAAAAAAAAD8////AgAAAAAAAAADAP//AgAAAAAAAADu//X/AgAAAAAAAADn//v/AgAAAAAAAADh//n/AgAAAAAAAADc/wIAAgAAAAAAAAD7/woAAwAAAAAAAAD3/wQAAwAAAAAAAADz/wUAAwAAAAAAAAD1//z/AwAAAAAAAAAIACYAAwAAAAAAAAAJACUAAwAAAAAAAAA=")
+tile_map_data = PackedByteArray("AADz/wMAAAAAAAAAAADx/wUAAAAAAAAAAAD8////AgAAAAAAAAADAP//AgAAAAAAAADu//X/AgAAAAAAAADn//v/AgAAAAAAAADh//n/AgAAAAAAAADc/wIAAgAAAAAAAAD7/woAAwAAAAAAAAD3/wQAAwAAAAAAAADz/wUAAwAAAAAAAAD1//z/AwAAAAAAAAAIACYAAwAAAAAAAAAJACUAAwAAAAAAAADy/wcAAwAAAAAAAADz/wcAAwAAAAAAAAD1/w4AAwAAAAAAAAD0/w4AAwAAAAAAAADz/w4AAwAAAAAAAADy/w4AAwAAAAAAAADx/w4AAwAAAAAAAAA=")
 tile_set = ExtResource("2_qhh28")
 
 [node name="TilemapEnvironment" type="TileMapLayer" parent="."]
@@ -303,7 +303,7 @@ position = Vector2(-616, 232)
 script = ExtResource("21_mqj7b")
 
 [node name="Player" parent="." instance=ExtResource("12_u5tqu")]
-position = Vector2(-90, 199)
+position = Vector2(-112, 14)
 
 [node name="Home" parent="." instance=ExtResource("38_pj4ey")]
 

@@ -381,8 +381,8 @@ func DealDamage(amount:int):
 	
 	invincible=true
 	invincibilityCounter=0
-	var x = randf_range(200,-200)
-	var y = randf_range(-300,-400)
+	var x = randf_range(0,-0)
+	var y = randf_range(-200,-250)
 	
 	self.velocity+=(Vector2(x,y))
 
