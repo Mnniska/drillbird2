@@ -3,7 +3,7 @@ class_name enemy_follower
 
 @export var collType:abstract_collidable #MUST HAVE
 @export var enemyInfo:abstract_enemy #MUST HAVE
-const MAX_SPEED = 300
+const MAX_SPEED = 200
 const JUMP_VELOCITY = -400.0
 var direction:float=1
 var spawnPositionLocal:Vector2
@@ -187,9 +187,11 @@ func _on_vision_field_body_shape_entered(body_rid: RID, body: Node2D, body_shape
 
 func _on_vision_field_body_shape_exited(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
 	
-	for n in visibleActors.size():
-		if visibleActors[n]==body:
-			visibleActors.remove_at(n)
+	var index=0
+	for n in visibleActors:
+		if n==body:
+			visibleActors.remove_at(index )
+		index+=1
 
 	if visibleActors.size()>0:
 		var dist:float=100
