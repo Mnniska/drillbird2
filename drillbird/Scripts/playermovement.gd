@@ -523,7 +523,7 @@ func _on_detector_body_entered(body: Node2D) -> void:
 
 				
 func CreateInfoBubble(text:String):
-	var txt=load("res://Scenes/text_bubble.tscn")
+	var txt=load("res://Scenes/UI/text_bubble.tscn")
 	var node=txt.instantiate()
 	
 	add_child(node)

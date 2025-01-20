@@ -1,0 +1,88 @@
+[gd_scene load_steps=15 format=3 uid="uid://bjaykfdp1s4y"]
+
+[ext_resource type="Script" path="res://Scripts/LightsourceScript.gd" id="1_4yv63"]
+[ext_resource type="Texture2D" uid="uid://xrxcywko8b64" path="res://Art/Objects/Torch/torch1.png" id="2_rei20"]
+[ext_resource type="Texture2D" uid="uid://4s4rhxqdc344" path="res://Art/Objects/Torch/torch2.png" id="3_c7m7i"]
+[ext_resource type="Texture2D" uid="uid://b35op6yylkv6" path="res://Art/Objects/Torch/torch3.png" id="4_cpj4k"]
+[ext_resource type="Texture2D" uid="uid://c0ujrgbr2eope" path="res://Art/Objects/Torch/torch4.png" id="5_e15rt"]
+[ext_resource type="Texture2D" uid="uid://bdgjho1gmjjee" path="res://Art/Objects/Torch/torch5.png" id="6_1c8ax"]
+[ext_resource type="Texture2D" uid="uid://wvdr6s5euli0" path="res://Art/Objects/Torch/torch6.png" id="7_jv858"]
+[ext_resource type="Texture2D" uid="uid://d4dmalvbv0a5j" path="res://Art/Objects/Torch/torch7.png" id="8_s0itv"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ram07"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_rei20")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_c7m7i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_cpj4k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_e15rt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_1c8ax")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_jv858")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_s0itv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_jfgkg"]
+offsets = PackedFloat32Array(0, 0.536432)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_oiv50"]
+gradient = SubResource("Gradient_jfgkg")
+width = 200
+height = 200
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_amnkd"]
+offsets = PackedFloat32Array(0, 0.740586)
+colors = PackedColorArray(0.870798, 0.810231, 0.676677, 1, 0.987649, 0.954031, 0.921878, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yqwtg"]
+gradient = SubResource("Gradient_amnkd")
+fill = 1
+fill_from = Vector2(0.482906, 0.517094)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e2adq"]
+radius = 71.0
+
+[node name="Torch" type="Node2D"]
+script = ExtResource("1_4yv63")
+
+[node name="torchAnimation" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ram07")
+autoplay = "default"
+frame = 6
+frame_progress = 1.0
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+blend_mode = 2
+texture = SubResource("GradientTexture2D_oiv50")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+texture = SubResource("GradientTexture2D_yqwtg")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_e2adq")
+
+[connection signal="body_shape_entered" from="Area2D" to="." method="_on_area_2d_body_shape_entered"]
+[connection signal="body_shape_exited" from="Area2D" to="." method="_on_area_2d_body_shape_exited"]

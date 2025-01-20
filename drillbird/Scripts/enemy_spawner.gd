@@ -92,9 +92,9 @@ func GenerateEnemySpawnsFromTilemap():
 	
 
 func SpawnAllEnemies():
-	
+
 	#Spawns all enemies in the EnemiesToSpawn list. This list is loaded from savefile or setup during first play
-	
+
 	var index=0
 	for n in enemiesToSpawnList:
 		

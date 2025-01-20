@@ -3,7 +3,7 @@ extends Node2D
 var HealthArray:Array[Node2D] #I'd love for this to specify the heart script. Make sure to loop up a tutorial over christmas :) 
 var HealthScene
 @export var HealthUpgrades:abstract_purchasable
-var HeartScene = preload("res://Scenes/HeartScene.tscn")
+var HeartScene = preload("res://Scenes/UI/HeartScene.tscn")
 @onready var UI_DeathPopup=$"../UI_Death"
 
 

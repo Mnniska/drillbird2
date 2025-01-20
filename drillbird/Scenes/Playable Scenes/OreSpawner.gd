@@ -32,7 +32,7 @@ func TrySpawnOreFromEnvironment(location:Vector2i):
 
 
 func SpawnOreAtLocation(location:Vector2,ore:abstract_ore,velocity:Vector2,cooldown:bool):
-	var scene = load("res://Scenes/Object_Ore.tscn") # Will load when the script is instanced.
+	var scene = load("res://Scenes/Objects and Enemies/Object_Ore.tscn") # Will load when the script is instanced.
 	var node = scene.instantiate()
 	
 	node.transform.origin = location

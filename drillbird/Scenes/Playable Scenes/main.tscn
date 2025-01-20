@@ -1,10 +1,11 @@
-[gd_scene load_steps=88 format=4 uid="uid://d2wv7igie5stg"]
+[gd_scene load_steps=90 format=4 uid="uid://d2wv7igie5stg"]
 
 [ext_resource type="TileSet" uid="uid://grpd2pyu7pgk" path="res://Resources/MainTileset.tres" id="1_1imtu"]
 [ext_resource type="Script" path="res://Scenes/Playable Scenes/SaveManager.gd" id="1_iickb"]
 [ext_resource type="Texture2D" uid="uid://4sud7qd6rgsy" path="res://Art/environment/test_decorations.png" id="2_8xt30"]
 [ext_resource type="PackedScene" uid="uid://0iy1qmgd0p6y" path="res://Scenes/TileCrack.tscn" id="2_c10yv"]
 [ext_resource type="TileSet" uid="uid://dtnsdsdm4123s" path="res://Resources/Tileset_Enemies.tres" id="2_qhh28"]
+[ext_resource type="Texture2D" uid="uid://bwndw1xr33fqx" path="res://Art/Objects/spikes_up.png" id="2_r4nl0"]
 [ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_ore_region.gd" id="3_flbkc"]
 [ext_resource type="Script" path="res://Scripts/DecorationScript.gd" id="3_yj8n7"]
 [ext_resource type="Resource" uid="uid://dr8sc3eaf14j5" path="res://Resources/ore_region_1.tres" id="4_t4dgp"]
@@ -52,11 +53,15 @@
 [ext_resource type="Script" path="res://Scenes/Playable Scenes/ui_death.gd" id="40_0iomv"]
 [ext_resource type="Texture2D" uid="uid://bntebnpau35mm" path="res://Art/ui/UI_Death_background.png" id="41_o4kd7"]
 [ext_resource type="Theme" uid="uid://bfr5y4lo7m1ux" path="res://Resources/Fonts/fontTheme.tres" id="42_e8s0s"]
-[ext_resource type="PackedScene" uid="uid://v1t8rfk5hqfa" path="res://Scenes/button.tscn" id="43_pwocf"]
+[ext_resource type="PackedScene" uid="uid://v1t8rfk5hqfa" path="res://Scenes/UI/button.tscn" id="43_pwocf"]
 [ext_resource type="Script" path="res://Scenes/Playable Scenes/DebugMenu.gd" id="47_igpia"]
 [ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_debugMenuOption.gd" id="48_cl8sw"]
 [ext_resource type="Script" path="res://Scenes/Playable Scenes/day_counter.gd" id="52_hrk5v"]
 [ext_resource type="Script" path="res://Scripts/enemy_spawner.gd" id="53_0clb6"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4w5ih"]
+texture = ExtResource("2_r4nl0")
+0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b7p1b"]
 texture = ExtResource("2_8xt30")
@@ -89,6 +94,7 @@ texture = ExtResource("2_8xt30")
 custom_data_layer_0/name = "dir_dependency"
 custom_data_layer_0/type = 6
 sources/1 = SubResource("TileSetAtlasSource_b7p1b")
+sources/0 = SubResource("TileSetAtlasSource_4w5ih")
 
 [sub_resource type="Gradient" id="Gradient_ekb11"]
 offsets = PackedFloat32Array(0, 0.536432)
@@ -285,8 +291,8 @@ oreList = Array[ExtResource("12_d51cc")]([ExtResource("13_6wsyx"), ExtResource("
 
 [node name="ObjectSpawner" type="Node2D" parent="."]
 script = ExtResource("53_0clb6")
-potentialEnemyStrings = Array[String](["res://Scenes/Enemy_mullvad.tscn", "res://Scenes/Enemy_runner.tscn"])
-potentialObjectStrings = Array[String](["res://Scenes/Torch_scene.tscn"])
+potentialEnemyStrings = Array[String](["res://Scenes/Objects and Enemies/Enemy_mullvad.tscn", "res://Scenes/Objects and Enemies/Enemy_runner.tscn"])
+potentialObjectStrings = Array[String](["res://Scenes/Objects and Enemies/Torch_scene.tscn"])
 
 [node name="TileCrack" parent="." instance=ExtResource("2_c10yv")]
 position = Vector2(25, 39)

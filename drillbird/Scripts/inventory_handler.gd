@@ -56,7 +56,7 @@ func _ready() -> void:
 	#Todo: Read the inventoryStat from globalVariables and figure out how much the player should have based on that
 	
 	for n in upgradetree_inventory.items[GlobalVariables.upgradeLevel_inventory].power:
-		var scene = load("res://Scenes/UI_InventorySlot.tscn") 
+		var scene = load("res://Scenes/UI/UI_InventorySlot.tscn") 
 		var node = scene.instantiate()
 		var offset= Vector2(-16,-16)
 		node.transform.origin =  Vector2(16*n,0)+offset
@@ -95,7 +95,7 @@ func AddOreRequest(ore:abstract_ore):
 	
 
 func AddSlotRequest():
-	var scene = load("res://Scenes/UI_InventorySlot.tscn") 
+	var scene = load("res://Scenes/UI/UI_InventorySlot.tscn") 
 	var node = scene.instantiate()
 	var offset= Vector2(-16,-16)
 	inventorySlots.append(node)

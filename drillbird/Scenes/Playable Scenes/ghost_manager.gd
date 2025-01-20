@@ -7,7 +7,7 @@ var ghostSpawned:bool=false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	GlobalVariables.playerLightStatusChange.connect(playerLightStatusChanged)
-	ghostRef=preload("res://Scenes/ghost.tscn")
+	ghostRef=preload("res://Scenes/Objects and Enemies/ghost.tscn")
 	pass # Replace with function body.
 
 

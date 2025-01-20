@@ -39,7 +39,7 @@ func SetupLightFunctionality():
 
 		#create lightbulbs depending on player upgrade lvl
 	for n in GlobalVariables.upgradeLevel_light:
-		var scene = load("res://Scenes/lightbulb.tscn") 
+		var scene = load("res://Scenes/UI/lightbulb.tscn") 
 		var node = scene.instantiate()
 		node.SetActive(true)
 		lightBulbArray.append(node)
@@ -204,7 +204,7 @@ func UpdatePlayerLightStatus():
 	
 
 func AddLightbulbRequest():
-	var scene = load("res://Scenes/lightbulb.tscn") 
+	var scene = load("res://Scenes/UI/lightbulb.tscn") 
 	var node = scene.instantiate()
 	var offset= Vector2(0,-4)
 	lightBulbArray.append(node)
