@@ -1,0 +1,113 @@
+[gd_scene load_steps=16 format=3 uid="uid://drvwe0qgsw3a1"]
+
+[ext_resource type="Script" path="res://Scripts/Enemies/Enemy_Follower.gd" id="1_8e42x"]
+[ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_collidable.gd" id="2_7cq53"]
+[ext_resource type="Texture2D" uid="uid://dkbi35i3knyaa" path="res://Art/characters/Follower/Follower_alert.png" id="2_rj7wu"]
+[ext_resource type="Texture2D" uid="uid://cuamnv0bqwgix" path="res://Art/characters/Follower/Follower_idle.png" id="3_8ugdf"]
+[ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_enemy.gd" id="3_lty4e"]
+[ext_resource type="Texture2D" uid="uid://cuw8sbkqd18i4" path="res://Art/characters/Follower/Follower_run1.png" id="4_k3mto"]
+[ext_resource type="Texture2D" uid="uid://dc3ugrpko31mt" path="res://Art/characters/Follower/Follower_run2.png" id="5_8ofnh"]
+[ext_resource type="Texture2D" uid="uid://egoobdoaj8b7" path="res://Art/characters/Follower/Follower_run3.png" id="6_08g80"]
+[ext_resource type="Theme" uid="uid://bfr5y4lo7m1ux" path="res://Resources/Fonts/fontTheme.tres" id="9_pher0"]
+
+[sub_resource type="Resource" id="Resource_e2rhy"]
+script = ExtResource("2_7cq53")
+type = 1
+enemyID = 3
+
+[sub_resource type="Resource" id="Resource_np1uf"]
+script = ExtResource("3_lty4e")
+type = 2
+spawnLocation = Vector2i(0, 0)
+dead = false
+damage = 1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_khmiv"]
+size = Vector2(12, 14)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pakvm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_rj7wu")
+}],
+"loop": true,
+"name": &"alert",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_8ugdf")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_k3mto")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_8ofnh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_08g80")
+}],
+"loop": true,
+"name": &"run",
+"speed": 15.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_33533"]
+size = Vector2(11, 7)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1txlu"]
+size = Vector2(8, 59)
+
+[node name="Enemy_Follower" type="CharacterBody2D"]
+collision_layer = 8
+script = ExtResource("1_8e42x")
+collType = SubResource("Resource_e2rhy")
+enemyInfo = SubResource("Resource_np1uf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_khmiv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_pakvm")
+animation = &"run"
+autoplay = "idle"
+frame_progress = 0.390355
+
+[node name="EnemyCollisionChecker" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyCollisionChecker"]
+position = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_33533")
+debug_color = Color(0.896068, 0.26513, 0.45405, 0.42)
+
+[node name="VisionField" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 24
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VisionField"]
+position = Vector2(0, -27.5)
+shape = SubResource("RectangleShape2D_1txlu")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -16.0
+offset_top = 14.0
+offset_right = 24.0
+offset_bottom = 37.0
+theme = ExtResource("9_pher0")
+
+[node name="LoseDetectionTimer" type="Timer" parent="."]
+
+[connection signal="body_shape_entered" from="EnemyCollisionChecker" to="." method="_on_enemy_collision_checker_body_shape_entered"]
+[connection signal="body_shape_exited" from="EnemyCollisionChecker" to="." method="_on_enemy_collision_checker_body_shape_exited"]
+[connection signal="body_shape_entered" from="VisionField" to="." method="_on_vision_field_body_shape_entered"]
+[connection signal="body_shape_exited" from="VisionField" to="." method="_on_vision_field_body_shape_exited"]
+[connection signal="timeout" from="LoseDetectionTimer" to="." method="_on_lose_detection_timer_timeout"]
