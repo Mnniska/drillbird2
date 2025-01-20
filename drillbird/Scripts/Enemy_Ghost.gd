@@ -6,6 +6,7 @@ var playerPos:Vector2
 var SPEED:float=2.8
 var  haunting:bool=false
 var lastpos:Vector2
+@onready var collider=$PlayerChecker
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -34,6 +35,14 @@ func HauntObject(delta:float):
 
 	pass
 
+func CheckOverlappingCollisions():
+	for n in collider.get_overlapping_bodies():
+		if !n==$".":
+			n.DealDamage(1)
+		pass
+	
+	pass
+
 func Disappear():
 	queue_free()
 
@@ -50,3 +59,11 @@ func _process(delta: float) -> void:
 	if haunting && hauntedObject!=null:
 		HauntObject(delta)
 	pass
+
+
+func _on_player_checker_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
+	if body==$".":
+		return
+	body.DealDamage(1)
+	
+	pass # Replace with function body.

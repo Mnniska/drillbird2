@@ -1,31 +1,41 @@
 extends CharacterBody2D
 
-@export var collType:abstract_collidable
-@export var enemyInfo:abstract_enemy
+@export var collType:abstract_collidable #MUST HAVE
+@export var enemyInfo:abstract_enemy #MUST HAVE
 const SPEED = 50.0
 const JUMP_VELOCITY = -400.0
 var direction:float=1
 var spawnPositionLocal:Vector2
+@onready var collider=$EnemyCollisionChecker
+
+func GetCollType(): #MUST HAVE
+	return collType
 
 func _ready() -> void:
 	if enemyInfo.dead:
 		TurnEnemyOff()
 	else:
 		StartMoving()
-	spawnPositionLocal=position
+	spawnPositionLocal=position #MUST HAVE
 	
-func GetLocalSpawnPosition():
+func GetLocalSpawnPosition(): #MUST HAVE
 	return spawnPositionLocal
 	
-func Setup(info:abstract_enemy):
-	enemyInfo=abstract_enemy.new()
+func Setup(info:abstract_enemy): #MUST HAVE
 	enemyInfo.spawnLocation=info.spawnLocation
 	enemyInfo.dead=info.dead
-	enemyInfo.type=info.type
+
+func DealDamage(value:int): #MUST HAVE
+	if value>0:
+		Kill()
+		#TODO: Fancy kill animation
+
+
 
 func TurnEnemyOff():
 	hide()
 	$CollisionShape2D.set_deferred("disabled",true)
+	$EnemyCollisionChecker.set_deferred("disabled",true)
 	velocity=Vector2(0,0)
 	$Timer.stop()
 	
@@ -58,8 +68,7 @@ func UpdateAnimations():
 
 	$AnimatedSprite2D.flip_h=direction <0
 
-func GetCollType():
-	return collType
+
 	
 
 func _on_timer_timeout() -> void:
@@ -67,4 +76,17 @@ func _on_timer_timeout() -> void:
 	direction=direction*-1
 	UpdateAnimations()
 	
+	pass # Replace with function body.
+
+func CheckOverlappingCollisions(): #MUST HAVE
+	for n in collider.get_overlapping_bodies():
+		if !n==$".":
+			n.DealDamage(enemyInfo.damage)
+	pass
+
+func _on_enemy_collision_checker_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
+	if body==$".":
+		return
+	
+	body.DealDamage(enemyInfo.damage)
 	pass # Replace with function body.

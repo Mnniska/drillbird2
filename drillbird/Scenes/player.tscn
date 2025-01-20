@@ -324,7 +324,7 @@ size = Vector2(12, 12)
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("jump_crystals")]
 collision_layer = 16
-collision_mask = 19
+collision_mask = 17
 script = ExtResource("1_llgr2")
 JUMP_VELOCITY = -250.0
 jump_crystals = [NodePath("AnimatedSprite2D/jumpCrystal1"), NodePath("AnimatedSprite2D/jumpCrystal2"), NodePath("AnimatedSprite2D/jumpCrystal3")]
@@ -436,7 +436,7 @@ debug_color = Color(0.43653, 0.59732, 0.154954, 0.42)
 
 [node name="Detector" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 12
+collision_mask = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Detector"]
 position = Vector2(0, 2)

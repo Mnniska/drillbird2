@@ -372,8 +372,8 @@ func PlayerIsDrilling():
 		debugLine.default_color=Color.GREEN		
 	pass
 	
-func DealPlayerDamage(amount:int):
-	if state==States.DAMAGE or state==States.DEAD:
+func DealDamage(amount:int):
+	if state==States.DAMAGE or state==States.DEAD or invincible:
 		return false
 	state=States.DAMAGE
 	
@@ -404,7 +404,7 @@ func LoseInvincibility():
 		for n in collisions:
 			colltype=n.GetCollType()
 			if colltype.type==colltype.types.ENEMY:
-				DealPlayerDamage(1)
+				n.CheckOverlappingCollisions() #Tell colliding enemy to check if it should hurt player 
 	
 	pass
 
@@ -508,7 +508,8 @@ func _on_detector_body_entered(body: Node2D) -> void:
 	#"match collider:
 	if collider.type==collider.types.ENEMY:
 		if !invincible && state!=States.DEBUG_GHOST:
-			DealPlayerDamage(1)
+			pass
+			#This is handled via ENEMIES nowadays
 	
 	if collider.type==collider.types.ORE:
 		
