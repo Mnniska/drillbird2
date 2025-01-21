@@ -110,6 +110,9 @@ debug_2={
 
 [layer_names]
 
+2d_render/layer_1="Tiles"
+2d_render/layer_2="Player"
+2d_render/layer_3="Background"
 2d_physics/layer_1="tiles"
 2d_physics/layer_2="entities"
 2d_physics/layer_3="ores"

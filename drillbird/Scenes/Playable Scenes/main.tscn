@@ -318,6 +318,7 @@ position = Vector2(16.5, -78.5)
 scale = Vector2(2.78846, 1.71364)
 blend_mode = 2
 range_z_max = 0
+range_item_cull_mask = 7
 texture = SubResource("GradientTexture2D_ywsei")
 
 [node name="topUI" type="Sprite2D" parent="Camera2D"]
@@ -548,6 +549,8 @@ z_index = -5
 texture_repeat = 2
 
 [node name="Sprite_HUBBackground" type="Sprite2D" parent="Sprites_HUBBackground"]
+light_mask = 0
+visibility_layer = 4
 texture_repeat = 2
 position = Vector2(0, 256)
 texture = ExtResource("37_6eo6t")
