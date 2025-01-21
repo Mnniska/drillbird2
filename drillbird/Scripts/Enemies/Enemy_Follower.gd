@@ -2,7 +2,7 @@ extends CharacterBody2D
 class_name enemy_follower
 
 @export var collType:abstract_collidable #MUST HAVE
-@export var enemyInfo:abstract_enemy #MUST HAVE
+var enemyInfo:abstract_enemy=abstract_enemy.new() #MUST HAVE
 const MAX_SPEED = 200
 const JUMP_VELOCITY = -400.0
 var direction:float=1
@@ -12,8 +12,8 @@ var visibleActors:Array[Node2D]
 var chosenActor:Node2D
 
 const BUFFER_ZONE:int=2
-const PREDICTION_LENGTH:int=8
-var chosenActorXCoordinateLastFrame:int=0
+const PREDICTION_LENGTH:int=6
+var chosenActorXCoordinateLastFrame:float=0
 var dir=0
 
 @onready var timer:Timer=$LoseDetectionTimer
@@ -28,6 +28,7 @@ func GetCollType(): #MUST HAVE
 func _ready() -> void:
 	if enemyInfo.dead:
 		TurnEnemyOff()
+	
 	
 	spawnPositionLocal=position #MUST HAVE
 	
@@ -62,36 +63,31 @@ func AlertBehaviour():
 	
 
 	
-	var velocityVector:int = chosenActorXCoordinateLastFrame-chosenActor.global_position.x
+	var velocityVector:float = chosenActorXCoordinateLastFrame-chosenActor.global_position.x
 	
+
 	if velocityVector>0:
 		dir=-1
 	else:
 		if velocityVector<0:
 			dir=1
 	
-	var multiplier: float=  min(PREDICTION_LENGTH, abs(chosenActor.global_position.x-global_position.x)) / PREDICTION_LENGTH
-	var target = chosenActor.global_position.x+multiplier*PREDICTION_LENGTH*dir
+	#Not used - TODO figure this out lol
+	var multiplier: float=   abs(chosenActor.global_position.x-global_position.x) / PREDICTION_LENGTH
+	
+	var target = chosenActor.global_position.x+PREDICTION_LENGTH*dir
 
 	#dist 0 = 0
 	#dist BUFFER = 1
 	
-	velocityVector=chosenActor.global_position.x+PREDICTION_LENGTH
-
-	
 	
 	var diff = global_position.x-target
-	
-	velocity.x=diff*-1*15
-	
-	if velocity.x>0:
-		velocity.x = min(MAX_SPEED,velocity.x)
-	else:
-		velocity.x = max(-MAX_SPEED,velocity.x)
 
 
+	velocity.x=-diff*7
+
 	
-	if abs(global_position.x-chosenActor.global_position.x) <=BUFFER_ZONE:
+	if abs(global_position.x-target) <=BUFFER_ZONE:
 		velocity.x=0
 	
 	
@@ -119,7 +115,7 @@ func TurnEnemyOff():
 	$EnemyCollisionChecker.set_deferred("monitoring",false)
 
 	velocity=Vector2(0,0)
-	$Timer.stop()
+	timer.stop()
 	
 	
 func Kill():
@@ -143,7 +139,7 @@ func UpdateAnimations():
 			pass
 			
 	$AnimatedSprite2D.animation = anim
-	$AnimatedSprite2D.flip_h=velocity.x > 0
+	$AnimatedSprite2D.flip_h=velocity.x < 0
 
 	pass # Replace with function body.
 

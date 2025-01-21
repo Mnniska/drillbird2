@@ -43,6 +43,11 @@ func CheckOverlappingCollisions():
 	
 	pass
 
+func DealDamage(amount:int):
+	
+	pass
+
+
 func Disappear():
 	queue_free()
 
