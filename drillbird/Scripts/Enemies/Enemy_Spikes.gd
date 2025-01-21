@@ -7,7 +7,6 @@ extends Node2D
 @export var spriteVariations:Array[CompressedTexture2D]
 
 var spawnPositionLocal:Vector2
-@onready var tilemap:TileMapLayer  =$"../../TilemapEnvironment"
 
 func GetCollType():
 	return collType
@@ -15,10 +14,7 @@ func GetCollType():
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	
-	await get_tree().create_timer(0.1).timeout #TODO: Figure out a way to do this that isn't timing dependent - need to wait for tilemaplayers to generate
-	
-	tileDestroyer.TileDestroyed.connect(TileDestroyed)
-	
+	await get_tree().create_timer(0.1).timeout #TODO: Figure out a way to do this that isn't timing dependent - need to wait for tilemaplayers to generate	
 	
 	SpikesSpawnSetup()
 	spawnPositionLocal=position
@@ -31,27 +27,15 @@ func SpikesSpawnSetup():
 	if raycast.is_colliding():
 		var col:TileMapLayer =raycast.get_collider()
 
-		var spikePos=tilemap.local_to_map( tilemap.to_local( raycast.global_position) )
-		var affectedTile= tilemap.get_cell_tile_data(spikePos)
+		var spikePos=col.local_to_map( col.to_local( raycast.global_position) )
+		var affectedTile= col.get_cell_tile_data(spikePos)
 		var terrain = affectedTile.terrain
 		
-		
-		
 		$Sprite2D.texture=spriteVariations[min(spriteVariations.size()-1,terrain) ] 
-		
 		
 		return true
 	else:
 		TurnEnemyOff()
-
-func TileDestroyed(pos:Vector2i,tilemap:TileMapLayer):
-	
-	if tilemap.local_to_map( tilemap.to_local( raycast.global_position) )==pos:
-		TurnEnemyOff()
-	
-	pass
-
-
 
 func TurnEnemyOff():
 	hide()
@@ -85,5 +69,11 @@ func _on_collider_body_shape_entered(body_rid: RID, body: Node2D, body_shape_ind
 		return
 	
 	body.DealDamage(enemyInfo.damage)
+	
+	pass # Replace with function body.
+
+
+func _on_observer_block_destroyed() -> void:
+	TurnEnemyOff()
 	
 	pass # Replace with function body.

@@ -151,6 +151,9 @@ func DestroyTile(position_in_grid:Vector2i):
 	tilemap.set_cell (position_in_grid,-1,Vector2i(-1,-1),-1)
 	tilemap.set_cells_terrain_connect(cells, 0, -1,false)
 	TileDestroyed.emit(position_in_grid,tilemap)
+	
+	CheckObservers()
+	
 	pass
 
 func _on_digging_countdown_timeout() -> void:
@@ -176,3 +179,9 @@ func _on_player_player_stopped_drilling_tile() -> void:
 	abortDig()
 
 	pass # Replace with function body.
+
+func CheckObservers():
+	for n in $ObserverCollider.get_overlapping_areas():
+		n.ObservedBlockDestroyed()
+	
+	pass
