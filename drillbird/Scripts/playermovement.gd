@@ -182,8 +182,10 @@ func RegularMovement(delta:float,currentAnim:String):
 	
 	if Input.is_action_just_pressed("interact"):
 				
-		oreInventory.DropOresRequest(global_position) 
-		heavy=false
+		oreInventory.DropOresRequest(global_position,velocity,facing_right) 
+		if heavy:
+			CreateInfoBubble("lightweight!")		
+			heavy=false
 	
 	# Check for jump input and add velocity.
 	if Input.is_action_just_pressed("jump"):  
@@ -518,7 +520,10 @@ func _on_detector_body_entered(body: Node2D) -> void:
 			if oreInventory.AddOreRequest(oretype):
 				body.queue_free()
 				#Used to check if player can fly high
-				heavy=true 
+				if !heavy:
+					heavy=true 
+					CreateInfoBubble("Heavy")
+				
 			else:
 				CreateInfoBubble("Inventory full!")
 

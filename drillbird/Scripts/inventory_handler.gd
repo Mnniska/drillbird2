@@ -17,15 +17,18 @@ var slotAmount:int=2
 @onready var UIvisual_left = $ui_leftSide
 @onready var UIvisual_right = $ui_rightSide
 
-func DropOresRequest(position:Vector2):
+func DropOresRequest(position:Vector2,velocity:Vector2,facingRight:bool):
 	var oresToDrop:Array[abstract_ore]
 	for n in inventorySlots:
 		for p in n.EmptyOres():
 			oresToDrop.append(p)
 
 	for n in oresToDrop:
-		var x=randf_range(-100,100)
-		var y = randf_range(-100,-200)
+		var flip=-1
+		if facingRight:
+			flip=1
+		var x=(randf_range(50,100)+velocity.x)*flip
+		var y = randf_range(-100,-200)+velocity.y
 		var v=Vector2(x,y)
 		
 		OreSpawner.SpawnOreAtLocation(position,n,v,true)
@@ -46,7 +49,7 @@ func SellOres():
 	return gainedMoney
 	
 func PlayerDied(playerPos:Vector2):
-	DropOresRequest(playerPos)
+	DropOresRequest(playerPos,Vector2(0,0),true)
 
 
 # Called when the node enters the scene tree for the first time.
