@@ -1,13 +1,16 @@
 extends Node2D
-enum typeEnum {FADE,GOTOPOS,STAY}
-var behavior:typeEnum = typeEnum.FADE
+class_name text_bubble
+
+enum behaviourEnum {FADE,GOTOPOS,STAY}
+var behavior:behaviourEnum = behaviourEnum.FADE
 @onready var textObject=$RichTextLabel
 
 @export var texteffects:Array[abstract_textEffect]
+
 var effect:abstract_textEffect
 var centerB="[center]"
 var centerE="[/center]"
-var textToShow=""
+@export var textToShow:String="defaultText"
 
 
 # Called when the node enters the scene tree for the first time.
@@ -19,13 +22,18 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func Setup(_txt:String,_effectType:abstract_textEffect.effectEnum):
+func ShowText(_txt:String):
 	textToShow=_txt
-	effect=texteffects[_effectType]
-		
 	textObject.text=centerB+effect.beginEffect+textToShow+effect.endEffect+centerE
 	
 	TypeWriteText()
+	pass
+
+func Setup(_effectType:abstract_textEffect.effectEnum,_behaviour:behaviourEnum):
+
+	behavior=_behaviour
+	effect=texteffects[_effectType]
+	
 	pass
 
 func TypeWriteText():
@@ -37,7 +45,7 @@ func TypeWriteText():
 		await get_tree().create_timer(0.05).timeout
 		pass
 	
-	if behavior==typeEnum.FADE:
+	if behavior==behaviourEnum.FADE:
 		await get_tree().create_timer(0.2).timeout
 		FadeOut()
 	

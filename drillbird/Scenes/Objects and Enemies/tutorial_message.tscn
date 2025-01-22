@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://bgtl1cgl35wcl"]
+
+[ext_resource type="Script" path="res://Scripts/UX and UI/tutorial_message.gd" id="1_3mu5m"]
+[ext_resource type="PackedScene" uid="uid://cyshcvv6qcxud" path="res://Scenes/UI/text_bubble.tscn" id="2_c768j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wuomc"]
+size = Vector2(148, 145)
+
+[node name="TutorialMessage" type="Node2D"]
+script = ExtResource("1_3mu5m")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_wuomc")
+
+[node name="TextBubble" parent="." instance=ExtResource("2_c768j")]
+position = Vector2(0, 21)
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[connection signal="body_shape_entered" from="Area2D" to="." method="_on_area_2d_body_shape_entered"]
+[connection signal="body_shape_exited" from="Area2D" to="." method="_on_area_2d_body_shape_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

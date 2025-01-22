@@ -1,5 +1,8 @@
 extends Node
 
+enum playerActions{DRILL,JUMP,DROPORE,INTERACT}
+signal playerAction(action:playerActions)
+
 enum typeEnum{DRILL, INVENTORY, HEALTH, LIGHT}
 enum playerStatusEnum {DIG,SLEEP,SHOP,NEWDAY}
 signal playerStatusChanged

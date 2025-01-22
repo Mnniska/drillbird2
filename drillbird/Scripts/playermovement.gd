@@ -181,7 +181,9 @@ func RegularMovement(delta:float,currentAnim:String):
 	var newanim=currentAnim
 	
 	if Input.is_action_just_pressed("interact"):
-				
+		
+		GlobalVariables.playerAction.emit(GlobalVariables.playerActions.DROPORE)
+		
 		oreInventory.DropOresRequest(global_position,velocity,facing_right) 
 		if heavy:
 			CreateInfoBubble("lightweight!")		
@@ -530,9 +532,10 @@ func _on_detector_body_entered(body: Node2D) -> void:
 				
 func CreateInfoBubble(text:String):
 	var txt=load("res://Scenes/UI/text_bubble.tscn")
-	var node=txt.instantiate()
+	var node:text_bubble=txt.instantiate()
 	
 	add_child(node)
 	var offset=Vector2(0,-24)
 	node.position+=offset
-	node.Setup(text,abstract_textEffect.effectEnum.WAVE)
+	node.Setup(abstract_textEffect.effectEnum.WAVE,text_bubble.behaviourEnum.FADE)
+	node.ShowText(text)
