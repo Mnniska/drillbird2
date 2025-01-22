@@ -653,6 +653,7 @@ shape = SubResource("RectangleShape2D_5sli7")
 [connection signal="newTileCrack" from="Player" to="TileCrack" method="_on_player_new_tile_crack"]
 [connection signal="playerStoppedDrillingTile" from="Player" to="TileCrack" method="_on_player_player_stopped_drilling_tile"]
 [connection signal="signal_IsDrillingTileChanged" from="Player" to="Camera2D/LightHandler" method="_on_player_signal_is_drilling_tile_changed"]
+[connection signal="signal_PlayerDrilling" from="Player" to="TileCrack" method="_on_player_signal_player_drilling"]
 [connection signal="signal_pitch_dark" from="Camera2D/LightHandler" to="GhostManager" method="_on_light_handler_signal_pitch_dark"]
 [connection signal="ShopClosed" from="Camera2D/ShopHandler" to="Home" method="_on_shop_handler_shop_closed"]
 [connection signal="body_shape_entered" from="WorldScripts/PlayerChecker_drillTutorial" to="WorldScripts" method="_on_player_checker_drill_tutorial_body_shape_entered"]

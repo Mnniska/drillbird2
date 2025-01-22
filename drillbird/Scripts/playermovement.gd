@@ -3,6 +3,7 @@ extends CharacterBody2D
 signal playerStoppedDrillingTile
 signal signal_IsDrillingTileChanged(value:bool)
 signal newTileCrack
+signal signal_PlayerDrilling(drilling:bool)
 
 var animstate=""
 enum Directions {LEFT, RIGHT, UP, DOWN}
@@ -320,6 +321,7 @@ func RegularMovement(delta:float,currentAnim:String):
 		player_is_drilling_tile =false
 		playerIsDrilling=false
 		playerStoppedDrillingTile.emit()
+		signal_PlayerDrilling.emit(false)
 		#tells crack script to stop timer
 
 	return newanim
@@ -327,7 +329,10 @@ func RegularMovement(delta:float,currentAnim:String):
 
 func PlayerIsDrilling(): 
 
-	playerIsDrilling=true
+	if !playerIsDrilling:
+		playerIsDrilling=true
+		signal_PlayerDrilling.emit(true)
+		
 	var length:int=18
 	var raycastTarget = Vector2i(0,0)
 	var rotationDegrees:int=0
@@ -469,6 +474,10 @@ func _on_animated_sprite_2d_animation_looped() -> void:
 	
 
 func _on_tile_crack_material_changed(terrain: abstract_terrain_info) -> void:
+	
+	if terrain==null:
+		return
+	
 	if terrain.terrainIdentifier==0: #Equals SOLID
 		particles.emitting=true
 		playerDrillingSolid=true		

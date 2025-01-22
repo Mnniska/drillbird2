@@ -24,7 +24,8 @@ signal MaterialChanged(terrain:abstract_terrain_info)
 var destroyed_tiles:Array[Vector2i]
 var affectedTile:TileData
 var cellLocation:Vector2i
-var isDrillingActive:bool=false
+var tileDrillingActive:bool=false
+var playerIsDrilling:bool=false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -32,9 +33,7 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 
-
-	
-	if(isDrillingActive):
+	if(tileDrillingActive):
 		var process = 1 - diggingCountdown.time_left/ diggingCountdown.wait_time 
 		
 		#Tells audio to go up in pitch
@@ -47,6 +46,16 @@ func _process(_delta: float) -> void:
 			currentSprite=crack_sprites.size()-1
 		cracksprite.texture=crack_sprites[currentSprite]
 
+func SetPlayerIsDriling(drilling:bool):
+	playerIsDrilling=drilling
+	
+	if drilling and !tileDrillingActive:
+		MaterialChanged.emit(null)
+	
+	if !drilling:
+		StoppedDrilling.emit()
+	
+	pass
 
 func _on_player_new_tile_crack(drill_position:Vector2i) -> void:
 	NewTarget(drill_position)
@@ -74,7 +83,7 @@ func NewTarget(drill_position:Vector2i):
 	cellLocation = tilemap.local_to_map(tilemap.to_local(drill_position))
 	affectedTile= tilemap.get_cell_tile_data(cellLocation)
 	
-	isDrillingActive=true
+	tileDrillingActive=true
 	
 	var digtime=3.0
 	var diggable=true
@@ -123,7 +132,7 @@ func GetHealthForTerrain(terrain:int):
 func abortDig():
 	StoppedDrilling.emit()
 	diggingCountdown.stop()
-	isDrillingActive=false
+	tileDrillingActive=false
 	cracksprite.hide()
 	
 
@@ -167,7 +176,7 @@ func _on_digging_countdown_timeout() -> void:
 	
 	cracksprite.hide()
 	diggingCountdown.stop()
-	isDrillingActive=false
+	tileDrillingActive=false
 	
 	#handle ore spawning
 	OreSpawner.TrySpawnOreFromEnvironment(cellLocation)
@@ -185,3 +194,9 @@ func CheckObservers():
 		n.ObservedBlockDestroyed()
 	
 	pass
+
+
+func _on_player_signal_player_drilling(drilling: bool) -> void:
+	SetPlayerIsDriling(drilling)
+	
+	pass # Replace with function body.

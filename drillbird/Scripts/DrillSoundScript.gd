@@ -37,6 +37,7 @@ func MaterialChange(terrain:abstract_terrain_info):
 	if terrain==null: #This has not yet been implemented - but I think we should in the future
 		audiostream.stream=sound_air
 		audiostream.play()
+		return
 
 
 	if terrain.terrainIdentifier>=1: #Sand or higher hardness
