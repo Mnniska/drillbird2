@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://cjtg4c73kcfjn"]
+
+[ext_resource type="Script" path="res://Scripts/chainblock_observer.gd" id="1_gngv8"]
+[ext_resource type="PackedScene" uid="uid://2lykflhwivex" path="res://Scenes/observer.tscn" id="2_reep8"]
+
+[node name="ChainblockObserver" type="Node2D"]
+script = ExtResource("1_gngv8")
+
+[node name="Observer" parent="." instance=ExtResource("2_reep8")]
+position = Vector2(0, -12)
+
+[node name="Observer2" parent="." instance=ExtResource("2_reep8")]
+position = Vector2(11, 0)
+
+[node name="Observer3" parent="." instance=ExtResource("2_reep8")]
+position = Vector2(0, 11)
+
+[node name="Observer4" parent="." instance=ExtResource("2_reep8")]
+position = Vector2(-11, 0)
+
+[node name="ObserverNotifier" type="Area2D" parent="."]
