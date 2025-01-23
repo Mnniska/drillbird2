@@ -19,7 +19,12 @@ signal MaterialChanged(terrain:abstract_terrain_info)
 @export var crack_sprites: Array[Texture]
 
 @export var minimumDigTime:float = 0.6
-@export var GameTerrains:Array[abstract_terrain_info]
+@export var GameTerrains:Array[abstract_terrain_info]:
+	get: return GameTerrains
+	set(value): 
+		if value.size()>0:
+			GameTerrains=value
+	
 
 var destroyed_tiles:Array[Vector2i]
 var affectedTile:TileData
@@ -29,6 +34,8 @@ var playerIsDrilling:bool=false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	print_debug(str(GameTerrains.size()))
+	
 	pass # Replace with function body.
 
 func _process(_delta: float) -> void:

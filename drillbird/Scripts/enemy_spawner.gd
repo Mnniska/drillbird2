@@ -1,9 +1,11 @@
 extends Node2D
 @export var potentialEnemyStrings:Array[String]
 @export var potentialObjectStrings:Array[String]
-
-
 @onready var gameTilemap:TileMapLayer=$"../TilemapEnvironment" 
+
+@onready var oreTilemap:TileMapLayer=$"../TilemapOres"
+
+@export var oreRegions:Array[abstract_ore_region]
 
 
 
@@ -49,7 +51,11 @@ func GenerateObjectsAndEnemiesFromTilemap():
 	var tiles:Array[Vector2i] = gameTilemap.get_used_cells()
 
 	var NoSavedEnemies= enemiesToSpawnList.size()<=0
+	
+	var tilesToUpdateTerrainOn:Array[abstract_tile_info]
 
+	
+	var tileListTest:Array[Vector2i]
 	var index=0
 	for tileLoc:Vector2i in tiles:
 		var tile:TileData = gameTilemap.get_cell_tile_data(tileLoc)
@@ -79,14 +85,79 @@ func GenerateObjectsAndEnemiesFromTilemap():
 			RemoveTile(tileLoc)
 		
 		
-		index+=1
+	
+		if tile.get_custom_data("ore_region")>0: #zero is default value, meaning this is not an enemy
+			var ore:abstract_ore = GetRelevantOre(tileLoc)
+			oreTilemap.set_cell(tileLoc,0,Vector2i(ore.AtlasCoords.x,randi_range(0,2)),0) #Sets cell to be one of the ores. The random is to select between the variants
+			#todo paint tile with relevant ore
 			
+			#Set cell to use correct sprite
+			var terrainSourceIDs:Array[int]=[3,5,2,4] #This is the source ID derived from the oreder of tile atlases in the tilemap settings
+
+			var sourceID=terrainSourceIDs[tile.terrain]
+			
+			
+			gameTilemap.set_cell(tileLoc,sourceID,Vector2i(0,0),0)
+			
+			
+			#TilesToUpdate.append(tileLoc)
+			var cells:Array[Vector2i]
+			
+			var newtile=abstract_tile_info.new()
+			newtile.loc=tileLoc
+			newtile.terrainIdentifier=tile.terrain
+			
+			tilesToUpdateTerrainOn.append(newtile)
+
+			pass
+		index+=1
+
+	#All of this is done to ensure the tiles connect beautifully 
+	var terrains:Array[abstract_tileCollection]
+
+	for n in tilesToUpdateTerrainOn:
+		
+		#Check if terrain is new - if so, create a new entry in "terrains" and add the tile there
+		var terrainExists:bool=false
+		for tilesetCollection in terrains:
+			if tilesetCollection.terrain==n.terrainIdentifier:
+				terrainExists=true
+				tilesetCollection.tiles.append(n)
+		
+		if !terrainExists:
+			var terr:abstract_tileCollection=abstract_tileCollection.new()
+			terr.terrain=n.terrainIdentifier	
+			terr.tiles.append(n)
+			terrains.append(terr)
+		pass
+	
+	#After getting all of the tiles of the same terrain type sorted in the same list, we go thru each array and make them connect properly
+	for n in terrains:
+		var locationArray:Array[Vector2i]
+		for p in n.tiles:
+			locationArray.append(p.loc)
+		gameTilemap.set_cells_terrain_connect(locationArray, 0, n.terrain,false)
+	
 	return enemiesToSpawnList
 	
 	
 	pass
 	
+func GetRelevantOre(tilePos:Vector2i):
+	
+	var regionID=0
+	if tilePos.y>5:
+		regionID=1
+		pass
+	
+	if oreRegions[regionID]!=null:
 
+		return oreRegions[regionID].GetOreToSpawn()
+	else:
+		push_error("Could not find a region for the ore!")
+	
+	
+	pass
 
 func GenerateObjectsFromTilemap():
 	var ObjectSpawnLocations = gameTilemap.get_used_cells()

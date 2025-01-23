@@ -5,8 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://cokne62lu57vb" path="res://Art/effects/crack2.png" id="3_ikpfl"]
 [ext_resource type="Texture2D" uid="uid://dg6uc1lqfrisv" path="res://Art/effects/crack3.png" id="4_j73nb"]
 [ext_resource type="Texture2D" uid="uid://81lximwfajib" path="res://Art/effects/crack4.png" id="5_lq347"]
+[ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_terrain_info.gd" id="6_0grno"]
 [ext_resource type="AudioStream" uid="uid://dwwgwbaymbt4b" path="res://Audio/SFX/player_drilling_breakable.wav" id="6_r2vk1"]
-[ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_terrain_info.gd" id="6_sjguo"]
 [ext_resource type="Resource" uid="uid://b1vx03cr2okgm" path="res://Resources/terrainInfo_solid.tres" id="6_yu0wu"]
 [ext_resource type="Resource" uid="uid://cjif6ylwd1rdw" path="res://Resources/terrainInfo_sand.tres" id="7_gctc3"]
 [ext_resource type="Script" path="res://Scripts/DrillSoundScript.gd" id="7_k3njw"]
@@ -21,7 +21,7 @@ radius = 6.0
 [node name="TileCrack" type="Node2D"]
 script = ExtResource("1_biwd4")
 crack_sprites = Array[Texture]([ExtResource("2_d02o3"), ExtResource("3_ikpfl"), ExtResource("4_j73nb"), ExtResource("5_lq347")])
-GameTerrains = Array[ExtResource("6_sjguo")]([ExtResource("6_yu0wu"), ExtResource("7_gctc3"), ExtResource("8_outtq"), ExtResource("9_il5dt")])
+GameTerrains = Array[ExtResource("6_0grno")]([ExtResource("8_outtq"), ExtResource("9_il5dt"), ExtResource("7_gctc3"), ExtResource("6_yu0wu")])
 
 [node name="cracksprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_d02o3")
