@@ -121,7 +121,7 @@ debug_2={
 
 [physics]
 
-2d/default_gravity=500.0
+2d/default_gravity=550.0
 
 [rendering]
 

@@ -86,7 +86,7 @@ func GenerateObjectsAndEnemiesFromTilemap():
 		
 		
 	
-		if tile.get_custom_data("ore_region")>0: #zero is default value, meaning this is not an enemy
+		if tile.get_custom_data("oreblock_terrain")>0: #zero is default value, meaning this is not an enemy
 			var ore:abstract_ore = GetRelevantOre(tileLoc)
 			oreTilemap.set_cell(tileLoc,0,Vector2i(ore.AtlasCoords.x,randi_range(0,2)),0) #Sets cell to be one of the ores. The random is to select between the variants
 			#todo paint tile with relevant ore
@@ -94,7 +94,8 @@ func GenerateObjectsAndEnemiesFromTilemap():
 			#Set cell to use correct sprite
 			var terrainSourceIDs:Array[int]=[3,5,2,4] #This is the source ID derived from the oreder of tile atlases in the tilemap settings
 
-			var sourceID=terrainSourceIDs[tile.terrain]
+			var tileTerrain=tile.get_custom_data("oreblock_terrain")
+			var sourceID=terrainSourceIDs[tileTerrain]
 			
 			
 			gameTilemap.set_cell(tileLoc,sourceID,Vector2i(0,0),0)
@@ -105,7 +106,7 @@ func GenerateObjectsAndEnemiesFromTilemap():
 			
 			var newtile=abstract_tile_info.new()
 			newtile.loc=tileLoc
-			newtile.terrainIdentifier=tile.terrain
+			newtile.terrainIdentifier=tileTerrain
 			
 			tilesToUpdateTerrainOn.append(newtile)
 

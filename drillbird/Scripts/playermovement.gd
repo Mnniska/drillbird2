@@ -15,10 +15,11 @@ var facing_right: bool = true
 
 @export var SPEED = 100.0
 @export var DRILLSPEED= 40.0
-@export var JUMP_VELOCITY = -100.0
+@export var JUMP_VELOCITY = -200
+@export var AIRJUMP_VELOCITY=-100
 
 #Jump variables
-var maxJumps: int =2
+@export var maxJumps: int =3
 var jumpsMade:int =0
 @export var jump_crystals: Array[AnimatedSprite2D]
 var justJumped:bool=false
@@ -198,7 +199,11 @@ func RegularMovement(delta:float,currentAnim:String):
 				SoundManager.PlaySoundAtLocation(global_position,abstract_SoundEffectSetting.SoundEffectEnum.PLAYER_JUMP)
 			else:
 				SoundManager.PlaySoundAtLocation(global_position,abstract_SoundEffectSetting.SoundEffectEnum.PLAYER_JUMP_MIDAIR)
-			velocity.y = JUMP_VELOCITY
+			
+			if is_on_floor():
+				velocity.y = JUMP_VELOCITY
+			else:
+				velocity.y=AIRJUMP_VELOCITY
 			newanim= "jump"
 			justJumped=true
 			

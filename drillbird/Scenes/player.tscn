@@ -326,7 +326,6 @@ size = Vector2(12, 12)
 collision_layer = 16
 collision_mask = 17
 script = ExtResource("1_llgr2")
-JUMP_VELOCITY = -250.0
 jump_crystals = [NodePath("AnimatedSprite2D/jumpCrystal1"), NodePath("AnimatedSprite2D/jumpCrystal2"), NodePath("AnimatedSprite2D/jumpCrystal3")]
 
 [node name="Collider_grounded" type="CollisionShape2D" parent="."]
@@ -369,7 +368,7 @@ animation = &"jump"
 autoplay = "idle"
 
 [node name="jumpCrystal1" type="AnimatedSprite2D" parent="AnimatedSprite2D"]
-position = Vector2(-3, 10)
+position = Vector2(-4, 10)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_xfwt0")
 animation = &"idle"
@@ -378,7 +377,7 @@ frame = 3
 frame_progress = 1.0
 
 [node name="jumpCrystal2" type="AnimatedSprite2D" parent="AnimatedSprite2D"]
-position = Vector2(3, 10)
+position = Vector2(0, 10)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_xfwt0")
 animation = &"idle"
@@ -386,7 +385,7 @@ autoplay = "idle"
 frame_progress = 0.580166
 
 [node name="jumpCrystal3" type="AnimatedSprite2D" parent="AnimatedSprite2D"]
-position = Vector2(6, 10)
+position = Vector2(3, 10)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_xfwt0")
 animation = &"idle"
