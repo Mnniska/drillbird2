@@ -60,6 +60,9 @@ func Setup(info:abstract_enemy):
 	enemyInfo.type=info.type
 	spawnPositionLocal=position
 
+func DealDamage(amount:int):
+	return
+	
 
 func GetLocalSpawnPosition():
 	return spawnPositionLocal

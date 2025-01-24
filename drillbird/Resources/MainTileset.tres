@@ -1798,9 +1798,10 @@ texture = ExtResource("7_gjgln")
 0:0/0 = 0
 0:0/0/custom_data_1 = 1
 1:0/0 = 0
-1:0/0/custom_data_1 = 2
+1:0/0/terrain_set = 0
+1:0/0/custom_data_1 = 3
 2:0/0 = 0
-2:0/0/custom_data_1 = 3
+2:0/0/custom_data_1 = 2
 3:0/0 = 0
 3:0/0/custom_data_2 = 1
 
