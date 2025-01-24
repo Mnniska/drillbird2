@@ -215,7 +215,6 @@ func SpawnAllEnemies():
 
 		#We convert it to map coords so that enemy is spawned in the middle of the tile
 		var SpawnPositionInMapCoordinates= gameTilemap.local_to_map(gameTilemap.to_local(enemiesToSpawnList[index].spawnLocation))
-		var spawnPointInLocalCoords= gameTilemap.map_to_local(SpawnPositionInMapCoordinates) 
 		
 		var spawnPosLocalCoords=gameTilemap.map_to_local(enemiesToSpawnList[index].spawnLocation)
 		
