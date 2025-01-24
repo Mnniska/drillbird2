@@ -87,8 +87,10 @@ func GenerateObjectsAndEnemiesFromTilemap():
 		
 	
 		if tile.get_custom_data("oreblock_terrain")>0: #zero is default value, meaning this is not an enemy
-			var ore:abstract_ore = GetRelevantOre(tileLoc)
-			oreTilemap.set_cell(tileLoc,0,Vector2i(ore.AtlasCoords.x,randi_range(0,2)),0) #Sets cell to be one of the ores. The random is to select between the variants
+			
+			#Here, we wanna create an ORE SPRITE that matches the current ore region
+			var oreRegion:int=GetRelevantOreRegion(tileLoc)
+			oreTilemap.set_cell(tileLoc,0,Vector2i(oreRegion,randi_range(0,2)),0) #Sets cell to be one of the ores. The random is to select between the variants
 			#todo paint tile with relevant ore
 			
 			#Set cell to use correct sprite
@@ -144,18 +146,14 @@ func GenerateObjectsAndEnemiesFromTilemap():
 	
 	pass
 	
-func GetRelevantOre(tilePos:Vector2i):
+func GetRelevantOreRegion(tilePos:Vector2i):
 	
 	var regionID=0
-	if tilePos.y>5:
+	if tilePos.y>10:
 		regionID=1
 		pass
-	
-	if oreRegions[regionID]!=null:
 
-		return oreRegions[regionID].GetOreToSpawn()
-	else:
-		push_error("Could not find a region for the ore!")
+	return regionID	
 	
 	
 	pass
