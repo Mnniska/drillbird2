@@ -2,9 +2,13 @@ extends CharacterBody2D
 
 @export var collType:abstract_collidable #MUST HAVE
 @export var enemyInfo:abstract_enemy #MUST HAVE
-const SPEED = 50.0
+const SPEED = 40.0
 const JUMP_VELOCITY = -400.0
 var direction:float=1
+var positionLastFrame:Vector2
+var counter:int=0
+var counter2lol:int=0
+
 var spawnPositionLocal:Vector2
 @onready var collider=$EnemyCollisionChecker
 
@@ -16,9 +20,9 @@ func _ready() -> void:
 	
 	if enemyInfo.dead:
 		TurnEnemyOff()
-	else:
-		StartMoving()
+	
 	spawnPositionLocal=position #MUST HAVE
+	positionLastFrame=position
 	
 func GetLocalSpawnPosition(): #MUST HAVE
 	return spawnPositionLocal
@@ -41,17 +45,26 @@ func TurnEnemyOff():
 	$EnemyCollisionChecker.set_deferred("monitoring",false)
 
 	velocity=Vector2(0,0)
-	$Timer.stop()
 	
 	
 func Kill():
 	enemyInfo.dead=true
 	TurnEnemyOff()
 	
-func StartMoving():
-	$Timer.start()
 
 
+func CheckOverlappingCollisions(): #MUST HAVE
+	for n in collider.get_overlapping_bodies():
+		if !n==$".":
+			n.DealDamage(enemyInfo.damage)
+	pass
+
+func _on_enemy_collision_checker_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
+	if body==$".":
+		return
+	
+	body.DealDamage(enemyInfo.damage)
+	pass # Replace with function body.
 
 func _physics_process(delta: float) -> void:
 	
@@ -66,31 +79,23 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
+
 	move_and_slide()
+	
+	counter+=1
+	if counter >4:
+		counter=0
+		var speed = positionLastFrame-position
+		if speed.x==0:
+			counter2lol+=1
+			if counter2lol>1:
+				counter2lol=0
+								
+				UpdateAnimations()
+				direction=direction*-1
+				
+		positionLastFrame=position
 
 func UpdateAnimations():
 
-	$AnimatedSprite2D.flip_h=direction <0
-
-
-	
-
-func _on_timer_timeout() -> void:
-	
-	direction=direction*-1
-	UpdateAnimations()
-	
-	pass # Replace with function body.
-
-func CheckOverlappingCollisions(): #MUST HAVE
-	for n in collider.get_overlapping_bodies():
-		if !n==$".":
-			n.DealDamage(enemyInfo.damage)
-	pass
-
-func _on_enemy_collision_checker_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
-	if body==$".":
-		return
-	
-	body.DealDamage(enemyInfo.damage)
-	pass # Replace with function body.
+	$AnimatedSprite2D.flip_h=direction >0
