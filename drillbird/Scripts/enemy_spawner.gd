@@ -6,7 +6,7 @@ extends Node2D
 @onready var oreTilemap:TileMapLayer=$"../TilemapOres"
 
 @export var oreRegions:Array[abstract_ore_region]
-
+@onready var OreAreas=$"../TilemapOres/OreRegions"
 
 
 var spawnedEnemies:Array[Node2D]
@@ -148,13 +148,7 @@ func GenerateObjectsAndEnemiesFromTilemap():
 	
 func GetRelevantOreRegion(tilePos:Vector2i):
 	
-	var regionID=0
-	if tilePos.y>10:
-		regionID=1
-		pass
-
-	return regionID	
-	
+	return OreAreas.GetRegionIdentifierFromLocation(tilePos,gameTilemap)	
 	
 	pass
 

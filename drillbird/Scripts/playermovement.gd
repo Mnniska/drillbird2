@@ -174,8 +174,8 @@ func DebugGhostMovement(delta:float,currentAnim:String):
 	var directionX := Input.get_axis("left", "right")
 	var directionY:=Input.get_axis("up","down")
 	
-	velocity.x=directionX*SPEED
-	velocity.y=directionY*SPEED
+	velocity.x=directionX*SPEED*2
+	velocity.y=directionY*SPEED*2
 	
 	pass
 

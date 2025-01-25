@@ -1,4 +1,4 @@
-[gd_scene load_steps=98 format=4 uid="uid://d2wv7igie5stg"]
+[gd_scene load_steps=102 format=4 uid="uid://d2wv7igie5stg"]
 
 [ext_resource type="TileSet" uid="uid://grpd2pyu7pgk" path="res://Resources/MainTileset.tres" id="1_1imtu"]
 [ext_resource type="Script" path="res://Scenes/Playable Scenes/SaveManager.gd" id="1_iickb"]
@@ -22,8 +22,10 @@
 [ext_resource type="Resource" uid="uid://bcbdo5pvpevgy" path="res://Resources/ore_4.tres" id="16_qo7l5"]
 [ext_resource type="Script" path="res://Scripts/inventory_handler.gd" id="17_84e5y"]
 [ext_resource type="Resource" uid="uid://k3uc1fryuwfc" path="res://Resources/ore_5.tres" id="17_ytjr0"]
+[ext_resource type="Script" path="res://Scripts/OreRegionIdentifierScript.gd" id="18_ae1sx"]
 [ext_resource type="Texture2D" uid="uid://un5elq1p64iv" path="res://Art/ui/HUD/ui_slotLeftSide.png" id="18_bc2sg"]
 [ext_resource type="Texture2D" uid="uid://bw25xygruk6rd" path="res://Art/ui/HUD/ui_slotRightSide.png" id="19_cf8tj"]
+[ext_resource type="Script" path="res://Scripts/ore_area.gd" id="19_wmybe"]
 [ext_resource type="Texture2D" uid="uid://c2fj0vknmdoys" path="res://Art/ui/Shop/money_symbol.png" id="20_b0cq8"]
 [ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_terrain_info.gd" id="20_cqxjh"]
 [ext_resource type="Script" path="res://Scenes/Playable Scenes/ghost_manager.gd" id="21_mqj7b"]
@@ -97,6 +99,12 @@ custom_data_layer_0/name = "dir_dependency"
 custom_data_layer_0/type = 6
 sources/1 = SubResource("TileSetAtlasSource_b7p1b")
 sources/2 = SubResource("TileSetAtlasSource_apsei")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vdgks"]
+size = Vector2(721, 273)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_seplr"]
+size = Vector2(721, 273)
 
 [sub_resource type="Gradient" id="Gradient_ekb11"]
 offsets = PackedFloat32Array(0, 0.536432)
@@ -303,6 +311,36 @@ tile_set = ExtResource("1_1imtu")
 script = ExtResource("6_7b07q")
 oreRegions = Array[ExtResource("3_flbkc")]([ExtResource("4_t4dgp"), ExtResource("5_a807m"), ExtResource("6_ehj3h"), ExtResource("7_10mi7")])
 oreList = Array[ExtResource("12_d51cc")]([ExtResource("13_6wsyx"), ExtResource("14_lu42v"), ExtResource("15_a50cc"), ExtResource("16_qo7l5"), ExtResource("17_ytjr0")])
+
+[node name="OreRegions" type="Node2D" parent="TilemapOres"]
+script = ExtResource("18_ae1sx")
+
+[node name="OreArea" type="Area2D" parent="TilemapOres/OreRegions"]
+collision_layer = 32
+collision_mask = 32
+script = ExtResource("19_wmybe")
+terrainIdentifier = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TilemapOres/OreRegions/OreArea"]
+position = Vector2(98.5, 300.5)
+shape = SubResource("RectangleShape2D_vdgks")
+
+[node name="OreArea2" type="Area2D" parent="TilemapOres/OreRegions"]
+collision_layer = 32
+collision_mask = 32
+script = ExtResource("19_wmybe")
+terrainIdentifier = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TilemapOres/OreRegions/OreArea2"]
+position = Vector2(128, 578)
+shape = SubResource("RectangleShape2D_seplr")
+
+[node name="RayCast2D" type="RayCast2D" parent="TilemapOres/OreRegions"]
+target_position = Vector2(0, 1)
+collision_mask = 32
+hit_from_inside = true
+collide_with_areas = true
+collide_with_bodies = false
 
 [node name="ObjectSpawner" type="Node2D" parent="."]
 script = ExtResource("53_0clb6")
