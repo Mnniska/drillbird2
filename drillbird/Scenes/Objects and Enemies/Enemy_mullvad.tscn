@@ -26,6 +26,14 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("4_shhht")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_shhht")
 }, {
 "duration": 1.0,
 "texture": ExtResource("5_npjg5")
@@ -56,9 +64,8 @@ shape = SubResource("RectangleShape2D_khmiv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_of4cw")
-animation = &"run"
+animation = &"idle"
 autoplay = "run"
-frame_progress = 0.221344
 
 [node name="EnemyCollisionChecker" type="Area2D" parent="."]
 collision_layer = 0

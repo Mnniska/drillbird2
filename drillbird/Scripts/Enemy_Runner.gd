@@ -2,15 +2,19 @@ extends CharacterBody2D
 
 @export var collType:abstract_collidable #MUST HAVE
 @export var enemyInfo:abstract_enemy #MUST HAVE
+@onready var anim=$AnimatedSprite2D
 const SPEED = 40.0
 const JUMP_VELOCITY = -400.0
 var direction:float=1
 var positionLastFrame:Vector2
-var counter:int=0
-var counter2lol:int=0
+@export var timeInWait=1
+var waitCounter=0
 
 var spawnPositionLocal:Vector2
 @onready var collider=$EnemyCollisionChecker
+
+enum States{WALK,WAIT}
+var state:States=States.WALK
 
 func GetCollType(): #MUST HAVE
 	return collType
@@ -74,28 +78,39 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
-	if direction:
-		velocity.x = direction * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+	if state==States.WALK:
+		
+		if direction:
+			velocity.x = direction * SPEED
+		else:
+			velocity.x = move_toward(velocity.x, 0, SPEED)
+
 
 
 	move_and_slide()
-	
-	counter+=1
-	if counter >4:
-		counter=0
+	UpdateAnimations()
+
+	if state==States.WALK:
+		
 		var speed = positionLastFrame-position
 		if speed.x==0:
-			counter2lol+=1
-			if counter2lol>1:
-				counter2lol=0
-								
-				UpdateAnimations()
-				direction=direction*-1
-				
+
+			direction=direction*-1
+			state=States.WAIT
 		positionLastFrame=position
+	
+
+	if state==States.WAIT:
+		waitCounter+=delta
+		if waitCounter>timeInWait:
+			waitCounter=0
+			state=States.WALK
 
 func UpdateAnimations():
 
-	$AnimatedSprite2D.flip_h=direction >0
+	if state==States.WAIT:
+		anim.animation="idle"
+	if state==States.WALK:
+		anim.animation="run"
+		
+	anim.flip_h=direction <0
