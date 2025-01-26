@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="abstract_ore" load_steps=3 format=3 uid="uid://yu3g5ac8pxh3"]
+
+[ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_ore.gd" id="1_jru7d"]
+[ext_resource type="Texture2D" uid="uid://gvnhgn5vrd5e" path="res://Art/Collectibles/ore_3_red.png" id="2_p08xn"]
+
+[resource]
+script = ExtResource("1_jru7d")
+ID = 0
+value = 5
+texture = ExtResource("2_p08xn")
+name = "Bloodgem"
+stackSize = 10
+AtlasCoords = Vector2i(0, 0)
