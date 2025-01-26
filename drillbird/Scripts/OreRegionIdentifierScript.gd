@@ -1,6 +1,5 @@
 extends Node2D
 var oreAreas:Array[OreArea]
-@onready var checker:Area2D=$CheckerArea
 @onready var raycast:RayCast2D=$RayCast2D
 
 #This script:

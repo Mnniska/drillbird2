@@ -14,6 +14,9 @@ signal MaterialChanged(terrain:abstract_terrain_info)
 @onready var tilemap: TileMapLayer = get_parent().get_node("TilemapEnvironment")
 @onready var OreSpawner=$"../TilemapOres"
 @onready var DrillSoundPlayer=$DrillSoundPlayer
+@onready var tileDestroyEffect=preload("res://Scenes/Effects/tile_destroy_effect.tscn")
+@onready var Parent=$".."
+
 
 @onready var cracksprite: Sprite2D = $cracksprite
 @export var crack_sprites: Array[Texture]
@@ -168,16 +171,39 @@ func DestroyTile(position_in_grid:Vector2i):
 	tilemap.set_cells_terrain_connect(cells, 0, -1,false)
 	TileDestroyed.emit(position_in_grid,tilemap)
 	
+
+
 	CheckObservers()
 	
+	
 	pass
+
+func SpawnDestroyEffect(position:Vector2i,terrain:abstract_terrain_info):
+	
+	#var globalpos:Vector2=Parent.to_l( tilemap.map_to_local(position))
+	
+	var node:AnimatedSprite2D= tileDestroyEffect.instantiate()
+	node.animation_finished.connect(node.queue_free)
+	node.transform.origin=global_position
+	node.modulate=terrain.DestroyParticleColor
+	Parent.add_child(node)
+	#node.global_position=globalpos
+	
+	
 
 func _on_digging_countdown_timeout() -> void:
 	
 	#Remove target cell and make neighbors reconnect to one another
 	StoppedDrilling.emit() #This is not true - this is only TILE CRACKS
+	
+	for n in GameTerrains:
+		if n.terrainIdentifier==tilemap.get_cell_tile_data(cellLocation).terrain:
+			SpawnDestroyEffect(cellLocation,n)
+
 	DestroyTile(cellLocation)
 	destroyed_tiles.append(cellLocation)
+	
+	
 
 	SoundManager.PlaySoundAtLocation(global_position,abstract_SoundEffectSetting.SoundEffectEnum.BLOCK_DESTROY)
 	
