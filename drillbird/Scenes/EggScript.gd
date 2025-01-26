@@ -7,7 +7,6 @@ extends Node2D
 #How much experience does each state require to go to next? 
 @export var ExperienceRequirements:Array[int]
 @export var StateTargetScales:Array[float]
-@export var StateTargetSleepPositions:Array[float]
 @export var Eggs:Array[Node2D]
 @export var sleepPositions:Array[Node2D]
 @onready var birdie=$BirdySleepPositions/birdySleep
@@ -26,7 +25,8 @@ func Setup():
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	
-	UpdateSize()
+	GlobalVariables.SetupComplete.connect(UpdateSize)
+
 	pass # Replace with function body.
 
 
@@ -46,7 +46,7 @@ func UpdateSize():
 	var xp=experienceGained
 	for n in ExperienceRequirements:
 		xp-=ExperienceRequirements[index]
-		if xp<0:
+		if xp < 0:
 			break
 			
 		index+=1
@@ -64,18 +64,14 @@ func UpdateSize():
 		y+=1
 	pass
 	
-	"xpProgress= targetXP - abs(xp)
-percentageProgress = xpProgress/targetXP"
-	
 	if state<ExperienceRequirements.size():
 		
 		var xpProgress= ExperienceRequirements[state]-abs(xp)
-		var p:float= float(xpProgress)/float(ExperienceRequirements[state])
-		var l = lerpf(1,StateTargetScales[state],p)	
+		var progress:float= float(xpProgress)/float(ExperienceRequirements[state])
+		var l = lerpf(StateTargetScales[state],1,progress)	
 		Eggs[state].scale= Vector2(l,l)
 		
-		var test=lerp(sleepPositions[state].position.y,sleepPositions[state+1].position.y,p)
+		var test=lerp(sleepPositions[state].position.y,sleepPositions[state+1].position.y,progress)
 		$BirdySleepPositions/birdySleep.position.y=test
-		
 	
 	

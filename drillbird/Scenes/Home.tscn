@@ -73,13 +73,19 @@ texture = ExtResource("2_4e54y")
 
 [node name="Eggs" type="Node2D" parent="." node_paths=PackedStringArray("Eggs", "sleepPositions")]
 script = ExtResource("3_wy5hf")
-ExperienceRequirements = Array[int]([50, 120, 300])
-StateTargetScales = Array[float]([1.5, 1.55, 1.88])
-Eggs = [NodePath("Egg_smallest"), NodePath("Egg_medium"), NodePath("Egg_Big"), NodePath("Egg_Biggest")]
-sleepPositions = [NodePath("BirdySleepPositions/startPos_low"), NodePath("BirdySleepPositions/startPos_mid"), NodePath("BirdySleepPositions/startpos_large"), NodePath("BirdySleepPositions/pos_BIGGEST")]
+ExperienceRequirements = Array[int]([20, 50, 300, 400])
+StateTargetScales = Array[float]([0.7, 0.7, 0.6, 0.55])
+Eggs = [NodePath("Egg_smallest"), NodePath("Egg_medium"), NodePath("Egg_Big"), NodePath("Egg_Biggest"), NodePath("Egg_Biggest_forReal")]
+sleepPositions = [NodePath("BirdySleepPositions/startPos_lowest"), NodePath("BirdySleepPositions/startPos_low"), NodePath("BirdySleepPositions/startPos_mid"), NodePath("BirdySleepPositions/startpos_large"), NodePath("BirdySleepPositions/pos_BIGGEST")]
+
+[node name="Egg_Biggest_forReal" type="Node2D" parent="Eggs"]
+
+[node name="egg_biggest" type="Sprite2D" parent="Eggs/Egg_Biggest_forReal"]
+z_index = 1
+position = Vector2(-2, -40)
+texture = ExtResource("6_e0x4d")
 
 [node name="Egg_Biggest" type="Node2D" parent="Eggs"]
-visible = false
 
 [node name="egg_biggest" type="Sprite2D" parent="Eggs/Egg_Biggest"]
 z_index = 1
@@ -87,7 +93,6 @@ position = Vector2(-2, -40)
 texture = ExtResource("6_e0x4d")
 
 [node name="Egg_Big" type="Node2D" parent="Eggs"]
-visible = false
 position = Vector2(-2, 0)
 
 [node name="egg_big" type="Sprite2D" parent="Eggs/Egg_Big"]
@@ -96,7 +101,6 @@ position = Vector2(0, -40)
 texture = ExtResource("5_p1lmp")
 
 [node name="Egg_medium" type="Node2D" parent="Eggs"]
-visible = false
 position = Vector2(-1, 0)
 
 [node name="egg_medium" type="Sprite2D" parent="Eggs/Egg_medium"]
@@ -113,8 +117,11 @@ texture = ExtResource("9_xckrn")
 
 [node name="BirdySleepPositions" type="Node2D" parent="Eggs"]
 
+[node name="startPos_lowest" type="Node2D" parent="Eggs/BirdySleepPositions"]
+position = Vector2(0, -13)
+
 [node name="startPos_low" type="Node2D" parent="Eggs/BirdySleepPositions"]
-position = Vector2(0, -17)
+position = Vector2(0, -19)
 
 [node name="startPos_mid" type="Node2D" parent="Eggs/BirdySleepPositions"]
 position = Vector2(0, -27)
