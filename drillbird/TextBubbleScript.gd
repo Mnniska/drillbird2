@@ -11,6 +11,7 @@ var effect:abstract_textEffect
 var centerB="[center]"
 var centerE="[/center]"
 @export var textToShow:String="defaultText"
+var DestroyAfterFadingOut:bool=true
 
 
 # Called when the node enters the scene tree for the first time.
@@ -25,7 +26,8 @@ func _process(delta: float) -> void:
 func ShowText(_txt:String):
 	textToShow=_txt
 	textObject.text=centerB+effect.beginEffect+textToShow+effect.endEffect+centerE
-	
+	textObject.self_modulate=(Color(1,1,1,1))
+
 	TypeWriteText()
 	pass
 
@@ -64,6 +66,6 @@ func FadeOut():
 		get_tree().create_tween()
 		await get_tree().create_timer(0.1).timeout
 
-	
-	queue_free()
+	if DestroyAfterFadingOut:
+		queue_free()
 	pass

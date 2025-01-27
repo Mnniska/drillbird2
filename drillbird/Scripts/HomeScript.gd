@@ -13,6 +13,11 @@ extends Node2D
 @onready var HealthHandler=$"../Camera2D/HealthUIHandler"
 @onready var EggHandler =$Eggs
 
+@export var holdTime:float=1
+var holdCounter:float=0
+var justWokeUp:bool=false
+
+
 var ambienceSound:AudioStreamPlayer2D
 
 enum states{IDLE,SELL,RESTPOSSIBLE,SLEEP}
@@ -31,6 +36,25 @@ func _ready() -> void:
 	HUBMusic.finished.connect(HUBMusic.play)
 	pass # Replace with function body.
 
+func SetHoldProgress(progress:float):
+	var min = 15
+	var pos=lerp(min,0,progress)
+	$InteractButton_EndDay/icon/active.position.y=pos
+	
+func ProgressGoToBed(delta:float,active:bool):
+	
+	if active:
+		holdCounter+=delta
+	elif holdCounter>0:
+		holdCounter-=delta*2
+		holdCounter=max(0,holdCounter)
+	SetHoldProgress(holdCounter/holdTime)
+	if holdCounter>holdTime:
+		holdCounter=0
+		GoToBed()
+		
+	
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -44,8 +68,11 @@ func _process(delta: float) -> void:
 		#	SellOres()
 	
 	if state==states.RESTPOSSIBLE:
-		if Input.is_action_just_pressed("interact"):
-			GoToBed()
+		
+		if Input.is_action_pressed("up"):
+			ProgressGoToBed(delta,true)
+		else:
+			ProgressGoToBed(delta,false)
 	
 	CheckState()
 	UpdateButtons()
@@ -68,7 +95,8 @@ func UpdateButtons():
 			SellButton.show()
 			RestButton.hide()
 		states.RESTPOSSIBLE:
-			RestButton.show()
+			if !justWokeUp:
+				RestButton.show()
 			SellButton.hide()
 		states.IDLE:
 			RestButton.hide()
@@ -110,6 +138,7 @@ func GoToBed():
 func WakeUp():
 	GlobalVariables.currentDay+=1
 	$"..".SaveGame()
+	justWokeUp=true
 	
 	
 	Camera.SetFollowPlayer(true)
@@ -132,12 +161,19 @@ func Respawn():
 	
 func _on_nest_collider_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
 	CheckState()
+	$JustWokeUpTimer.stop()
 	pass # Replace with function body.
 
 
 func _on_nest_collider_body_shape_exited(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
 	state=states.IDLE
+	$JustWokeUpTimer.start()
 	UpdateButtons()
+
+	pass # Replace with function body.
+
+func _on_just_woke_up_timer_timeout() -> void:
+	justWokeUp=false
 
 	pass # Replace with function body.
 
