@@ -1,0 +1,87 @@
+[gd_scene load_steps=13 format=3 uid="uid://dt2yrd4gyilr7"]
+
+[ext_resource type="Script" path="res://Scripts/Enemies/FallBlock.gd" id="1_2a7bl"]
+[ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_collidable.gd" id="2_5r5oy"]
+[ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_enemy.gd" id="3_ch1ka"]
+[ext_resource type="Texture2D" uid="uid://uq5gd061j3wq" path="res://Art/Objects/Fallblock/fallblock.png" id="4_pky87"]
+[ext_resource type="PackedScene" uid="uid://2lykflhwivex" path="res://Scenes/observer.tscn" id="5_bl8ye"]
+[ext_resource type="Texture2D" uid="uid://gixivpytn5wl" path="res://Art/ui/HUD/UI_LightBar_bulb.png" id="6_eqsls"]
+
+[sub_resource type="Resource" id="Resource_iggm6"]
+script = ExtResource("2_5r5oy")
+type = 1
+enemyID = 4
+
+[sub_resource type="Resource" id="Resource_x2tr8"]
+script = ExtResource("3_ch1ka")
+type = 3
+damage = 1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b510l"]
+size = Vector2(12, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_873kj"]
+size = Vector2(12, 15)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yimnr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_pky87")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_41riw"]
+radius = 4.0
+
+[node name="FallBlock" type="CharacterBody2D"]
+collision_mask = 17
+collision_priority = 2.0
+script = ExtResource("1_2a7bl")
+collType = SubResource("Resource_iggm6")
+enemyInfo = SubResource("Resource_x2tr8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_b510l")
+
+[node name="EnemyCollisionChecker" type="Area2D" parent="."]
+position = Vector2(0, 18)
+collision_layer = 0
+collision_mask = 24
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyCollisionChecker"]
+position = Vector2(0, -2.5)
+shape = SubResource("RectangleShape2D_873kj")
+debug_color = Color(0.940031, 1.14551e-05, 0.61679, 0.42)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_yimnr")
+animation = &"idle"
+
+[node name="Observer" parent="." instance=ExtResource("5_bl8ye")]
+position = Vector2(0, 14)
+
+[node name="Raaycast" type="RayCast2D" parent="."]
+position = Vector2(0, 8)
+target_position = Vector2(0, 15)
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("6_eqsls")
+
+[node name="FallblockTrigger" type="Area2D" parent="."]
+position = Vector2(0, -16)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FallblockTrigger"]
+shape = SubResource("CircleShape2D_41riw")
+
+[connection signal="body_shape_entered" from="EnemyCollisionChecker" to="." method="_on_enemy_collision_checker_body_shape_entered"]
+[connection signal="BlockDestroyed" from="Observer" to="." method="_on_observer_block_destroyed"]

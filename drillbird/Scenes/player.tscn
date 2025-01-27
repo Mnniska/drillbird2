@@ -47,10 +47,10 @@
 [ext_resource type="Theme" uid="uid://bfr5y4lo7m1ux" path="res://Resources/Fonts/fontTheme.tres" id="38_sekb7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pdge5"]
-size = Vector2(10, 11)
+size = Vector2(10, 8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wmago"]
-size = Vector2(8, 12)
+size = Vector2(8, 8)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tv87d"]
 animations = [{
@@ -329,12 +329,12 @@ script = ExtResource("1_llgr2")
 jump_crystals = [NodePath("AnimatedSprite2D/jumpCrystal1"), NodePath("AnimatedSprite2D/jumpCrystal2"), NodePath("AnimatedSprite2D/jumpCrystal3")]
 
 [node name="Collider_grounded" type="CollisionShape2D" parent="."]
-position = Vector2(0, 2.5)
+position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_pdge5")
 debug_color = Color(0.564706, 0.556863, 0, 0.552941)
 
 [node name="Collider_airborne" type="CollisionShape2D" parent="."]
-position = Vector2(0, 2)
+position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_wmago")
 debug_color = Color(0.979594, 0.14234, 0, 0.42)
 
