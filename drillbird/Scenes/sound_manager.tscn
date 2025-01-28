@@ -11,7 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://bkn6d73ogba4u" path="res://Audio/SFX/ore_grabbed.wav" id="10_4crdv"]
 [ext_resource type="AudioStream" uid="uid://mkkn175q2oj0" path="res://Audio/SFX/ambience_surface.wav" id="10_l466u"]
 [ext_resource type="AudioStream" uid="uid://dalpro3l37ots" path="res://Audio/SFX/ore_land.wav" id="11_reqvu"]
-[ext_resource type="AudioStream" uid="uid://bkend8hbxki0p" path="res://Audio/MUSIC/mus_Home.wav" id="12_any0t"]
+[ext_resource type="AudioStream" uid="uid://bkend8hbxki0p" path="res://Audio/Music/mus_Home.wav" id="12_any0t"]
 
 [sub_resource type="Resource" id="Resource_0hq0f"]
 script = ExtResource("2_ba8up")
@@ -69,7 +69,7 @@ audioBus = 0
 
 [sub_resource type="Resource" id="Resource_avwkg"]
 script = ExtResource("2_ba8up")
-limit = 5
+limit = 10
 type = 6
 sound_effect = ExtResource("9_ffqab")
 volume = 5

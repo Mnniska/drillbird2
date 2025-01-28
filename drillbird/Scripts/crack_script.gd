@@ -171,6 +171,8 @@ func DestroyTile(position_in_grid:Vector2i,playEffect:bool):
 		return
 	
 	if playEffect:
+		SoundManager.PlaySoundAtLocation(global_position,abstract_SoundEffectSetting.SoundEffectEnum.BLOCK_DESTROY)
+
 		for n in GameTerrains:
 			if n.terrainIdentifier==tilemap.get_cell_tile_data(position_in_grid).terrain:
 				SpawnDestroyEffect(position_in_grid,n)
@@ -183,7 +185,7 @@ func DestroyTile(position_in_grid:Vector2i,playEffect:bool):
 	TileDestroyed.emit(position_in_grid,tilemap)
 
 
-
+	destroyed_tiles.append(position_in_grid)
 	CheckObservers(position_in_grid)
 	
 	
@@ -211,11 +213,9 @@ func _on_digging_countdown_timeout() -> void:
 
 
 	DestroyTile(cellLocation,true)
-	destroyed_tiles.append(cellLocation)
 	
 	
 
-	SoundManager.PlaySoundAtLocation(global_position,abstract_SoundEffectSetting.SoundEffectEnum.BLOCK_DESTROY)
 	
 	cracksprite.hide()
 	diggingCountdown.stop()
