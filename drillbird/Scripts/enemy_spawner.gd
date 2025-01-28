@@ -216,6 +216,10 @@ func SpawnAllEnemies():
 		
 		var spawnPosLocalCoords=gameTilemap.map_to_local(enemiesToSpawnList[index].spawnLocation)
 		
+		if node.enemyInfo.type==abstract_enemy.enemyTypes.FALLBLOCK:
+			node.BlockDestroyer=tileDestroyer
+			
+		
 		node.Setup(n)
 		node.transform.origin = spawnPosLocalCoords
 		add_child(node)
