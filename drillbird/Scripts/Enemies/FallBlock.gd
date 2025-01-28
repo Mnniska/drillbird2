@@ -34,10 +34,12 @@ func _physics_process(delta: float) -> void:
 				timeBeforeFallCounter=0
 				anim.position=Vector2(0,0)
 				for n in $FallblockTrigger.get_overlapping_bodies():
+			
+					
 					var enemy:abstract_enemy = n.GetEnemyInfo()
 					if enemy.type==enemy.enemyTypes.FALLBLOCK:
 						n.state=states.fallprep
-					
+				
 			pass
 		states.fall:
 			

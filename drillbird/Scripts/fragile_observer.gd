@@ -28,14 +28,16 @@ func GenerateObservers(location:Vector2i,_tilemap:TileMapLayer,tileDestroy:crack
 	for vector in directions:
 		var cell= _tilemap.get_cell_tile_data(location+vector)
 		if cell:
-			var obs:observerScript = observer.instantiate()
-			
-			obs.BlockDestroyed.connect(DestroySelf)
-			obs.BlockDestroyed.connect(obs.queue_free)
-			
-#			var globalloc:Vector2=to_global(tilemap.map_to_local(location))
-			obs.transform.origin=Vector2(float(vector.x),float(vector.y))*16
-			add_child(obs)
+			if cell.terrain==4:
+				
+				var obs:observerScript = observer.instantiate()
+				
+				obs.BlockDestroyed.connect(DestroySelf)
+				obs.BlockDestroyed.connect(obs.queue_free)
+				
+	#			var globalloc:Vector2=to_global(tilemap.map_to_local(location))
+				obs.transform.origin=Vector2(float(vector.x),float(vector.y))*16
+				add_child(obs)
 			
 	
 func DestroySelf():
