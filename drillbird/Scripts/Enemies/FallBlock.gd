@@ -3,12 +3,30 @@ class_name enemy_Fallblock
 
 @onready var raycast=$Raaycast
 @onready var impactEffect:AnimatedSprite2D=$ImpactEffect
+var BlockDestroyer:crack_script
 
 var isFalling:bool=false
 enum states{idle,fallprep,fall}
 var state:states=states.fall
 @export var timeBeforeFall:float=0.8
 var timeBeforeFallCounter:float=0
+var fast:bool=false
+
+
+
+func InitiateFall():
+	state=states.fall
+			
+	anim.position=Vector2(0,0)
+	fast=GetWillBeFast()
+
+	#If any fallblocks are above - tell them to also fall
+	for n in $FallblockTrigger.get_overlapping_bodies():
+
+		var enemy:abstract_enemy = n.GetEnemyInfo()
+		if enemy.type==enemy.enemyTypes.FALLBLOCK:
+			n.state=states.fallprep
+	pass
 
 func _physics_process(delta: float) -> void:
 	
@@ -28,21 +46,15 @@ func _physics_process(delta: float) -> void:
 			anim.position=Vector2(randf_range(-1,1),randf_range(-1,1))
 			
 			timeBeforeFallCounter+=delta
-			if timeBeforeFallCounter>timeBeforeFall:
-				state=states.fall
-				timeBeforeFallCounter=0
-				anim.position=Vector2(0,0)
-				for n in $FallblockTrigger.get_overlapping_bodies():
 			
-					
-					var enemy:abstract_enemy = n.GetEnemyInfo()
-					if enemy.type==enemy.enemyTypes.FALLBLOCK:
-						n.state=states.fallprep
+			if timeBeforeFallCounter>timeBeforeFall:
+				timeBeforeFallCounter=0
+				InitiateFall()
+				
 				
 			pass
 		states.fall:
 			
-
 			var victims=CheckOverlappingCollisions()
 			if victims !=null:
 				for n in victims:
@@ -55,6 +67,10 @@ func _physics_process(delta: float) -> void:
 			if  is_on_floor():
 				state=states.idle
 				PlayImpactEffect()
+				if fast && raycast.is_colliding():
+					if BlockDestroyer!=null:
+						if BlockDestroyer.DestroyTileWithGlobalPosition(self.global_position+Vector2(0,16),true):
+							state=states.fallprep
 					
 
 			else:
@@ -66,6 +82,17 @@ func PlayImpactEffect():
 	impactEffect.animation="destroy"
 	impactEffect.play()
 	pass
+
+func GetWillBeFast():
+	var tilesBeforeFast:float=1.5
+	raycast.target_position=raycast.position+Vector2(0,tilesBeforeFast*16)
+	raycast.force_raycast_update()
+	if raycast.is_colliding():
+		raycast.target_position=raycast.position+Vector2(0,15)
+		return false
+	else:
+		raycast.target_position=raycast.position+Vector2(0,15)
+		return true
 
 
 func CheckOverlappingCollisions():

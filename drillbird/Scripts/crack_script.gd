@@ -165,10 +165,17 @@ func OnLoadDestroyDugTiles(tiles:Array[Vector2i]):
 	
 	pass
 
+func DestroyTileWithGlobalPosition(global_pos:Vector2,playEffect:bool):
+	var tilemapPos= tilemap.local_to_map(tilemap.to_local(global_pos))
+	return DestroyTile(tilemapPos,playEffect)
+	
+	pass
+
 func DestroyTile(position_in_grid:Vector2i,playEffect:bool):
 	
-	if tilemap.get_cell_tile_data(position_in_grid)==null:
-		return
+	var t =tilemap.get_cell_tile_data(position_in_grid)
+	if t==null or t.terrain==0:
+		return false
 	
 	if playEffect:
 		SoundManager.PlaySoundAtLocation(global_position,abstract_SoundEffectSetting.SoundEffectEnum.BLOCK_DESTROY)
@@ -187,9 +194,8 @@ func DestroyTile(position_in_grid:Vector2i,playEffect:bool):
 
 	destroyed_tiles.append(position_in_grid)
 	CheckObservers(position_in_grid)
+	return true
 	
-	
-	pass
 
 func SpawnDestroyEffect(position:Vector2i,terrain:abstract_terrain_info):
 	
