@@ -1,5 +1,5 @@
 extends Node2D
-
+class_name crack_script
 var diggingTime=0.0
 signal PlayerDrillingMaterial(int:)
 signal TileDestroyed(pos:Vector2i,tilemap:TileMapLayer)
@@ -16,6 +16,7 @@ signal MaterialChanged(terrain:abstract_terrain_info)
 @onready var DrillSoundPlayer=$DrillSoundPlayer
 @onready var tileDestroyEffect=preload("res://Scenes/Effects/tile_destroy_effect.tscn")
 @onready var Parent=$".."
+@onready var ObserverRaycast=$ObserverRaycast
 
 
 @onready var cracksprite: Sprite2D = $cracksprite
@@ -102,6 +103,7 @@ func NewTarget(drill_position:Vector2i):
 		
 		#Lets game know what material the player is drilling
 		for n in GameTerrains:
+			
 			if n.terrainIdentifier==affectedTile.terrain:
 				MaterialChanged.emit(n) #emit signal that the player is drilling new mat
 		
@@ -153,7 +155,7 @@ func OnLoadDestroyDugTiles(tiles:Array[Vector2i]):
 	destroyed_tiles=tiles
 	
 	for n in destroyed_tiles:
-		DestroyTile(n)
+		DestroyTile(n,false)
 	
 		if OreSpawner.get_cell_tile_data(n):
 			OreSpawner.set_cell(n,-1,Vector2i(-1,-1),-1)
@@ -163,17 +165,26 @@ func OnLoadDestroyDugTiles(tiles:Array[Vector2i]):
 	
 	pass
 
-func DestroyTile(position_in_grid:Vector2i):
+func DestroyTile(position_in_grid:Vector2i,playEffect:bool):
+	
+	if tilemap.get_cell_tile_data(position_in_grid)==null:
+		return
+	
+	if playEffect:
+		for n in GameTerrains:
+			if n.terrainIdentifier==tilemap.get_cell_tile_data(position_in_grid).terrain:
+				SpawnDestroyEffect(position_in_grid,n)
+	
 	var cells:Array[Vector2i]
 	cells.append(position_in_grid)
 	tilemap.set_cells_terrain_connect(cells, 0, 0,false)
 	tilemap.set_cell (position_in_grid,-1,Vector2i(-1,-1),-1)
 	tilemap.set_cells_terrain_connect(cells, 0, -1,false)
 	TileDestroyed.emit(position_in_grid,tilemap)
-	
 
 
-	CheckObservers()
+
+	CheckObservers(position_in_grid)
 	
 	
 	pass
@@ -184,7 +195,8 @@ func SpawnDestroyEffect(position:Vector2i,terrain:abstract_terrain_info):
 	
 	var node:AnimatedSprite2D= tileDestroyEffect.instantiate()
 	node.animation_finished.connect(node.queue_free)
-	node.transform.origin=global_position
+	var pos=to_local(tilemap.map_to_local(position))
+	node.transform.origin=to_global(pos)
 	node.modulate=terrain.DestroyParticleColor
 	Parent.add_child(node)
 	#node.global_position=globalpos
@@ -196,11 +208,9 @@ func _on_digging_countdown_timeout() -> void:
 	#Remove target cell and make neighbors reconnect to one another
 	StoppedDrilling.emit() #This is not true - this is only TILE CRACKS
 	
-	for n in GameTerrains:
-		if n.terrainIdentifier==tilemap.get_cell_tile_data(cellLocation).terrain:
-			SpawnDestroyEffect(cellLocation,n)
 
-	DestroyTile(cellLocation)
+
+	DestroyTile(cellLocation,true)
 	destroyed_tiles.append(cellLocation)
 	
 	
@@ -222,12 +232,22 @@ func _on_player_player_stopped_drilling_tile() -> void:
 
 	pass # Replace with function body.
 
-func CheckObservers():
-	for n in $ObserverCollider.get_overlapping_areas():
-		n.ObservedBlockDestroyed()
+func CheckObservers(location:Vector2i):
+	var pos=to_local(tilemap.map_to_local(location))
+	ObserverRaycast.position=pos
+	ObserverRaycast.force_raycast_update()
 	
-	pass
+	var objects_collide = [] #The colliding objects go here.
+	while ObserverRaycast.is_colliding():
+		var obj = ObserverRaycast.get_collider() #get the next object that is colliding.
+		objects_collide.append( obj ) #add it to the array.
+		ObserverRaycast.add_exception( obj ) #add to ray's exception. That way it could detect something being behind it.
+		ObserverRaycast.force_raycast_update() #update the ray's collision query.
 
+#after all is done, remove the objects from ray's exception.
+	for obj in objects_collide:
+		ObserverRaycast.remove_exception( obj )
+		obj.ObservedBlockDestroyed()
 
 func _on_player_signal_player_drilling(drilling: bool) -> void:
 	SetPlayerIsDriling(drilling)

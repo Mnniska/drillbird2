@@ -9,7 +9,7 @@ var observers:Array[abstract_decoration]
 func _ready() -> void:
 	
 	GenerateTilemapObservers()
-	tileDestroyer.TileDestroyed.connect(CheckDecorationDependenciesForPosition)
+	#tileDestroyer.TileDestroyed.connect(CheckDecorationDependenciesForPosition)
 	
 	#TODO:
 	"""

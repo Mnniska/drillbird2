@@ -6,4 +6,4 @@
 script = ExtResource("1_njjdp")
 terrainIdentifier = 3
 terrainHP = 5
-DestroyParticleColor = Color(0.062638, 0.0909032, 0.285813, 1)
+DestroyParticleColor = Color(0.160416, 0.19551, 0.609151, 1)

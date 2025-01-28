@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://0iy1qmgd0p6y"]
+[gd_scene load_steps=17 format=3 uid="uid://0iy1qmgd0p6y"]
 
 [ext_resource type="Script" path="res://Scripts/crack_script.gd" id="1_biwd4"]
 [ext_resource type="Texture2D" uid="uid://cw1o82vk05uwm" path="res://Art/effects/crack1.png" id="2_d02o3"]
@@ -13,6 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://jtsth86omeeo" path="res://Audio/SFX/player_drilling_solid.wav" id="8_2ouuv"]
 [ext_resource type="Resource" uid="uid://cq6ru2d4e7bgd" path="res://Resources/terrainInfo_dirt_1.tres" id="8_outtq"]
 [ext_resource type="Resource" uid="uid://bm6bqv8tss1g4" path="res://Resources/terrainInfo_dirt_2.tres" id="9_il5dt"]
+[ext_resource type="Resource" uid="uid://csxmptmtlvu0t" path="res://Resources/terrainInfo_fragile.tres" id="11_3om07"]
 [ext_resource type="AudioStream" uid="uid://dm0unlej7audq" path="res://Audio/SFX/player_drilling_air.wav" id="13_pcrl5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vpdq3"]
@@ -21,7 +22,7 @@ radius = 6.0
 [node name="TileCrack" type="Node2D"]
 script = ExtResource("1_biwd4")
 crack_sprites = Array[Texture]([ExtResource("2_d02o3"), ExtResource("3_ikpfl"), ExtResource("4_j73nb"), ExtResource("5_lq347")])
-GameTerrains = Array[ExtResource("6_0grno")]([ExtResource("8_outtq"), ExtResource("9_il5dt"), ExtResource("7_gctc3"), ExtResource("6_yu0wu")])
+GameTerrains = Array[ExtResource("6_0grno")]([ExtResource("8_outtq"), ExtResource("9_il5dt"), ExtResource("7_gctc3"), ExtResource("6_yu0wu"), ExtResource("11_3om07")])
 
 [node name="cracksprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_d02o3")
@@ -43,6 +44,13 @@ collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ObserverCollider"]
 shape = SubResource("CircleShape2D_vpdq3")
+
+[node name="ObserverRaycast" type="RayCast2D" parent="."]
+target_position = Vector2(0, 5)
+collision_mask = 32
+hit_from_inside = true
+collide_with_areas = true
+collide_with_bodies = false
 
 [connection signal="MaterialChanged" from="." to="DrillSoundPlayer" method="_on_tile_crack_material_changed"]
 [connection signal="StartedDrilling" from="." to="DrillSoundPlayer" method="_on_tile_crack_started_drilling"]

@@ -7,6 +7,8 @@ extends Node2D
 
 @export var oreRegions:Array[abstract_ore_region]
 @onready var OreAreas=$"../TilemapOres/OreRegions"
+@onready var tileDestroyer=$"../TileCrack"
+@onready var fragileBlockManager:block_fragile_manager=$Block_FragileManager
 
 
 var spawnedEnemies:Array[Node2D]
@@ -141,10 +143,14 @@ func GenerateObjectsAndEnemiesFromTilemap():
 			locationArray.append(p.loc)
 		gameTilemap.set_cells_terrain_connect(locationArray, 0, n.terrain,false)
 	
+	fragileBlockManager.GenerateObservers(gameTilemap,tileDestroyer)
+	
 	return enemiesToSpawnList
 	
 	
 	pass
+
+
 	
 func GetRelevantOreRegion(tilePos:Vector2i):
 	

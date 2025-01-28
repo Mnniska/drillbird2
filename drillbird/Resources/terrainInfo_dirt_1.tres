@@ -6,4 +6,4 @@
 script = ExtResource("1_b26hw")
 terrainIdentifier = 2
 terrainHP = 3
-DestroyParticleColor = Color(0.144695, 0.426259, 0.626753, 1)
+DestroyParticleColor = Color(0.167391, 0.431148, 0.729686, 1)

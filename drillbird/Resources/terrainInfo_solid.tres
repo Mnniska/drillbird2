@@ -6,3 +6,4 @@
 script = ExtResource("1_e0u65")
 terrainIdentifier = 0
 terrainHP = -1
+DestroyParticleColor = Color(0, 0, 0, 1)

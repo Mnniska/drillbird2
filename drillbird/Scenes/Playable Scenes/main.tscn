@@ -1,4 +1,4 @@
-[gd_scene load_steps=102 format=4 uid="uid://d2wv7igie5stg"]
+[gd_scene load_steps=103 format=4 uid="uid://d2wv7igie5stg"]
 
 [ext_resource type="TileSet" uid="uid://grpd2pyu7pgk" path="res://Resources/MainTileset.tres" id="1_1imtu"]
 [ext_resource type="Script" path="res://Scenes/Playable Scenes/SaveManager.gd" id="1_iickb"]
@@ -10,6 +10,7 @@
 [ext_resource type="Resource" uid="uid://dr8sc3eaf14j5" path="res://Resources/ore_region_1.tres" id="4_t4dgp"]
 [ext_resource type="Resource" uid="uid://ctpj8pean13fh" path="res://Resources/ore_region_2.tres" id="5_a807m"]
 [ext_resource type="Script" path="res://Scenes/Playable Scenes/OreSpawner.gd" id="6_7b07q"]
+[ext_resource type="Script" path="res://Scripts/block_fragile_manager.gd" id="6_7p02m"]
 [ext_resource type="Resource" uid="uid://d35o56m1lfg6p" path="res://Resources/ore_region_3.tres" id="6_ehj3h"]
 [ext_resource type="Resource" uid="uid://qb85vcxt0k8u" path="res://Resources/ore_region_4.tres" id="7_10mi7"]
 [ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_ore.gd" id="12_d51cc"]
@@ -350,6 +351,10 @@ script = ExtResource("53_0clb6")
 potentialEnemyStrings = Array[String](["res://Scenes/Objects and Enemies/Enemy_mullvad.tscn", "res://Scenes/Objects and Enemies/Enemy_Spikes.tscn", "res://Scenes/Objects and Enemies/Enemy_Follower.tscn", "res://Scenes/Objects and Enemies/FallBlock.tscn"])
 potentialObjectStrings = Array[String](["res://Scenes/Objects and Enemies/Torch_scene.tscn"])
 oreRegions = Array[ExtResource("3_flbkc")]([ExtResource("4_t4dgp"), ExtResource("5_a807m"), ExtResource("6_ehj3h"), ExtResource("7_10mi7")])
+
+[node name="Block_FragileManager" type="Node2D" parent="ObjectSpawner"]
+rotation = 0.000508512
+script = ExtResource("6_7p02m")
 
 [node name="TileCrack" parent="." instance=ExtResource("2_c10yv")]
 position = Vector2(153, 56)
