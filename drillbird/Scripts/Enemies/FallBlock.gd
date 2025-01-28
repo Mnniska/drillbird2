@@ -2,14 +2,13 @@ extends "res://Scripts/Enemies/BaseEnemy.gd"
 class_name enemy_Fallblock
 
 @onready var raycast=$Raaycast
+@onready var impactEffect:AnimatedSprite2D=$ImpactEffect
+
 var isFalling:bool=false
 enum states{idle,fallprep,fall}
 var state:states=states.fall
 @export var timeBeforeFall:float=0.8
 var timeBeforeFallCounter:float=0
-
-var timeBeforeRest:float=0.5
-var timeBeforeRestCounter:float=0
 
 func _physics_process(delta: float) -> void:
 	
@@ -54,22 +53,27 @@ func _physics_process(delta: float) -> void:
 				move_and_slide()
 				
 			if  is_on_floor():
-				timeBeforeRestCounter+=delta
-				if timeBeforeRestCounter>timeBeforeRest:
-					state=states.idle
-					timeBeforeRestCounter=0
+				state=states.idle
+				PlayImpactEffect()
+					
 
 			else:
 				velocity += get_gravity() * delta
 
 	UpdateAnimations("idle")
 
+func PlayImpactEffect():
+	impactEffect.animation="destroy"
+	impactEffect.play()
+	pass
+
+
 func CheckOverlappingCollisions():
 	
 	if state!=states.fall:
 		return null
 	
-	var victims:Array[CharacterBody2D]
+	var victims:Array[Node2D]
 
 	#Checks if close to ground AND if the block has someone trapped beneath	
 	

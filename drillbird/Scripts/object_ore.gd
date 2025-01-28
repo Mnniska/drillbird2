@@ -50,7 +50,12 @@ func CooldownAnimation():
 		if timeKeeper>cooldownTime:
 			cooldown=false
 	
-
+func DealDamage(amount:int):
+	queue_free()
+	# TODO: Add sick destroy effect
+	pass
+	
+	
 func MoveTowardsHome(pos:Vector2):
 	MoveTarget=pos
 	isBeingSuckedUp=true

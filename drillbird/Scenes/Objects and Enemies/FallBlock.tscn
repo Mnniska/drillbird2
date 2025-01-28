@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dt2yrd4gyilr7"]
+[gd_scene load_steps=23 format=3 uid="uid://dt2yrd4gyilr7"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/FallBlock.gd" id="1_2a7bl"]
 [ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_collidable.gd" id="2_5r5oy"]
@@ -6,6 +6,15 @@
 [ext_resource type="Texture2D" uid="uid://uq5gd061j3wq" path="res://Art/Objects/Fallblock/fallblock.png" id="4_pky87"]
 [ext_resource type="PackedScene" uid="uid://2lykflhwivex" path="res://Scenes/observer.tscn" id="5_bl8ye"]
 [ext_resource type="Texture2D" uid="uid://gixivpytn5wl" path="res://Art/ui/HUD/UI_LightBar_bulb.png" id="6_eqsls"]
+[ext_resource type="Texture2D" uid="uid://c5hnvu5af64hv" path="res://Art/effects/FallBlockImpact/effect_fallBlockImpact1.png" id="7_fd2bn"]
+[ext_resource type="Texture2D" uid="uid://dpfrroh41a5r5" path="res://Art/effects/FallBlockImpact/effect_fallBlockImpact2.png" id="8_ualrb"]
+[ext_resource type="Texture2D" uid="uid://cai7w2pvbscma" path="res://Art/effects/FallBlockImpact/effect_fallBlockImpact3.png" id="9_dlyhd"]
+[ext_resource type="Texture2D" uid="uid://dluusn52tannn" path="res://Art/effects/FallBlockImpact/effect_fallBlockImpact4.png" id="10_oabfi"]
+[ext_resource type="Texture2D" uid="uid://b54oh13mkip0a" path="res://Art/effects/FallBlockImpact/effect_fallBlockImpact5.png" id="11_vetv1"]
+[ext_resource type="Texture2D" uid="uid://gwmfenq2oku6" path="res://Art/effects/FallBlockImpact/effect_fallBlockImpact6.png" id="12_8k6lq"]
+[ext_resource type="Texture2D" uid="uid://1xdelrkka2ps" path="res://Art/effects/FallBlockImpact/effect_fallBlockImpact7.png" id="13_p3t07"]
+[ext_resource type="Texture2D" uid="uid://pmro6a5ad5x5" path="res://Art/effects/FallBlockImpact/effect_fallBlockImpact8.png" id="14_gel04"]
+[ext_resource type="Texture2D" uid="uid://ds2kjeevq6pic" path="res://Art/effects/FallBlockImpact/effect_fallBlockImpact9.png" id="15_sgfpe"]
 
 [sub_resource type="Resource" id="Resource_iggm6"]
 script = ExtResource("2_5r5oy")
@@ -18,7 +27,7 @@ type = 3
 damage = 1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b510l"]
-size = Vector2(12, 16)
+size = Vector2(14, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_873kj"]
 size = Vector2(12, 15)
@@ -37,10 +46,55 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_41riw"]
 radius = 4.0
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_sb6h4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_fd2bn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ualrb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_dlyhd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_oabfi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_vetv1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_8k6lq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_p3t07")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_gel04")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_sgfpe")
+}],
+"loop": false,
+"name": &"destroy",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_sgfpe")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
 [node name="FallBlock" type="CharacterBody2D"]
 collision_layer = 129
-collision_mask = 17
 collision_priority = 2.0
+slide_on_ceiling = false
+platform_on_leave = 2
+platform_floor_layers = 4294967041
 script = ExtResource("1_2a7bl")
 collType = SubResource("Resource_iggm6")
 enemyInfo = SubResource("Resource_x2tr8")
@@ -51,7 +105,7 @@ shape = SubResource("RectangleShape2D_b510l")
 [node name="EnemyCollisionChecker" type="Area2D" parent="."]
 position = Vector2(0, 18)
 collision_layer = 0
-collision_mask = 24
+collision_mask = 28
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyCollisionChecker"]
 position = Vector2(0, -2.5)
@@ -84,6 +138,11 @@ collision_mask = 128
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FallblockTrigger"]
 shape = SubResource("CircleShape2D_41riw")
+
+[node name="ImpactEffect" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_sb6h4")
+animation = &"idle"
+autoplay = "idle"
 
 [connection signal="body_shape_entered" from="EnemyCollisionChecker" to="." method="_on_enemy_collision_checker_body_shape_entered"]
 [connection signal="BlockDestroyed" from="Observer" to="." method="_on_observer_block_destroyed"]
