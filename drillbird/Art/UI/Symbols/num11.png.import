@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bhau6gqnrgjsd"
-path="res://.godot/imported/num11.png-67e839a81941ec51cace691f1641cd09.ctex"
+path="res://.godot/imported/num11.png-988387a6a3289d80290167891ea7cb42.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/ui/Symbols/num11.png"
-dest_files=["res://.godot/imported/num11.png-67e839a81941ec51cace691f1641cd09.ctex"]
+source_file="res://Art/UI/Symbols/num11.png"
+dest_files=["res://.godot/imported/num11.png-988387a6a3289d80290167891ea7cb42.ctex"]
 
 [params]
 
