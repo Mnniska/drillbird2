@@ -191,6 +191,8 @@ func DestroyTile(position_in_grid:Vector2i,playEffect:bool):
 	tilemap.set_cells_terrain_connect(cells, 0, -1,false)
 	TileDestroyed.emit(position_in_grid,tilemap)
 
+		#handle ore spawning
+	OreSpawner.TrySpawnOreFromEnvironment(position_in_grid)
 
 	destroyed_tiles.append(position_in_grid)
 	CheckObservers(position_in_grid)
@@ -216,21 +218,12 @@ func _on_digging_countdown_timeout() -> void:
 	#Remove target cell and make neighbors reconnect to one another
 	StoppedDrilling.emit() #This is not true - this is only TILE CRACKS
 	
-
-
 	DestroyTile(cellLocation,true)
-	
-	
-
 	
 	cracksprite.hide()
 	diggingCountdown.stop()
 	tileDrillingActive=false
 	
-	#handle ore spawning
-	OreSpawner.TrySpawnOreFromEnvironment(cellLocation)
-
-	pass # Replace with function body.
 
 
 func _on_player_player_stopped_drilling_tile() -> void:
