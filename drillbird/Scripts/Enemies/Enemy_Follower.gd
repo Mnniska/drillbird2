@@ -58,7 +58,8 @@ func _physics_process(delta: float) -> void:
 	pass
 	
 func IdleBehaviour():
-	#um..nothing?
+	velocity.x=0
+	move_and_slide()
 	pass
 
 func AlertBehaviour():
