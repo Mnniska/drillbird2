@@ -10,7 +10,7 @@ var oreAreas:Array[OreArea]
 
 func _ready() -> void:
 	for n in get_children():
-		if n.name!="CheckerArea":
+		if n.name!="CheckerArea" && n.name!="RayCast2D":
 			oreAreas.append(n)
 
 

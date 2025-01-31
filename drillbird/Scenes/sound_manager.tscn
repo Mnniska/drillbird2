@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://c6kxrgykfp1c1"]
+[gd_scene load_steps=25 format=3 uid="uid://c6kxrgykfp1c1"]
 
 [ext_resource type="Script" path="res://Scripts/sound_manager.gd" id="1_kivlo"]
 [ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_SoundEffectSetting.gd" id="2_ba8up"]
@@ -11,7 +11,8 @@
 [ext_resource type="AudioStream" uid="uid://bkn6d73ogba4u" path="res://Audio/SFX/ore_grabbed.wav" id="10_4crdv"]
 [ext_resource type="AudioStream" uid="uid://mkkn175q2oj0" path="res://Audio/SFX/ambience_surface.wav" id="10_l466u"]
 [ext_resource type="AudioStream" uid="uid://dalpro3l37ots" path="res://Audio/SFX/ore_land.wav" id="11_reqvu"]
-[ext_resource type="AudioStream" uid="uid://bkend8hbxki0p" path="res://Audio/Music/mus_Home.wav" id="12_any0t"]
+[ext_resource type="AudioStream" uid="uid://bkend8hbxki0p" path="res://Audio/MUSIC/mus_Home.wav" id="12_any0t"]
+[ext_resource type="AudioStream" uid="uid://drsg7tlwye4oa" path="res://Audio/SFX/player_damage.wav" id="13_7ph86"]
 
 [sub_resource type="Resource" id="Resource_0hq0f"]
 script = ExtResource("2_ba8up")
@@ -103,6 +104,15 @@ volume = 0
 pitch_randomness = 0.0
 audioBus = 1
 
+[sub_resource type="Resource" id="Resource_efqg6"]
+script = ExtResource("2_ba8up")
+limit = 5
+type = 10
+sound_effect = ExtResource("13_7ph86")
+volume = 0
+pitch_randomness = 0.0
+audioBus = 0
+
 [node name="SoundManager" type="Node2D"]
 script = ExtResource("1_kivlo")
-SOUND_EFFECTS = Array[ExtResource("2_ba8up")]([SubResource("Resource_0hq0f"), SubResource("Resource_4wqnx"), SubResource("Resource_560ql"), SubResource("Resource_phbpy"), SubResource("Resource_3bcde"), SubResource("Resource_dy3hh"), SubResource("Resource_avwkg"), SubResource("Resource_gpl43"), SubResource("Resource_eecqi"), SubResource("Resource_i15mf")])
+SOUND_EFFECTS = Array[ExtResource("2_ba8up")]([SubResource("Resource_0hq0f"), SubResource("Resource_4wqnx"), SubResource("Resource_560ql"), SubResource("Resource_phbpy"), SubResource("Resource_3bcde"), SubResource("Resource_dy3hh"), SubResource("Resource_avwkg"), SubResource("Resource_gpl43"), SubResource("Resource_eecqi"), SubResource("Resource_i15mf"), SubResource("Resource_efqg6")])
