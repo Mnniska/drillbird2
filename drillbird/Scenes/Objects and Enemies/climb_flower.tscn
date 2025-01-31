@@ -1,0 +1,71 @@
+[gd_scene load_steps=9 format=3 uid="uid://coebanqmvn5ap"]
+
+[ext_resource type="Script" path="res://Scripts/Enemies/climb_flower.gd" id="1_n4nt3"]
+[ext_resource type="Texture2D" uid="uid://bb03yrm1uvjyc" path="res://Art/Objects/ClimbFlower/climber_BlockVine.png" id="2_e7t46"]
+[ext_resource type="Texture2D" uid="uid://djnkxblnlubmn" path="res://Art/Objects/ClimbFlower/climber_flower_neutral.png" id="3_swkf5"]
+[ext_resource type="Texture2D" uid="uid://ctyenq0n0pes" path="res://Art/Objects/ClimbFlower/climber_flower_movingup.png" id="4_y8t3l"]
+[ext_resource type="Texture2D" uid="uid://ci8cej8o5rkkh" path="res://Art/Objects/ClimbFlower/climber_vine.png" id="5_f5f0o"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_16k52"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_e7t46")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6ryxp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_swkf5")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_y8t3l")
+}],
+"loop": true,
+"name": &"movingup",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_25xxp"]
+radius = 8.0
+
+[node name="ClimbFlower" type="Node2D"]
+script = ExtResource("1_n4nt3")
+
+[node name="base" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 16)
+sprite_frames = SubResource("SpriteFrames_16k52")
+
+[node name="vine" type="TextureRect" parent="."]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 24.0
+offset_bottom = 14.0
+rotation = -3.14159
+texture = ExtResource("5_f5f0o")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="Flower" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_6ryxp")
+animation = &"idle"
+
+[node name="FlowerCollider" type="Area2D" parent="Flower"]
+collision_layer = 256
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Flower/FlowerCollider"]
+shape = SubResource("CircleShape2D_25xxp")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, 16)

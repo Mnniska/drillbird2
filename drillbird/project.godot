@@ -121,6 +121,7 @@ debug_2={
 2d_physics/layer_6="Observers"
 2d_physics/layer_7="OreAreas"
 2d_physics/layer_8="FallBlocks"
+2d_physics/layer_9="Flower"
 
 [physics]
 
