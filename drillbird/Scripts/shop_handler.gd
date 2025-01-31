@@ -69,8 +69,11 @@ func AttemptPurchaseSelectedItem():
 			GlobalVariables.SetPlayerUpgradeLevel(type,playerUpgradeLvl+1)
 			UI_purchasables[currentSelection].UpdateStats()
 			UpdateShop()
+			SoundManager.PlaySoundGlobal(abstract_SoundEffectSetting.SoundEffectEnum.HOME_MENU_PURCHASE_YES)
 			#Tell UI to update itself
-		pass
+		
+	else:
+		SoundManager.PlaySoundGlobal(abstract_SoundEffectSetting.SoundEffectEnum.HOME_MENU_PURCHASE_NO)
 
 
 
@@ -84,9 +87,11 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("up"):
 		currentSelection-=1
 		changeDone=true
+		SoundManager.PlaySoundGlobal(abstract_SoundEffectSetting.SoundEffectEnum.HOME_MENU_UP)
 	if Input.is_action_just_pressed("down"):
 		currentSelection+=1
 		changeDone=true
+		SoundManager.PlaySoundGlobal(abstract_SoundEffectSetting.SoundEffectEnum.HOME_MENU_DOWN)
 
 	if changeDone:
 		if currentSelection<0:

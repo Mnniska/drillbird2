@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="abstract_SoundEffectSetting" load_steps=3 format=3 uid="uid://bcfjktr5bgh23"]
+
+[ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_SoundEffectSetting.gd" id="1_1ppw8"]
+[ext_resource type="AudioStream" uid="uid://colpqgfec7xuf" path="res://Audio/SFX/home_menu_down.wav" id="2_g0unu"]
+
+[resource]
+script = ExtResource("1_1ppw8")
+limit = 5
+type = 12
+sound_effect = ExtResource("2_g0unu")
+volume = 0
+pitch_randomness = 0.2
+audioBus = 0

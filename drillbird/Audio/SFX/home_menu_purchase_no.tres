@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="abstract_SoundEffectSetting" load_steps=3 format=3 uid="uid://dqlcy8kk3asuu"]
+
+[ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_SoundEffectSetting.gd" id="1_hp4kx"]
+[ext_resource type="AudioStream" uid="uid://cp1to3flrtdpl" path="res://Audio/SFX/home_menu_purchase_no.wav" id="2_7188j"]
+
+[resource]
+script = ExtResource("1_hp4kx")
+limit = 5
+type = 14
+sound_effect = ExtResource("2_7188j")
+volume = 0
+pitch_randomness = 0.0
+audioBus = 0

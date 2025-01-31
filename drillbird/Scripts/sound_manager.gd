@@ -17,8 +17,8 @@ func _ready() -> void:
 func CreatePersistentSound(location:Vector2,type:abstract_SoundEffectSetting.SoundEffectEnum):
 
 	#Creates a sound that will stay forever unless specifically deleted
-
 	var soundEffectSetting:abstract_SoundEffectSetting=SOUND_EFFECTS[type]
+
 
 	var new_2D_audio = AudioStreamPlayer2D.new()
 	add_child(new_2D_audio)
@@ -41,7 +41,11 @@ func PlaySoundGlobal(type:abstract_SoundEffectSetting.SoundEffectEnum):
 
 	if soundEffectDict.has(type):
 		
-		var soundEffectSetting:abstract_SoundEffectSetting=SOUND_EFFECTS[type]
+		var soundEffectSetting:abstract_SoundEffectSetting=SOUND_EFFECTS[0]
+		
+		for n in SOUND_EFFECTS:
+			if n.type==type:
+				soundEffectSetting=n
 		
 		if soundEffectSetting.has_open_limit(): #ensure the same effect can only play X times
 			soundEffectSetting.change_audio_count(1)
@@ -66,7 +70,11 @@ func PlaySoundAtLocation(location:Vector2,type:abstract_SoundEffectSetting.Sound
 	
 	if soundEffectDict.has(type):
 		
-		var soundEffectSetting:abstract_SoundEffectSetting=SOUND_EFFECTS[type]
+		var soundEffectSetting:abstract_SoundEffectSetting=SOUND_EFFECTS[0]
+		
+		for n in SOUND_EFFECTS:
+			if n.type==type:
+				soundEffectSetting=n
 		
 		if soundEffectSetting.has_open_limit(): #ensure the same effect can only play X times
 			soundEffectSetting.change_audio_count(1)
