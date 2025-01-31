@@ -1,0 +1,8 @@
+extends Area2D
+@onready var parent=$"../.."
+
+func GetCollType():
+	return parent.GetCollType()
+
+func GetParent():
+	return parent

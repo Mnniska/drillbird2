@@ -7,8 +7,10 @@ signal signal_PlayerDrilling(drilling:bool)
 
 var animstate=""
 enum Directions {LEFT, RIGHT, UP, DOWN}
-enum States {IDLE, DRILLING, AIR, DEAD, DAMAGE, DEBUG_GHOST,PAUSE}
+enum States {IDLE, DRILLING, AIR, DEAD, DAMAGE, DEBUG_GHOST,PAUSE,FLOWER}
 var state = States.IDLE
+
+var closeFlowers:Array[climb_flower]
 
 var facingDir= Directions.RIGHT
 var facing_right: bool = true
@@ -45,6 +47,7 @@ var player_is_drilling_tile: bool = false:
 		signal_IsDrillingTileChanged.emit(player_is_drilling_tile)
 var playerDrillingSolid:bool=false
 var drillDirection=Directions.RIGHT
+var HeldFlower:climb_flower=null
 
 #Colliders
 @onready var collider_airborne=$Collider_airborne
@@ -103,7 +106,7 @@ func _physics_process(delta: float) -> void:
 	
 
 	
-	if !state==States.DAMAGE and !state==States.DEAD:
+	if !state==States.DAMAGE and !state==States.DEAD and !state==States.FLOWER:
 		newanim=RegularMovement(delta,newanim)
 	elif state==States.DAMAGE:
 		newanim=TakeDamageMovement(delta,newanim)
@@ -111,6 +114,8 @@ func _physics_process(delta: float) -> void:
 		newanim=DeathMovement(delta, newanim)
 		LoseInvincibility()
 		newanim="dead"
+	elif state==States.FLOWER:
+		newanim=FlowerMovement(delta,newanim)
 
 	if invincible:
 		invincibilityCounter+=delta
@@ -122,6 +127,37 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	Update_Animations(newanim)
 
+func GetClosestFlower():
+	for n in closeFlowers:
+		#If player is touching multiple flowers - choose the one closest to player
+		#Maybe do this when player is initiating a flower leap instead? 
+		var length=1000
+		var chosenFlower:climb_flower
+		
+	
+		var dist= global_position.distance_to(n.global_position)
+		if dist<length:
+			length=dist
+			chosenFlower=n
+		return chosenFlower
+
+
+func FlowerMovement(delta:float,currentAnim:String):
+	
+	if climb_flower==null:
+		push_error("Could not find a flower to hold onto")
+		return
+	
+	self.global_position=HeldFlower.GetFlowerPosition()
+	
+	if !Input.is_action_pressed("jump"):
+		state=States.AIR
+		HeldFlower.SetPlayerAttached(false)
+		HeldFlower=null
+		velocity.y=+JUMP_VELOCITY
+	
+	return "flyingUp"
+	
 	
 func TakeDamageMovement(delta:float,currentAnim:String):
 	#velocity.y=-damageVelocity #this should be based on the direction of the threat
@@ -193,6 +229,14 @@ func RegularMovement(delta:float,currentAnim:String):
 	
 	# Check for jump input and add velocity.
 	if Input.is_action_just_pressed("jump"):  
+	
+	#Interrupt jump and turn it into a flower boost if close to a flower
+		if closeFlowers.size()>0:
+			state=States.FLOWER
+			HeldFlower=GetClosestFlower()
+			HeldFlower.SetPlayerAttached(true)
+			return "flyingUp"
+		
 		if is_on_floor() or jumpsMade <= maxJumps or !heavy:
 			
 			if is_on_floor():
@@ -553,3 +597,30 @@ func CreateInfoBubble(text:String):
 	node.position+=offset
 	node.Setup(abstract_textEffect.effectEnum.WAVE,text_bubble.behaviourEnum.FADE)
 	node.ShowText(text)
+
+
+#FLOWER SHENANIGANS
+
+func _on_detector_area_entered(area: Area2D) -> void:
+	
+	
+	var collider:abstract_collidable= area.GetCollType()
+	
+	if collider.type==collider.types.FLOWER:
+		closeFlowers.append(area.GetParent())
+
+	pass # Replace with function body.
+
+
+func _on_detector_area_exited(area: Area2D) -> void:
+	var collider:abstract_collidable= area.GetCollType()
+	
+	if collider.type==collider.types.FLOWER:
+		var index=0
+		for n in closeFlowers:
+			if n==area.GetParent():
+				closeFlowers.remove_at(index)
+			index+=1
+		pass
+	
+	pass # Replace with function body.

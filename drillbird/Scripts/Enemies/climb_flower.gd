@@ -1,8 +1,10 @@
 extends Node2D
-
+class_name climb_flower
+@export var collider:abstract_collidable
 @onready var vine:TextureRect=$vine
 @onready var flower:AnimatedSprite2D=$Flower
-var size:float=10
+var minsize:float=4
+var size:float=4
 var offset:Vector2=Vector2(0,4)
 @export var SPEED:float=100
 
@@ -12,13 +14,10 @@ var restingPositionY=-4
 
 var PlayerAttached:bool=false
 
+func GetSelf():
+	return self
 
 func _process(delta: float) -> void:
-	
-	if Input.is_action_pressed("jump"):
-		PlayerAttached=true
-	else:
-		PlayerAttached=false
 	
 	if PlayerAttached:
 		state=States.MOVE_UP
@@ -37,6 +36,9 @@ func _process(delta: float) -> void:
 
 	UpdateAnimations()
 
+func GetCollType():
+	return collider
+
 func Move_IDLE(delta:float):
 	
 	pass
@@ -51,6 +53,7 @@ func Move_UP(delta:float):
 
 func Move_DOWN(delta:float):
 	size-=delta*SPEED*0.5
+	size=max(minsize,size)
 	vine.set_size(Vector2(16,size))
 	flower.position=offset+Vector2(0,-size)
 	pass

@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://e3titjk1as46"]
+[gd_scene load_steps=64 format=3 uid="uid://e3titjk1as46"]
 
 [ext_resource type="Script" path="res://Scripts/playermovement.gd" id="1_llgr2"]
 [ext_resource type="Texture2D" uid="uid://dqsglx1jll3rm" path="res://Art/effects/BirdyLightEffect1.png" id="2_65ywu"]
@@ -44,6 +44,7 @@
 [ext_resource type="Texture2D" uid="uid://c4kbqht4juyov" path="res://Art/characters/Drillbird/anim_drill/drilling_down_fall.png" id="23_fmdch"]
 [ext_resource type="Texture2D" uid="uid://bdnsaxsutvhq8" path="res://Art/effects/sprite_jumpCrystal3.png" id="24_nofj5"]
 [ext_resource type="Texture2D" uid="uid://d1fxkvrdmxu4l" path="res://Art/effects/sprite_jumpCrystal4.png" id="25_ehp6o"]
+[ext_resource type="Texture2D" uid="uid://5wrxmdf1hats" path="res://Art/characters/Drillbird/birdie_flowerFly.png" id="32_shida"]
 [ext_resource type="Theme" uid="uid://bfr5y4lo7m1ux" path="res://Resources/Fonts/fontTheme.tres" id="38_sekb7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pdge5"]
@@ -219,6 +220,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("32_shida")
+}],
+"loop": true,
+"name": &"flyingUp",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("3_lhddu")
 }],
 "loop": true,
@@ -364,7 +373,7 @@ randomness = 1.0
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 2
 sprite_frames = SubResource("SpriteFrames_3vbtj")
-animation = &"jump"
+animation = &"flyingUp"
 autoplay = "idle"
 
 [node name="jumpCrystal1" type="AnimatedSprite2D" parent="AnimatedSprite2D"]
@@ -435,7 +444,7 @@ debug_color = Color(0.43653, 0.59732, 0.154954, 0.42)
 
 [node name="Detector" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 14
+collision_mask = 270
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Detector"]
 position = Vector2(0, 2)
@@ -462,4 +471,6 @@ horizontal_alignment = 1
 [connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_looped"]
 [connection signal="body_shape_entered" from="BlockBelowChecker" to="." method="_on_block_below_checker_body_shape_entered"]
 [connection signal="body_shape_exited" from="BlockBelowChecker" to="." method="_on_block_below_checker_body_shape_exited"]
+[connection signal="area_entered" from="Detector" to="." method="_on_detector_area_entered"]
+[connection signal="area_exited" from="Detector" to="." method="_on_detector_area_exited"]
 [connection signal="body_entered" from="Detector" to="." method="_on_detector_body_entered"]
