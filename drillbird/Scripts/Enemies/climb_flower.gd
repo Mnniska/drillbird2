@@ -2,11 +2,13 @@ extends Node2D
 class_name climb_flower
 @export var collider:abstract_collidable
 @onready var vine:TextureRect=$vine
-@onready var flower:AnimatedSprite2D=$Flower
-var minsize:float=4
+@onready var flowerAnim:AnimatedSprite2D=$FlowerBody/FlowerAnim
+@onready var flowerBody:RigidBody2D=$FlowerBody
+
 var size:float=4
 var offset:Vector2=Vector2(0,4)
-@export var SPEED:float=100
+@export var SPEED:float=10
+var trueSpeed=SPEED*0.01
 
 enum States{IDLE,MOVE_UP,MOVE_DOWN}
 var state:States=States.IDLE
@@ -19,9 +21,11 @@ func GetSelf():
 
 func _process(delta: float) -> void:
 	
+
+	
 	if PlayerAttached:
 		state=States.MOVE_UP
-	elif flower.position.y-offset.y<=restingPositionY:
+	elif flowerBody.position.y-offset.y<=restingPositionY:
 		state=States.MOVE_DOWN
 	else:
 		state=States.IDLE
@@ -46,31 +50,41 @@ func Move_IDLE(delta:float):
 func Move_UP(delta:float):
 	size+=delta*SPEED
 	
-	vine.set_size(Vector2(16,size))
-	flower.position=offset+Vector2(0,-size)
+	var distance=flowerBody.global_position.distance_to(global_position)
+	
+	vine.set_size(Vector2(16,distance+offset.y))
+	
+	
+	flowerBody.move_and_collide(Vector2(0,-trueSpeed))
+	
+	
 	
 	pass
 
 func Move_DOWN(delta:float):
-	size-=delta*SPEED*0.5
-	size=max(minsize,size)
-	vine.set_size(Vector2(16,size))
-	flower.position=offset+Vector2(0,-size)
+
+	
+	var distance=flowerBody.global_position.distance_to(global_position)
+	
+	vine.set_size(Vector2(16,distance+offset.y))
+	
+	flowerBody.move_and_collide(Vector2(0,trueSpeed*0.5))
+	
 	pass
 
 func UpdateAnimations():
 	
 	match state:
 		States.IDLE:
-			flower.animation="idle"
+			flowerAnim.animation="idle"
 		States.MOVE_UP:
-			flower.animation="movingup"
+			flowerAnim.animation="movingup"
 		States.MOVE_DOWN:
-			flower.animation="idle"
+			flowerAnim.animation="idle"
 	pass
 
 func GetFlowerPosition():
-	return flower.global_position
+	return flowerBody.global_position
 
 func SetPlayerAttached(attached:bool):
 	PlayerAttached=attached

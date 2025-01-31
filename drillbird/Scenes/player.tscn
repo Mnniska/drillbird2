@@ -471,6 +471,5 @@ horizontal_alignment = 1
 [connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_looped"]
 [connection signal="body_shape_entered" from="BlockBelowChecker" to="." method="_on_block_below_checker_body_shape_entered"]
 [connection signal="body_shape_exited" from="BlockBelowChecker" to="." method="_on_block_below_checker_body_shape_exited"]
-[connection signal="area_entered" from="Detector" to="." method="_on_detector_area_entered"]
-[connection signal="area_exited" from="Detector" to="." method="_on_detector_area_exited"]
 [connection signal="body_entered" from="Detector" to="." method="_on_detector_body_entered"]
+[connection signal="body_exited" from="Detector" to="." method="_on_detector_body_exited"]

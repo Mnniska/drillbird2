@@ -24,6 +24,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_25xxp"]
+radius = 7.0
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_6ryxp"]
 animations = [{
 "frames": [{
@@ -43,13 +46,10 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_25xxp"]
-radius = 8.0
-
 [node name="ClimbFlower" type="Node2D"]
 script = ExtResource("1_n4nt3")
 collider = SubResource("Resource_eoj21")
-SPEED = 150.0
+SPEED = 15.0
 
 [node name="base" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 16)
@@ -65,17 +65,17 @@ texture = ExtResource("5_f5f0o")
 expand_mode = 1
 stretch_mode = 1
 
-[node name="Flower" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_6ryxp")
-animation = &"idle"
-
-[node name="flowerCollider" type="Area2D" parent="Flower"]
-collision_layer = 256
-collision_mask = 16
-script = ExtResource("7_x4lji")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Flower/flowerCollider"]
-shape = SubResource("CircleShape2D_25xxp")
-
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, 16)
+
+[node name="FlowerBody" type="RigidBody2D" parent="."]
+collision_layer = 256
+gravity_scale = 0.0
+script = ExtResource("7_x4lji")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FlowerBody"]
+shape = SubResource("CircleShape2D_25xxp")
+
+[node name="FlowerAnim" type="AnimatedSprite2D" parent="FlowerBody"]
+sprite_frames = SubResource("SpriteFrames_6ryxp")
+animation = &"idle"

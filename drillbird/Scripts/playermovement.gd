@@ -587,6 +587,9 @@ func _on_detector_body_entered(body: Node2D) -> void:
 			else:
 				CreateInfoBubble("Inventory full!")
 
+	if collider.type==collider.types.FLOWER:
+		closeFlowers.append(body.GetParent())
+
 				
 func CreateInfoBubble(text:String):
 	var txt=load("res://Scenes/UI/text_bubble.tscn")
@@ -601,24 +604,15 @@ func CreateInfoBubble(text:String):
 
 #FLOWER SHENANIGANS
 
-func _on_detector_area_entered(area: Area2D) -> void:
-	
-	
-	var collider:abstract_collidable= area.GetCollType()
-	
-	if collider.type==collider.types.FLOWER:
-		closeFlowers.append(area.GetParent())
-
-	pass # Replace with function body.
 
 
-func _on_detector_area_exited(area: Area2D) -> void:
-	var collider:abstract_collidable= area.GetCollType()
-	
+func _on_detector_body_exited(body: Node2D) -> void:
+	var collider:abstract_collidable= body.GetCollType()
+
 	if collider.type==collider.types.FLOWER:
 		var index=0
 		for n in closeFlowers:
-			if n==area.GetParent():
+			if n==body.GetParent():
 				closeFlowers.remove_at(index)
 			index+=1
 		pass

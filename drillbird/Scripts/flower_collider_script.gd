@@ -1,5 +1,5 @@
-extends Area2D
-@onready var parent=$"../.."
+extends RigidBody2D
+@onready var parent=$".."
 
 func GetCollType():
 	return parent.GetCollType()
