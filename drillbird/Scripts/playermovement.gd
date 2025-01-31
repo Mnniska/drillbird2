@@ -450,6 +450,7 @@ func DealDamage(amount:int):
 	if state==States.DAMAGE or state==States.DEAD or invincible:
 		return false
 	state=States.DAMAGE
+	SoundManager.PlaySoundAtLocation(global_position,abstract_SoundEffectSetting.SoundEffectEnum.PLAYER_HURT)
 	
 	damageTimerCounter=0
 	

@@ -1,8 +1,8 @@
 extends AudioStreamPlayer
 
-@export var sound_air:AudioStreamWAV
-@export var sound_breakable:AudioStreamWAV
-@export var sound_solid:AudioStreamWAV
+@export var sound_air:abstract_SoundEffectSetting
+@export var sound_breakable:abstract_SoundEffectSetting
+@export var sound_solid:abstract_SoundEffectSetting
 
 @onready var audiostream=$"."
 
@@ -40,23 +40,27 @@ func MaterialChange(terrain:abstract_terrain_info):
 	
 	if terrain==null: #This has not yet been implemented - but I think we should in the future
 		if !audiostream.playing or audiostream.stream!=sound_air:
-			audiostream.stream=sound_air
-			audiostream.volume_db=-30
-			audiostream.play()
+			SetupAndPlaySoundSetting(sound_air)
 		return
 
 
 	if terrain.terrainIdentifier>=1: #Sand or higher hardness
-		audiostream.stream=sound_breakable
-		audiostream.volume_db=-15
-		audiostream.play()
+		SetupAndPlaySoundSetting(sound_breakable)
+		
+		
 	
 	if terrain.terrainIdentifier<=0: #Solid
-		audiostream.stream=sound_solid
-		audiostream.volume_db=-15
-		audiostream.play()
+		SetupAndPlaySoundSetting(sound_solid)
 
 	
+	pass
+
+func SetupAndPlaySoundSetting(sound:abstract_SoundEffectSetting):
+	audiostream.stream=sound.sound_effect
+	audiostream.volume_db=sound.volume
+	audiostream.bus=sound.AudioBusEnum.keys()[sound.audioBus]
+	audiostream.play()
+
 	pass
 
 func _on_sound_finished() -> void:

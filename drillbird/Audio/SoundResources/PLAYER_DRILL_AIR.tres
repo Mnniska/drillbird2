@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="abstract_SoundEffectSetting" load_steps=3 format=3 uid="uid://dro3yl4h7bhtf"]
+
+[ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_SoundEffectSetting.gd" id="1_j78rg"]
+[ext_resource type="AudioStream" uid="uid://dm0unlej7audq" path="res://Audio/SFX/player_drilling_air.wav" id="2_cband"]
+
+[resource]
+script = ExtResource("1_j78rg")
+limit = 5
+type = 11
+sound_effect = ExtResource("2_cband")
+volume = -15
+pitch_randomness = 0.0
+audioBus = 0
