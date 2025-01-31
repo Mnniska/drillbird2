@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://coebanqmvn5ap"]
+[gd_scene load_steps=12 format=3 uid="uid://b5af7odmny64p"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/climb_flower.gd" id="1_n4nt3"]
 [ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_collidable.gd" id="2_2xntx"]

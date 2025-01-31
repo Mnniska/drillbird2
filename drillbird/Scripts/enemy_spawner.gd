@@ -1,6 +1,8 @@
 extends Node2D
 @export var potentialEnemyStrings:Array[String]
 @export var potentialObjectStrings:Array[String]
+@onready var flowerReference=preload("res://Scenes/Objects and Enemies/climb_flower.tscn")
+
 @onready var gameTilemap:TileMapLayer=$"../TilemapEnvironment" 
 
 @onready var oreTilemap:TileMapLayer=$"../TilemapOres"
@@ -9,6 +11,7 @@ extends Node2D
 @onready var OreAreas=$"../TilemapOres/OreRegions"
 @onready var tileDestroyer=$"../TileCrack"
 @onready var fragileBlockManager:block_fragile_manager=$Block_FragileManager
+
 
 
 var spawnedEnemies:Array[Node2D]
@@ -247,6 +250,19 @@ func GetEnemyUpdate():
 		pass
 		index+=1
 	return enemiesToSpawnList
+	pass
+
+func CreateNewFlowerFromGlobalPos(globalPos:Vector2):
+	
+	var node=flowerReference.instantiate()
+	
+	var mapPos = gameTilemap.local_to_map(to_local(globalPos))
+	var gPos=to_local(gameTilemap.map_to_local(mapPos))
+	node.transform.origin=gPos
+	
+	add_child(node)
+	
+	
 	pass
 
 func RemoveTile(pos:Vector2i):

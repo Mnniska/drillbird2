@@ -8,7 +8,7 @@ class_name climb_flower
 var size:float=4
 var offset:Vector2=Vector2(0,4)
 @export var SPEED:float=10
-var trueSpeed=SPEED*0.01
+var trueSpeed=SPEED*0.1
 
 enum States{IDLE,MOVE_UP,MOVE_DOWN}
 var state:States=States.IDLE

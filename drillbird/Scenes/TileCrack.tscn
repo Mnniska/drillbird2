@@ -31,7 +31,7 @@ texture = ExtResource("2_d02o3")
 
 [node name="DrillSoundPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_r2vk1")
-volume_db = -15.0
+volume_db = -19.667
 bus = &"SFX"
 script = ExtResource("7_k3njw")
 sound_air = ExtResource("13_pcrl5")
@@ -53,7 +53,6 @@ collide_with_areas = true
 collide_with_bodies = false
 
 [connection signal="MaterialChanged" from="." to="DrillSoundPlayer" method="_on_tile_crack_material_changed"]
-[connection signal="StartedDrilling" from="." to="DrillSoundPlayer" method="_on_tile_crack_started_drilling"]
-[connection signal="StoppedDrilling" from="." to="DrillSoundPlayer" method="_on_tile_crack_stopped_drilling"]
+[connection signal="playerIsDoingDrillActionChange" from="." to="DrillSoundPlayer" method="_on_tile_crack_player_is_doing_drill_action_change"]
 [connection signal="timeout" from="DiggingCountdown" to="." method="_on_digging_countdown_timeout"]
 [connection signal="finished" from="DrillSoundPlayer" to="DrillSoundPlayer" method="_on_sound_finished"]
