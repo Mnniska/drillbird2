@@ -5,10 +5,11 @@ signal PlayerDrillingMaterial(int:)
 signal TileDestroyed(pos:Vector2i,tilemap:TileMapLayer)
 
 #Signals for the sound 
-signal StartedDrilling
-signal StoppedDrilling
+signal playerIsDoingDrillActionChange(drilling:bool)
 signal MaterialChanged(terrain:abstract_terrain_info)
 
+
+var playerDrillingTile:bool=false
 
 @onready var diggingCountdown: Timer =$DiggingCountdown
 @onready var tilemap: TileMapLayer = get_parent().get_node("TilemapEnvironment")
@@ -24,6 +25,7 @@ signal MaterialChanged(terrain:abstract_terrain_info)
 
 @export var minimumDigTime:float = 0.6
 @export var GameTerrains:Array[abstract_terrain_info]:
+
 	get: return GameTerrains
 	set(value): 
 		if value.size()>0:
@@ -34,7 +36,6 @@ var destroyed_tiles:Array[Vector2i]
 var affectedTile:TileData
 var cellLocation:Vector2i
 var tileDrillingActive:bool=false
-var playerIsDrilling:bool=false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -51,45 +52,25 @@ func _process(_delta: float) -> void:
 		DrillSoundPlayer.SetDrillProgress(process)
 		
 		#Set current sprite based on sprite amount & progress
-		var test:float = (crack_sprites.size()-1)*process
-		var currentSprite:int= roundf(test)
+		var crackSpriteInt:float = (crack_sprites.size()-1)*process
+		var currentSprite:int= roundf(crackSpriteInt)
 		if currentSprite>crack_sprites.size()-1:
 			currentSprite=crack_sprites.size()-1
 		cracksprite.texture=crack_sprites[currentSprite]
 
 func SetPlayerIsDriling(drilling:bool):
-	playerIsDrilling=drilling
-	
-	if drilling and !tileDrillingActive:
-		MaterialChanged.emit(null)
-	
-	if !drilling:
-		StoppedDrilling.emit()
-	
+	playerIsDoingDrillActionChange.emit(drilling)
+		
 	pass
 
 func _on_player_new_tile_crack(drill_position:Vector2i) -> void:
 	NewTarget(drill_position)
 
-func SetCrackPosition(drillPosition:Vector2i):
-	cracksprite.show()
-	
-	var xx =8
-	if drillPosition.x<0:
-		xx*=-1
-	var xpos = (ceil( drillPosition.x/16 )*16)+xx
-	
-	var yy=8
-	if drillPosition.y <0:
-		yy*=-1
-	var ypos = (ceil( drillPosition.y/16 )*16)+yy
-		
-	self.position=Vector2i(xpos,ypos)
 
 
 func NewTarget(drill_position:Vector2i):
-		
-	StartedDrilling.emit()
+	playerDrillingTile=true
+	#StartedDrilling.emit()
 	
 	cellLocation = tilemap.local_to_map(tilemap.to_local(drill_position))
 	affectedTile= tilemap.get_cell_tile_data(cellLocation)
@@ -129,7 +110,21 @@ func NewTarget(drill_position:Vector2i):
 	#var tile: TileData =tilemap.get_cell_tile_data(tilemap.local_to_map( tilemap.to_local( location)))
 
 	
-	pass
+func SetCrackPosition(drillPosition:Vector2i):
+	cracksprite.show()
+	
+	var xx =8
+	if drillPosition.x<0:
+		xx*=-1
+	var xpos = (ceil( drillPosition.x/16 )*16)+xx
+	
+	var yy=8
+	if drillPosition.y <0:
+		yy*=-1
+	var ypos = (ceil( drillPosition.y/16 )*16)+yy
+		
+	self.position=Vector2i(xpos,ypos)
+
 
 func GetHealthForTerrain(terrain:int):
 	for n in GameTerrains:
@@ -142,10 +137,11 @@ func GetHealthForTerrain(terrain:int):
 	pass
 
 func abortDig():
-	StoppedDrilling.emit()
+	#StoppedDrilling.emit()
 	diggingCountdown.stop()
 	tileDrillingActive=false
 	cracksprite.hide()
+	MaterialChanged.emit(null)
 	
 
 func GetDestroyedTiles():
@@ -197,7 +193,29 @@ func DestroyTile(position_in_grid:Vector2i,playEffect:bool):
 	destroyed_tiles.append(position_in_grid)
 	CheckObservers(position_in_grid)
 	return true
+
+func _on_player_player_stopped_drilling_tile() -> void:
+	if playerDrillingTile:
+		playerDrillingTile=false
+		abortDig()
+
+	pass # Replace with function body.
 	
+func _on_player_signal_player_drilling(drilling: bool) -> void:
+	SetPlayerIsDriling(drilling)
+	
+	pass # Replace with function body.
+
+func _on_digging_countdown_timeout() -> void:
+	
+	#Remove target cell and make neighbors reconnect to one another
+#	StoppedDrilling.emit() #This is not true - this is only TILE CRACKS
+	
+	DestroyTile(cellLocation,true)
+	
+	cracksprite.hide()
+	diggingCountdown.stop()
+	tileDrillingActive=false
 
 func SpawnDestroyEffect(position:Vector2i,terrain:abstract_terrain_info):
 	
@@ -213,23 +231,8 @@ func SpawnDestroyEffect(position:Vector2i,terrain:abstract_terrain_info):
 	
 	
 
-func _on_digging_countdown_timeout() -> void:
-	
-	#Remove target cell and make neighbors reconnect to one another
-	StoppedDrilling.emit() #This is not true - this is only TILE CRACKS
-	
-	DestroyTile(cellLocation,true)
-	
-	cracksprite.hide()
-	diggingCountdown.stop()
-	tileDrillingActive=false
-	
 
 
-func _on_player_player_stopped_drilling_tile() -> void:
-	abortDig()
-
-	pass # Replace with function body.
 
 func CheckObservers(location:Vector2i):
 	var pos=to_local(tilemap.map_to_local(location))
@@ -247,8 +250,3 @@ func CheckObservers(location:Vector2i):
 	for obj in objects_collide:
 		ObserverRaycast.remove_exception( obj )
 		obj.ObservedBlockDestroyed()
-
-func _on_player_signal_player_drilling(drilling: bool) -> void:
-	SetPlayerIsDriling(drilling)
-	
-	pass # Replace with function body.

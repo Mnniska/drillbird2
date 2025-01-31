@@ -20,6 +20,7 @@ var facing_right: bool = true
 @export var JUMP_VELOCITY = -200
 @export var AIRJUMP_VELOCITY=-100
 
+
 #Jump variables
 @export var maxJumps: int =3
 var jumpsMade:int =0
@@ -53,12 +54,14 @@ var HeldFlower:climb_flower=null
 @onready var collider_airborne=$Collider_airborne
 @onready var collider_grounded=$Collider_grounded
 
+@onready var FlowerTimer:Timer=$CreateFlowerTimer
+
 @onready var raycast_drill = $RayCast2D
 @onready var debugLine= $DebugRaycastLine
-@onready var tilemap: TileMapLayer = get_parent().get_node("TilemapEnvironment")
 @onready var oreInventory = $"../Camera2D/InventoryHandler"
 @onready var particles=$DrillingParticles
 @onready var healthManager=$"../Camera2D/HealthUIHandler"
+@onready var ObjectSpawner=$"../ObjectSpawner"
 
 func _ready() -> void:
 	Update_Animations("idle")
@@ -72,7 +75,6 @@ func _ready() -> void:
 		
 
 func _physics_process(delta: float) -> void:
-	
 	
 				
 	if Input.is_action_just_pressed("debug_1"):
@@ -371,6 +373,8 @@ func RegularMovement(delta:float,currentAnim:String):
 		playerIsDrilling=false
 		playerStoppedDrillingTile.emit()
 		signal_PlayerDrilling.emit(false)
+		FlowerTimer.stop()
+
 		#tells crack script to stop timer
 
 	return newanim
@@ -410,6 +414,10 @@ func PlayerIsDrilling():
 	
 	if raycast_drill.is_colliding(): 
 		#once the game knows it has a valid target, it will not recheck whether it's drilling the same thing every frame.
+		
+		if playerDrillingSolid && FlowerTimer.is_stopped():
+			FlowerTimer.start()
+		
 		if not player_is_drilling_tile:
 			player_is_drilling_tile=true
 			drillDirection=facingDir
@@ -423,12 +431,20 @@ func PlayerIsDrilling():
 			#debugLine.default_color=Color.RED
 			#debugLine.set_point_position(1,(to_local( col_point)))
 		elif drillDirection != facingDir:
-			player_is_drilling_tile =false
-			playerStoppedDrillingTile.emit()
+			PlayerStoppedDrillingValidTile()
+
 	else:
-		player_is_drilling_tile=false
+		PlayerStoppedDrillingValidTile()
+
 		debugLine.default_color=Color.GREEN		
-	pass
+
+func PlayerStoppedDrillingValidTile():
+	player_is_drilling_tile =false
+	playerStoppedDrillingTile.emit()
+	FlowerTimer.stop()
+	
+
+
 	
 func DealDamage(amount:int):
 	if state==States.DAMAGE or state==States.DEAD or invincible:
@@ -616,5 +632,34 @@ func _on_detector_body_exited(body: Node2D) -> void:
 				closeFlowers.remove_at(index)
 			index+=1
 		pass
+	
+	pass # Replace with function body.
+
+
+func _on_create_flower_timer_timeout() -> void:
+
+	var length:float=18
+	var raycastTarget:Vector2
+	match facingDir:
+		Directions.LEFT:
+			raycastTarget=Vector2(-length,0)
+		Directions.RIGHT:
+			raycastTarget=Vector2(length,0)
+		Directions.UP:
+			raycastTarget=Vector2(0,-length)
+		Directions.DOWN:
+			raycastTarget=Vector2(0,length)
+	
+	raycast_drill.target_position= raycastTarget
+	raycast_drill.force_raycast_update()
+	
+	if raycast_drill.is_colliding(): 
+		var col_point = raycast_drill.get_collision_point()
+		var extrudedpoint = col_point+ (raycast_drill.get_collision_normal()*-2.5) 
+		ObjectSpawner.CreateNewFlowerFromGlobalPos(extrudedpoint+Vector2(0,-16))
+		
+	
+	
+	
 	
 	pass # Replace with function body.
