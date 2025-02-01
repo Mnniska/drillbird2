@@ -1,6 +1,6 @@
 extends Node2D
 
-var HealthArray:Array[Node2D] #I'd love for this to specify the heart script. Make sure to loop up a tutorial over christmas :) 
+var HealthArray:Array[heart_script] #I'd love for this to specify the heart script. Make sure to loop up a tutorial over christmas :) 
 var HealthScene
 @export var HealthUpgrades:abstract_purchasable
 var HeartScene = preload("res://Scenes/UI/HeartScene.tscn")
@@ -58,21 +58,30 @@ func TakeDamage(amount:int):
 	GlobalVariables.playerHealth-=amount #reduce player health
 	var DamageCounter:int=0
 	var index:int=0
-	var lastHeart:bool=false
-	
-	for n in HealthArray:
-		var c:int=HealthArray.size()-(index+1)
+
+
+
+
+	for heart:heart_script in HealthArray:
 		
-		if HealthArray[c].TakeDamage(): #Will return false if selected heart is empty
-			
-			lastHeart=index==HealthArray.size()-2
-			if lastHeart:
-				n.SetIsLastHeart()
-				
+		#Iterate thru array backwards
+		var heartID:int=HealthArray.size()-index-1
+		var currentHeart:heart_script = HealthArray[heartID]
+		if currentHeart.TakeDamage():
+		
+			if heartID==1:
+				HealthArray[0].SetIsLastHeart()
+		
+			#continue removing health until specified amount has been taken
 			DamageCounter+=1
-			if DamageCounter>=amount: #continue removing health until specified amount has been taken
+			if DamageCounter>=amount: 
 				break
+		
 		index+=1
+		
+
+		
+		pass
 	
 	if GlobalVariables.playerHealth<=0:
 		UI_DeathPopup.ShowUI()

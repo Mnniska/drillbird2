@@ -644,6 +644,7 @@ texture = ExtResource("3_7s4rt")
 3:2/0 = 0
 3:2/0/terrain_set = 0
 3:2/0/terrain = 2
+3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 3:2/0/terrains_peering_bit/left_side = 2
 3:2/0/terrains_peering_bit/top_side = 2
 4:2/0 = 0

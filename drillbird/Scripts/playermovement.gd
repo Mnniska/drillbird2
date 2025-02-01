@@ -173,16 +173,17 @@ func TakeDamageMovement(delta:float,currentAnim:String):
 		state=States.IDLE
 		
 	if GlobalVariables.playerHealth<=0:
-		PlayDead()
+		SetPlayerDeathVariables()
 	#$DebugLabel.text="playerHealth: "+str(GlobalVariables.playerHealth)
 	
 	return "damage"
 
-func PlayDead():
+func SetPlayerDeathVariables():
 	if state==States.DEAD:
 		return false
 	state=States.DEAD
 	oreInventory.PlayerDied(global_position)
+	heavy=false
 	
 
 func DeathMovement(delta:float,currentAnim:String):

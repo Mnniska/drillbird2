@@ -1,4 +1,5 @@
 extends Node2D
+class_name heart_script
 
 
 enum states {EMPTY,FULL,LASTFULL,AVAILABLE}

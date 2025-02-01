@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://ckl0ibm5pfs7u"]
+[gd_scene load_steps=29 format=3 uid="uid://ckl0ibm5pfs7u"]
 
 [ext_resource type="Script" path="res://Scripts/HomeScript.gd" id="1_qel16"]
 [ext_resource type="Texture2D" uid="uid://xpp18icbqb1y" path="res://Art/environment/Home/nest_back.png" id="2_4e54y"]
@@ -23,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://cstos5qewrbox" path="res://Art/ui/UI_Background_rest.png" id="21_t7twy"]
 [ext_resource type="Texture2D" uid="uid://bvtd87mo25snw" path="res://Art/ui/UI_rest_arrow_dark.png" id="22_7onby"]
 [ext_resource type="Texture2D" uid="uid://1hy32yargekh" path="res://Art/ui/UI_rest_arrow_light.png" id="23_pvi10"]
+[ext_resource type="Texture2D" uid="uid://gvnhgn5vrd5e" path="res://Art/Collectibles/ore_3_red.png" id="24_g3ew8"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xb0mn"]
 animations = [{
@@ -82,6 +83,7 @@ Eggs = [NodePath("Egg_smallest"), NodePath("Egg_medium"), NodePath("Egg_Big"), N
 sleepPositions = [NodePath("BirdySleepPositions/startPos_lowest"), NodePath("BirdySleepPositions/startPos_low"), NodePath("BirdySleepPositions/startPos_mid"), NodePath("BirdySleepPositions/startpos_large"), NodePath("BirdySleepPositions/pos_BIGGEST")]
 
 [node name="Egg_Biggest_forReal" type="Node2D" parent="Eggs"]
+visible = false
 
 [node name="egg_biggest" type="Sprite2D" parent="Eggs/Egg_Biggest_forReal"]
 z_index = 1
@@ -89,6 +91,7 @@ position = Vector2(-2, -40)
 texture = ExtResource("6_e0x4d")
 
 [node name="Egg_Biggest" type="Node2D" parent="Eggs"]
+visible = false
 
 [node name="egg_biggest" type="Sprite2D" parent="Eggs/Egg_Biggest"]
 z_index = 1
@@ -96,6 +99,7 @@ position = Vector2(-2, -40)
 texture = ExtResource("6_e0x4d")
 
 [node name="Egg_Big" type="Node2D" parent="Eggs"]
+visible = false
 position = Vector2(-2, 0)
 
 [node name="egg_big" type="Sprite2D" parent="Eggs/Egg_Big"]
@@ -104,6 +108,7 @@ position = Vector2(0, -40)
 texture = ExtResource("5_p1lmp")
 
 [node name="Egg_medium" type="Node2D" parent="Eggs"]
+visible = false
 position = Vector2(-1, 0)
 
 [node name="egg_medium" type="Sprite2D" parent="Eggs/Egg_medium"]
@@ -217,6 +222,7 @@ text = "or"
 vertical_alignment = 1
 
 [node name="InteractButton_EndDay" type="Node2D" parent="."]
+visible = false
 z_index = 2
 position = Vector2(0, -58)
 
@@ -301,6 +307,153 @@ position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_0svx2")
 
 [node name="JustWokeUpTimer" type="Timer" parent="."]
+
+[node name="OreSellParent" type="Node2D" parent="."]
+visible = false
+position = Vector2(0, -53)
+
+[node name="OreLocation1" type="Node2D" parent="OreSellParent"]
+
+[node name="Sprite2D" type="Sprite2D" parent="OreSellParent/OreLocation1"]
+texture = ExtResource("24_g3ew8")
+
+[node name="OreLocation2" type="Node2D" parent="OreSellParent"]
+position = Vector2(17, 5)
+
+[node name="Sprite2D" type="Sprite2D" parent="OreSellParent/OreLocation2"]
+texture = ExtResource("24_g3ew8")
+
+[node name="OreLocation3" type="Node2D" parent="OreSellParent"]
+position = Vector2(-17, 5)
+
+[node name="Sprite2D" type="Sprite2D" parent="OreSellParent/OreLocation3"]
+texture = ExtResource("24_g3ew8")
+
+[node name="OreLocation4" type="Node2D" parent="OreSellParent"]
+position = Vector2(31, 14)
+
+[node name="Sprite2D" type="Sprite2D" parent="OreSellParent/OreLocation4"]
+texture = ExtResource("24_g3ew8")
+
+[node name="OreLocation5" type="Node2D" parent="OreSellParent"]
+position = Vector2(-30, 16)
+
+[node name="Sprite2D" type="Sprite2D" parent="OreSellParent/OreLocation5"]
+texture = ExtResource("24_g3ew8")
+
+[node name="OreLocation6" type="Node2D" parent="OreSellParent"]
+position = Vector2(-14, -12)
+
+[node name="Sprite2D" type="Sprite2D" parent="OreSellParent/OreLocation6"]
+texture = ExtResource("24_g3ew8")
+
+[node name="OreLocation7" type="Node2D" parent="OreSellParent"]
+position = Vector2(14, -12)
+
+[node name="Sprite2D" type="Sprite2D" parent="OreSellParent/OreLocation7"]
+texture = ExtResource("24_g3ew8")
+
+[node name="OreLocation8" type="Node2D" parent="OreSellParent"]
+position = Vector2(35, -4)
+
+[node name="Sprite2D" type="Sprite2D" parent="OreSellParent/OreLocation8"]
+texture = ExtResource("24_g3ew8")
+
+[node name="OreLocation9" type="Node2D" parent="OreSellParent"]
+position = Vector2(-35, -2)
+
+[node name="Sprite2D" type="Sprite2D" parent="OreSellParent/OreLocation9"]
+texture = ExtResource("24_g3ew8")
+
+[node name="OreLocation10" type="Node2D" parent="OreSellParent"]
+position = Vector2(-30, -21)
+
+[node name="Sprite2D" type="Sprite2D" parent="OreSellParent/OreLocation10"]
+texture = ExtResource("24_g3ew8")
+
+[node name="OreLocation11" type="Node2D" parent="OreSellParent"]
+position = Vector2(0, -28)
+
+[node name="Sprite2D" type="Sprite2D" parent="OreSellParent/OreLocation11"]
+texture = ExtResource("24_g3ew8")
+
+[node name="OreLocation12" type="Node2D" parent="OreSellParent"]
+position = Vector2(30, -23)
+
+[node name="Sprite2D" type="Sprite2D" parent="OreSellParent/OreLocation12"]
+texture = ExtResource("24_g3ew8")
+
+[node name="OreLocation13" type="Node2D" parent="OreSellParent"]
+position = Vector2(17, -39)
+
+[node name="Sprite2D" type="Sprite2D" parent="OreSellParent/OreLocation13"]
+texture = ExtResource("24_g3ew8")
+
+[node name="OreLocation14" type="Node2D" parent="OreSellParent"]
+position = Vector2(-16, -38)
+
+[node name="Sprite2D" type="Sprite2D" parent="OreSellParent/OreLocation14"]
+texture = ExtResource("24_g3ew8")
+
+[node name="OreLocation15" type="Node2D" parent="OreSellParent"]
+position = Vector2(49, 10)
+
+[node name="Sprite2D" type="Sprite2D" parent="OreSellParent/OreLocation15"]
+texture = ExtResource("24_g3ew8")
+
+[node name="OreLocation16" type="Node2D" parent="OreSellParent"]
+position = Vector2(-50, 10)
+
+[node name="Sprite2D" type="Sprite2D" parent="OreSellParent/OreLocation16"]
+texture = ExtResource("24_g3ew8")
+
+[node name="OreLocation17" type="Node2D" parent="OreSellParent"]
+position = Vector2(52, -15)
+
+[node name="Sprite2D" type="Sprite2D" parent="OreSellParent/OreLocation17"]
+texture = ExtResource("24_g3ew8")
+
+[node name="OreLocation18" type="Node2D" parent="OreSellParent"]
+position = Vector2(-59, -7)
+
+[node name="Sprite2D" type="Sprite2D" parent="OreSellParent/OreLocation18"]
+texture = ExtResource("24_g3ew8")
+
+[node name="OreLocation19" type="Node2D" parent="OreSellParent"]
+position = Vector2(69, -3)
+
+[node name="Sprite2D" type="Sprite2D" parent="OreSellParent/OreLocation19"]
+texture = ExtResource("24_g3ew8")
+
+[node name="OreLocation20" type="Node2D" parent="OreSellParent"]
+position = Vector2(-73, 8)
+
+[node name="Sprite2D" type="Sprite2D" parent="OreSellParent/OreLocation20"]
+texture = ExtResource("24_g3ew8")
+
+[node name="OreLocation21" type="Node2D" parent="OreSellParent"]
+position = Vector2(70, 22)
+
+[node name="Sprite2D" type="Sprite2D" parent="OreSellParent/OreLocation21"]
+texture = ExtResource("24_g3ew8")
+
+[node name="OreLocation22" type="Node2D" parent="OreSellParent"]
+position = Vector2(-67, 26)
+
+[node name="Sprite2D" type="Sprite2D" parent="OreSellParent/OreLocation22"]
+texture = ExtResource("24_g3ew8")
+
+[node name="OreLocation23" type="Node2D" parent="OreSellParent"]
+position = Vector2(43, 31)
+
+[node name="Sprite2D" type="Sprite2D" parent="OreSellParent/OreLocation23"]
+texture = ExtResource("24_g3ew8")
+
+[node name="OreLocation24" type="Node2D" parent="OreSellParent"]
+position = Vector2(-46, 34)
+
+[node name="Sprite2D" type="Sprite2D" parent="OreSellParent/OreLocation24"]
+texture = ExtResource("24_g3ew8")
 
 [connection signal="animation_finished" from="Eggs/BirdySleepPositions/birdySleep" to="." method="_on_birdy_sleep_animation_finished"]
 [connection signal="body_shape_entered" from="NestCollider" to="." method="_on_nest_collider_body_shape_entered"]
