@@ -1,5 +1,7 @@
 extends Node
 
+var playerSpawnPos:Vector2
+
 enum playerActions{DRILL,JUMP,DROPORE,INTERACT}
 signal playerAction(action:playerActions)
 

@@ -20,6 +20,10 @@ var facing_right: bool = true
 @export var JUMP_VELOCITY = -200
 @export var AIRJUMP_VELOCITY=-100
 
+var DebugTeleporLocParent:Node2D
+var DebugTeleportLocations:Array[Vector2]
+var currentTeleportationIndex:int
+
 
 #Jump variables
 @export var maxJumps: int =3
@@ -64,6 +68,12 @@ var HeldFlower:climb_flower=null
 @onready var ObjectSpawner=$"../ObjectSpawner"
 
 func _ready() -> void:
+	
+	if $"../PlayerSpawnLocations"!=null:
+		for child:Node2D in $"../PlayerSpawnLocations".get_children():
+			DebugTeleportLocations.append(child.global_position)
+		currentTeleportationIndex=0
+	
 	Update_Animations("idle")
 	debugLine.points.clear()
 	debugLine.add_point(raycast_drill.position)
@@ -213,8 +223,29 @@ func DebugGhostMovement(delta:float,currentAnim:String):
 	var directionX := Input.get_axis("left", "right")
 	var directionY:=Input.get_axis("up","down")
 	
-	velocity.x=directionX*SPEED*2
-	velocity.y=directionY*SPEED*2
+	var speedMult=1
+	
+	if Input.is_action_pressed("jump"):
+		speedMult=2.5
+	
+	if Input.is_action_just_pressed("debug_tab"):
+		if DebugTeleportLocations.size()>0:
+			var index=0
+			for vec in DebugTeleportLocations:
+				if currentTeleportationIndex==index:
+					global_position=vec
+					currentTeleportationIndex+=1
+					if currentTeleportationIndex>DebugTeleportLocations.size()-1:
+						currentTeleportationIndex=0
+					break
+				
+				index+=1
+					
+	
+	velocity.x=directionX*SPEED*2*speedMult
+	velocity.y=directionY*SPEED*2*speedMult
+	
+	
 	
 	pass
 

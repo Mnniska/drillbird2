@@ -5,6 +5,7 @@ extends Node
 @onready var Savetext=$"Camera2D/Day counter"
 @onready var OreSpawner=$TilemapOres
 @onready var player = $Player
+@onready var OriginalSpawnPos=$PlayerSpawnLocations/OriginalSpawnPos
 
 var save_file_path = "user://save/"
 var save_file_name="DrillbirdPlayerSave.tres"
@@ -45,7 +46,7 @@ func SaveGame():
 	PlayerData.health=GlobalVariables.playerHealth
 	PlayerData.money=GlobalVariables.playerMoney
 	PlayerData.totalMoneyGained=GlobalVariables.totalExperienceGained
-	
+	PlayerData.playerSpawnPosition = GlobalVariables.playerSpawnPos
 	SaveEnvironment()
 	SaveEnemies()
 	SaveLeftoverOres()
@@ -106,7 +107,7 @@ func LoadGame():
 	SetGlobalVariablesToLoadedGame()
 	LoadEnemyPositions()
 	LoadLeftoverOres()
-	player.global_position=PlayerData.playerSpawnPosition
+	GlobalVariables.playerSpawnPos=PlayerData.playerSpawnPosition
 	
 	print_debug("game loaded")
 	
@@ -122,5 +123,12 @@ func SetGlobalVariablesToLoadedGame():
 	GlobalVariables.playerHealth=PlayerData.health
 	GlobalVariables.playerMoney=PlayerData.money
 	GlobalVariables.totalExperienceGained=PlayerData.totalMoneyGained
+	
+	if PlayerData.playerSpawnPosition==Vector2(0,0):
+		PlayerData.playerSpawnPosition=OriginalSpawnPos.global_position
+		player.global_position=PlayerData.playerSpawnPosition
+	else:
+		player.global_position=PlayerData.playerSpawnPosition
+	
 	
 	pass

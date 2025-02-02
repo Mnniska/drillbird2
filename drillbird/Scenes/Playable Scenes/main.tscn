@@ -1,4 +1,4 @@
-[gd_scene load_steps=103 format=4 uid="uid://d2wv7igie5stg"]
+[gd_scene load_steps=106 format=4 uid="uid://d2wv7igie5stg"]
 
 [ext_resource type="TileSet" uid="uid://grpd2pyu7pgk" path="res://Resources/MainTileset.tres" id="1_1imtu"]
 [ext_resource type="Script" path="res://Scenes/Playable Scenes/SaveManager.gd" id="1_iickb"]
@@ -63,6 +63,8 @@
 [ext_resource type="Script" path="res://Scripts/enemy_spawner.gd" id="53_0clb6"]
 [ext_resource type="PackedScene" uid="uid://bgtl1cgl35wcl" path="res://Scenes/Objects and Enemies/tutorial_message.tscn" id="59_8sapw"]
 [ext_resource type="Script" path="res://Scripts/WorldScripting.gd" id="59_a6oue"]
+[ext_resource type="Texture2D" uid="uid://gixivpytn5wl" path="res://Art/ui/HUD/UI_LightBar_bulb.png" id="64_yk8d7"]
+[ext_resource type="Script" path="res://Scripts/Tools/player_location_saver.gd" id="65_25d1u"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b7p1b"]
 texture = ExtResource("2_8xt30")
@@ -288,6 +290,9 @@ size = Vector2(22, 23)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jq1t1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5sli7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aulbw"]
+size = Vector2(73, 20)
 
 [node name="Node" type="Node"]
 script = ExtResource("1_iickb")
@@ -593,9 +598,9 @@ theme = ExtResource("42_e8s0s")
 
 [node name="Day counter" type="RichTextLabel" parent="Camera2D"]
 clip_contents = false
-offset_left = -124.0
+offset_left = -156.0
 offset_top = -99.0
-offset_right = 23.0
+offset_right = -9.0
 offset_bottom = -72.0
 theme = ExtResource("42_e8s0s")
 bbcode_enabled = true
@@ -706,6 +711,45 @@ collision_mask = 16
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WorldScripts/PlayerChecker_JumpTutorial"]
 shape = SubResource("RectangleShape2D_5sli7")
 
+[node name="PlayerSpawnLocations" type="Node2D" parent="."]
+visible = false
+
+[node name="OriginalSpawnPos" type="Sprite2D" parent="PlayerSpawnLocations"]
+position = Vector2(-777, 535)
+texture = ExtResource("64_yk8d7")
+
+[node name="PlayerLocationSaver" type="Area2D" parent="PlayerSpawnLocations" node_paths=PackedStringArray("Spawnpos")]
+position = Vector2(-302, -73)
+collision_layer = 0
+collision_mask = 16
+script = ExtResource("65_25d1u")
+Spawnpos = NodePath("../Spawnpos2")
+
+[node name="collider" type="CollisionShape2D" parent="PlayerSpawnLocations/PlayerLocationSaver"]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_aulbw")
+debug_color = Color(4.23551e-06, 0.889431, 0.469172, 0.42)
+
+[node name="Spawnpos2" type="Sprite2D" parent="PlayerSpawnLocations"]
+position = Vector2(-42, -9)
+texture = ExtResource("64_yk8d7")
+
+[node name="Spawnpos3" type="Sprite2D" parent="PlayerSpawnLocations"]
+position = Vector2(198, 451)
+texture = ExtResource("64_yk8d7")
+
+[node name="Spawnpos4" type="Sprite2D" parent="PlayerSpawnLocations"]
+position = Vector2(271, 900)
+texture = ExtResource("64_yk8d7")
+
+[node name="Spawnpos5" type="Sprite2D" parent="PlayerSpawnLocations"]
+position = Vector2(1025, 236)
+texture = ExtResource("64_yk8d7")
+
+[node name="Spawnpos6" type="Sprite2D" parent="PlayerSpawnLocations"]
+position = Vector2(1198, 809)
+texture = ExtResource("64_yk8d7")
+
 [connection signal="MaterialChanged" from="TileCrack" to="Player" method="_on_tile_crack_material_changed"]
 [connection signal="newTileCrack" from="Player" to="TileCrack" method="_on_player_new_tile_crack"]
 [connection signal="playerStoppedDrillingTile" from="Player" to="TileCrack" method="_on_player_player_stopped_drilling_tile"]
@@ -715,6 +759,7 @@ shape = SubResource("RectangleShape2D_5sli7")
 [connection signal="ShopClosed" from="Camera2D/ShopHandler" to="Home" method="_on_shop_handler_shop_closed"]
 [connection signal="body_shape_entered" from="WorldScripts/PlayerChecker_drillTutorial" to="WorldScripts" method="_on_player_checker_drill_tutorial_body_shape_entered"]
 [connection signal="body_shape_entered" from="WorldScripts/PlayerChecker_JumpTutorial" to="WorldScripts" method="_on_player_checker_jump_tutorial_body_shape_entered"]
+[connection signal="body_shape_entered" from="PlayerSpawnLocations/PlayerLocationSaver" to="PlayerSpawnLocations/PlayerLocationSaver" method="_on_body_shape_entered"]
 
 [editable path="WorldScripts/Tutorial_DropOres"]
 [editable path="WorldScripts/Tutorial_drill"]
