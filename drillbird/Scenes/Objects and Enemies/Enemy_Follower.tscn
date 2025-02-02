@@ -53,7 +53,7 @@ animations = [{
 size = Vector2(11, 7)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1txlu"]
-size = Vector2(8, 59)
+size = Vector2(8, 92)
 
 [node name="Enemy_Follower" type="CharacterBody2D"]
 collision_layer = 8
@@ -84,7 +84,7 @@ collision_layer = 0
 collision_mask = 24
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="VisionField"]
-position = Vector2(0, -27.5)
+position = Vector2(0, -44)
 shape = SubResource("RectangleShape2D_1txlu")
 
 [node name="LoseDetectionTimer" type="Timer" parent="."]
