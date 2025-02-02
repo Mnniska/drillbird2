@@ -492,6 +492,8 @@ abstract_purchasables = Array[ExtResource("27_hx1y5")]([ExtResource("28_iowjc"),
 
 [node name="ShopBackground" type="Sprite2D" parent="Camera2D/ShopHandler"]
 z_index = -2
+position = Vector2(1, 0)
+scale = Vector2(1.25, 1)
 texture = ExtResource("30_okg02")
 
 [node name="Purchasable1" parent="Camera2D/ShopHandler" instance=ExtResource("33_svcml")]
@@ -507,7 +509,7 @@ position = Vector2(0, -11)
 position = Vector2(0, 19)
 
 [node name="Button_Continue" type="Node2D" parent="Camera2D/ShopHandler"]
-position = Vector2(71, 38)
+position = Vector2(99, 38)
 script = ExtResource("33_a1jua")
 texture_selected = ExtResource("34_jlsrn")
 texture_inactive = ExtResource("34_nmxkn")
@@ -544,9 +546,11 @@ position = Vector2(0, -39)
 script = ExtResource("40_0iomv")
 
 [node name="Background" type="Sprite2D" parent="Camera2D/UI_Death"]
+position = Vector2(7.62939e-06, 0)
+scale = Vector2(1.24615, 1)
 texture = ExtResource("41_o4kd7")
 
-[node name="header" type="Label" parent="Camera2D/UI_Death/Background"]
+[node name="header" type="Label" parent="Camera2D/UI_Death"]
 offset_left = -128.0
 offset_top = -36.0
 offset_right = 128.0
@@ -559,7 +563,7 @@ text = "Birdy died!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="header2" type="Label" parent="Camera2D/UI_Death/Background"]
+[node name="header2" type="Label" parent="Camera2D/UI_Death"]
 offset_left = -101.0
 offset_top = -7.0
 offset_right = 107.0
@@ -609,8 +613,8 @@ lightSource = NodePath("light_full")
 maxLight = 0.8
 
 [node name="light_full" type="PointLight2D" parent="PlayerDarkness"]
-position = Vector2(1, 0)
-scale = Vector2(1.44, 1)
+position = Vector2(1, -0.999989)
+scale = Vector2(1.44, 1.37333)
 blend_mode = 2
 range_z_max = 0
 texture = ExtResource("36_yw5ht")
@@ -620,7 +624,6 @@ z_index = -5
 texture_repeat = 2
 
 [node name="Sprite_HUBBackground" type="Sprite2D" parent="Sprites_HUBBackground"]
-visible = false
 light_mask = 0
 visibility_layer = 4
 texture_repeat = 2

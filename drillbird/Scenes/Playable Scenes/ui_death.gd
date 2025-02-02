@@ -31,7 +31,9 @@ func CloseUI():
 	
 
 func ShowUI():
-	camera.StartNewLerp(camera.position+Vector2(0,cameraOffset),1)
+	#await get_tree().create_timer(1).timeout
+	camera.StartNewLerp(camera.position+Vector2(0,cameraOffset),0.5)
+	await get_tree().create_timer(1.5).timeout
 	active=true
 	button.SetSelected(true)
 	show()

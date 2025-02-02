@@ -4,6 +4,7 @@ extends Node
 @onready var EnemySpawner=$ObjectSpawner
 @onready var Savetext=$"Camera2D/Day counter"
 @onready var OreSpawner=$TilemapOres
+@onready var player = $Player
 
 var save_file_path = "user://save/"
 var save_file_name="DrillbirdPlayerSave.tres"
@@ -105,6 +106,7 @@ func LoadGame():
 	SetGlobalVariablesToLoadedGame()
 	LoadEnemyPositions()
 	LoadLeftoverOres()
+	player.global_position=PlayerData.playerSpawnPosition
 	
 	print_debug("game loaded")
 	
