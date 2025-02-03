@@ -1,4 +1,5 @@
 extends Node
+class_name inventory_handler
 """
 The inventory_handler has an array of available inventory slots. When the player picks up a new ore, 
 the inventory_handler is called to ask if it can be slotted in anywhere.
@@ -11,7 +12,7 @@ TLDR inventory_handler manages inventory size as well as adding and removing ore
 @export var upgradetree_inventory:abstract_purchasable
 @onready var OreSpawner=$"../../TilemapOres"
 
-var inventorySlots : Array[Node2D]
+var inventorySlots : Array[ui_inventory_slot]
 #var inventorySlots =Array[preload("res://Scenes/UI_InventorySlot.tscn")]
 var slotAmount:int=2
 @onready var UIvisual_left = $ui_leftSide
@@ -40,6 +41,16 @@ func GetIsThereAnythingSellable():
 			return true
 	return false
 	pass
+
+func GetOresInInventory():
+	var ores:Array[abstract_ore]
+	
+	for n in inventorySlots:
+		for count in n.currentItems:
+			var ore:abstract_ore=n.chosen_ore.duplicate()
+			ores.append(ore)
+	
+	return ores
 
 func SellOres():
 	var gainedMoney:int=0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://ckl0ibm5pfs7u"]
+[gd_scene load_steps=31 format=3 uid="uid://ckl0ibm5pfs7u"]
 
 [ext_resource type="Script" path="res://Scripts/HomeScript.gd" id="1_qel16"]
 [ext_resource type="Texture2D" uid="uid://xpp18icbqb1y" path="res://Art/environment/Home/nest_back.png" id="2_4e54y"]
@@ -24,6 +24,8 @@
 [ext_resource type="Texture2D" uid="uid://bvtd87mo25snw" path="res://Art/ui/UI_rest_arrow_dark.png" id="22_7onby"]
 [ext_resource type="Texture2D" uid="uid://1hy32yargekh" path="res://Art/ui/UI_rest_arrow_light.png" id="23_pvi10"]
 [ext_resource type="Texture2D" uid="uid://gvnhgn5vrd5e" path="res://Art/Collectibles/ore_3_red.png" id="24_g3ew8"]
+[ext_resource type="Script" path="res://Scripts/UX and UI/ore_sell_visuals_manager.gd" id="24_quikh"]
+[ext_resource type="PackedScene" uid="uid://cwhafht4ce2yx" path="res://Scenes/UI/text_bubble_XP.tscn" id="26_e3agt"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xb0mn"]
 animations = [{
@@ -59,14 +61,14 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_hht0y"]
+radius = 3.16228
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d3sup"]
 size = Vector2(65, 68)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hr2gu"]
-size = Vector2(162, 51)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0svx2"]
-size = Vector2(14, 16)
+[sub_resource type="CircleShape2D" id="CircleShape2D_b21c8"]
+radius = 4.0
 
 [node name="Home" type="Node2D"]
 script = ExtResource("1_qel16")
@@ -259,6 +261,14 @@ theme_override_font_sizes/font_size = 16
 text = "Hold"
 vertical_alignment = 1
 
+[node name="oreXPCollider" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 512
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="oreXPCollider"]
+shape = SubResource("CircleShape2D_hht0y")
+debug_color = Color(0.711861, 0.272021, 0.985608, 0.42)
+
 [node name="NestCollider" type="Area2D" parent="."]
 visible = false
 collision_layer = 16
@@ -290,175 +300,177 @@ offset_right = 41.0
 offset_bottom = 49.0
 theme = ExtResource("8_k4jyb")
 
-[node name="Collider_Ores" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collider_Ores"]
-position = Vector2(0, -26.5)
-shape = SubResource("RectangleShape2D_hr2gu")
-
-[node name="collider_orePickup" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="collider_orePickup"]
-position = Vector2(0, -8)
-shape = SubResource("RectangleShape2D_0svx2")
-
 [node name="JustWokeUpTimer" type="Timer" parent="."]
 
 [node name="OreSellParent" type="Node2D" parent="."]
-visible = false
 position = Vector2(0, -53)
+script = ExtResource("24_quikh")
 
-[node name="OreLocation1" type="Node2D" parent="OreSellParent"]
+[node name="NodePositions" type="Node2D" parent="OreSellParent"]
+visible = false
 
-[node name="Sprite2D" type="Sprite2D" parent="OreSellParent/OreLocation1"]
+[node name="OreLocation1" type="Node2D" parent="OreSellParent/NodePositions"]
+
+[node name="Sprite2D" type="Sprite2D" parent="OreSellParent/NodePositions/OreLocation1"]
 texture = ExtResource("24_g3ew8")
 
-[node name="OreLocation2" type="Node2D" parent="OreSellParent"]
+[node name="OreLocation2" type="Node2D" parent="OreSellParent/NodePositions"]
 position = Vector2(17, 5)
 
-[node name="Sprite2D" type="Sprite2D" parent="OreSellParent/OreLocation2"]
+[node name="Sprite2D" type="Sprite2D" parent="OreSellParent/NodePositions/OreLocation2"]
 texture = ExtResource("24_g3ew8")
 
-[node name="OreLocation3" type="Node2D" parent="OreSellParent"]
+[node name="OreLocation3" type="Node2D" parent="OreSellParent/NodePositions"]
 position = Vector2(-17, 5)
 
-[node name="Sprite2D" type="Sprite2D" parent="OreSellParent/OreLocation3"]
+[node name="Sprite2D" type="Sprite2D" parent="OreSellParent/NodePositions/OreLocation3"]
 texture = ExtResource("24_g3ew8")
 
-[node name="OreLocation4" type="Node2D" parent="OreSellParent"]
+[node name="OreLocation4" type="Node2D" parent="OreSellParent/NodePositions"]
 position = Vector2(31, 14)
 
-[node name="Sprite2D" type="Sprite2D" parent="OreSellParent/OreLocation4"]
+[node name="Sprite2D" type="Sprite2D" parent="OreSellParent/NodePositions/OreLocation4"]
 texture = ExtResource("24_g3ew8")
 
-[node name="OreLocation5" type="Node2D" parent="OreSellParent"]
+[node name="OreLocation5" type="Node2D" parent="OreSellParent/NodePositions"]
 position = Vector2(-30, 16)
 
-[node name="Sprite2D" type="Sprite2D" parent="OreSellParent/OreLocation5"]
+[node name="Sprite2D" type="Sprite2D" parent="OreSellParent/NodePositions/OreLocation5"]
 texture = ExtResource("24_g3ew8")
 
-[node name="OreLocation6" type="Node2D" parent="OreSellParent"]
+[node name="OreLocation6" type="Node2D" parent="OreSellParent/NodePositions"]
 position = Vector2(-14, -12)
 
-[node name="Sprite2D" type="Sprite2D" parent="OreSellParent/OreLocation6"]
+[node name="Sprite2D" type="Sprite2D" parent="OreSellParent/NodePositions/OreLocation6"]
 texture = ExtResource("24_g3ew8")
 
-[node name="OreLocation7" type="Node2D" parent="OreSellParent"]
+[node name="OreLocation7" type="Node2D" parent="OreSellParent/NodePositions"]
 position = Vector2(14, -12)
 
-[node name="Sprite2D" type="Sprite2D" parent="OreSellParent/OreLocation7"]
+[node name="Sprite2D" type="Sprite2D" parent="OreSellParent/NodePositions/OreLocation7"]
 texture = ExtResource("24_g3ew8")
 
-[node name="OreLocation8" type="Node2D" parent="OreSellParent"]
+[node name="OreLocation8" type="Node2D" parent="OreSellParent/NodePositions"]
 position = Vector2(35, -4)
 
-[node name="Sprite2D" type="Sprite2D" parent="OreSellParent/OreLocation8"]
+[node name="Sprite2D" type="Sprite2D" parent="OreSellParent/NodePositions/OreLocation8"]
 texture = ExtResource("24_g3ew8")
 
-[node name="OreLocation9" type="Node2D" parent="OreSellParent"]
+[node name="OreLocation9" type="Node2D" parent="OreSellParent/NodePositions"]
 position = Vector2(-35, -2)
 
-[node name="Sprite2D" type="Sprite2D" parent="OreSellParent/OreLocation9"]
+[node name="Sprite2D" type="Sprite2D" parent="OreSellParent/NodePositions/OreLocation9"]
 texture = ExtResource("24_g3ew8")
 
-[node name="OreLocation10" type="Node2D" parent="OreSellParent"]
+[node name="OreLocation10" type="Node2D" parent="OreSellParent/NodePositions"]
 position = Vector2(-30, -21)
 
-[node name="Sprite2D" type="Sprite2D" parent="OreSellParent/OreLocation10"]
+[node name="Sprite2D" type="Sprite2D" parent="OreSellParent/NodePositions/OreLocation10"]
 texture = ExtResource("24_g3ew8")
 
-[node name="OreLocation11" type="Node2D" parent="OreSellParent"]
+[node name="OreLocation11" type="Node2D" parent="OreSellParent/NodePositions"]
 position = Vector2(0, -28)
 
-[node name="Sprite2D" type="Sprite2D" parent="OreSellParent/OreLocation11"]
+[node name="Sprite2D" type="Sprite2D" parent="OreSellParent/NodePositions/OreLocation11"]
 texture = ExtResource("24_g3ew8")
 
-[node name="OreLocation12" type="Node2D" parent="OreSellParent"]
+[node name="OreLocation12" type="Node2D" parent="OreSellParent/NodePositions"]
 position = Vector2(30, -23)
 
-[node name="Sprite2D" type="Sprite2D" parent="OreSellParent/OreLocation12"]
+[node name="Sprite2D" type="Sprite2D" parent="OreSellParent/NodePositions/OreLocation12"]
 texture = ExtResource("24_g3ew8")
 
-[node name="OreLocation13" type="Node2D" parent="OreSellParent"]
+[node name="OreLocation13" type="Node2D" parent="OreSellParent/NodePositions"]
 position = Vector2(17, -39)
 
-[node name="Sprite2D" type="Sprite2D" parent="OreSellParent/OreLocation13"]
+[node name="Sprite2D" type="Sprite2D" parent="OreSellParent/NodePositions/OreLocation13"]
 texture = ExtResource("24_g3ew8")
 
-[node name="OreLocation14" type="Node2D" parent="OreSellParent"]
+[node name="OreLocation14" type="Node2D" parent="OreSellParent/NodePositions"]
 position = Vector2(-16, -38)
 
-[node name="Sprite2D" type="Sprite2D" parent="OreSellParent/OreLocation14"]
+[node name="Sprite2D" type="Sprite2D" parent="OreSellParent/NodePositions/OreLocation14"]
 texture = ExtResource("24_g3ew8")
 
-[node name="OreLocation15" type="Node2D" parent="OreSellParent"]
+[node name="OreLocation15" type="Node2D" parent="OreSellParent/NodePositions"]
 position = Vector2(49, 10)
 
-[node name="Sprite2D" type="Sprite2D" parent="OreSellParent/OreLocation15"]
+[node name="Sprite2D" type="Sprite2D" parent="OreSellParent/NodePositions/OreLocation15"]
 texture = ExtResource("24_g3ew8")
 
-[node name="OreLocation16" type="Node2D" parent="OreSellParent"]
+[node name="OreLocation16" type="Node2D" parent="OreSellParent/NodePositions"]
 position = Vector2(-50, 10)
 
-[node name="Sprite2D" type="Sprite2D" parent="OreSellParent/OreLocation16"]
+[node name="Sprite2D" type="Sprite2D" parent="OreSellParent/NodePositions/OreLocation16"]
 texture = ExtResource("24_g3ew8")
 
-[node name="OreLocation17" type="Node2D" parent="OreSellParent"]
+[node name="OreLocation17" type="Node2D" parent="OreSellParent/NodePositions"]
 position = Vector2(52, -15)
 
-[node name="Sprite2D" type="Sprite2D" parent="OreSellParent/OreLocation17"]
+[node name="Sprite2D" type="Sprite2D" parent="OreSellParent/NodePositions/OreLocation17"]
 texture = ExtResource("24_g3ew8")
 
-[node name="OreLocation18" type="Node2D" parent="OreSellParent"]
+[node name="OreLocation18" type="Node2D" parent="OreSellParent/NodePositions"]
 position = Vector2(-59, -7)
 
-[node name="Sprite2D" type="Sprite2D" parent="OreSellParent/OreLocation18"]
+[node name="Sprite2D" type="Sprite2D" parent="OreSellParent/NodePositions/OreLocation18"]
 texture = ExtResource("24_g3ew8")
 
-[node name="OreLocation19" type="Node2D" parent="OreSellParent"]
+[node name="OreLocation19" type="Node2D" parent="OreSellParent/NodePositions"]
 position = Vector2(69, -3)
 
-[node name="Sprite2D" type="Sprite2D" parent="OreSellParent/OreLocation19"]
+[node name="Sprite2D" type="Sprite2D" parent="OreSellParent/NodePositions/OreLocation19"]
 texture = ExtResource("24_g3ew8")
 
-[node name="OreLocation20" type="Node2D" parent="OreSellParent"]
+[node name="OreLocation20" type="Node2D" parent="OreSellParent/NodePositions"]
 position = Vector2(-73, 8)
 
-[node name="Sprite2D" type="Sprite2D" parent="OreSellParent/OreLocation20"]
+[node name="Sprite2D" type="Sprite2D" parent="OreSellParent/NodePositions/OreLocation20"]
 texture = ExtResource("24_g3ew8")
 
-[node name="OreLocation21" type="Node2D" parent="OreSellParent"]
+[node name="OreLocation21" type="Node2D" parent="OreSellParent/NodePositions"]
 position = Vector2(70, 22)
 
-[node name="Sprite2D" type="Sprite2D" parent="OreSellParent/OreLocation21"]
+[node name="Sprite2D" type="Sprite2D" parent="OreSellParent/NodePositions/OreLocation21"]
 texture = ExtResource("24_g3ew8")
 
-[node name="OreLocation22" type="Node2D" parent="OreSellParent"]
+[node name="OreLocation22" type="Node2D" parent="OreSellParent/NodePositions"]
 position = Vector2(-67, 26)
 
-[node name="Sprite2D" type="Sprite2D" parent="OreSellParent/OreLocation22"]
+[node name="Sprite2D" type="Sprite2D" parent="OreSellParent/NodePositions/OreLocation22"]
 texture = ExtResource("24_g3ew8")
 
-[node name="OreLocation23" type="Node2D" parent="OreSellParent"]
+[node name="OreLocation23" type="Node2D" parent="OreSellParent/NodePositions"]
 position = Vector2(43, 31)
 
-[node name="Sprite2D" type="Sprite2D" parent="OreSellParent/OreLocation23"]
+[node name="Sprite2D" type="Sprite2D" parent="OreSellParent/NodePositions/OreLocation23"]
 texture = ExtResource("24_g3ew8")
 
-[node name="OreLocation24" type="Node2D" parent="OreSellParent"]
+[node name="OreLocation24" type="Node2D" parent="OreSellParent/NodePositions"]
 position = Vector2(-46, 34)
 
-[node name="Sprite2D" type="Sprite2D" parent="OreSellParent/OreLocation24"]
+[node name="Sprite2D" type="Sprite2D" parent="OreSellParent/NodePositions/OreLocation24"]
 texture = ExtResource("24_g3ew8")
 
+[node name="PlayerXPGainedVisualizer" type="Node2D" parent="."]
+position = Vector2(-51, -14)
+
+[node name="oreXPCollider_PLAYER" type="Area2D" parent="PlayerXPGainedVisualizer"]
+collision_layer = 0
+collision_mask = 512
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerXPGainedVisualizer/oreXPCollider_PLAYER"]
+shape = SubResource("CircleShape2D_b21c8")
+debug_color = Color(0.275867, 0.500649, 1, 0.42)
+
+[node name="TextBubbleXP" parent="PlayerXPGainedVisualizer/oreXPCollider_PLAYER" instance=ExtResource("26_e3agt")]
+position = Vector2(0, -17)
+
 [connection signal="animation_finished" from="Eggs/BirdySleepPositions/birdySleep" to="." method="_on_birdy_sleep_animation_finished"]
+[connection signal="area_shape_entered" from="oreXPCollider" to="." method="_on_ore_xp_collider_area_shape_entered"]
 [connection signal="body_shape_entered" from="NestCollider" to="." method="_on_nest_collider_body_shape_entered"]
 [connection signal="body_shape_exited" from="NestCollider" to="." method="_on_nest_collider_body_shape_exited"]
 [connection signal="timeout" from="cutsceneTimer" to="." method="_on_cutscene_timer_timeout"]
-[connection signal="body_shape_entered" from="Collider_Ores" to="." method="OreEnteredCollider"]
-[connection signal="body_shape_entered" from="collider_orePickup" to="." method="_on_collider_ore_pickup_body_shape_entered"]
 [connection signal="timeout" from="JustWokeUpTimer" to="." method="_on_just_woke_up_timer_timeout"]
+[connection signal="finishedSelling" from="OreSellParent" to="." method="SellingComplete"]
+[connection signal="area_shape_entered" from="PlayerXPGainedVisualizer/oreXPCollider_PLAYER" to="OreSellParent" method="_on_ore_xp_collider_player_area_shape_entered"]

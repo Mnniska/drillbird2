@@ -1,0 +1,45 @@
+[gd_scene load_steps=8 format=3 uid="uid://cu8eu4psef8xo"]
+
+[ext_resource type="Script" path="res://Scripts/UX and UI/xp_visualizer.gd" id="1_ojmlr"]
+[ext_resource type="Texture2D" uid="uid://bcgi21gdpsssy" path="res://Art/effects/sprite_jumpCrystal1.png" id="2_uakud"]
+[ext_resource type="Texture2D" uid="uid://cttmuwrkyqgjq" path="res://Art/effects/sprite_jumpCrystal2.png" id="3_fe0pr"]
+[ext_resource type="Texture2D" uid="uid://bdnsaxsutvhq8" path="res://Art/effects/sprite_jumpCrystal3.png" id="4_uox8h"]
+[ext_resource type="Texture2D" uid="uid://d1fxkvrdmxu4l" path="res://Art/effects/sprite_jumpCrystal4.png" id="5_re8f0"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fdl6s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_uakud")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_fe0pr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_uox8h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_re8f0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gqiht"]
+radius = 3.0
+
+[node name="XP_visualizer" type="Node2D"]
+script = ExtResource("1_ojmlr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_fdl6s")
+autoplay = "default"
+frame_progress = 0.204357
+
+[node name="xpAreaCollider" type="Area2D" parent="."]
+collision_layer = 512
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="xpAreaCollider"]
+shape = SubResource("CircleShape2D_gqiht")

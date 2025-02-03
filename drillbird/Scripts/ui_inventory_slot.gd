@@ -1,4 +1,5 @@
 extends Node2D
+class_name ui_inventory_slot
 
 """
 The InventorySlot keeps track of the ores it has and updates itself visually

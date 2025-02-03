@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cdnefjyqi8nyx"]
+
+[ext_resource type="Script" path="res://Scripts/UX and UI/ore_sell_visualizer.gd" id="1_wjyf5"]
+[ext_resource type="Texture2D" uid="uid://cwvy2kg6pkkfl" path="res://Art/Collectibles/ore_1_pebble.png" id="2_nxrvr"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ohfw2"]
+
+[node name="OreSellVisualizer" type="Node2D"]
+script = ExtResource("1_wjyf5")
+
+[node name="destroyAnim" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ohfw2")
+
+[node name="oreSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_nxrvr")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
