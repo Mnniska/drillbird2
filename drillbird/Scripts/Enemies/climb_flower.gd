@@ -8,6 +8,11 @@ class_name climb_flower
 var size:float=4
 var offset:Vector2=Vector2(0,4)
 @export var SPEED:float=20
+@export var MAXSPEEDMULTIPLIER:float=2
+@export var timeUntilFast:float=5
+var speedTimeCounter:float=0
+
+var currentSpeed=SPEED
 
 enum States{IDLE,MOVE_UP,MOVE_DOWN}
 var state:States=States.IDLE
@@ -43,7 +48,7 @@ func GetCollType():
 	return collider
 
 func Move_IDLE(delta:float):
-	
+	speedTimeCounter=0
 	pass
 
 func Move_UP(delta:float):
@@ -52,8 +57,10 @@ func Move_UP(delta:float):
 	
 	vine.set_size(Vector2(16,distance+offset.y))
 	
-	
-	flowerBody.move_and_collide(Vector2(0,-SPEED*delta))
+	speedTimeCounter=min(timeUntilFast,speedTimeCounter+delta)
+	var progress=speedTimeCounter/timeUntilFast
+	currentSpeed=SPEED*(1+(MAXSPEEDMULTIPLIER*progress))
+	flowerBody.move_and_collide(Vector2(0,-currentSpeed *delta))
 	
 	
 	
@@ -61,7 +68,7 @@ func Move_UP(delta:float):
 
 func Move_DOWN(delta:float):
 
-	
+	speedTimeCounter=0
 	var distance=flowerBody.global_position.distance_to(global_position)
 	
 	vine.set_size(Vector2(16,distance+offset.y))

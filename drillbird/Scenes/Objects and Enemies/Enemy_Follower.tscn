@@ -14,7 +14,7 @@ type = 1
 enemyID = 3
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_khmiv"]
-size = Vector2(12, 14)
+size = Vector2(12, 10)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_pakvm"]
 animations = [{
@@ -50,18 +50,19 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_33533"]
-size = Vector2(11, 7)
+size = Vector2(10, 7)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1txlu"]
 size = Vector2(8, 92)
 
 [node name="Enemy_Follower" type="CharacterBody2D"]
 collision_layer = 8
+collision_mask = 9
 script = ExtResource("1_8e42x")
 collType = SubResource("Resource_e2rhy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 1)
+position = Vector2(0, 3)
 shape = SubResource("RectangleShape2D_khmiv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -75,7 +76,7 @@ collision_layer = 0
 collision_mask = 24
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyCollisionChecker"]
-position = Vector2(0.5, 0.5)
+position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_33533")
 debug_color = Color(0.896068, 0.26513, 0.45405, 0.42)
 
