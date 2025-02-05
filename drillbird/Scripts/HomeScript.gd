@@ -17,6 +17,7 @@ var targetEggXP:int=0
 var xpGained:int=0
 var oldEggXP:int=0
 
+
 @export var holdTime:float=1
 var holdCounter:float=0
 var justWokeUp:bool=false
@@ -62,6 +63,8 @@ func ProgressGoToBed(delta:float,active:bool):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+
+	$DebugLabel.text=str(state)
 
 	if state==states.IDLE or state==states.SLEEP:
 		UpdateButtons()
@@ -186,6 +189,11 @@ func IsPlayerInCollider():
 	pass
 
 func _on_nest_collider_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
+	
+	#This is to ensure Nest is not stuck in endless SELLING.
+	#TODO: Make selling consistent 
+	if state==states.SELLING:
+		state=states.IDLE
 	CheckState()
 	$JustWokeUpTimer.stop()
 	pass # Replace with function body.
