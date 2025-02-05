@@ -1,0 +1,85 @@
+[gd_scene load_steps=13 format=3 uid="uid://bs8pjls7fpul1"]
+
+[ext_resource type="Script" path="res://Scripts/Enemies/enemy_upside_down.gd" id="1_crbyl"]
+[ext_resource type="Texture2D" uid="uid://c7jlywjt2rb3m" path="res://Art/characters/UpsideDown/UpsideDown_walk1.png" id="2_xdr4o"]
+[ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_collidable.gd" id="2_xl2cx"]
+[ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_enemy.gd" id="3_414ji"]
+[ext_resource type="Texture2D" uid="uid://ccmr5s047d04q" path="res://Art/characters/UpsideDown/UpsideDown_walk2.png" id="3_m0phi"]
+[ext_resource type="Texture2D" uid="uid://bd7hkykrdf36r" path="res://Art/characters/UpsideDown/UpsideDown_walk3.png" id="4_qbomp"]
+[ext_resource type="Texture2D" uid="uid://co1xp8dxcmkpf" path="res://Art/characters/UpsideDown/UpsideDown_walk4.png" id="5_8sqyb"]
+
+[sub_resource type="Resource" id="Resource_6qlpo"]
+script = ExtResource("2_xl2cx")
+type = 1
+enemyID = 4
+
+[sub_resource type="Resource" id="Resource_amv6c"]
+script = ExtResource("3_414ji")
+type = 4
+damage = 1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_khmiv"]
+size = Vector2(10, 12)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_of4cw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_xdr4o")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_xdr4o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_m0phi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_qbomp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_8sqyb")
+}],
+"loop": true,
+"name": &"run",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_33533"]
+size = Vector2(11, 7)
+
+[node name="Enemy_UpsideDown" type="CharacterBody2D"]
+collision_layer = 8
+script = ExtResource("1_crbyl")
+collType = SubResource("Resource_6qlpo")
+enemyInfo = SubResource("Resource_amv6c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_khmiv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_of4cw")
+animation = &"run"
+autoplay = "run"
+frame_progress = 0.592682
+
+[node name="EnemyCollisionChecker" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyCollisionChecker"]
+position = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_33533")
+debug_color = Color(0.896068, 0.26513, 0.45405, 0.42)
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[connection signal="body_shape_entered" from="EnemyCollisionChecker" to="." method="_on_enemy_collision_checker_body_shape_entered"]
+[connection signal="body_shape_exited" from="EnemyCollisionChecker" to="." method="_on_enemy_collision_checker_body_shape_exited"]
