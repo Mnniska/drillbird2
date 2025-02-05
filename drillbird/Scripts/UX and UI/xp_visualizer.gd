@@ -5,35 +5,46 @@ var targetActor:Node2D
 #MovementVariables
 var targetPosition:Vector2
 var hasTarget:bool=false
+
 var velocity:Vector2=Vector2(0,0)
 var friction:float=0.13
 @export var SPEED=100
 @export var noiseAmount:float=0.5
-var toEgg:bool=true
+var MovingToObject:bool=true
 
 
+
+func _physics_process(delta: float) -> void:
+	
+	if hasTarget:
+		
+		if MovingToObject:
+			targetPosition=targetActor.global_position
+		
+		var movevector= global_position.direction_to(targetPosition)
+		velocity=movevector*SPEED*delta
+	
+		global_position+=velocity
+		velocity.x-=friction
+		velocity.y-=friction
+		
+		var rand=Vector2(randf_range(-noiseAmount,noiseAmount),randf_range(-noiseAmount,noiseAmount))
+		global_position+=rand
+	
+		
+	pass
 
 func MoveToPosition(pos:Vector2):
-	toEgg=true
+	hasTarget=true
+	MovingToObject=false
 	targetPosition=pos
-	
-	while global_position!=targetPosition:
-		var rand=Vector2(randf_range(-noiseAmount,noiseAmount),randf_range(-noiseAmount,noiseAmount))
 
-		global_position=global_position.lerp(targetPosition,0.003)+rand
-		await get_tree().create_timer(1/60).timeout
-	
 	pass
 	
 func MoveToObject(node:Node2D):
-	toEgg=false
+	hasTarget=true
+	MovingToObject=true
 	targetActor=node
 	
-	
-	while global_position.distance_to(targetActor.global_position)>noiseAmount:
-		var rand=Vector2(randf_range(-noiseAmount,noiseAmount),randf_range(-noiseAmount,noiseAmount))
-
-		global_position=global_position.lerp(targetActor.global_position,0.003)+rand
-		await get_tree().create_timer(1/60).timeout
 	
 	pass

@@ -231,7 +231,7 @@ func OreEnteredCollider(body_rid: RID, body: Node2D, body_shape_index: int, loca
 
 
 func _on_ore_xp_collider_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
-	if !area.get_parent().toEgg:
+	if area.get_parent().MovingToObject:
 		return
 	
 	area.get_parent().queue_free()

@@ -33,8 +33,6 @@ func _process(delta: float) -> void:
 	
 	if hasTarget:
 		
-		
-		
 		var movevector= global_position.direction_to(targetPosition)
 		velocity=movevector*SPEED*delta
 	
