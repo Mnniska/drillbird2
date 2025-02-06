@@ -98,7 +98,7 @@ func GenerateObjectsAndEnemiesFromTilemap():
 			#todo paint tile with relevant ore
 			
 			#Set cell to use correct sprite
-			var terrainSourceIDs:Array[int]=[3,5,2,4] #This is the source ID derived from the oreder of tile atlases in the tilemap settings
+			var terrainSourceIDs:Array[int]=[3,5,2,4,9] #This is the source ID derived from the oreder of tile atlases in the tilemap settings
 
 			var tileTerrain=tile.get_custom_data("oreblock_terrain")
 			var sourceID=terrainSourceIDs[tileTerrain]
