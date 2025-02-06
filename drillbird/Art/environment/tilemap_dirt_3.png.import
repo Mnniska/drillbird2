@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://uofga1ucmfxq"
-path="res://.godot/imported/num6.png-f45c5cb0018d0ef39ce3defdc07846de.ctex"
+uid="uid://da7wjti6eupj0"
+path="res://.godot/imported/tilemap_dirt_3.png-1459daccf57b0365048d6f7711d70ae4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/ui/Symbols/num6.png"
-dest_files=["res://.godot/imported/num6.png-f45c5cb0018d0ef39ce3defdc07846de.ctex"]
+source_file="res://Art/environment/tilemap_dirt_3.png"
+dest_files=["res://.godot/imported/tilemap_dirt_3.png-1459daccf57b0365048d6f7711d70ae4.ctex"]
 
 [params]
 
