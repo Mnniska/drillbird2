@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bvonaof233dpd"
-path="res://.godot/imported/UI_Shop_Background.png-1909dc02c4d3edccdc4b9286cb09301e.ctex"
+path="res://.godot/imported/UI_Shop_Background.png-af10c8d64fcaec8c3c1d7423e8321ea9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/ui/Shop/UI_Shop_Background.png"
-dest_files=["res://.godot/imported/UI_Shop_Background.png-1909dc02c4d3edccdc4b9286cb09301e.ctex"]
+source_file="res://Art/UI/Shop/UI_Shop_Background.png"
+dest_files=["res://.godot/imported/UI_Shop_Background.png-af10c8d64fcaec8c3c1d7423e8321ea9.ctex"]
 
 [params]
 
