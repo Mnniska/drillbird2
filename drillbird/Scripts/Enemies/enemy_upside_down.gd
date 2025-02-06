@@ -7,6 +7,8 @@ const SPEED = 40.0
 var positionLastFrame:Vector2
 
 @export var timeInWait=1
+@export var timeBeforeTurning:float=0.2
+var turningCounter:float=0
 var waitCounter=0
 
 func _physics_process(delta: float) -> void:
@@ -36,10 +38,15 @@ func _physics_process(delta: float) -> void:
 	if state==States.WALK:
 		
 		var speed = abs(positionLastFrame-position)
-		if speed.x<=0.001:
-
-			direction=direction*-1
-			state=States.WAIT
+		if speed.x<=0.1:
+			turningCounter+=delta
+			if turningCounter>=timeBeforeTurning:
+				turningCounter=0
+				direction=direction*-1
+				state=States.WAIT
+		elif turningCounter>0:
+			turningCounter=0
+			
 		positionLastFrame=position
 
 
