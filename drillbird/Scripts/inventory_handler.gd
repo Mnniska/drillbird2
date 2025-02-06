@@ -10,7 +10,7 @@ TLDR inventory_handler manages inventory size as well as adding and removing ore
 """
 
 @export var upgradetree_inventory:abstract_purchasable
-@onready var OreSpawner=$"../../TilemapOres"
+@onready var OreSpawner=$"../../../TilemapOres"
 
 var inventorySlots : Array[ui_inventory_slot]
 #var inventorySlots =Array[preload("res://Scenes/UI_InventorySlot.tscn")]

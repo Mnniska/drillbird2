@@ -21,7 +21,7 @@ var playerIsLit:bool=false
 var outOfLight:bool=false
 var playerIsDrillingTile:bool=false
 
-@onready var PlayerLight=$"../../PlayerDarkness"
+@onready var PlayerLight=$"../../../PlayerDarkness"
 @onready var LightSlider:Slider=$LightSliderParent/UI_LightSlider
 @onready var DrillLightParticle=$LightSliderParent/Particle_DrillLight
 

@@ -1,16 +1,15 @@
 extends Node2D
 @onready var SellButton= $InteractButton_depositOres
 @onready var RestButton = $InteractButton_EndDay
-@onready var inventory = $"../Camera2D/InventoryHandler"
-@onready var seller:inventory_handler=$"../Camera2D/InventoryHandler"
-@onready var moneyUI=$"../Camera2D/CashHolder/cashNumber"
+@onready var inventory = $"../Camera2D/bottomUI/InventoryHandler"
+@onready var moneyUI=$"../Camera2D/topUI/CashHolder/cashNumber"
 @onready var animSleep=$Eggs/BirdySleepPositions/birdySleep
 @onready var Player=$"../Player"
 @onready var Shop = $"../Camera2D/ShopHandler"
-@onready var LightHandler=$"../Camera2D/LightHandler"
+@onready var LightHandler=$"../Camera2D/topUI/LightHandler"
 @onready var Camera=$"../Camera2D"
 @onready var CameraLerpPosition=$CameraLerpPosition
-@onready var HealthHandler=$"../Camera2D/HealthUIHandler"
+@onready var HealthHandler=$"../Camera2D/topUI/HealthUIHandler"
 @onready var EggHandler =$Eggs
 @onready var OreSellVisualizer=$OreSellParent
 var targetEggXP:int=0
@@ -120,8 +119,8 @@ func SellOres():
 	UpdateButtons()
 	
 	#OresellVisualizer is a purely visual spectactle to sell the player on selling
-	OreSellVisualizer.SellTheseOres(seller.GetOresInInventory(),Player)
-	var moneyAmount=seller.SellOres()
+	OreSellVisualizer.SellTheseOres(inventory.GetOresInInventory(),Player)
+	var moneyAmount=inventory.SellOres()
 	
 	oldEggXP=GlobalVariables.totalExperienceGained
 	

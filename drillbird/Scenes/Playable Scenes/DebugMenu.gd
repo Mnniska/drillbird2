@@ -109,18 +109,22 @@ func GenerateMenu():
 func ExecuteAction(action:String):
 	DebugActionRequested.emit(action)
 	
+	var inventory=$"../bottomUI/InventoryHandler"
+	var health = $"../topUI/HealthUIHandler"
+	var light = $"../topUI/LightHandler"
+	
 	match action:
 		"inventory_upgrade_add":
 			var invEnum=GlobalVariables.typeEnum.INVENTORY
 			GlobalVariables.SetPlayerUpgradeLevel(invEnum,GlobalVariables.GetPlayerUpgradeLevel(invEnum)+1)
-			$"../InventoryHandler".UpdateInventoryPositions()
+			inventory.UpdateInventoryPositions()
 			pass
 		"inventory_upgrade_remove":
 			var invEnum=GlobalVariables.typeEnum.INVENTORY
 			if GlobalVariables.GetPlayerUpgradeLevel(invEnum)>0:
 				
 				GlobalVariables.SetPlayerUpgradeLevel(invEnum,GlobalVariables.GetPlayerUpgradeLevel(invEnum)-1)
-				$"../InventoryHandler".UpdateInventoryPositions()
+				inventory.UpdateInventoryPositions()
 		"drill_upgrade_add":
 			var drillEnum=GlobalVariables.typeEnum.DRILL
 			var target:int=GlobalVariables.GetPlayerUpgradeLevel(drillEnum)+1
@@ -132,23 +136,23 @@ func ExecuteAction(action:String):
 				
 				GlobalVariables.SetPlayerUpgradeLevel(drillEnum,target)
 		"health_refill":
-			$"../HealthUIHandler".RefillHealth()
+			health.RefillHealth()
 			pass
 		"health_hurt":
-			$"../HealthUIHandler".TakeDamage(1)
+			health.TakeDamage(1)
 			pass
 		"health_kill":
-			$"../HealthUIHandler".TakeDamage(20)
+			health.TakeDamage(20)
 			pass
 		"health_upgrade":
 			var healthE=GlobalVariables.typeEnum.HEALTH
 			var upgrade=GlobalVariables.GetPlayerUpgradeLevel(healthE)+1
 			GlobalVariables.SetPlayerUpgradeLevel(healthE,upgrade)
-			$"../HealthUIHandler".UpgradeHealth()
+			health.UpgradeHealth()
 		"light_refill":
-			$"../LightHandler".RefillLight()
+			light.RefillLight()
 		"light_deplete":
-			$"../LightHandler".DepleteLight()
+			light.DepleteLight()
 		
 		"light_upgrade_add":
 			var lightE=GlobalVariables.typeEnum.LIGHT

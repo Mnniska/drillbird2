@@ -4,7 +4,7 @@ var HealthArray:Array[heart_script] #I'd love for this to specify the heart scri
 var HealthScene
 @export var HealthUpgrades:abstract_purchasable
 var HeartScene = preload("res://Scenes/UI/HeartScene.tscn")
-@onready var UI_DeathPopup=$"../UI_Death"
+@onready var UI_DeathPopup=$"../../UI_Death"
 
 
 # Called when the node enters the scene tree for the first time.

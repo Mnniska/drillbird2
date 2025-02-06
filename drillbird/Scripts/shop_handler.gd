@@ -2,7 +2,7 @@ extends Node2D
 
 #handling the shop
 signal ShopClosed
-@onready var moneyUI=$"../CashHolder/cashNumber"
+@onready var moneyUI=$"../topUI/CashHolder/cashNumber"
 
 #add continue button to UI_Purchasables
 @export var UI_purchasables:Array[Node2D]

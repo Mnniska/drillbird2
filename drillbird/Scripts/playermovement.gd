@@ -62,9 +62,9 @@ var HeldFlower:climb_flower=null
 
 @onready var raycast_drill = $RayCast2D
 @onready var debugLine= $DebugRaycastLine
-@onready var oreInventory = $"../Camera2D/InventoryHandler"
+@onready var oreInventory = $"../Camera2D/bottomUI/InventoryHandler"
 @onready var particles=$DrillingParticles
-@onready var healthManager=$"../Camera2D/HealthUIHandler"
+@onready var healthManager=$"../Camera2D/topUI/HealthUIHandler"
 @onready var ObjectSpawner=$"../ObjectSpawner"
 
 func _ready() -> void:
