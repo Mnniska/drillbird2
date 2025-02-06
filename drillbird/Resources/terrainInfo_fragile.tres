@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource("1_2p7yp")
-terrainIdentifier = 4
+terrainIdentifier = 5
 terrainHP = 1
 DestroyParticleColor = Color(0.924558, 0.87464, 0.664055, 1)

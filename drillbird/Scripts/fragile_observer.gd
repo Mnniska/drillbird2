@@ -28,7 +28,7 @@ func GenerateObservers(location:Vector2i,_tilemap:TileMapLayer,tileDestroy:crack
 	for vector in directions:
 		var cell= _tilemap.get_cell_tile_data(location+vector)
 		if cell:
-			if cell.terrain==4:
+			if cell.terrain==5:
 				
 				var obs:observerScript = observer.instantiate()
 				
