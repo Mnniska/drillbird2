@@ -35,20 +35,19 @@ func _physics_process(delta: float) -> void:
 
 	if state==States.WALK:
 		
-		var speed = positionLastFrame-position
-		if speed.x==0:
+		var speed = abs(positionLastFrame-position)
+		if speed.x<=0.001:
 
 			direction=direction*-1
 			state=States.WAIT
 		positionLastFrame=position
-	
+
 
 	if state==States.WAIT:
 		waitCounter+=delta
 		if waitCounter>timeInWait:
 			waitCounter=0
 			state=States.WALK
-
 func UpdateAnimations(_anim:String):
 
 	anim.animation=_anim

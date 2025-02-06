@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="abstract_ore" load_steps=3 format=3 uid="uid://dtee1eo8ydnlr"]
+
+[ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_ore.gd" id="1_trn3g"]
+[ext_resource type="Texture2D" uid="uid://b11br0tugyx10" path="res://Art/Collectibles/ore_6.png" id="2_dc8o2"]
+
+[resource]
+script = ExtResource("1_trn3g")
+ID = 5
+value = 25
+texture = ExtResource("2_dc8o2")
+name = "Diamond"
+stackSize = 4
+AtlasCoords = Vector2i(0, 0)

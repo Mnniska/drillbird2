@@ -7,7 +7,6 @@ extends Node2D
 
 @onready var oreTilemap:TileMapLayer=$"../TilemapOres"
 
-@export var oreRegions:Array[abstract_ore_region]
 @onready var OreAreas=$"../TilemapOres/OreRegions"
 @onready var tileDestroyer=$"../TileCrack"
 @onready var fragileBlockManager:block_fragile_manager=$Block_FragileManager
