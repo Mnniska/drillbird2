@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="abstract_purchasable" load_steps=9 format=3 uid="uid://deqhaf8e1onhf"]
+[gd_resource type="Resource" script_class="abstract_purchasable" load_steps=10 format=3 uid="uid://deqhaf8e1onhf"]
 
 [ext_resource type="Texture2D" uid="uid://c5xh2pfbu6ujs" path="res://Art/ui/Shop/UI_Shop_icon_drill.png" id="1_fetex"]
 [ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_item_upgrade.gd" id="2_dkkpi"]
@@ -11,23 +11,28 @@ power = 2
 
 [sub_resource type="Resource" id="Resource_nookp"]
 script = ExtResource("2_dkkpi")
-cost = 4
+cost = 6
 power = 3
 
 [sub_resource type="Resource" id="Resource_aum1u"]
 script = ExtResource("2_dkkpi")
-cost = 10
+cost = 20
 power = 4
 
 [sub_resource type="Resource" id="Resource_l4iij"]
 script = ExtResource("2_dkkpi")
-cost = 25
+cost = 35
 power = 6
 
 [sub_resource type="Resource" id="Resource_gki13"]
 script = ExtResource("2_dkkpi")
-cost = 40
-power = 8
+cost = 55
+power = 9
+
+[sub_resource type="Resource" id="Resource_pvcil"]
+script = ExtResource("2_dkkpi")
+cost = 100
+power = 12
 
 [resource]
 script = ExtResource("3_8hyme")
@@ -36,4 +41,4 @@ type = 0
 icon = ExtResource("1_fetex")
 itemName = "Drill Power"
 itemDescription = "Drill tougher blocks faster"
-items = Array[ExtResource("2_dkkpi")]([SubResource("Resource_ldy6v"), SubResource("Resource_nookp"), SubResource("Resource_aum1u"), SubResource("Resource_l4iij"), SubResource("Resource_gki13")])
+items = Array[ExtResource("2_dkkpi")]([SubResource("Resource_ldy6v"), SubResource("Resource_nookp"), SubResource("Resource_aum1u"), SubResource("Resource_l4iij"), SubResource("Resource_gki13"), SubResource("Resource_pvcil")])

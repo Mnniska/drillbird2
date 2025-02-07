@@ -6,7 +6,7 @@ var textstring:String=""
 var currentSelection:int=0
 var Active:bool=false
 signal DebugActionRequested(action:String)
-
+var mainMenuShowing:bool=false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	currentMenu=menu
@@ -164,6 +164,22 @@ func ExecuteAction(action:String):
 		"reset_save_data":
 			$"../..".ResetSaveData()
 		
+		"toggleMenu":
+			mainMenuShowing=!mainMenuShowing
+			var mainmenu=$"../MainMenu"
+			var topUI=$"../topUI"
+			var bottomUI=$"../bottomUI"
+			
+			
+			if mainMenuShowing:
+				mainmenu.show()
+				topUI.hide()
+				bottomUI.hide()
+			else:
+				mainmenu.hide()
+				topUI.show()
+				bottomUI.show()
+
 
 			
 	pass

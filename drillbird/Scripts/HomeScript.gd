@@ -12,6 +12,9 @@ extends Node2D
 @onready var HealthHandler=$"../Camera2D/topUI/HealthUIHandler"
 @onready var EggHandler =$Eggs
 @onready var OreSellVisualizer=$OreSellParent
+
+
+
 var targetEggXP:int=0
 var xpGained:int=0
 var oldEggXP:int=0
@@ -63,7 +66,6 @@ func ProgressGoToBed(delta:float,active:bool):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 
-	$DebugLabel.text=str(state)
 
 	if state==states.IDLE or state==states.SLEEP:
 		UpdateButtons()
@@ -121,6 +123,7 @@ func SellOres():
 	#OresellVisualizer is a purely visual spectactle to sell the player on selling
 	OreSellVisualizer.SellTheseOres(inventory.GetOresInInventory(),Player)
 	var moneyAmount=inventory.SellOres()
+	$AutomaticIdleTimer.start()
 	
 	oldEggXP=GlobalVariables.totalExperienceGained
 	
@@ -189,10 +192,7 @@ func IsPlayerInCollider():
 
 func _on_nest_collider_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
 	
-	#This is to ensure Nest is not stuck in endless SELLING.
-	#TODO: Make selling consistent 
-	if state==states.SELLING:
-		state=states.IDLE
+	
 	CheckState()
 	$JustWokeUpTimer.stop()
 	pass # Replace with function body.
@@ -252,3 +252,10 @@ func SellingComplete():
 			state=states.SELL
 		else:
 			state=states.RESTPOSSIBLE
+	$AutomaticIdleTimer.stop()
+
+func _on_automatic_idle_timer_timeout() -> void:
+	if state==states.SELLING:
+		state=states.IDLE
+	
+	pass # Replace with function body.

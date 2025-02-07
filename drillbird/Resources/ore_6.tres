@@ -6,8 +6,8 @@
 [resource]
 script = ExtResource("1_trn3g")
 ID = 5
-value = 25
+value = 30
 texture = ExtResource("2_dc8o2")
 name = "Diamond"
-stackSize = 4
+stackSize = 2
 AtlasCoords = Vector2i(0, 0)

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="abstract_purchasable" load_steps=8 format=3 uid="uid://cgdqluba62y80"]
+[gd_resource type="Resource" script_class="abstract_purchasable" load_steps=9 format=3 uid="uid://cgdqluba62y80"]
 
 [ext_resource type="Texture2D" uid="uid://qsvd23d34rp7" path="res://Art/ui/Shop/UI_Shop_icon_light.png" id="1_1bg5o"]
 [ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_item_upgrade.gd" id="2_c8a6s"]
@@ -24,6 +24,11 @@ script = ExtResource("2_c8a6s")
 cost = 30
 power = 4
 
+[sub_resource type="Resource" id="Resource_k8a7n"]
+script = ExtResource("2_c8a6s")
+cost = 55
+power = 5
+
 [resource]
 script = ExtResource("3_mne0x")
 onlyAButton = false
@@ -31,4 +36,4 @@ type = 3
 icon = ExtResource("1_1bg5o")
 itemName = "Light"
 itemDescription = "Keep darkness at bay longer"
-items = Array[ExtResource("2_c8a6s")]([SubResource("Resource_ldy6v"), SubResource("Resource_nookp"), SubResource("Resource_aum1u"), SubResource("Resource_l4iij")])
+items = Array[ExtResource("2_c8a6s")]([SubResource("Resource_ldy6v"), SubResource("Resource_nookp"), SubResource("Resource_aum1u"), SubResource("Resource_l4iij"), SubResource("Resource_k8a7n")])
