@@ -1,4 +1,4 @@
-[gd_scene load_steps=113 format=4 uid="uid://d2wv7igie5stg"]
+[gd_scene load_steps=114 format=4 uid="uid://d2wv7igie5stg"]
 
 [ext_resource type="TileSet" uid="uid://grpd2pyu7pgk" path="res://Resources/MainTileset.tres" id="1_1imtu"]
 [ext_resource type="Script" path="res://Scenes/Playable Scenes/SaveManager.gd" id="1_iickb"]
@@ -288,6 +288,12 @@ isAction = true
 [sub_resource type="Resource" id="Resource_i5oq0"]
 script = ExtResource("48_cl8sw")
 name = "toggleMenu"
+options = Array[ExtResource("48_cl8sw")]([])
+isAction = true
+
+[sub_resource type="Resource" id="Resource_2iaja"]
+script = ExtResource("48_cl8sw")
+name = "togglePlayerHidden"
 options = Array[ExtResource("48_cl8sw")]([])
 isAction = true
 
@@ -641,7 +647,7 @@ vertical_alignment = 1
 [node name="DebugFunctionality" type="Node2D" parent="Camera2D"]
 z_index = 2
 script = ExtResource("47_igpia")
-menu = Array[ExtResource("48_cl8sw")]([SubResource("Resource_dq3mr"), SubResource("Resource_5ornm"), SubResource("Resource_77at3"), SubResource("Resource_v3nii"), SubResource("Resource_co6uo"), SubResource("Resource_o5w6h"), SubResource("Resource_1t4wb"), SubResource("Resource_i5oq0")])
+menu = Array[ExtResource("48_cl8sw")]([SubResource("Resource_dq3mr"), SubResource("Resource_5ornm"), SubResource("Resource_77at3"), SubResource("Resource_v3nii"), SubResource("Resource_co6uo"), SubResource("Resource_o5w6h"), SubResource("Resource_1t4wb"), SubResource("Resource_i5oq0"), SubResource("Resource_2iaja")])
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Camera2D/DebugFunctionality"]
 offset_left = -160.0

@@ -7,6 +7,7 @@ var currentSelection:int=0
 var Active:bool=false
 signal DebugActionRequested(action:String)
 var mainMenuShowing:bool=false
+var playerHidden:bool=false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	currentMenu=menu
@@ -179,6 +180,13 @@ func ExecuteAction(action:String):
 				mainmenu.hide()
 				topUI.show()
 				bottomUI.show()
+		"togglePlayerHidden":
+			playerHidden=!playerHidden
+			
+			if playerHidden:
+				$"../../Player".hide()
+			else:
+				$"../../Player".show()
 
 
 			
