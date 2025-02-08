@@ -21,7 +21,8 @@ var playerIsLit:bool=false
 var outOfLight:bool=false
 var playerIsDrillingTile:bool=false
 
-@onready var PlayerLight=$"../../../PlayerDarkness"
+#get player light
+@onready var PlayerLight
 @onready var LightSlider:Slider=$LightSliderParent/UI_LightSlider
 @onready var DrillLightParticle=$LightSliderParent/Particle_DrillLight
 
@@ -33,8 +34,14 @@ func _ready() -> void:
 	
 	#wait for game data to be loaded b4 accessing save data to set up light
 	GlobalVariables.SetupComplete.connect(SetupLightFunctionality)
+	GlobalVariables.PlayerIsDrillingTileChanged.connect(_on_player_signal_is_drilling_tile_changed)
 	
 func SetupLightFunctionality():
+	PlayerLight=GlobalVariables.MainSceneReferenceConnector.playerDarkness
+	if PlayerLight==null:
+		push_error("Could not get player light, something is WRONG")
+	
+	
 	time_Countdown=time_TimerLength
 
 		#create lightbulbs depending on player upgrade lvl

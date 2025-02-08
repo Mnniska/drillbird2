@@ -110,9 +110,10 @@ func GenerateMenu():
 func ExecuteAction(action:String):
 	DebugActionRequested.emit(action)
 	
-	var inventory=$"../bottomUI/InventoryHandler"
-	var health = $"../topUI/HealthUIHandler"
-	var light = $"../topUI/LightHandler"
+	var inventory= HUD.HUD_InventoryManager
+	var health = HUD.HUD_healthManager
+	var light = HUD.HUD_lightBulbManager
+
 	
 	match action:
 		"inventory_upgrade_add":

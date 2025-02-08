@@ -1,9 +1,10 @@
 extends Node
-
+signal playerAction()
+signal PlayerIsDrillingTileChanged(answer:bool)
+var MainSceneReferenceConnector:main_scene_reference_connector
 var playerSpawnPos:Vector2
 
 enum playerActions{DRILL,JUMP,DROPORE,INTERACT}
-signal playerAction(action:playerActions)
 
 enum typeEnum{DRILL, INVENTORY, HEALTH, LIGHT}
 enum playerStatusEnum {DIG,SLEEP,SHOP,NEWDAY}

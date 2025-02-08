@@ -7,6 +7,7 @@ var HeartScene = preload("res://Scenes/UI/HeartScene.tscn")
 @onready var UI_DeathPopup=$"../../UI_Death"
 
 
+	
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	HealthSetup()

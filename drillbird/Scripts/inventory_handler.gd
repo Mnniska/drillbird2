@@ -10,13 +10,36 @@ TLDR inventory_handler manages inventory size as well as adding and removing ore
 """
 
 @export var upgradetree_inventory:abstract_purchasable
-@onready var OreSpawner=$"../../../TilemapOres"
+var OreSpawner
 
 var inventorySlots : Array[ui_inventory_slot]
 #var inventorySlots =Array[preload("res://Scenes/UI_InventorySlot.tscn")]
 var slotAmount:int=2
 @onready var UIvisual_left = $ui_leftSide
 @onready var UIvisual_right = $ui_rightSide
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	GlobalVariables.upgradeChange_Inventory.connect(upgradeChangeInventory)
+	GlobalVariables.SetupComplete.connect(InitializationCompleteSetup)
+	#Todo: Read the inventoryStat from globalVariables and figure out how much the player should have based on that
+	
+	for n in upgradetree_inventory.items[GlobalVariables.upgradeLevel_inventory].power:
+		var scene = load("res://Scenes/UI/UI_InventorySlot.tscn") 
+		var node = scene.instantiate()
+		var offset= Vector2(-16,-16)
+		node.transform.origin =  Vector2(16*n,0)+offset
+		add_child(node)
+		
+		inventorySlots.append(node)
+		pass
+	UpdateInventoryPositions()
+	pass # Replace with function body.
+
+func InitializationCompleteSetup():
+	OreSpawner=GlobalVariables.MainSceneReferenceConnector.ref_oreTilemap
+	if OreSpawner==null:
+		push_error("Could not connect OreSpawner in inventory_handler!")
 
 func DropOresRequest(position:Vector2,velocity:Vector2,facingRight:bool):
 	var oresToDrop:Array[abstract_ore]
@@ -63,23 +86,7 @@ func PlayerDied(playerPos:Vector2):
 	DropOresRequest(playerPos,Vector2(0,0),true)
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	GlobalVariables.upgradeChange_Inventory.connect(upgradeChangeInventory)
-	
-	#Todo: Read the inventoryStat from globalVariables and figure out how much the player should have based on that
-	
-	for n in upgradetree_inventory.items[GlobalVariables.upgradeLevel_inventory].power:
-		var scene = load("res://Scenes/UI/UI_InventorySlot.tscn") 
-		var node = scene.instantiate()
-		var offset= Vector2(-16,-16)
-		node.transform.origin =  Vector2(16*n,0)+offset
-		add_child(node)
-		
-		inventorySlots.append(node)
-		pass
-	UpdateInventoryPositions()
-	pass # Replace with function body.
+
 
 func UpdateInventoryPositions():
 	var offset:int=0

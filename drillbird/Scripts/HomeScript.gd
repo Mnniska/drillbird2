@@ -1,15 +1,15 @@
 extends Node2D
 @onready var SellButton= $InteractButton_depositOres
 @onready var RestButton = $InteractButton_EndDay
-@onready var inventory = $"../Camera2D/bottomUI/InventoryHandler"
-@onready var moneyUI=$"../Camera2D/topUI/CashHolder/cashNumber"
+@onready var inventory = HUD.HUD_InventoryManager
+@onready var moneyUI=HUD.HUD_cashText
 @onready var animSleep=$Eggs/BirdySleepPositions/birdySleep
 @onready var Player=$"../Player"
 @onready var Shop = $"../Camera2D/ShopHandler"
-@onready var LightHandler=$"../Camera2D/topUI/LightHandler"
+@onready var LightHandler=HUD.HUD_lightBulbManager
 @onready var Camera=$"../Camera2D"
 @onready var CameraLerpPosition=$CameraLerpPosition
-@onready var HealthHandler=$"../Camera2D/topUI/HealthUIHandler"
+@onready var HealthHandler=HUD.HUD_healthManager
 @onready var EggHandler =$Eggs
 @onready var OreSellVisualizer=$OreSellParent
 
@@ -30,6 +30,7 @@ var ambienceSound:AudioStreamPlayer2D
 enum states{IDLE,SELL,RESTPOSSIBLE,SLEEP,SELLING}
 var state:states
 
+	
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	animSleep.hide()
@@ -128,6 +129,7 @@ func SellOres():
 	oldEggXP=GlobalVariables.totalExperienceGained
 	
 	GlobalVariables.GivePlayerMoney(moneyAmount)
+	moneyUI.text=str(GlobalVariables.playerMoney)+"xp"
 	
 	#When XP orb collides with home, it will be destroyed and egg size will be updated acc to progress towards targetXP
 	xpGained=0

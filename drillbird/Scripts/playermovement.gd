@@ -51,6 +51,7 @@ var player_is_drilling_tile: bool = false:
 	set(value):
 		player_is_drilling_tile=value
 		signal_IsDrillingTileChanged.emit(player_is_drilling_tile)
+		GlobalVariables.PlayerIsDrillingTileChanged.emit(player_is_drilling_tile)
 var playerDrillingSolid:bool=false
 var drillDirection=Directions.RIGHT
 var HeldFlower:climb_flower=null
@@ -63,9 +64,9 @@ var HeldFlower:climb_flower=null
 
 @onready var raycast_drill = $RayCast2D
 @onready var debugLine= $DebugRaycastLine
-@onready var oreInventory = $"../Camera2D/bottomUI/InventoryHandler"
+@onready var oreInventory = HUD.HUD_InventoryManager
 @onready var particles=$DrillingParticles
-@onready var healthManager=$"../Camera2D/topUI/HealthUIHandler"
+@onready var healthManager=HUD.HUD_healthManager
 @onready var ObjectSpawner=$"../ObjectSpawner"
 
 func _ready() -> void:

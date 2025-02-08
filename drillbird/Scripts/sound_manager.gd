@@ -34,8 +34,7 @@ func SetupCommonSoundSettings(soundEffectSetting:abstract_SoundEffectSetting,aud
 	audio.pitch_scale+=randf_range(-soundEffectSetting.pitch_randomness,soundEffectSetting.pitch_randomness)
 	audio.bus=soundEffectSetting.AudioBusEnum.keys()[soundEffectSetting.audioBus]
 	return audio
-	
-	pass
+
 
 func PlaySoundGlobal(type:abstract_SoundEffectSetting.SoundEffectEnum):
 
