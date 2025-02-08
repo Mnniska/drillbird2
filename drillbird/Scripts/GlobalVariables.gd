@@ -40,7 +40,7 @@ var playerMoney:int=0:
 var totalExperienceGained:int=0 #set at startup to loaded in value
 var playerHealth:int=2 #This should be loaded in depending on current upgrade lvl in future
 
-var currentDay:int=0
+var currentDay:int=1
 
 
 #LIGHT

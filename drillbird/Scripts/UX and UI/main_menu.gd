@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 signal NewGame
 
@@ -12,15 +12,17 @@ var selectionEffectEnd="[/wave]"
 
 var selection:int=0
 
+var active:bool=false
+
 # Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	GenerateMainMenu()
-	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	
+	if !active:
+		return
+		
 	if Input.is_action_just_pressed("down"):
 		selection-=1
 		if selection<0:
@@ -38,6 +40,14 @@ func _process(delta: float) -> void:
 	pass
 
 func GenerateMainMenu():
+	
+	active=true
+	#If the player starts the game during day 1, we can assume they do not ahve an active save game
+	if GlobalVariables.currentDay==1:
+		options[0].name="New Game"
+	else:
+		options[0].name="Continue"
+	
 	var textstring=textbegin
 	
 	var index:int=0
@@ -54,10 +64,16 @@ func GenerateMainMenu():
 	textstring+=textend
 	menuText.text=textstring
 
+func Deactivate():
+	active=false
+	hide()
+	
 func PressButton():
 	
 	match options[selection].name:
 		"New Game":
+			NewGame.emit()
+		"Continue":
 			NewGame.emit()
 		"Options":
 			pass

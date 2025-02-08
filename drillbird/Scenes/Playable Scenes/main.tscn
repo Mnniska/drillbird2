@@ -598,6 +598,7 @@ position = Vector2(1423, 2601)
 texture = ExtResource("64_3kawd")
 
 [node name="PlayerSpawnLocations" type="Node2D" parent="."]
+visible = false
 
 [node name="OriginalSpawnPos" type="Sprite2D" parent="PlayerSpawnLocations"]
 position = Vector2(-777, 535)
@@ -616,7 +617,7 @@ shape = SubResource("RectangleShape2D_aulbw")
 debug_color = Color(4.23551e-06, 0.889431, 0.469172, 0.42)
 
 [node name="Spawnpos_HOME" type="Sprite2D" parent="PlayerSpawnLocations"]
-position = Vector2(-104, -75)
+position = Vector2(0, -77)
 texture = ExtResource("64_yk8d7")
 
 [node name="Spawnpos_LastThird" type="Sprite2D" parent="PlayerSpawnLocations"]

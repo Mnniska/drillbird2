@@ -147,6 +147,12 @@ func SellOre(ore:abstract_ore):
 	
 	pass
 
+func MainMenu_SetupSleepIdle():
+	
+	animSleep.animation="asleep"
+	animSleep.play()
+	animSleep.show()
+	
 func GoToBed():
 	GlobalVariables.playerStatus=GlobalVariables.playerStatusEnum.SHOP
 	state=states.SLEEP
@@ -163,9 +169,11 @@ func GoToBed():
 	
 	$cutsceneTimer.start()
 
-func WakeUp():
-	GlobalVariables.currentDay+=1
-	$"..".SaveGame()
+func WakeUp(saveGame:bool):
+	
+	if saveGame:
+		GlobalVariables.currentDay+=1
+		$"..".SaveGame()
 	justWokeUp=true
 	
 	
@@ -182,7 +190,7 @@ func ReplendishStats():
 	
 func Respawn():
 	ReplendishStats()
-	WakeUp()#temporary - will do a custom one later
+	WakeUp(true)#temporary - will do a custom one later
 	Player.state=Player.States.IDLE
 	
 	pass
@@ -229,7 +237,7 @@ func _on_cutscene_timer_timeout() -> void:
 
 
 func _on_shop_handler_shop_closed() -> void:
-	WakeUp()	
+	WakeUp(true)	
 	pass # Replace with function body.
 
 

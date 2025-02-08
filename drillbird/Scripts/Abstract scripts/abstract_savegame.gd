@@ -5,6 +5,8 @@ class_name abstract_savegame
 #When saving, modify this resource and save it to disk
 
 #Key variables needed to save game
+@export var currentDay:int=1
+
 @export var playerSpawnPosition:Vector2=Vector2(0,0)
 @export var health:int=2
 @export var money:int=0
