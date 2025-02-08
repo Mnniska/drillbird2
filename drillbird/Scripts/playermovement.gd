@@ -9,6 +9,7 @@ var animstate=""
 enum Directions {LEFT, RIGHT, UP, DOWN}
 enum States {IDLE, DRILLING, AIR, DEAD, DAMAGE, DEBUG_GHOST,PAUSE,FLOWER}
 var state = States.IDLE
+@export var collType:abstract_collidable
 
 var closeFlowers:Array[climb_flower]
 
