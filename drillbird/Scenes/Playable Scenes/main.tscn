@@ -1,4 +1,4 @@
-[gd_scene load_steps=94 format=4 uid="uid://d2wv7igie5stg"]
+[gd_scene load_steps=93 format=4 uid="uid://d2wv7igie5stg"]
 
 [ext_resource type="TileSet" uid="uid://grpd2pyu7pgk" path="res://Resources/MainTileset.tres" id="1_1imtu"]
 [ext_resource type="Script" path="res://Scenes/Playable Scenes/SaveManager.gd" id="1_iickb"]
@@ -52,7 +52,6 @@
 [ext_resource type="Script" path="res://Scripts/enemy_spawner.gd" id="53_0clb6"]
 [ext_resource type="PackedScene" uid="uid://bgtl1cgl35wcl" path="res://Scenes/Objects and Enemies/tutorial_message.tscn" id="59_8sapw"]
 [ext_resource type="Script" path="res://Scripts/WorldScripting.gd" id="59_a6oue"]
-[ext_resource type="Texture2D" uid="uid://bpa8olbvx4ufv" path="res://Art/ui/MainMenu/DrillBird_LOGO.png" id="61_x5x0d"]
 [ext_resource type="Texture2D" uid="uid://chdi1d0vsqy66" path="res://Art/environment/UniqueAssets/flowerCaveCarving.png" id="64_3kawd"]
 [ext_resource type="Texture2D" uid="uid://gixivpytn5wl" path="res://Art/ui/HUD/UI_LightBar_bulb.png" id="64_yk8d7"]
 [ext_resource type="Script" path="res://Scripts/Tools/player_location_saver.gd" id="65_25d1u"]
@@ -470,25 +469,6 @@ scroll_active = false
 autowrap_mode = 0
 shortcut_keys_enabled = false
 script = ExtResource("52_hrk5v")
-
-[node name="MainMenu" type="Node2D" parent="Camera2D"]
-visible = false
-
-[node name="Logo" type="Sprite2D" parent="Camera2D/MainMenu"]
-position = Vector2(0, -52.1251)
-scale = Vector2(0.186497, 0.186497)
-texture = ExtResource("61_x5x0d")
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Camera2D/MainMenu"]
-offset_left = -46.0
-offset_top = -12.1251
-offset_right = 47.0
-offset_bottom = 27.8749
-theme = ExtResource("42_e8s0s")
-bbcode_enabled = true
-text = "[center]> Continue <
-New Game
-Options"
 
 [node name="PlayerDarkness" type="Node2D" parent="." node_paths=PackedStringArray("lightSource")]
 position = Vector2(412, 26)

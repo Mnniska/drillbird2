@@ -6,6 +6,7 @@ class_name main_scene_reference_connector
 @onready var ref_home=$"../Home"
 @onready var ref_camera=$"../Camera2D"
 @onready var ref_oreTilemap=$"../TilemapOres"
+@onready var camera=$"../Camera2D"
 
 
 func _ready() -> void:

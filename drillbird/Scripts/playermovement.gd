@@ -107,6 +107,8 @@ func _physics_process(delta: float) -> void:
 	#skips player physics update if in shop
 	if GlobalVariables.playerStatus==GlobalVariables.playerStatusEnum.SHOP:
 		return
+	if GlobalVariables.playerStatus==GlobalVariables.playerStatusEnum.MENU:
+		return
 		
 	if state==States.PAUSE:
 		return
@@ -694,7 +696,9 @@ func _on_create_flower_timer_timeout() -> void:
 		ObjectSpawner.CreateNewFlowerFromGlobalPos(extrudedpoint+Vector2(0,-16))
 		
 	
-	
-	
-	
-	pass # Replace with function body.
+func SetPlayerHidden(hide:bool):
+	if hide:
+		hide()
+	else:
+
+		show()

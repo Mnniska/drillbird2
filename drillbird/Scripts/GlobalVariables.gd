@@ -7,7 +7,7 @@ var playerSpawnPos:Vector2
 enum playerActions{DRILL,JUMP,DROPORE,INTERACT}
 
 enum typeEnum{DRILL, INVENTORY, HEALTH, LIGHT}
-enum playerStatusEnum {DIG,SLEEP,SHOP,NEWDAY}
+enum playerStatusEnum {DIG,SLEEP,SHOP,NEWDAY,MENU}
 signal playerStatusChanged
 signal SetupComplete
 
