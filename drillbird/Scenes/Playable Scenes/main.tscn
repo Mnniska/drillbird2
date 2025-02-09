@@ -382,6 +382,7 @@ AIRJUMP_VELOCITY = -160
 z_index = 2
 position = Vector2(0, -77)
 process_callback = 0
+limit_top = -450
 position_smoothing_speed = 8.0
 script = ExtResource("15_sox0p")
 
@@ -598,7 +599,6 @@ position = Vector2(1423, 2601)
 texture = ExtResource("64_3kawd")
 
 [node name="PlayerSpawnLocations" type="Node2D" parent="."]
-visible = false
 
 [node name="OriginalSpawnPos" type="Sprite2D" parent="PlayerSpawnLocations"]
 position = Vector2(-777, 535)

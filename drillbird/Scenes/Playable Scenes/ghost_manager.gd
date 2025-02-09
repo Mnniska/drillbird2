@@ -1,8 +1,16 @@
 extends Node2D
+class_name ghost_manager
 var ghostRef
 var ghostInScene
 var ghostSpawned:bool=false
 @onready var player= $"../Player"
+
+#ghost spawning variables
+@export var minTimeBeforeGhostSpawns:float=0.2
+@export var maxTimeBeforeGhostSpawns:float=2
+var TimeBeforeGhostComes:float=minTimeBeforeGhostSpawns
+var ghostTimeCounter:float=0
+var ghostIsComing:bool=false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -14,15 +22,25 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 
+	if ghostIsComing:
+		ghostTimeCounter+=delta
+		if ghostTimeCounter>TimeBeforeGhostComes:
+			SpawnGhost()
+			ghostIsComing=false
 	pass
 	
 	
 func playerLightStatusChanged():
-	if ghostSpawned && GlobalVariables.playerLightStatus==GlobalVariables.playerLightStatusEnum.LIT_EXTERNALLY:
-		DespawnGhost()
+	if GlobalVariables.playerLightStatus==GlobalVariables.playerLightStatusEnum.LIT_EXTERNALLY:
+		ghostIsComing=false
+		pass
+		#DespawnGhost()
 	
 	if !ghostSpawned && GlobalVariables.playerLightStatus==GlobalVariables.playerLightStatusEnum.DARK:
-		SpawnGhost()
+		if !ghostIsComing:
+			ghostIsComing=true
+			TimeBeforeGhostComes=randf_range(minTimeBeforeGhostSpawns,maxTimeBeforeGhostSpawns)
+			
 		#spawn ghost
 	
 func SpawnGhost():
@@ -31,10 +49,10 @@ func SpawnGhost():
 	$"..".add_child(ghostInScene)
 	ghostInScene.position=player.global_position+Vector2(randi_range(-50,50),randi_range(130,200))
 	ghostInScene.NewHaunting(player)
+	ghostInScene.GiveParentReference(self)
 	
 	pass
 
 func DespawnGhost():
-	ghostInScene.Disappear()
 	ghostInScene=null
 	ghostSpawned=false
