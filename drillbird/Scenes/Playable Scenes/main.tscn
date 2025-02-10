@@ -599,6 +599,7 @@ position = Vector2(1423, 2601)
 texture = ExtResource("64_3kawd")
 
 [node name="PlayerSpawnLocations" type="Node2D" parent="."]
+visible = false
 
 [node name="OriginalSpawnPos" type="Sprite2D" parent="PlayerSpawnLocations"]
 position = Vector2(-777, 535)

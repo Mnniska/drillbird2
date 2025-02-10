@@ -29,7 +29,7 @@ func Setup():
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	
-	GlobalVariables.SetupComplete.connect(test)
+	GlobalVariables.SetupComplete.connect(UpdateEggSizeAtStartup)
 
 	pass # Replace with function body.
 
@@ -43,8 +43,9 @@ func SetBirdyVisible(visible:bool):
 	else:
 		birdie.hide()
 
-func test():
+func UpdateEggSizeAtStartup():
 	UpdateSizeBasedOnSaveData(false)
+	
 func UpdateSizeBasedOnSaveData(shouldLerp:bool):
 	
 	if shouldLerp && !isLerping:
