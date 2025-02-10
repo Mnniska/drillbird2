@@ -2,7 +2,7 @@ extends Node2D
 
 #handling the shop
 signal ShopClosed
-@onready var moneyUI=$"../CashHolder/cashNumber"
+@onready var moneyUI=HUD.HUD_cashText
 
 #add continue button to UI_Purchasables
 @export var UI_purchasables:Array[Node2D]
@@ -16,7 +16,9 @@ var currentSelection:int=0
 
 func _ready():
 	GlobalVariables.playerMoneyChange.connect(PlayerMoneyChanged)
+	GlobalVariables.SetupComplete.connect(InitializationComplete)
 	
+func InitializationComplete():
 	SetupShop()
 
 func PlayerMoneyChanged():

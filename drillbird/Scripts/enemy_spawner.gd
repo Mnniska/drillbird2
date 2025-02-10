@@ -7,7 +7,6 @@ extends Node2D
 
 @onready var oreTilemap:TileMapLayer=$"../TilemapOres"
 
-@export var oreRegions:Array[abstract_ore_region]
 @onready var OreAreas=$"../TilemapOres/OreRegions"
 @onready var tileDestroyer=$"../TileCrack"
 @onready var fragileBlockManager:block_fragile_manager=$Block_FragileManager
@@ -70,7 +69,7 @@ func GenerateObjectsAndEnemiesFromTilemap():
 		#Is it an enemy? If so, add it to the list of enemies to spawn
 		if NoSavedEnemies && !tile.get_custom_data("enemy_type")==0: #zero is default value, meaning this is not an enemy
 			var newEnemy=abstract_enemy.new()
-			newEnemy.type=tile.get_custom_data("enemy_type")
+			newEnemy.type=tile.get_custom_data("enemy_type")-1 #We put -1 here since the value for NO enemy in the EnvironmentTilemap is zero, but the enemy spawn list starts at zero
 			newEnemy.spawnLocation=tileLoc
 			newEnemy.dead=false
 			enemiesToSpawnList.append(newEnemy)
@@ -99,7 +98,7 @@ func GenerateObjectsAndEnemiesFromTilemap():
 			#todo paint tile with relevant ore
 			
 			#Set cell to use correct sprite
-			var terrainSourceIDs:Array[int]=[3,5,2,4] #This is the source ID derived from the oreder of tile atlases in the tilemap settings
+			var terrainSourceIDs:Array[int]=[3,5,2,4,9] #This is the source ID derived from the oreder of tile atlases in the tilemap settings
 
 			var tileTerrain=tile.get_custom_data("oreblock_terrain")
 			var sourceID=terrainSourceIDs[tileTerrain]
@@ -161,46 +160,6 @@ func GetRelevantOreRegion(tilePos:Vector2i):
 	
 	pass
 
-func GenerateObjectsFromTilemap():
-	var ObjectSpawnLocations = gameTilemap.get_used_cells()
-
-	for n in ObjectSpawnLocations.size():
-		var tile:TileData = gameTilemap.get_cell_tile_data(ObjectSpawnLocations[n])
-		var type=tile.get_custom_data("object_type")
-		if !type<=0:
-			
-			var object = load(potentialObjectStrings[type-1]) 
-			var node = object.instantiate()
-
-			var localSpawnPos= gameTilemap.map_to_local(ObjectSpawnLocations[n]) 			
-			
-			node.transform.origin = localSpawnPos
-			add_child(node)
-			
-			
-			pass
-	
-	pass
-
-func GenerateEnemySpawnsFromTilemap():
-	#Should only be done if there is no save data
-	#Creates a new abstract_enemy per spawn location and adds it to a list
-	enemiesToSpawnList.clear()
-	var enemySpawnLocations = gameTilemap.get_used_cells()
-
-	var index=0
-	for n in enemySpawnLocations:
-		var tile:TileData = gameTilemap.get_cell_tile_data(enemySpawnLocations[index])
-		
-		if !tile.get_custom_data("enemy_type")==0: #zero is default value, meaning this is not an enemy
-			var newEnemy=abstract_enemy.new()
-			newEnemy.type=tile.get_custom_data("enemy_type")
-			newEnemy.spawnLocation=enemySpawnLocations[index]
-			newEnemy.dead=false
-			enemiesToSpawnList.append(newEnemy)
-		index+=1
-			
-	return enemiesToSpawnList
 	
 
 func SpawnAllEnemies():
@@ -210,7 +169,7 @@ func SpawnAllEnemies():
 	var index=0
 	for n in enemiesToSpawnList:
 		
-		var enemy = load(potentialEnemyStrings[enemiesToSpawnList[index].type-1]) #The -1 is due to 0 acting as there being NO enemy
+		var enemy = load(potentialEnemyStrings[enemiesToSpawnList[index].type]) #
 		var node = enemy.instantiate()
 		spawnedEnemies.append(node)	
 

@@ -9,6 +9,7 @@ var animstate=""
 enum Directions {LEFT, RIGHT, UP, DOWN}
 enum States {IDLE, DRILLING, AIR, DEAD, DAMAGE, DEBUG_GHOST,PAUSE,FLOWER}
 var state = States.IDLE
+@export var collType:abstract_collidable
 
 var closeFlowers:Array[climb_flower]
 
@@ -50,6 +51,7 @@ var player_is_drilling_tile: bool = false:
 	set(value):
 		player_is_drilling_tile=value
 		signal_IsDrillingTileChanged.emit(player_is_drilling_tile)
+		GlobalVariables.PlayerIsDrillingTileChanged.emit(player_is_drilling_tile)
 var playerDrillingSolid:bool=false
 var drillDirection=Directions.RIGHT
 var HeldFlower:climb_flower=null
@@ -62,9 +64,9 @@ var HeldFlower:climb_flower=null
 
 @onready var raycast_drill = $RayCast2D
 @onready var debugLine= $DebugRaycastLine
-@onready var oreInventory = $"../Camera2D/InventoryHandler"
+@onready var oreInventory = HUD.HUD_InventoryManager
 @onready var particles=$DrillingParticles
-@onready var healthManager=$"../Camera2D/HealthUIHandler"
+@onready var healthManager=HUD.HUD_healthManager
 @onready var ObjectSpawner=$"../ObjectSpawner"
 
 func _ready() -> void:
@@ -104,6 +106,8 @@ func _physics_process(delta: float) -> void:
 		
 	#skips player physics update if in shop
 	if GlobalVariables.playerStatus==GlobalVariables.playerStatusEnum.SHOP:
+		return
+	if GlobalVariables.playerStatus==GlobalVariables.playerStatusEnum.MENU:
 		return
 		
 	if state==States.PAUSE:
@@ -692,7 +696,9 @@ func _on_create_flower_timer_timeout() -> void:
 		ObjectSpawner.CreateNewFlowerFromGlobalPos(extrudedpoint+Vector2(0,-16))
 		
 	
-	
-	
-	
-	pass # Replace with function body.
+func SetPlayerHidden(hide:bool):
+	if hide:
+		hide()
+	else:
+
+		show()

@@ -6,7 +6,8 @@ var textstring:String=""
 var currentSelection:int=0
 var Active:bool=false
 signal DebugActionRequested(action:String)
-
+var mainMenuShowing:bool=false
+var playerHidden:bool=false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	currentMenu=menu
@@ -109,18 +110,23 @@ func GenerateMenu():
 func ExecuteAction(action:String):
 	DebugActionRequested.emit(action)
 	
+	var inventory= HUD.HUD_InventoryManager
+	var health = HUD.HUD_healthManager
+	var light = HUD.HUD_lightBulbManager
+
+	
 	match action:
 		"inventory_upgrade_add":
 			var invEnum=GlobalVariables.typeEnum.INVENTORY
 			GlobalVariables.SetPlayerUpgradeLevel(invEnum,GlobalVariables.GetPlayerUpgradeLevel(invEnum)+1)
-			$"../InventoryHandler".UpdateInventoryPositions()
+			inventory.UpdateInventoryPositions()
 			pass
 		"inventory_upgrade_remove":
 			var invEnum=GlobalVariables.typeEnum.INVENTORY
 			if GlobalVariables.GetPlayerUpgradeLevel(invEnum)>0:
 				
 				GlobalVariables.SetPlayerUpgradeLevel(invEnum,GlobalVariables.GetPlayerUpgradeLevel(invEnum)-1)
-				$"../InventoryHandler".UpdateInventoryPositions()
+				inventory.UpdateInventoryPositions()
 		"drill_upgrade_add":
 			var drillEnum=GlobalVariables.typeEnum.DRILL
 			var target:int=GlobalVariables.GetPlayerUpgradeLevel(drillEnum)+1
@@ -132,23 +138,23 @@ func ExecuteAction(action:String):
 				
 				GlobalVariables.SetPlayerUpgradeLevel(drillEnum,target)
 		"health_refill":
-			$"../HealthUIHandler".RefillHealth()
+			health.RefillHealth()
 			pass
 		"health_hurt":
-			$"../HealthUIHandler".TakeDamage(1)
+			health.TakeDamage(1)
 			pass
 		"health_kill":
-			$"../HealthUIHandler".TakeDamage(20)
+			health.TakeDamage(20)
 			pass
 		"health_upgrade":
 			var healthE=GlobalVariables.typeEnum.HEALTH
 			var upgrade=GlobalVariables.GetPlayerUpgradeLevel(healthE)+1
 			GlobalVariables.SetPlayerUpgradeLevel(healthE,upgrade)
-			$"../HealthUIHandler".UpgradeHealth()
+			health.UpgradeHealth()
 		"light_refill":
-			$"../LightHandler".RefillLight()
+			light.RefillLight()
 		"light_deplete":
-			$"../LightHandler".DepleteLight()
+			light.DepleteLight()
 		
 		"light_upgrade_add":
 			var lightE=GlobalVariables.typeEnum.LIGHT
@@ -160,6 +166,26 @@ func ExecuteAction(action:String):
 		"reset_save_data":
 			$"../..".ResetSaveData()
 		
+		"toggleMenu":
+			mainMenuShowing=!mainMenuShowing
+			var mainmenu=HUD.MainMenu
+
+			
+			
+			if mainMenuShowing:
+				mainmenu.show()
+				HUD.SetHudVisible(false)
+			else:
+				mainmenu.hide()
+				HUD.SetHudVisible(true)
+		"togglePlayerHidden":
+			playerHidden=!playerHidden
+			
+			if playerHidden:
+				$"../../Player".hide()
+			else:
+				$"../../Player".show()
+
 
 			
 	pass

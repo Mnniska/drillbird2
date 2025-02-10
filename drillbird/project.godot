@@ -20,6 +20,7 @@ config/icon="res://Resources/icon.svg"
 GlobalTime="*res://Scripts/GlobalTime.gd"
 GlobalVariables="*res://Scripts/GlobalVariables.gd"
 SoundManager="*res://Scenes/sound_manager.tscn"
+HUD="*res://Scenes/UI/HUD.tscn"
 
 [display]
 
@@ -132,6 +133,7 @@ debug_tab={
 2d_physics/layer_8="FallBlocks"
 2d_physics/layer_9="Flower"
 2d_physics/layer_10="xp"
+2d_physics/layer_11="Lightsource"
 
 [physics]
 

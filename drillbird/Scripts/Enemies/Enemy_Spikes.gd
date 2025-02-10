@@ -1,5 +1,5 @@
 extends Node2D
-@export var enemyInfo:abstract_enemy=abstract_enemy.new()
+@export var enemyInfo:abstract_enemy
 @export var collType:abstract_collidable #MUST HAVE
 @onready var raycast=$RayCast2D
 @onready var tileDestroyer=$"../../TileCrack"

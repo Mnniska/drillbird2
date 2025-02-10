@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="abstract_terrain_info" load_steps=2 format=3 uid="uid://dad8p2cs7p05r"]
+
+[ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_terrain_info.gd" id="1_u4qf3"]
+
+[resource]
+script = ExtResource("1_u4qf3")
+terrainIdentifier = 4
+terrainHP = 8
+DestroyParticleColor = Color(0.627451, 0.188235, 0, 1)

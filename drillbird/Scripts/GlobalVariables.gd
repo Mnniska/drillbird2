@@ -1,12 +1,13 @@
 extends Node
-
+signal playerAction()
+signal PlayerIsDrillingTileChanged(answer:bool)
+var MainSceneReferenceConnector:main_scene_reference_connector
 var playerSpawnPos:Vector2
 
 enum playerActions{DRILL,JUMP,DROPORE,INTERACT}
-signal playerAction(action:playerActions)
 
 enum typeEnum{DRILL, INVENTORY, HEALTH, LIGHT}
-enum playerStatusEnum {DIG,SLEEP,SHOP,NEWDAY}
+enum playerStatusEnum {DIG,SLEEP,SHOP,NEWDAY,MENU}
 signal playerStatusChanged
 signal SetupComplete
 
@@ -39,7 +40,7 @@ var playerMoney:int=0:
 var totalExperienceGained:int=0 #set at startup to loaded in value
 var playerHealth:int=2 #This should be loaded in depending on current upgrade lvl in future
 
-var currentDay:int=0
+var currentDay:int=1
 
 
 #LIGHT

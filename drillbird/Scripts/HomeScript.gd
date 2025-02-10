@@ -1,21 +1,24 @@
 extends Node2D
 @onready var SellButton= $InteractButton_depositOres
 @onready var RestButton = $InteractButton_EndDay
-@onready var inventory = $"../Camera2D/InventoryHandler"
-@onready var seller:inventory_handler=$"../Camera2D/InventoryHandler"
-@onready var moneyUI=$"../Camera2D/CashHolder/cashNumber"
+@onready var inventory = HUD.HUD_InventoryManager
+@onready var moneyUI=HUD.HUD_cashText
 @onready var animSleep=$Eggs/BirdySleepPositions/birdySleep
 @onready var Player=$"../Player"
 @onready var Shop = $"../Camera2D/ShopHandler"
-@onready var LightHandler=$"../Camera2D/LightHandler"
+@onready var LightHandler=HUD.HUD_lightBulbManager
 @onready var Camera=$"../Camera2D"
 @onready var CameraLerpPosition=$CameraLerpPosition
-@onready var HealthHandler=$"../Camera2D/HealthUIHandler"
+@onready var HealthHandler=HUD.HUD_healthManager
 @onready var EggHandler =$Eggs
 @onready var OreSellVisualizer=$OreSellParent
+
+
+
 var targetEggXP:int=0
 var xpGained:int=0
 var oldEggXP:int=0
+
 
 @export var holdTime:float=1
 var holdCounter:float=0
@@ -27,6 +30,7 @@ var ambienceSound:AudioStreamPlayer2D
 enum states{IDLE,SELL,RESTPOSSIBLE,SLEEP,SELLING}
 var state:states
 
+	
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	animSleep.hide()
@@ -63,14 +67,11 @@ func ProgressGoToBed(delta:float,active:bool):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 
-	if state==states.IDLE or state==states.SLEEP:
-		UpdateButtons()
-		return
 	
 	if state==states.SELL:
 		if Input.is_action_just_pressed("interact"):
-			SellOres()
-	
+			pass
+			#This is done via a collider now 	
 	if state==states.RESTPOSSIBLE:
 		
 		if Input.is_action_pressed("up"):
@@ -78,20 +79,24 @@ func _process(delta: float) -> void:
 		else:
 			ProgressGoToBed(delta,false)
 	
-	CheckState()
 	UpdateButtons()
 	pass
 
 func CheckState():
 	
-	if state==states.SLEEP:
+	if state==states.SLEEP or state==states.SELLING:
+		UpdateButtons()
 		return
+
+	if $NestCollider.get_overlapping_bodies().size()>0:
 	
-	if inventory.GetIsThereAnythingSellable() && !state==states.SELLING:
-		state=states.SELL
-		
-	elif state!=states.SELLING:
-		state=states.RESTPOSSIBLE
+		if inventory.GetIsThereAnythingSellable():
+			state=states.SELL
+			
+		else:
+			state=states.RESTPOSSIBLE
+	else:
+		state=states.IDLE
 
 func UpdateButtons():
 	match state:
@@ -112,34 +117,35 @@ func UpdateButtons():
 			RestButton.hide()
 			SellButton.hide()
 
-func SellOres():
-	state=states.SELLING
-	UpdateButtons()
+#SELLING ORES
+func _on_sell_ore_collider_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
+	SellOre(body)
 	
-	#OresellVisualizer is a purely visual spectactle to sell the player on selling
-	OreSellVisualizer.SellTheseOres(seller.GetOresInInventory(),Player)
-	var moneyAmount=seller.SellOres()
-	
-	oldEggXP=GlobalVariables.totalExperienceGained
-	
-	GlobalVariables.GivePlayerMoney(moneyAmount)
-	
-	#When XP orb collides with home, it will be destroyed and egg size will be updated acc to progress towards targetXP
-	xpGained=0
-	targetEggXP = moneyAmount*OreSellVisualizer.eggXPGainVisualMultiplier
-	
-	#moneyUI.text=str(GlobalVariables.playerMoney)+"xp"
-	print_debug("Player now has "+str(GlobalVariables.playerMoney)+" money!")
-	#EggHandler.UpdateSize()
 
-func SellOre(ore:abstract_ore):
-	GlobalVariables.GivePlayerMoney( ore.value)
+func SellOre(_ore:Node2D):
+	var oreType:abstract_ore=_ore.GetOre()
+	GlobalVariables.GivePlayerMoney( oreType.value)
 	moneyUI.text=str(GlobalVariables.playerMoney)+"xp"
 	print_debug("Player now has "+str(GlobalVariables.playerMoney)+" money!")
-	EggHandler.UpdateSize()
 	
-	pass
+	OreSellVisualizer.SellThisOre(oreType,_ore)
+	_ore.queue_free()
+	get_tree().create_timer(2).timeout.connect(EggHandler.LerpToCurrentXP)
+	$SellingOreTimer.stop()
+	$SellingOreTimer.start()
+	state=states.SELLING
+	
+	
+func _on_selling_ore_timer_timeout() -> void:
+	state=states.IDLE
+	CheckState()
 
+func MainMenu_SetupSleepIdle():
+	
+	animSleep.animation="asleep"
+	animSleep.play()
+	animSleep.show()
+	
 func GoToBed():
 	GlobalVariables.playerStatus=GlobalVariables.playerStatusEnum.SHOP
 	state=states.SLEEP
@@ -156,9 +162,11 @@ func GoToBed():
 	
 	$cutsceneTimer.start()
 
-func WakeUp():
-	GlobalVariables.currentDay+=1
-	$"..".SaveGame()
+func WakeUp(saveGame:bool):
+	
+	if saveGame:
+		GlobalVariables.currentDay+=1
+		$"..".SaveGame()
 	justWokeUp=true
 	
 	
@@ -175,7 +183,7 @@ func ReplendishStats():
 	
 func Respawn():
 	ReplendishStats()
-	WakeUp()#temporary - will do a custom one later
+	WakeUp(true)#temporary - will do a custom one later
 	Player.state=Player.States.IDLE
 	
 	pass
@@ -186,6 +194,8 @@ func IsPlayerInCollider():
 	pass
 
 func _on_nest_collider_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
+	
+	
 	CheckState()
 	$JustWokeUpTimer.stop()
 	pass # Replace with function body.
@@ -193,8 +203,7 @@ func _on_nest_collider_body_shape_entered(body_rid: RID, body: Node2D, body_shap
 
 func _on_nest_collider_body_shape_exited(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
 	
-	if state!=states.SELLING:
-		state=states.IDLE
+	CheckState()
 	$JustWokeUpTimer.start()
 	UpdateButtons()
 
@@ -202,6 +211,7 @@ func _on_nest_collider_body_shape_exited(body_rid: RID, body: Node2D, body_shape
 
 func _on_just_woke_up_timer_timeout() -> void:
 	justWokeUp=false
+	CheckState()
 
 	pass # Replace with function body.
 
@@ -220,28 +230,5 @@ func _on_cutscene_timer_timeout() -> void:
 
 
 func _on_shop_handler_shop_closed() -> void:
-	WakeUp()	
+	WakeUp(true)	
 	pass # Replace with function body.
-
-
-func OreEnteredCollider(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
-	body.MoveTowardsHome(self.global_position)
-	
-	pass # Replace with function body.
-
-
-func _on_ore_xp_collider_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
-	if !area.get_parent().toEgg:
-		return
-	
-	area.get_parent().queue_free()
-	EggHandler.UpdateSizeBasedOnSaveData(true)
-
-	
-func SellingComplete():
-	state=states.IDLE
-	if IsPlayerInCollider():
-		if inventory.GetIsThereAnythingSellable():
-			state=states.SELL
-		else:
-			state=states.RESTPOSSIBLE

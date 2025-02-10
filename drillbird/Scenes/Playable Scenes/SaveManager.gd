@@ -47,6 +47,7 @@ func SaveGame():
 	PlayerData.money=GlobalVariables.playerMoney
 	PlayerData.totalMoneyGained=GlobalVariables.totalExperienceGained
 	PlayerData.playerSpawnPosition = GlobalVariables.playerSpawnPos
+	PlayerData.currentDay=GlobalVariables.currentDay
 	SaveEnvironment()
 	SaveEnemies()
 	SaveLeftoverOres()
@@ -123,6 +124,7 @@ func SetGlobalVariablesToLoadedGame():
 	GlobalVariables.playerHealth=PlayerData.health
 	GlobalVariables.playerMoney=PlayerData.money
 	GlobalVariables.totalExperienceGained=PlayerData.totalMoneyGained
+	GlobalVariables.currentDay=PlayerData.currentDay
 	
 	if PlayerData.playerSpawnPosition==Vector2(0,0):
 		PlayerData.playerSpawnPosition=OriginalSpawnPos.global_position

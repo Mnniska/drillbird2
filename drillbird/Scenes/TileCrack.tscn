@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://0iy1qmgd0p6y"]
+[gd_scene load_steps=19 format=3 uid="uid://0iy1qmgd0p6y"]
 
 [ext_resource type="Script" path="res://Scripts/crack_script.gd" id="1_biwd4"]
 [ext_resource type="Texture2D" uid="uid://cw1o82vk05uwm" path="res://Art/effects/crack1.png" id="2_d02o3"]
@@ -13,6 +13,7 @@
 [ext_resource type="Resource" uid="uid://cq6ru2d4e7bgd" path="res://Resources/terrainInfo_dirt_1.tres" id="8_outtq"]
 [ext_resource type="Resource" uid="uid://bm6bqv8tss1g4" path="res://Resources/terrainInfo_dirt_2.tres" id="9_il5dt"]
 [ext_resource type="Resource" uid="uid://csxmptmtlvu0t" path="res://Resources/terrainInfo_fragile.tres" id="11_3om07"]
+[ext_resource type="Resource" uid="uid://dad8p2cs7p05r" path="res://Resources/terrainInfo_dirt_3.tres" id="12_34hsy"]
 [ext_resource type="Resource" uid="uid://dro3yl4h7bhtf" path="res://Audio/SoundResources/PLAYER_DRILL_AIR.tres" id="14_yqonh"]
 [ext_resource type="Resource" uid="uid://cxtwt0066yupo" path="res://Audio/SoundResources/PLAYER_DRILL_BREAKABLE.tres" id="15_wcpsg"]
 [ext_resource type="Resource" uid="uid://efo8o33hv6ip" path="res://Audio/SoundResources/PLAYER_DRILL_SOLID.tres" id="16_k0yq7"]
@@ -23,7 +24,7 @@ radius = 6.0
 [node name="TileCrack" type="Node2D"]
 script = ExtResource("1_biwd4")
 crack_sprites = Array[Texture]([ExtResource("2_d02o3"), ExtResource("3_ikpfl"), ExtResource("4_j73nb"), ExtResource("5_lq347")])
-GameTerrains = Array[ExtResource("6_0grno")]([ExtResource("8_outtq"), ExtResource("9_il5dt"), ExtResource("7_gctc3"), ExtResource("6_yu0wu"), ExtResource("11_3om07")])
+GameTerrains = Array[ExtResource("6_0grno")]([ExtResource("8_outtq"), ExtResource("9_il5dt"), ExtResource("7_gctc3"), ExtResource("6_yu0wu"), ExtResource("11_3om07"), ExtResource("12_34hsy")])
 
 [node name="cracksprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_d02o3")

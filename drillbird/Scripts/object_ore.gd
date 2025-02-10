@@ -17,8 +17,8 @@ func GetCollType():
 	return ObjectInfo
 
 func GetOre():
-	if abstract_ore:
-		return abstract_ore
+	if oreType!=null:
+		return oreType
 	else:
 		push_warning("Tried to access a null oretype")
 

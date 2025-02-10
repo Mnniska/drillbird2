@@ -1,12 +1,22 @@
 extends Node2D
 @onready var button=$Button_Continue
 var active:bool=false
-@onready var home = $"../../Home"
-@onready var camera = $".."
+var home
+var camera 
 @export var cameraOffset:int=-60
 
+
+
+func Setup():
+	home = GlobalVariables.MainSceneReferenceConnector.ref_home
+	camera = GlobalVariables.MainSceneReferenceConnector.ref_camera
+	
+	if home == null or camera==null:
+		push_error("Could not connect camera or home reference using mainscenerefconnector in UI_DEATH script")
+	
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	GlobalVariables.SetupComplete.connect(Setup)
 	hide()
 	pass # Replace with function body.
 
