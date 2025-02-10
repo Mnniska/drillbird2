@@ -168,19 +168,16 @@ func ExecuteAction(action:String):
 		
 		"toggleMenu":
 			mainMenuShowing=!mainMenuShowing
-			var mainmenu=$"../MainMenu"
-			var topUI=$"../topUI"
-			var bottomUI=$"../bottomUI"
+			var mainmenu=HUD.MainMenu
+
 			
 			
 			if mainMenuShowing:
 				mainmenu.show()
-				topUI.hide()
-				bottomUI.hide()
+				HUD.SetHudVisible(false)
 			else:
 				mainmenu.hide()
-				topUI.show()
-				bottomUI.show()
+				HUD.SetHudVisible(true)
 		"togglePlayerHidden":
 			playerHidden=!playerHidden
 			
