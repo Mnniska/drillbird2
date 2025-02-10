@@ -33,7 +33,6 @@ func HauntObject(delta:float):
 	if distanceToPlayer<slowestSpeedDist:
 		speed=MINSPEED
 
-	$Label.text=str(distanceToPlayer)
 
 	var s=speed*delta
 	#position=hauntedObject.position
@@ -91,10 +90,8 @@ func _process(delta: float) -> void:
 func _on_player_checker_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
 	if body==$".":
 		return
-	var coll:abstract_collidable=body.collType
-	
-	if coll.type==abstract_collidable.types.PLAYER:
-		body.DealDamage(1)
+
+	body.DealDamage(1)
 	
 
 	

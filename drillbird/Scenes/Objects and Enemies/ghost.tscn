@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dufrjqla7um7r" path="res://Art/characters/Ghost/ghost_idle3.png" id="4_7jbq0"]
 [ext_resource type="Texture2D" uid="uid://dg1qn1g0kvssq" path="res://Art/characters/Ghost/ghost_idle4.png" id="5_sik3a"]
 [ext_resource type="Texture2D" uid="uid://ytksgvcq8cy6" path="res://Art/characters/Ghost/ghost_idle5.png" id="6_tefmn"]
-[ext_resource type="AudioStream" uid="uid://d0eo35f1t7kdx" path="res://Audio/MUSIC/mus_darkness.wav" id="8_7ui1h"]
+[ext_resource type="AudioStream" uid="uid://d0eo35f1t7kdx" path="res://Audio/Music/mus_darkness.wav" id="8_7ui1h"]
 [ext_resource type="Theme" uid="uid://bfr5y4lo7m1ux" path="res://Resources/Fonts/fontTheme.tres" id="9_scd0l"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_r11fk"]
@@ -42,7 +42,7 @@ radius = 15.0333
 radius = 26.0
 
 [node name="Ghost" type="CharacterBody2D"]
-collision_layer = 8
+collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_0nsmt")
 MINSPEED = 30.0
@@ -88,7 +88,6 @@ offset_top = -31.0
 offset_right = 35.0
 offset_bottom = -8.0
 theme = ExtResource("9_scd0l")
-text = "55"
 
 [connection signal="body_shape_entered" from="PlayerChecker" to="." method="_on_player_checker_body_shape_entered"]
 [connection signal="area_shape_entered" from="LightChecker" to="." method="_on_light_checker_area_shape_entered"]
