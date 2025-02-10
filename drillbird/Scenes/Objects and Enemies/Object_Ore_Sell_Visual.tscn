@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://6am1mlxvpghk"]
+[gd_scene load_steps=18 format=3 uid="uid://dp47le22dx8kg"]
 
 [ext_resource type="Script" path="res://Scripts/object_ore.gd" id="1_eo3rh"]
 [ext_resource type="Resource" uid="uid://ns6ggxikg7cb" path="res://Resources/collidable_ore.tres" id="2_36xhf"]

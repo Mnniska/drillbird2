@@ -1,18 +1,83 @@
-[gd_scene load_steps=4 format=3 uid="uid://cdnefjyqi8nyx"]
+[gd_scene load_steps=16 format=3 uid="uid://cdnefjyqi8nyx"]
 
 [ext_resource type="Script" path="res://Scripts/UX and UI/ore_sell_visualizer.gd" id="1_wjyf5"]
 [ext_resource type="Texture2D" uid="uid://cwvy2kg6pkkfl" path="res://Art/Collectibles/ore_1_pebble.png" id="2_nxrvr"]
+[ext_resource type="Texture2D" uid="uid://kkpapgq3d635" path="res://Art/effects/oreSellEffect/oreSellEffect1.png" id="3_i08cg"]
+[ext_resource type="Texture2D" uid="uid://dmqxowc7rtcvl" path="res://Art/effects/oreSellEffect/oreSellEffect2.png" id="4_i1yr7"]
+[ext_resource type="Texture2D" uid="uid://budyhoortuucu" path="res://Art/effects/oreSellEffect/oreSellEffect3.png" id="5_ws8jx"]
+[ext_resource type="Texture2D" uid="uid://bc4iqhx5qbomv" path="res://Art/effects/oreSellEffect/oreSellEffect4.png" id="6_ajido"]
+[ext_resource type="Texture2D" uid="uid://baq3oegq2obbw" path="res://Art/effects/oreSellEffect/oreSellEffect5.png" id="7_dbhk3"]
+[ext_resource type="Texture2D" uid="uid://bmqsk8svnjkfy" path="res://Art/effects/oreSellEffect/oreSellEffect6.png" id="8_2ba2s"]
+[ext_resource type="Texture2D" uid="uid://dxbawmxbdcacf" path="res://Art/effects/oreSellEffect/oreSellEffect7.png" id="9_41wn6"]
+[ext_resource type="Texture2D" uid="uid://evhws1t2ifbv" path="res://Art/effects/oreSellEffect/oreSellEffect8.png" id="10_0s3f7"]
+[ext_resource type="Texture2D" uid="uid://d3402rjpk7hva" path="res://Art/effects/oreSellEffect/oreSellEffect9.png" id="11_o1rxl"]
+[ext_resource type="Texture2D" uid="uid://c6nkgpbjhn3cf" path="res://Art/effects/oreSellEffect/oreSellEffect10.png" id="12_2du5a"]
+[ext_resource type="Texture2D" uid="uid://pesbw684vt75" path="res://Art/effects/oreSellEffect/oreSellEffect11.png" id="13_f540e"]
+[ext_resource type="Texture2D" uid="uid://dhrvhcsf7e45a" path="res://Art/effects/empty.png" id="14_5nq2n"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ohfw2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_5nq2n")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_i08cg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_i1yr7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ws8jx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ajido")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_dbhk3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_2ba2s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_41wn6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_0s3f7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_o1rxl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_2du5a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_f540e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_5nq2n")
+}],
+"loop": false,
+"name": &"sell",
+"speed": 12.0
+}]
 
 [node name="OreSellVisualizer" type="Node2D"]
+z_index = 2
 script = ExtResource("1_wjyf5")
-
-[node name="destroyAnim" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_ohfw2")
 
 [node name="oreSprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_nxrvr")
+
+[node name="destroyAnim" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ohfw2")
+animation = &"idle"
+autoplay = "idle"
 
 [node name="Label" type="Label" parent="."]
 offset_right = 40.0

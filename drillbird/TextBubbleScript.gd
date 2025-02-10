@@ -13,6 +13,7 @@ var centerE="[/center]"
 @export var textToShow:String="defaultText"
 var DestroyAfterFadingOut:bool=true
 var UseTypewriteEffect:bool=true
+var MoveUp:bool=false
 var alpha=1
 
 
@@ -24,6 +25,10 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	
+	if MoveUp:
+		global_position+=Vector2(0,-10*delta)
+	
 	pass
 
 func ShowText(_txt:String):
