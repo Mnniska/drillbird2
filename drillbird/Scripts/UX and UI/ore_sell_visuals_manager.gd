@@ -82,6 +82,6 @@ func SellThisOre(ore:abstract_ore,_oreBodyReference:Node2D):
 	add_child(oreSellVisualizer)
 	print_debug(str(index))
 	var timetoSell:float=0.2
-	oreSellVisualizer.Setup(ore,chosenLocation.global_position,timetoSell+(index*timetoSell))
+	oreSellVisualizer.Setup(ore,chosenLocation.global_position,1+(index*timetoSell))
 	oreSellVisualizer.global_position=_oreBodyReference.global_position
 	

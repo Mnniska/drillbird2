@@ -85,6 +85,7 @@ func _process(delta: float) -> void:
 func CheckState():
 	
 	if state==states.SLEEP or state==states.SELLING:
+		UpdateButtons()
 		return
 
 	if $NestCollider.get_overlapping_bodies().size()>0:
