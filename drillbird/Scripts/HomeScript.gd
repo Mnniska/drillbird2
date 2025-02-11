@@ -12,6 +12,7 @@ extends Node2D
 @onready var HealthHandler=HUD.HUD_healthManager
 @onready var EggHandler:egg_script =$Eggs
 @onready var OreSellVisualizer=$OreSellParent
+@onready var TextBubble=preload("res://Scenes/UI/text_bubble.tscn")
 
 var oresBeingSold:int=0
 
@@ -119,8 +120,15 @@ func _on_sell_ore_collider_body_shape_entered(body_rid: RID, body: Node2D, body_
 	
 
 func SellOre(_ore:Node2D):
-	oresBeingSold+=1
+	
 	var oreType:abstract_ore=_ore.GetOre()
+	
+	if oreType.ID==10:
+		HeartEnteredCollider(_ore)
+		return
+		pass
+	
+	oresBeingSold+=1
 	GlobalVariables.GivePlayerMoney( oreType.value)
 	moneyUI.text=str(GlobalVariables.playerMoney)+"xp"
 	print_debug("Player now has "+str(GlobalVariables.playerMoney)+" money!")
@@ -129,6 +137,25 @@ func SellOre(_ore:Node2D):
 	visualizer.finishedSelling.connect(OreFinishedSelling)
 	_ore.queue_free()
 	state=states.SELLING
+
+func HeartEnteredCollider(_heart:Node2D):
+	
+	if EggHandler.eggState==EggHandler.eggStates.FINALFORM_NO_HEART:
+		EggHandler.TransitionToFinalFormWithHeart()
+		print_debug("Got the heart and I was WAITING FOR IT")
+	
+	if EggHandler.eggState==EggHandler.eggStates.GROWING:
+		var node:text_bubble=TextBubble.instantiate()
+		add_child(node)
+		node.position=OreSellVisualizer.position
+		node.Setup(abstract_textEffect.effectEnum.WAVE,text_bubble.behaviourEnum.FADE)
+		node.ShowText("I'm not ready yet..")
+	
+	
+	if EggHandler.eggState==EggHandler.eggStates.FINALFORM_HEART:
+		push_error("Error occured in HomeScript - have transitioned into FInalFormHeart but there is an additional heart")
+	
+	pass
 
 func OreFinishedSelling(amount:int):
 	oresBeingSold-=1

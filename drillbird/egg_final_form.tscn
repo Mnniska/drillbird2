@@ -1,16 +1,25 @@
-[gd_scene load_steps=25 format=3 uid="uid://uk01ajvakw2b"]
+[gd_scene load_steps=34 format=3 uid="uid://uk01ajvakw2b"]
 
 [ext_resource type="Script" path="res://Scripts/egg_final_form.gd" id="1_fasbe"]
 [ext_resource type="Texture2D" uid="uid://bbqb5jjiqxbtc" path="res://Art/environment/Home/FinalForm/egg_finalForm.png" id="2_06bq8"]
 [ext_resource type="Texture2D" uid="uid://bi2hexyd84ebw" path="res://Art/environment/Home/egg_biggest.png" id="3_o6wnq"]
+[ext_resource type="Texture2D" uid="uid://d1r1mpddbnskb" path="res://Art/environment/Home/FinalForm/egg_finalform_HEART_idle1.png" id="4_6tmc2"]
 [ext_resource type="Texture2D" uid="uid://btrum4xti3i41" path="res://Art/environment/Home/FinalForm/egg_finalForm_transition2.png" id="4_6wm3r"]
 [ext_resource type="Texture2D" uid="uid://cttep5rpxs4so" path="res://Art/environment/Home/FinalForm/egg_finalForm_transition3.png" id="5_bg2t3"]
+[ext_resource type="Texture2D" uid="uid://ptcufn4v6dfj" path="res://Art/environment/Home/FinalForm/egg_finalform_HEART_idle2.png" id="5_wvvcx"]
 [ext_resource type="Texture2D" uid="uid://bwhjaxvrf5c7f" path="res://Art/environment/Home/FinalForm/egg_finalForm_transition4.png" id="6_8o5ct"]
+[ext_resource type="Texture2D" uid="uid://cgntjfimmipod" path="res://Art/environment/Home/FinalForm/egg_finalform_HEART_idle3.png" id="6_642i4"]
 [ext_resource type="Texture2D" uid="uid://u2yjkvnyvtu3" path="res://Art/environment/Home/FinalForm/egg_finalForm_transition5.png" id="7_gweab"]
+[ext_resource type="Texture2D" uid="uid://blfpfv6mrwgiu" path="res://Art/environment/Home/FinalForm/egg_finalform_HEART_idle4.png" id="7_kjlo7"]
+[ext_resource type="Texture2D" uid="uid://cc8p3upo800dh" path="res://Art/environment/Home/FinalForm/egg_finalform_HEART_idle5.png" id="8_nmucm"]
 [ext_resource type="Texture2D" uid="uid://e8wl0g41xpcw" path="res://Art/environment/Home/FinalForm/egg_finalForm_transition6.png" id="8_s146e"]
 [ext_resource type="Texture2D" uid="uid://demu8cw1mimlk" path="res://Art/environment/Home/FinalForm/egg_finalForm_transition7.png" id="9_cc65j"]
+[ext_resource type="Texture2D" uid="uid://b8g2eiqeymgva" path="res://Art/environment/Home/FinalForm/egg_finalform_HEART_idle6.png" id="9_gwiv7"]
+[ext_resource type="Texture2D" uid="uid://cv8vlayvmvl4w" path="res://Art/environment/Home/FinalForm/egg_finalform_HEART_idle7.png" id="10_36f5r"]
 [ext_resource type="Texture2D" uid="uid://daejhnlt48clq" path="res://Art/environment/Home/FinalForm/egg_finalForm_transition8.png" id="10_s1aud"]
+[ext_resource type="Texture2D" uid="uid://w4vmity3joi" path="res://Art/environment/Home/FinalForm/egg_finalform_HEART_idle8.png" id="11_f1w41"]
 [ext_resource type="Texture2D" uid="uid://dnnigdu6s3hii" path="res://Art/environment/Home/FinalForm/egg_finalForm_transition9.png" id="11_uch10"]
+[ext_resource type="Texture2D" uid="uid://hchxf7d3yeux" path="res://Art/environment/Home/FinalForm/egg_finalform_HEART_idle9.png" id="12_raexh"]
 [ext_resource type="Texture2D" uid="uid://cj38s0ys377ye" path="res://Art/environment/Home/FinalForm/egg_finalForm_transition10.png" id="12_yow1p"]
 [ext_resource type="Texture2D" uid="uid://br8gwyhhvid5a" path="res://Art/environment/Home/FinalForm/egg_finalForm_transition11.png" id="13_gjun5"]
 [ext_resource type="Texture2D" uid="uid://bgjppl8wp66me" path="res://Art/environment/Home/FinalForm/egg_finalForm_transition12.png" id="14_k8ibm"]
@@ -41,6 +50,38 @@ animations = [{
 "loop": true,
 "name": &"final_form_idle",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 8.0,
+"texture": ExtResource("4_6tmc2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_wvvcx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_642i4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_kjlo7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_nmucm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_gwiv7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_36f5r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_f1w41")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_raexh")
+}],
+"loop": true,
+"name": &"final_form_with_heart_idle",
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -126,5 +167,6 @@ script = ExtResource("1_fasbe")
 z_index = 1
 position = Vector2(-2, -40)
 sprite_frames = SubResource("SpriteFrames_dcmve")
-animation = &"before_final_form"
-autoplay = "final_form_idle"
+animation = &"final_form_with_heart_idle"
+autoplay = "final_form_with_heart_idle"
+frame_progress = 0.82042

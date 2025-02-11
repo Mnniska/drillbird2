@@ -6,6 +6,9 @@ var shakeAmount:float=2
 @onready var originalPosition:Vector2=self.position
 @onready var animator=$AnimatedSprite2D
 
+enum finalFormStates{FINAL_INACTIVE,FINAL_HEARTLESS,FINAL_HEART,FINAL_HATCHING}
+var finalFormState:finalFormStates=finalFormStates.FINAL_HEARTLESS
+
 func _ready() -> void:
 	SetActive(true)
 	
@@ -17,6 +20,27 @@ func _process(delta: float) -> void:
 	if isShaking:
 		position=originalPosition+Vector2(randf_range(-shakeAmount,shakeAmount),0)
 
+func SetState(_state:finalFormStates):
+	finalFormState=_state
+
+	match finalFormState:
+		finalFormStates.FINAL_INACTIVE:
+			hide()
+			pass
+		finalFormStates.FINAL_HEARTLESS:
+			show()
+			animator.animation="final_form_idle"
+
+			pass
+		finalFormStates.FINAL_HEART:
+			animator.animation="final_form_with_heart_idle"
+
+			show()
+			pass
+		finalFormStates.FINAL_HATCHING:
+			show()
+			pass
+			
 func SetActive(active:bool):
 	isActive=active
 	
@@ -38,6 +62,9 @@ func TransitionToFinalForm():
 	
 	pass
 
-func ActivateFinalCutscene():
-	
+func RecieveHeartCutscene():
+	#TODO: Final form with heart transition
+	finalFormState=finalFormStates.FINAL_HEART
+	animator.animation="final_form_with_heart_idle"
+	animator.play()
 	pass
