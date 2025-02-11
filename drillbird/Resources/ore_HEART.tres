@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="abstract_ore" load_steps=3 format=3 uid="uid://biejw6c2k7wry"]
+
+[ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_ore.gd" id="1_eri5w"]
+[ext_resource type="Texture2D" uid="uid://d3l8icmbqa1gu" path="res://Art/Collectibles/ore_heart.png" id="2_rsehs"]
+
+[resource]
+script = ExtResource("1_eri5w")
+ID = 10
+value = 100
+texture = ExtResource("2_rsehs")
+name = "FinalHeart"
+stackSize = 1
+AtlasCoords = Vector2i(0, 0)

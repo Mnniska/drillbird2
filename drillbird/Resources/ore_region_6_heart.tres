@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="abstract_ore_region" load_steps=4 format=3 uid="uid://d3ua4hhbkylqy"]
+
+[ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_ore.gd" id="1_satil"]
+[ext_resource type="Resource" uid="uid://biejw6c2k7wry" path="res://Resources/ore_HEART.tres" id="2_fqa7s"]
+[ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_ore_region.gd" id="4_syecq"]
+
+[resource]
+script = ExtResource("4_syecq")
+potentialOres = Array[ExtResource("1_satil")]([ExtResource("2_fqa7s")])
+spawnChances = Array[float]([1.0])
+oreRegionID = 6
