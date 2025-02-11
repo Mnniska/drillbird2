@@ -46,16 +46,16 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("3_o6wnq")
 }, {
-"duration": 1.0,
+"duration": 4.0,
 "texture": ExtResource("4_6wm3r")
 }, {
-"duration": 1.0,
+"duration": 4.0,
 "texture": ExtResource("5_bg2t3")
 }, {
-"duration": 1.0,
+"duration": 4.0,
 "texture": ExtResource("6_8o5ct")
 }, {
-"duration": 1.0,
+"duration": 4.0,
 "texture": ExtResource("7_gweab")
 }, {
 "duration": 10.0,
@@ -125,5 +125,5 @@ script = ExtResource("1_fasbe")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-2, -40)
 sprite_frames = SubResource("SpriteFrames_dcmve")
-animation = &"hatch"
-autoplay = "before_final_form"
+animation = &"before_final_form"
+autoplay = "final_form_idle"

@@ -3,6 +3,7 @@ signal playerAction()
 signal PlayerIsDrillingTileChanged(answer:bool)
 var MainSceneReferenceConnector:main_scene_reference_connector
 var playerSpawnPos:Vector2
+var eggState:int=0
 
 enum playerActions{DRILL,JUMP,DROPORE,INTERACT}
 

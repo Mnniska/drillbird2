@@ -1,8 +1,11 @@
 extends Node2D
 
+
 #When getitng ores -> Check how much progress to state and SCALE the egg 
 #up to target as one gets closer to state. When entering next state, switch sprite
 
+enum eggStates{NOTHING,GROWING,FINALFORM_NO_HEART,FINALFORM_HEART,FINALCUTSCENE}
+var eggState=eggStates.GROWING
 
 #How much experience does each state require to go to next? 
 @export var ExperienceRequirements:Array[int]
@@ -10,70 +13,113 @@ extends Node2D
 @export var Eggs:Array[Node2D]
 @export var sleepPositions:Array[Node2D]
 @onready var birdie=$BirdySleepPositions/birdySleep
+@onready var finalFormEgg:egg_final_form=$Egg_FinalForm
+
+var shakeTimer:float=0
+var originalPos:Vector2=self.position
+var shaking:bool=false
+
+signal signal_OneShotIsBiggestSize
+var isBiggestSize:bool=false:
+	get: return isBiggestSize
+	set(value):
+		if value && !isBiggestSize:
+			signal_OneShotIsBiggestSize.emit()
+		isBiggestSize=value
 
 var isLerping:bool=false
 var oldXP:int=0
 @export var lerptime:float=1
+var lerpTimeCounter:float=0
 
 var experienceGained:int=0
 
 #0 is smallest, 1 small, 2 medium, 3 BIGGEST, 4 hatched 
 var state:int=0
-
 #Determines how close the egg is to its next state
 var progress:float=0 
 
 func Setup():
-	pass
+	
+	eggState=GlobalVariables.eggState
+	SetEggState(eggState)
+	
+	#TODO: Egg state should initially be EMPTY and change to growing after the egg spawning cutscene
+	if eggState==eggStates.GROWING:
+		UpdateSizeBasedOnSaveData()
+	
+	
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	
-	GlobalVariables.SetupComplete.connect(UpdateEggSizeAtStartup)
+	GlobalVariables.SetupComplete.connect(Setup)	
+
 
 	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 
+func SetEggState(_state:eggStates):
+	eggState=_state
+	match eggState:
+		eggStates.NOTHING:
+			hide()
+			finalFormEgg.SetActive(false)
+			pass
+		eggStates.GROWING:
+			show()
+			finalFormEgg.SetActive(false)
+			pass
+		eggStates.FINALFORM_NO_HEART:
+			hideEggs()
+			finalFormEgg.SetActive(true)
+			pass
+		eggStates.FINALFORM_HEART:
+			hideEggs()
+			finalFormEgg.SetActive(true)
+			pass
+		eggStates.FINALCUTSCENE:
+			hideEggs()
+			pass
+			
+	GlobalVariables.eggState=eggState
+
+func hideEggs():
+	for egg in Eggs:
+		egg.hide()
 
 func SetBirdyVisible(visible:bool):
 	if visible:
 		birdie.show()
 	else:
 		birdie.hide()
+	
+	
+func UpdateSizeBasedOnSaveData():
+	
+	UpdateSize(GlobalVariables.totalExperienceGained)
+	
+	
 
-func UpdateEggSizeAtStartup():
-	UpdateSizeBasedOnSaveData(false)
+func GetIsEggMaxedOut():
+	var xp=GlobalVariables.totalExperienceGained
+	for n in ExperienceRequirements:
+		xp-=n
 	
-func UpdateSizeBasedOnSaveData(shouldLerp:bool):
-	
-	if shouldLerp && !isLerping:
-		LerpToCurrentXP()
-		
-	else:
-		UpdateSize(GlobalVariables.totalExperienceGained)
-
-func LerpToCurrentXP():
-	isLerping=true
-	oldXP=experienceGained
-	experienceGained=GlobalVariables.totalExperienceGained
-	
-	var distance=experienceGained-oldXP
-	
-	while oldXP<experienceGained:
-		oldXP+=1
-		UpdateSize(oldXP)
-		await get_tree().create_timer(lerptime/distance)
-	
-	isLerping=false
-	
-	pass
+	return xp>0
 
 func UpdateSize(experience:int):
+
+	if eggState!=eggStates.GROWING:
+		shakeTimer+=0.4
+		shaking=true
+		return
 	
+	oldXP=experience
 	var index=0
 	var xp=experience
+	
 	for n in ExperienceRequirements:
 		xp-=ExperienceRequirements[index]
 		if xp < 0:
@@ -104,4 +150,15 @@ func UpdateSize(experience:int):
 		var test=lerp(sleepPositions[state].position.y,sleepPositions[state+1].position.y,progress)
 		$BirdySleepPositions/birdySleep.position.y=test
 	
+	if GetIsEggMaxedOut():
+		SetEggState(eggStates.FINALFORM_NO_HEART)
+		finalFormEgg.TransitionToFinalForm()
 	
+func _process(delta: float) -> void:
+
+	if shaking:
+		position=originalPos+Vector2(randf_range(-2,2),0)
+		shakeTimer-=delta
+		if shakeTimer<0:
+			shaking=false
+			position=originalPos

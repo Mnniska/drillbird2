@@ -1,5 +1,5 @@
 extends Node2D
-
+class_name egg_final_form
 var isActive:bool=false
 var isShaking:bool=false
 var shakeAmount:float=2
@@ -22,16 +22,16 @@ func SetActive(active:bool):
 	
 	if isActive:
 		show()
-		animator.animation="before_final_form"
+		animator.animation="final_form_idle"
 	else:
 		hide()
 
 func TransitionToFinalForm():
-	
+
 	isShaking=true
 	animator.animation="go_to_final_form"
 	animator.play()
-	await get_tree().create_timer(1.5).timeout
+	await get_tree().create_timer(2).timeout
 	isShaking=false
 	await get_tree().create_timer(2).timeout
 	animator.animation="final_form_idle"

@@ -6,7 +6,6 @@ var oreVisual = preload("res://Scenes/Effects/ore_sell_visualizer.tscn")
 
 var oreSellLocations:Array[sell_location_script]
 
-@onready var oreXPCollider=$"../oreXPCollider"
 
 
 @onready var PlayerXPGainFeedback=$"../PlayerXPGainedVisualizer"
@@ -84,4 +83,5 @@ func SellThisOre(ore:abstract_ore,_oreBodyReference:Node2D):
 	var timetoSell:float=0.2
 	oreSellVisualizer.Setup(ore,chosenLocation.global_position,1+(index*timetoSell))
 	oreSellVisualizer.global_position=_oreBodyReference.global_position
+	return oreSellVisualizer
 	

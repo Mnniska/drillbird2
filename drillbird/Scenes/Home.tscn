@@ -79,15 +79,15 @@ script = ExtResource("1_qel16")
 position = Vector2(0, -17)
 texture = ExtResource("2_4e54y")
 
-[node name="Egg_FinalForm" parent="." instance=ExtResource("3_0aq54")]
-visible = false
-
 [node name="Eggs" type="Node2D" parent="." node_paths=PackedStringArray("Eggs", "sleepPositions")]
 script = ExtResource("3_wy5hf")
-ExperienceRequirements = Array[int]([20, 50, 300, 400])
+ExperienceRequirements = Array[int]([20, 50, 100, 200])
 StateTargetScales = Array[float]([0.7, 0.7, 0.6, 0.55])
 Eggs = [NodePath("Egg_smallest"), NodePath("Egg_medium"), NodePath("Egg_Big"), NodePath("Egg_Biggest"), NodePath("Egg_Biggest_forReal")]
 sleepPositions = [NodePath("BirdySleepPositions/startPos_lowest"), NodePath("BirdySleepPositions/startPos_low"), NodePath("BirdySleepPositions/startPos_mid"), NodePath("BirdySleepPositions/startpos_large"), NodePath("BirdySleepPositions/pos_BIGGEST")]
+
+[node name="Egg_FinalForm" parent="Eggs" instance=ExtResource("3_0aq54")]
+visible = false
 
 [node name="Egg_Biggest_forReal" type="Node2D" parent="Eggs"]
 visible = false

@@ -1,5 +1,7 @@
 extends Node2D
 class_name ore_sell_visualizer
+
+signal finishedSelling(amount:int)
 @onready var sprite=$oreSprite
 
 var ore:abstract_ore
@@ -69,6 +71,7 @@ func _process(delta: float) -> void:
 		pass
 
 func SellSelf():
+	
 	$destroyAnim.animation="sell"
 	
 	#TODO	
@@ -80,6 +83,8 @@ func SellSelf():
 	add_child(textBubbleInstance)
 	textBubbleInstance.position+=Vector2(0,-16)
 	textBubbleInstance.ShowText("+"+str(ore.value))
+	finishedSelling.emit(ore.value)
+
 	
 	#TODO: Fancy sell effects
 	$oreSprite.hide()

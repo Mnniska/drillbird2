@@ -128,13 +128,18 @@ func SellOre(_ore:Node2D):
 	moneyUI.text=str(GlobalVariables.playerMoney)+"xp"
 	print_debug("Player now has "+str(GlobalVariables.playerMoney)+" money!")
 	
-	OreSellVisualizer.SellThisOre(oreType,_ore)
+	var visualizer:ore_sell_visualizer = OreSellVisualizer.SellThisOre(oreType,_ore)
+	visualizer.finishedSelling.connect(OreFinishedSelling)
 	_ore.queue_free()
-	get_tree().create_timer(2).timeout.connect(EggHandler.LerpToCurrentXP)
 	$SellingOreTimer.stop()
 	$SellingOreTimer.start()
 	state=states.SELLING
+
+func OreFinishedSelling(amount:int):
 	
+	EggHandler.UpdateSize(EggHandler.oldXP+amount)
+	
+	pass
 	
 func _on_selling_ore_timer_timeout() -> void:
 	state=states.IDLE
