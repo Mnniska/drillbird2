@@ -123,6 +123,7 @@ animations = [{
 script = ExtResource("1_fasbe")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1
 position = Vector2(-2, -40)
 sprite_frames = SubResource("SpriteFrames_dcmve")
 animation = &"before_final_form"

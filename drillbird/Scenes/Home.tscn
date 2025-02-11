@@ -300,9 +300,6 @@ theme = ExtResource("8_k4jyb")
 
 [node name="JustWokeUpTimer" type="Timer" parent="."]
 
-[node name="SellingOreTimer" type="Timer" parent="."]
-wait_time = 2.0
-
 [node name="OreSellParent" type="Node2D" parent="."]
 position = Vector2(0, -53)
 script = ExtResource("24_quikh")
@@ -504,6 +501,5 @@ shape = SubResource("RectangleShape2D_y1qs5")
 [connection signal="body_shape_exited" from="NestCollider" to="." method="_on_nest_collider_body_shape_exited"]
 [connection signal="timeout" from="cutsceneTimer" to="." method="_on_cutscene_timer_timeout"]
 [connection signal="timeout" from="JustWokeUpTimer" to="." method="_on_just_woke_up_timer_timeout"]
-[connection signal="timeout" from="SellingOreTimer" to="." method="_on_selling_ore_timer_timeout"]
 [connection signal="area_shape_entered" from="PlayerXPGainedVisualizer/oreXPCollider_PLAYER" to="OreSellParent" method="_on_ore_xp_collider_player_area_shape_entered"]
 [connection signal="body_shape_entered" from="SellOreCollider" to="." method="_on_sell_ore_collider_body_shape_entered"]

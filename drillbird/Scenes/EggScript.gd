@@ -1,5 +1,5 @@
 extends Node2D
-
+class_name egg_script
 
 #When getitng ores -> Check how much progress to state and SCALE the egg 
 #up to target as one gets closer to state. When entering next state, switch sprite

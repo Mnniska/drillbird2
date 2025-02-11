@@ -10,14 +10,10 @@ extends Node2D
 @onready var Camera=$"../Camera2D"
 @onready var CameraLerpPosition=$CameraLerpPosition
 @onready var HealthHandler=HUD.HUD_healthManager
-@onready var EggHandler =$Eggs
+@onready var EggHandler:egg_script =$Eggs
 @onready var OreSellVisualizer=$OreSellParent
 
-
-
-var targetEggXP:int=0
-var xpGained:int=0
-var oldEggXP:int=0
+var oresBeingSold:int=0
 
 
 @export var holdTime:float=1
@@ -123,6 +119,7 @@ func _on_sell_ore_collider_body_shape_entered(body_rid: RID, body: Node2D, body_
 	
 
 func SellOre(_ore:Node2D):
+	oresBeingSold+=1
 	var oreType:abstract_ore=_ore.GetOre()
 	GlobalVariables.GivePlayerMoney( oreType.value)
 	moneyUI.text=str(GlobalVariables.playerMoney)+"xp"
@@ -131,19 +128,20 @@ func SellOre(_ore:Node2D):
 	var visualizer:ore_sell_visualizer = OreSellVisualizer.SellThisOre(oreType,_ore)
 	visualizer.finishedSelling.connect(OreFinishedSelling)
 	_ore.queue_free()
-	$SellingOreTimer.stop()
-	$SellingOreTimer.start()
 	state=states.SELLING
 
 func OreFinishedSelling(amount:int):
-	
+	oresBeingSold-=1
 	EggHandler.UpdateSize(EggHandler.oldXP+amount)
+	
+	if oresBeingSold<=0:
+		await get_tree().create_timer(1).timeout
+		state=states.IDLE
+		CheckState()
 	
 	pass
 	
-func _on_selling_ore_timer_timeout() -> void:
-	state=states.IDLE
-	CheckState()
+
 
 func MainMenu_SetupSleepIdle():
 	
