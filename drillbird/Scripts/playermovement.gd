@@ -616,6 +616,8 @@ func _on_block_below_checker_body_shape_entered(body_rid: RID, body: Node2D, bod
 
 	pass # Replace with function body.
 
+func GetCollType():
+	return collType
 
 func _on_detector_body_entered(body: Node2D) -> void:
 	var collider:abstract_collidable= body.GetCollType()

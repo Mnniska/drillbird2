@@ -11,3 +11,8 @@ func _on_area_2d_body_shape_entered(body_rid: RID, body: Node2D, body_shape_inde
 func _on_area_2d_body_shape_exited(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
 	GlobalVariables.amountOfLightsourcesPlayerIsIn-=1
 	pass # Replace with function body.
+
+
+func _on_audio_stream_player_2d_finished() -> void:
+	$AudioStreamPlayer2D.play()
+	pass # Replace with function body.

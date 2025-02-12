@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="abstract_SoundEffectSetting" load_steps=3 format=3 uid="uid://byxp2gyja6whe"]
+
+[ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_SoundEffectSetting.gd" id="1_o1xbj"]
+[ext_resource type="AudioStream" uid="uid://cmus8dd4itla8" path="res://Audio/SFX/falling_block_land.wav" id="2_x06nj"]
+
+[resource]
+script = ExtResource("1_o1xbj")
+limit = 5
+type = 19
+sound_effect = ExtResource("2_x06nj")
+volume = 0
+pitch_randomness = 0.2
+audioBus = 0

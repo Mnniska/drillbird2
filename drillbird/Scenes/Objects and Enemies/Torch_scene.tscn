@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bjaykfdp1s4y"]
+[gd_scene load_steps=16 format=3 uid="uid://bjaykfdp1s4y"]
 
 [ext_resource type="Script" path="res://Scripts/LightsourceScript.gd" id="1_4yv63"]
 [ext_resource type="Texture2D" uid="uid://xrxcywko8b64" path="res://Art/Objects/Torch/torch1.png" id="2_rei20"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bdgjho1gmjjee" path="res://Art/Objects/Torch/torch5.png" id="6_1c8ax"]
 [ext_resource type="Texture2D" uid="uid://wvdr6s5euli0" path="res://Art/Objects/Torch/torch6.png" id="7_jv858"]
 [ext_resource type="Texture2D" uid="uid://d4dmalvbv0a5j" path="res://Art/Objects/Torch/torch7.png" id="8_s0itv"]
+[ext_resource type="AudioStream" uid="uid://dvy742hpbkhf1" path="res://Audio/SFX/torch_fire.wav" id="9_ntcw7"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ram07"]
 animations = [{
@@ -84,5 +85,13 @@ collision_mask = 16
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_e2adq")
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_ntcw7")
+volume_db = -12.0
+autoplay = true
+max_distance = 100.0
+bus = &"SFX"
+
 [connection signal="body_shape_entered" from="Area2D" to="." method="_on_area_2d_body_shape_entered"]
 [connection signal="body_shape_exited" from="Area2D" to="." method="_on_area_2d_body_shape_exited"]
+[connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_audio_stream_player_2d_finished"]

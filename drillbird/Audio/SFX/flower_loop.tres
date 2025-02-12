@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="abstract_SoundEffectSetting" load_steps=3 format=3 uid="uid://b8thtdmcn7hom"]
+
+[ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_SoundEffectSetting.gd" id="1_lh4ac"]
+[ext_resource type="AudioStream" uid="uid://bg3goih4fayba" path="res://Audio/SFX/flower_loop.wav" id="2_wed3a"]
+
+[resource]
+script = ExtResource("1_lh4ac")
+limit = 1
+type = 18
+sound_effect = ExtResource("2_wed3a")
+volume = 0
+pitch_randomness = 0.2
+audioBus = 0

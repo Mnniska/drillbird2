@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://bkend8hbxki0p"
-path="res://.godot/imported/mus_Home.wav-540df20f796602db1f697870242a8b69.sample"
+uid="uid://dvy742hpbkhf1"
+path="res://.godot/imported/torch_fire.wav-ea84db657f25d8fbb4718d0d26059cb7.sample"
 
 [deps]
 
-source_file="res://Audio/MUSIC/mus_Home.wav"
-dest_files=["res://.godot/imported/mus_Home.wav-540df20f796602db1f697870242a8b69.sample"]
+source_file="res://Audio/SFX/torch_fire.wav"
+dest_files=["res://.godot/imported/torch_fire.wav-ea84db657f25d8fbb4718d0d26059cb7.sample"]
 
 [params]
 

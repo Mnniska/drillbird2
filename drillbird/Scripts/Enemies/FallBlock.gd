@@ -7,7 +7,7 @@ var BlockDestroyer:crack_script
 
 var isFalling:bool=false
 enum states{idle,fallprep,fall}
-var state:states=states.fall
+var state:states=states.idle
 @export var timeBeforeFall:float=0.8
 var timeBeforeFallCounter:float=0
 var fast:bool=false
@@ -62,7 +62,7 @@ func _physics_process(delta: float) -> void:
 					n.global_position=self.global_position+Vector2(0,-16) #Hack to ensure player isn't stuck underneath block
 					n.DealDamage(enemyInfo.damage)
 					
-					if n.collType.type==abstract_collidable.types.ENEMY:
+					if n.GetCollType().type==abstract_collidable.types.ENEMY:
 						var info:abstract_enemy
 						info = n.enemyInfo
 						if info.type==abstract_enemy.enemyTypes.SPIKE:
@@ -89,6 +89,7 @@ func _physics_process(delta: float) -> void:
 func PlayImpactEffect():
 	impactEffect.animation="destroy"
 	impactEffect.play()
+	SoundManager.PlaySoundAtLocation(global_position,abstract_SoundEffectSetting.SoundEffectEnum.FALLBLOCK_LAND)
 	pass
 
 func GetWillBeFast():
