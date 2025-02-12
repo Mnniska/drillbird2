@@ -48,10 +48,6 @@ func Setup():
 	#TODO: Egg state should initially be EMPTY and change to growing after the egg spawning cutscene
 	if eggState==eggStates.GROWING:
 		UpdateSizeBasedOnSaveData()
-	
-	
-
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -67,23 +63,26 @@ func SetEggState(_state:eggStates):
 	eggState=_state
 	match eggState:
 		eggStates.NOTHING:
-			hide()
-			finalFormEgg.SetActive(false)
+			hideEggs()
+			finalFormEgg.SetState(finalFormEgg.finalFormStates.FINAL_INACTIVE)
+
 			pass
 		eggStates.GROWING:
 			show()
-			finalFormEgg.SetActive(false)
+			finalFormEgg.SetState(finalFormEgg.finalFormStates.FINAL_INACTIVE)
 			pass
 		eggStates.FINALFORM_NO_HEART:
 			hideEggs()
-			finalFormEgg.SetActive(true)
+			finalFormEgg.SetState(finalFormEgg.finalFormStates.FINAL_HEARTLESS)
 			pass
 		eggStates.FINALFORM_HEART:
 			hideEggs()
-			finalFormEgg.SetActive(true)
+			finalFormEgg.SetState(finalFormEgg.finalFormStates.FINAL_HEART)
 			pass
 		eggStates.FINALCUTSCENE:
+			#THIS WILL likely never be saved, so won't be used. but who knows :) 
 			hideEggs()
+			finalFormEgg.SetState(finalFormEgg.finalFormStates.FINAL_HEART)
 			pass
 			
 	GlobalVariables.eggState=eggState

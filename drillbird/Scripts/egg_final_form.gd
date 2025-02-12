@@ -9,8 +9,6 @@ var shakeAmount:float=2
 enum finalFormStates{FINAL_INACTIVE,FINAL_HEARTLESS,FINAL_HEART,FINAL_HATCHING}
 var finalFormState:finalFormStates=finalFormStates.FINAL_HEARTLESS
 
-func _ready() -> void:
-	SetActive(true)
 	
 func _process(delta: float) -> void:
 	
@@ -44,14 +42,6 @@ func SetState(_state:finalFormStates):
 			show()
 			pass
 			
-func SetActive(active:bool):
-	isActive=active
-	
-	if isActive:
-		show()
-		animator.animation="final_form_idle"
-	else:
-		hide()
 
 func TransitionToFinalForm():
 

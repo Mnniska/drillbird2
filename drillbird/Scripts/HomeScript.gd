@@ -30,7 +30,6 @@ var state:states
 	
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	animSleep.hide()
 	
 	ambienceSound=SoundManager.CreatePersistentSound(global_position,abstract_SoundEffectSetting.SoundEffectEnum.AMBIENCE_SURFACE)
 	ambienceSound.play()
@@ -190,6 +189,7 @@ func OreFinishedSelling(amount:int):
 
 func MainMenu_SetupSleepIdle():
 	
+	EggHandler.SetBirdyVisible(true)
 	animSleep.animation="asleep"
 	animSleep.play()
 	animSleep.show()
