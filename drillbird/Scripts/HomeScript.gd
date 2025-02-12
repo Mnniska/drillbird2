@@ -1,6 +1,10 @@
 extends Node2D
+
+#BUTTONS
 @onready var SellButton= $InteractButton_depositOres
-@onready var RestButton = $InteractButton_EndDay
+@onready var RestButton:button_hold = $InteractButton_EndDay
+@onready var HatchEggButton:button_hold = $InteractButton_HatchEgg
+
 @onready var inventory = HUD.HUD_InventoryManager
 @onready var moneyUI=HUD.HUD_cashText
 @onready var animSleep=$Eggs/BirdySleepPositions/birdySleep
@@ -14,17 +18,19 @@ extends Node2D
 @onready var OreSellVisualizer=$OreSellParent
 @onready var TextBubble=preload("res://Scenes/UI/text_bubble.tscn")
 
+
 var oresBeingSold:int=0
 
-
+#REPLACE WITH HOLD BUTTON 
 @export var holdTime:float=1
 var holdCounter:float=0
+
 var justWokeUp:bool=false
 
 
 var ambienceSound:AudioStreamPlayer2D
 
-enum states{IDLE,SELL,RESTPOSSIBLE,SLEEP,SELLING}
+enum states{NO_EGG,IDLE,SELL,RESTPOSSIBLE,SLEEP,SELLING,FINALCUTSCENE}
 var state:states
 
 	
@@ -38,49 +44,16 @@ func _ready() -> void:
 	var HUBMusic:AudioStreamPlayer2D=SoundManager.CreatePersistentSound(global_position,abstract_SoundEffectSetting.SoundEffectEnum.MUSIC_HOME)
 	HUBMusic.play()
 	HUBMusic.finished.connect(HUBMusic.play)
-	pass # Replace with function body.
-
-func SetHoldProgress(progress:float):
-	var min = 15
-	var pos=lerp(min,0,progress)
-	$InteractButton_EndDay/icon/active.position.y=pos
-	
-func ProgressGoToBed(delta:float,active:bool):
-	
-	if active:
-		holdCounter+=delta
-	elif holdCounter>0:
-		holdCounter-=delta*2
-		holdCounter=max(0,holdCounter)
-	SetHoldProgress(holdCounter/holdTime)
-	if holdCounter>holdTime:
-		holdCounter=0
-		GoToBed()
-		
-	
-	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 
-	
-	if state==states.SELL:
-		if Input.is_action_just_pressed("interact"):
-			pass
-			#This is done via a collider now 	
-	if state==states.RESTPOSSIBLE:
-		
-		if Input.is_action_pressed("up"):
-			ProgressGoToBed(delta,true)
-		else:
-			ProgressGoToBed(delta,false)
-	
 	UpdateButtons()
 	pass
 
 func CheckState():
 	
-	if state==states.SLEEP or state==states.SELLING:
+	if state==states.SLEEP or state==states.SELLING or state==states.FINALCUTSCENE:
 		UpdateButtons()
 		return
 
@@ -93,25 +66,42 @@ func CheckState():
 			state=states.RESTPOSSIBLE
 	else:
 		state=states.IDLE
+	
 
 func UpdateButtons():
 	match state:
+		states.NO_EGG:
+			SellButton.hide()
+			RestButton.SetActive(false)
+			HatchEggButton.SetActive(false)
+			pass
 		states.SELL:
 			SellButton.show()
-			RestButton.hide()
+			RestButton.SetActive(false)
+			if EggHandler.eggState==EggHandler.eggStates.FINALFORM_HEART:
+				HatchEggButton.SetActive(true)
 		states.SELLING:
 			SellButton.hide()
-			RestButton.hide()
+			RestButton.SetActive(false)
+			HatchEggButton.SetActive(false)
 		states.RESTPOSSIBLE:
 			if !justWokeUp:
-				RestButton.show()
+				RestButton.SetActive(true)
+				if EggHandler.eggState==EggHandler.eggStates.FINALFORM_HEART:
+					HatchEggButton.SetActive(true)
 			SellButton.hide()
-		states.IDLE:
-			RestButton.hide()
-			SellButton.hide()
-		states.SLEEP:
-			RestButton.hide()
-			SellButton.hide()
+	
+	if state==states.SLEEP or state==states.IDLE or state==states.FINALCUTSCENE:
+		RestButton.SetActive(false)
+		HatchEggButton.SetActive(false)
+		SellButton.hide()
+			
+		
+
+func _on_interact_button_end_day_button_pressed() -> void:
+	GoToBed()
+	pass # Replace with function body.
+
 
 #SELLING ORES
 func _on_sell_ore_collider_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
@@ -121,15 +111,12 @@ func _on_sell_ore_collider_body_shape_entered(body_rid: RID, body: Node2D, body_
 func SellOre(_ore:Node2D):
 	
 	var oreType:abstract_ore=_ore.GetOre()
-	
-
-	
-	oresBeingSold+=1
 	if oreType.ID==10:
 		HeartEnteredCollider(_ore)
 		return
 		pass
-	
+		
+	oresBeingSold+=1	
 	GlobalVariables.GivePlayerMoney( oreType.value)
 	moneyUI.text=str(GlobalVariables.playerMoney)+"xp"
 	print_debug("Player now has "+str(GlobalVariables.playerMoney)+" money!")
@@ -171,6 +158,8 @@ func HeartEnteredCollider(_heart:Node2D):
 
 func FinalHeartPlaced(amount:int):
 	EggHandler.TransitionToFinalFormWithHeart()
+	state=states.IDLE
+	CheckState()
 
 	pass
 
@@ -184,7 +173,14 @@ func OreFinishedSelling(amount:int):
 		CheckState()
 	
 	pass
+
+func HatchEgg():
+	EggHandler.SetEggState(EggHandler.eggStates.FINALCUTSCENE)
+	state=states.FINALCUTSCENE
+	#DO FINAL CUTSCENE STUFF HERE
 	
+	
+	pass
 
 
 func MainMenu_SetupSleepIdle():
@@ -223,6 +219,8 @@ func WakeUp(saveGame:bool):
 	Player.show()
 	animSleep.hide()
 	GlobalVariables.playerStatus=GlobalVariables.playerStatusEnum.DIG
+	
+	state=states.IDLE
 	
 func ReplendishStats():
 	LightHandler.RefillLight()
