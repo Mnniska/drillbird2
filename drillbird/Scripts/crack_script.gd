@@ -151,11 +151,11 @@ func OnLoadDestroyDugTiles(tiles:Array[Vector2i]):
 	destroyed_tiles=tiles
 	
 	for n in destroyed_tiles:
-		DestroyTile(n,false)
-	
+		
 		if OreSpawner.get_cell_tile_data(n):
 			OreSpawner.set_cell(n,-1,Vector2i(-1,-1),-1)
-
+		
+		DestroyTile(n,false)
 		
 		pass
 	

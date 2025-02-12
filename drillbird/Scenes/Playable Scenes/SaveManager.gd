@@ -7,6 +7,8 @@ extends Node
 @onready var player = $Player
 @onready var OriginalSpawnPos=$PlayerSpawnLocations/OriginalSpawnPos
 
+signal signal_GameAboutToBeSaved
+
 var save_file_path = "user://save/"
 var save_file_name="DrillbirdPlayerSave.tres"
 
@@ -38,7 +40,8 @@ func ResetSaveData():
 
 
 func SaveGame():
-	
+	signal_GameAboutToBeSaved.emit()
+	await get_tree().create_timer(0.02).timeout
 	PlayerData.upgrade_drill=GlobalVariables.upgradeLevel_drill
 	PlayerData.upgrade_health=GlobalVariables.upgradeLevel_health
 	PlayerData.upgrade_inventory=GlobalVariables.upgradeLevel_inventory

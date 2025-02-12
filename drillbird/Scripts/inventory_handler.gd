@@ -1,5 +1,9 @@
 extends Node
 class_name inventory_handler
+
+signal signal_pickedUpHeart
+signal signal_droppedHeart(heart:Node2D)
+
 """
 The inventory_handler has an array of available inventory slots. When the player picks up a new ore, 
 the inventory_handler is called to ask if it can be slotted in anywhere.
@@ -56,6 +60,7 @@ func DropOresRequest(position:Vector2,velocity:Vector2,facingRight:bool):
 		var v=Vector2(x,y)
 		
 		OreSpawner.SpawnOreAtLocation(position,n,v,true)
+		
 
 
 func GetIsThereAnythingSellable():
@@ -108,6 +113,10 @@ func AddOreRequest(ore:abstract_ore):
 		if n.GiveOre(ore):
 			oreAdded=true
 			SoundManager.PlaySoundGlobal(abstract_SoundEffectSetting.SoundEffectEnum.ORE_GRABBED)
+			
+			if ore.ID==10:
+				signal_pickedUpHeart.emit()
+			
 			break
 	
 	return oreAdded

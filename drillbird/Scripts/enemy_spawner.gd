@@ -227,7 +227,7 @@ func CreateNewFlowerFromGlobalPos(globalPos:Vector2):
 func RemoveTile(pos:Vector2i):
 	gameTilemap.set_cell(pos,-1,Vector2i(-1,-1),0)
 	
-	
+
 
 func MoveTileToNewPos(oldpos:Vector2,newpos:Vector2):
 	var tile_map_layer = 0 

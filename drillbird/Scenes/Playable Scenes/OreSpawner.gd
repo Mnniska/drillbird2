@@ -1,7 +1,8 @@
 extends TileMapLayer
+class_name ore_manager
 @export var oreRegions: Array[abstract_ore_region]
 @export var oreList:Array[abstract_ore]
-
+signal signal_heartSpawned(heart:Node2D)
 
 
 func TrySpawnOreFromEnvironment(location:Vector2i):
@@ -36,6 +37,8 @@ func SpawnOreAtLocation(location:Vector2,ore:abstract_ore,velocity:Vector2,coold
 	node.apply_central_impulse(velocity)
 	node.add_to_group("ores")
 	node.SetOreType(ore,cooldown)
+	if ore.ID==10:
+		signal_heartSpawned.emit(node)
 
 
 func GetLeftoverOres():

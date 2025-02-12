@@ -1,5 +1,5 @@
 extends Node2D
-
+class_name ghost
 var hauntedObject:Node2D
 var playerPos:Vector2
 @export var MINSPEED:float=2.8
@@ -11,33 +11,93 @@ var playerPos:Vector2
 var  haunting:bool=false
 var lastpos:Vector2
 @onready var playerCollider=$PlayerChecker
+@onready var anim=$sprite
+
+var isCarryingHeart:bool=false
+
+var heart_misplaced:bool=true
+var heart_playerHasHeart:bool=false
 
 var parent:ghost_manager
 
+enum states{CHASE_PLAYER,CHASE_HEART,RETURN_HEART}
+var state:states=states.CHASE_PLAYER
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
 
-func HauntObject(delta:float):
-	var speed=0
-	var distanceToPlayer=self.global_position.distance_to(hauntedObject.global_position)
+func UpdateState():
 	
-	if distanceToPlayer>fastestSpeedDist:
+	if heart_playerHasHeart:
+		state=states.CHASE_PLAYER
+	elif heart_misplaced:
+		state=states.CHASE_HEART
+	
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	
+	match state:
+		states.CHASE_PLAYER:
+			if haunting && hauntedObject!=null:
+				HauntObject(delta)
+			pass
+		states.CHASE_HEART:
+			if haunting && hauntedObject!=null:
+				HauntObject(delta)
+			pass
+		states.RETURN_HEART:
+			if haunting && hauntedObject!=null:
+				HauntObject(delta)			
+			pass
+	
+
+	pass
+
+func GameIsBeingSaved():
+	if state==states.RETURN_HEART:
+		parent.DropHeartInRightfulPlace()
+		isCarryingHeart=false
+		Disappear()
+
+func PlayerPickedUpHeart():
+	NewHaunting(parent.player)
+	state=states.CHASE_PLAYER
+	pass
+
+func PlayerDroppedHeartInUnproperPlace(heart:Node2D):
+	NewHaunting(heart)
+	state=states.CHASE_HEART
+	pass
+
+func HauntObject(delta:float):
+	
+	#This means that the heart has been picked up by the player, so ghost will follow them instead
+	if hauntedObject==null:
+		NewHaunting(parent.player)
+	
+	var speed=0
+	var distanceToObject=self.global_position.distance_to(hauntedObject.global_position)
+	
+	if distanceToObject>fastestSpeedDist:
 		speed=MAXSPEED
 	
-	if distanceToPlayer<fastestSpeedDist && distanceToPlayer>slowestSpeedDist:
-		var progress=1-(distanceToPlayer-fastestSpeedDist)/(slowestSpeedDist-fastestSpeedDist)
+	if distanceToObject<fastestSpeedDist && distanceToObject>slowestSpeedDist:
+		var progress=1-(distanceToObject-fastestSpeedDist)/(slowestSpeedDist-fastestSpeedDist)
 		speed=MINSPEED+((MAXSPEED-MINSPEED)*progress)
 	
-	if distanceToPlayer<slowestSpeedDist:
+	if distanceToObject<slowestSpeedDist:
 		speed=MINSPEED
 
-
-	var s=speed*delta
-	#position=hauntedObject.position
-	position.x = move_toward(position.x, hauntedObject.position.x, s)
-	position.y = move_toward(position.y, hauntedObject.position.y, s)
+	var returnHeartMult:float=1
+	if state==states.RETURN_HEART:
+		returnHeartMult=3
+	
+	var s=speed*delta*returnHeartMult
+	
+	global_position.x = move_toward(global_position.x, hauntedObject.global_position.x, s)
+	global_position.y = move_toward(global_position.y, hauntedObject.global_position.y, s)
 	
 	if lastpos.x-position.x<0:
 		$sprite.flip_h=true
@@ -45,11 +105,31 @@ func HauntObject(delta:float):
 		$sprite.flip_h=false
 	
 	lastpos=Vector2(position.x,position.y)
-	#var progress:Vector2=Vector2.from_angle()
 	
-	#self.position=lerp(position,hauntedObject.position,1)
+	if state==states.CHASE_HEART:
+		if distanceToObject<1:
+			if hauntedObject.GetOre().ID==10:
+				PickupHeart(hauntedObject)
 
-	pass
+				return
+	
+	if state==states.RETURN_HEART:
+		if distanceToObject<1:
+			parent.DropHeartInRightfulPlace()
+			isCarryingHeart=false
+			
+			#Update player light status so that ghost spawns again if it is dark
+			if GlobalVariables.playerLightStatus==GlobalVariables.playerLightStatusEnum.DARK:
+				NewHaunting(parent.player)
+			else:
+				Disappear()
+	
+func PickupHeart(heart:Node2D):
+	state=states.RETURN_HEART
+	isCarryingHeart=true
+	anim.animation="idle_heart"
+	NewHaunting(parent.HeartRightfulPlace)
+	heart.queue_free()
 
 func CheckOverlappingCollisions():
 	for n in playerCollider.get_overlapping_bodies():
@@ -68,7 +148,7 @@ func GiveParentReference(_parent:ghost_manager):
 	pass
 
 func Disappear():
-	parent.DespawnGhost()
+	parent.GhostHasDespawned()
 	queue_free()
 
 func NewHaunting(object:Node2D):
@@ -78,12 +158,7 @@ func NewHaunting(object:Node2D):
 func lerp(a,b,t):
 	return (1 - t) * a + t * b
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	
-	if haunting && hauntedObject!=null:
-		HauntObject(delta)
-	pass
+
 
 
 
