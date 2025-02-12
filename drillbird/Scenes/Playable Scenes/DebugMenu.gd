@@ -11,6 +11,8 @@ var playerHidden:bool=false
 @export var oreToSpawn:PackedScene
 @export var oreTypeToAssignSpawnedOre:abstract_ore
 
+@export var finalHeartOre:abstract_ore
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	currentMenu=menu
@@ -193,7 +195,11 @@ func ExecuteAction(action:String):
 			node.transform.origin=get_parent().to_local(GlobalVariables.MainSceneReferenceConnector.player.global_position+Vector2(16,-16)) 
 			node.oreType=oreTypeToAssignSpawnedOre
 			get_parent().add_child(node)
-			pass
-
+			
+		"spawnFinalHeart":
+			var node=oreToSpawn.instantiate()
+			node.transform.origin=get_parent().to_local(GlobalVariables.MainSceneReferenceConnector.player.global_position+Vector2(16,-16)) 
+			node.oreType=finalHeartOre
+			get_parent().add_child(node)
 			
 	pass

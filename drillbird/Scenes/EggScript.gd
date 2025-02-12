@@ -1,6 +1,7 @@
 extends Node2D
 class_name egg_script
 
+signal FinalHeartPlaced
 #When getitng ores -> Check how much progress to state and SCALE the egg 
 #up to target as one gets closer to state. When entering next state, switch sprite
 
@@ -49,6 +50,8 @@ func Setup():
 		UpdateSizeBasedOnSaveData()
 	
 	
+
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

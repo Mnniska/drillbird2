@@ -20,6 +20,9 @@ func _process(delta: float) -> void:
 	if isShaking:
 		position=originalPosition+Vector2(randf_range(-shakeAmount,shakeAmount),0)
 
+func GetFinalHeartPosition():
+	return $FinalHeartPosition.global_position
+
 func SetState(_state:finalFormStates):
 	finalFormState=_state
 

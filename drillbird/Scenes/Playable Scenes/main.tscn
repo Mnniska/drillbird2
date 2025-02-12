@@ -1,4 +1,4 @@
-[gd_scene load_steps=97 format=4 uid="uid://d2wv7igie5stg"]
+[gd_scene load_steps=98 format=4 uid="uid://d2wv7igie5stg"]
 
 [ext_resource type="TileSet" uid="uid://grpd2pyu7pgk" path="res://Resources/MainTileset.tres" id="1_1imtu"]
 [ext_resource type="Script" path="res://Scenes/Playable Scenes/SaveManager.gd" id="1_iickb"]
@@ -202,10 +202,16 @@ name = "spawnOre"
 options = Array[ExtResource("48_cl8sw")]([])
 isAction = true
 
+[sub_resource type="Resource" id="Resource_u7pvn"]
+script = ExtResource("48_cl8sw")
+name = "spawnFinalHeart"
+options = Array[ExtResource("48_cl8sw")]([])
+isAction = true
+
 [sub_resource type="Resource" id="Resource_77at3"]
 script = ExtResource("48_cl8sw")
 name = "inventory"
-options = Array[ExtResource("48_cl8sw")]([SubResource("Resource_xfofi"), SubResource("Resource_kod01"), SubResource("Resource_iftq1")])
+options = Array[ExtResource("48_cl8sw")]([SubResource("Resource_xfofi"), SubResource("Resource_kod01"), SubResource("Resource_iftq1"), SubResource("Resource_u7pvn")])
 isAction = false
 
 [sub_resource type="Resource" id="Resource_v3nii"]
@@ -459,6 +465,7 @@ script = ExtResource("47_igpia")
 menu = Array[ExtResource("48_cl8sw")]([SubResource("Resource_dq3mr"), SubResource("Resource_5ornm"), SubResource("Resource_77at3"), SubResource("Resource_v3nii"), SubResource("Resource_co6uo"), SubResource("Resource_o5w6h"), SubResource("Resource_1t4wb"), SubResource("Resource_i5oq0"), SubResource("Resource_2iaja")])
 oreToSpawn = ExtResource("48_0rfc7")
 oreTypeToAssignSpawnedOre = ExtResource("17_ytjr0")
+finalHeartOre = ExtResource("22_nstd1")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Camera2D/DebugFunctionality"]
 offset_left = -160.0

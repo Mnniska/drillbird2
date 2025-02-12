@@ -170,3 +170,7 @@ sprite_frames = SubResource("SpriteFrames_dcmve")
 animation = &"final_form_with_heart_idle"
 autoplay = "final_form_with_heart_idle"
 frame_progress = 0.82042
+
+[node name="FinalHeartPosition" type="Node2D" parent="."]
+z_index = 1
+position = Vector2(-1, -40)

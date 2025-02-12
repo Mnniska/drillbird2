@@ -23,6 +23,8 @@ var state:States=States.WAITING
 var textbubble=preload("res://Scenes/UI/text_bubble.tscn")
 var textBubbleInstance:text_bubble
 
+var isFinalHeart:bool=false
+var startingShakePosition:Vector2
 
 
 func Setup(_ore:abstract_ore,sellingPosition:Vector2,timeToWait:float):
@@ -57,36 +59,45 @@ func _process(delta: float) -> void:
 			hasTarget=false
 			velocity.y=0
 			velocity.x=0
-
+			startingShakePosition=self.position
 			state=States.WAITING
 
 	if state==States.WAITING:
 
 		timebeforesoldCounter+=delta
-
+		
+		#Item SHAKES right before it is sold
+		if timeBeforeSold-timebeforesoldCounter<0.8:
+			position=startingShakePosition+Vector2(randf_range(-1,1),randf_range(-1,1))
 
 		if timebeforesoldCounter>timeBeforeSold:
 			state=States.SOLD
-			SellSelf()
+			SellSelf()		
 		pass
 
 func SellSelf():
-	
-	$destroyAnim.animation="sell"
-	
-	#TODO	
-	#Do cool sell effect! :D 
-	textBubbleInstance=textbubble.instantiate()
-	textBubbleInstance.Setup(abstract_textEffect.effectEnum.STILL,text_bubble.behaviourEnum.FADE)
-	textBubbleInstance.MoveUp=true
-	textBubbleInstance.UseTypewriteEffect=true
-	add_child(textBubbleInstance)
-	textBubbleInstance.position+=Vector2(0,-16)
-	textBubbleInstance.ShowText("+"+str(ore.value))
-	finishedSelling.emit(ore.value)
+	if isFinalHeart:
+		finishedSelling.emit(-1)
+		$oreSprite.hide()
+		await get_tree().create_timer(0.2).timeout
+		queue_free()
+	else:
+		
+		$destroyAnim.animation="sell"
+		
 
-	
-	#TODO: Fancy sell effects
-	$oreSprite.hide()
-	await get_tree().create_timer(3).timeout
-	queue_free()
+		textBubbleInstance=textbubble.instantiate()
+		textBubbleInstance.Setup(abstract_textEffect.effectEnum.STILL,text_bubble.behaviourEnum.FADE)
+		textBubbleInstance.MoveUp=true
+		textBubbleInstance.UseTypewriteEffect=true
+		add_child(textBubbleInstance)
+		textBubbleInstance.position+=Vector2(0,-16)
+		textBubbleInstance.ShowText("+"+str(ore.value))
+		
+		finishedSelling.emit(ore.value)
+
+		
+		#TODO: Fancy sell effects
+		$oreSprite.hide()
+		await get_tree().create_timer(3).timeout
+		queue_free()
