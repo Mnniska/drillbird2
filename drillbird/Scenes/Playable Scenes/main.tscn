@@ -1,4 +1,4 @@
-[gd_scene load_steps=110 format=4 uid="uid://d2wv7igie5stg"]
+[gd_scene load_steps=111 format=4 uid="uid://d2wv7igie5stg"]
 
 [ext_resource type="TileSet" uid="uid://grpd2pyu7pgk" path="res://Resources/MainTileset.tres" id="1_1imtu"]
 [ext_resource type="Script" path="res://Scenes/Playable Scenes/SaveManager.gd" id="1_iickb"]
@@ -60,6 +60,7 @@
 [ext_resource type="Script" path="res://Scripts/WorldScripting.gd" id="59_a6oue"]
 [ext_resource type="AudioStream" uid="uid://dtuuhqyrrdlbi" path="res://Audio/Ambience/ambience_caves_2.wav" id="60_mx6ss"]
 [ext_resource type="AudioStream" uid="uid://c2y284c1camgc" path="res://Audio/Ambience/ambience_caves_3.wav" id="61_qpe5a"]
+[ext_resource type="AudioStream" uid="uid://b2jyncclw2td3" path="res://Audio/Ambience/Drillbird_Graveyard 2.wav" id="62_i2265"]
 [ext_resource type="Texture2D" uid="uid://chdi1d0vsqy66" path="res://Art/environment/UniqueAssets/flowerCaveCarving.png" id="64_3kawd"]
 [ext_resource type="Texture2D" uid="uid://gixivpytn5wl" path="res://Art/ui/HUD/UI_LightBar_bulb.png" id="64_yk8d7"]
 [ext_resource type="Script" path="res://Scripts/Tools/player_location_saver.gd" id="65_25d1u"]
@@ -656,6 +657,7 @@ position = Vector2(1423, 2601)
 texture = ExtResource("64_3kawd")
 
 [node name="AmbiencePlayers" type="Node2D" parent="WorldScripts"]
+visible = false
 
 [node name="AmbienceNode_surface1" parent="WorldScripts/AmbiencePlayers" instance=ExtResource("57_gxw21")]
 position = Vector2(-1263, -15)
@@ -698,7 +700,7 @@ shape = SubResource("RectangleShape2D_scgbu")
 
 [node name="AmbienceNode_cave3" parent="WorldScripts/AmbiencePlayers" instance=ExtResource("57_gxw21")]
 position = Vector2(-1568, 2385)
-AmbiencesToPlay = Array[AudioStreamWAV]([ExtResource("59_674co"), ExtResource("60_mx6ss"), ExtResource("61_qpe5a")])
+AmbiencesToPlay = Array[AudioStreamWAV]([ExtResource("62_i2265")])
 
 [node name="CollisionShape2D" parent="WorldScripts/AmbiencePlayers/AmbienceNode_cave3/AffectedArea" index="0"]
 shape = SubResource("RectangleShape2D_lpygi")
