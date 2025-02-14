@@ -1,4 +1,4 @@
-[gd_scene load_steps=99 format=4 uid="uid://d2wv7igie5stg"]
+[gd_scene load_steps=110 format=4 uid="uid://d2wv7igie5stg"]
 
 [ext_resource type="TileSet" uid="uid://grpd2pyu7pgk" path="res://Resources/MainTileset.tres" id="1_1imtu"]
 [ext_resource type="Script" path="res://Scenes/Playable Scenes/SaveManager.gd" id="1_iickb"]
@@ -53,8 +53,13 @@
 [ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_debugMenuOption.gd" id="48_cl8sw"]
 [ext_resource type="Script" path="res://Scenes/Playable Scenes/day_counter.gd" id="52_hrk5v"]
 [ext_resource type="Script" path="res://Scripts/enemy_spawner.gd" id="53_0clb6"]
+[ext_resource type="PackedScene" uid="uid://dk8bw20ua5emk" path="res://Scenes/Tools/ambience_node.tscn" id="57_gxw21"]
+[ext_resource type="AudioStream" uid="uid://mkkn175q2oj0" path="res://Audio/Ambience/ambience_surface.wav" id="58_odo3b"]
 [ext_resource type="PackedScene" uid="uid://bgtl1cgl35wcl" path="res://Scenes/Objects and Enemies/tutorial_message.tscn" id="59_8sapw"]
+[ext_resource type="AudioStream" uid="uid://bp5tj34xhn3tb" path="res://Audio/Ambience/ambience_caves_1.wav" id="59_674co"]
 [ext_resource type="Script" path="res://Scripts/WorldScripting.gd" id="59_a6oue"]
+[ext_resource type="AudioStream" uid="uid://dtuuhqyrrdlbi" path="res://Audio/Ambience/ambience_caves_2.wav" id="60_mx6ss"]
+[ext_resource type="AudioStream" uid="uid://c2y284c1camgc" path="res://Audio/Ambience/ambience_caves_3.wav" id="61_qpe5a"]
 [ext_resource type="Texture2D" uid="uid://chdi1d0vsqy66" path="res://Art/environment/UniqueAssets/flowerCaveCarving.png" id="64_3kawd"]
 [ext_resource type="Texture2D" uid="uid://gixivpytn5wl" path="res://Art/ui/HUD/UI_LightBar_bulb.png" id="64_yk8d7"]
 [ext_resource type="Script" path="res://Scripts/Tools/player_location_saver.gd" id="65_25d1u"]
@@ -268,6 +273,24 @@ size = Vector2(22, 23)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jq1t1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5sli7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vio5u"]
+size = Vector2(986, 830)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tcdw3"]
+size = Vector2(900, 588)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b4pom"]
+size = Vector2(360, 303)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y1el1"]
+size = Vector2(360, 303)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_scgbu"]
+size = Vector2(2788, 2934.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lpygi"]
+size = Vector2(2257, 979)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aulbw"]
 size = Vector2(73, 20)
@@ -632,6 +655,54 @@ z_index = -1
 position = Vector2(1423, 2601)
 texture = ExtResource("64_3kawd")
 
+[node name="AmbiencePlayers" type="Node2D" parent="WorldScripts"]
+
+[node name="AmbienceNode_surface1" parent="WorldScripts/AmbiencePlayers" instance=ExtResource("57_gxw21")]
+position = Vector2(-1263, -15)
+AmbiencesToPlay = Array[AudioStreamWAV]([ExtResource("58_odo3b")])
+
+[node name="CollisionShape2D" parent="WorldScripts/AmbiencePlayers/AmbienceNode_surface1/AffectedArea" index="0"]
+shape = SubResource("RectangleShape2D_vio5u")
+debug_color = Color(0.172326, 0.627914, 0.410259, 0.42)
+
+[node name="AmbienceNode_surface2" parent="WorldScripts/AmbiencePlayers" instance=ExtResource("57_gxw21")]
+position = Vector2(26, -222)
+AmbiencesToPlay = Array[AudioStreamWAV]([ExtResource("58_odo3b")])
+
+[node name="CollisionShape2D" parent="WorldScripts/AmbiencePlayers/AmbienceNode_surface2/AffectedArea" index="0"]
+shape = SubResource("RectangleShape2D_tcdw3")
+debug_color = Color(0, 0.64012, 0.354681, 0.42)
+
+[node name="AmbienceNode_cave1" parent="WorldScripts/AmbiencePlayers" instance=ExtResource("57_gxw21")]
+position = Vector2(-536, 109)
+AmbiencesToPlay = Array[AudioStreamWAV]([ExtResource("59_674co"), ExtResource("60_mx6ss"), ExtResource("61_qpe5a")])
+
+[node name="CollisionShape2D" parent="WorldScripts/AmbiencePlayers/AmbienceNode_cave1/AffectedArea" index="0"]
+position = Vector2(-6, -14.5)
+shape = SubResource("RectangleShape2D_b4pom")
+
+[node name="AmbienceNode_cave0" parent="WorldScripts/AmbiencePlayers" instance=ExtResource("57_gxw21")]
+position = Vector2(-754, 609)
+AmbiencesToPlay = Array[AudioStreamWAV]([ExtResource("59_674co"), ExtResource("60_mx6ss"), ExtResource("61_qpe5a")])
+
+[node name="CollisionShape2D" parent="WorldScripts/AmbiencePlayers/AmbienceNode_cave0/AffectedArea" index="0"]
+position = Vector2(-6, -14.5)
+shape = SubResource("RectangleShape2D_y1el1")
+
+[node name="AmbienceNode_cave2" parent="WorldScripts/AmbiencePlayers" instance=ExtResource("57_gxw21")]
+position = Vector2(1047, 1558)
+AmbiencesToPlay = Array[AudioStreamWAV]([ExtResource("59_674co"), ExtResource("60_mx6ss"), ExtResource("61_qpe5a")])
+
+[node name="CollisionShape2D" parent="WorldScripts/AmbiencePlayers/AmbienceNode_cave2/AffectedArea" index="0"]
+shape = SubResource("RectangleShape2D_scgbu")
+
+[node name="AmbienceNode_cave3" parent="WorldScripts/AmbiencePlayers" instance=ExtResource("57_gxw21")]
+position = Vector2(-1568, 2385)
+AmbiencesToPlay = Array[AudioStreamWAV]([ExtResource("59_674co"), ExtResource("60_mx6ss"), ExtResource("61_qpe5a")])
+
+[node name="CollisionShape2D" parent="WorldScripts/AmbiencePlayers/AmbienceNode_cave3/AffectedArea" index="0"]
+shape = SubResource("RectangleShape2D_lpygi")
+
 [node name="PlayerSpawnLocations" type="Node2D" parent="."]
 
 [node name="OriginalSpawnPos" type="Sprite2D" parent="PlayerSpawnLocations"]
@@ -679,3 +750,9 @@ texture = ExtResource("64_yk8d7")
 [editable path="WorldScripts/Tutorial_drill"]
 [editable path="WorldScripts/tutorial_doubleJump"]
 [editable path="WorldScripts/Tutorial_jump"]
+[editable path="WorldScripts/AmbiencePlayers/AmbienceNode_surface1"]
+[editable path="WorldScripts/AmbiencePlayers/AmbienceNode_surface2"]
+[editable path="WorldScripts/AmbiencePlayers/AmbienceNode_cave1"]
+[editable path="WorldScripts/AmbiencePlayers/AmbienceNode_cave0"]
+[editable path="WorldScripts/AmbiencePlayers/AmbienceNode_cave2"]
+[editable path="WorldScripts/AmbiencePlayers/AmbienceNode_cave3"]

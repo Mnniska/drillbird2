@@ -27,9 +27,6 @@ var holdCounter:float=0
 
 var justWokeUp:bool=false
 
-
-var ambienceSound:AudioStreamPlayer2D
-
 enum states{NO_EGG,IDLE,SELL,RESTPOSSIBLE,SLEEP,SELLING,FINALCUTSCENE}
 var state:states
 
@@ -37,9 +34,7 @@ var state:states
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	
-	ambienceSound=SoundManager.CreatePersistentSound(global_position,abstract_SoundEffectSetting.SoundEffectEnum.AMBIENCE_SURFACE)
-	ambienceSound.play()
-	ambienceSound.finished.connect(ambienceSound.play)
+
 	
 	var HUBMusic:AudioStreamPlayer2D=SoundManager.CreatePersistentSound(global_position,abstract_SoundEffectSetting.SoundEffectEnum.MUSIC_HOME)
 	HUBMusic.play()

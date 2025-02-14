@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://dk8bw20ua5emk"]
+
+[ext_resource type="Script" path="res://Scripts/Tools/ambience_node.gd" id="1_gi0mp"]
+[ext_resource type="Texture2D" uid="uid://07wffqw8mdx5" path="res://Art/Collectibles/Ore_spawn1.png" id="2_llo44"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jf3fw"]
+size = Vector2(387, 136)
+
+[node name="AmbienceNode" type="Node2D"]
+script = ExtResource("1_gi0mp")
+
+[node name="AffectedArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AffectedArea"]
+shape = SubResource("RectangleShape2D_jf3fw")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+autoplay = true
+max_distance = 112.0
+bus = &"Ambience"
+
+[node name="Sprite2D" type="Sprite2D" parent="AudioStreamPlayer2D"]
+scale = Vector2(-0.352456, -0.226122)
+texture = ExtResource("2_llo44")
+
+[connection signal="body_shape_entered" from="AffectedArea" to="." method="_on_affected_area_body_shape_entered"]
+[connection signal="body_shape_exited" from="AffectedArea" to="." method="_on_affected_area_body_shape_exited"]
+[connection signal="finished" from="AudioStreamPlayer2D" to="." method="AmbienceFinishedPlaying"]
