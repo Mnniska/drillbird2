@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="abstract_SoundEffectSetting" load_steps=3 format=3 uid="uid://b6418d5at8lbv"]
+
+[ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_SoundEffectSetting.gd" id="1_ag16j"]
+[ext_resource type="AudioStream" uid="uid://crw0pessdcpys" path="res://Audio/SFX/player_grab_flower.wav" id="2_s22fx"]
+
+[resource]
+script = ExtResource("1_ag16j")
+limit = 1
+type = 20
+sound_effect = ExtResource("2_s22fx")
+volume = -5
+pitch_randomness = 0.2
+audioBus = 0

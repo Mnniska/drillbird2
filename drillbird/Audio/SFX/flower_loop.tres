@@ -5,9 +5,9 @@
 
 [resource]
 script = ExtResource("1_lh4ac")
-limit = 1
+limit = 2
 type = 18
 sound_effect = ExtResource("2_wed3a")
 volume = 0
-pitch_randomness = 0.2
+pitch_randomness = 0.0
 audioBus = 0

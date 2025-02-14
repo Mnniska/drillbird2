@@ -655,7 +655,7 @@ position = Vector2(0, -77)
 texture = ExtResource("64_yk8d7")
 
 [node name="Spawnpos_LastThird" type="Sprite2D" parent="PlayerSpawnLocations"]
-position = Vector2(297, 1526)
+position = Vector2(-31, 456)
 texture = ExtResource("64_yk8d7")
 
 [node name="Spawnpos_FlowerTutorial" type="Sprite2D" parent="PlayerSpawnLocations"]

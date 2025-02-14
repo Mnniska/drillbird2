@@ -26,7 +26,8 @@ enum SoundEffectEnum
 	PLAYER_DRILL_BREAKABLE,
 	
 	FLOWER_LOOP,
-	FALLBLOCK_LAND
+	FALLBLOCK_LAND,
+	PLAYER_GRAB_FLOWER
 }
 
 @export_range(0,10) var limit:int=5

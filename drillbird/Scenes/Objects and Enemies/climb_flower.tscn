@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b5af7odmny64p"]
+[gd_scene load_steps=14 format=3 uid="uid://b5af7odmny64p"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/climb_flower.gd" id="1_n4nt3"]
 [ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_collidable.gd" id="2_2xntx"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://ctyenq0n0pes" path="res://Art/Objects/ClimbFlower/climber_flower_movingup.png" id="4_y8t3l"]
 [ext_resource type="Texture2D" uid="uid://ci8cej8o5rkkh" path="res://Art/Objects/ClimbFlower/climber_vine.png" id="5_f5f0o"]
 [ext_resource type="Script" path="res://Scripts/flower_collider_script.gd" id="7_x4lji"]
+[ext_resource type="PackedScene" uid="uid://csw4ibce4mwsc" path="res://Scenes/sound_looper.tscn" id="8_dtlc8"]
+[ext_resource type="Resource" uid="uid://b8thtdmcn7hom" path="res://Audio/SFX/flower_loop.tres" id="9_62kc6"]
 
 [sub_resource type="Resource" id="Resource_eoj21"]
 script = ExtResource("2_2xntx")
@@ -50,6 +52,7 @@ animations = [{
 script = ExtResource("1_n4nt3")
 collider = SubResource("Resource_eoj21")
 SPEED = 115.0
+timeUntilFast = 3.0
 
 [node name="base" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 16)
@@ -79,3 +82,10 @@ shape = SubResource("CircleShape2D_25xxp")
 [node name="FlowerAnim" type="AnimatedSprite2D" parent="FlowerBody"]
 sprite_frames = SubResource("SpriteFrames_6ryxp")
 animation = &"idle"
+
+[node name="SoundLooper" parent="." instance=ExtResource("8_dtlc8")]
+soundEffect = ExtResource("9_62kc6")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0

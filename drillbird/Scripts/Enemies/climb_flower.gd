@@ -5,6 +5,10 @@ class_name climb_flower
 @onready var flowerAnim:AnimatedSprite2D=$FlowerBody/FlowerAnim
 @onready var flowerBody:RigidBody2D=$FlowerBody
 
+@onready var flowerAttachedSound:sound_looper=$SoundLooper
+var positionLastFrame:Vector2
+
+
 var size:float=4
 var offset:Vector2=Vector2(0,4)
 @export var SPEED:float=20
@@ -20,6 +24,7 @@ var restingPositionY=-4
 
 var PlayerAttached:bool=false
 
+
 func GetSelf():
 	return self
 
@@ -28,11 +33,16 @@ func _process(delta: float) -> void:
 
 	
 	if PlayerAttached:
-		state=States.MOVE_UP
+		if state!=States.MOVE_UP:
+			state=States.MOVE_UP
+			SoundManager.PlaySoundAtLocation(flowerBody.global_position,abstract_SoundEffectSetting.SoundEffectEnum.PLAYER_GRAB_FLOWER)
 	elif flowerBody.position.y-offset.y<=restingPositionY:
-		state=States.MOVE_DOWN
+		if state!=States.MOVE_DOWN:
+			state=States.MOVE_DOWN
+			flowerAttachedSound.Stop()
 	else:
-		state=States.IDLE
+		if state!=States.IDLE:
+			state=States.IDLE
 	
 	match state:
 		States.IDLE:
@@ -60,10 +70,25 @@ func Move_UP(delta:float):
 	speedTimeCounter=min(timeUntilFast,speedTimeCounter+delta)
 	var progress=speedTimeCounter/timeUntilFast
 	currentSpeed=SPEED*(1+(MAXSPEEDMULTIPLIER*progress))
+	
+	var minpitch=1
+	var maxpitch=1.3
+	var pitchP=lerpf(minpitch,maxpitch,progress)
+	flowerAttachedSound.SetPitch(pitchP)
 	flowerBody.move_and_collide(Vector2(0,-currentSpeed *delta))
+	UpdateMoveSound()
+
+func UpdateMoveSound():
 	
+	var moveSinceLastFrame=positionLastFrame.y- flowerBody.position.y
+	if moveSinceLastFrame>0.05:
+		
+		flowerAttachedSound.Play()
+	else:
+		flowerAttachedSound.Stop()
+
 	
-	
+	positionLastFrame=flowerBody.position
 	pass
 
 func Move_DOWN(delta:float):
