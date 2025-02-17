@@ -35,7 +35,7 @@ shader_parameter/scale = 1.0
 shader_parameter/offset = Vector2(0, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_deru2"]
-size = Vector2(331, 72.5)
+size = Vector2(331, 12)
 
 [node name="FlyingCredits" type="Node"]
 script = ExtResource("1_xtpho")
@@ -80,9 +80,6 @@ texture = ExtResource("6_govxu")
 region_enabled = true
 region_rect = Rect2(0, 0, 2000, 1000)
 
-[node name="FlyingChild" parent="." instance=ExtResource("2_eruml")]
-position = Vector2(-110, 0)
-
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Credits" type="Node2D" parent="."]
@@ -119,34 +116,8 @@ Art
 - Noise Acting 
 
 
-
-[font_size={32}]~~~ Software ~~~[/font_size]
-GODOT Engine
-AseSprite
-GitHub Desktop 
-[insert Hampus sound software]
-
-
-
-[font_size={32}]~~~ Tutorials ~~~[/font_size]
-Sound Manager tutorial by Aarimous 
-https://www.youtube.com/watch?v=Egf2jgET3nQ&t
-
-
-
-[font_size={32}]~~ Fonts Used ~~[/font_size]
-
-M5xy 
-by Daniel Linssen
-
-Pixelated Elegance 
-by GGBotNet
-
-Quinque Five 
-by  GGBotNet
-
-
 [font_size={32}]~~~ Playtesters ~~~ [/font_size]
+
 Luiza Flôres da Cunha
 Erik Flôres da Cunha
 Malin Larsson
@@ -160,11 +131,35 @@ Tanel (enter last name)
 
 
 
-
 [font_size={32}]~~~ Special Thanks ~~~[/font_size]
+
 Lulu Flôres da Cunha for eternal support 
 Tanel for being Drillbirds greatest hypeman 
 "
+scroll_active = false
+scroll_following = true
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="Credits"]
+visible = false
+offset_left = -153.0
+offset_top = -101.0
+offset_right = 167.0
+offset_bottom = 1238.0
+theme = ExtResource("8_8r2fg")
+bbcode_enabled = true
+text = "	[font_size={32}]DrillBird contributors [/font_size]
+
+	[color=green]Sebastian Larsson[/color]
+	Design, Code, Art 
+
+	[color=green]Hampus Mellin [/color]
+	Sound Design, Music 
+
+	[color=green]Andrea Harty[/color]		
+	Art 
+
+	[color=green]Luiza Flores da Cunha[/color]
+	Game Logo, Noise Acting "
 scroll_active = false
 scroll_following = true
 
@@ -176,7 +171,10 @@ collision_layer = 0
 collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
-position = Vector2(-0.5, 136.25)
+position = Vector2(-0.5, 106)
 shape = SubResource("RectangleShape2D_deru2")
+
+[node name="FlyingChild" parent="." instance=ExtResource("2_eruml")]
+position = Vector2(-121, 130)
 
 [connection signal="body_shape_entered" from="PlayerDetector" to="." method="_on_player_detector_body_shape_entered"]

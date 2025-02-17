@@ -14,6 +14,9 @@ class_name flying_credits_manager
 func _ready() -> void:
 	HUD.SetState(HUD.menuStates.CREDITS)
 	SetupParallax()
+	
+	await get_tree().create_timer(1).timeout
+	flyer.initiateJump(1)
 
 
 func SetupParallax():
@@ -29,5 +32,5 @@ func SetupParallax():
 
 
 func _on_player_detector_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
-	flyer.initiateJump(randf())
+	flyer.initiateJump(randf_range(0.3,0.6))
 	pass # Replace with function body.
