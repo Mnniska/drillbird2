@@ -7,6 +7,7 @@ class_name flying_credits_manager
 @onready var backgroundStars:Sprite2D=$BG_Stars
 @onready var backgroundPlanets:Sprite2D=$BG_planets
 @onready var backgroundClouds:Sprite2D=$BG_clouds
+@onready var backgroundCloudsCloser:Sprite2D=$BG_clouds2
 
 @export var BaseSpeed:float=50
 
@@ -26,6 +27,7 @@ func SetupParallax():
 	backgroundStars.material.set_shader_parameter("motion",Vector2i(speed*0.1,0))
 	backgroundPlanets.material.set_shader_parameter("motion",Vector2i(speed*0.4,0))
 	backgroundClouds.material.set_shader_parameter("motion",Vector2i(speed,0))
+	backgroundCloudsCloser.material.set_shader_parameter("motion",Vector2i(speed*1.5,0))
 	
 	
 	pass

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://chmegxltn4stt"]
+[gd_scene load_steps=17 format=3 uid="uid://chmegxltn4stt"]
 
 [ext_resource type="Script" path="res://Scripts/UX and UI/flying_credits_manager.gd" id="1_xtpho"]
 [ext_resource type="PackedScene" uid="uid://djowxohivfhhb" path="res://Scenes/Objects and Enemies/flying_child.tscn" id="2_eruml"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://c288pgae2xq7d" path="res://Art/environment/SpaceBackground/background_space_planetLayer.png" id="4_bbomm"]
 [ext_resource type="Texture2D" uid="uid://be62r58yrr0tm" path="res://Art/environment/SpaceBackground/background_space_starLayer.png" id="5_7onrn"]
 [ext_resource type="Texture2D" uid="uid://c03h0e4txuitu" path="res://Art/environment/SpaceBackground/background_space_cloudLayer.png" id="6_govxu"]
+[ext_resource type="Texture2D" uid="uid://da8yq4gnjptge" path="res://Art/environment/SpaceBackground/background_space_cloudLayer2.png" id="7_iktqh"]
 [ext_resource type="Theme" uid="uid://bfr5y4lo7m1ux" path="res://Resources/Fonts/fontTheme.tres" id="8_8r2fg"]
 [ext_resource type="Script" path="res://Scripts/UX and UI/credits.gd" id="8_p2dai"]
 
@@ -29,6 +30,12 @@ shader_parameter/scale = 1.0
 shader_parameter/offset = Vector2(0, 0)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vv0vl"]
+shader = ExtResource("3_nxjs3")
+shader_parameter/motion = Vector2(0, 0)
+shader_parameter/scale = 1.0
+shader_parameter/offset = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xj6yf"]
 shader = ExtResource("3_nxjs3")
 shader_parameter/motion = Vector2(0, 0)
 shader_parameter/scale = 1.0
@@ -77,6 +84,16 @@ texture_repeat = 2
 material = SubResource("ShaderMaterial_vv0vl")
 position = Vector2(0, -139)
 texture = ExtResource("6_govxu")
+region_enabled = true
+region_rect = Rect2(0, 0, 2000, 1000)
+
+[node name="BG_clouds2" type="Sprite2D" parent="."]
+light_mask = 0
+visibility_layer = 4
+texture_repeat = 2
+material = SubResource("ShaderMaterial_xj6yf")
+position = Vector2(0, -139)
+texture = ExtResource("7_iktqh")
 region_enabled = true
 region_rect = Rect2(0, 0, 2000, 1000)
 
