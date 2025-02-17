@@ -12,8 +12,8 @@ class_name flying_child
 @export var maxVerticalSpeed:float=80
 @export var friction:float=2
 
-enum States{IDLE,JUMPING,FALLING}
-var state:States=States.IDLE
+enum States{IDLE,JUMPING,FALLING,INACTIVE}
+var state:States=States.INACTIVE
 
 var jumpTime:float=0.6
 var jumpTimeCounter:float=0
@@ -22,8 +22,18 @@ var lastAnimatedState:States
 
 var holdTime:float=0
 
+var simulatedJumpPressed:bool=false
+
 
 func _physics_process(delta: float) -> void:
+	
+	if state==States.INACTIVE:
+		return
+	
+	if holdTime>0:
+		holdTime-=delta
+		if holdTime<=0:
+			simulatedJumpPressed=false
 	
 	velocity.x=move_toward(velocity.x,0,friction)
 	if Input.is_action_pressed("left"):
@@ -41,18 +51,23 @@ func _physics_process(delta: float) -> void:
 			initiateJump(0)
 	
 	if state==States.JUMPING:
-		if Input.is_action_pressed("jump") or holdTime>0:
+		if Input.is_action_pressed("jump") or simulatedJumpPressed:
 			continueJump(delta)
-	elif state==States.JUMPING:
-		StopJump()
+		else:
+			StopJump()
 	
-	velocity.y+=gravity
+	var modifier=1
+	if state==States.IDLE:
+		modifier=0.5
+	
+	velocity.y+=gravity*modifier
+	
 	if state!=States.JUMPING:
 		if velocity.y > speedAtWhichFallingAnimTriggers:
 			state=States.FALLING
 		else:
 			state=States.IDLE
-	
+
 	UpdateAnimations()
 	move_and_slide()
 	
@@ -60,31 +75,19 @@ func _on_animator_animation_finished() -> void:
 	pass # Replace with function body.
 
 func initiateJump(_holdtime:float):
-	holdTime=_holdtime
+	if state==States.JUMPING:
+		return
+		
 	state=States.JUMPING
+
+	if _holdtime>0:
+		simulatedJumpPressed=true
+		holdTime=_holdtime
 	velocity.y=-jumpHeight
 	animator.animation="up"
 	pass
-
-func UpdateAnimations():
 	
-	#Ensures animations only update once when a state changes
-	if lastAnimatedState!=state:
-		
-		match state:
-			States.IDLE:
-				animator.animation="idle"
-			States.JUMPING:
-				animator.animation="up"
-			States.FALLING:
-				animator.animation="down"
-	
-		lastAnimatedState=state
-
-
 func continueJump(delta:float):
-	if holdTime>0:
-		holdTime-delta
 	velocity.y-=heldJumpSpeed
 	jumpTimeCounter+=delta
 	if jumpTimeCounter>=jumpTime:
@@ -95,4 +98,22 @@ func continueJump(delta:float):
 func StopJump():
 	jumpTimeCounter=0
 	state=States.IDLE
+	simulatedJumpPressed=false
+	holdTime=0
 	pass
+
+func UpdateAnimations():
+	
+	#Ensures animations only update once when a state changes
+	if lastAnimatedState!=state:
+		
+		match state:
+			States.IDLE:
+				animator.animation="idle"
+				animator.play()
+			States.JUMPING:
+				animator.animation="up"
+			States.FALLING:
+				animator.animation="down"
+	
+		lastAnimatedState=state

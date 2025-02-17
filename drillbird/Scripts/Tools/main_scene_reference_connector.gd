@@ -1,6 +1,7 @@
 extends Node
 class_name main_scene_reference_connector
 
+@onready var mainScene=$".."
 @onready var player=$"../Player"
 @onready var playerDarkness=$"../PlayerDarkness"
 @onready var ref_home=$"../Home"

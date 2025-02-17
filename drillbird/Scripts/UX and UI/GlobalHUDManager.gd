@@ -9,7 +9,8 @@ extends CanvasLayer
 enum menuStates{MAIN,PAUSE,OPTIONS,PLAY,CREDITS}
 var state:menuStates=menuStates.MAIN
 
-
+enum sceneStates{MAIN,CREDITS}
+var sceneState:sceneStates=sceneStates.MAIN
 
 #HUD manager vars
 @export var showHud:bool=false
@@ -25,6 +26,10 @@ var pos_top_visible:Vector2
 var pos_top_hidden:Vector2
 var pos_bottom_visible:Vector2
 var pos_bottom_hidden:Vector2
+
+@export var scene_credits:PackedScene
+@export var scene_main:PackedScene
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -116,6 +121,21 @@ func SetState(_state:menuStates):
 			
 			pass
 
+func SetSceneState(state:sceneStates):
+	if state==sceneState:
+		return
+	
+	sceneState=state
+	if sceneState==sceneStates.MAIN:
+		pass
+	
+	if sceneState==sceneStates.CREDITS:
+		var scene = GlobalVariables.MainSceneReferenceConnector.mainScene
+		scene.get_tree().change_scene_to_packed(scene_credits)
+		
+		pass
+	
+	pass
 
 func _on_main_menu_new_game() -> void:
 	SetState(menuStates.PLAY)
