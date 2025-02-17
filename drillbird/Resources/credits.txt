@@ -1,0 +1,53 @@
+[center]Thank you for playing Drillbird!!
+
+~~~ DrillBird contributors ~~~
+
+Sebastian Larsson
+Design, Code, Art 
+
+Hampus Mellin 
+Sound Design, Music 
+
+Andrea Harty
+Art 
+
+*** Luiza Flores da Cunha ***
+- Game Logo 
+- Noise Acting 
+
+~~ Fonts Used ~~
+
+M5xy 
+by Daniel Linssen
+
+Pixelated Elegance 
+by GGBotNet
+
+Quinque Five 
+by  GGBotNet
+
+~~~ Software ~~~
+GODOT Engine
+AseSprite
+GitHub Desktop 
+[insert Hampus sound software]
+
+~~~ Tutorials and Guidance ~~~
+Sound Manager tutorial by Aarimous 
+https://www.youtube.com/watch?v=Egf2jgET3nQ&t
+
+~~~ Playtesters ~~~ 
+Luiza Flôres da Cunha
+Erik Flôres da Cunha
+Malin Larsson
+Johanna Larsson 
+Ture Hellqvist 
+Tekla Larsson 
+Billy Rosehag 
+Lukas Orsvärn 
+Johanna something (Lukas Sambo) 
+Tanel (enter last name) 
+
+~~~ Special Thanks ~~~
+Lulu Flôres da Cunha for eternal support 
+Tanel for being Drillbirds greatest hypeman 

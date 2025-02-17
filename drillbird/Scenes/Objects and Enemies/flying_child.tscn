@@ -59,7 +59,10 @@ animations = [{
 radius = 12.0416
 
 [node name="FlyingChild" type="CharacterBody2D"]
+collision_layer = 16
+collision_mask = 0
 script = ExtResource("1_xqyjr")
+gravity = 1.5
 
 [node name="Animator" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_vrtup")

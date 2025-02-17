@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://chmegxltn4stt"]
+[gd_scene load_steps=15 format=3 uid="uid://chmegxltn4stt"]
 
 [ext_resource type="Script" path="res://Scripts/UX and UI/flying_credits_manager.gd" id="1_xtpho"]
 [ext_resource type="PackedScene" uid="uid://djowxohivfhhb" path="res://Scenes/Objects and Enemies/flying_child.tscn" id="2_eruml"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://c288pgae2xq7d" path="res://Art/environment/SpaceBackground/background_space_planetLayer.png" id="4_bbomm"]
 [ext_resource type="Texture2D" uid="uid://be62r58yrr0tm" path="res://Art/environment/SpaceBackground/background_space_starLayer.png" id="5_7onrn"]
 [ext_resource type="Texture2D" uid="uid://c03h0e4txuitu" path="res://Art/environment/SpaceBackground/background_space_cloudLayer.png" id="6_govxu"]
+[ext_resource type="Theme" uid="uid://bfr5y4lo7m1ux" path="res://Resources/Fonts/fontTheme.tres" id="8_8r2fg"]
+[ext_resource type="Script" path="res://Scripts/UX and UI/credits.gd" id="8_p2dai"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uva2n"]
 shader = ExtResource("3_nxjs3")
@@ -31,6 +33,9 @@ shader = ExtResource("3_nxjs3")
 shader_parameter/motion = Vector2(0, 0)
 shader_parameter/scale = 1.0
 shader_parameter/offset = Vector2(0, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_deru2"]
+size = Vector2(331, 72.5)
 
 [node name="FlyingCredits" type="Node"]
 script = ExtResource("1_xtpho")
@@ -79,3 +84,99 @@ region_rect = Rect2(0, 0, 2000, 1000)
 position = Vector2(-110, 0)
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Credits" type="Node2D" parent="."]
+script = ExtResource("8_p2dai")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Credits"]
+offset_left = -160.0
+offset_top = 122.0
+offset_right = 160.0
+offset_bottom = 1461.0
+theme = ExtResource("8_8r2fg")
+bbcode_enabled = true
+text = "[center]Thank you for playing Drillbird!!
+
+
+
+
+
+
+
+[font_size={32}]~~~ DrillBird contributors ~~~[/font_size]
+
+[color=green]Sebastian Larsson[/color]
+Design, Code, Art 
+
+[color=green]Hampus Mellin [/color]
+Sound Design, Music 
+
+[color=green]Andrea Harty[/color]
+Art 
+
+[color=green]Luiza Flores da Cunha[/color]
+- Game Logo 
+- Noise Acting 
+
+
+
+[font_size={32}]~~~ Software ~~~[/font_size]
+GODOT Engine
+AseSprite
+GitHub Desktop 
+[insert Hampus sound software]
+
+
+
+[font_size={32}]~~~ Tutorials ~~~[/font_size]
+Sound Manager tutorial by Aarimous 
+https://www.youtube.com/watch?v=Egf2jgET3nQ&t
+
+
+
+[font_size={32}]~~ Fonts Used ~~[/font_size]
+
+M5xy 
+by Daniel Linssen
+
+Pixelated Elegance 
+by GGBotNet
+
+Quinque Five 
+by  GGBotNet
+
+
+[font_size={32}]~~~ Playtesters ~~~ [/font_size]
+Luiza Flôres da Cunha
+Erik Flôres da Cunha
+Malin Larsson
+Johanna Larsson 
+Ture Hellqvist 
+Tekla Larsson 
+Billy Rosehag 
+Lukas Orsvärn 
+Johanna something (Lukas Sambo) 
+Tanel (enter last name) 
+
+
+
+
+[font_size={32}]~~~ Special Thanks ~~~[/font_size]
+Lulu Flôres da Cunha for eternal support 
+Tanel for being Drillbirds greatest hypeman 
+"
+scroll_active = false
+scroll_following = true
+
+[node name="StartPos" type="Node2D" parent="Credits"]
+position = Vector2(-160, 172)
+
+[node name="PlayerDetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
+position = Vector2(-0.5, 136.25)
+shape = SubResource("RectangleShape2D_deru2")
+
+[connection signal="body_shape_entered" from="PlayerDetector" to="." method="_on_player_detector_body_shape_entered"]

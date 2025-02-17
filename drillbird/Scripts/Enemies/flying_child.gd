@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name flying_child 
 
 @onready var animator=$Animator
 
@@ -19,6 +20,8 @@ var jumpTimeCounter:float=0
 
 var lastAnimatedState:States
 
+var holdTime:float=0
+
 
 func _physics_process(delta: float) -> void:
 	
@@ -35,10 +38,11 @@ func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("jump"):
 		if state!=States.JUMPING:
-			initiateJump()
+			initiateJump(0)
 	
-	if Input.is_action_pressed("jump") and state==States.JUMPING:
-		continueJump(delta)
+	if state==States.JUMPING:
+		if Input.is_action_pressed("jump") or holdTime>0:
+			continueJump(delta)
 	elif state==States.JUMPING:
 		StopJump()
 	
@@ -55,7 +59,8 @@ func _physics_process(delta: float) -> void:
 func _on_animator_animation_finished() -> void:
 	pass # Replace with function body.
 
-func initiateJump():
+func initiateJump(_holdtime:float):
+	holdTime=_holdtime
 	state=States.JUMPING
 	velocity.y=-jumpHeight
 	animator.animation="up"
@@ -78,6 +83,8 @@ func UpdateAnimations():
 
 
 func continueJump(delta:float):
+	if holdTime>0:
+		holdTime-delta
 	velocity.y-=heldJumpSpeed
 	jumpTimeCounter+=delta
 	if jumpTimeCounter>=jumpTime:
