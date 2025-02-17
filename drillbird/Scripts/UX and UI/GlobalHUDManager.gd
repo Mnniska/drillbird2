@@ -6,7 +6,7 @@ extends CanvasLayer
 @onready var HUD_InventoryManager=$bottomUI/InventoryHandler
 @onready var MainMenu=$MainMenu
 
-enum menuStates{MAIN,PAUSE,OPTIONS,PLAY}
+enum menuStates{MAIN,PAUSE,OPTIONS,PLAY,CREDITS}
 var state:menuStates=menuStates.MAIN
 
 
@@ -108,6 +108,9 @@ func SetState(_state:menuStates):
 			#If player has saved game, wake up on egg
 			if GlobalVariables.currentDay>1:
 				GlobalVariables.MainSceneReferenceConnector.ref_home.WakeUp(false)
+		menuStates.CREDITS:
+			SetHudVisible(false)
+			MainMenu.Deactivate()
 
 
 			

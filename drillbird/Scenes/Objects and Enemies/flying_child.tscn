@@ -1,0 +1,72 @@
+[gd_scene load_steps=12 format=3 uid="uid://djowxohivfhhb"]
+
+[ext_resource type="Script" path="res://Scripts/Enemies/flying_child.gd" id="1_xqyjr"]
+[ext_resource type="Texture2D" uid="uid://d4gvtpoxcih3j" path="res://Art/characters/child/childFlying_decending1.png" id="2_pnp1f"]
+[ext_resource type="Texture2D" uid="uid://bru148hlyv4et" path="res://Art/characters/child/childFlying_decending2.png" id="3_oeidk"]
+[ext_resource type="Texture2D" uid="uid://dyxvlgombp5th" path="res://Art/characters/child/childFlying_decending3.png" id="4_u871w"]
+[ext_resource type="Texture2D" uid="uid://dx5b508rj40up" path="res://Art/characters/child/childFlying_idle1.png" id="5_ijceb"]
+[ext_resource type="Texture2D" uid="uid://i803rb0licyu" path="res://Art/characters/child/childFlying_idle2.png" id="6_ebetu"]
+[ext_resource type="Texture2D" uid="uid://kxpwmlh4dpms" path="res://Art/characters/child/childFlying_idle3.png" id="7_dks0j"]
+[ext_resource type="Texture2D" uid="uid://vqwrj6x7nvy8" path="res://Art/characters/child/childFlying_up1.png" id="8_f7lwn"]
+[ext_resource type="Texture2D" uid="uid://mypam21at8kb" path="res://Art/characters/child/childFlying_up2.png" id="9_3rnx2"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vrtup"]
+animations = [{
+"frames": [{
+"duration": 3.0,
+"texture": ExtResource("2_pnp1f")
+}, {
+"duration": 3.0,
+"texture": ExtResource("3_oeidk")
+}, {
+"duration": 3.0,
+"texture": ExtResource("4_u871w")
+}],
+"loop": false,
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_ijceb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ebetu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_dks0j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ebetu")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 2.0,
+"texture": ExtResource("8_f7lwn")
+}, {
+"duration": 5.0,
+"texture": ExtResource("9_3rnx2")
+}],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m7bmd"]
+radius = 12.0416
+
+[node name="FlyingChild" type="CharacterBody2D"]
+script = ExtResource("1_xqyjr")
+
+[node name="Animator" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_vrtup")
+animation = &"up"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_m7bmd")
+
+[connection signal="animation_finished" from="Animator" to="." method="_on_animator_animation_finished"]
