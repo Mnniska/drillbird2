@@ -232,6 +232,7 @@ vertical_alignment = 1
 [node name="Button_Continue" parent="UI_Death" instance=ExtResource("16_281dp")]
 
 [node name="MainMenu" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
