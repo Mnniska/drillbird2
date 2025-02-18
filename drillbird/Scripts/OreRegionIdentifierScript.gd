@@ -1,6 +1,7 @@
 extends Node2D
 var oreAreas:Array[OreArea]
 @onready var raycast:RayCast2D=$RayCast2D
+@onready var oreTilemap:TileMapLayer=$".."
 
 #This script:
 #1 - Accepts a vvector2i location in tilemap coordinates and returns the relevant
@@ -13,7 +14,48 @@ func _ready() -> void:
 		if n.name!="CheckerArea" && n.name!="RayCast2D":
 			oreAreas.append(n)
 
-
+func GetValueOfOresForRegion(regionID:int):
+	if regionID<0:
+		push_error("Recieved invalid region ID: "+str(regionID) )
+		regionID=0
+	if regionID>4:
+		push_error("Recieved invalid region ID: "+str(regionID) )
+		regionID=4
+	
+	var areasToCheck:Array[OreArea]
+	
+	for n in oreAreas:
+		if n.terrainIdentifier==regionID:
+			areasToCheck.append(n)
+	
+	var amountOfOres:int=0
+	var estimatedValue:int=0
+	for _oreArea in areasToCheck:
+		var startingPos=_oreArea.GetBoundingBoxBegin()
+		var endPos=_oreArea.GetBoundingBoxEnd()
+			
+		for orePos in oreTilemap.get_used_cells():
+			var globalOrePos=to_global(oreTilemap.map_to_local(orePos))
+			
+			if globalOrePos.x>startingPos.x and globalOrePos.x < endPos.x:
+				if globalOrePos.y>startingPos.y and globalOrePos.y < endPos.y:
+					var cell = oreTilemap.get_cell_tile_data(orePos)
+					var oreRegion:int=cell.get_custom_data("ore_region")
+			
+					var newOre:abstract_ore=null
+					for n in oreTilemap.oreRegions:
+						if n.oreRegionID==oreRegion:
+							newOre=n.GetOreToSpawn()
+					if newOre==null:
+						push_error("Crack script was unable to find a good ore!")
+					
+					amountOfOres+=1
+					estimatedValue+=newOre.value
+				
+	print_debug("Amount of ores in area: "+str(amountOfOres))
+	print_debug("Estimated value of ores: "+str(estimatedValue))
+	
+	
 
 func GetRegionIdentifierFromLocation(tilemapPos:Vector2i,tilemap:TileMapLayer):
 	

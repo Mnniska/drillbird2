@@ -1,4 +1,4 @@
-[gd_scene load_steps=111 format=4 uid="uid://d2wv7igie5stg"]
+[gd_scene load_steps=117 format=4 uid="uid://d2wv7igie5stg"]
 
 [ext_resource type="TileSet" uid="uid://grpd2pyu7pgk" path="res://Resources/MainTileset.tres" id="1_1imtu"]
 [ext_resource type="Script" path="res://Scenes/Playable Scenes/SaveManager.gd" id="1_iickb"]
@@ -101,6 +101,9 @@ custom_data_layer_0/name = "dir_dependency"
 custom_data_layer_0/type = 6
 sources/1 = SubResource("TileSetAtlasSource_b7p1b")
 sources/2 = SubResource("TileSetAtlasSource_apsei")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_817i6"]
+size = Vector2(1385.5, 728)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vdgks"]
 size = Vector2(721, 374)
@@ -217,10 +220,40 @@ name = "spawnFinalHeart"
 options = Array[ExtResource("48_cl8sw")]([])
 isAction = true
 
+[sub_resource type="Resource" id="Resource_grrgx"]
+script = ExtResource("48_cl8sw")
+name = "CalculateOreRegion1"
+options = Array[ExtResource("48_cl8sw")]([])
+isAction = true
+
+[sub_resource type="Resource" id="Resource_hsjv2"]
+script = ExtResource("48_cl8sw")
+name = "CalculateOreRegion2"
+options = Array[ExtResource("48_cl8sw")]([])
+isAction = true
+
+[sub_resource type="Resource" id="Resource_bsueh"]
+script = ExtResource("48_cl8sw")
+name = "CalculateOreRegion3"
+options = Array[ExtResource("48_cl8sw")]([])
+isAction = true
+
+[sub_resource type="Resource" id="Resource_nv7g3"]
+script = ExtResource("48_cl8sw")
+name = "CalculateOreRegion0"
+options = Array[ExtResource("48_cl8sw")]([])
+isAction = true
+
+[sub_resource type="Resource" id="Resource_px5dx"]
+script = ExtResource("48_cl8sw")
+name = "OreValueCalculator"
+options = Array[ExtResource("48_cl8sw")]([SubResource("Resource_grrgx"), SubResource("Resource_hsjv2"), SubResource("Resource_bsueh"), SubResource("Resource_nv7g3")])
+isAction = false
+
 [sub_resource type="Resource" id="Resource_77at3"]
 script = ExtResource("48_cl8sw")
 name = "inventory"
-options = Array[ExtResource("48_cl8sw")]([SubResource("Resource_xfofi"), SubResource("Resource_kod01"), SubResource("Resource_iftq1"), SubResource("Resource_u7pvn")])
+options = Array[ExtResource("48_cl8sw")]([SubResource("Resource_xfofi"), SubResource("Resource_kod01"), SubResource("Resource_iftq1"), SubResource("Resource_u7pvn"), SubResource("Resource_px5dx")])
 isAction = false
 
 [sub_resource type="Resource" id="Resource_v3nii"]
@@ -327,8 +360,18 @@ oreRegions = Array[ExtResource("3_flbkc")]([ExtResource("4_t4dgp"), ExtResource(
 oreList = Array[ExtResource("12_d51cc")]([ExtResource("13_6wsyx"), ExtResource("14_lu42v"), ExtResource("15_a50cc"), ExtResource("16_qo7l5"), ExtResource("17_ytjr0"), ExtResource("19_o4u8a"), ExtResource("22_nstd1")])
 
 [node name="OreRegions" type="Node2D" parent="TilemapOres"]
-visible = false
 script = ExtResource("18_ae1sx")
+
+[node name="OreArea0" type="Area2D" parent="TilemapOres/OreRegions"]
+position = Vector2(-107, 38)
+collision_layer = 64
+collision_mask = 64
+script = ExtResource("19_wmybe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TilemapOres/OreRegions/OreArea0"]
+position = Vector2(-20.25, 28)
+shape = SubResource("RectangleShape2D_817i6")
+debug_color = Color(0, 0.63285, 0.446986, 0.42)
 
 [node name="OreArea" type="Area2D" parent="TilemapOres/OreRegions"]
 position = Vector2(56, 290)

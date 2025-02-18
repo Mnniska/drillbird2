@@ -89,7 +89,7 @@ func GenerateObjectsAndEnemiesFromTilemap():
 			RemoveTile(tileLoc)
 		
 		
-	
+	#Does the tile have an ore? If so, place it in the OreTilemap!
 		if tile.get_custom_data("oreblock_terrain")>0: #zero is default value, meaning this is not an enemy
 			
 			#Here, we wanna create an ORE SPRITE that matches the current ore region

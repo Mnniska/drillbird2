@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://f30dqpc0wmhe"]
+
+[ext_resource type="Texture2D" uid="uid://gixivpytn5wl" path="res://Art/ui/HUD/UI_LightBar_bulb.png" id="1_kvin5"]
+
+[node name="DebugSpawnable" type="Sprite2D"]
+z_index = 10
+texture = ExtResource("1_kvin5")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0

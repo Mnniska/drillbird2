@@ -2,6 +2,7 @@ extends Node2D
 @export var menu:Array[abstract_debugMenuOption]
 var currentMenu:Array[abstract_debugMenuOption]
 @onready var textshown = $RichTextLabel
+@onready var OreRegions=$"../../TilemapOres/OreRegions"
 var textstring:String=""
 var currentSelection:int=0
 var Active:bool=false
@@ -12,6 +13,7 @@ var playerHidden:bool=false
 @export var oreTypeToAssignSpawnedOre:abstract_ore
 
 @export var finalHeartOre:abstract_ore
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -201,5 +203,17 @@ func ExecuteAction(action:String):
 			node.transform.origin=get_parent().to_local(GlobalVariables.MainSceneReferenceConnector.player.global_position+Vector2(16,-16)) 
 			node.oreType=finalHeartOre
 			get_parent().add_child(node)
-			
+		"CalculateOreRegion0":
+			OreRegions.GetValueOfOresForRegion(0)
+			pass
+		"CalculateOreRegion1":
+			OreRegions.GetValueOfOresForRegion(1)			
+			pass
+		
+		"CalculateOreRegion2":
+			OreRegions.GetValueOfOresForRegion(2)
+			pass
+		"CalculateOreRegion3":
+			OreRegions.GetValueOfOresForRegion(3)
+			pass
 	pass
