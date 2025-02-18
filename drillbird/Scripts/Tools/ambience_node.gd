@@ -59,10 +59,14 @@ func SetAmbienceActive(_active):
 #Tools for sensing whether player is in the area or not. I've added delays to circumvent area2Ds incorrectly registering extra exits/entrances
 func _process(delta: float) -> void:
 	
+	
+	
 	if player==null:
 		return
 	
 	while global_position.distance_to(player.global_position)>average+sizebuffer:
+		if HUD.sceneState==HUD.sceneStates.CREDITS:
+			return
 		await get_tree().create_timer(3).timeout
 
 	if player!=null:

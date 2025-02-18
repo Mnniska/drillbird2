@@ -82,7 +82,7 @@ func SetEggState(_state:eggStates):
 		eggStates.FINALCUTSCENE:
 			#THIS WILL likely never be saved, so won't be used. but who knows :) 
 			hideEggs()
-			finalFormEgg.SetState(finalFormEgg.finalFormStates.FINAL_HEART)
+			finalFormEgg.SetState(finalFormEgg.finalFormStates.FINAL_HATCHING)
 			pass
 			
 	GlobalVariables.eggState=eggState

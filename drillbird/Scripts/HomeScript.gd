@@ -174,7 +174,7 @@ func HatchEgg():
 	state=states.FINALCUTSCENE
 	#DO FINAL CUTSCENE STUFF HERE
 	
-	await get_tree().create_timer(0.5).timeout
+	await get_tree().create_timer(6).timeout
 	
 	HUD.SetSceneState(HUD.sceneStates.CREDITS)
 	

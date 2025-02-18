@@ -39,9 +39,18 @@ func SetState(_state:finalFormStates):
 			show()
 			pass
 		finalFormStates.FINAL_HATCHING:
+			HatchEgg()
 			show()
-			pass
+
 			
+
+func HatchEgg():
+	isShaking=true
+	animator.animation="hatch"
+	await get_tree().create_timer(2).timeout
+	isShaking=false
+
+	pass
 
 func TransitionToFinalForm():
 
