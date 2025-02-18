@@ -1,8 +1,9 @@
-[gd_scene load_steps=23 format=3 uid="uid://dt2yrd4gyilr7"]
+[gd_scene load_steps=24 format=3 uid="uid://dt2yrd4gyilr7"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/FallBlock.gd" id="1_2a7bl"]
 [ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_collidable.gd" id="2_5r5oy"]
 [ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_enemy.gd" id="3_ch1ka"]
+[ext_resource type="Texture2D" uid="uid://btprkjg6l7i8t" path="res://Art/Objects/Fallblock/fallblock_activated.png" id="4_44cdc"]
 [ext_resource type="Texture2D" uid="uid://uq5gd061j3wq" path="res://Art/Objects/Fallblock/fallblock.png" id="4_pky87"]
 [ext_resource type="PackedScene" uid="uid://2lykflhwivex" path="res://Scenes/observer.tscn" id="5_bl8ye"]
 [ext_resource type="Texture2D" uid="uid://gixivpytn5wl" path="res://Art/ui/HUD/UI_LightBar_bulb.png" id="6_eqsls"]
@@ -34,6 +35,14 @@ size = Vector2(12, 15)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_yimnr"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_44cdc")
+}],
+"loop": true,
+"name": &"falling",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("4_pky87")
@@ -114,7 +123,8 @@ debug_color = Color(0.940031, 1.14551e-05, 0.61679, 0.42)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_yimnr")
-animation = &"idle"
+animation = &"falling"
+autoplay = "idle"
 
 [node name="Observer" parent="." instance=ExtResource("5_bl8ye")]
 position = Vector2(0, 14)

@@ -16,7 +16,6 @@ var fast:bool=false
 
 func InitiateFall():
 	state=states.fall
-			
 	anim.position=Vector2(0,0)
 	fast=GetWillBeFast()
 
@@ -30,7 +29,7 @@ func InitiateFall():
 
 func _physics_process(delta: float) -> void:
 	
-	
+	var animToPlay="idle"
 	#self.sleeping=true
 	
 	if enemyInfo.dead:
@@ -41,6 +40,7 @@ func _physics_process(delta: float) -> void:
 		states.idle:
 			pass
 		states.fallprep:
+			animToPlay="falling"
 			velocity=Vector2(0,0)
 			#sexy vibrations ;) 
 			anim.position=Vector2(randf_range(-1,1),randf_range(-1,1))
@@ -54,7 +54,8 @@ func _physics_process(delta: float) -> void:
 				
 			pass
 		states.fall:
-			
+			animToPlay="falling"
+
 			var victims=CheckOverlappingCollisions()
 			if victims !=null:
 				for n in victims:
@@ -74,17 +75,19 @@ func _physics_process(delta: float) -> void:
 				
 			if  is_on_floor():
 				state=states.idle
+				animToPlay="idle"
 				PlayImpactEffect()
 				if fast && raycast.is_colliding():
 					if BlockDestroyer!=null:
 						if BlockDestroyer.DestroyTileWithGlobalPosition(self.global_position+Vector2(0,16),true):
 							state=states.fallprep
+							animToPlay="falling"
 					
 
 			else:
 				velocity += get_gravity() * delta
 
-	UpdateAnimations("idle")
+	UpdateAnimations(animToPlay)
 
 func PlayImpactEffect():
 	impactEffect.animation="destroy"
