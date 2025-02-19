@@ -217,6 +217,7 @@ func WakeUp(saveGame:bool):
 		$"..".SaveGame()
 	justWokeUp=true
 	MusicPlayer.SetState(hub_music_player.musicStates.IDLE)
+	$Eggs/BirdySleepPositions/birdySleep/ZZZ.emitting=false
 	
 	
 	Camera.SetFollowPlayer(true)
@@ -271,6 +272,7 @@ func _on_birdy_sleep_animation_finished() -> void:
 	if animSleep.animation=="layingdown":
 		animSleep.animation="asleep"
 		animSleep.play()
+		$Eggs/BirdySleepPositions/birdySleep/ZZZ.emitting=true
 	pass # Replace with function body.
 
 

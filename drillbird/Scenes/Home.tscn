@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://ckl0ibm5pfs7u"]
+[gd_scene load_steps=45 format=3 uid="uid://ckl0ibm5pfs7u"]
 
 [ext_resource type="Script" path="res://Scripts/HomeScript.gd" id="1_qel16"]
 [ext_resource type="Texture2D" uid="uid://xpp18icbqb1y" path="res://Art/environment/Home/nest_back.png" id="2_4e54y"]
@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://c6imb3d5qmx33" path="res://Art/characters/Drillbird/Sleep/birdy_sleepAnim3.png" id="14_w66px"]
 [ext_resource type="Texture2D" uid="uid://bwb03yuswsfxa" path="res://Art/characters/Drillbird/Sleep/birdy_sleepAnim4.png" id="15_bon3x"]
 [ext_resource type="Texture2D" uid="uid://csw8qotkgiux1" path="res://Art/characters/Drillbird/Sleep/birdy_sleepAnim5.png" id="16_i6hju"]
+[ext_resource type="Texture2D" uid="uid://brqmcw40y6pvg" path="res://Art/ui/Symbols/Z.png" id="16_y7tdx"]
 [ext_resource type="Texture2D" uid="uid://cstos5qewrbox" path="res://Art/ui/UI_Background_rest.png" id="21_t7twy"]
 [ext_resource type="Texture2D" uid="uid://bvtd87mo25snw" path="res://Art/ui/UI_rest_arrow_dark.png" id="22_7onby"]
 [ext_resource type="Script" path="res://Scripts/UX and UI/button_hold.gd" id="22_v3vjt"]
@@ -66,6 +67,46 @@ animations = [{
 "name": &"layingdown",
 "speed": 5.0
 }]
+
+[sub_resource type="Curve" id="Curve_pvpes"]
+_data = [Vector2(0.0102564, 0.983021), 0.0, 0.0, 0, 0, Vector2(0.389744, 1), 0.0, 0.0, 0, 0, Vector2(0.997436, 0.0293862), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_h315v"]
+curve = SubResource("Curve_pvpes")
+
+[sub_resource type="Curve" id="Curve_wr6ui"]
+min_value = -360.0
+max_value = 360.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_uc6ow"]
+curve = SubResource("Curve_wr6ui")
+
+[sub_resource type="Curve" id="Curve_5jea8"]
+min_value = -1.0
+_data = [Vector2(0.0128205, 0.801916), 0.0, 0.0, 0, 0, Vector2(0.0282051, 0.988681), 0.0, 0.0, 0, 0, Vector2(0.205128, 0.983021), 0.0, 0.0, 0, 0, Vector2(0.361538, -0.878973), 0.0, 0.0, 0, 0, Vector2(0.510256, -0.935568), 0.0, 0.0, 0, 0, Vector2(0.620513, 0.954723), 0.0, 0.0, 0, 0, Vector2(0.782051, 0.983021), 0.0, 0.0, 0, 0, Vector2(0.851282, -0.91293), 0.0, 0.0, 0, 0, Vector2(0.989744, -0.924249), 0.0, 0.0, 0, 0]
+point_count = 9
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_vq11t"]
+curve_x = SubResource("Curve_5jea8")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vhbfi"]
+lifetime_randomness = 0.34
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 30.0
+initial_velocity_min = 10.0
+initial_velocity_max = 10.0
+angular_velocity_min = -2.00002
+angular_velocity_max = 1.99998
+angular_velocity_curve = SubResource("CurveTexture_uc6ow")
+directional_velocity_min = -20.0
+directional_velocity_max = 20.0
+directional_velocity_curve = SubResource("CurveXYZTexture_vq11t")
+gravity = Vector3(0, 0, 0)
+alpha_curve = SubResource("CurveTexture_h315v")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d3sup"]
 size = Vector2(65, 68)
@@ -158,6 +199,14 @@ z_index = 1
 position = Vector2(0, -80)
 sprite_frames = SubResource("SpriteFrames_xb0mn")
 animation = &"asleep"
+
+[node name="ZZZ" type="GPUParticles2D" parent="Eggs/BirdySleepPositions/birdySleep"]
+position = Vector2(4, -6)
+emitting = false
+amount = 3
+process_material = SubResource("ParticleProcessMaterial_vhbfi")
+texture = ExtResource("16_y7tdx")
+lifetime = 5.0
 
 [node name="nest_front" type="Sprite2D" parent="."]
 z_index = 2
