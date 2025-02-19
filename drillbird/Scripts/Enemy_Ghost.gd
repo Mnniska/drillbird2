@@ -6,6 +6,8 @@ var playerPos:Vector2
 @export var MAXSPEED:float=5
 @export var slowestSpeedDist:float=16*3
 @export var fastestSpeedDist:float=16*6
+@export var returnHearSpeedTime:float=4
+@export var returnHearSpeedCount:float=0
 
 #2.8
 var  haunting:bool=false
@@ -92,7 +94,10 @@ func HauntObject(delta:float):
 
 	var returnHeartMult:float=1
 	if state==states.RETURN_HEART:
-		returnHeartMult=3
+		returnHearSpeedCount = min(returnHearSpeedTime,returnHearSpeedCount + delta)
+		returnHeartMult=0.2+3.8*(returnHearSpeedCount/returnHearSpeedTime)
+	else:
+		returnHearSpeedCount=0
 	
 	var s=speed*delta*returnHeartMult
 	

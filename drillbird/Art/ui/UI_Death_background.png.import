@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bntebnpau35mm"
-path="res://.godot/imported/UI_Death_background.png-658c5eefb74f2e9fb271c2be85e9c7db.ctex"
+path="res://.godot/imported/UI_Death_background.png-a43ac4718aa04a6ca0231b53bf27dda3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/UI/UI_Death_background.png"
-dest_files=["res://.godot/imported/UI_Death_background.png-658c5eefb74f2e9fb271c2be85e9c7db.ctex"]
+source_file="res://Art/ui/UI_Death_background.png"
+dest_files=["res://.godot/imported/UI_Death_background.png-a43ac4718aa04a6ca0231b53bf27dda3.ctex"]
 
 [params]
 
