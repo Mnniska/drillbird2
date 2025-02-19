@@ -11,7 +11,9 @@ enum States {IDLE, DRILLING, AIR, DEAD, DAMAGE, DEBUG_GHOST,PAUSE,FLOWER}
 var state = States.IDLE
 @export var collType:abstract_collidable
 
-var RunStartEffect=preload("res://Scenes/Effects/smoke_puff.tscn")
+enum effectEnum{RUN_START,JUMP}
+var effect_run_start=preload("res://Scenes/Effects/smoke_puff.tscn")
+var effect_jump=preload("res://Scenes/Effects/jump_puff.tscn")
 
 var facingDir= Directions.RIGHT
 var facing_right: bool = true
@@ -272,7 +274,7 @@ func RegularMovement(delta:float,currentAnim:String):
 	# Check for jump input and add velocity.
 	if Input.is_action_just_pressed("jump"):  
 	
-	#Interrupt jump and turn it into a flower boost if close to a flower
+		#Interrupt jump and turn it into a flower boost if close to a flower
 		if closeFlowers.size()>0:
 			state=States.FLOWER
 			HeldFlower=GetClosestFlower()
@@ -283,6 +285,7 @@ func RegularMovement(delta:float,currentAnim:String):
 			
 			if is_on_floor():
 				SoundManager.PlaySoundAtLocation(global_position,abstract_SoundEffectSetting.SoundEffectEnum.PLAYER_JUMP)
+				CreateEffect(effectEnum.JUMP,facingDir==Directions.RIGHT)
 			else:
 				SoundManager.PlaySoundAtLocation(global_position,abstract_SoundEffectSetting.SoundEffectEnum.PLAYER_JUMP_MIDAIR)
 			
@@ -556,7 +559,7 @@ func Update_Animations(newanim):
 		playerAnim.animation=animstate
 		
 		if animstate=="run":
-			CreateSmokePuff(facingLeft)
+			CreateEffect(effectEnum.RUN_START,facingLeft)
 	
 
 	#TODO: Consider only calling this when relevant
@@ -573,8 +576,17 @@ func Update_Animations(newanim):
 			alpha=1.0
 		playerAnim.self_modulate=Color(Color.WHITE,alpha)
 
-func CreateSmokePuff(right:bool):
-	var node:AnimatedSprite2D=RunStartEffect.instantiate()
+func CreateEffect(effect:effectEnum, right:bool):
+	var thingToLoad
+	match effect:
+		effectEnum.JUMP:
+			thingToLoad=effect_jump
+			pass
+		effectEnum.RUN_START:
+			thingToLoad=effect_run_start
+			pass
+	
+	var node:AnimatedSprite2D=thingToLoad.instantiate()
 	get_parent().add_child(node)
 	node.global_position=global_position
 	node.flip_h=right

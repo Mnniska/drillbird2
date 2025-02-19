@@ -1,0 +1,59 @@
+[gd_scene load_steps=13 format=3 uid="uid://ma8suwk224hb"]
+
+[ext_resource type="Texture2D" uid="uid://cj1g4801nvd1k" path="res://Art/effects/CharacterEffects/jumpPuff1.png" id="1_yfdeo"]
+[ext_resource type="Texture2D" uid="uid://b6nserrrwosis" path="res://Art/effects/CharacterEffects/jumpPuff3.png" id="2_7oude"]
+[ext_resource type="Texture2D" uid="uid://l6bwppuaucyu" path="res://Art/effects/CharacterEffects/jumpPuff2.png" id="2_kww0o"]
+[ext_resource type="Texture2D" uid="uid://eia3ehn31obd" path="res://Art/effects/CharacterEffects/jumpPuff4.png" id="3_x3jks"]
+[ext_resource type="Texture2D" uid="uid://csgw0rkg72lhp" path="res://Art/effects/CharacterEffects/jumpPuff5.png" id="4_gtion"]
+[ext_resource type="Texture2D" uid="uid://w6rd4b815xwg" path="res://Art/effects/CharacterEffects/jumpPuff6.png" id="5_fhohn"]
+[ext_resource type="Texture2D" uid="uid://f8xve7dnibmr" path="res://Art/effects/CharacterEffects/jumpPuff7.png" id="6_8hgnl"]
+[ext_resource type="Texture2D" uid="uid://c24ny4nunkd70" path="res://Art/effects/CharacterEffects/jumpPuff8.png" id="7_82nnd"]
+[ext_resource type="Texture2D" uid="uid://3mlrkaxwsarr" path="res://Art/effects/CharacterEffects/jumpPuff9.png" id="8_30ryb"]
+[ext_resource type="Texture2D" uid="uid://bi7u555lijoo6" path="res://Art/effects/CharacterEffects/jumpPuff10.png" id="9_jkfui"]
+[ext_resource type="Texture2D" uid="uid://b61ljp6kudnmg" path="res://Art/effects/CharacterEffects/jumpPuff11.png" id="10_5y25c"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o3o18"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_yfdeo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_kww0o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_7oude")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_x3jks")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_gtion")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_fhohn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_8hgnl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_82nnd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_30ryb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_jkfui")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_5y25c")
+}],
+"loop": false,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="JumpPuff" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_o3o18")
+autoplay = "default"
+frame_progress = 1.0
