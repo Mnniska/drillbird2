@@ -17,6 +17,7 @@ extends Node2D
 @onready var EggHandler:egg_script =$Eggs
 @onready var OreSellVisualizer=$OreSellParent
 @onready var TextBubble=preload("res://Scenes/UI/text_bubble.tscn")
+@onready var MusicPlayer:hub_music_player=$HUBMusicPlayer
 
 
 var oresBeingSold:int=0
@@ -33,12 +34,7 @@ var state:states
 	
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	
-
-	
-	var HUBMusic:AudioStreamPlayer2D=SoundManager.CreatePersistentSound(global_position,abstract_SoundEffectSetting.SoundEffectEnum.MUSIC_HOME)
-	HUBMusic.play()
-	HUBMusic.finished.connect(HUBMusic.play)
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -188,7 +184,17 @@ func MainMenu_SetupSleepIdle():
 	animSleep.play()
 	animSleep.show()
 	
+func _on_interact_button_end_day_button_progress_changed(progress: bool) -> void:
+	if !progress:
+		MusicPlayer.SetState(hub_music_player.musicStates.IDLE)
+	else:
+		MusicPlayer.SetState(hub_music_player.musicStates.DREAM)
+	
+	pass # Replace with function body.
+
 func GoToBed():
+	MusicPlayer.SetState(hub_music_player.musicStates.DREAM)
+
 	GlobalVariables.playerStatus=GlobalVariables.playerStatusEnum.SHOP
 	state=states.SLEEP
 	#hide stuff that only exists in reality
@@ -210,6 +216,7 @@ func WakeUp(saveGame:bool):
 		GlobalVariables.currentDay+=1
 		$"..".SaveGame()
 	justWokeUp=true
+	MusicPlayer.SetState(hub_music_player.musicStates.IDLE)
 	
 	
 	Camera.SetFollowPlayer(true)

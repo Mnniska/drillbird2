@@ -4,6 +4,7 @@ class_name button_hold
 @export var holdTime:float=1.5
 var holdCounter:float=0
 var buttonActive:bool=false
+var pressed:bool=false
 
 enum directions{up,down}
 @export var dirToHold:directions=directions.up:
@@ -13,6 +14,7 @@ enum directions{up,down}
 
 
 signal buttonPressed
+signal buttonProgressChanged(progress:bool)
 
 func SetupIconDirection():
 	if dirToHold==directions.up:	
@@ -58,6 +60,11 @@ func SetHoldProgress(progress:float):
 	$icon/active.position.y=pos
 
 func ProgressButtonHeld(buttonHeld:bool,delta:float):
+	if pressed!=buttonHeld:
+		#Signals the button is being progressed. This is used for transitioning music
+		pressed=buttonHeld
+		buttonProgressChanged.emit(pressed)
+	
 	if buttonHeld:
 		holdCounter+=delta
 	elif holdCounter>0:
