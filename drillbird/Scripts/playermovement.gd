@@ -11,7 +11,7 @@ enum States {IDLE, DRILLING, AIR, DEAD, DAMAGE, DEBUG_GHOST,PAUSE,FLOWER}
 var state = States.IDLE
 @export var collType:abstract_collidable
 
-var closeFlowers:Array[climb_flower]
+var RunStartEffect=preload("res://Scenes/Effects/smoke_puff.tscn")
 
 var facingDir= Directions.RIGHT
 var facing_right: bool = true
@@ -42,6 +42,7 @@ var damageTimerCounter:float=0
 var invincibilityCounter:float=0
 var invincible:bool=false
 
+#IM DRILLING!! 
 var playerIsDrilling:bool=false
 var playerIsOnLeftEdge:bool=false
 var playerIsOnRightEdge:bool=false
@@ -54,13 +55,16 @@ var player_is_drilling_tile: bool = false:
 		GlobalVariables.PlayerIsDrillingTileChanged.emit(player_is_drilling_tile)
 var playerDrillingSolid:bool=false
 var drillDirection=Directions.RIGHT
+
+#Flower
 var HeldFlower:climb_flower=null
+var closeFlowers:Array[climb_flower]
+@onready var FlowerTimer:Timer=$CreateFlowerTimer
 
 #Colliders
 @onready var collider_airborne=$Collider_airborne
 @onready var collider_grounded=$Collider_grounded
 
-@onready var FlowerTimer:Timer=$CreateFlowerTimer
 
 @onready var raycast_drill = $RayCast2D
 @onready var debugLine= $DebugRaycastLine
@@ -541,13 +545,18 @@ func Update_Animations(newanim):
 			particles.emitting=false
 			playerDrillingSolid=false
 
+	var facingLeft
 	if facingDir == Directions.LEFT or facingDir == Directions.RIGHT:
 		playerAnim.flip_h = !facing_right
 		$anim_LightEffect.flip_h = !facing_right
+		facingLeft=!facing_right
 
 	if newanim !=animstate:
 		animstate=newanim
 		playerAnim.animation=animstate
+		
+		if animstate=="run":
+			CreateSmokePuff(facingLeft)
 	
 
 	#TODO: Consider only calling this when relevant
@@ -563,6 +572,14 @@ func Update_Animations(newanim):
 		if wave > 0:
 			alpha=1.0
 		playerAnim.self_modulate=Color(Color.WHITE,alpha)
+
+func CreateSmokePuff(right:bool):
+	var node:AnimatedSprite2D=RunStartEffect.instantiate()
+	get_parent().add_child(node)
+	node.global_position=global_position
+	node.flip_h=right
+	node.animation_finished.connect(node.queue_free)
+	
 
 func _on_animated_sprite_2d_animation_looped() -> void:
 	if animstate=="run":

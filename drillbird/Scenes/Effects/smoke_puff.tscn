@@ -1,0 +1,48 @@
+[gd_scene load_steps=10 format=3 uid="uid://kna5c1hfsw1r"]
+
+[ext_resource type="Texture2D" uid="uid://d2naaovlxuvgr" path="res://Art/effects/CharacterEffects/runStartPuff1.png" id="1_ixgql"]
+[ext_resource type="Texture2D" uid="uid://cma6e8id5xaei" path="res://Art/effects/CharacterEffects/runStartPuff2.png" id="2_wxi7h"]
+[ext_resource type="Texture2D" uid="uid://djp5udx5llb83" path="res://Art/effects/CharacterEffects/runStartPuff3.png" id="3_mlqt2"]
+[ext_resource type="Texture2D" uid="uid://b3ahvepbohpu4" path="res://Art/effects/CharacterEffects/runStartPuff4.png" id="4_birn3"]
+[ext_resource type="Texture2D" uid="uid://hlofdpdgi14c" path="res://Art/effects/CharacterEffects/runStartPuff5.png" id="5_jwbkk"]
+[ext_resource type="Texture2D" uid="uid://bur1d3ayvfgyo" path="res://Art/effects/CharacterEffects/runStartPuff6.png" id="6_cusj8"]
+[ext_resource type="Texture2D" uid="uid://bcxcku7nml7ct" path="res://Art/effects/CharacterEffects/runStartPuff7.png" id="7_cau4g"]
+[ext_resource type="Texture2D" uid="uid://bakl11g2ufv8n" path="res://Art/effects/CharacterEffects/runStartPuf_empty.png" id="8_tcngc"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8gbmm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ixgql")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_wxi7h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_mlqt2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_birn3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_jwbkk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_cusj8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_cau4g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_tcngc")
+}],
+"loop": false,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="SmokePuff" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_8gbmm")
+autoplay = "default"
+frame = 7
+frame_progress = 1.0
