@@ -216,6 +216,7 @@ func WakeUp(saveGame:bool):
 		GlobalVariables.currentDay+=1
 		$"..".SaveGame()
 	justWokeUp=true
+	MusicPlayer.UpdateIdleMusic()
 	MusicPlayer.SetState(hub_music_player.musicStates.IDLE)
 	$Eggs/BirdySleepPositions/birdySleep/ZZZ.emitting=false
 	

@@ -10,6 +10,9 @@ var volume_dream:float=0
 @export var maxVolume=0
 @export var volumeChangeSpeed=20
 
+@export var mus_idle_beginning:AudioStreamWAV
+@export var mus_idle_end:AudioStreamWAV
+
 
 enum musicStates{IDLE, DREAM, FINALE}
 var musicState:musicStates=musicStates.IDLE
@@ -17,10 +20,26 @@ var musicState:musicStates=musicStates.IDLE
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	finished.connect(play)
-	SetState(hub_music_player.musicStates.IDLE)
+	GlobalVariables.SetupComplete.connect(SetupComplete)
 
 	pass # Replace with function body.
 
+func SetupComplete():
+	UpdateIdleMusic()
+	SetState(hub_music_player.musicStates.IDLE)
+
+	
+
+func UpdateIdleMusic():
+	
+	if GlobalVariables.totalExperienceGained>200:
+		player_idle.stream=mus_idle_end
+	else:
+		player_idle.stream=mus_idle_beginning
+	
+	player_idle.play()
+	
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -54,6 +73,7 @@ func SetState(_state:musicStates):
 			pass
 		musicStates.DREAM:
 			player_dreaming.play(0)
+			
 			pass
 		musicStates.FINALE:
 			pass
