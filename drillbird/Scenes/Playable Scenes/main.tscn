@@ -1,4 +1,4 @@
-[gd_scene load_steps=117 format=4 uid="uid://d2wv7igie5stg"]
+[gd_scene load_steps=124 format=4 uid="uid://d2wv7igie5stg"]
 
 [ext_resource type="TileSet" uid="uid://grpd2pyu7pgk" path="res://Resources/MainTileset.tres" id="1_1imtu"]
 [ext_resource type="Script" path="res://Scenes/Playable Scenes/SaveManager.gd" id="1_iickb"]
@@ -35,13 +35,13 @@
 [ext_resource type="Resource" uid="uid://b26ws3o4u42p3" path="res://Resources/purchasable_inventory.tres" id="28_iowjc"]
 [ext_resource type="Resource" uid="uid://cgdqluba62y80" path="res://Resources/purchasable_light.tres" id="29_cp1r6"]
 [ext_resource type="Resource" uid="uid://e48vh7omjgqd" path="res://Resources/purchasable_ContinueButton.tres" id="30_4yogw"]
-[ext_resource type="Texture2D" uid="uid://fsljdsvdyr3v" path="res://Art/ui/Shop/UI_Shop_DreamBackground.png" id="30_okg02"]
+[ext_resource type="Texture2D" uid="uid://fsljdsvdyr3v" path="res://Art/UI/Shop/UI_Shop_DreamBackground.png" id="30_okg02"]
 [ext_resource type="Resource" uid="uid://dd3l8ir1bmcm5" path="res://Resources/purchasable_health.tres" id="30_yx4wb"]
 [ext_resource type="Resource" uid="uid://deqhaf8e1onhf" path="res://Resources/purchasable_drill.tres" id="31_4ia3e"]
 [ext_resource type="Script" path="res://Scenes/Playable Scenes/ButtonScript.gd" id="33_a1jua"]
 [ext_resource type="PackedScene" uid="uid://3d04qrtunccs" path="res://Scenes/scene_purchasable.tscn" id="33_svcml"]
-[ext_resource type="Texture2D" uid="uid://boulllpt4vy8" path="res://Art/ui/Shop/UI_Shop_button_on_canAfford.png" id="34_jlsrn"]
-[ext_resource type="Texture2D" uid="uid://de2ouaamnu8d0" path="res://Art/ui/Shop/UI_Shop_button_off_unavailable.png" id="34_nmxkn"]
+[ext_resource type="Texture2D" uid="uid://boulllpt4vy8" path="res://Art/UI/Shop/UI_Shop_button_on_canAfford.png" id="34_jlsrn"]
+[ext_resource type="Texture2D" uid="uid://de2ouaamnu8d0" path="res://Art/UI/Shop/UI_Shop_button_off_unavailable.png" id="34_nmxkn"]
 [ext_resource type="Script" path="res://Scripts/Light.gd" id="35_54gud"]
 [ext_resource type="FontFile" uid="uid://cicu24cmxgshq" path="res://Resources/Fonts/Quinquefive-ALoRM.ttf" id="35_m1x1i"]
 [ext_resource type="Texture2D" uid="uid://ct20o1j7iuiva" path="res://Resources/LightTexture.tres" id="36_yw5ht"]
@@ -53,16 +53,23 @@
 [ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_debugMenuOption.gd" id="48_cl8sw"]
 [ext_resource type="Script" path="res://Scenes/Playable Scenes/day_counter.gd" id="52_hrk5v"]
 [ext_resource type="Script" path="res://Scripts/enemy_spawner.gd" id="53_0clb6"]
+[ext_resource type="Texture2D" uid="uid://dsg2tbulwj1dx" path="res://Art/environment/solid_decorations/HangingMoss.png" id="54_lvgwb"]
+[ext_resource type="Texture2D" uid="uid://rxpeq8spvrj3" path="res://Art/environment/solid_decorations/HangingMoss_Corner_L.png" id="55_ufnhf"]
+[ext_resource type="Texture2D" uid="uid://b2lxkpn0gcrv1" path="res://Art/environment/solid_decorations/HangingMoss_Corner_R.png" id="56_vcwqo"]
 [ext_resource type="PackedScene" uid="uid://dk8bw20ua5emk" path="res://Scenes/Tools/ambience_node.tscn" id="57_gxw21"]
+[ext_resource type="Texture2D" uid="uid://t1x3v7jc25rn" path="res://Art/environment/solid_decorations/HangingMoss_standardTile.png" id="57_iyexs"]
+[ext_resource type="Texture2D" uid="uid://cq1l7gy7jnxfj" path="res://Art/environment/solid_decorations/FloorMoss_Corner_R.png" id="58_cbbk0"]
 [ext_resource type="AudioStream" uid="uid://mkkn175q2oj0" path="res://Audio/Ambience/ambience_surface.wav" id="58_odo3b"]
 [ext_resource type="PackedScene" uid="uid://bgtl1cgl35wcl" path="res://Scenes/Objects and Enemies/tutorial_message.tscn" id="59_8sapw"]
 [ext_resource type="AudioStream" uid="uid://bp5tj34xhn3tb" path="res://Audio/Ambience/ambience_caves_1.wav" id="59_674co"]
 [ext_resource type="Script" path="res://Scripts/WorldScripting.gd" id="59_a6oue"]
+[ext_resource type="Texture2D" uid="uid://0k28bowvn2tk" path="res://Art/environment/solid_decorations/FloorMoss_standardTile.png" id="59_pd7yy"]
 [ext_resource type="AudioStream" uid="uid://dtuuhqyrrdlbi" path="res://Audio/Ambience/ambience_caves_2.wav" id="60_mx6ss"]
+[ext_resource type="Texture2D" uid="uid://byk1p0bwh88ok" path="res://Art/environment/solid_decorations/FloorMoss_Corner_L.png" id="60_rcurr"]
 [ext_resource type="AudioStream" uid="uid://c2y284c1camgc" path="res://Audio/Ambience/ambience_caves_3.wav" id="61_qpe5a"]
 [ext_resource type="AudioStream" uid="uid://b2jyncclw2td3" path="res://Audio/Ambience/Drillbird_Graveyard 2.wav" id="62_i2265"]
 [ext_resource type="Texture2D" uid="uid://chdi1d0vsqy66" path="res://Art/environment/UniqueAssets/flowerCaveCarving.png" id="64_3kawd"]
-[ext_resource type="Texture2D" uid="uid://gixivpytn5wl" path="res://Art/ui/HUD/UI_LightBar_bulb.png" id="64_yk8d7"]
+[ext_resource type="Texture2D" uid="uid://gixivpytn5wl" path="res://Art/UI/HUD/UI_LightBar_bulb.png" id="64_yk8d7"]
 [ext_resource type="Script" path="res://Scripts/Tools/player_location_saver.gd" id="65_25d1u"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b7p1b"]
@@ -594,6 +601,7 @@ texture_repeat = 2
 [node name="Sprite_HUBBackground" type="Sprite2D" parent="Sprites_HUBBackground"]
 light_mask = 0
 visibility_layer = 4
+z_index = 4
 texture_repeat = 2
 position = Vector2(0, 256)
 texture = ExtResource("37_6eo6t")
@@ -629,6 +637,311 @@ position = Vector2(-1500, 2293)
 texture = ExtResource("37_6eo6t")
 region_enabled = true
 region_rect = Rect2(9.76, 7.525, 1500, 2000)
+
+[node name="HangingMoss" type="Sprite2D" parent="Sprites_HUBBackground"]
+z_index = 5
+position = Vector2(760, 2358)
+texture = ExtResource("54_lvgwb")
+
+[node name="HangingMoss2" type="Sprite2D" parent="Sprites_HUBBackground"]
+z_index = 5
+position = Vector2(792, 2323)
+texture = ExtResource("54_lvgwb")
+
+[node name="HangingMossCornerL" type="Sprite2D" parent="Sprites_HUBBackground"]
+z_index = 5
+position = Vector2(744, 2339)
+texture = ExtResource("55_ufnhf")
+
+[node name="HangingMossCornerL2" type="Sprite2D" parent="Sprites_HUBBackground"]
+z_index = 5
+position = Vector2(727, 2292)
+texture = ExtResource("55_ufnhf")
+
+[node name="HangingMossCornerL3" type="Sprite2D" parent="Sprites_HUBBackground"]
+z_index = 5
+position = Vector2(712, 2245)
+texture = ExtResource("55_ufnhf")
+
+[node name="HangingMossCornerR" type="Sprite2D" parent="Sprites_HUBBackground"]
+z_index = 5
+position = Vector2(680, 2244)
+texture = ExtResource("56_vcwqo")
+
+[node name="HangingMossStandardTile" type="Sprite2D" parent="Sprites_HUBBackground"]
+z_index = 5
+position = Vector2(696, 2228)
+texture = ExtResource("57_iyexs")
+
+[node name="HangingMossStandardTile2" type="Sprite2D" parent="Sprites_HUBBackground"]
+z_index = 5
+position = Vector2(665, 2245)
+texture = ExtResource("57_iyexs")
+
+[node name="HangingMossStandardTile3" type="Sprite2D" parent="Sprites_HUBBackground"]
+z_index = 5
+position = Vector2(649, 2245)
+texture = ExtResource("57_iyexs")
+
+[node name="HangingMossCornerR2" type="Sprite2D" parent="Sprites_HUBBackground"]
+z_index = 5
+position = Vector2(632, 2259)
+texture = ExtResource("56_vcwqo")
+
+[node name="HangingMossCornerR3" type="Sprite2D" parent="Sprites_HUBBackground"]
+z_index = 5
+position = Vector2(616, 2276)
+texture = ExtResource("56_vcwqo")
+
+[node name="HangingMossCornerR4" type="Sprite2D" parent="Sprites_HUBBackground"]
+z_index = 5
+position = Vector2(824, 2307)
+texture = ExtResource("56_vcwqo")
+
+[node name="HangingMossCornerR5" type="Sprite2D" parent="Sprites_HUBBackground"]
+z_index = 5
+position = Vector2(857, 2291)
+texture = ExtResource("56_vcwqo")
+
+[node name="HangingMossCornerR6" type="Sprite2D" parent="Sprites_HUBBackground"]
+z_index = 5
+position = Vector2(904, 2243)
+texture = ExtResource("56_vcwqo")
+
+[node name="HangingMossStandardTile4" type="Sprite2D" parent="Sprites_HUBBackground"]
+z_index = 5
+position = Vector2(808, 2309)
+texture = ExtResource("57_iyexs")
+
+[node name="HangingMossStandardTile5" type="Sprite2D" parent="Sprites_HUBBackground"]
+z_index = 5
+position = Vector2(841, 2293)
+texture = ExtResource("57_iyexs")
+
+[node name="HangingMossStandardTile6" type="Sprite2D" parent="Sprites_HUBBackground"]
+z_index = 5
+position = Vector2(888, 2246)
+texture = ExtResource("57_iyexs")
+
+[node name="HangingMossStandardTile7" type="Sprite2D" parent="Sprites_HUBBackground"]
+z_index = 5
+position = Vector2(872, 2245)
+texture = ExtResource("57_iyexs")
+
+[node name="HangingMossStandardTile8" type="Sprite2D" parent="Sprites_HUBBackground"]
+z_index = 5
+position = Vector2(920, 2230)
+texture = ExtResource("57_iyexs")
+
+[node name="HangingMossStandardTile9" type="Sprite2D" parent="Sprites_HUBBackground"]
+z_index = 5
+position = Vector2(936, 2230)
+texture = ExtResource("57_iyexs")
+
+[node name="HangingMossStandardTile10" type="Sprite2D" parent="Sprites_HUBBackground"]
+z_index = 5
+position = Vector2(952, 2230)
+texture = ExtResource("57_iyexs")
+
+[node name="HangingMossCornerL4" type="Sprite2D" parent="Sprites_HUBBackground"]
+z_index = 5
+position = Vector2(967, 2244)
+texture = ExtResource("55_ufnhf")
+
+[node name="HangingMossStandardTile11" type="Sprite2D" parent="Sprites_HUBBackground"]
+z_index = 5
+position = Vector2(983, 2246)
+texture = ExtResource("57_iyexs")
+
+[node name="HangingMossCornerL5" type="Sprite2D" parent="Sprites_HUBBackground"]
+z_index = 5
+position = Vector2(999, 2260)
+texture = ExtResource("55_ufnhf")
+
+[node name="HangingMossCornerL6" type="Sprite2D" parent="Sprites_HUBBackground"]
+z_index = 5
+position = Vector2(1015, 2275)
+texture = ExtResource("55_ufnhf")
+
+[node name="HangingMossCornerR7" type="Sprite2D" parent="Sprites_HUBBackground"]
+z_index = 5
+position = Vector2(1384, 2388)
+texture = ExtResource("56_vcwqo")
+
+[node name="HangingMossCornerR8" type="Sprite2D" parent="Sprites_HUBBackground"]
+z_index = 5
+position = Vector2(1368, 2404)
+texture = ExtResource("56_vcwqo")
+
+[node name="HangingMossCornerR9" type="Sprite2D" parent="Sprites_HUBBackground"]
+z_index = 5
+position = Vector2(1336, 2452)
+texture = ExtResource("56_vcwqo")
+
+[node name="HangingMossCornerR10" type="Sprite2D" parent="Sprites_HUBBackground"]
+z_index = 5
+position = Vector2(1353, 2420)
+texture = ExtResource("56_vcwqo")
+
+[node name="HangingMossCornerL7" type="Sprite2D" parent="Sprites_HUBBackground"]
+z_index = 5
+position = Vector2(1432, 2388)
+texture = ExtResource("55_ufnhf")
+
+[node name="HangingMossCornerL8" type="Sprite2D" parent="Sprites_HUBBackground"]
+z_index = 5
+position = Vector2(1447, 2404)
+texture = ExtResource("55_ufnhf")
+
+[node name="HangingMossCornerL9" type="Sprite2D" parent="Sprites_HUBBackground"]
+z_index = 5
+position = Vector2(1480, 2420)
+texture = ExtResource("55_ufnhf")
+
+[node name="HangingMossStandardTile12" type="Sprite2D" parent="Sprites_HUBBackground"]
+z_index = 5
+position = Vector2(1463, 2405)
+texture = ExtResource("57_iyexs")
+
+[node name="HangingMossCornerL10" type="Sprite2D" parent="Sprites_HUBBackground"]
+z_index = 5
+position = Vector2(1496, 2468)
+texture = ExtResource("55_ufnhf")
+
+[node name="HangingMossStandardTile13" type="Sprite2D" parent="Sprites_HUBBackground"]
+z_index = 5
+position = Vector2(1512, 2469)
+texture = ExtResource("57_iyexs")
+
+[node name="HangingMossCornerL11" type="Sprite2D" parent="Sprites_HUBBackground"]
+z_index = 5
+position = Vector2(1528, 2532)
+texture = ExtResource("55_ufnhf")
+
+[node name="HangingMossCornerR11" type="Sprite2D" parent="Sprites_HUBBackground"]
+z_index = 5
+position = Vector2(1320, 2548)
+texture = ExtResource("56_vcwqo")
+
+[node name="HangingMossCornerR12" type="Sprite2D" parent="Sprites_HUBBackground"]
+z_index = 5
+position = Vector2(1304, 2580)
+texture = ExtResource("56_vcwqo")
+
+[node name="FloorMossCornerR" type="Sprite2D" parent="Sprites_HUBBackground"]
+z_index = 5
+position = Vector2(616, 2351)
+texture = ExtResource("58_cbbk0")
+
+[node name="FloorMossCornerR2" type="Sprite2D" parent="Sprites_HUBBackground"]
+z_index = 5
+position = Vector2(632, 2367)
+texture = ExtResource("58_cbbk0")
+
+[node name="FloorMossStandardTile" type="Sprite2D" parent="Sprites_HUBBackground"]
+z_index = 5
+position = Vector2(648, 2396)
+texture = ExtResource("59_pd7yy")
+
+[node name="FloorMossStandardTile2" type="Sprite2D" parent="Sprites_HUBBackground"]
+z_index = 5
+position = Vector2(663, 2396)
+texture = ExtResource("59_pd7yy")
+
+[node name="FloorMossStandardTile3" type="Sprite2D" parent="Sprites_HUBBackground"]
+z_index = 5
+position = Vector2(952, 2411)
+texture = ExtResource("59_pd7yy")
+
+[node name="FloorMossCornerL" type="Sprite2D" parent="Sprites_HUBBackground"]
+z_index = 5
+position = Vector2(937, 2415)
+texture = ExtResource("60_rcurr")
+
+[node name="FloorMossCornerL2" type="Sprite2D" parent="Sprites_HUBBackground"]
+z_index = 5
+position = Vector2(1000, 2367)
+texture = ExtResource("60_rcurr")
+
+[node name="FloorMossStandardTile4" type="Sprite2D" parent="Sprites_HUBBackground"]
+z_index = 5
+position = Vector2(1016, 2364)
+texture = ExtResource("59_pd7yy")
+
+[node name="FloorMossCornerL3" type="Sprite2D" parent="Sprites_HUBBackground"]
+z_index = 5
+position = Vector2(1032, 2351)
+texture = ExtResource("60_rcurr")
+
+[node name="FloorMossCornerR3" type="Sprite2D" parent="Sprites_HUBBackground"]
+z_index = 5
+position = Vector2(1255, 2463)
+texture = ExtResource("58_cbbk0")
+
+[node name="FloorMossStandardTile5" type="Sprite2D" parent="Sprites_HUBBackground"]
+z_index = 5
+position = Vector2(1242, 2460)
+texture = ExtResource("59_pd7yy")
+
+[node name="FloorMossCornerR4" type="Sprite2D" parent="Sprites_HUBBackground"]
+z_index = 5
+position = Vector2(1320, 2479)
+texture = ExtResource("58_cbbk0")
+
+[node name="FloorMossStandardTile6" type="Sprite2D" parent="Sprites_HUBBackground"]
+z_index = 5
+position = Vector2(1304, 2476)
+texture = ExtResource("59_pd7yy")
+
+[node name="FloorMossStandardTile7" type="Sprite2D" parent="Sprites_HUBBackground"]
+z_index = 5
+position = Vector2(1288, 2475)
+texture = ExtResource("59_pd7yy")
+
+[node name="FloorMossStandardTile8" type="Sprite2D" parent="Sprites_HUBBackground"]
+z_index = 5
+position = Vector2(1272, 2476)
+texture = ExtResource("59_pd7yy")
+
+[node name="FloorMossCornerR5" type="Sprite2D" parent="Sprites_HUBBackground"]
+z_index = 5
+position = Vector2(1304, 2607)
+texture = ExtResource("58_cbbk0")
+
+[node name="FloorMossCornerR6" type="Sprite2D" parent="Sprites_HUBBackground"]
+z_index = 5
+position = Vector2(1320, 2623)
+texture = ExtResource("58_cbbk0")
+
+[node name="FloorMossStandardTile9" type="Sprite2D" parent="Sprites_HUBBackground"]
+z_index = 5
+position = Vector2(1336, 2652)
+texture = ExtResource("59_pd7yy")
+
+[node name="FloorMossStandardTile10" type="Sprite2D" parent="Sprites_HUBBackground"]
+z_index = 5
+position = Vector2(1352, 2652)
+texture = ExtResource("59_pd7yy")
+
+[node name="FloorMossCornerL4" type="Sprite2D" parent="Sprites_HUBBackground"]
+z_index = 5
+position = Vector2(1528, 2639)
+texture = ExtResource("60_rcurr")
+
+[node name="FloorMossStandardTile11" type="Sprite2D" parent="Sprites_HUBBackground"]
+z_index = 5
+position = Vector2(1512, 2651)
+texture = ExtResource("59_pd7yy")
+
+[node name="FloorMossStandardTile12" type="Sprite2D" parent="Sprites_HUBBackground"]
+z_index = 5
+position = Vector2(1496, 2651)
+texture = ExtResource("59_pd7yy")
+
+[node name="FloorMossCornerL5" type="Sprite2D" parent="Sprites_HUBBackground"]
+z_index = 5
+position = Vector2(792, 2271)
+texture = ExtResource("60_rcurr")
 
 [node name="WorldScripts" type="Node" parent="."]
 script = ExtResource("59_a6oue")
