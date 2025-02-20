@@ -1,4 +1,4 @@
-[gd_scene load_steps=124 format=4 uid="uid://d2wv7igie5stg"]
+[gd_scene load_steps=126 format=4 uid="uid://d2wv7igie5stg"]
 
 [ext_resource type="TileSet" uid="uid://grpd2pyu7pgk" path="res://Resources/MainTileset.tres" id="1_1imtu"]
 [ext_resource type="Script" path="res://Scenes/Playable Scenes/SaveManager.gd" id="1_iickb"]
@@ -66,8 +66,10 @@
 [ext_resource type="Texture2D" uid="uid://0k28bowvn2tk" path="res://Art/environment/solid_decorations/FloorMoss_standardTile.png" id="59_pd7yy"]
 [ext_resource type="AudioStream" uid="uid://dtuuhqyrrdlbi" path="res://Audio/Ambience/ambience_caves_2.wav" id="60_mx6ss"]
 [ext_resource type="Texture2D" uid="uid://byk1p0bwh88ok" path="res://Art/environment/solid_decorations/FloorMoss_Corner_L.png" id="60_rcurr"]
+[ext_resource type="Texture2D" uid="uid://ca156olf3dqns" path="res://Art/environment/solid_decorations/Moss_flowers_01.png" id="61_gq5vr"]
 [ext_resource type="AudioStream" uid="uid://c2y284c1camgc" path="res://Audio/Ambience/ambience_caves_3.wav" id="61_qpe5a"]
 [ext_resource type="AudioStream" uid="uid://b2jyncclw2td3" path="res://Audio/Ambience/Drillbird_Graveyard 2.wav" id="62_i2265"]
+[ext_resource type="Texture2D" uid="uid://rr8a2a4rrme8" path="res://Art/environment/solid_decorations/HangingMoss_Chunk_01.png" id="62_q7ax7"]
 [ext_resource type="Texture2D" uid="uid://chdi1d0vsqy66" path="res://Art/environment/UniqueAssets/flowerCaveCarving.png" id="64_3kawd"]
 [ext_resource type="Texture2D" uid="uid://gixivpytn5wl" path="res://Art/UI/HUD/UI_LightBar_bulb.png" id="64_yk8d7"]
 [ext_resource type="Script" path="res://Scripts/Tools/player_location_saver.gd" id="65_25d1u"]
@@ -942,6 +944,76 @@ texture = ExtResource("59_pd7yy")
 z_index = 5
 position = Vector2(792, 2271)
 texture = ExtResource("60_rcurr")
+
+[node name="MossFlowers01" type="Sprite2D" parent="Sprites_HUBBackground"]
+z_index = 4
+position = Vector2(652, 2392)
+texture = ExtResource("61_gq5vr")
+
+[node name="MossFlowers02" type="Sprite2D" parent="Sprites_HUBBackground"]
+z_index = 4
+position = Vector2(1034, 2349)
+texture = ExtResource("61_gq5vr")
+
+[node name="MossFlowers03" type="Sprite2D" parent="Sprites_HUBBackground"]
+z_index = 4
+position = Vector2(1321, 2615)
+texture = ExtResource("61_gq5vr")
+
+[node name="MossFlowers04" type="Sprite2D" parent="Sprites_HUBBackground"]
+z_index = 4
+position = Vector2(1337, 2657)
+texture = ExtResource("61_gq5vr")
+
+[node name="HangingMossChunk01" type="Sprite2D" parent="Sprites_HUBBackground"]
+z_index = 4
+position = Vector2(880, 2256)
+texture = ExtResource("62_q7ax7")
+
+[node name="HangingMossChunk02" type="Sprite2D" parent="Sprites_HUBBackground"]
+z_index = 4
+position = Vector2(801, 2320)
+texture = ExtResource("62_q7ax7")
+
+[node name="HangingMossChunk03" type="Sprite2D" parent="Sprites_HUBBackground"]
+z_index = 4
+position = Vector2(753, 2351)
+texture = ExtResource("62_q7ax7")
+
+[node name="HangingMoss3" type="Sprite2D" parent="Sprites_HUBBackground"]
+z_index = 4
+position = Vector2(755, 2367)
+texture = ExtResource("54_lvgwb")
+
+[node name="HangingMossChunk04" type="Sprite2D" parent="Sprites_HUBBackground"]
+z_index = 4
+position = Vector2(671, 2255)
+texture = ExtResource("62_q7ax7")
+
+[node name="HangingMossChunk05" type="Sprite2D" parent="Sprites_HUBBackground"]
+z_index = 4
+position = Vector2(644, 2253)
+texture = ExtResource("62_q7ax7")
+
+[node name="HangingMossChunk06" type="Sprite2D" parent="Sprites_HUBBackground"]
+z_index = 4
+position = Vector2(1457, 2414)
+texture = ExtResource("62_q7ax7")
+
+[node name="HangingMossChunk07" type="Sprite2D" parent="Sprites_HUBBackground"]
+z_index = 4
+position = Vector2(1515, 2479)
+texture = ExtResource("62_q7ax7")
+
+[node name="HangingMossChunk08" type="Sprite2D" parent="Sprites_HUBBackground"]
+z_index = 4
+position = Vector2(1372, 2401)
+texture = ExtResource("62_q7ax7")
+
+[node name="HangingMossChunk09" type="Sprite2D" parent="Sprites_HUBBackground"]
+z_index = 4
+position = Vector2(1344, 2433)
+texture = ExtResource("62_q7ax7")
 
 [node name="WorldScripts" type="Node" parent="."]
 script = ExtResource("59_a6oue")

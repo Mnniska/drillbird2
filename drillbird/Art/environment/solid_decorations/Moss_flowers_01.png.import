@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://boic8s0yu8qiu"
-path="res://.godot/imported/num5.png-6c1488e641860e42eecddd2fc8ae9271.ctex"
+uid="uid://ca156olf3dqns"
+path="res://.godot/imported/Moss_flowers_01.png-73e78c85e58707ee27159e91e6d89088.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/UI/Symbols/num5.png"
-dest_files=["res://.godot/imported/num5.png-6c1488e641860e42eecddd2fc8ae9271.ctex"]
+source_file="res://Art/environment/solid_decorations/Moss_flowers_01.png"
+dest_files=["res://.godot/imported/Moss_flowers_01.png-73e78c85e58707ee27159e91e6d89088.ctex"]
 
 [params]
 
