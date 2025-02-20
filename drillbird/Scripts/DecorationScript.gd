@@ -62,15 +62,20 @@ func GenerateTilemapObservers():
 	var index=0
 	for n in decorationLocations:
 		var tile:TileData = decotilemap.get_cell_tile_data(n)
-		var newObserver=abstract_decoration.new()
-		newObserver.dependencyVector=tile.get_custom_data("dir_dependency")
-		newObserver.deco_position=decorationLocations[index]
+		var dependencyV = tile.get_custom_data("dir_dependency")
 		
-		#if new cell has a valid dependency tile, add it to the list. If not - remove it
-		if IsDecorationValid(newObserver):
-			observers.append(newObserver)
-		else:
-			RemoveCell(newObserver)
+		#If the deco does not have a deco dependency - just let it be
+		if dependencyV != Vector2i(0,0):
+			
+			var newObserver=abstract_decoration.new()
+			newObserver.dependencyVector=dependencyV
+			newObserver.deco_position=decorationLocations[index]
+			
+			#if new cell has a valid dependency tile, add it to the list. If not - remove it
+			if IsDecorationValid(newObserver):
+				observers.append(newObserver)
+			else:
+				RemoveCell(newObserver)
 
 		index+=1
 			

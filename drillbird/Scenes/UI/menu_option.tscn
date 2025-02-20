@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://g8bq4xcafcut"]
+
+[ext_resource type="Script" path="res://Scripts/UX and UI/menu_option.gd" id="1_86hp1"]
+[ext_resource type="Theme" uid="uid://bfr5y4lo7m1ux" path="res://Resources/Fonts/fontTheme.tres" id="2_a12fx"]
+[ext_resource type="Texture2D" uid="uid://cp6xuvmo0rguj" path="res://Art/ui/HUD/UI_BlackBorder.png" id="3_kgnkw"]
+[ext_resource type="Texture2D" uid="uid://gixivpytn5wl" path="res://Art/ui/HUD/UI_LightBar_bulb.png" id="4_bmpwo"]
+
+[node name="MenuOption" type="Node2D"]
+script = ExtResource("1_86hp1")
+highlightEffectStart = "[wave amp=20.0 freq=5.0 connected=1]"
+highlightEffectEnd = "[/wave]"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = -63.0
+offset_top = -8.0
+offset_right = 69.0
+offset_bottom = 32.0
+theme = ExtResource("2_a12fx")
+bbcode_enabled = true
+text = "[center]Option "
+
+[node name="slider" type="Node2D" parent="."]
+position = Vector2(0, 14)
+
+[node name="bg" type="Sprite2D" parent="slider"]
+position = Vector2(3.55271e-15, 1.90735e-06)
+scale = Vector2(0.410156, 0.125)
+texture = ExtResource("3_kgnkw")
+
+[node name="knob" type="Sprite2D" parent="slider"]
+position = Vector2(-50, 0)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("4_bmpwo")
+
+[node name="endPos" type="Node2D" parent="slider"]
+position = Vector2(52, 0)
+scale = Vector2(1.5, 1.5)
+
+[node name="startPos" type="Node2D" parent="slider"]
+position = Vector2(-50, 0)
+scale = Vector2(1.5, 1.5)
+
+[node name="AudioExample" type="AudioStreamPlayer2D" parent="."]
