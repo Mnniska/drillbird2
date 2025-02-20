@@ -1,20 +1,20 @@
 extends Node2D
 
+signal optionsClosed
+
 @onready var soundPlayer = $AudioExample
 @export var options:Array[menu_option]
 
-
-
-var menuActive:bool=true
+var menuActive:bool=false
 var selectedOption:int=0
 var oldSelection:int=0
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 
 	UpdateMenu()
-	
-	HUD.SetState(HUD.menuStates.OPTIONS)
 	SetupMenu()
+	SetActive(menuActive)
 	pass # Replace with function body.
 
 func SetupMenu():
@@ -25,6 +25,17 @@ func SetupMenu():
 			n.button_pressed.connect(ButtonPressed)
 	pass
 
+func SetActive(_active:bool):
+	menuActive=_active
+	if menuActive:
+		show()
+		UpdateMenu()
+	else:
+		hide()
+		for n in options:
+			
+			n.SetActive(false)
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -58,7 +69,9 @@ func UpdateMenu():
 	pass
 
 func ButtonPressed(_name:String):
-	
+	if _name=="Return":
+		SetActive(false)
+		optionsClosed.emit()
 	pass
 
 func SliderValueChanged(_name:String,_progress:float):

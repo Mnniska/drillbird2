@@ -5,6 +5,7 @@ extends CanvasLayer
 @onready var HUD_cashText=$topUI/CashHolder/cashNumber
 @onready var HUD_InventoryManager=$bottomUI/InventoryHandler
 @onready var MainMenu=$MainMenu
+@onready var OptionsMenu=$Options
 
 enum menuStates{MAIN,PAUSE,OPTIONS,PLAY,CREDITS}
 var state:menuStates=menuStates.MAIN
@@ -94,14 +95,17 @@ func SetState(_state:menuStates):
 			MainMenu.GenerateMainMenu()
 			GlobalVariables.PlayerController.SetPlayerHidden(true)
 			GlobalVariables.playerStatus=GlobalVariables.playerStatusEnum.MENU
+			OptionsMenu.SetActive(false)
 
 			pass
 		menuStates.PAUSE:
 			MainMenu.Deactivate()
+			OptionsMenu.SetActive(false)
 
 			pass
 		menuStates.OPTIONS:
 			MainMenu.Deactivate()
+			OptionsMenu.SetActive(true)
 
 			pass
 		menuStates.PLAY:
@@ -109,6 +113,7 @@ func SetState(_state:menuStates):
 			GlobalVariables.PlayerController.SetPlayerHidden(false)
 			GlobalVariables.playerStatus=GlobalVariables.playerStatusEnum.DIG
 			MainMenu.Deactivate()
+			OptionsMenu.SetActive(false)
 			
 			#If player has saved game, wake up on egg
 			if GlobalVariables.currentDay>1:
@@ -116,6 +121,7 @@ func SetState(_state:menuStates):
 		menuStates.CREDITS:
 			SetHudVisible(false)
 			MainMenu.Deactivate()
+			OptionsMenu.SetActive(false)
 
 
 			
@@ -140,4 +146,15 @@ func SetSceneState(state:sceneStates):
 func _on_main_menu_new_game() -> void:
 	SetState(menuStates.PLAY)
 
+	pass # Replace with function body.
+
+
+func _on_main_menu_press_options() -> void:
+	SetState(menuStates.OPTIONS)
+	pass # Replace with function body.
+
+
+func _on_options_options_closed() -> void:
+	SetState(menuStates.MAIN)
+	
 	pass # Replace with function body.
