@@ -6,12 +6,12 @@
 [ext_resource type="Texture2D" uid="uid://jm41e4072rxr" path="res://Art/environment/Home/nest_front.png" id="3_erd2o"]
 [ext_resource type="Script" path="res://Scenes/EggScript.gd" id="3_wy5hf"]
 [ext_resource type="Texture2D" uid="uid://cf64236m3k54p" path="res://Art/environment/Home/egg_mid.png" id="4_cd85g"]
-[ext_resource type="Texture2D" uid="uid://b8kr3el8v0jp4" path="res://Art/UI/UI_IconBG_left.png" id="4_wgulb"]
-[ext_resource type="Texture2D" uid="uid://d1w53bq8x5lhq" path="res://Art/UI/UI_IconBG_mid.png" id="5_ce8fm"]
+[ext_resource type="Texture2D" uid="uid://b8kr3el8v0jp4" path="res://Art/ui/UI_IconBG_left.png" id="4_wgulb"]
+[ext_resource type="Texture2D" uid="uid://d1w53bq8x5lhq" path="res://Art/ui/UI_IconBG_mid.png" id="5_ce8fm"]
 [ext_resource type="Texture2D" uid="uid://dlmhg18sxhw8k" path="res://Art/environment/Home/egg_big.png" id="5_p1lmp"]
 [ext_resource type="Texture2D" uid="uid://bi2hexyd84ebw" path="res://Art/environment/Home/egg_biggest.png" id="6_e0x4d"]
-[ext_resource type="Texture2D" uid="uid://dorh0qxx8p2ha" path="res://Art/UI/UI_IconBG_right.png" id="6_f4gen"]
-[ext_resource type="Texture2D" uid="uid://dcleif1cn1ru2" path="res://Art/UI/buttonSymbol_top.png" id="7_37yhr"]
+[ext_resource type="Texture2D" uid="uid://dorh0qxx8p2ha" path="res://Art/ui/UI_IconBG_right.png" id="6_f4gen"]
+[ext_resource type="Texture2D" uid="uid://dcleif1cn1ru2" path="res://Art/ui/buttonSymbol_top.png" id="7_37yhr"]
 [ext_resource type="Theme" uid="uid://bfr5y4lo7m1ux" path="res://Resources/Fonts/fontTheme.tres" id="8_k4jyb"]
 [ext_resource type="Texture2D" uid="uid://es25bpukcdqn" path="res://Art/environment/Home/egg_smol.png" id="9_xckrn"]
 [ext_resource type="Texture2D" uid="uid://da06hbcxbqbqh" path="res://Art/characters/Drillbird/Sleep/birdy_sleepAnim6.png" id="10_qca23"]
@@ -21,11 +21,11 @@
 [ext_resource type="Texture2D" uid="uid://c6imb3d5qmx33" path="res://Art/characters/Drillbird/Sleep/birdy_sleepAnim3.png" id="14_w66px"]
 [ext_resource type="Texture2D" uid="uid://bwb03yuswsfxa" path="res://Art/characters/Drillbird/Sleep/birdy_sleepAnim4.png" id="15_bon3x"]
 [ext_resource type="Texture2D" uid="uid://csw8qotkgiux1" path="res://Art/characters/Drillbird/Sleep/birdy_sleepAnim5.png" id="16_i6hju"]
-[ext_resource type="Texture2D" uid="uid://brqmcw40y6pvg" path="res://Art/UI/Symbols/Z.png" id="16_y7tdx"]
-[ext_resource type="Texture2D" uid="uid://cstos5qewrbox" path="res://Art/UI/UI_Background_rest.png" id="21_t7twy"]
-[ext_resource type="Texture2D" uid="uid://bvtd87mo25snw" path="res://Art/UI/UI_rest_arrow_dark.png" id="22_7onby"]
+[ext_resource type="Texture2D" uid="uid://brqmcw40y6pvg" path="res://Art/ui/Symbols/Z.png" id="16_y7tdx"]
+[ext_resource type="Texture2D" uid="uid://cstos5qewrbox" path="res://Art/ui/UI_Background_rest.png" id="21_t7twy"]
+[ext_resource type="Texture2D" uid="uid://bvtd87mo25snw" path="res://Art/ui/UI_rest_arrow_dark.png" id="22_7onby"]
 [ext_resource type="Script" path="res://Scripts/UX and UI/button_hold.gd" id="22_v3vjt"]
-[ext_resource type="Texture2D" uid="uid://1hy32yargekh" path="res://Art/UI/UI_rest_arrow_light.png" id="23_pvi10"]
+[ext_resource type="Texture2D" uid="uid://1hy32yargekh" path="res://Art/ui/UI_rest_arrow_light.png" id="23_pvi10"]
 [ext_resource type="Texture2D" uid="uid://gvnhgn5vrd5e" path="res://Art/Collectibles/ore_3_red.png" id="24_g3ew8"]
 [ext_resource type="Script" path="res://Scripts/UX and UI/ore_sell_visuals_manager.gd" id="24_quikh"]
 [ext_resource type="Script" path="res://Scripts/UX and UI/oreSellLocationScript.gd" id="25_t76gh"]
@@ -599,12 +599,12 @@ mus_idle_end = ExtResource("33_1h6f6")
 [node name="music_idle" type="AudioStreamPlayer2D" parent="HUBMusicPlayer"]
 stream = ExtResource("31_o3cgh")
 autoplay = true
-max_distance = 1000.0
+max_distance = 320.0
 
 [node name="music_dream" type="AudioStreamPlayer2D" parent="HUBMusicPlayer"]
 stream = ExtResource("32_68fby")
 autoplay = true
-max_distance = 1000.0
+max_distance = 320.0
 
 [connection signal="animation_finished" from="Eggs/BirdySleepPositions/birdySleep" to="." method="_on_birdy_sleep_animation_finished"]
 [connection signal="buttonPressed" from="InteractButton_EndDay" to="." method="_on_interact_button_end_day_button_pressed"]

@@ -5,12 +5,16 @@ extends CanvasLayer
 @onready var HUD_cashText=$topUI/CashHolder/cashNumber
 @onready var HUD_InventoryManager=$bottomUI/InventoryHandler
 @onready var MainMenu=$MainMenu
+@onready var OptionsMenu=$Options
+@onready var PauseMenu=$PAUSE
 
 enum menuStates{MAIN,PAUSE,OPTIONS,PLAY,CREDITS}
 var state:menuStates=menuStates.MAIN
+var previousMenuState:menuStates
 
 enum sceneStates{MAIN,CREDITS}
 var sceneState:sceneStates=sceneStates.MAIN
+
 
 #HUD manager vars
 @export var showHud:bool=false
@@ -41,6 +45,8 @@ func _ready() -> void:
 	
 	GlobalVariables.SetupComplete.connect(SetupComplete)
 	
+	UpdateHUDPosition(showHud)
+	
 	pass # Replace with function body.
 
 func SetupComplete():
@@ -60,12 +66,21 @@ func GetLightManager():
 	return HUD_lightBulbManager
 
 func SetHudVisible(_show:bool):
+	if showHud!=_show:
+		isLerping=true
+		lerpCounter=0
 
 	showHud=_show
-	isLerping=true
-	lerpCounter=0
 		
-	
+func UpdateHUDPosition(show:bool):
+	if show:
+		ui_top.global_position=pos_top_visible
+		ui_bottom.global_position=pos_bottom_visible
+	else:
+		ui_top.global_position=pos_top_hidden
+		ui_bottom.global_position=pos_bottom_hidden
+	pass
+
 func _process(delta: float) -> void:
 	
 	if isLerping:
@@ -81,9 +96,13 @@ func _process(delta: float) -> void:
 		
 		if lerpCounter>=HudLerpTime:
 			isLerping=false
+	
+	if state==menuStates.PLAY:
+		if Input.is_action_just_pressed("escape"):
+			SetState(menuStates.PAUSE)
 			
 func SetState(_state:menuStates):
-	
+	previousMenuState=state
 	state=_state
 	
 	
@@ -94,14 +113,23 @@ func SetState(_state:menuStates):
 			MainMenu.GenerateMainMenu()
 			GlobalVariables.PlayerController.SetPlayerHidden(true)
 			GlobalVariables.playerStatus=GlobalVariables.playerStatusEnum.MENU
+			OptionsMenu.SetActive(false)
+			PauseMenu.SetActive(false)
+
 
 			pass
 		menuStates.PAUSE:
 			MainMenu.Deactivate()
+			OptionsMenu.SetActive(false)
+			GlobalVariables.playerStatus=GlobalVariables.playerStatusEnum.MENU
+			PauseMenu.SetActive(true)
 
 			pass
 		menuStates.OPTIONS:
 			MainMenu.Deactivate()
+			OptionsMenu.SetActive(true)
+			PauseMenu.SetActive(false)
+
 
 			pass
 		menuStates.PLAY:
@@ -109,6 +137,8 @@ func SetState(_state:menuStates):
 			GlobalVariables.PlayerController.SetPlayerHidden(false)
 			GlobalVariables.playerStatus=GlobalVariables.playerStatusEnum.DIG
 			MainMenu.Deactivate()
+			OptionsMenu.SetActive(false)
+			PauseMenu.SetActive(false)
 			
 			#If player has saved game, wake up on egg
 			if GlobalVariables.currentDay>1:
@@ -116,10 +146,11 @@ func SetState(_state:menuStates):
 		menuStates.CREDITS:
 			SetHudVisible(false)
 			MainMenu.Deactivate()
-
+			OptionsMenu.SetActive(false)
+			PauseMenu.SetActive(false)
 
 			
-			pass
+			
 
 func SetSceneState(state:sceneStates):
 	if state==sceneState:
@@ -140,4 +171,27 @@ func SetSceneState(state:sceneStates):
 func _on_main_menu_new_game() -> void:
 	SetState(menuStates.PLAY)
 
+	pass # Replace with function body.
+
+
+func _on_main_menu_press_options() -> void:
+	SetState(menuStates.OPTIONS)
+	pass # Replace with function body.
+
+
+func _on_options_options_closed() -> void:
+	
+	if previousMenuState==menuStates.MAIN:
+		SetState(menuStates.MAIN)
+	
+	if previousMenuState==menuStates.PAUSE:
+		SetState(menuStates.PAUSE)
+	
+	pass # Replace with function body.
+
+
+func _on_pause_signal_pause_menu_closed() -> void:
+	
+	SetState(menuStates.PLAY)
+	
 	pass # Replace with function body.

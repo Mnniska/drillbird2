@@ -31,6 +31,7 @@ var sliderMoveCount:float=0
 @export var sample_sound:AudioStreamWAV
 @export var soundAudioBus:String
 @onready var soundPlayer = $AudioExample
+var cooldown:float=0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -46,22 +47,32 @@ func _ready() -> void:
 	
 	
 		
-
+func SetSliderProgress(_progress:float):
+	sliderProgress=_progress
+	sliderValue=sliderProgress*sliderMaxVal
+	UpdateSliderPos()
+	pass
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if !active:
+		cooldown=0
 		return
+	else:
+		cooldown+=delta
+		if cooldown<0.3:
+			return
 	
 	if !isSlider:
 		UpdateButton()
 	else:
 		UpdateSlider()
 	
+	
 	pass
 	
 func UpdateButton():
 	if Input.is_action_just_pressed("jump"):
-		button_pressed.emit()
+		button_pressed.emit(optionName)
 	
 	
 	
@@ -87,8 +98,8 @@ func MoveSlider(right:bool):
 		
 	UpdateSliderPos()
 	
-	var progress=sliderValue/sliderMaxVal
-	sliderValueChanged.emit(optionName,progress)
+	sliderProgress=sliderValue/sliderMaxVal
+	sliderValueChanged.emit(optionName,sliderProgress)
 	UpdateSoundTest(true)
 	
 	pass
@@ -125,5 +136,6 @@ func UpdateSoundTest(active:bool):
 			soundPlayer.play()
 	else:
 		soundPlayer.stop()
+		
 	
 	pass

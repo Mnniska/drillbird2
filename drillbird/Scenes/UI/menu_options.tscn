@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://bldt1ha11vmuu"]
+[gd_scene load_steps=9 format=3 uid="uid://bldt1ha11vmuu"]
 
 [ext_resource type="Script" path="res://Scripts/UX and UI/options_screen.gd" id="1_5gtrn"]
 [ext_resource type="PackedScene" uid="uid://g8bq4xcafcut" path="res://Scenes/UI/menu_option.tscn" id="2_x5nw2"]
+[ext_resource type="Texture2D" uid="uid://b6o75yvkrcut6" path="res://Art/ui/HUD/ui_emptySlot.png" id="2_xnx60"]
 [ext_resource type="Theme" uid="uid://bfr5y4lo7m1ux" path="res://Resources/Fonts/fontTheme.tres" id="3_208bg"]
 [ext_resource type="AudioStream" uid="uid://biff4rn2yb8wv" path="res://Audio/MUSIC/mus_dreaming.wav" id="3_ttclj"]
 [ext_resource type="AudioStream" uid="uid://bykexifslvuda" path="res://Audio/MUSIC/mus_Drillbird_Theme_Jazz.wav" id="4_ofdi2"]
@@ -10,37 +11,44 @@
 
 [node name="Options" type="Node2D" node_paths=PackedStringArray("options")]
 script = ExtResource("1_5gtrn")
-options = [NodePath("Master"), NodePath("Music"), NodePath("SFX"), NodePath("Ambience")]
+options = [NodePath("Return"), NodePath("Master"), NodePath("Music"), NodePath("SFX"), NodePath("Ambience")]
+
+[node name="background" type="Sprite2D" parent="."]
+position = Vector2(-3, 7.5)
+scale = Vector2(10.625, 14.6875)
+texture = ExtResource("2_xnx60")
+
+[node name="Return" parent="." instance=ExtResource("2_x5nw2")]
+position = Vector2(0, -48)
+optionName = "Return"
 
 [node name="Master" parent="." instance=ExtResource("2_x5nw2")]
-position = Vector2(0, -39)
+position = Vector2(0, -23)
 optionName = "Master Volume"
 isSlider = true
 sample_sound = ExtResource("3_ttclj")
 soundAudioBus = "Master"
 
 [node name="Music" parent="." instance=ExtResource("2_x5nw2")]
-position = Vector2(0, -11)
+position = Vector2(0, 5)
 optionName = "Music Volume"
 isSlider = true
 sample_sound = ExtResource("4_ofdi2")
 soundAudioBus = "Music"
 
 [node name="SFX" parent="." instance=ExtResource("2_x5nw2")]
-position = Vector2(0, 18)
+position = Vector2(0, 34)
 optionName = "SFX Volume"
 isSlider = true
 sample_sound = ExtResource("5_6mcjp")
 soundAudioBus = "Sfx"
 
 [node name="Ambience" parent="." instance=ExtResource("2_x5nw2")]
-position = Vector2(0, 49)
+position = Vector2(0, 65)
 optionName = "Ambience Volume"
 isSlider = true
 sample_sound = ExtResource("6_wrpie")
 soundAudioBus = "Ambience"
-
-[node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 offset_left = -160.0

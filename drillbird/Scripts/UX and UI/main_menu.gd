@@ -1,6 +1,7 @@
 extends Control
 
 signal NewGame
+signal press_options
 
 @export var options:Array[abstract_debugMenuOption]
 @onready var menuText=$mainMenuText
@@ -13,15 +14,21 @@ var selectionEffectEnd="[/wave]"
 var selection:int=0
 
 var active:bool=false
+var cooldown:float=0
 
 # Called when the node enters the scene tree for the first time.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	
 	if !active:
+		cooldown=0
 		return
+	else:
+		cooldown+=delta
+		if cooldown<0.4:
+			return
 		
 	if Input.is_action_just_pressed("down"):
 		selection-=1
@@ -76,6 +83,7 @@ func PressButton():
 		"Continue":
 			NewGame.emit()
 		"Options":
-			pass
+			press_options.emit()
+		
 	
 	pass

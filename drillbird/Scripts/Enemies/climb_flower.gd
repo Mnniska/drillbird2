@@ -5,6 +5,7 @@ class_name climb_flower
 @onready var flowerAnim:AnimatedSprite2D=$FlowerBody/FlowerAnim
 @onready var flowerBody:RigidBody2D=$FlowerBody
 
+
 @onready var flowerAttachedSound:sound_looper=$SoundLooper
 var positionLastFrame:Vector2
 
@@ -18,20 +19,63 @@ var speedTimeCounter:float=0
 
 var currentSpeed=SPEED
 
-enum States{IDLE,MOVE_UP,MOVE_DOWN}
+enum States{ IDLE, MOVE_UP, MOVE_DOWN, GROWING}
 var state:States=States.IDLE
 var restingPositionY=-4
 
 var PlayerAttached:bool=false
 
+@export var flowerGrowTimer:float=3
+var flowerGrowCount:float=0
+var isBeingNurtured:bool=false
+@onready var FlowerRootAnim:AnimatedSprite2D=$base
+
+func _ready() -> void:
+	GlobalVariables.PlayerIsDrillingTileChanged.connect(PLayerDrillingTileChange)
+
+func PLayerDrillingTileChange(drilling:bool):
+	if !drilling:
+		isBeingNurtured=false
+	pass
 
 func GetSelf():
 	return self
 
 func _process(delta: float) -> void:
 	
+	if state!=States.GROWING:
+		Update_Active(delta)
+	else:
+		Update_Growing(delta)
 
+
+
+func Update_Growing(delta:float):
 	
+	if isBeingNurtured:
+		flowerGrowCount+=delta
+		UpdateRootSprites(flowerGrowCount/flowerGrowTimer)
+		if flowerGrowCount>flowerGrowTimer:
+			SetHasBlossomed(true)
+	else:
+		flowerGrowCount-=delta
+		UpdateRootSprites(flowerGrowCount/flowerGrowTimer)
+		if flowerGrowCount<0:
+			queue_free()
+
+func UpdateRootSprites(_progress:float):
+	var amountOfSprites:float=5
+	
+	var chosenSprite=floori(amountOfSprites*_progress)
+	FlowerRootAnim.animation="growing"
+	FlowerRootAnim.frame=chosenSprite
+	
+	
+	pass
+
+
+
+func Update_Active(delta:float):
 	if PlayerAttached:
 		if state!=States.MOVE_UP:
 			state=States.MOVE_UP
@@ -53,6 +97,21 @@ func _process(delta: float) -> void:
 			Move_DOWN(delta)
 
 	UpdateAnimations()
+	pass
+	
+	
+func SetHasBlossomed(hasBlossomed:bool):
+	if hasBlossomed:
+		state=States.IDLE
+		FlowerRootAnim.animation="idle"
+		flowerBody.SetActive(true)
+		vine.show()
+	else:
+		flowerBody.SetActive(false)
+		state=States.GROWING
+		vine.hide()
+	
+	pass
 
 func GetCollType():
 	return collider

@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+
 signal playerStoppedDrillingTile
 signal signal_IsDrillingTileChanged(value:bool)
 signal newTileCrack
@@ -73,7 +74,7 @@ var closeFlowers:Array[climb_flower]
 @onready var oreInventory = HUD.HUD_InventoryManager
 @onready var particles=$DrillingParticles
 @onready var healthManager=HUD.HUD_healthManager
-@onready var ObjectSpawner=$"../ObjectSpawner"
+@onready var ObjectSpawner:object_spawner=$"../ObjectSpawner"
 
 func _ready() -> void:
 	
@@ -156,19 +157,20 @@ func GetClosestFlower():
 		var length=1000
 		var chosenFlower:climb_flower
 		
-	
-		var dist= global_position.distance_to(n.global_position)
-		if dist<length:
-			length=dist
-			chosenFlower=n
+		if n.state!=n.States.GROWING:
+			var dist= global_position.distance_to(n.global_position)
+			if dist<length:
+				length=dist
+				chosenFlower=n
 		return chosenFlower
 
 
 func FlowerMovement(delta:float,currentAnim:String):
 	
-	if climb_flower==null:
+	if HeldFlower==null:
 		push_error("Could not find a flower to hold onto")
-		return
+		return "idle"
+
 	
 	self.global_position=HeldFlower.GetFlowerPosition()
 	
@@ -276,10 +278,11 @@ func RegularMovement(delta:float,currentAnim:String):
 	
 		#Interrupt jump and turn it into a flower boost if close to a flower
 		if closeFlowers.size()>0:
-			state=States.FLOWER
 			HeldFlower=GetClosestFlower()
-			HeldFlower.SetPlayerAttached(true)
-			return "flyingUp"
+			if HeldFlower!=null:
+				state=States.FLOWER
+				HeldFlower.SetPlayerAttached(true)
+				return "flyingUp"
 		
 		if is_on_floor() or jumpsMade <= maxJumps or !heavy:
 			
@@ -461,6 +464,14 @@ func PlayerIsDrilling():
 		if playerDrillingSolid && FlowerTimer.is_stopped():
 			FlowerTimer.start()
 		
+		var fRaycast:RayCast2D=$RayCast2D_Flower
+		fRaycast.target_position=raycastTarget
+		fRaycast.force_raycast_update()
+		if fRaycast.is_colliding():
+			var flower:climb_flower= fRaycast.get_collider().get_parent()
+			if flower.state==flower.States.GROWING:
+				flower.isBeingNurtured=true
+		
 		if not player_is_drilling_tile:
 			player_is_drilling_tile=true
 			drillDirection=facingDir
@@ -485,6 +496,7 @@ func PlayerStoppedDrillingValidTile():
 	player_is_drilling_tile =false
 	playerStoppedDrillingTile.emit()
 	FlowerTimer.stop()
+
 	
 
 
@@ -724,8 +736,14 @@ func _on_create_flower_timer_timeout() -> void:
 	if raycast_drill.is_colliding(): 
 		var col_point = raycast_drill.get_collision_point()
 		var extrudedpoint = col_point+ (raycast_drill.get_collision_normal()*-2.5) 
-		ObjectSpawner.CreateNewFlowerFromGlobalPos(extrudedpoint+Vector2(0,-16))
 		
+		var fRaycast:RayCast2D=$RayCast2D_Flower
+		fRaycast.target_position=raycastTarget
+		fRaycast.force_raycast_update()
+		if !fRaycast.is_colliding():
+			var node= ObjectSpawner.CreateNewFlowerFromGlobalPos(extrudedpoint+Vector2(0,-16))
+			node.isBeingNurtured=true
+			node.SetHasBlossomed(false)
 	
 func SetPlayerHidden(hide:bool):
 	if hide:
