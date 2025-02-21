@@ -358,6 +358,13 @@ debug_color = Color(0.979594, 0.14234, 0, 0.42)
 target_position = Vector2(18, 0)
 hit_from_inside = true
 
+[node name="RayCast2D_Flower" type="RayCast2D" parent="."]
+target_position = Vector2(18, 0)
+collision_mask = 256
+hit_from_inside = true
+collide_with_areas = true
+collide_with_bodies = false
+
 [node name="anim_LightEffect" type="AnimatedSprite2D" parent="."]
 scale = Vector2(-1, 1)
 sprite_frames = SubResource("SpriteFrames_tv87d")
@@ -476,7 +483,7 @@ text = "Ghosting"
 horizontal_alignment = 1
 
 [node name="CreateFlowerTimer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 2.5
 
 [connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_looped"]
 [connection signal="body_shape_entered" from="BlockBelowChecker" to="." method="_on_block_below_checker_body_shape_entered"]

@@ -1,11 +1,15 @@
-[gd_scene load_steps=14 format=3 uid="uid://b5af7odmny64p"]
+[gd_scene load_steps=19 format=3 uid="uid://b5af7odmny64p"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/climb_flower.gd" id="1_n4nt3"]
 [ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_collidable.gd" id="2_2xntx"]
-[ext_resource type="Texture2D" uid="uid://bb03yrm1uvjyc" path="res://Art/Objects/ClimbFlower/climber_BlockVine.png" id="2_e7t46"]
+[ext_resource type="Texture2D" uid="uid://3y3k50kpa71j" path="res://Art/Objects/ClimbFlower/flowerRoot5.png" id="3_6ajum"]
 [ext_resource type="Texture2D" uid="uid://djnkxblnlubmn" path="res://Art/Objects/ClimbFlower/climber_flower_neutral.png" id="3_swkf5"]
+[ext_resource type="Texture2D" uid="uid://y18aqypwkuca" path="res://Art/Objects/ClimbFlower/flowerRoot1.png" id="4_y7mwr"]
 [ext_resource type="Texture2D" uid="uid://ctyenq0n0pes" path="res://Art/Objects/ClimbFlower/climber_flower_movingup.png" id="4_y8t3l"]
+[ext_resource type="Texture2D" uid="uid://duak52lk4c4m6" path="res://Art/Objects/ClimbFlower/flowerRoot2.png" id="5_byaxv"]
 [ext_resource type="Texture2D" uid="uid://ci8cej8o5rkkh" path="res://Art/Objects/ClimbFlower/climber_vine.png" id="5_f5f0o"]
+[ext_resource type="Texture2D" uid="uid://bmahcuvdsld41" path="res://Art/Objects/ClimbFlower/flowerRoot3.png" id="6_dt7kr"]
+[ext_resource type="Texture2D" uid="uid://dmo81ddgtresw" path="res://Art/Objects/ClimbFlower/flowerRoot4.png" id="7_71nka"]
 [ext_resource type="Script" path="res://Scripts/flower_collider_script.gd" id="7_x4lji"]
 [ext_resource type="PackedScene" uid="uid://csw4ibce4mwsc" path="res://Scenes/sound_looper.tscn" id="8_dtlc8"]
 [ext_resource type="Resource" uid="uid://b8thtdmcn7hom" path="res://Audio/SFX/flower_loop.tres" id="9_62kc6"]
@@ -19,12 +23,35 @@ enemyID = -1
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_e7t46")
+"texture": ExtResource("4_y7mwr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_byaxv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_dt7kr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_71nka")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_6ajum")
+}],
+"loop": false,
+"name": &"growing",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_6ajum")
 }],
 "loop": true,
-"name": &"default",
+"name": &"idle",
 "speed": 5.0
 }]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nkvjl"]
+radius = 7.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_25xxp"]
 radius = 7.0
@@ -57,6 +84,16 @@ timeUntilFast = 3.0
 [node name="base" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 16)
 sprite_frames = SubResource("SpriteFrames_16k52")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="FlowerBaseCollider" type="Area2D" parent="."]
+position = Vector2(0, 16)
+collision_layer = 256
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FlowerBaseCollider"]
+shape = SubResource("CircleShape2D_nkvjl")
 
 [node name="vine" type="TextureRect" parent="."]
 offset_left = 8.0

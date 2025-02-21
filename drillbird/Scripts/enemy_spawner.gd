@@ -1,4 +1,5 @@
 extends Node2D
+class_name object_spawner
 @export var potentialEnemyStrings:Array[String]
 @export var potentialObjectStrings:Array[String]
 @onready var flowerReference=preload("res://Scenes/Objects and Enemies/climb_flower.tscn")
@@ -220,9 +221,8 @@ func CreateNewFlowerFromGlobalPos(globalPos:Vector2):
 	node.transform.origin=gPos
 	
 	add_child(node)
+	return node
 	
-	
-	pass
 
 func RemoveTile(pos:Vector2i):
 	gameTilemap.set_cell(pos,-1,Vector2i(-1,-1),0)
