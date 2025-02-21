@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://bgj42edyan2we"]
+
+[ext_resource type="Script" path="res://Scripts/UX and UI/menu_pause.gd" id="1_w7cnh"]
+[ext_resource type="Texture2D" uid="uid://cp6xuvmo0rguj" path="res://Art/ui/HUD/UI_BlackBorder.png" id="2_6r7dd"]
+[ext_resource type="Theme" uid="uid://bfr5y4lo7m1ux" path="res://Resources/Fonts/fontTheme.tres" id="3_44x14"]
+[ext_resource type="PackedScene" uid="uid://g8bq4xcafcut" path="res://Scenes/UI/menu_option.tscn" id="4_vbmoi"]
+
+[node name="PAUSE" type="Node2D" node_paths=PackedStringArray("options")]
+script = ExtResource("1_w7cnh")
+options = [NodePath("Return"), NodePath("Options")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.396078)
+position = Vector2(164, 117.5)
+scale = Vector2(1.36719, 15.6875)
+texture = ExtResource("2_6r7dd")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_top = 19.0
+offset_right = 321.0
+offset_bottom = 99.0
+theme = ExtResource("3_44x14")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[center]Paused"
+
+[node name="Return" parent="." instance=ExtResource("4_vbmoi")]
+position = Vector2(159, 73)
+optionName = "Return"
+
+[node name="Options" parent="." instance=ExtResource("4_vbmoi")]
+position = Vector2(159, 96)
+optionName = "Options"

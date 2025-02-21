@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://bxacqh1cbwxw5"]
+[gd_scene load_steps=34 format=3 uid="uid://bxacqh1cbwxw5"]
 
 [ext_resource type="Script" path="res://Scripts/UX and UI/GlobalHUDManager.gd" id="1_u1olj"]
 [ext_resource type="Texture2D" uid="uid://cp6xuvmo0rguj" path="res://Art/ui/HUD/UI_BlackBorder.png" id="1_vcacc"]
@@ -23,6 +23,7 @@
 [ext_resource type="Script" path="res://Scripts/UX and UI/main_menu.gd" id="19_qssi7"]
 [ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_debugMenuOption.gd" id="20_hlahx"]
 [ext_resource type="PackedScene" uid="uid://bldt1ha11vmuu" path="res://Scenes/UI/menu_options.tscn" id="23_sv2nb"]
+[ext_resource type="PackedScene" uid="uid://bgj42edyan2we" path="res://Scenes/UI/menu_pause.tscn" id="24_p58jt"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_ese10"]
 
@@ -273,8 +274,12 @@ Options"
 scroll_active = false
 
 [node name="Options" parent="." instance=ExtResource("23_sv2nb")]
+visible = false
 position = Vector2(161, 120)
+
+[node name="PAUSE" parent="." instance=ExtResource("24_p58jt")]
 
 [connection signal="NewGame" from="MainMenu" to="." method="_on_main_menu_new_game"]
 [connection signal="press_options" from="MainMenu" to="." method="_on_main_menu_press_options"]
 [connection signal="optionsClosed" from="Options" to="." method="_on_options_options_closed"]
+[connection signal="signal_pause_menu_closed" from="PAUSE" to="." method="_on_pause_signal_pause_menu_closed"]
