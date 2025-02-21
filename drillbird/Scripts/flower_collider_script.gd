@@ -15,6 +15,7 @@ func SetActive(active:bool):
 		#TODO: Make a beautiful spawn anim :) 
 	else:
 		hide()
+
 	isActive=active
 		
 	pass

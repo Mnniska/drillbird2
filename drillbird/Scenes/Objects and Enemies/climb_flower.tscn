@@ -80,6 +80,7 @@ script = ExtResource("1_n4nt3")
 collider = SubResource("Resource_eoj21")
 SPEED = 115.0
 timeUntilFast = 3.0
+flowerGrowTimer = 4.0
 
 [node name="base" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 16)

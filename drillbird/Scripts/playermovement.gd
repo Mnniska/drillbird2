@@ -157,19 +157,20 @@ func GetClosestFlower():
 		var length=1000
 		var chosenFlower:climb_flower
 		
-	
-		var dist= global_position.distance_to(n.global_position)
-		if dist<length:
-			length=dist
-			chosenFlower=n
+		if n.state!=n.States.GROWING:
+			var dist= global_position.distance_to(n.global_position)
+			if dist<length:
+				length=dist
+				chosenFlower=n
 		return chosenFlower
 
 
 func FlowerMovement(delta:float,currentAnim:String):
 	
-	if climb_flower==null:
+	if HeldFlower==null:
 		push_error("Could not find a flower to hold onto")
-		return
+		return "idle"
+
 	
 	self.global_position=HeldFlower.GetFlowerPosition()
 	
@@ -277,10 +278,11 @@ func RegularMovement(delta:float,currentAnim:String):
 	
 		#Interrupt jump and turn it into a flower boost if close to a flower
 		if closeFlowers.size()>0:
-			state=States.FLOWER
 			HeldFlower=GetClosestFlower()
-			HeldFlower.SetPlayerAttached(true)
-			return "flyingUp"
+			if HeldFlower!=null:
+				state=States.FLOWER
+				HeldFlower.SetPlayerAttached(true)
+				return "flyingUp"
 		
 		if is_on_floor() or jumpsMade <= maxJumps or !heavy:
 			
