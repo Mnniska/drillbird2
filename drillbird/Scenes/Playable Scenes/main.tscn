@@ -1,4 +1,4 @@
-[gd_scene load_steps=126 format=4 uid="uid://d2wv7igie5stg"]
+[gd_scene load_steps=128 format=4 uid="uid://d2wv7igie5stg"]
 
 [ext_resource type="TileSet" uid="uid://grpd2pyu7pgk" path="res://Resources/MainTileset.tres" id="1_1imtu"]
 [ext_resource type="Script" path="res://Scenes/Playable Scenes/SaveManager.gd" id="1_iickb"]
@@ -70,7 +70,9 @@
 [ext_resource type="AudioStream" uid="uid://c2y284c1camgc" path="res://Audio/Ambience/ambience_caves_3.wav" id="61_qpe5a"]
 [ext_resource type="AudioStream" uid="uid://b2jyncclw2td3" path="res://Audio/Ambience/Drillbird_Graveyard 2.wav" id="62_i2265"]
 [ext_resource type="Texture2D" uid="uid://rr8a2a4rrme8" path="res://Art/environment/solid_decorations/HangingMoss_Chunk_01.png" id="62_q7ax7"]
+[ext_resource type="Texture2D" uid="uid://cx6m2d1hrwjo8" path="res://Art/environment/solid_decorations/Graveyard.png" id="63_ywsg0"]
 [ext_resource type="Texture2D" uid="uid://chdi1d0vsqy66" path="res://Art/environment/UniqueAssets/flowerCaveCarving.png" id="64_3kawd"]
+[ext_resource type="Texture2D" uid="uid://iccgvjgn8yi0" path="res://Art/environment/solid_decorations/Graveyard_flowers.png" id="64_wyttx"]
 [ext_resource type="Texture2D" uid="uid://gixivpytn5wl" path="res://Art/UI/HUD/UI_LightBar_bulb.png" id="64_yk8d7"]
 [ext_resource type="Script" path="res://Scripts/Tools/player_location_saver.gd" id="65_25d1u"]
 
@@ -605,7 +607,7 @@ light_mask = 0
 visibility_layer = 4
 z_index = 4
 texture_repeat = 2
-position = Vector2(0, 256)
+position = Vector2(7, 256)
 texture = ExtResource("37_6eo6t")
 region_enabled = true
 region_rect = Rect2(0, 0, 5000, 5000)
@@ -1014,6 +1016,25 @@ texture = ExtResource("62_q7ax7")
 z_index = 4
 position = Vector2(1344, 2433)
 texture = ExtResource("62_q7ax7")
+
+[node name="Graveyard" type="Sprite2D" parent="Sprites_HUBBackground"]
+z_index = 4
+position = Vector2(-856, 2578)
+texture = ExtResource("63_ywsg0")
+
+[node name="GraveyardFlowers" type="Sprite2D" parent="Sprites_HUBBackground"]
+z_index = 4
+position = Vector2(-1006, 2617)
+texture = ExtResource("64_wyttx")
+
+[node name="GraveyardFlowers" type="Sprite2D" parent="Sprites_HUBBackground/GraveyardFlowers"]
+z_index = 4
+position = Vector2(-1006, 2617)
+texture = ExtResource("64_wyttx")
+
+[node name="GraveyardFlowers2" type="Sprite2D" parent="Sprites_HUBBackground/GraveyardFlowers"]
+position = Vector2(-126, 5)
+texture = ExtResource("64_wyttx")
 
 [node name="WorldScripts" type="Node" parent="."]
 script = ExtResource("59_a6oue")
