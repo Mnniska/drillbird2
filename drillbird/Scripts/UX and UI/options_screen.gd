@@ -9,13 +9,67 @@ var menuActive:bool=false
 var selectedOption:int=0
 var oldSelection:int=0
 
+
+var save_file_path = "user://save/"
+var save_file_name="DrillbirdPlayerPreferences.tres"
+var PlayerPreferences=abstract_player_preferences.new()
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 
+	verify_save_directory(save_file_path)
+	LoadPreferences()
+	
 	UpdateMenu()
 	SetupMenu()
 	SetActive(menuActive)
+	
+
+
 	pass # Replace with function body.
+
+func verify_save_directory(path:String):
+	DirAccess.make_dir_absolute(path)
+
+func SavePreferences():
+	for n in options:
+		SaveSliderValue(n.optionName,n.sliderProgress)	
+	ResourceSaver.save(PlayerPreferences,save_file_path+save_file_name)
+	print_debug("game preferences saved")
+	
+
+		
+func SaveSliderValue(_name:String,_progress:float):
+	match _name:
+		"Master Volume":
+			PlayerPreferences.volumeMaster=_progress
+		"SFX Volume":
+			PlayerPreferences.volumeSFX=_progress
+		"Music Volume":
+			PlayerPreferences.volumeMusic=_progress
+		"Ambience Volume":
+			PlayerPreferences.volumeAmbience=_progress
+	
+func LoadPreferences():
+	if ResourceLoader.load(save_file_path+save_file_name)!=null:
+		PlayerPreferences=ResourceLoader.load(save_file_path+save_file_name)
+
+	SliderValueChanged("Master Volume",PlayerPreferences.volumeMaster)
+	SliderValueChanged("SFX Volume",PlayerPreferences.volumeSFX)
+	SliderValueChanged("Music Volume",PlayerPreferences.volumeMusic)
+	SliderValueChanged("Ambience Volume",PlayerPreferences.volumeAmbience)
+	
+	for n in options:
+		match n.optionName:
+			"Master Volume":
+				n.SetSliderProgress(PlayerPreferences.volumeMaster)
+			"SFX Volume":
+				n.SetSliderProgress(PlayerPreferences.volumeSFX)
+			"Music Volume":
+				n.SetSliderProgress(PlayerPreferences.volumeMusic)
+			"Ambience Volume":
+				n.SetSliderProgress(PlayerPreferences.volumeAmbience)		
 
 func SetupMenu():
 	for n in options:
@@ -70,9 +124,12 @@ func UpdateMenu():
 
 func ButtonPressed(_name:String):
 	if _name=="Return":
+		SavePreferences()
 		SetActive(false)
 		optionsClosed.emit()
 	pass
+
+
 
 func SliderValueChanged(_name:String,_progress:float):
 	var chosenBus

@@ -47,7 +47,11 @@ func _ready() -> void:
 	
 	
 		
-
+func SetSliderProgress(_progress:float):
+	sliderProgress=_progress
+	sliderValue=sliderProgress*sliderMaxVal
+	UpdateSliderPos()
+	pass
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	if !active:
@@ -94,8 +98,8 @@ func MoveSlider(right:bool):
 		
 	UpdateSliderPos()
 	
-	var progress=sliderValue/sliderMaxVal
-	sliderValueChanged.emit(optionName,progress)
+	sliderProgress=sliderValue/sliderMaxVal
+	sliderValueChanged.emit(optionName,sliderProgress)
 	UpdateSoundTest(true)
 	
 	pass
