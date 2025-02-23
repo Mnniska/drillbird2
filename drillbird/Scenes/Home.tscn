@@ -592,6 +592,7 @@ shape = SubResource("RectangleShape2D_y1qs5")
 
 [node name="HUBMusicPlayer" type="AudioStreamPlayer2D" parent="."]
 max_distance = 1000.0
+bus = &"Music"
 script = ExtResource("30_88ool")
 mus_idle_beginning = ExtResource("31_o3cgh")
 mus_idle_end = ExtResource("33_1h6f6")
@@ -600,11 +601,13 @@ mus_idle_end = ExtResource("33_1h6f6")
 stream = ExtResource("31_o3cgh")
 autoplay = true
 max_distance = 320.0
+bus = &"Music"
 
 [node name="music_dream" type="AudioStreamPlayer2D" parent="HUBMusicPlayer"]
 stream = ExtResource("32_68fby")
 autoplay = true
 max_distance = 320.0
+bus = &"Music"
 
 [connection signal="animation_finished" from="Eggs/BirdySleepPositions/birdySleep" to="." method="_on_birdy_sleep_animation_finished"]
 [connection signal="buttonPressed" from="InteractButton_EndDay" to="." method="_on_interact_button_end_day_button_pressed"]

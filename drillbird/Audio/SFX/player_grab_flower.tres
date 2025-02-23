@@ -10,4 +10,4 @@ type = 20
 sound_effect = ExtResource("2_s22fx")
 volume = -5
 pitch_randomness = 0.2
-audioBus = 0
+audioBus = 1

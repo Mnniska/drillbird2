@@ -141,7 +141,7 @@ func SetState(_state:menuStates):
 			PauseMenu.SetActive(false)
 			
 			#If player has saved game, wake up on egg
-			if GlobalVariables.currentDay>1:
+			if GlobalVariables.currentDay>1 and previousMenuState==menuStates.MAIN:
 				GlobalVariables.MainSceneReferenceConnector.ref_home.WakeUp(false)
 		menuStates.CREDITS:
 			SetHudVisible(false)

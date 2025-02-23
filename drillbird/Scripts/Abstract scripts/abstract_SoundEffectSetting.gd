@@ -37,7 +37,7 @@ enum SoundEffectEnum
 @export_range (-40,20) var volume=0
 @export_range(0.0,1.0,.01) var pitch_randomness=0.0 #stolen from internwet
 
-enum AudioBusEnum {SFX,MUSIC}
+enum AudioBusEnum {Master,Sfx,Music,Ambience}
 @export var audioBus:AudioBusEnum
 
 var audio_count:int=0

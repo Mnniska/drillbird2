@@ -10,4 +10,4 @@ type = 11
 sound_effect = ExtResource("2_cc2w6")
 volume = 0
 pitch_randomness = 0.2
-audioBus = 0
+audioBus = 1

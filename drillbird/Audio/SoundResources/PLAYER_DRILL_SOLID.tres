@@ -10,4 +10,4 @@ type = 12
 sound_effect = ExtResource("2_pimt7")
 volume = -19
 pitch_randomness = 0.0
-audioBus = 0
+audioBus = 1

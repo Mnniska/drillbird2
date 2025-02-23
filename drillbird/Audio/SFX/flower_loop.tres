@@ -10,4 +10,4 @@ type = 18
 sound_effect = ExtResource("2_wed3a")
 volume = 0
 pitch_randomness = 0.0
-audioBus = 0
+audioBus = 1
