@@ -1,10 +1,13 @@
 extends Node2D
 class_name egg_final_form
+signal signal_hatching_complete
+
 var isActive:bool=false
 var isShaking:bool=false
 var shakeAmount:float=2
 @onready var originalPosition:Vector2=self.position
 @onready var animator=$AnimatedSprite2D
+@onready var anim_birds=$Anim_birds_hatching
 
 enum finalFormStates{FINAL_INACTIVE,FINAL_HEARTLESS,FINAL_HEART,FINAL_HATCHING}
 var finalFormState:finalFormStates=finalFormStates.FINAL_HEARTLESS
@@ -49,7 +52,15 @@ func HatchEgg():
 	animator.animation="hatch"
 	await get_tree().create_timer(2).timeout
 	isShaking=false
+	await get_tree().create_timer(3).timeout
 
+	anim_birds.animation="hatch"
+	anim_birds.play()
+	anim_birds.animation_finished.connect(HatchCutsceneFinished)
+
+	
+func HatchCutsceneFinished():
+	signal_hatching_complete.emit()
 	pass
 
 func TransitionToFinalForm():

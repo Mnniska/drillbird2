@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://uk01ajvakw2b"]
+[gd_scene load_steps=60 format=3 uid="uid://uk01ajvakw2b"]
 
 [ext_resource type="Script" path="res://Scripts/egg_final_form.gd" id="1_fasbe"]
 [ext_resource type="Texture2D" uid="uid://bbqb5jjiqxbtc" path="res://Art/environment/Home/FinalForm/egg_finalForm.png" id="2_06bq8"]
@@ -51,6 +51,12 @@
 [ext_resource type="Texture2D" uid="uid://c5je36r2wkrob" path="res://Art/environment/Home/eggHatching/EggHatching17.png" id="49_k27v8"]
 [ext_resource type="Texture2D" uid="uid://ch7aqb2l0y20s" path="res://Art/environment/Home/eggHatching/EggHatching18.png" id="50_17vov"]
 [ext_resource type="Texture2D" uid="uid://437i47ylbr7" path="res://Art/environment/Home/eggHatching/EggHatching19.png" id="51_c3jbg"]
+[ext_resource type="Texture2D" uid="uid://d2yke55enh7l5" path="res://Art/environment/Home/Birds hatching/hatching_birds1.png" id="52_vshx7"]
+[ext_resource type="Texture2D" uid="uid://ckfwpiysm1q1" path="res://Art/environment/Home/Birds hatching/hatching_birds2.png" id="53_qxwvj"]
+[ext_resource type="Texture2D" uid="uid://cw75mehhdcvoe" path="res://Art/environment/Home/Birds hatching/hatching_birds3.png" id="54_hu8ys"]
+[ext_resource type="Texture2D" uid="uid://cvje4ypox6no3" path="res://Art/environment/Home/Birds hatching/hatching_birds4.png" id="55_gn8r5"]
+[ext_resource type="Texture2D" uid="uid://ypnmtxw1cki7" path="res://Art/environment/Home/Birds hatching/hatching_birds5.png" id="56_3a3be"]
+[ext_resource type="Texture2D" uid="uid://h6upf31u0q7y" path="res://Art/environment/Home/Birds hatching/hatching_birds6.png" id="57_38xms"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dcmve"]
 animations = [{
@@ -228,9 +234,43 @@ animations = [{
 "duration": 0.6,
 "texture": ExtResource("51_c3jbg")
 }],
-"loop": true,
+"loop": false,
 "name": &"hatch",
 "speed": 6.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lku8d"]
+animations = [{
+"frames": [{
+"duration": 6.0,
+"texture": ExtResource("57_38xms")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 4.0,
+"texture": ExtResource("52_vshx7")
+}, {
+"duration": 10.0,
+"texture": ExtResource("53_qxwvj")
+}, {
+"duration": 3.0,
+"texture": ExtResource("54_hu8ys")
+}, {
+"duration": 2.0,
+"texture": ExtResource("55_gn8r5")
+}, {
+"duration": 2.0,
+"texture": ExtResource("56_3a3be")
+}, {
+"duration": 6.0,
+"texture": ExtResource("57_38xms")
+}],
+"loop": false,
+"name": &"hatch",
+"speed": 5.0
 }]
 
 [node name="Egg_FinalForm" type="Node2D"]
@@ -242,7 +282,16 @@ position = Vector2(-2, -40)
 sprite_frames = SubResource("SpriteFrames_dcmve")
 animation = &"hatch"
 autoplay = "final_form_with_heart_idle"
+frame = 18
+frame_progress = 1.0
 
 [node name="FinalHeartPosition" type="Node2D" parent="."]
 z_index = 1
 position = Vector2(-1, -40)
+
+[node name="Anim_birds_hatching" type="AnimatedSprite2D" parent="."]
+z_index = 1
+position = Vector2(-9, -71)
+sprite_frames = SubResource("SpriteFrames_lku8d")
+animation = &"hatch"
+autoplay = "default"

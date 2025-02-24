@@ -168,14 +168,17 @@ func OreFinishedSelling(amount:int):
 func HatchEgg():
 	EggHandler.SetEggState(EggHandler.eggStates.FINALCUTSCENE)
 	state=states.FINALCUTSCENE
-	#DO FINAL CUTSCENE STUFF HERE
+	Camera.StartNewLerp(CameraLerpPosition.position, 0.5)
+	GlobalVariables.playerStatus=GlobalVariables.playerStatusEnum.SHOP
 	
-	await get_tree().create_timer(6).timeout
-	
-	HUD.SetSceneState(HUD.sceneStates.CREDITS)
 	
 	pass
 
+func EggFinishedHatching():
+	HUD.SetSceneState(HUD.sceneStates.CREDITS)
+
+	
+	
 
 func MainMenu_SetupSleepIdle():
 	
