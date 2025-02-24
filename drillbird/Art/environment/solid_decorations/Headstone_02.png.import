@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://boic8s0yu8qiu"
-path="res://.godot/imported/num5.png-6c1488e641860e42eecddd2fc8ae9271.ctex"
+uid="uid://drg5aq6jefcxi"
+path="res://.godot/imported/Headstone_02.png-4d723ecf66af0b81288b83880c2ac4bb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/UI/Symbols/num5.png"
-dest_files=["res://.godot/imported/num5.png-6c1488e641860e42eecddd2fc8ae9271.ctex"]
+source_file="res://Art/environment/solid_decorations/Headstone_02.png"
+dest_files=["res://.godot/imported/Headstone_02.png-4d723ecf66af0b81288b83880c2ac4bb.ctex"]
 
 [params]
 

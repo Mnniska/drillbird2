@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://1hy32yargekh"
-path="res://.godot/imported/UI_rest_arrow_light.png-3a6b6d1cb56836e71a9d3fc46eeb8184.ctex"
+path="res://.godot/imported/UI_rest_arrow_light.png-83b95f6c6b64431d1e85150c019d62a7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/ui/UI_rest_arrow_light.png"
-dest_files=["res://.godot/imported/UI_rest_arrow_light.png-3a6b6d1cb56836e71a9d3fc46eeb8184.ctex"]
+source_file="res://Art/UI/UI_rest_arrow_light.png"
+dest_files=["res://.godot/imported/UI_rest_arrow_light.png-83b95f6c6b64431d1e85150c019d62a7.ctex"]
 
 [params]
 
