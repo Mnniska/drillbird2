@@ -61,6 +61,7 @@ func _process(delta: float) -> void:
 			velocity.x=0
 			startingShakePosition=self.position
 			state=States.WAITING
+			SoundManager.PlaySoundGlobal(abstract_SoundEffectSetting.SoundEffectEnum.HOME_GIVEORE_RISER)
 
 	if state==States.WAITING:
 
@@ -85,7 +86,6 @@ func SellSelf():
 		
 		$destroyAnim.animation="sell"
 		
-
 		textBubbleInstance=textbubble.instantiate()
 		textBubbleInstance.Setup(abstract_textEffect.effectEnum.STILL,text_bubble.behaviourEnum.FADE)
 		textBubbleInstance.MoveUp=true

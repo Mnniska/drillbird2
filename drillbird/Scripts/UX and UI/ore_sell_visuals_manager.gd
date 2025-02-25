@@ -26,6 +26,8 @@ var isSelling:bool=false:
 		isSellingChanged.emit(isSelling)
 var xpFollowPlayer:bool=false
 
+var oresSoldThisRound:int=0
+@export var minPitchWhenSelling:float=1
 
 
 @onready var birdySleepPos=$"../Eggs/BirdySleepPositions/birdySleep"
@@ -44,13 +46,20 @@ func _ready() -> void:
 		oreSellLocations.append(n)
 
 
-func OreFinishedSelling():
+func OreFinishedSelling(amount:int):
 	oresBeingSold-=1
+
+	var pitchJump=0.05
+	var pitch=minPitchWhenSelling+pitchJump*(oresSoldThisRound-oresBeingSold)
+	
+	SoundManager.PlaySoundGlobal(abstract_SoundEffectSetting.SoundEffectEnum.HOME_GIVEORE_POFF,pitch)
+	
 	if oresBeingSold<0:
 		oresBeingSold=0
 	
 	if oresBeingSold==0:
 		isSelling=false
+		oresSoldThisRound=0
 	
 	
 func _process(delta: float) -> void:
@@ -62,7 +71,10 @@ func _process(delta: float) -> void:
 
 func SellThisOre(ore:abstract_ore,_oreBodyReference:Node2D):
 	
-	isSelling=true
+	if !isSelling:
+		isSelling=true
+		oresSoldThisRound=0
+	oresSoldThisRound+=1
 	oresBeingSold+=1
 	#Assumes it takes TimeToSellAndOre amount of seconds to sell an ore, will then set itself as not selling
 	
@@ -79,6 +91,8 @@ func SellThisOre(ore:abstract_ore,_oreBodyReference:Node2D):
 	
 	var oreSellVisualizer:ore_sell_visualizer=oreVisual.instantiate()
 	add_child(oreSellVisualizer)
+	oreSellVisualizer.finishedSelling.connect(OreFinishedSelling)
+
 	print_debug(str(index))
 	var timetoSell:float=0.2
 	oreSellVisualizer.Setup(ore,chosenLocation.global_position,1+(index*timetoSell))

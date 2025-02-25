@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="abstract_SoundEffectSetting" load_steps=3 format=3 uid="uid://xnq6wchjjjg0"]
+
+[ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_SoundEffectSetting.gd" id="1_xhatx"]
+[ext_resource type="AudioStream" uid="uid://yxxe0lquesai" path="res://Audio/SFX/home_giveOres_riser.wav" id="2_smg5b"]
+
+[resource]
+script = ExtResource("1_xhatx")
+limit = 10
+type = 21
+sound_effect = ExtResource("2_smg5b")
+volume = 0
+pitch_randomness = 0.1
+audioBus = 1
