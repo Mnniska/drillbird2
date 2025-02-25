@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="abstract_ore_region" load_steps=6 format=3 uid="uid://d35o56m1lfg6p"]
 
 [ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_ore.gd" id="1_mx5rg"]
-[ext_resource type="Resource" uid="uid://bcbdo5pvpevgy" path="res://Resources/ore_4.tres" id="2_fydom"]
-[ext_resource type="Resource" uid="uid://bir1i467inivj" path="res://Resources/ore_3.tres" id="2_t1k3h"]
+[ext_resource type="Resource" uid="uid://bcbdo5pvpevgy" path="res://Resources/Economy/ore_4.tres" id="2_fydom"]
+[ext_resource type="Resource" uid="uid://bir1i467inivj" path="res://Resources/Economy/ore_3.tres" id="2_t1k3h"]
 [ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_ore_region.gd" id="3_05wfs"]
-[ext_resource type="Resource" uid="uid://k3uc1fryuwfc" path="res://Resources/ore_5.tres" id="3_b3eip"]
+[ext_resource type="Resource" uid="uid://k3uc1fryuwfc" path="res://Resources/Economy/ore_5.tres" id="3_b3eip"]
 
 [resource]
 script = ExtResource("3_05wfs")

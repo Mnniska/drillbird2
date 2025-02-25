@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="abstract_ore_region" load_steps=5 format=3 uid="uid://ban5p7bjd2bj6"]
 
 [ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_ore.gd" id="1_nvhuq"]
-[ext_resource type="Resource" uid="uid://k3uc1fryuwfc" path="res://Resources/ore_5.tres" id="2_w3hee"]
-[ext_resource type="Resource" uid="uid://dtee1eo8ydnlr" path="res://Resources/ore_6.tres" id="3_34ufd"]
+[ext_resource type="Resource" uid="uid://k3uc1fryuwfc" path="res://Resources/Economy/ore_5.tres" id="2_w3hee"]
+[ext_resource type="Resource" uid="uid://dtee1eo8ydnlr" path="res://Resources/Economy/ore_6.tres" id="3_34ufd"]
 [ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_ore_region.gd" id="3_mvqdo"]
 
 [resource]
