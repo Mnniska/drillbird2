@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="abstract_purchasable" load_steps=8 format=3 uid="uid://b26ws3o4u42p3"]
+[gd_resource type="Resource" script_class="abstract_purchasable" load_steps=11 format=3 uid="uid://b26ws3o4u42p3"]
 
 [ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_purchasable.gd" id="1_hrpxn"]
 [ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_item_upgrade.gd" id="2_air0l"]
@@ -9,22 +9,37 @@ metadata/__load_path__ = "res://Art/ui/Shop/UI_Shop_icon_inventory.png"
 [sub_resource type="Resource" id="Resource_ldy6v"]
 script = ExtResource("2_air0l")
 cost = 0
-power = 2
+power = 6
 
 [sub_resource type="Resource" id="Resource_nookp"]
 script = ExtResource("2_air0l")
 cost = 8
-power = 3
+power = 12
 
 [sub_resource type="Resource" id="Resource_aum1u"]
 script = ExtResource("2_air0l")
 cost = 20
-power = 4
+power = 20
 
 [sub_resource type="Resource" id="Resource_l4iij"]
 script = ExtResource("2_air0l")
 cost = 35
-power = 5
+power = 35
+
+[sub_resource type="Resource" id="Resource_d0rec"]
+script = ExtResource("2_air0l")
+cost = 60
+power = 50
+
+[sub_resource type="Resource" id="Resource_2oane"]
+script = ExtResource("2_air0l")
+cost = 120
+power = 70
+
+[sub_resource type="Resource" id="Resource_c3jjj"]
+script = ExtResource("2_air0l")
+cost = 111
+power = 120
 
 [resource]
 script = ExtResource("1_hrpxn")
@@ -33,4 +48,4 @@ type = 1
 icon = SubResource("Resource_ti6mi")
 itemName = "Inventory"
 itemDescription = "Fit more stuff before ascending"
-items = Array[ExtResource("2_air0l")]([SubResource("Resource_ldy6v"), SubResource("Resource_nookp"), SubResource("Resource_aum1u"), SubResource("Resource_l4iij")])
+items = Array[ExtResource("2_air0l")]([SubResource("Resource_ldy6v"), SubResource("Resource_nookp"), SubResource("Resource_aum1u"), SubResource("Resource_l4iij"), SubResource("Resource_d0rec"), SubResource("Resource_2oane"), SubResource("Resource_c3jjj")])
