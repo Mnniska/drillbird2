@@ -9,5 +9,5 @@ ID = 0
 value = 3
 texture = ExtResource("2_p1ksc")
 name = "Pebbelite"
-stackSize = 5
+weight = 1
 AtlasCoords = Vector2i(0, 0)

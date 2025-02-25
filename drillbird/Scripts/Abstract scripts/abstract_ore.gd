@@ -5,5 +5,5 @@ class_name abstract_ore
 @export var value:int 
 @export var texture:Texture
 @export var name = "default"
-@export var stackSize:int 
+@export var weight:int 
 @export var AtlasCoords:Vector2i

@@ -126,14 +126,14 @@ func ExecuteAction(action:String):
 		"inventory_upgrade_add":
 			var invEnum=GlobalVariables.typeEnum.INVENTORY
 			GlobalVariables.SetPlayerUpgradeLevel(invEnum,GlobalVariables.GetPlayerUpgradeLevel(invEnum)+1)
-			inventory.UpdateInventoryPositions()
+			inventory.SetupInventorySize()
 			pass
 		"inventory_upgrade_remove":
 			var invEnum=GlobalVariables.typeEnum.INVENTORY
 			if GlobalVariables.GetPlayerUpgradeLevel(invEnum)>0:
 				
 				GlobalVariables.SetPlayerUpgradeLevel(invEnum,GlobalVariables.GetPlayerUpgradeLevel(invEnum)-1)
-				inventory.UpdateInventoryPositions()
+				inventory.SetupInventorySize()
 		"drill_upgrade_add":
 			var drillEnum=GlobalVariables.typeEnum.DRILL
 			var target:int=GlobalVariables.GetPlayerUpgradeLevel(drillEnum)+1

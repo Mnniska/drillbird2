@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://bxacqh1cbwxw5"]
+[gd_scene load_steps=33 format=3 uid="uid://bxacqh1cbwxw5"]
 
 [ext_resource type="Script" path="res://Scripts/UX and UI/GlobalHUDManager.gd" id="1_u1olj"]
 [ext_resource type="Texture2D" uid="uid://cp6xuvmo0rguj" path="res://Art/ui/HUD/UI_BlackBorder.png" id="1_vcacc"]
@@ -8,14 +8,13 @@
 [ext_resource type="Texture2D" uid="uid://5k8n46gs2ghw" path="res://Art/ui/HUD/UI_LightBar_frame2.png" id="4_k2bwc"]
 [ext_resource type="Texture2D" uid="uid://woyu5th1dweb" path="res://Art/ui/HUD/UI_LightBar_light2.png" id="5_5ophj"]
 [ext_resource type="Texture2D" uid="uid://c2fj0vknmdoys" path="res://Art/ui/Shop/money_symbol.png" id="6_3yotd"]
+[ext_resource type="Texture2D" uid="uid://druhh76xwxih5" path="res://Art/ui/HUD/HUD_icon_inventory.png" id="6_cgigq"]
 [ext_resource type="FontFile" uid="uid://bvh0dsp2kmrr0" path="res://Resources/Fonts/m5x7.ttf" id="7_pre4c"]
 [ext_resource type="Script" path="res://Scripts/HealthUIHandler.gd" id="9_uhcmx"]
 [ext_resource type="Resource" uid="uid://dd3l8ir1bmcm5" path="res://Resources/Economy/purchasable_health.tres" id="10_3kqti"]
 [ext_resource type="Script" path="res://Scripts/inventory_handler.gd" id="11_qie2v"]
-[ext_resource type="Texture2D" uid="uid://un5elq1p64iv" path="res://Art/ui/HUD/ui_slotLeftSide.png" id="12_5vff0"]
 [ext_resource type="Resource" uid="uid://b26ws3o4u42p3" path="res://Resources/Economy/purchasable_inventory.tres" id="12_mfl1u"]
 [ext_resource type="Script" path="res://Scenes/Playable Scenes/ui_death.gd" id="13_1fwbs"]
-[ext_resource type="Texture2D" uid="uid://bw25xygruk6rd" path="res://Art/ui/HUD/ui_slotRightSide.png" id="13_tqnnv"]
 [ext_resource type="Texture2D" uid="uid://bntebnpau35mm" path="res://Art/ui/UI_Death_background.png" id="14_0gadq"]
 [ext_resource type="Theme" uid="uid://bfr5y4lo7m1ux" path="res://Resources/Fonts/fontTheme.tres" id="15_nxi4s"]
 [ext_resource type="PackedScene" uid="uid://v1t8rfk5hqfa" path="res://Scenes/UI/button.tscn" id="16_281dp"]
@@ -96,6 +95,29 @@ position = Vector2(160, 8)
 scale = Vector2(1.25, 1)
 texture = ExtResource("1_vcacc")
 
+[node name="InventoryHandler" type="Node2D" parent="topUI"]
+unique_name_in_owner = true
+z_index = 2
+position = Vector2(4, 72)
+scale = Vector2(0.8, 1)
+script = ExtResource("11_qie2v")
+inventoryUpgradeTree = ExtResource("12_mfl1u")
+
+[node name="icon" type="Sprite2D" parent="topUI/InventoryHandler"]
+position = Vector2(138, -72)
+texture = ExtResource("6_cgigq")
+
+[node name="inventoryNumber" type="RichTextLabel" parent="topUI/InventoryHandler"]
+offset_left = 52.0
+offset_top = -78.0
+offset_right = 130.0
+offset_bottom = -58.0
+theme = ExtResource("15_nxi4s")
+theme_override_colors/default_color = Color(0.827451, 0.717647, 0.556863, 1)
+bbcode_enabled = true
+text = "[right]0/1200 kg"
+text_direction = 1
+
 [node name="LightHandler" type="Node2D" parent="topUI"]
 position = Vector2(3.90244, 1)
 scale = Vector2(0.780488, 1)
@@ -134,7 +156,7 @@ randomness = 1.0
 
 [node name="CashHolder" type="Node2D" parent="topUI"]
 z_index = 2
-position = Vector2(125.659, -8)
+position = Vector2(-128, 8)
 scale = Vector2(0.780488, 1)
 
 [node name="cash symbol" type="Sprite2D" parent="topUI/CashHolder"]
@@ -149,13 +171,12 @@ layout_direction = 2
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -70.485
-offset_right = -10.84
+offset_left = 7.17498
+offset_right = 66.82
 offset_bottom = 13.91
 grow_horizontal = 0
 theme = SubResource("Theme_ush66")
 text = "0"
-horizontal_alignment = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="HealthUIHandler" type="Node2D" parent="topUI"]
@@ -166,35 +187,18 @@ script = ExtResource("9_uhcmx")
 HealthUpgrades = ExtResource("10_3kqti")
 
 [node name="bottomUI" type="Sprite2D" parent="."]
+visible = false
 z_index = 2
 position = Vector2(161.999, 209)
 scale = Vector2(1.32812, 1)
 texture = ExtResource("1_vcacc")
 
 [node name="bottomUI2" type="Sprite2D" parent="bottomUI"]
+visible = false
 z_index = 2
 position = Vector2(-1.12942, 16)
 scale = Vector2(0.997063, 1)
 texture = ExtResource("1_vcacc")
-
-[node name="InventoryHandler" type="Node2D" parent="bottomUI"]
-z_index = 2
-position = Vector2(2.25883, 16)
-scale = Vector2(0.752944, 1)
-script = ExtResource("11_qie2v")
-upgradetree_inventory = ExtResource("12_mfl1u")
-
-[node name="ui_leftSide" type="Sprite2D" parent="bottomUI/InventoryHandler"]
-visible = false
-z_index = 2
-position = Vector2(-33, -8)
-texture = ExtResource("12_5vff0")
-
-[node name="ui_rightSide" type="Sprite2D" parent="bottomUI/InventoryHandler"]
-visible = false
-z_index = 2
-position = Vector2(31, -8)
-texture = ExtResource("13_tqnnv")
 
 [node name="UI_Death" type="Node2D" parent="."]
 visible = false
@@ -234,6 +238,7 @@ vertical_alignment = 1
 [node name="Button_Continue" parent="UI_Death" instance=ExtResource("16_281dp")]
 
 [node name="MainMenu" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -278,6 +283,7 @@ visible = false
 position = Vector2(161, 120)
 
 [node name="PAUSE" parent="." instance=ExtResource("24_p58jt")]
+visible = false
 
 [connection signal="NewGame" from="MainMenu" to="." method="_on_main_menu_new_game"]
 [connection signal="press_options" from="MainMenu" to="." method="_on_main_menu_press_options"]

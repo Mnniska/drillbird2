@@ -9,4 +9,5 @@ ID = 1
 value = 4
 texture = ExtResource("2_xln1v")
 name = "Lapis"
-stackSize = 3
+weight = 2
+AtlasCoords = Vector2i(0, 0)

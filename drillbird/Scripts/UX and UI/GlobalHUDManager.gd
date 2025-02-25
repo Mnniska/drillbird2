@@ -3,7 +3,7 @@ extends CanvasLayer
 @onready var HUD_lightBulbManager=$topUI/LightHandler
 @onready var HUD_healthManager=$topUI/HealthUIHandler
 @onready var HUD_cashText=$topUI/CashHolder/cashNumber
-@onready var HUD_InventoryManager=$bottomUI/InventoryHandler
+@onready var HUD_InventoryManager=%InventoryHandler
 @onready var MainMenu=$MainMenu
 @onready var OptionsMenu=$Options
 @onready var PauseMenu=$PAUSE
