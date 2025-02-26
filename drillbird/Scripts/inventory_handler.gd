@@ -117,7 +117,7 @@ func CreateLerpingOre(ore:abstract_ore):
 	add_child(node)
 	node.position=$oreSpawnOrigin.position
 		
-	node.Setup(ore,sellPos,0,2.5)
+	node.Setup(ore,sellPos,0,3,true)
 	node.finishedSelling.connect(OreFinishedLerp)
 	
 	pass

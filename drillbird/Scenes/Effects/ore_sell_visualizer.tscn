@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cdnefjyqi8nyx"]
+[gd_scene load_steps=18 format=3 uid="uid://cdnefjyqi8nyx"]
 
 [ext_resource type="Script" path="res://Scripts/UX and UI/ore_sell_visualizer.gd" id="1_wjyf5"]
 [ext_resource type="Texture2D" uid="uid://cwvy2kg6pkkfl" path="res://Art/Collectibles/ore_1_pebble.png" id="2_nxrvr"]
@@ -14,6 +14,15 @@
 [ext_resource type="Texture2D" uid="uid://c6nkgpbjhn3cf" path="res://Art/effects/oreSellEffect/oreSellEffect10.png" id="12_2du5a"]
 [ext_resource type="Texture2D" uid="uid://pesbw684vt75" path="res://Art/effects/oreSellEffect/oreSellEffect11.png" id="13_f540e"]
 [ext_resource type="Texture2D" uid="uid://dhrvhcsf7e45a" path="res://Art/effects/empty.png" id="14_5nq2n"]
+
+[sub_resource type="Curve" id="Curve_3yjxu"]
+_data = [Vector2(0.00530504, 0.10365), 0.0, 1.22057, 0, 0, Vector2(0.498674, 0.827174), 0.0345101, 0.0345101, 0, 0, Vector2(1, 0.504957), -0.613514, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_w1d1n"]
+max_value = 32.0
+_data = [Vector2(0, 2.28571), 0.0, 71.7477, 0, 0, Vector2(0.904509, 31.0626), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ohfw2"]
 animations = [{
@@ -70,6 +79,9 @@ animations = [{
 [node name="OreSellVisualizer" type="Node2D"]
 z_index = 2
 script = ExtResource("1_wjyf5")
+movementCurve = SubResource("Curve_3yjxu")
+chillBeforeMovingCurve = SubResource("Curve_w1d1n")
+timeBeforeMovingWhenChilling = 0.5
 
 [node name="oreSprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_nxrvr")
