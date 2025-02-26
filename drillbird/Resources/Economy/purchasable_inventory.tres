@@ -1,10 +1,8 @@
 [gd_resource type="Resource" script_class="abstract_purchasable" load_steps=11 format=3 uid="uid://b26ws3o4u42p3"]
 
+[ext_resource type="Texture2D" uid="uid://dd5qv322e1hvn" path="res://Art/ui/Shop/UI_Shop_icon_inventory.png" id="1_hk7n8"]
 [ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_purchasable.gd" id="1_hrpxn"]
 [ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_item_upgrade.gd" id="2_air0l"]
-
-[sub_resource type="Resource" id="Resource_ti6mi"]
-metadata/__load_path__ = "res://Art/ui/Shop/UI_Shop_icon_inventory.png"
 
 [sub_resource type="Resource" id="Resource_ldy6v"]
 script = ExtResource("2_air0l")
@@ -38,14 +36,14 @@ power = 70
 
 [sub_resource type="Resource" id="Resource_c3jjj"]
 script = ExtResource("2_air0l")
-cost = 155
+cost = 111
 power = 120
 
 [resource]
 script = ExtResource("1_hrpxn")
 onlyAButton = false
 type = 1
-icon = SubResource("Resource_ti6mi")
+icon = ExtResource("1_hk7n8")
 itemName = "Inventory"
-itemDescription = "Fit more stuff before ascending"
+itemDescription = "Carry heavier loads"
 items = Array[ExtResource("2_air0l")]([SubResource("Resource_ldy6v"), SubResource("Resource_nookp"), SubResource("Resource_aum1u"), SubResource("Resource_l4iij"), SubResource("Resource_d0rec"), SubResource("Resource_2oane"), SubResource("Resource_c3jjj")])
