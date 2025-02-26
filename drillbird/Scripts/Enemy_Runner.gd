@@ -10,6 +10,9 @@ var positionLastFrame:Vector2
 @export var timeInWait=1
 var waitCounter=0
 
+var turningCounter=0
+var timeBeforeTurning=0.2
+
 var spawnPositionLocal:Vector2
 @onready var collider=$EnemyCollisionChecker
 
@@ -87,16 +90,25 @@ func _physics_process(delta: float) -> void:
 
 
 
+
+
+
 	move_and_slide()
 	UpdateAnimations()
 
 	if state==States.WALK:
 		
-		var speed = positionLastFrame-position
-		if speed.x==0:
 
-			direction=direction*-1
-			state=States.WAIT
+		var speed = abs(positionLastFrame-position)
+		if speed.x<=0.1:
+			turningCounter+=delta
+			if turningCounter>=timeBeforeTurning:
+				turningCounter=0
+				direction=direction*-1
+				state=States.WAIT
+		elif turningCounter>0:
+			turningCounter=0
+	
 		positionLastFrame=position
 	
 
