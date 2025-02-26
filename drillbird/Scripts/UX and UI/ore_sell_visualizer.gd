@@ -27,7 +27,8 @@ var isFinalHeart:bool=false
 var startingShakePosition:Vector2
 
 
-func Setup(_ore:abstract_ore,sellingPosition:Vector2,timeToWait:float):
+func Setup(_ore:abstract_ore,sellingPosition:Vector2,timeToWait:float=1,speedMult:float=1):
+	SPEED=SPEED*speedMult
 	timeBeforeSold=timeToWait
 	ore=_ore
 	sprite.texture=ore.texture
@@ -47,6 +48,9 @@ func _process(delta: float) -> void:
 	
 	
 	if state==States.MOVING:
+		
+		
+		
 		var movevector= global_position.direction_to(targetPosition)
 		velocity=movevector*SPEED*delta
 	
@@ -76,28 +80,28 @@ func _process(delta: float) -> void:
 			SellSelf()		
 		pass
 
-func SellSelf():
+func SellSelf(skipBubble:bool=false):
+	
 	if isFinalHeart:
 		finishedSelling.emit(-1)
 		$oreSprite.hide()
 		await get_tree().create_timer(0.2).timeout
 		queue_free()
+		
 	else:
+	
+		$destroyAnim.animation="sell" #Todo: probably variant of this when goiing into inventory
 		
-		$destroyAnim.animation="sell"
-		
-		textBubbleInstance=textbubble.instantiate()
-		textBubbleInstance.Setup(abstract_textEffect.effectEnum.STILL,text_bubble.behaviourEnum.FADE)
-		textBubbleInstance.MoveUp=true
-		textBubbleInstance.UseTypewriteEffect=true
-		add_child(textBubbleInstance)
-		textBubbleInstance.position+=Vector2(0,-16)
-		textBubbleInstance.ShowText("+"+str(ore.value))
+		if !skipBubble:
+			textBubbleInstance=textbubble.instantiate()
+			textBubbleInstance.Setup(abstract_textEffect.effectEnum.STILL,text_bubble.behaviourEnum.FADE)
+			textBubbleInstance.MoveUp=true
+			textBubbleInstance.UseTypewriteEffect=true
+			add_child(textBubbleInstance)
+			textBubbleInstance.position+=Vector2(0,-16)
+			textBubbleInstance.ShowText("+"+str(ore.value))
 		
 		finishedSelling.emit(ore.value)
-
-		
-		#TODO: Fancy sell effects
 		$oreSprite.hide()
 		await get_tree().create_timer(3).timeout
 		queue_free()

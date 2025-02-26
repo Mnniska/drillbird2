@@ -98,20 +98,23 @@ texture = ExtResource("1_vcacc")
 [node name="InventoryHandler" type="Node2D" parent="topUI"]
 unique_name_in_owner = true
 z_index = 2
-position = Vector2(4, 72)
+position = Vector2(113.6, 0)
 scale = Vector2(0.8, 1)
 script = ExtResource("11_qie2v")
 inventoryUpgradeTree = ExtResource("12_mfl1u")
 
 [node name="icon" type="Sprite2D" parent="topUI/InventoryHandler"]
-position = Vector2(138, -72)
+position = Vector2(1, 0)
 texture = ExtResource("6_cgigq")
 
+[node name="oreSpawnOrigin" type="Node2D" parent="topUI/InventoryHandler"]
+position = Vector2(-145, 108)
+
 [node name="inventoryNumber" type="RichTextLabel" parent="topUI/InventoryHandler"]
-offset_left = 52.0
-offset_top = -78.0
-offset_right = 130.0
-offset_bottom = -58.0
+offset_left = -85.0
+offset_top = -6.0
+offset_right = -7.0
+offset_bottom = 14.0
 theme = ExtResource("15_nxi4s")
 theme_override_colors/default_color = Color(0.827451, 0.717647, 0.556863, 1)
 bbcode_enabled = true

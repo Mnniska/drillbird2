@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 class_name inventory_handler
 
 signal signal_pickedUpHeart
@@ -26,6 +26,9 @@ var maxWeight:int=10
 var carriedOres:Array[abstract_ore]
 @onready var inventoryNumber=$inventoryNumber
 @export var textPreface="[right]"
+
+var oreLerpVisual=preload("res://Scenes/Effects/ore_sell_visualizer.tscn")
+var lerpingOres:Array[ore_sell_visualizer]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -92,21 +95,36 @@ func AddOreRequest(ore:abstract_ore):
 	
 	if currentWeight >= maxWeight:
 		return false
-		
-	currentWeight += min(maxWeight,currentWeight+ore.weight) #increase weight
+	
+	currentWeight = min(maxWeight,currentWeight+ore.weight) #increase weight
 		
 	isFull = currentWeight >= maxWeight
 	
 	carriedOres.append(ore)
-	UpdateInventoryText()
+	CreateLerpingOre(ore)
 	SoundManager.PlaySoundGlobal(abstract_SoundEffectSetting.SoundEffectEnum.ORE_GRABBED)
 
 	if ore.ID==10:
 		signal_pickedUpHeart.emit()
 	
 	return true
-	
 
+func CreateLerpingOre(ore:abstract_ore):
+	
+	var sellPos=$icon.global_position
+	
+	var node:ore_sell_visualizer=oreLerpVisual.instantiate()
+	add_child(node)
+	node.position=$oreSpawnOrigin.position
+		
+	node.Setup(ore,sellPos,0,2.5)
+	node.finishedSelling.connect(OreFinishedLerp)
+	
+	pass
+
+func OreFinishedLerp(amount:int):
+	UpdateInventoryText()
+	pass
 
 func UpdateInventoryText():
 	inventoryNumber.text=textPreface+str(currentWeight)+"/"+str(maxWeight)
