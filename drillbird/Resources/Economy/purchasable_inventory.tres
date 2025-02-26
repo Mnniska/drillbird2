@@ -9,16 +9,16 @@ metadata/__load_path__ = "res://Art/ui/Shop/UI_Shop_icon_inventory.png"
 [sub_resource type="Resource" id="Resource_ldy6v"]
 script = ExtResource("2_air0l")
 cost = 0
-power = 6
+power = 8
 
 [sub_resource type="Resource" id="Resource_nookp"]
 script = ExtResource("2_air0l")
-cost = 8
+cost = 10
 power = 12
 
 [sub_resource type="Resource" id="Resource_aum1u"]
 script = ExtResource("2_air0l")
-cost = 20
+cost = 16
 power = 20
 
 [sub_resource type="Resource" id="Resource_l4iij"]
@@ -33,12 +33,12 @@ power = 50
 
 [sub_resource type="Resource" id="Resource_2oane"]
 script = ExtResource("2_air0l")
-cost = 120
+cost = 88
 power = 70
 
 [sub_resource type="Resource" id="Resource_c3jjj"]
 script = ExtResource("2_air0l")
-cost = 111
+cost = 155
 power = 120
 
 [resource]

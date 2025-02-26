@@ -216,4 +216,7 @@ func ExecuteAction(action:String):
 		"CalculateOreRegion3":
 			OreRegions.GetValueOfOresForRegion(3)
 			pass
+		"CalculateOreRegion4":
+			OreRegions.GetValueOfOresForRegion(4)
+			pass
 	pass
