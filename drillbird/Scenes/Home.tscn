@@ -11,7 +11,6 @@
 [ext_resource type="Texture2D" uid="uid://dlmhg18sxhw8k" path="res://Art/environment/Home/egg_big.png" id="5_p1lmp"]
 [ext_resource type="Texture2D" uid="uid://bi2hexyd84ebw" path="res://Art/environment/Home/egg_biggest.png" id="6_e0x4d"]
 [ext_resource type="Texture2D" uid="uid://dorh0qxx8p2ha" path="res://Art/ui/UI_IconBG_right.png" id="6_f4gen"]
-[ext_resource type="Texture2D" uid="uid://dcleif1cn1ru2" path="res://Art/ui/buttonSymbol_top.png" id="7_37yhr"]
 [ext_resource type="Theme" uid="uid://bfr5y4lo7m1ux" path="res://Resources/Fonts/fontTheme.tres" id="8_k4jyb"]
 [ext_resource type="Texture2D" uid="uid://es25bpukcdqn" path="res://Art/environment/Home/egg_smol.png" id="9_xckrn"]
 [ext_resource type="Texture2D" uid="uid://da06hbcxbqbqh" path="res://Art/characters/Drillbird/Sleep/birdy_sleepAnim6.png" id="10_qca23"]
@@ -22,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://bwb03yuswsfxa" path="res://Art/characters/Drillbird/Sleep/birdy_sleepAnim4.png" id="15_bon3x"]
 [ext_resource type="Texture2D" uid="uid://csw8qotkgiux1" path="res://Art/characters/Drillbird/Sleep/birdy_sleepAnim5.png" id="16_i6hju"]
 [ext_resource type="Texture2D" uid="uid://brqmcw40y6pvg" path="res://Art/ui/Symbols/Z.png" id="16_y7tdx"]
+[ext_resource type="Script" path="res://Scripts/UX and UI/sign_feedOres.gd" id="18_v7coh"]
 [ext_resource type="Texture2D" uid="uid://cstos5qewrbox" path="res://Art/ui/UI_Background_rest.png" id="21_t7twy"]
 [ext_resource type="Texture2D" uid="uid://bvtd87mo25snw" path="res://Art/ui/UI_rest_arrow_dark.png" id="22_7onby"]
 [ext_resource type="Script" path="res://Scripts/UX and UI/button_hold.gd" id="22_v3vjt"]
@@ -31,9 +31,9 @@
 [ext_resource type="Script" path="res://Scripts/UX and UI/oreSellLocationScript.gd" id="25_t76gh"]
 [ext_resource type="PackedScene" uid="uid://cwhafht4ce2yx" path="res://Scenes/UI/text_bubble_XP.tscn" id="26_e3agt"]
 [ext_resource type="Script" path="res://Scripts/Tools/hub_music_player.gd" id="30_88ool"]
-[ext_resource type="AudioStream" uid="uid://bkend8hbxki0p" path="res://Audio/MUSIC/mus_Home.wav" id="31_o3cgh"]
-[ext_resource type="AudioStream" uid="uid://biff4rn2yb8wv" path="res://Audio/MUSIC/mus_dreaming.wav" id="32_68fby"]
-[ext_resource type="AudioStream" uid="uid://cxlg8p0plwoxu" path="res://Audio/MUSIC/mus_Home_progress.wav" id="33_1h6f6"]
+[ext_resource type="AudioStream" uid="uid://bkend8hbxki0p" path="res://Audio/Music/mus_Home.wav" id="31_o3cgh"]
+[ext_resource type="AudioStream" uid="uid://biff4rn2yb8wv" path="res://Audio/Music/mus_dreaming.wav" id="32_68fby"]
+[ext_resource type="AudioStream" uid="uid://cxlg8p0plwoxu" path="res://Audio/Music/mus_Home_progress.wav" id="33_1h6f6"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xb0mn"]
 animations = [{
@@ -215,73 +215,35 @@ position = Vector2(0, -8)
 texture = ExtResource("3_erd2o")
 
 [node name="InteractButton_depositOres" type="Node2D" parent="."]
-visible = false
 z_index = 2
-position = Vector2(22, -66)
-
-[node name="bg_start" type="Sprite2D" parent="InteractButton_depositOres"]
-position = Vector2(-71, 0)
-texture = ExtResource("4_wgulb")
+position = Vector2(6, -59)
+script = ExtResource("18_v7coh")
 
 [node name="bg_start2" type="Sprite2D" parent="InteractButton_depositOres"]
+self_modulate = Color(1, 1, 1, 0.72549)
 position = Vector2(-41, 0)
 texture = ExtResource("4_wgulb")
 
 [node name="bg" type="Sprite2D" parent="InteractButton_depositOres"]
-position = Vector2(-25, 0)
-scale = Vector2(5.16, 1)
-texture = ExtResource("5_ce8fm")
-
-[node name="bg2" type="Sprite2D" parent="InteractButton_depositOres"]
-position = Vector2(-9, 0)
-texture = ExtResource("5_ce8fm")
-
-[node name="bg3" type="Sprite2D" parent="InteractButton_depositOres"]
-position = Vector2(7, 0)
-texture = ExtResource("5_ce8fm")
-
-[node name="bg4" type="Sprite2D" parent="InteractButton_depositOres"]
-position = Vector2(23, 0)
+self_modulate = Color(1, 1, 1, 0.72549)
+position = Vector2(-2.5, 0)
+scale = Vector2(3.8125, 1)
 texture = ExtResource("5_ce8fm")
 
 [node name="end" type="Sprite2D" parent="InteractButton_depositOres"]
-position = Vector2(39, 0)
+self_modulate = Color(1, 1, 1, 0.72549)
+position = Vector2(36, 0)
 texture = ExtResource("6_f4gen")
 
-[node name="icon" type="Sprite2D" parent="InteractButton_depositOres"]
-position = Vector2(-40, 0)
-texture = ExtResource("7_37yhr")
-
-[node name="RichTextLabel" type="RichTextLabel" parent="InteractButton_depositOres"]
-offset_left = -30.0
+[node name="txt" type="RichTextLabel" parent="InteractButton_depositOres"]
+offset_left = -46.0
 offset_top = -8.0
-offset_right = 90.0
+offset_right = 74.0
 offset_bottom = 9.0
 theme = ExtResource("8_k4jyb")
 theme_override_colors/default_color = Color(0, 0, 0, 1)
-text = "Feed Ores"
-
-[node name="Label" type="Label" parent="InteractButton_depositOres"]
-offset_left = -76.0
-offset_top = -15.0
-offset_right = -36.0
-offset_bottom = 11.0
-theme = ExtResource("8_k4jyb")
-theme_override_colors/font_color = Color(0.318745, 0.216267, 0, 1)
-theme_override_font_sizes/font_size = 32
-text = "Q"
-vertical_alignment = 1
-
-[node name="Label2" type="Label" parent="InteractButton_depositOres"]
-offset_left = -62.0
-offset_top = -15.0
-offset_right = -22.0
-offset_bottom = 11.0
-theme = ExtResource("8_k4jyb")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 16
-text = "or"
-vertical_alignment = 1
+bbcode_enabled = true
+text = "[O] Feed Ores"
 
 [node name="InteractButton_EndDay" type="Node2D" parent="."]
 z_index = 2

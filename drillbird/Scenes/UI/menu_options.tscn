@@ -4,8 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://g8bq4xcafcut" path="res://Scenes/UI/menu_option.tscn" id="2_x5nw2"]
 [ext_resource type="Texture2D" uid="uid://b6o75yvkrcut6" path="res://Art/ui/HUD/ui_emptySlot.png" id="2_xnx60"]
 [ext_resource type="Theme" uid="uid://bfr5y4lo7m1ux" path="res://Resources/Fonts/fontTheme.tres" id="3_208bg"]
-[ext_resource type="AudioStream" uid="uid://biff4rn2yb8wv" path="res://Audio/MUSIC/mus_dreaming.wav" id="3_ttclj"]
-[ext_resource type="AudioStream" uid="uid://bykexifslvuda" path="res://Audio/MUSIC/mus_Drillbird_Theme_Jazz.wav" id="4_ofdi2"]
+[ext_resource type="AudioStream" uid="uid://biff4rn2yb8wv" path="res://Audio/Music/mus_dreaming.wav" id="3_ttclj"]
+[ext_resource type="AudioStream" uid="uid://bykexifslvuda" path="res://Audio/Music/mus_Drillbird_Theme_Jazz.wav" id="4_ofdi2"]
 [ext_resource type="AudioStream" uid="uid://bg3goih4fayba" path="res://Audio/SFX/flower_loop.wav" id="5_6mcjp"]
 [ext_resource type="AudioStream" uid="uid://mkkn175q2oj0" path="res://Audio/Ambience/ambience_surface.wav" id="6_wrpie"]
 

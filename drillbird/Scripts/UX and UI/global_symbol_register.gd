@@ -2,10 +2,23 @@ extends Node
 class_name global_symbol_register
 
 var usingGamepad:bool=true
-
-
 @export var symbols:Array[abstract_symbol_info]
 
+func GetStringDecoded(_str:String):
+	var symbolName:String=""
+	var text=""
+	#parses through [symbols] and replaces them wqith appropiate image links
+	for _char in _str:
+		
+		if _char =='[' or symbolName.length()>0:
+			symbolName+=_char
+			if _char==']':
+				text+="[img]"+GetSymbolFromString(symbolName)+"[/img]"
+
+				symbolName=""
+		else:
+			text+=_char
+	return text
 
 func GetSymbolFromString(_str:String)->String:
 	for symbol in symbols:

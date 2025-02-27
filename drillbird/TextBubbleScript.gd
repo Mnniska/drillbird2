@@ -36,19 +36,7 @@ func ShowText(_txt:String):
 	textToShow=""
 	alpha=1	
 	
-	var symbolName:String=""
-	#parses through [symbols] and replaces them wqith appropiate image links
-	for _char in _txt:
-		
-		if _char =='[' or symbolName.length()>0:
-			symbolName+=_char
-			if _char==']':
-#				textToShow+=global_symbol_register
-				textToShow+="[img]"+GlobalSymbolRegister.GetSymbolFromString(symbolName)+"[/img]"
-
-				symbolName=""
-		else:
-			textToShow+=_char
+	textToShow=GlobalSymbolRegister.GetStringDecoded(_txt)
 			
 	textObject.text=centerB+effect.beginEffect+textToShow+effect.endEffect+centerE
 	textObject.self_modulate=(Color(1,1,1,1))
