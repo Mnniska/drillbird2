@@ -2,7 +2,6 @@ extends Node2D
 
 signal optionsClosed
 
-@onready var soundPlayer = $AudioExample
 @export var options:Array[menu_option]
 
 var menuActive:bool=false
@@ -13,6 +12,8 @@ var oldSelection:int=0
 var save_file_path = "user://save/"
 var save_file_name="DrillbirdPlayerPreferences.tres"
 var PlayerPreferences=abstract_player_preferences.new()
+
+var isFullscreen:bool=false
 
 
 # Called when the node enters the scene tree for the first time.
@@ -127,7 +128,17 @@ func ButtonPressed(_name:String):
 		SavePreferences()
 		SetActive(false)
 		optionsClosed.emit()
-	pass
+
+	if _name=="Toggle Fullscreen":
+		isFullscreen=!isFullscreen
+		
+		if isFullscreen:
+			DisplayServer.window_set_mode(DisplayServer.WindowMode.WINDOW_MODE_FULLSCREEN)
+		else:
+			DisplayServer.window_set_mode(DisplayServer.WindowMode.WINDOW_MODE_WINDOWED)
+
+		
+		pass
 
 
 
