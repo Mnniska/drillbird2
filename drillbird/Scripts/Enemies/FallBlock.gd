@@ -7,25 +7,13 @@ var BlockDestroyer:crack_script
 
 var isFalling:bool=false
 enum states{idle,fallprep,fall}
-var state:states=states.idle
+var state:states=states.fall
 @export var timeBeforeFall:float=0.8
 var timeBeforeFallCounter:float=0
 var fast:bool=false
 
+var playImpactEffect:bool=false
 
-
-func InitiateFall():
-	state=states.fall
-	anim.position=Vector2(0,0)
-	fast=GetWillBeFast()
-
-	#If any fallblocks are above - tell them to also fall
-	for n in $FallblockTrigger.get_overlapping_bodies():
-
-		var enemy:abstract_enemy = n.GetEnemyInfo()
-		if enemy.type==enemy.enemyTypes.FALLBLOCK:
-			n.state=states.fallprep
-	pass
 
 func _physics_process(delta: float) -> void:
 	
@@ -76,18 +64,33 @@ func _physics_process(delta: float) -> void:
 			if  is_on_floor():
 				state=states.idle
 				animToPlay="idle"
-				PlayImpactEffect()
+				if playImpactEffect:
+					PlayImpactEffect()
 				if fast && raycast.is_colliding():
 					if BlockDestroyer!=null:
 						if BlockDestroyer.DestroyTileWithGlobalPosition(self.global_position+Vector2(0,16),true):
 							state=states.fallprep
 							animToPlay="falling"
-					
+				elif state==states.idle and !playImpactEffect:
+					playImpactEffect=true
 
 			else:
 				velocity += get_gravity() * delta
 
 	UpdateAnimations(animToPlay)
+
+func InitiateFall():
+	state=states.fall
+	anim.position=Vector2(0,0)
+	fast=GetWillBeFast()
+
+	#If any fallblocks are above - tell them to also fall
+	for n in $FallblockTrigger.get_overlapping_bodies():
+
+		var enemy:abstract_enemy = n.GetEnemyInfo()
+		if enemy.type==enemy.enemyTypes.FALLBLOCK:
+			n.state=states.fallprep
+
 
 func PlayImpactEffect():
 	impactEffect.animation="destroy"
