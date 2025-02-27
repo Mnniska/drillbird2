@@ -15,6 +15,7 @@ const BUFFER_ZONE:int=2
 const PREDICTION_LENGTH:int=6
 var chosenActorXCoordinateLastFrame:float=0
 var dir=0
+var gamePaused:bool=true
 
 @onready var timer:Timer=$LoseDetectionTimer
 
@@ -25,18 +26,21 @@ var state:States = States.IDLE
 func GetCollType(): #MUST HAVE
 	return collType
 
+func SetGamePaused(paused:bool):
+	gamePaused=paused
+
 func _ready() -> void:
 	enemyInfo=enemyInfo.duplicate()
 
 	if enemyInfo.dead:
 		TurnEnemyOff()
 	
-	
+	GlobalVariables.signal_IsPlayerInMenuChanged.connect(SetGamePaused)
 	spawnPositionLocal=position #MUST HAVE
 	
 func _physics_process(delta: float) -> void:
 	
-	if enemyInfo.dead:
+	if enemyInfo.dead or gamePaused:
 		return
 	# Add the gravity.
 	if not is_on_floor():

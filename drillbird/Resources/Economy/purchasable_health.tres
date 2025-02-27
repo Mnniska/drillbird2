@@ -1,10 +1,8 @@
-[gd_resource type="Resource" script_class="abstract_purchasable" load_steps=10 format=3 uid="uid://dd3l8ir1bmcm5"]
+[gd_resource type="Resource" script_class="abstract_purchasable" load_steps=11 format=3 uid="uid://dd3l8ir1bmcm5"]
 
+[ext_resource type="Texture2D" uid="uid://c3717ycl1fxar" path="res://Art/ui/HUD/Health/HUD_Health_full.png" id="1_bnub7"]
 [ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_item_upgrade.gd" id="2_wg2lt"]
 [ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_purchasable.gd" id="3_0yx2m"]
-
-[sub_resource type="Resource" id="Resource_d1eqp"]
-metadata/__load_path__ = "res://Art/ui/Shop/UI_Shop_icon_health.png"
 
 [sub_resource type="Resource" id="Resource_ldy6v"]
 script = ExtResource("2_wg2lt")
@@ -18,29 +16,34 @@ power = 3
 
 [sub_resource type="Resource" id="Resource_aum1u"]
 script = ExtResource("2_wg2lt")
-cost = 20
+cost = 30
 power = 4
 
 [sub_resource type="Resource" id="Resource_l4iij"]
 script = ExtResource("2_wg2lt")
-cost = 30
+cost = 45
 power = 5
 
 [sub_resource type="Resource" id="Resource_kmln2"]
 script = ExtResource("2_wg2lt")
-cost = 35
+cost = 60
 power = 6
 
 [sub_resource type="Resource" id="Resource_yo3mh"]
 script = ExtResource("2_wg2lt")
-cost = 45
+cost = 110
 power = 7
+
+[sub_resource type="Resource" id="Resource_uqv7b"]
+script = ExtResource("2_wg2lt")
+cost = 222
+power = 8
 
 [resource]
 script = ExtResource("3_0yx2m")
 onlyAButton = false
 type = 2
-icon = SubResource("Resource_d1eqp")
+icon = ExtResource("1_bnub7")
 itemName = "Health"
 itemDescription = "Make more mistakes before death"
-items = Array[ExtResource("2_wg2lt")]([SubResource("Resource_ldy6v"), SubResource("Resource_nookp"), SubResource("Resource_aum1u"), SubResource("Resource_l4iij"), SubResource("Resource_kmln2"), SubResource("Resource_yo3mh")])
+items = Array[ExtResource("2_wg2lt")]([SubResource("Resource_ldy6v"), SubResource("Resource_nookp"), SubResource("Resource_aum1u"), SubResource("Resource_l4iij"), SubResource("Resource_kmln2"), SubResource("Resource_yo3mh"), SubResource("Resource_uqv7b")])

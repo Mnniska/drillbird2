@@ -25,7 +25,7 @@ func TrySpawnOreFromEnvironment(location:Vector2i):
 		SpawnOreAtLocation(loc,newOre,Vector2(0,0),false)
 
 
-func SpawnOreAtLocation(location:Vector2,ore:abstract_ore,velocity:Vector2,cooldown:bool):
+func SpawnOreAtLocation(location:Vector2,ore:abstract_ore,velocity:Vector2,cooldown:bool,placedByGhost:bool=false):
 	var scene = load("res://Scenes/Objects and Enemies/Object_Ore.tscn") # Will load when the script is instanced.
 	var node = scene.instantiate()
 	
@@ -36,7 +36,7 @@ func SpawnOreAtLocation(location:Vector2,ore:abstract_ore,velocity:Vector2,coold
 	
 	node.apply_central_impulse(velocity)
 	node.add_to_group("ores")
-	node.SetOreType(ore,cooldown)
+	node.SetOreType(ore,cooldown,placedByGhost)
 	if ore.ID==10:
 		signal_heartSpawned.emit(node)
 
