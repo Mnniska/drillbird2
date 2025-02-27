@@ -18,6 +18,7 @@ var hasTarget:bool=false
 var velocity:Vector2=Vector2(0,0)
 var friction:float=0.13
 @export var SPEED=150
+var shouldPlaySound:bool=true
 
 var timeBeforeSold:float=0.2
 var timebeforesoldCounter:float=0
@@ -42,6 +43,7 @@ func Setup(_ore:abstract_ore,sellingPosition:Vector2,timeToWait:float=1,speedMul
 	
 	if chillBeforeMoving:
 		state=States.CHILLING
+		shouldPlaySound=false
 		
 	else:
 		StartMoveToPosition()
@@ -87,7 +89,8 @@ func _process(delta: float) -> void:
 			velocity.x=0
 			startingShakePosition=self.position
 			state=States.WAITING
-			SoundManager.PlaySoundGlobal(abstract_SoundEffectSetting.SoundEffectEnum.HOME_GIVEORE_RISER)
+			if shouldPlaySound:
+				SoundManager.PlaySoundGlobal(abstract_SoundEffectSetting.SoundEffectEnum.HOME_GIVEORE_RISER)
 
 	if state==States.WAITING:
 
