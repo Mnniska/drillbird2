@@ -5,25 +5,19 @@ signal finishedSelling(amount:int)
 @onready var sprite=$oreSprite
 
 var ore:abstract_ore
-@export var movementCurve:Curve
-@export var chillBeforeMovingCurve:Curve
-var chillprogress:float=0
-@export var timeBeforeMovingWhenChilling:float=1.2
+
 
 #MovementVariables
-var startingPos:Vector2
-var totalDistanceToTravel:float
 var targetPosition:Vector2
 var hasTarget:bool=false
 var velocity:Vector2=Vector2(0,0)
 var friction:float=0.13
-@export var SPEED=150
-var shouldPlaySound:bool=true
+@export var SPEED=100
 
 var timeBeforeSold:float=0.2
 var timebeforesoldCounter:float=0
 
-enum States{MOVING,WAITING,SOLD,CHILLING}
+enum States{MOVING,WAITING,SOLD}
 var state:States=States.WAITING
 
 var textbubble=preload("res://Scenes/UI/text_bubble.tscn")
@@ -33,27 +27,18 @@ var isFinalHeart:bool=false
 var startingShakePosition:Vector2
 
 
-func Setup(_ore:abstract_ore,sellingPosition:Vector2,timeToWait:float=1,speedMult:float=1,chillBeforeMoving:bool=false):
-	startingPos=global_position
+func Setup(_ore:abstract_ore,sellingPosition:Vector2,timeToWait:float=1,speedMult:float=1):
 	SPEED=SPEED*speedMult
 	timeBeforeSold=timeToWait
 	ore=_ore
 	sprite.texture=ore.texture
-	targetPosition=sellingPosition
 	
-	if chillBeforeMoving:
-		state=States.CHILLING
-		shouldPlaySound=false
-		
-	else:
-		StartMoveToPosition()
+	StartMoveToPosition(sellingPosition)
 	pass
 
-
-
-func StartMoveToPosition():
+func StartMoveToPosition(_GlobalPos:Vector2):
 	
-	totalDistanceToTravel=self.global_position.distance_to(targetPosition)
+	targetPosition=_GlobalPos
 	hasTarget=true
 	state=States.MOVING
 	
@@ -61,22 +46,13 @@ func StartMoveToPosition():
 	
 func _process(delta: float) -> void:
 	
-	if state==States.CHILLING:
-		chillprogress+=delta
-		var prog=chillprogress/timeBeforeMovingWhenChilling
-		global_position=startingPos+Vector2(0,-chillBeforeMovingCurve.sample(prog))
-		
-		if prog>=1:
-			StartMoveToPosition()
 	
 	if state==States.MOVING:
-		var currentDist=self.global_position.distance_to(targetPosition)
-		var progress=currentDist/totalDistanceToTravel
 		
-		var speedMult=movementCurve.sample(progress)
-		speedMult=max(0.1,speedMult)
+		
+		
 		var movevector= global_position.direction_to(targetPosition)
-		velocity=movevector*SPEED*delta*speedMult
+		velocity=movevector*SPEED*delta
 	
 		global_position+=velocity
 		velocity.x-=friction
@@ -89,8 +65,7 @@ func _process(delta: float) -> void:
 			velocity.x=0
 			startingShakePosition=self.position
 			state=States.WAITING
-			if shouldPlaySound:
-				SoundManager.PlaySoundGlobal(abstract_SoundEffectSetting.SoundEffectEnum.HOME_GIVEORE_RISER)
+			SoundManager.PlaySoundGlobal(abstract_SoundEffectSetting.SoundEffectEnum.HOME_GIVEORE_RISER)
 
 	if state==States.WAITING:
 

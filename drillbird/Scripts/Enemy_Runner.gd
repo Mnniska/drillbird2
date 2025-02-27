@@ -9,9 +9,6 @@ var direction:float=1
 var positionLastFrame:Vector2
 @export var timeInWait=1
 var waitCounter=0
-var gamePaused:bool=true
-var turningCounter=0
-var timeBeforeTurning=0.2
 
 var spawnPositionLocal:Vector2
 @onready var collider=$EnemyCollisionChecker
@@ -30,11 +27,7 @@ func _ready() -> void:
 	
 	spawnPositionLocal=position #MUST HAVE
 	positionLastFrame=position
-	GlobalVariables.signal_IsPlayerInMenuChanged.connect(SetGamePaused)
-
-func SetGamePaused(paused:bool):
-	gamePaused=paused
-
+	
 func GetLocalSpawnPosition(): #MUST HAVE
 	return spawnPositionLocal
 	
@@ -79,7 +72,7 @@ func _on_enemy_collision_checker_body_shape_entered(body_rid: RID, body: Node2D,
 
 func _physics_process(delta: float) -> void:
 	
-	if enemyInfo.dead or gamePaused:
+	if enemyInfo.dead:
 		return
 	# Add the gravity.
 	if not is_on_floor():
@@ -94,25 +87,16 @@ func _physics_process(delta: float) -> void:
 
 
 
-
-
-
 	move_and_slide()
 	UpdateAnimations()
 
 	if state==States.WALK:
 		
+		var speed = positionLastFrame-position
+		if speed.x==0:
 
-		var speed = abs(positionLastFrame-position)
-		if speed.x<=0.1:
-			turningCounter+=delta
-			if turningCounter>=timeBeforeTurning:
-				turningCounter=0
-				direction=direction*-1
-				state=States.WAIT
-		elif turningCounter>0:
-			turningCounter=0
-	
+			direction=direction*-1
+			state=States.WAIT
 		positionLastFrame=position
 	
 

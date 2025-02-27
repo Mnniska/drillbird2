@@ -4,14 +4,14 @@
 [ext_resource type="PackedScene" uid="uid://g8bq4xcafcut" path="res://Scenes/UI/menu_option.tscn" id="2_x5nw2"]
 [ext_resource type="Texture2D" uid="uid://b6o75yvkrcut6" path="res://Art/ui/HUD/ui_emptySlot.png" id="2_xnx60"]
 [ext_resource type="Theme" uid="uid://bfr5y4lo7m1ux" path="res://Resources/Fonts/fontTheme.tres" id="3_208bg"]
-[ext_resource type="AudioStream" uid="uid://biff4rn2yb8wv" path="res://Audio/Music/mus_dreaming.wav" id="3_ttclj"]
-[ext_resource type="AudioStream" uid="uid://bykexifslvuda" path="res://Audio/Music/mus_Drillbird_Theme_Jazz.wav" id="4_ofdi2"]
+[ext_resource type="AudioStream" uid="uid://biff4rn2yb8wv" path="res://Audio/MUSIC/mus_dreaming.wav" id="3_ttclj"]
+[ext_resource type="AudioStream" uid="uid://bykexifslvuda" path="res://Audio/MUSIC/mus_Drillbird_Theme_Jazz.wav" id="4_ofdi2"]
 [ext_resource type="AudioStream" uid="uid://bg3goih4fayba" path="res://Audio/SFX/flower_loop.wav" id="5_6mcjp"]
 [ext_resource type="AudioStream" uid="uid://mkkn175q2oj0" path="res://Audio/Ambience/ambience_surface.wav" id="6_wrpie"]
 
 [node name="Options" type="Node2D" node_paths=PackedStringArray("options")]
 script = ExtResource("1_5gtrn")
-options = [NodePath("Return"), NodePath("ToggleFullscreen"), NodePath("Master"), NodePath("Music"), NodePath("SFX"), NodePath("Ambience")]
+options = [NodePath("Return"), NodePath("Master"), NodePath("Music"), NodePath("SFX"), NodePath("Ambience")]
 
 [node name="background" type="Sprite2D" parent="."]
 position = Vector2(-3, 7.5)
@@ -19,36 +19,32 @@ scale = Vector2(10.625, 14.6875)
 texture = ExtResource("2_xnx60")
 
 [node name="Return" parent="." instance=ExtResource("2_x5nw2")]
-position = Vector2(0, -52)
+position = Vector2(0, -48)
 optionName = "Return"
 
-[node name="ToggleFullscreen" parent="." instance=ExtResource("2_x5nw2")]
-position = Vector2(0, -33)
-optionName = "Toggle Fullscreen"
-
 [node name="Master" parent="." instance=ExtResource("2_x5nw2")]
-position = Vector2(0, -12)
+position = Vector2(0, -23)
 optionName = "Master Volume"
 isSlider = true
 sample_sound = ExtResource("3_ttclj")
 soundAudioBus = "Master"
 
 [node name="Music" parent="." instance=ExtResource("2_x5nw2")]
-position = Vector2(0, 16)
+position = Vector2(0, 5)
 optionName = "Music Volume"
 isSlider = true
 sample_sound = ExtResource("4_ofdi2")
 soundAudioBus = "Music"
 
 [node name="SFX" parent="." instance=ExtResource("2_x5nw2")]
-position = Vector2(0, 45)
+position = Vector2(0, 34)
 optionName = "SFX Volume"
 isSlider = true
 sample_sound = ExtResource("5_6mcjp")
 soundAudioBus = "Sfx"
 
 [node name="Ambience" parent="." instance=ExtResource("2_x5nw2")]
-position = Vector2(0, 76)
+position = Vector2(0, 65)
 optionName = "Ambience Volume"
 isSlider = true
 sample_sound = ExtResource("6_wrpie")

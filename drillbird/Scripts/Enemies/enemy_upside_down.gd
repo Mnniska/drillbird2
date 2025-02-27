@@ -13,7 +13,7 @@ var waitCounter=0
 
 func _physics_process(delta: float) -> void:
 	
-	if enemyInfo.dead or gamePaused:
+	if enemyInfo.dead:
 		return
 	# Add the gravity.
 	if not is_on_floor():

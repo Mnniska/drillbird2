@@ -7,7 +7,7 @@
 script = ExtResource("1_4ie30")
 ID = 1
 value = 4
-weight = 3
 texture = ExtResource("2_xln1v")
 name = "Lapis"
+weight = 2
 AtlasCoords = Vector2i(0, 0)
