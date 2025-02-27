@@ -1,6 +1,8 @@
 extends Node
 signal playerAction()
 signal PlayerIsDrillingTileChanged(answer:bool)
+signal signal_IsPlayerInMenuChanged(inMenu:bool)
+
 var MainSceneReferenceConnector:main_scene_reference_connector
 var playerSpawnPos:Vector2
 var eggState:int=0
@@ -27,6 +29,13 @@ var playerStatus:playerStatusEnum = playerStatusEnum.DIG:
 	get:
 		return playerStatus
 	set(value):
+		
+		#If menu state changes to or from menu, let game know that pause state has changed
+		if value==playerStatusEnum.MENU and playerStatus != playerStatusEnum.MENU:
+			signal_IsPlayerInMenuChanged.emit(true)
+		if value != playerStatusEnum.MENU and playerStatus == playerStatusEnum.MENU:
+			signal_IsPlayerInMenuChanged.emit(false)
+		
 		playerStatus=value
 		playerStatusChanged.emit()
 

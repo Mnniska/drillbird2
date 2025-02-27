@@ -26,16 +26,22 @@ var playerIsDrillingTile:bool=false
 @onready var LightSlider:Slider=$LightSliderParent/UI_LightSlider
 @onready var DrillLightParticle=$LightSliderParent/Particle_DrillLight
 
+var gamePaused:bool=true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	GlobalVariables.upgradeChange_Light.connect(upgradeChangeLight)
 	GlobalVariables.lightSourceChange.connect(lightsourceChangeLight)
-	
+	GlobalVariables.signal_IsPlayerInMenuChanged.connect(GamePausedChange)
 	#wait for game data to be loaded b4 accessing save data to set up light
 	GlobalVariables.SetupComplete.connect(SetupLightFunctionality)
 	GlobalVariables.PlayerIsDrillingTileChanged.connect(_on_player_signal_is_drilling_tile_changed)
+
+func GamePausedChange(paused:bool):
+	gamePaused=paused
 	
+	
+
 func SetupLightFunctionality():
 	PlayerLight=GlobalVariables.MainSceneReferenceConnector.playerDarkness
 	if PlayerLight==null:
@@ -123,7 +129,8 @@ func SetLightPosition():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	
-	if HUD.sceneState==HUD.sceneStates.CREDITS:
+	
+	if HUD.sceneState==HUD.sceneStates.CREDITS or gamePaused:
 		return
 	
 	handleInputs()
