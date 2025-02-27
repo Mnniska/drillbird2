@@ -24,6 +24,7 @@ default_font_size = 9
 z_index = 2
 script = ExtResource("1_tcyi6")
 texteffects = Array[ExtResource("2_o3jiy")]([SubResource("Resource_82kfo"), SubResource("Resource_og82r")])
+textToShow = ""
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 z_index = 2

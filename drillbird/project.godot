@@ -21,6 +21,7 @@ GlobalTime="*res://Scripts/GlobalTime.gd"
 GlobalVariables="*res://Scripts/GlobalVariables.gd"
 SoundManager="*res://Scenes/sound_manager.tscn"
 HUD="*res://Scenes/UI/HUD.tscn"
+GlobalSymbolRegister="*res://Scenes/Tools/scene_symbol_register.tscn"
 
 [display]
 
