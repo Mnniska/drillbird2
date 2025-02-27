@@ -157,12 +157,6 @@ lifetime = 0.3
 explosiveness = 0.26
 randomness = 1.0
 
-[node name="Label" type="Label" parent="topUI/LightHandler"]
-offset_left = -27.55
-offset_top = 70.0
-offset_right = 12.45
-offset_bottom = 93.0
-
 [node name="CashHolder" type="Node2D" parent="topUI"]
 z_index = 2
 position = Vector2(-128, 8)

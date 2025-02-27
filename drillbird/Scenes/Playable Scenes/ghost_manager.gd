@@ -62,7 +62,7 @@ func HeartSpawned(heart:Node2D):
 	
 func DropHeartInRightfulPlace():
 	
-	orespawner.SpawnOreAtLocation(HeartRightfulPlace.global_position,heartOreReference,Vector2(0,0),false,true)
+	orespawner.SpawnOreAtLocation(HeartRightfulPlace.global_position,heartOreReference,Vector2(0,0),false)
 	
 
 func HeartPickedUpByPlayer():

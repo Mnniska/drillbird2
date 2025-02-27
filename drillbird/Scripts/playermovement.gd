@@ -560,7 +560,7 @@ func Update_Animations(newanim):
 			particles.emitting=false
 			playerDrillingSolid=false
 
-	var facingLeft=false
+	var facingLeft
 	if facingDir == Directions.LEFT or facingDir == Directions.RIGHT:
 		playerAnim.flip_h = !facing_right
 		$anim_LightEffect.flip_h = !facing_right
