@@ -81,7 +81,7 @@ z_index = 2
 script = ExtResource("1_wjyf5")
 movementCurve = SubResource("Curve_3yjxu")
 chillBeforeMovingCurve = SubResource("Curve_w1d1n")
-timeBeforeMovingWhenChilling = 0.5
+timeBeforeMovingWhenChilling = 0.3
 
 [node name="oreSprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_nxrvr")

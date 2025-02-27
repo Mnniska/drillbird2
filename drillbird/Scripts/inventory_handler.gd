@@ -127,7 +127,7 @@ func OreFinishedLerp(amount:int):
 	pass
 
 func UpdateInventoryText():
-	inventoryNumber.text=textPreface+str(currentWeight)+"/"+str(maxWeight)
+	inventoryNumber.text=textPreface+str(currentWeight)+"/"+str(maxWeight)+"kg"
 
 	
 
