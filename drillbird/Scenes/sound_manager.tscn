@@ -11,7 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://bkn6d73ogba4u" path="res://Audio/SFX/ore_grabbed.wav" id="10_4crdv"]
 [ext_resource type="AudioStream" uid="uid://mkkn175q2oj0" path="res://Audio/Ambience/ambience_surface.wav" id="10_l466u"]
 [ext_resource type="AudioStream" uid="uid://dalpro3l37ots" path="res://Audio/SFX/ore_land.wav" id="11_reqvu"]
-[ext_resource type="AudioStream" uid="uid://bkend8hbxki0p" path="res://Audio/MUSIC/mus_Home.wav" id="12_any0t"]
+[ext_resource type="AudioStream" uid="uid://bkend8hbxki0p" path="res://Audio/Music/mus_Home.wav" id="12_any0t"]
 [ext_resource type="AudioStream" uid="uid://drsg7tlwye4oa" path="res://Audio/SFX/player_damage.wav" id="13_7ph86"]
 [ext_resource type="Resource" uid="uid://bcfjktr5bgh23" path="res://Audio/SFX/home_menu_down.tres" id="14_0ocus"]
 [ext_resource type="Resource" uid="uid://dqlcy8kk3asuu" path="res://Audio/SFX/home_menu_purchase_no.tres" id="15_ml3a0"]

@@ -117,7 +117,7 @@ func CreateLerpingOre(ore:abstract_ore):
 	add_child(node)
 	node.position=$oreSpawnOrigin.position
 		
-	node.Setup(ore,sellPos,0,2.5)
+	node.Setup(ore,sellPos,0,4,true)
 	node.finishedSelling.connect(OreFinishedLerp)
 	
 	pass
@@ -127,7 +127,7 @@ func OreFinishedLerp(amount:int):
 	pass
 
 func UpdateInventoryText():
-	inventoryNumber.text=textPreface+str(currentWeight)+"/"+str(maxWeight)
+	inventoryNumber.text=textPreface+str(currentWeight)+"/"+str(maxWeight)+"kg"
 
 	
 

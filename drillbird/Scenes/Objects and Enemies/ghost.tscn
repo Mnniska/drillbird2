@@ -94,7 +94,6 @@ frame_progress = 0.907173
 stream = ExtResource("8_7ui1h")
 autoplay = true
 max_distance = 180.0
-bus = &"MUSIC"
 
 [node name="PlayerChecker" type="Area2D" parent="."]
 collision_layer = 0

@@ -7,6 +7,7 @@ var cooldown:bool=false
 var cooldownTime:float=2
 var MoveTarget:Vector2
 var isBeingSuckedUp:bool=false
+var isStatic:bool=false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -22,11 +23,7 @@ func GetOre():
 	else:
 		push_warning("Tried to access a null oretype")
 
-func SetOreType(ore:abstract_ore,_cooldown:bool,isStatic:bool=false):
-	
-	if isStatic:
-		gravity_scale=0
-	
+func SetOreType(ore:abstract_ore,_cooldown:bool,placedByGhost:bool=false):
 	if(oreType==null):
 		
 		oreType=ore
@@ -35,6 +32,9 @@ func SetOreType(ore:abstract_ore,_cooldown:bool,isStatic:bool=false):
 		
 		if cooldown:
 			CooldownAnimation()
+		
+		if placedByGhost:
+			gravity_scale=0
 	pass
 
 func CooldownAnimation():

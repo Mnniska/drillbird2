@@ -8,6 +8,7 @@ var playerPos:Vector2
 @export var fastestSpeedDist:float=16*6
 @export var returnHearSpeedTime:float=4
 @export var returnHearSpeedCount:float=0
+var gamePaused:bool=false
 
 #2.8
 var  haunting:bool=false
@@ -27,7 +28,11 @@ var state:states=states.CHASE_PLAYER
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	GlobalVariables.signal_IsPlayerInMenuChanged.connect(SetGamePaused)
 	pass # Replace with function body.
+
+func SetGamePaused(paused:bool):
+	gamePaused=paused
 
 func UpdateState():
 	
@@ -39,7 +44,8 @@ func UpdateState():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	
+	if gamePaused:
+		return
 	match state:
 		states.CHASE_PLAYER:
 			if haunting && hauntedObject!=null:

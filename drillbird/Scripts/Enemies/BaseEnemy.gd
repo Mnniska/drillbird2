@@ -7,14 +7,16 @@ var spawnPositionLocal:Vector2
 @onready var enemyCollider=$CollisionShape2D
 @onready var enemyCollCheck=$EnemyCollisionChecker
 @onready var anim=$AnimatedSprite2D
-
+var gamePaused:bool=true
 
 func GetCollType(): #MUST HAVE
 	return collType
 	
 func GetEnemyInfo():
 	return enemyInfo
-	
+
+func SetGamePaused(pause:bool):
+	gamePaused=pause
 
 func _ready() -> void:
 	enemyInfo=enemyInfo.duplicate()
@@ -22,6 +24,7 @@ func _ready() -> void:
 		TurnEnemyOff()
 	
 	spawnPositionLocal=position #MUST HAVE
+	GlobalVariables.signal_IsPlayerInMenuChanged.connect(SetGamePaused)
 	
 func GetLocalSpawnPosition(): #MUST HAVE
 	return spawnPositionLocal
@@ -49,7 +52,7 @@ func Kill():
 	
 func _physics_process(delta: float) -> void:
 	
-	if enemyInfo.dead:
+	if enemyInfo.dead or gamePaused:
 		return
 	# Add the gravity.
 	if not is_on_floor():

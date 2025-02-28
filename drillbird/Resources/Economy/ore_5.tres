@@ -6,8 +6,8 @@
 [resource]
 script = ExtResource("1_q8s4e")
 ID = 4
-value = 20
+value = 35
+weight = 12
 texture = ExtResource("2_rck0h")
 name = "Crown"
-weight = 6
 AtlasCoords = Vector2i(0, 0)
