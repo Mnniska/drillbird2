@@ -85,6 +85,7 @@ func initiateJump(_holdtime:float):
 		holdTime=_holdtime
 	velocity.y=-jumpHeight
 	animator.animation="up"
+	animator.play()
 	pass
 	
 func continueJump(delta:float):
