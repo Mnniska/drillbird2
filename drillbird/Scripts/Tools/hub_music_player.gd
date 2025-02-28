@@ -19,7 +19,8 @@ var musicState:musicStates=musicStates.IDLE
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	finished.connect(play)
+	player_idle.finished.connect(player_idle.play)
+	player_dreaming.finished.connect(player_dreaming.play)
 	GlobalVariables.SetupComplete.connect(SetupComplete)
 
 	pass # Replace with function body.
