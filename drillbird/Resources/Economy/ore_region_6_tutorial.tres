@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="abstract_ore_region" load_steps=4 format=3 uid="uid://ch08ejqoocxr4"]
+
+[ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_ore.gd" id="1_vc4fb"]
+[ext_resource type="Resource" uid="uid://diuura7tbgl01" path="res://Resources/Economy/ore_1.tres" id="2_4fi3h"]
+[ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_ore_region.gd" id="4_tiebw"]
+
+[resource]
+script = ExtResource("4_tiebw")
+potentialOres = Array[ExtResource("1_vc4fb")]([ExtResource("2_4fi3h")])
+spawnChances = Array[float]([1.0])
+oreRegionID = 7
