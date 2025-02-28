@@ -35,13 +35,13 @@
 [ext_resource type="Resource" uid="uid://b26ws3o4u42p3" path="res://Resources/Economy/purchasable_inventory.tres" id="28_iowjc"]
 [ext_resource type="Resource" uid="uid://cgdqluba62y80" path="res://Resources/Economy/purchasable_light.tres" id="29_cp1r6"]
 [ext_resource type="Resource" uid="uid://e48vh7omjgqd" path="res://Resources/purchasable_ContinueButton.tres" id="30_4yogw"]
-[ext_resource type="Texture2D" uid="uid://fsljdsvdyr3v" path="res://Art/UI/Shop/UI_Shop_DreamBackground.png" id="30_okg02"]
+[ext_resource type="Texture2D" uid="uid://fsljdsvdyr3v" path="res://Art/ui/Shop/UI_Shop_DreamBackground.png" id="30_okg02"]
 [ext_resource type="Resource" uid="uid://dd3l8ir1bmcm5" path="res://Resources/Economy/purchasable_health.tres" id="30_yx4wb"]
 [ext_resource type="Resource" uid="uid://deqhaf8e1onhf" path="res://Resources/Economy/purchasable_drill.tres" id="31_4ia3e"]
 [ext_resource type="Script" path="res://Scenes/Playable Scenes/ButtonScript.gd" id="33_a1jua"]
 [ext_resource type="PackedScene" uid="uid://3d04qrtunccs" path="res://Scenes/scene_purchasable.tscn" id="33_svcml"]
-[ext_resource type="Texture2D" uid="uid://boulllpt4vy8" path="res://Art/UI/Shop/UI_Shop_button_on_canAfford.png" id="34_jlsrn"]
-[ext_resource type="Texture2D" uid="uid://de2ouaamnu8d0" path="res://Art/UI/Shop/UI_Shop_button_off_unavailable.png" id="34_nmxkn"]
+[ext_resource type="Texture2D" uid="uid://boulllpt4vy8" path="res://Art/ui/Shop/UI_Shop_button_on_canAfford.png" id="34_jlsrn"]
+[ext_resource type="Texture2D" uid="uid://de2ouaamnu8d0" path="res://Art/ui/Shop/UI_Shop_button_off_unavailable.png" id="34_nmxkn"]
 [ext_resource type="Script" path="res://Scripts/Light.gd" id="35_54gud"]
 [ext_resource type="FontFile" uid="uid://cicu24cmxgshq" path="res://Resources/Fonts/Quinquefive-ALoRM.ttf" id="35_m1x1i"]
 [ext_resource type="Texture2D" uid="uid://ct20o1j7iuiva" path="res://Resources/LightTexture.tres" id="36_yw5ht"]
@@ -74,7 +74,7 @@
 [ext_resource type="Texture2D" uid="uid://chdi1d0vsqy66" path="res://Art/environment/UniqueAssets/flowerCaveCarving.png" id="64_3kawd"]
 [ext_resource type="Texture2D" uid="uid://drg5aq6jefcxi" path="res://Art/environment/solid_decorations/Headstone_02.png" id="64_37n2k"]
 [ext_resource type="Texture2D" uid="uid://iccgvjgn8yi0" path="res://Art/environment/solid_decorations/Graveyard_flowers.png" id="64_wyttx"]
-[ext_resource type="Texture2D" uid="uid://gixivpytn5wl" path="res://Art/UI/HUD/UI_LightBar_bulb.png" id="64_yk8d7"]
+[ext_resource type="Texture2D" uid="uid://gixivpytn5wl" path="res://Art/ui/HUD/UI_LightBar_bulb.png" id="64_yk8d7"]
 [ext_resource type="Script" path="res://Scripts/Tools/player_location_saver.gd" id="65_25d1u"]
 [ext_resource type="Texture2D" uid="uid://dc24g1nnbb8bg" path="res://Art/environment/solid_decorations/Headstone_03.png" id="65_ffof7"]
 [ext_resource type="Texture2D" uid="uid://dcry5x73tpu56" path="res://Art/environment/solid_decorations/Headstone_04.png" id="67_mse0b"]
@@ -480,8 +480,6 @@ GameTerrains = Array[ExtResource("20_cqxjh")]([])
 [node name="GhostManager" type="Node2D" parent="."]
 position = Vector2(-962, 2487)
 script = ExtResource("21_mqj7b")
-minTimeBeforeGhostSpawns = null
-maxTimeBeforeGhostSpawns = null
 heartOreReference = ExtResource("22_nstd1")
 
 [node name="HeartsRightfulPlaceArea" type="Area2D" parent="GhostManager"]

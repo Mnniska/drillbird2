@@ -22,7 +22,11 @@ func GetOre():
 	else:
 		push_warning("Tried to access a null oretype")
 
-func SetOreType(ore:abstract_ore,_cooldown:bool):
+func SetOreType(ore:abstract_ore,_cooldown:bool,isStatic:bool=false):
+	
+	if isStatic:
+		gravity_scale=0
+	
 	if(oreType==null):
 		
 		oreType=ore
