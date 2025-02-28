@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://f30dqpc0wmhe"]
 
-[ext_resource type="Texture2D" uid="uid://gixivpytn5wl" path="res://Art/ui/HUD/UI_LightBar_bulb.png" id="1_kvin5"]
+[ext_resource type="Texture2D" uid="uid://gixivpytn5wl" path="res://Art/ui/HUD/Light/UI_LightBar_bulb.png" id="1_kvin5"]
 
 [node name="DebugSpawnable" type="Sprite2D"]
 z_index = 10

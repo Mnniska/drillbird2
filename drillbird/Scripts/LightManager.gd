@@ -5,7 +5,7 @@ signal signal_pitch_dark()
 #this will be given on load game, updated via the SHOP as well 
 @export var bulbAmount:int
 
-var lightBulbArray:Array[Sprite2D]
+var lightBulbArray:Array[light_bulb]
 
 #Time variables
 @export var time_TimerLength:int=135
@@ -20,6 +20,7 @@ var internal_upd_counter:int=0
 var playerIsLit:bool=false
 var outOfLight:bool=false
 var playerIsDrillingTile:bool=false
+var currentLightbulb:light_bulb
 
 #get player light
 @onready var PlayerLight
@@ -43,81 +44,70 @@ func SetupLightFunctionality():
 	
 	
 	time_Countdown=time_TimerLength
+	GetNextLightbulb()
 
 		#create lightbulbs depending on player upgrade lvl
 	for n in GlobalVariables.upgradeLevel_light:
 		var scene = load("res://Scenes/UI/lightbulb.tscn") 
-		var node = scene.instantiate()
-		node.SetActive(true)
+		var node:light_bulb = scene.instantiate()
+		node.SetSliderProgress(1)
 		lightBulbArray.append(node)
 		var offset= Vector2(0,-4)
 		
 		node.transform.origin = offset
 		add_child(node)
 	UpdateLightbulbLocations()
-	if GlobalVariables.upgradeLevel_light==0:
-		darknessClose=true
 	UpdatePlayerLightStatus()
 
 	#First Setup stuff - might move to its own function
 	PlayerLight.SetLight(1)
-	LightSlider.value=100
+	SetSliderValue(1)
 	pass
 
 func UpdateLightbulbLocations():
-	var lightSliderOffset:int=14
+	var center:Node2D = %LightBulbCenter
+	
+	var unevenOffset:float=0
 	var bulbOffset=8
+	var spriteOffset:Vector2=Vector2(-8,-8)
 	
-	var sliderlocation:int=0
-	var startingOffset:int=((lightBulbArray.size()*bulbOffset)+lightSliderOffset)/2
+	if lightBulbArray.size()%2==0:
+		unevenOffset=-8
+	
+	var startingOffset:float=unevenOffset+((lightBulbArray.size()*bulbOffset))/2
 
-	
-	var index:int =0 
 	
 	for n in range(lightBulbArray.size(),0,-1):
-		var lOffset:int=0
-		if lightBulbArray[n-1].active:
-			sliderlocation+=bulbOffset
-		else:
-			lOffset=lightSliderOffset
+		lightBulbArray[n-1].position=center.position+spriteOffset+Vector2(-startingOffset+(bulbOffset*n),0)
 		
-		lightBulbArray[n-1].position.x=-startingOffset+ (bulbOffset*index) + lOffset
-		lightBulbArray[n-1].position.y=0
-		index+=1
-
-	$LightSliderParent.position.x=-startingOffset+sliderlocation-3
+	
 
 func GetNextLightbulb():
 	
-	var foundBulb:bool=false
+	if !GetCurrentLightbulb():
+		darknessClose=true
+		return false
+	else:
+		currentLightbulb=GetCurrentLightbulb()
+		UpdateLightbulbLocations()
+		
+		return true
 	
-	
-	for n in range(0,lightBulbArray.size(),1):
-	
-			break
-	
-	for n in lightBulbArray:
-		if n.active:
-			n.SetActive(false)
-			time_Countdown=time_TimerLength
-			foundBulb=true
-			
-			break
-	
-	for n in lightBulbArray:
-		if n.active:
-			UpdateLightbulbLocations()
-			return true
-	
-	darknessClose=true
-	UpdateLightbulbLocations()
-	return foundBulb
 
-func SetLightPosition():
-	var offset:Vector2=Vector2(0,0)
-	var size=12
-	var progress = size*(LightSlider.value/100)
-	DrillLightParticle.position=offset+Vector2(progress,0)
+func SetDrillParticlePosition():
+	
+	if darknessClose:
+		var length=6*16+12
+		var offset:Vector2=Vector2(-length/2+8,0)
+		
+		var progress=float(time_Countdown/time_TimerLength)*length
+		DrillLightParticle.position=offset+Vector2(progress,0)
+	else:
+		if currentLightbulb!=null:
+			DrillLightParticle.position=currentLightbulb.position
+			#test hehe
+	
+	
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -126,7 +116,6 @@ func _process(delta: float) -> void:
 	if HUD.sceneState==HUD.sceneStates.CREDITS:
 		return
 	
-	handleInputs()
 	if playerIsLit:
 		return
 		
@@ -134,7 +123,7 @@ func _process(delta: float) -> void:
 		var multiplier:float=1
 		if playerIsDrillingTile:
 			multiplier=time_DrillMultiplier
-			SetLightPosition()
+			SetDrillParticlePosition()
 			$LightSliderParent/Particle_DrillLight.emitting=true
 		else:
 			$LightSliderParent/Particle_DrillLight.emitting=false
@@ -148,11 +137,7 @@ func _process(delta: float) -> void:
 			
 			var progress=float(time_Countdown/time_TimerLength)
 			
-			#The light sliders last 10% is hidden behind the border, so I am artificially having the light bar end at 10 instead of 0
-			var min=0
-			var max = LightSlider.max_value
-			var value= (max-min)*progress+min
-			LightSlider.value=value
+			SetSliderValue(progress)
 			
 			if darknessClose:
 				PlayerLight.SetLight(progress)
@@ -176,27 +161,43 @@ func DepleteLight():
 	for n in lightBulbArray:
 		n.SetActive(false)
 	PlayerLight.SetLight(0)
-	LightSlider.value=0
+	SetSliderValue(0)
 
 	UpdatePlayerLightStatus()
+
+func SetSliderValue(_progress:float):
 	
+	if GetCurrentLightbulb():
+		GetCurrentLightbulb().SetSliderProgress(_progress)
+	else:
+		var min=4
+		var max=100
+		
+		var value=min+_progress*(max-min)
+		LightSlider.value=value
+
+func GetCurrentLightbulb()->light_bulb:
+	for bulb in lightBulbArray:
+		if bulb.hasLight:
+			return bulb
+	
+	return null
+
 func RefillLight():
 	
 
 	for n in lightBulbArray:
-		n.SetActive(true)
+		n.SetSliderProgress(1)
 	
 	time_Countdown=time_TimerLength
-	LightSlider.value=100
+	SetSliderValue(1)
 	darknessClose = GlobalVariables.upgradeLevel_light==0
 	PlayerLight.SetLight(1)
 	outOfLight=false
 	UpdatePlayerLightStatus()
 	UpdateLightbulbLocations()
 
-func handleInputs():
-	
-	pass # Replace with function body.
+
 
 func UpdatePlayerLightStatus():
 	if GlobalVariables.amountOfLightsourcesPlayerIsIn>0:
@@ -216,11 +217,11 @@ func UpdatePlayerLightStatus():
 
 func AddLightbulbRequest():
 	var scene = load("res://Scenes/UI/lightbulb.tscn") 
-	var node = scene.instantiate()
+	var node:light_bulb = scene.instantiate()
 	var offset= Vector2(0,-4)
 	lightBulbArray.append(node)
-	node.transform.origin =  offset
 	add_child(node)
+	node.position=offset
 	RefillLight()
 	UpdateLightbulbLocations()
 

@@ -1,7 +1,7 @@
-extends Sprite2D
-@export var tex_active :Texture2D
-@export var tex_off :Texture2D
-var active:bool = false
+extends HSlider
+class_name light_bulb
+@onready var slider:HSlider=$"."
+var hasLight:bool=true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -12,12 +12,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func SetActive(_active:bool):
-	active=_active
-	if(active):
-		texture = tex_active
-	else:
-		texture = tex_off
-
-func SetDebugText(str:String):
-	$Label.text=str
+func SetSliderProgress(_prog:float):
+	slider.value=roundi(_prog*100)
+	hasLight=_prog>0.1

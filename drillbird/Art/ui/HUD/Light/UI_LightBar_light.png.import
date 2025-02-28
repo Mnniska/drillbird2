@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://buh3ysmbicdnm"
-path="res://.godot/imported/UI_LightBar_darkness.png-f79095aaac738099dcf714b1e5e81940.ctex"
+uid="uid://1so80dql7icj"
+path="res://.godot/imported/UI_LightBar_light.png-33ce96a6034793d23dbf17905a69a3d1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/ui/HUD/UI_LightBar_darkness.png"
-dest_files=["res://.godot/imported/UI_LightBar_darkness.png-f79095aaac738099dcf714b1e5e81940.ctex"]
+source_file="res://Art/ui/HUD/Light/UI_LightBar_light.png"
+dest_files=["res://.godot/imported/UI_LightBar_light.png-33ce96a6034793d23dbf17905a69a3d1.ctex"]
 
 [params]
 

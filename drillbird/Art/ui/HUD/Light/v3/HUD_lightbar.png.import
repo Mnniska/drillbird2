@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://5k8n46gs2ghw"
-path="res://.godot/imported/UI_LightBar_frame2.png-dd325a30f2c53872ba6f99ae6b3776a3.ctex"
+uid="uid://bd4qpcfqmfdix"
+path="res://.godot/imported/HUD_lightbar.png-8dd4d9fc0d9f4f9bfd39b28954a07151.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/ui/HUD/UI_LightBar_frame2.png"
-dest_files=["res://.godot/imported/UI_LightBar_frame2.png-dd325a30f2c53872ba6f99ae6b3776a3.ctex"]
+source_file="res://Art/ui/HUD/Light/v3/HUD_lightbar.png"
+dest_files=["res://.godot/imported/HUD_lightbar.png-8dd4d9fc0d9f4f9bfd39b28954a07151.ctex"]
 
 [params]
 

@@ -74,7 +74,7 @@
 [ext_resource type="Texture2D" uid="uid://chdi1d0vsqy66" path="res://Art/environment/UniqueAssets/flowerCaveCarving.png" id="64_3kawd"]
 [ext_resource type="Texture2D" uid="uid://drg5aq6jefcxi" path="res://Art/environment/solid_decorations/Headstone_02.png" id="64_37n2k"]
 [ext_resource type="Texture2D" uid="uid://iccgvjgn8yi0" path="res://Art/environment/solid_decorations/Graveyard_flowers.png" id="64_wyttx"]
-[ext_resource type="Texture2D" uid="uid://gixivpytn5wl" path="res://Art/ui/HUD/UI_LightBar_bulb.png" id="64_yk8d7"]
+[ext_resource type="Texture2D" uid="uid://gixivpytn5wl" path="res://Art/ui/HUD/Light/UI_LightBar_bulb.png" id="64_yk8d7"]
 [ext_resource type="Script" path="res://Scripts/Tools/player_location_saver.gd" id="65_25d1u"]
 [ext_resource type="Texture2D" uid="uid://dc24g1nnbb8bg" path="res://Art/environment/solid_decorations/Headstone_03.png" id="65_ffof7"]
 [ext_resource type="Texture2D" uid="uid://dcry5x73tpu56" path="res://Art/environment/solid_decorations/Headstone_04.png" id="67_mse0b"]
