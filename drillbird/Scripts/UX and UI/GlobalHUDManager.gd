@@ -39,7 +39,7 @@ var pos_bottom_hidden:Vector2
 func _ready() -> void:
 	
 	pos_top_visible=$topUI.global_position
-	pos_top_hidden=pos_top_visible+Vector2(0,-24)
+	pos_top_hidden=pos_top_visible+Vector2(0,-32)
 	pos_bottom_visible=$bottomUI.global_position
 	pos_bottom_hidden=pos_bottom_visible+Vector2(0,24)
 	

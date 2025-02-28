@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://bxacqh1cbwxw5"]
+[gd_scene load_steps=34 format=3 uid="uid://bxacqh1cbwxw5"]
 
 [ext_resource type="Script" path="res://Scripts/UX and UI/GlobalHUDManager.gd" id="1_u1olj"]
 [ext_resource type="Texture2D" uid="uid://cp6xuvmo0rguj" path="res://Art/ui/HUD/UI_BlackBorder.png" id="1_vcacc"]
@@ -16,6 +16,7 @@
 [ext_resource type="Resource" uid="uid://b26ws3o4u42p3" path="res://Resources/Economy/purchasable_inventory.tres" id="12_mfl1u"]
 [ext_resource type="Script" path="res://Scenes/Playable Scenes/ui_death.gd" id="13_1fwbs"]
 [ext_resource type="Texture2D" uid="uid://bntebnpau35mm" path="res://Art/ui/UI_Death_background.png" id="14_0gadq"]
+[ext_resource type="Texture2D" uid="uid://b8wmuf0rlke0l" path="res://Art/ui/HUD/bg_xp_holder.png" id="14_a35vt"]
 [ext_resource type="Theme" uid="uid://bfr5y4lo7m1ux" path="res://Resources/Fonts/fontTheme.tres" id="15_nxi4s"]
 [ext_resource type="PackedScene" uid="uid://v1t8rfk5hqfa" path="res://Scenes/UI/button.tscn" id="16_281dp"]
 [ext_resource type="Texture2D" uid="uid://bpa8olbvx4ufv" path="res://Art/ui/MainMenu/DrillBird_LOGO.png" id="19_hr1yg"]
@@ -98,7 +99,7 @@ texture = ExtResource("1_vcacc")
 [node name="InventoryHandler" type="Node2D" parent="topUI"]
 unique_name_in_owner = true
 z_index = 2
-position = Vector2(113.6, 0)
+position = Vector2(108, 0)
 scale = Vector2(0.8, 1)
 script = ExtResource("11_qie2v")
 inventoryUpgradeTree = ExtResource("12_mfl1u")
@@ -159,8 +160,8 @@ randomness = 1.0
 
 [node name="CashHolder" type="Node2D" parent="topUI"]
 z_index = 2
-position = Vector2(-128, 8)
-scale = Vector2(0.780488, 1)
+position = Vector2(98.4, 16)
+scale = Vector2(0.8, 1)
 
 [node name="cash symbol" type="Sprite2D" parent="topUI/CashHolder"]
 visible = false
@@ -171,16 +172,19 @@ texture = ExtResource("6_3yotd")
 [node name="cashNumber" type="Label" parent="topUI/CashHolder"]
 z_index = 2
 layout_direction = 2
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = 7.17498
-offset_right = 66.82
-offset_bottom = 13.91
-grow_horizontal = 0
+offset_left = -21.0
+offset_top = -9.0
+offset_right = 20.0
+offset_bottom = 7.0
 theme = SubResource("Theme_ush66")
-text = "0"
+text = "0 xp"
+horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
+
+[node name="xpBackground" type="Sprite2D" parent="topUI/CashHolder"]
+z_index = -3
+position = Vector2(0, -2)
+texture = ExtResource("14_a35vt")
 
 [node name="HealthUIHandler" type="Node2D" parent="topUI"]
 z_index = 2

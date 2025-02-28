@@ -3,7 +3,7 @@ class_name text_bubble
 
 enum behaviourEnum {FADE,GOTOPOS,STAY}
 var behavior:behaviourEnum = behaviourEnum.FADE
-@onready var textObject=$RichTextLabel
+@onready var textObject:RichTextLabel=$RichTextLabel
 
 @export var texteffects:Array[abstract_textEffect]
 
@@ -32,12 +32,16 @@ func _process(delta: float) -> void:
 	pass
 
 func ShowText(_txt:String):
-	alpha=1
-	textToShow=_txt
+	textObject.text=""
+	textToShow=""
+	alpha=1	
+	
+	textToShow=GlobalSymbolRegister.GetStringDecoded(_txt)
+			
 	textObject.text=centerB+effect.beginEffect+textToShow+effect.endEffect+centerE
 	textObject.self_modulate=(Color(1,1,1,1))
 	TypeWriteText()
-	pass
+	
 
 func Setup(_effectType:abstract_textEffect.effectEnum,_behaviour:behaviourEnum):
 

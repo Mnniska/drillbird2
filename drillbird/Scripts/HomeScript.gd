@@ -62,17 +62,17 @@ func CheckState():
 func UpdateButtons():
 	match state:
 		states.NO_EGG:
-			SellButton.hide()
+			SellButton.SetActive(false)
 			RestButton.SetActive(false)
 			HatchEggButton.SetActive(false)
 			pass
 		states.SELL:
-			SellButton.show()
+			SellButton.SetActive(true)
 			RestButton.SetActive(false)
 			if EggHandler.eggState==EggHandler.eggStates.FINALFORM_HEART:
 				HatchEggButton.SetActive(true)
 		states.SELLING:
-			SellButton.hide()
+			SellButton.SetActive(false)
 			RestButton.SetActive(false)
 			HatchEggButton.SetActive(false)
 		states.RESTPOSSIBLE:
@@ -80,12 +80,12 @@ func UpdateButtons():
 				RestButton.SetActive(true)
 				if EggHandler.eggState==EggHandler.eggStates.FINALFORM_HEART:
 					HatchEggButton.SetActive(true)
-			SellButton.hide()
+			SellButton.SetActive(false)
 	
 	if state==states.SLEEP or state==states.IDLE or state==states.FINALCUTSCENE:
 		RestButton.SetActive(false)
 		HatchEggButton.SetActive(false)
-		SellButton.hide()
+		SellButton.SetActive(false)
 			
 		
 
