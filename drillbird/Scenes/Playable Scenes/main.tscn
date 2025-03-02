@@ -1,4 +1,4 @@
-[gd_scene load_steps=136 format=4 uid="uid://d2wv7igie5stg"]
+[gd_scene load_steps=155 format=4 uid="uid://d2wv7igie5stg"]
 
 [ext_resource type="TileSet" uid="uid://grpd2pyu7pgk" path="res://Resources/MainTileset.tres" id="1_1imtu"]
 [ext_resource type="Script" path="res://Scenes/Playable Scenes/SaveManager.gd" id="1_iickb"]
@@ -41,14 +41,28 @@
 [ext_resource type="Resource" uid="uid://deqhaf8e1onhf" path="res://Resources/Economy/purchasable_drill.tres" id="31_4ia3e"]
 [ext_resource type="Script" path="res://Scenes/Playable Scenes/ButtonScript.gd" id="33_a1jua"]
 [ext_resource type="PackedScene" uid="uid://3d04qrtunccs" path="res://Scenes/scene_purchasable.tscn" id="33_svcml"]
+[ext_resource type="Texture2D" uid="uid://bbeofapolp46j" path="res://Art/cutscenes/cutscene_egg_sprites1.png" id="33_yf6c4"]
 [ext_resource type="Texture2D" uid="uid://boulllpt4vy8" path="res://Art/ui/Shop/UI_Shop_button_on_canAfford.png" id="34_jlsrn"]
 [ext_resource type="Texture2D" uid="uid://de2ouaamnu8d0" path="res://Art/ui/Shop/UI_Shop_button_off_unavailable.png" id="34_nmxkn"]
+[ext_resource type="Texture2D" uid="uid://c4uakedmvk35y" path="res://Art/cutscenes/cutscene_egg_sprites2.png" id="34_yilqw"]
+[ext_resource type="Texture2D" uid="uid://bxiuir1j5pyoe" path="res://Art/cutscenes/cutscene_egg_sprites7.png" id="35_3e5tu"]
 [ext_resource type="Script" path="res://Scripts/Light.gd" id="35_54gud"]
 [ext_resource type="FontFile" uid="uid://cicu24cmxgshq" path="res://Resources/Fonts/Quinquefive-ALoRM.ttf" id="35_m1x1i"]
+[ext_resource type="Texture2D" uid="uid://cegwd7vedqkp4" path="res://Art/cutscenes/cutscene_egg_sprites8.png" id="36_n1tyl"]
 [ext_resource type="Texture2D" uid="uid://ct20o1j7iuiva" path="res://Resources/LightTexture.tres" id="36_yw5ht"]
 [ext_resource type="Texture2D" uid="uid://bi6q51sklyetd" path="res://Art/environment/SpaceBackground/background_space_allLayers.png" id="37_6eo6t"]
+[ext_resource type="Texture2D" uid="uid://bnx374n31kbm8" path="res://Art/cutscenes/cutscene_egg_sprites9.png" id="37_ob4oc"]
+[ext_resource type="Texture2D" uid="uid://3enjvq3hf12r" path="res://Art/cutscenes/cutscene_egg_sprites10.png" id="38_atgv8"]
 [ext_resource type="PackedScene" uid="uid://ckl0ibm5pfs7u" path="res://Scenes/Home.tscn" id="38_pj4ey"]
+[ext_resource type="Texture2D" uid="uid://c5uwpke1lapld" path="res://Art/cutscenes/cutscene_egg_sprites11.png" id="39_21hvm"]
+[ext_resource type="Texture2D" uid="uid://bet06ggkuoy0n" path="res://Art/cutscenes/cutscene_egg_sprites3.png" id="40_2kp28"]
+[ext_resource type="Texture2D" uid="uid://dqtc21qgl1yal" path="res://Art/cutscenes/cutscene_egg_sprites4.png" id="41_bgcb6"]
+[ext_resource type="Texture2D" uid="uid://dj8ir3wjcibbd" path="res://Art/cutscenes/cutscene_egg_sprites5.png" id="42_7o6nc"]
 [ext_resource type="Theme" uid="uid://bfr5y4lo7m1ux" path="res://Resources/Fonts/fontTheme.tres" id="42_e8s0s"]
+[ext_resource type="Texture2D" uid="uid://k6178qlihvk1" path="res://Art/cutscenes/nest_growth1.png" id="43_bw2xk"]
+[ext_resource type="Texture2D" uid="uid://bxrxa30ar7jd4" path="res://Art/cutscenes/cutscene_egg_sprites6.png" id="43_kdwuo"]
+[ext_resource type="Texture2D" uid="uid://nl0dhg6x2t0q" path="res://Art/cutscenes/nest_growth2.png" id="44_hdh0n"]
+[ext_resource type="Texture2D" uid="uid://bd6mtsqg1cdry" path="res://Art/cutscenes/nest_growth3.png" id="45_akxhl"]
 [ext_resource type="Script" path="res://Scenes/Playable Scenes/DebugMenu.gd" id="47_igpia"]
 [ext_resource type="PackedScene" uid="uid://splm2us27kop" path="res://Scenes/Objects and Enemies/Object_Ore.tscn" id="48_0rfc7"]
 [ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_debugMenuOption.gd" id="48_cl8sw"]
@@ -138,6 +152,110 @@ size = Vector2(2777, 1056)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_88d1h"]
 size = Vector2(18, 17)
+
+[sub_resource type="Animation" id="Animation_2e5p2"]
+resource_name = "test"
+
+[sub_resource type="Animation" id="Animation_25pbi"]
+resource_name = "prepnest"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dqgdt"]
+_data = {
+"idle": SubResource("Animation_2e5p2"),
+"prepnest": SubResource("Animation_25pbi")
+}
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8gf12"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("33_yf6c4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_yilqw")
+}],
+"loop": true,
+"name": &"consider",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 2.0,
+"texture": ExtResource("33_yf6c4")
+}, {
+"duration": 2.0,
+"texture": ExtResource("34_yilqw")
+}, {
+"duration": 4.0,
+"texture": ExtResource("33_yf6c4")
+}, {
+"duration": 3.0,
+"texture": ExtResource("35_3e5tu")
+}, {
+"duration": 4.0,
+"texture": ExtResource("36_n1tyl")
+}, {
+"duration": 4.0,
+"texture": ExtResource("37_ob4oc")
+}, {
+"duration": 3.0,
+"texture": ExtResource("38_atgv8")
+}, {
+"duration": 10.0,
+"texture": ExtResource("39_21hvm")
+}],
+"loop": true,
+"name": &"layegg",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 6.0,
+"texture": ExtResource("40_2kp28")
+}, {
+"duration": 6.0,
+"texture": ExtResource("41_bgcb6")
+}],
+"loop": true,
+"name": &"prep1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 6.0,
+"texture": ExtResource("42_7o6nc")
+}, {
+"duration": 6.0,
+"texture": ExtResource("43_kdwuo")
+}],
+"loop": true,
+"name": &"prep2",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rl2a7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("43_bw2xk")
+}],
+"loop": true,
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("44_hdh0n")
+}],
+"loop": true,
+"name": &"2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("45_akxhl")
+}],
+"loop": true,
+"name": &"3",
+"speed": 5.0
+}]
 
 [sub_resource type="Gradient" id="Gradient_ekb11"]
 offsets = PackedFloat32Array(0, 0.536432)
@@ -513,6 +631,26 @@ position = Vector2(121, 41)
 position = Vector2(1159, 814)
 JUMP_VELOCITY = -160
 AIRJUMP_VELOCITY = -160
+
+[node name="NestCutscene" type="Node2D" parent="."]
+visible = false
+position = Vector2(1, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="NestCutscene"]
+libraries = {
+"": SubResource("AnimationLibrary_dqgdt")
+}
+
+[node name="birdy" type="AnimatedSprite2D" parent="NestCutscene"]
+position = Vector2(-98, 24)
+sprite_frames = SubResource("SpriteFrames_8gf12")
+animation = &"prep2"
+frame_progress = 0.803199
+
+[node name="nest" type="AnimatedSprite2D" parent="NestCutscene"]
+position = Vector2(-1, -16)
+sprite_frames = SubResource("SpriteFrames_rl2a7")
+animation = &"3"
 
 [node name="Home" parent="." instance=ExtResource("38_pj4ey")]
 

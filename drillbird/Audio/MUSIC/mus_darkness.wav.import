@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://d0eo35f1t7kdx"
-path="res://.godot/imported/mus_darkness.wav-77133f3a930f34ccad96da3d2d39ab33.sample"
+path="res://.godot/imported/mus_darkness.wav-c4d4152aeee9a759a3c09c4fe175d160.sample"
 
 [deps]
 
-source_file="res://Audio/MUSIC/mus_darkness.wav"
-dest_files=["res://.godot/imported/mus_darkness.wav-77133f3a930f34ccad96da3d2d39ab33.sample"]
+source_file="res://Audio/Music/mus_darkness.wav"
+dest_files=["res://.godot/imported/mus_darkness.wav-c4d4152aeee9a759a3c09c4fe175d160.sample"]
 
 [params]
 
