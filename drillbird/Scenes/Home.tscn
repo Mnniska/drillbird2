@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://ckl0ibm5pfs7u"]
+[gd_scene load_steps=47 format=3 uid="uid://ckl0ibm5pfs7u"]
 
 [ext_resource type="Script" path="res://Scripts/HomeScript.gd" id="1_qel16"]
 [ext_resource type="Texture2D" uid="uid://xpp18icbqb1y" path="res://Art/environment/Home/nest_back.png" id="2_4e54y"]
@@ -34,6 +34,7 @@
 [ext_resource type="AudioStream" uid="uid://bkend8hbxki0p" path="res://Audio/Music/mus_Home.wav" id="31_o3cgh"]
 [ext_resource type="AudioStream" uid="uid://biff4rn2yb8wv" path="res://Audio/Music/mus_dreaming.wav" id="32_68fby"]
 [ext_resource type="AudioStream" uid="uid://cxlg8p0plwoxu" path="res://Audio/Music/mus_Home_progress.wav" id="33_1h6f6"]
+[ext_resource type="PackedScene" uid="uid://dkq7ywpgbbtsf" path="res://Scenes/cutscenes/nest_cutscene.tscn" id="35_gnmfd"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xb0mn"]
 animations = [{
@@ -121,16 +122,16 @@ size = Vector2(62, 53)
 [node name="Home" type="Node2D"]
 script = ExtResource("1_qel16")
 
-[node name="nest_back" type="Sprite2D" parent="."]
-position = Vector2(0, -17)
-texture = ExtResource("2_4e54y")
-
 [node name="Eggs" type="Node2D" parent="." node_paths=PackedStringArray("Eggs", "sleepPositions")]
 script = ExtResource("3_wy5hf")
 ExperienceRequirements = Array[int]([20, 50, 100, 200])
 StateTargetScales = Array[float]([0.7, 0.7, 0.6, 0.55])
 Eggs = [NodePath("Egg_smallest"), NodePath("Egg_medium"), NodePath("Egg_Big"), NodePath("Egg_Biggest"), NodePath("Egg_Biggest_forReal")]
 sleepPositions = [NodePath("BirdySleepPositions/startPos_lowest"), NodePath("BirdySleepPositions/startPos_low"), NodePath("BirdySleepPositions/startPos_mid"), NodePath("BirdySleepPositions/startpos_large"), NodePath("BirdySleepPositions/pos_BIGGEST")]
+
+[node name="nest_back" type="Sprite2D" parent="Eggs"]
+position = Vector2(0, -17)
+texture = ExtResource("2_4e54y")
 
 [node name="Egg_FinalForm" parent="Eggs" instance=ExtResource("3_0aq54")]
 visible = false
@@ -209,7 +210,7 @@ process_material = SubResource("ParticleProcessMaterial_vhbfi")
 texture = ExtResource("16_y7tdx")
 lifetime = 5.0
 
-[node name="nest_front" type="Sprite2D" parent="."]
+[node name="nest_front" type="Sprite2D" parent="Eggs"]
 z_index = 2
 position = Vector2(0, -8)
 texture = ExtResource("3_erd2o")
@@ -570,6 +571,9 @@ stream = ExtResource("32_68fby")
 autoplay = true
 max_distance = 320.0
 bus = &"Music"
+
+[node name="NestCutscene" parent="." instance=ExtResource("35_gnmfd")]
+position = Vector2(0, 0)
 
 [connection signal="signal_hatching_complete" from="Eggs/Egg_FinalForm" to="." method="EggFinishedHatching"]
 [connection signal="animation_finished" from="Eggs/BirdySleepPositions/birdySleep" to="." method="_on_birdy_sleep_animation_finished"]

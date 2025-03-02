@@ -1,0 +1,268 @@
+[gd_scene load_steps=24 format=3 uid="uid://dkq7ywpgbbtsf"]
+
+[ext_resource type="Script" path="res://Scripts/Tools/NestCutsceneScript.gd" id="1_bjev6"]
+[ext_resource type="Texture2D" uid="uid://dhrvhcsf7e45a" path="res://Art/effects/empty.png" id="2_13lbe"]
+[ext_resource type="Texture2D" uid="uid://k6178qlihvk1" path="res://Art/cutscenes/nest_growth1.png" id="3_meie0"]
+[ext_resource type="Texture2D" uid="uid://nl0dhg6x2t0q" path="res://Art/cutscenes/nest_growth2.png" id="4_ddibk"]
+[ext_resource type="Texture2D" uid="uid://bd6mtsqg1cdry" path="res://Art/cutscenes/nest_growth3.png" id="5_tixgw"]
+[ext_resource type="Texture2D" uid="uid://bbeofapolp46j" path="res://Art/cutscenes/cutscene_egg_sprites1.png" id="6_ayb8c"]
+[ext_resource type="Texture2D" uid="uid://c4uakedmvk35y" path="res://Art/cutscenes/cutscene_egg_sprites2.png" id="7_riuj4"]
+[ext_resource type="Texture2D" uid="uid://dbgh4j5kkbfm5" path="res://Art/cutscenes/cutscene_egg_sprites2_2.png" id="8_hkp3o"]
+[ext_resource type="Texture2D" uid="uid://bukug08t0oqmw" path="res://Art/cutscenes/cutscene_egg_sprites1_1.png" id="9_3h4cd"]
+[ext_resource type="Texture2D" uid="uid://bxiuir1j5pyoe" path="res://Art/cutscenes/cutscene_egg_sprites7.png" id="10_qfi4o"]
+[ext_resource type="Texture2D" uid="uid://cegwd7vedqkp4" path="res://Art/cutscenes/cutscene_egg_sprites8.png" id="11_4hd0r"]
+[ext_resource type="Texture2D" uid="uid://bnx374n31kbm8" path="res://Art/cutscenes/cutscene_egg_sprites9.png" id="12_bgkdi"]
+[ext_resource type="Texture2D" uid="uid://3enjvq3hf12r" path="res://Art/cutscenes/cutscene_egg_sprites10.png" id="13_fyskg"]
+[ext_resource type="Texture2D" uid="uid://bet06ggkuoy0n" path="res://Art/cutscenes/cutscene_egg_sprites3.png" id="14_dhs7a"]
+[ext_resource type="Texture2D" uid="uid://dqtc21qgl1yal" path="res://Art/cutscenes/cutscene_egg_sprites4.png" id="15_f08j1"]
+[ext_resource type="Texture2D" uid="uid://dj8ir3wjcibbd" path="res://Art/cutscenes/cutscene_egg_sprites5.png" id="16_53qk1"]
+[ext_resource type="Texture2D" uid="uid://bxrxa30ar7jd4" path="res://Art/cutscenes/cutscene_egg_sprites6.png" id="17_t5cby"]
+[ext_resource type="Texture2D" uid="uid://c5uwpke1lapld" path="res://Art/cutscenes/cutscene_egg_sprites11.png" id="18_e0xwm"]
+
+[sub_resource type="Animation" id="Animation_cotuc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("birdy:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [&"null"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("birdy:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -8)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("nest:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"3"]
+}
+
+[sub_resource type="Animation" id="Animation_2e5p2"]
+resource_name = "test"
+length = 17.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("birdy:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3.1, 5.43333, 7.79999, 14),
+"transitions": PackedFloat32Array(0, 0, 0, 0, 0),
+"update": 0,
+"values": [&"consider", &"prep1", &"prep2", &"layegg", &"vibrate"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("birdy:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3.1, 5.43333, 7.79999, 14, 14.0667, 14.1333, 14.2, 14.2667, 14.3333, 14.4, 14.4667, 14.5333, 14.6, 14.6667, 14.7333, 14.8, 14.8667, 14.9333, 15, 15.0667, 15.1, 15.1667, 15.2333, 15.3, 15.3667, 15.4333, 15.5, 15.5667, 15.6, 15.6333, 15.7, 15.7667, 15.8333, 15.9, 15.9667, 16.0333, 16.1),
+"transitions": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+"update": 0,
+"values": [Vector2(0, -8), Vector2(16, -8), Vector2(-16, -8), Vector2(0, -8), Vector2(0, -8), Vector2(1, -8), Vector2(-1, -8), Vector2(1, -8), Vector2(0, -8), Vector2(0.5, -8), Vector2(-1, -8), Vector2(0.2, -8), Vector2(-0.4, -8), Vector2(1, -8), Vector2(-1, -8), Vector2(1, -8), Vector2(0, -8), Vector2(0.5, -8), Vector2(-1, -8), Vector2(0.2, -8), Vector2(-0.4, -8), Vector2(1, -8), Vector2(-1, -8), Vector2(1, -8), Vector2(0, -8), Vector2(0.5, -8), Vector2(-1, -8), Vector2(0.2, -8), Vector2(-0.4, -8), Vector2(-0.4, -8), Vector2(1, -8), Vector2(-1, -8), Vector2(1, -8), Vector2(0, -8), Vector2(0.5, -8), Vector2(-1, -8), Vector2(0.2, -8), Vector2(-0.4, -8)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("nest:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 3.1, 5.43333, 7.79999),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [&"0", &"1", &"2", &"3"]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(13.9, 16.1333),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"CameraPanToSky"
+}, {
+"args": [],
+"method": &"AnimFinished"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dqgdt"]
+_data = {
+"RESET": SubResource("Animation_cotuc"),
+"play": SubResource("Animation_2e5p2")
+}
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rl2a7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_13lbe")
+}],
+"loop": true,
+"name": &"0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_meie0")
+}],
+"loop": true,
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_ddibk")
+}],
+"loop": true,
+"name": &"2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_tixgw")
+}],
+"loop": true,
+"name": &"3",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8gf12"]
+animations = [{
+"frames": [{
+"duration": 4.0,
+"texture": ExtResource("6_ayb8c")
+}, {
+"duration": 4.0,
+"texture": ExtResource("7_riuj4")
+}, {
+"duration": 4.0,
+"texture": ExtResource("8_hkp3o")
+}, {
+"duration": 4.0,
+"texture": ExtResource("9_3h4cd")
+}],
+"loop": true,
+"name": &"consider",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 6.0,
+"texture": ExtResource("8_hkp3o")
+}, {
+"duration": 6.0,
+"texture": ExtResource("7_riuj4")
+}, {
+"duration": 3.0,
+"texture": ExtResource("10_qfi4o")
+}, {
+"duration": 4.0,
+"texture": ExtResource("11_4hd0r")
+}, {
+"duration": 4.0,
+"texture": ExtResource("12_bgkdi")
+}, {
+"duration": 6.0,
+"texture": ExtResource("13_fyskg")
+}],
+"loop": false,
+"name": &"layegg",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_13lbe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_13lbe")
+}],
+"loop": true,
+"name": &"null",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 6.0,
+"texture": ExtResource("14_dhs7a")
+}, {
+"duration": 6.0,
+"texture": ExtResource("15_f08j1")
+}],
+"loop": true,
+"name": &"prep1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 6.0,
+"texture": ExtResource("16_53qk1")
+}, {
+"duration": 6.0,
+"texture": ExtResource("17_t5cby")
+}],
+"loop": true,
+"name": &"prep2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_e0xwm")
+}],
+"loop": true,
+"name": &"vibrate",
+"speed": 5.0
+}]
+
+[node name="NestCutscene" type="Node2D"]
+visible = false
+position = Vector2(1, 0)
+script = ExtResource("1_bjev6")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_dqgdt")
+}
+
+[node name="nest" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1, -16)
+sprite_frames = SubResource("SpriteFrames_rl2a7")
+animation = &"3"
+
+[node name="birdy" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_8gf12")
+animation = &"null"
+autoplay = "null"
+
+[node name="cameraLerpPos_sky" type="Node2D" parent="."]
+position = Vector2(0, -186)
+
+[node name="cameraLerpPos_nest" type="Node2D" parent="."]
+position = Vector2(0, -52)

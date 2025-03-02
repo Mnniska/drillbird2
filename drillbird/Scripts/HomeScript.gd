@@ -19,6 +19,7 @@ extends Node2D
 @onready var TextBubble=preload("res://Scenes/UI/text_bubble.tscn")
 @onready var MusicPlayer:hub_music_player=$HUBMusicPlayer
 
+@onready var nestCutscene=$NestCutscene
 
 var oresBeingSold:int=0
 
@@ -29,7 +30,7 @@ var holdCounter:float=0
 var justWokeUp:bool=false
 
 enum states{NO_EGG,IDLE,SELL,RESTPOSSIBLE,SLEEP,SELLING,FINALCUTSCENE}
-var state:states
+var state:states=states.NO_EGG
 
 	
 # Called when the node enters the scene tree for the first time.
@@ -44,7 +45,9 @@ func _process(delta: float) -> void:
 
 func CheckState():
 	
-	if state==states.SLEEP or state==states.SELLING or state==states.FINALCUTSCENE:
+		
+	
+	if state==states.SLEEP or state==states.SELLING or state==states.FINALCUTSCENE or state==states.NO_EGG:
 		UpdateButtons()
 		return
 
@@ -57,7 +60,6 @@ func CheckState():
 			state=states.RESTPOSSIBLE
 	else:
 		state=states.IDLE
-	
 
 func UpdateButtons():
 	match state:
@@ -72,10 +74,12 @@ func UpdateButtons():
 			if EggHandler.eggState==EggHandler.eggStates.FINALFORM_HEART:
 				HatchEggButton.SetActive(true)
 		states.SELLING:
+
 			SellButton.SetActive(false)
 			RestButton.SetActive(false)
 			HatchEggButton.SetActive(false)
 		states.RESTPOSSIBLE:
+
 			if !justWokeUp:
 				RestButton.SetActive(true)
 				if EggHandler.eggState==EggHandler.eggStates.FINALFORM_HEART:
@@ -249,8 +253,34 @@ func IsPlayerInCollider():
 	
 	pass
 
+func PlayLayEggCutscene():
+	GlobalVariables.playerStatus=GlobalVariables.playerStatusEnum.SHOP
+	Player.hide()
+	
+	nestCutscene.Play()
+	nestCutscene.CutsceneComplete.connect(EggCutsceneFinished)
+	
+func EggCutsceneFinished():
+	state=states.SLEEP
+	UpdateButtons()
+	EggHandler.SetEggState(EggHandler.eggStates.GROWING)
+	EggHandler.UpdateSizeBasedOnSaveData()
+	
+	animSleep.show()
+	animSleep.animation="asleep"
+	animSleep.play()
+	
+	await get_tree().create_timer(6).timeout
+	WakeUp(true)
+	
+	pass
+
 func _on_nest_collider_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
 	
+	if state==states.NO_EGG:
+		PlayLayEggCutscene()
+		return
+
 	
 	CheckState()
 	$JustWokeUpTimer.stop()

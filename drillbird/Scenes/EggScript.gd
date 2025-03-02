@@ -6,7 +6,7 @@ signal FinalHeartPlaced
 #up to target as one gets closer to state. When entering next state, switch sprite
 
 enum eggStates{NOTHING,GROWING,FINALFORM_NO_HEART,FINALFORM_HEART,FINALCUTSCENE}
-var eggState=eggStates.GROWING
+var eggState=eggStates.NOTHING
 
 #How much experience does each state require to go to next? 
 @export var ExperienceRequirements:Array[int]
@@ -15,6 +15,8 @@ var eggState=eggStates.GROWING
 @export var sleepPositions:Array[Node2D]
 @onready var birdie=$BirdySleepPositions/birdySleep
 @onready var finalFormEgg:egg_final_form=$Egg_FinalForm
+@onready var nest_front=$nest_front
+@onready var nest_back=$nest_back
 
 var shakeTimer:float=0
 var originalPos:Vector2=self.position
@@ -58,9 +60,20 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
+func SetNestVisible(visible:bool):
+	if visible:
+		nest_front.show()
+		nest_back.show()
+	else:
+		nest_front.hide()
+		nest_back.hide()
 
 func SetEggState(_state:eggStates):
 	eggState=_state
+	
+	SetNestVisible(!eggState==eggStates.NOTHING)
+	
+	
 	match eggState:
 		eggStates.NOTHING:
 			hideEggs()

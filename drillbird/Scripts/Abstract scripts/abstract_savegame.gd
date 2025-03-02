@@ -6,7 +6,7 @@ class_name abstract_savegame
 
 #Key variables needed to save game
 @export var currentDay:int=1
-@export var eggState:int=1 #TODO: This should be 0 at the start, turns to 1 after visiting the EGG
+@export var eggState:int=0 
 
 @export var playerSpawnPosition:Vector2=Vector2(0,0)
 @export var health:int=2
