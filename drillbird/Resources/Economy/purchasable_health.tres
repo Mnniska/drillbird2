@@ -1,8 +1,10 @@
 [gd_resource type="Resource" script_class="abstract_purchasable" load_steps=11 format=3 uid="uid://dd3l8ir1bmcm5"]
 
-[ext_resource type="Texture2D" uid="uid://c3717ycl1fxar" path="res://Art/ui/HUD/Health/HUD_Health_full.png" id="1_bnub7"]
 [ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_item_upgrade.gd" id="2_wg2lt"]
 [ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_purchasable.gd" id="3_0yx2m"]
+
+[sub_resource type="Resource" id="Resource_3ltva"]
+metadata/__load_path__ = "res://Art/ui/HUD/Health/HUD_Health_full.png"
 
 [sub_resource type="Resource" id="Resource_ldy6v"]
 script = ExtResource("2_wg2lt")
@@ -43,7 +45,7 @@ power = 8
 script = ExtResource("3_0yx2m")
 onlyAButton = false
 type = 2
-icon = ExtResource("1_bnub7")
+icon = SubResource("Resource_3ltva")
 itemName = "Health"
 itemDescription = "Make more mistakes before death"
 items = Array[ExtResource("2_wg2lt")]([SubResource("Resource_ldy6v"), SubResource("Resource_nookp"), SubResource("Resource_aum1u"), SubResource("Resource_l4iij"), SubResource("Resource_kmln2"), SubResource("Resource_yo3mh"), SubResource("Resource_uqv7b")])
