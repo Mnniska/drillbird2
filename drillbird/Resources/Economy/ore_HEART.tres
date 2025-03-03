@@ -7,7 +7,7 @@
 script = ExtResource("1_eri5w")
 ID = 10
 value = 100
+weight = 10
 texture = ExtResource("2_rsehs")
 name = "FinalHeart"
-stackSize = 1
 AtlasCoords = Vector2i(0, 0)
