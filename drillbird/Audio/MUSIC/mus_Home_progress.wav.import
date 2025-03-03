@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://cxlg8p0plwoxu"
-path="res://.godot/imported/mus_Home_progress.wav-f6da0e12c4ee51c15ddc721d3bbb12a8.sample"
+path="res://.godot/imported/mus_Home_progress.wav-d1ae4d0fd3c1b2f8d35c18d81f91c8ea.sample"
 
 [deps]
 
-source_file="res://Audio/Music/mus_Home_progress.wav"
-dest_files=["res://.godot/imported/mus_Home_progress.wav-f6da0e12c4ee51c15ddc721d3bbb12a8.sample"]
+source_file="res://Audio/MUSIC/mus_Home_progress.wav"
+dest_files=["res://.godot/imported/mus_Home_progress.wav-d1ae4d0fd3c1b2f8d35c18d81f91c8ea.sample"]
 
 [params]
 

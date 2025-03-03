@@ -14,8 +14,7 @@ func _ready() -> void:
 	hide()
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("debug_tab"):
-		Play()
+
 		
 	if birdVibrate:
 		var vibrate=1

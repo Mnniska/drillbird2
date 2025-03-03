@@ -4,8 +4,12 @@ class_name tutorial_message
 @onready var textBubble:text_bubble=$TextBubble
 @onready var timer=$Timer
 @export var textToShow:String="undefined"
+@export var pauseTimerWhenNotInArea:bool=true
 var textShown:bool=false
 var passedTest:bool=false
+
+
+@export var collisionShapeThatPassesTest:Area2D
 @export var BeginTimerWhenEntered:bool=true:
 	get: return BeginTimerWhenEntered
 	set(value): 
@@ -22,7 +26,14 @@ func _ready() -> void:
 	$Timer.wait_time=timeBeforeMessageShows
 	textBubble.Setup(abstract_textEffect.effectEnum.STILL,text_bubble.behaviourEnum.STAY)
 	
+	if collisionShapeThatPassesTest:
+		collisionShapeThatPassesTest.body_shape_entered.connect(PassedTestBodyEntered)
+	
 	pass # Replace with function body.
+
+func PassedTestBodyEntered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
+	PassedTest()
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -80,7 +91,8 @@ func _on_area_2d_body_shape_entered(body_rid: RID, body: Node2D, body_shape_inde
 
 
 func _on_area_2d_body_shape_exited(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
-	timer.paused=true
+	if pauseTimerWhenNotInArea:
+		timer.paused=true
 	pass # Replace with function body.
 
 
