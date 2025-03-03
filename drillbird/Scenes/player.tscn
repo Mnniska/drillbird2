@@ -458,7 +458,7 @@ debug_color = Color(0.43653, 0.59732, 0.154954, 0.42)
 
 [node name="Detector" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 270
+collision_mask = 2318
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Detector"]
 position = Vector2(0, 2)

@@ -142,6 +142,7 @@ escape={
 2d_physics/layer_9="Flower"
 2d_physics/layer_10="xp"
 2d_physics/layer_11="Lightsource"
+2d_physics/layer_12="ghost"
 
 [physics]
 

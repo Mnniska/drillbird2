@@ -8,6 +8,8 @@ var playerPos:Vector2
 @export var fastestSpeedDist:float=16*6
 @export var returnHearSpeedTime:float=4
 @export var returnHearSpeedCount:float=0
+
+@export var collType:abstract_collidable
 var gamePaused:bool=false
 
 #2.8
@@ -25,6 +27,9 @@ var parent:ghost_manager
 
 enum states{CHASE_PLAYER,CHASE_HEART,RETURN_HEART}
 var state:states=states.CHASE_PLAYER
+
+func GetCollType():
+	return collType
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -67,7 +72,7 @@ func GameIsBeingSaved():
 	if state==states.RETURN_HEART:
 		parent.DropHeartInRightfulPlace()
 		isCarryingHeart=false
-		Disappear()
+	Disappear()
 
 func PlayerPickedUpHeart():
 	NewHaunting(parent.player)
