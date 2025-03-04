@@ -1,12 +1,26 @@
-[gd_scene load_steps=13 format=3 uid="uid://bs8pjls7fpul1"]
+[gd_scene load_steps=27 format=3 uid="uid://bs8pjls7fpul1"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/enemy_upside_down.gd" id="1_crbyl"]
-[ext_resource type="Texture2D" uid="uid://c7jlywjt2rb3m" path="res://Art/characters/UpsideDown/UpsideDown_walk1.png" id="2_xdr4o"]
 [ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_collidable.gd" id="2_xl2cx"]
 [ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_enemy.gd" id="3_414ji"]
-[ext_resource type="Texture2D" uid="uid://ccmr5s047d04q" path="res://Art/characters/UpsideDown/UpsideDown_walk2.png" id="3_m0phi"]
-[ext_resource type="Texture2D" uid="uid://bd7hkykrdf36r" path="res://Art/characters/UpsideDown/UpsideDown_walk3.png" id="4_qbomp"]
-[ext_resource type="Texture2D" uid="uid://co1xp8dxcmkpf" path="res://Art/characters/UpsideDown/UpsideDown_walk4.png" id="5_8sqyb"]
+[ext_resource type="Texture2D" uid="uid://na7je55cnl6h" path="res://Art/characters/UpsideDown/cloud_death1.png" id="4_57u7e"]
+[ext_resource type="Texture2D" uid="uid://b2k1r74i35nbh" path="res://Art/characters/UpsideDown/cloud_death2.png" id="5_yagkb"]
+[ext_resource type="Texture2D" uid="uid://bgc511ngc1xcc" path="res://Art/characters/UpsideDown/cloud_death3.png" id="6_2unbn"]
+[ext_resource type="Texture2D" uid="uid://swa1ya48erfd" path="res://Art/characters/UpsideDown/cloud_death4.png" id="7_ky8j0"]
+[ext_resource type="Texture2D" uid="uid://bev6bnhju8bu1" path="res://Art/characters/UpsideDown/cloud_death5.png" id="8_ciajc"]
+[ext_resource type="Texture2D" uid="uid://rd48645o68xx" path="res://Art/characters/UpsideDown/cloud_death6.png" id="9_t0ahg"]
+[ext_resource type="Texture2D" uid="uid://dcb7vwg822hpa" path="res://Art/characters/UpsideDown/cloud_death7.png" id="10_gylo4"]
+[ext_resource type="Texture2D" uid="uid://dod23c7l1rusw" path="res://Art/characters/UpsideDown/cloud_death8.png" id="11_d0swe"]
+[ext_resource type="Texture2D" uid="uid://bbkb8a2afudii" path="res://Art/characters/UpsideDown/cloud_death9.png" id="12_c5wqe"]
+[ext_resource type="Texture2D" uid="uid://dgm4v6i21blj7" path="res://Art/characters/UpsideDown/cloud_death10.png" id="13_n5782"]
+[ext_resource type="Texture2D" uid="uid://ccsg1y1c4wbcu" path="res://Art/characters/UpsideDown/cloud_death11.png" id="14_kvbok"]
+[ext_resource type="Texture2D" uid="uid://cotvt6voy87tu" path="res://Art/characters/UpsideDown/cloud_falling1.png" id="15_jq73o"]
+[ext_resource type="Texture2D" uid="uid://ddvujdettca62" path="res://Art/characters/UpsideDown/cloud_falling2.png" id="16_346md"]
+[ext_resource type="Texture2D" uid="uid://brn02lqkjiklm" path="res://Art/characters/UpsideDown/cloud_falling3.png" id="17_g38d0"]
+[ext_resource type="Texture2D" uid="uid://dqifo5ee1wxcn" path="res://Art/characters/UpsideDown/cloud_walk1.png" id="18_qkse0"]
+[ext_resource type="Texture2D" uid="uid://3xtpmf2hsw0s" path="res://Art/characters/UpsideDown/cloud_walk2.png" id="19_hwxg7"]
+[ext_resource type="Texture2D" uid="uid://b5mt7tsjl2ykt" path="res://Art/characters/UpsideDown/cloud_walk3.png" id="20_jb1ua"]
+[ext_resource type="Texture2D" uid="uid://tqqt8rqune2e" path="res://Art/characters/UpsideDown/cloud_walk4.png" id="21_52o6c"]
 
 [sub_resource type="Resource" id="Resource_6qlpo"]
 script = ExtResource("2_xl2cx")
@@ -24,8 +38,60 @@ size = Vector2(10, 12)
 [sub_resource type="SpriteFrames" id="SpriteFrames_of4cw"]
 animations = [{
 "frames": [{
+"duration": 2.0,
+"texture": ExtResource("4_57u7e")
+}, {
 "duration": 1.0,
-"texture": ExtResource("2_xdr4o")
+"texture": ExtResource("5_yagkb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_2unbn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ky8j0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ciajc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_t0ahg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_gylo4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_d0swe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_c5wqe")
+}, {
+"duration": 0.5,
+"texture": ExtResource("13_n5782")
+}, {
+"duration": 0.5,
+"texture": ExtResource("14_kvbok")
+}],
+"loop": false,
+"name": &"death",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_jq73o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_346md")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_g38d0")
+}],
+"loop": true,
+"name": &"fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_qkse0")
 }],
 "loop": true,
 "name": &"idle",
@@ -33,16 +99,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_xdr4o")
+"texture": ExtResource("18_qkse0")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_m0phi")
+"texture": ExtResource("19_hwxg7")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_qbomp")
+"texture": ExtResource("20_jb1ua")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_8sqyb")
+"texture": ExtResource("21_52o6c")
 }],
 "loop": true,
 "name": &"run",
@@ -66,7 +132,6 @@ shape = SubResource("RectangleShape2D_khmiv")
 sprite_frames = SubResource("SpriteFrames_of4cw")
 animation = &"run"
 autoplay = "run"
-frame_progress = 0.592682
 
 [node name="EnemyCollisionChecker" type="Area2D" parent="."]
 collision_layer = 0

@@ -10,19 +10,19 @@ var positionLastFrame:Vector2
 @export var timeBeforeTurning:float=0.2
 var turningCounter:float=0
 var waitCounter=0
+var speed:Vector2=Vector2(0,0)
 
 func _physics_process(delta: float) -> void:
 	
 	if enemyInfo.dead or gamePaused:
 		return
-	# Add the gravity.
 	
 	CheckIfSleeping(delta)
 	if enemySleep:
 		return	
 
 	if not is_on_floor():
-		velocity += -get_gravity() * delta
+		velocity += -get_gravity() * delta * 0.3
 
 	if state==States.WALK:
 		
@@ -42,7 +42,7 @@ func _physics_process(delta: float) -> void:
 
 	if state==States.WALK:
 		
-		var speed = abs(positionLastFrame-position)
+		speed = abs(positionLastFrame-position)
 		if speed.x<=0.1:
 			turningCounter+=delta
 			if turningCounter>=timeBeforeTurning:
@@ -60,8 +60,12 @@ func _physics_process(delta: float) -> void:
 		if waitCounter>timeInWait:
 			waitCounter=0
 			state=States.WALK
+			
 func UpdateAnimations(_anim:String):
 
+	if abs(speed.y)>0.1:
+		_anim="fall"
+	
 	anim.animation=_anim
 	anim.flip_h=direction <0
 
