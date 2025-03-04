@@ -11,7 +11,7 @@ class_name object_spawner
 @onready var OreAreas=$"../TilemapOres/OreRegions"
 @onready var tileDestroyer=$"../TileCrack"
 @onready var fragileBlockManager:block_fragile_manager=$Block_FragileManager
-
+var spawnedFlowers:Array[climb_flower]
 
 
 var spawnedEnemies:Array[Node2D]
@@ -49,6 +49,15 @@ func LoadEnemySpawns(spawnpos:Array[Vector2i],enemytype:Array[int],enemyDead:Arr
 		enemiesToSpawnList.append(enemy)
 	
 	pass
+
+func LoadFlowers(flowerSpawnPositions: Array[Vector2i]):
+	#spawns flowers at the given positions
+	
+	for pos in flowerSpawnPositions:
+		
+		var spawnpos = to_global(gameTilemap.map_to_local(pos))
+		CreateNewFlowerFromGlobalPos(spawnpos,true)
+			
 
 func GenerateObjectsAndEnemiesFromTilemap():
 	
@@ -194,6 +203,15 @@ func SpawnAllEnemies():
 			
 	pass
 
+func GetFlowerUpdate()->Array[Vector2i]:
+	var p:Array[Vector2i]
+
+	for flower in spawnedFlowers:
+		var pos:Vector2i=gameTilemap.local_to_map(gameTilemap.to_local(flower.global_position))
+		p.append(pos)
+	
+	
+	return p 
 
 func GetEnemyUpdate():
 	
@@ -216,7 +234,7 @@ func GetEnemyUpdate():
 	return enemiesToSpawnList
 	pass
 
-func CreateNewFlowerFromGlobalPos(globalPos:Vector2):
+func CreateNewFlowerFromGlobalPos(globalPos:Vector2,blossomed:bool=false):
 	
 	var node:climb_flower=flowerReference.instantiate()
 	var mapPos = gameTilemap.local_to_map(to_local(globalPos))
@@ -224,7 +242,8 @@ func CreateNewFlowerFromGlobalPos(globalPos:Vector2):
 	node.transform.origin=gPos
 	
 	add_child(node)
-	node.SetHasBlossomed(false)
+	node.SetHasBlossomed(blossomed)
+	spawnedFlowers.append(node)
 
 	return node
 	

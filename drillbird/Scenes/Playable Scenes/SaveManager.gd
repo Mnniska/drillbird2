@@ -55,6 +55,7 @@ func SaveGame():
 	PlayerData.eggState=GlobalVariables.eggState
 	SaveEnvironment()
 	SaveEnemies()
+	SaveFlowers()
 	SaveLeftoverOres()
 	
 	ResourceSaver.save(PlayerData,save_file_path+save_file_name)
@@ -93,9 +94,20 @@ func SaveEnemies():
 		
 	pass
 
+func SaveFlowers():
+	PlayerData.flowerSpawnPositions.clear()
+	PlayerData.flowerSpawnPositions=EnemySpawner.GetFlowerUpdate()
+	
+	pass
+
 func LoadEnemyPositions():
 	#This is currently NOT USED
 	EnemySpawner.LoadEnemySpawns(PlayerData.enemySpawnPositions,PlayerData.enemyTypes,PlayerData.enemyDead)
+
+func LoadFlowers():
+	EnemySpawner.LoadFlowers(PlayerData.flowerSpawnPositions)
+	
+	pass
 
 func SaveEnvironment():
 	#This will include ores and enemies in the future as well
@@ -112,6 +124,7 @@ func LoadGame():
 		PlayerData=ResourceLoader.load(save_file_path+save_file_name)
 	SetGlobalVariablesToLoadedGame()
 	LoadEnemyPositions()
+	LoadFlowers()
 	LoadLeftoverOres()
 	GlobalVariables.playerSpawnPos=PlayerData.playerSpawnPosition
 	
