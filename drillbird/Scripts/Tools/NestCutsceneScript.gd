@@ -3,7 +3,6 @@ signal CutsceneComplete
 
 @onready var anim:AnimationPlayer=$AnimationPlayer
 @onready var birdySpriteframes:AnimatedSprite2D=$birdy
-@onready var camera = %Camera2D
 @onready var skyCameraPos:Vector2=$cameraLerpPos_sky.global_position
 @onready var nestCameraPos:Vector2=$cameraLerpPos_nest.global_position
 

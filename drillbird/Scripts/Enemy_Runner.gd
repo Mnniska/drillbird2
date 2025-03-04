@@ -1,19 +1,14 @@
-extends CharacterBody2D
+extends Base_Enemy
 
-@export var collType:abstract_collidable #MUST HAVE
-@export var enemyInfo:abstract_enemy #MUST HAVE
-@onready var anim=$AnimatedSprite2D
 const SPEED = 40.0
 const JUMP_VELOCITY = -400.0
 var direction:float=1
 var positionLastFrame:Vector2
 @export var timeInWait=1
 var waitCounter=0
-var gamePaused:bool=true
 var turningCounter=0
 var timeBeforeTurning=0.2
 
-var spawnPositionLocal:Vector2
 @onready var collider=$EnemyCollisionChecker
 
 enum States{WALK,WAIT}
@@ -81,6 +76,11 @@ func _physics_process(delta: float) -> void:
 	
 	if enemyInfo.dead or gamePaused:
 		return
+		
+	CheckIfSleeping(delta)
+	if enemySleep:
+		return
+		
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -92,13 +92,8 @@ func _physics_process(delta: float) -> void:
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 
-
-
-
-
-
 	move_and_slide()
-	UpdateAnimations()
+	UpdateAnimations("butt")
 
 	if state==States.WALK:
 		
@@ -122,7 +117,7 @@ func _physics_process(delta: float) -> void:
 			waitCounter=0
 			state=States.WALK
 
-func UpdateAnimations():
+func UpdateAnimations(_anim:String):
 
 	if state==States.WAIT:
 		anim.animation="idle"

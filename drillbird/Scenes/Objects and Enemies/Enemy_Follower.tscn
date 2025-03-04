@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://dxns6yintyghj"]
+[gd_scene load_steps=15 format=3 uid="uid://dxns6yintyghj"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/Enemy_Follower.gd" id="1_8e42x"]
 [ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_collidable.gd" id="2_7cq53"]
 [ext_resource type="Texture2D" uid="uid://dkbi35i3knyaa" path="res://Art/characters/Follower/Follower_alert.png" id="2_rj7wu"]
 [ext_resource type="Texture2D" uid="uid://cuamnv0bqwgix" path="res://Art/characters/Follower/Follower_idle.png" id="3_8ugdf"]
+[ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_enemy.gd" id="3_h4x6s"]
 [ext_resource type="Texture2D" uid="uid://cuw8sbkqd18i4" path="res://Art/characters/Follower/Follower_run1.png" id="4_k3mto"]
 [ext_resource type="Texture2D" uid="uid://dc3ugrpko31mt" path="res://Art/characters/Follower/Follower_run2.png" id="5_8ofnh"]
 [ext_resource type="Texture2D" uid="uid://egoobdoaj8b7" path="res://Art/characters/Follower/Follower_run3.png" id="6_08g80"]
@@ -12,6 +13,11 @@
 script = ExtResource("2_7cq53")
 type = 1
 enemyID = 3
+
+[sub_resource type="Resource" id="Resource_b115a"]
+script = ExtResource("3_h4x6s")
+type = 2
+damage = 1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_khmiv"]
 size = Vector2(12, 10)
@@ -60,6 +66,7 @@ collision_layer = 8
 collision_mask = 9
 script = ExtResource("1_8e42x")
 collType = SubResource("Resource_e2rhy")
+enemyInfo = SubResource("Resource_b115a")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 3)

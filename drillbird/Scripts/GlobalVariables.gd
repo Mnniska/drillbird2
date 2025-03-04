@@ -18,6 +18,13 @@ var PlayerController:CharacterBody2D
 func SetupPlayerReference(ctrl:CharacterBody2D):
 	PlayerController=ctrl
 
+func GetPlayerPosition()->Vector2:
+	if PlayerController:
+		return PlayerController.global_position
+	else:
+		push_error("Unassigned playercontroller in global variables")
+		return Vector2(0,0)
+
 var InitialSetup:bool=true:
 	get:
 		return InitialSetup

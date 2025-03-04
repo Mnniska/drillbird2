@@ -16,6 +16,11 @@ func _physics_process(delta: float) -> void:
 	if enemyInfo.dead or gamePaused:
 		return
 	# Add the gravity.
+	
+	CheckIfSleeping(delta)
+	if enemySleep:
+		return	
+
 	if not is_on_floor():
 		velocity += -get_gravity() * delta
 

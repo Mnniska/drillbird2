@@ -8,6 +8,11 @@ var spawnPositionLocal:Vector2
 @onready var enemyCollCheck=$EnemyCollisionChecker
 @onready var anim=$AnimatedSprite2D
 var gamePaused:bool=true
+var enemySleep:bool=true
+
+@export var updateInterval:float=2
+var updateCounter:float=0
+var activeDistance:float=16*20
 
 func GetCollType(): #MUST HAVE
 	return collType
@@ -49,11 +54,30 @@ func TurnEnemyOff():
 func Kill():
 	enemyInfo.dead=true
 	TurnEnemyOff()
+
+func CheckIfSleeping(delta:float):
+	updateCounter+=delta
 	
+	if updateCounter>=updateInterval:
+		updateCounter=0
+		
+		var playerpos= GlobalVariables.GetPlayerPosition()
+		
+		if playerpos.distance_to(global_position) > activeDistance or playerpos==Vector2(0,0):
+			enemySleep=true
+		else:
+			enemySleep=false
+
 func _physics_process(delta: float) -> void:
 	
 	if enemyInfo.dead or gamePaused:
 		return
+		
+	CheckIfSleeping(delta)
+	
+	if enemySleep:
+		return
+	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta

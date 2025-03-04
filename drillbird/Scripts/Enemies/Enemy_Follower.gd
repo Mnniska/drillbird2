@@ -1,12 +1,9 @@
-extends CharacterBody2D
+extends Base_Enemy
 class_name enemy_follower
 
-@export var collType:abstract_collidable #MUST HAVE
-var enemyInfo:abstract_enemy=abstract_enemy.new() #MUST HAVE
 const MAX_SPEED = 200
 const JUMP_VELOCITY = -400.0
 var direction:float=1
-var spawnPositionLocal:Vector2
 @onready var collider=$EnemyCollisionChecker
 var visibleActors:Array[Node2D]
 var chosenActor:Node2D
@@ -15,7 +12,6 @@ const BUFFER_ZONE:int=2
 const PREDICTION_LENGTH:int=6
 var chosenActorXCoordinateLastFrame:float=0
 var dir=0
-var gamePaused:bool=true
 
 @onready var timer:Timer=$LoseDetectionTimer
 
@@ -42,6 +38,11 @@ func _physics_process(delta: float) -> void:
 	
 	if enemyInfo.dead or gamePaused:
 		return
+		
+	CheckIfSleeping(delta)
+	if enemySleep:
+		return
+		
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -54,7 +55,7 @@ func _physics_process(delta: float) -> void:
 
 	
 	move_and_slide()
-	UpdateAnimations()
+	UpdateAnimations("butt")
 	
 
 	
@@ -132,7 +133,7 @@ func Kill():
 
 
 
-func UpdateAnimations():
+func UpdateAnimations(_anim:String):
 
 	var anim:String=""
 	match state:
