@@ -1,6 +1,6 @@
 extends Base_Enemy
 
-enum States{WALK,WAIT}
+enum States{WALK,WAIT,FALL}
 var state:States=States.WALK
 var direction:float=1
 const SPEED = 40.0
@@ -11,6 +11,7 @@ var positionLastFrame:Vector2
 var turningCounter:float=0
 var waitCounter=0
 var speed:Vector2=Vector2(0,0)
+var falling:bool=false
 
 func _physics_process(delta: float) -> void:
 	
@@ -35,6 +36,10 @@ func _physics_process(delta: float) -> void:
 	
 	if state==States.WALK:
 		anim="run"
+	
+	falling = abs(speed.y)>0.1
+	if falling:
+		anim="fall"
 
 
 	move_and_slide()
@@ -43,7 +48,7 @@ func _physics_process(delta: float) -> void:
 	if state==States.WALK:
 		
 		speed = abs(positionLastFrame-position)
-		if speed.x<=0.1:
+		if speed.x<=0.1 and !falling:
 			turningCounter+=delta
 			if turningCounter>=timeBeforeTurning:
 				turningCounter=0
@@ -63,8 +68,7 @@ func _physics_process(delta: float) -> void:
 			
 func UpdateAnimations(_anim:String):
 
-	if abs(speed.y)>0.1:
-		_anim="fall"
+
 	
 	anim.animation=_anim
 	anim.flip_h=direction <0

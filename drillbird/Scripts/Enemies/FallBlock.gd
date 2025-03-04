@@ -48,7 +48,8 @@ func _physics_process(delta: float) -> void:
 			if victims !=null:
 				for n in victims:
 			
-					n.global_position=self.global_position+Vector2(0,-16) #Hack to ensure player isn't stuck underneath block
+					if n.GetCollType().type==abstract_collidable.types.PLAYER:
+						n.global_position=self.global_position+Vector2(0,-16) #Hack to ensure player isn't stuck underneath block
 					n.DealDamage(enemyInfo.damage)
 					
 					if n.GetCollType().type==abstract_collidable.types.ENEMY:

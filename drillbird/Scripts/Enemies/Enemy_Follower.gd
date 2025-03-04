@@ -116,8 +116,9 @@ func DealDamage(value:int): #MUST HAVE
 
 
 
-func TurnEnemyOff():
-	hide()
+func TurnEnemyOff(hideInstantly:bool=true):
+	if hideInstantly:
+		hide()
 	$CollisionShape2D.set_deferred("disabled",true)
 	$EnemyCollisionChecker.set_deferred("disabled",true)
 	$EnemyCollisionChecker.set_deferred("monitoring",false)

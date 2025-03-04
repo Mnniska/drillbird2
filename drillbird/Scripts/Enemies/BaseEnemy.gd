@@ -6,7 +6,7 @@ class_name Base_Enemy
 var spawnPositionLocal:Vector2
 @onready var enemyCollider=$CollisionShape2D
 @onready var enemyCollCheck=$EnemyCollisionChecker
-@onready var anim=$AnimatedSprite2D
+@onready var anim:AnimatedSprite2D=$AnimatedSprite2D
 var gamePaused:bool=true
 var enemySleep:bool=true
 
@@ -43,8 +43,9 @@ func DealDamage(value:int): #MUST HAVE
 		Kill()
 		#TODO: Fancy kill animation
 
-func TurnEnemyOff():
-	hide()
+func TurnEnemyOff(hideInstantly:bool=true):
+	if hideInstantly:
+		hide()
 	enemyCollider.set_deferred("disabled",true)
 	enemyCollCheck.set_deferred("disabled",true)
 	enemyCollCheck.set_deferred("monitoring",false)
@@ -52,8 +53,36 @@ func TurnEnemyOff():
 	
 	
 func Kill():
+	TurnEnemyOff(false)
 	enemyInfo.dead=true
-	TurnEnemyOff()
+	anim.animation="death"
+	var timeToDie:float=get_current_animation_length()
+	
+	await get_tree().create_timer(timeToDie).timeout
+	hide()
+	#Spawn XP!
+
+func get_current_animation_length(animated_sprite: AnimatedSprite2D = anim) -> float:
+
+	var current_animation_name = animated_sprite.animation
+
+	if current_animation_name == "":
+		print("No animation is currently playing.")
+		return -1.0
+		
+	var sprite_frames = animated_sprite.sprite_frames
+	if sprite_frames and sprite_frames.has_animation(current_animation_name):
+		var num_frames = sprite_frames.get_frame_count(current_animation_name)
+		var anim_speed = animated_sprite.speed_scale * sprite_frames.get_animation_speed(current_animation_name)
+		if anim_speed > 0:
+			return num_frames / anim_speed
+		else:
+			print("Animation speed is zero or negative.")
+		return -1.0
+	else:
+		print("Animation not found: ", current_animation_name)
+
+	return -1.0
 
 func CheckIfSleeping(delta:float):
 	updateCounter+=delta
