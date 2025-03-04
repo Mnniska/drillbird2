@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://1rmh550r7gjp"
-path="res://.godot/imported/UI_Shop_IconHolder_on.png-f11b50b7beb3657ebbabbe93e93b4fe0.ctex"
+path="res://.godot/imported/UI_Shop_IconHolder_on.png-df96927913dad62949577ae88356d759.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/ui/Shop/UI_Shop_IconHolder_on.png"
-dest_files=["res://.godot/imported/UI_Shop_IconHolder_on.png-f11b50b7beb3657ebbabbe93e93b4fe0.ctex"]
+source_file="res://Art/UI/Shop/UI_Shop_IconHolder_on.png"
+dest_files=["res://.godot/imported/UI_Shop_IconHolder_on.png-df96927913dad62949577ae88356d759.ctex"]
 
 [params]
 
