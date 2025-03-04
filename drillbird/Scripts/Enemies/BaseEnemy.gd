@@ -9,6 +9,9 @@ var spawnPositionLocal:Vector2
 @onready var anim:AnimatedSprite2D=$AnimatedSprite2D
 var gamePaused:bool=true
 var enemySleep:bool=true
+var positionLastFrame:Vector2
+var isFalling:bool=false
+
 
 @export var updateInterval:float=2
 var updateCounter:float=0
@@ -38,6 +41,15 @@ func Setup(info:abstract_enemy): #MUST HAVE
 	enemyInfo.spawnLocation=info.spawnLocation
 	enemyInfo.dead=info.dead
 
+func GetIsFalling():
+	#Make sure to update PositionLastFrame AFTER this
+	var speed = abs(positionLastFrame-position)
+	
+	return speed.y>0.1
+	
+		
+	
+	
 func DealDamage(value:int): #MUST HAVE
 	if value>0:
 		Kill()
@@ -110,6 +122,9 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
+	
+	isFalling = GetIsFalling()
+	positionLastFrame=position #must be called before move_and_slide but after functions that need it
 
 	move_and_slide()
 	UpdateAnimations("idle")

@@ -3,7 +3,6 @@ extends Base_Enemy
 const SPEED = 40.0
 const JUMP_VELOCITY = -400.0
 var direction:float=1
-var positionLastFrame:Vector2
 @export var timeInWait=1
 var waitCounter=0
 var turningCounter=0
@@ -53,11 +52,6 @@ func TurnEnemyOff(hideInstantly:bool=true):
 
 	velocity=Vector2(0,0)
 	
-	
-func Kill():
-	enemyInfo.dead=true
-	TurnEnemyOff()
-	
 
 
 func CheckOverlappingCollisions(): #MUST HAVE
@@ -81,26 +75,33 @@ func _physics_process(delta: float) -> void:
 	CheckIfSleeping(delta)
 	if enemySleep:
 		return
-		
-	# Add the gravity.
-	if not is_on_floor():
-		velocity += get_gravity() * delta
+	var anim="idle"
+
+	
 
 	if state==States.WALK:
 		
 		if direction:
 			velocity.x = direction * SPEED
+			anim="run"
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
+			anim="idle"
+	
+	# Add the gravity.
+	if not is_on_floor():
+		velocity += get_gravity() * delta
+	
+	isFalling=GetIsFalling()
 
 	move_and_slide()
-	UpdateAnimations("butt")
+	UpdateAnimations(anim)
 
 	if state==States.WALK:
 		
 
 		var speed = abs(positionLastFrame-position)
-		if speed.x<=0.1:
+		if speed.x<=0.1 and !isFalling:
 			turningCounter+=delta
 			if turningCounter>=timeBeforeTurning:
 				turningCounter=0
@@ -120,9 +121,6 @@ func _physics_process(delta: float) -> void:
 
 func UpdateAnimations(_anim:String):
 
-	if state==States.WAIT:
-		anim.animation="idle"
-	if state==States.WALK:
-		anim.animation="run"
-		
+
+	anim.animation=_anim
 	anim.flip_h=direction <0

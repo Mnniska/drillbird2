@@ -1,12 +1,17 @@
-[gd_scene load_steps=13 format=3 uid="uid://dtl6pfqyw8jki"]
+[gd_scene load_steps=18 format=3 uid="uid://dtl6pfqyw8jki"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy_Runner.gd" id="1_wxjay"]
 [ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_collidable.gd" id="2_3jenn"]
 [ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_enemy.gd" id="3_egito"]
-[ext_resource type="Texture2D" uid="uid://beoxc4h8wrylv" path="res://Art/characters/mullvad/mullvad_walk1.png" id="4_shhht"]
-[ext_resource type="Texture2D" uid="uid://qfu3qdicf2fs" path="res://Art/characters/mullvad/mullvad_walk2.png" id="5_npjg5"]
-[ext_resource type="Texture2D" uid="uid://b12ap8dxrp8ns" path="res://Art/characters/mullvad/mullvad_walk3.png" id="6_5yyjh"]
-[ext_resource type="Texture2D" uid="uid://cb7x0i0yl8o8w" path="res://Art/characters/mullvad/mullvad_walk4.png" id="7_ghjfe"]
+[ext_resource type="Texture2D" uid="uid://bu56d8b0ujw2e" path="res://Art/characters/mullvad/walker_death1.png" id="4_h6r27"]
+[ext_resource type="Texture2D" uid="uid://8u8wcx31n81q" path="res://Art/characters/mullvad/walker_death2.png" id="5_f1770"]
+[ext_resource type="Texture2D" uid="uid://5p4kf2oomjkc" path="res://Art/characters/mullvad/walker_death3.png" id="6_8qkqg"]
+[ext_resource type="Texture2D" uid="uid://dhrvhcsf7e45a" path="res://Art/effects/empty.png" id="7_nfsyh"]
+[ext_resource type="Texture2D" uid="uid://f2vxoanjuc1j" path="res://Art/characters/mullvad/walker_fall.png" id="8_ukf2k"]
+[ext_resource type="Texture2D" uid="uid://b7v31i80dwece" path="res://Art/characters/mullvad/walker_walk1.png" id="9_lth1i"]
+[ext_resource type="Texture2D" uid="uid://bnt2vwrvjeofi" path="res://Art/characters/mullvad/walker_walk2.png" id="10_3npqc"]
+[ext_resource type="Texture2D" uid="uid://164f1w0ehm16" path="res://Art/characters/mullvad/walker_walk3.png" id="11_65ocw"]
+[ext_resource type="Texture2D" uid="uid://yqt6jvqhj56i" path="res://Art/characters/mullvad/walker_walk4.png" id="12_lgshd"]
 
 [sub_resource type="Resource" id="Resource_pbycp"]
 script = ExtResource("2_3jenn")
@@ -24,8 +29,33 @@ size = Vector2(12, 14)
 [sub_resource type="SpriteFrames" id="SpriteFrames_of4cw"]
 animations = [{
 "frames": [{
+"duration": 3.0,
+"texture": ExtResource("4_h6r27")
+}, {
+"duration": 3.0,
+"texture": ExtResource("5_f1770")
+}, {
+"duration": 3.0,
+"texture": ExtResource("6_8qkqg")
+}, {
 "duration": 1.0,
-"texture": ExtResource("4_shhht")
+"texture": ExtResource("7_nfsyh")
+}],
+"loop": false,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_ukf2k")
+}],
+"loop": true,
+"name": &"fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_lth1i")
 }],
 "loop": true,
 "name": &"idle",
@@ -33,16 +63,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_shhht")
+"texture": ExtResource("9_lth1i")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_npjg5")
+"texture": ExtResource("10_3npqc")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_5yyjh")
+"texture": ExtResource("11_65ocw")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_ghjfe")
+"texture": ExtResource("12_lgshd")
 }],
 "loop": true,
 "name": &"run",
@@ -64,8 +94,10 @@ shape = SubResource("RectangleShape2D_khmiv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_of4cw")
-animation = &"idle"
+animation = &"death"
 autoplay = "run"
+frame = 3
+frame_progress = 1.0
 
 [node name="EnemyCollisionChecker" type="Area2D" parent="."]
 collision_layer = 0

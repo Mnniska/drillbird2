@@ -4,14 +4,12 @@ enum States{WALK,WAIT,FALL}
 var state:States=States.WALK
 var direction:float=1
 const SPEED = 40.0
-var positionLastFrame:Vector2
 
 @export var timeInWait=1
 @export var timeBeforeTurning:float=0.2
 var turningCounter:float=0
 var waitCounter=0
 var speed:Vector2=Vector2(0,0)
-var falling:bool=false
 
 func _physics_process(delta: float) -> void:
 	
@@ -37,8 +35,9 @@ func _physics_process(delta: float) -> void:
 	if state==States.WALK:
 		anim="run"
 	
-	falling = abs(speed.y)>0.1
-	if falling:
+	
+	isFalling = GetIsFalling()
+	if isFalling:
 		anim="fall"
 
 
@@ -47,8 +46,7 @@ func _physics_process(delta: float) -> void:
 
 	if state==States.WALK:
 		
-		speed = abs(positionLastFrame-position)
-		if speed.x<=0.1 and !falling:
+		if !GetIsFalling() and !isFalling:
 			turningCounter+=delta
 			if turningCounter>=timeBeforeTurning:
 				turningCounter=0
@@ -57,7 +55,6 @@ func _physics_process(delta: float) -> void:
 		elif turningCounter>0:
 			turningCounter=0
 			
-		positionLastFrame=position
 
 
 	if state==States.WAIT:
@@ -65,7 +62,10 @@ func _physics_process(delta: float) -> void:
 		if waitCounter>timeInWait:
 			waitCounter=0
 			state=States.WALK
-			
+
+	#Done at the end of upate, used in the next loop
+	positionLastFrame=position
+
 func UpdateAnimations(_anim:String):
 
 

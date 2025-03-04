@@ -5,7 +5,6 @@ class_name enemy_Fallblock
 @onready var impactEffect:AnimatedSprite2D=$ImpactEffect
 var BlockDestroyer:crack_script
 
-var isFalling:bool=false
 enum states{idle,fallprep,fall}
 var state:states=states.fall
 @export var timeBeforeFall:float=0.8

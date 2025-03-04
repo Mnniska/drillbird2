@@ -45,17 +45,23 @@ func _physics_process(delta: float) -> void:
 		
 	# Add the gravity.
 	if not is_on_floor():
-		velocity += get_gravity() * delta
-		
+		velocity += get_gravity() * delta*0.5
+	
+	isFalling = GetIsFalling()
+	positionLastFrame=position #must be called before move_and_slide but after functions that need it
+	
+	var anim:String
 	
 	if state==States.IDLE:
-		IdleBehaviour()
+		anim=IdleBehaviour()
 	if state==States.ALERT:
-		AlertBehaviour()
-
+		anim=AlertBehaviour()
+	
+	if isFalling:
+		anim="fall"
 	
 	move_and_slide()
-	UpdateAnimations("butt")
+	UpdateAnimations(anim)
 	
 
 	
@@ -65,10 +71,11 @@ func _physics_process(delta: float) -> void:
 func IdleBehaviour():
 	velocity.x=0
 	move_and_slide()
+	return "idle"
 	pass
 
 func AlertBehaviour():
-	
+	var anim
 
 	
 	var velocityVector:float = chosenActorXCoordinateLastFrame-chosenActor.global_position.x
@@ -93,14 +100,16 @@ func AlertBehaviour():
 
 
 	velocity.x=-diff*7
+	anim="run"
 
 	
 	if abs(global_position.x-target) <=BUFFER_ZONE:
 		velocity.x=0
-	
+		anim="alert"
 	
 	chosenActorXCoordinateLastFrame=chosenActor.global_position.x
 	
+	return anim
 	
 func GetLocalSpawnPosition(): #MUST HAVE
 	return spawnPositionLocal
@@ -126,28 +135,12 @@ func TurnEnemyOff(hideInstantly:bool=true):
 	velocity=Vector2(0,0)
 	timer.stop()
 	
-	
-func Kill():
-	enemyInfo.dead=true
-	TurnEnemyOff()
-	
 
 
 
 func UpdateAnimations(_anim:String):
-
-	var anim:String=""
-	match state:
-		States.IDLE:
-			anim="idle"
-			pass
-		States.ALERT:
-			anim="alert"
-			if abs(velocity.x)>0:
-				anim="run"
-			pass
 			
-	$AnimatedSprite2D.animation = anim
+	$AnimatedSprite2D.animation = _anim
 	$AnimatedSprite2D.flip_h=velocity.x < 0
 
 	pass # Replace with function body.
