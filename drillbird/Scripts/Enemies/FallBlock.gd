@@ -141,6 +141,8 @@ func CheckOverlappingCollisions():
 
 func _on_observer_block_destroyed() -> void:
 	state=states.fallprep
+	SoundManager.PlaySoundAtLocation(self.global_position,abstract_SoundEffectSetting.SoundEffectEnum.FALLBLOCK_FALLING_SHAKE)
+
 	pass # Replace with function body.
 
 func _on_enemy_collision_checker_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:

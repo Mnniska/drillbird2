@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="abstract_SoundEffectSetting" load_steps=3 format=3 uid="uid://bf3mrqa0pfmfc"]
+
+[ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_SoundEffectSetting.gd" id="1_7bdfb"]
+[ext_resource type="AudioStream" uid="uid://0uqevh8ew7hn" path="res://Audio/SFX/enemies/generic_death.wav" id="2_wbuw8"]
+
+[resource]
+script = ExtResource("1_7bdfb")
+limit = 5
+type = 23
+sound_effect = ExtResource("2_wbuw8")
+volume = 5
+pitch_randomness = 0.3
+audioBus = 1

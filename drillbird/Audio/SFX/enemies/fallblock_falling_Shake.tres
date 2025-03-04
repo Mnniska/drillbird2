@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="abstract_SoundEffectSetting" load_steps=3 format=3 uid="uid://ic37xl80st14"]
+
+[ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_SoundEffectSetting.gd" id="1_6acpq"]
+[ext_resource type="AudioStream" uid="uid://dmeel710amtq1" path="res://Audio/SFX/enemies/falling_block_shake.wav" id="2_sljw8"]
+
+[resource]
+script = ExtResource("1_6acpq")
+limit = 5
+type = 24
+sound_effect = ExtResource("2_sljw8")
+volume = 0
+pitch_randomness = 0.2
+audioBus = 1
