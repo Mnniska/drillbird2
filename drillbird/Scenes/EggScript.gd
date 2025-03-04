@@ -119,12 +119,12 @@ func SetBirdyVisible(visible:bool):
 	
 func UpdateSizeBasedOnSaveData():
 	
-	UpdateSize(GlobalVariables.totalExperienceGained)
+	UpdateSize(GlobalVariables.totalEGGsperienceGained)
 	
 	
 
 func GetIsEggMaxedOut():
-	var xp=GlobalVariables.totalExperienceGained
+	var xp=GlobalVariables.totalEGGsperienceGained
 	for n in ExperienceRequirements:
 		xp-=n
 	

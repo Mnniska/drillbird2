@@ -134,7 +134,7 @@ shape = SubResource("RectangleShape2D_khmiv")
 sprite_frames = SubResource("SpriteFrames_pakvm")
 animation = &"death"
 autoplay = "idle"
-frame_progress = 0.816506
+frame_progress = 0.294906
 
 [node name="EnemyCollisionChecker" type="Area2D" parent="."]
 collision_layer = 0

@@ -141,7 +141,7 @@ func SetGlobalVariablesToLoadedGame():
 
 	GlobalVariables.playerHealth=PlayerData.health
 	GlobalVariables.playerMoney=PlayerData.money
-	GlobalVariables.totalExperienceGained=PlayerData.totalMoneyGained
+	GlobalVariables.totalEGGsperienceGained=PlayerData.totalEGGsperienceGained
 	GlobalVariables.currentDay=PlayerData.currentDay
 	GlobalVariables.eggState=PlayerData.eggState
 	

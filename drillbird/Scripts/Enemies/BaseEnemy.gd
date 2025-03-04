@@ -12,6 +12,7 @@ var enemySleep:bool=true
 var positionLastFrame:Vector2
 var isFalling:bool=false
 
+var textbubble=preload("res://Scenes/UI/text_bubble.tscn")
 
 @export var updateInterval:float=2
 var updateCounter:float=0
@@ -64,14 +65,32 @@ func TurnEnemyOff(hideInstantly:bool=true):
 	velocity=Vector2(0,0)
 	
 	
-func Kill():
+func Kill(showEffects:bool=true):
+	
+	if enemyInfo.dead:
+		return
 	TurnEnemyOff(false)
 	enemyInfo.dead=true
-	anim.animation="death"
-	var timeToDie:float=get_current_animation_length()
+	if showEffects:
+		anim.animation="death"
+		var timeToDie:float=get_current_animation_length()		
+		await get_tree().create_timer(timeToDie).timeout
 	
-	await get_tree().create_timer(timeToDie).timeout
 	hide()
+	
+	if showEffects:
+		var textBubbleInstance=textbubble.instantiate()
+		textBubbleInstance.Setup(abstract_textEffect.effectEnum.STILL,text_bubble.behaviourEnum.FADE)
+		textBubbleInstance.MoveUp=true
+		textBubbleInstance.UseTypewriteEffect=true
+
+		get_parent().add_child(textBubbleInstance)
+		textBubbleInstance.global_position=global_position+Vector2(0,-16)
+		
+		var xp:int=GlobalVariables.AddXPFromKill(enemyInfo)
+		
+		textBubbleInstance.ShowText("+"+str(xp))
+	
 	#Spawn XP!
 
 func get_current_animation_length(animated_sprite: AnimatedSprite2D = anim) -> float:

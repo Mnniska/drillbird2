@@ -11,7 +11,7 @@ class_name abstract_savegame
 @export var playerSpawnPosition:Vector2=Vector2(0,0)
 @export var health:int=2
 @export var money:int=0
-@export var totalMoneyGained:int=0
+@export var totalEGGsperienceGained:int=0
 @export var upgrade_light:int=0
 @export var upgrade_drill:int=0
 @export var upgrade_health:int=0

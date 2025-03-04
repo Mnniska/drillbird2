@@ -54,7 +54,7 @@ var playerMoney:int=0:
 		playerMoney=value
 		playerMoneyChange.emit()
 		
-var totalExperienceGained:int=0 #set at startup to loaded in value
+var totalEGGsperienceGained:int=0 #set at startup to loaded in value
 var playerHealth:int=2 #This should be loaded in depending on current upgrade lvl in future
 
 var currentDay:int=1
@@ -115,9 +115,20 @@ var upgradeLevel_inventory:int=0:
 		upgradeLevel_inventory=value
 		upgradeChange_Inventory.emit()
 
-func GivePlayerMoney(value:int):
-	totalExperienceGained+=value
+func GivePlayerMoney(value:int,fromOre:bool=true):
+	if fromOre:
+		totalEGGsperienceGained+=value
 	playerMoney+=value
+
+func AddXPFromKill(enemy:abstract_enemy):
+	
+	var min=1
+	var max=2
+	var amount=randi_range(min,max) 
+	
+	GivePlayerMoney(amount,false)
+	return amount
+	pass
 
 func SetPlayerUpgradeLevel(upgradeType:typeEnum,_upgradeLevel:int):
 	match upgradeType:

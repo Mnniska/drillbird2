@@ -33,7 +33,7 @@ func SetupComplete():
 
 func UpdateIdleMusic():
 	
-	if GlobalVariables.totalExperienceGained>200:
+	if GlobalVariables.totalEGGsperienceGained>200:
 		player_idle.stream=mus_idle_end
 	else:
 		player_idle.stream=mus_idle_beginning
