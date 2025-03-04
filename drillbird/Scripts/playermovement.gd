@@ -507,6 +507,12 @@ func DealDamage(amount:int):
 	state=States.DAMAGE
 	SoundManager.PlaySoundAtLocation(global_position,abstract_SoundEffectSetting.SoundEffectEnum.PLAYER_HURT)
 	
+	#Let go of the flower held
+	if HeldFlower:
+		HeldFlower.SetPlayerAttached(false)
+		HeldFlower=null
+
+	
 	damageTimerCounter=0
 	
 	invincible=true

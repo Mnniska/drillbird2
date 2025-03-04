@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b5af7odmny64p"]
+[gd_scene load_steps=20 format=3 uid="uid://b5af7odmny64p"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/climb_flower.gd" id="1_n4nt3"]
 [ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_collidable.gd" id="2_2xntx"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bmahcuvdsld41" path="res://Art/Objects/ClimbFlower/flowerRoot3.png" id="6_dt7kr"]
 [ext_resource type="Texture2D" uid="uid://dmo81ddgtresw" path="res://Art/Objects/ClimbFlower/flowerRoot4.png" id="7_71nka"]
 [ext_resource type="Script" path="res://Scripts/flower_collider_script.gd" id="7_x4lji"]
+[ext_resource type="Texture2D" uid="uid://dhrvhcsf7e45a" path="res://Art/effects/empty.png" id="8_abms4"]
 [ext_resource type="PackedScene" uid="uid://csw4ibce4mwsc" path="res://Scenes/sound_looper.tscn" id="8_dtlc8"]
 [ext_resource type="Resource" uid="uid://b8thtdmcn7hom" path="res://Audio/SFX/flower_loop.tres" id="9_62kc6"]
 
@@ -47,6 +48,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_abms4")
+}],
+"loop": true,
+"name": &"null",
 "speed": 5.0
 }]
 
@@ -85,8 +94,8 @@ flowerGrowTimer = 4.0
 [node name="base" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 16)
 sprite_frames = SubResource("SpriteFrames_16k52")
-animation = &"idle"
-autoplay = "idle"
+animation = &"null"
+autoplay = "null"
 
 [node name="FlowerBaseCollider" type="Area2D" parent="."]
 position = Vector2(0, 16)
@@ -127,3 +136,8 @@ soundEffect = ExtResource("9_62kc6")
 [node name="Label" type="Label" parent="."]
 offset_right = 40.0
 offset_bottom = 23.0
+
+[node name="canFlowerRaycast" type="RayCast2D" parent="."]
+position = Vector2(0, 2)
+target_position = Vector2(0, -4)
+hit_from_inside = true

@@ -68,6 +68,7 @@ func GenerateObjectsAndEnemiesFromTilemap():
 		
 
 		#Is it an enemy? If so, add it to the list of enemies to spawn
+		#Enemies are spawned in the SpawnAllEnemies function
 		if NoSavedEnemies && !tile.get_custom_data("enemy_type")==0: #zero is default value, meaning this is not an enemy
 			var newEnemy=abstract_enemy.new()
 			newEnemy.type=tile.get_custom_data("enemy_type")-1 #We put -1 here since the value for NO enemy in the EnvironmentTilemap is zero, but the enemy spawn list starts at zero
@@ -89,6 +90,9 @@ func GenerateObjectsAndEnemiesFromTilemap():
 			add_child(node)
 			RemoveTile(tileLoc)
 		
+			if type==2:
+				var flower:climb_flower = node
+				flower.SetHasBlossomed(true)
 		
 	#Does the tile have an ore? If so, place it in the OreTilemap!
 		if tile.get_custom_data("oreblock_terrain")>0: #zero is default value, meaning this is not an enemy
@@ -214,13 +218,14 @@ func GetEnemyUpdate():
 
 func CreateNewFlowerFromGlobalPos(globalPos:Vector2):
 	
-	var node=flowerReference.instantiate()
-	
+	var node:climb_flower=flowerReference.instantiate()
 	var mapPos = gameTilemap.local_to_map(to_local(globalPos))
 	var gPos=to_local(gameTilemap.map_to_local(mapPos))
 	node.transform.origin=gPos
 	
 	add_child(node)
+	node.SetHasBlossomed(false)
+
 	return node
 	
 

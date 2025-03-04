@@ -4,6 +4,7 @@ class_name climb_flower
 @onready var vine:TextureRect=$vine
 @onready var flowerAnim:AnimatedSprite2D=$FlowerBody/FlowerAnim
 @onready var flowerBody:RigidBody2D=$FlowerBody
+@onready var raycast:RayCast2D=$canFlowerRaycast
 
 
 @onready var flowerAttachedSound:sound_looper=$SoundLooper
@@ -32,7 +33,7 @@ var isBeingNurtured:bool=false
 
 func _ready() -> void:
 	GlobalVariables.PlayerIsDrillingTileChanged.connect(PLayerDrillingTileChange)
-
+	
 func PLayerDrillingTileChange(drilling:bool):
 	if !drilling:
 		isBeingNurtured=false
@@ -52,11 +53,16 @@ func _process(delta: float) -> void:
 
 func Update_Growing(delta:float):
 	
+	
 	if isBeingNurtured:
 		flowerGrowCount+=delta
 		UpdateRootSprites(flowerGrowCount/flowerGrowTimer)
 		if flowerGrowCount>flowerGrowTimer:
-			SetHasBlossomed(true)
+		
+			if !raycast.is_colliding():
+				SetHasBlossomed(true)
+			else:
+				flowerGrowCount=flowerGrowTimer
 	else:
 		flowerGrowCount-=delta
 		UpdateRootSprites(flowerGrowCount/flowerGrowTimer)
