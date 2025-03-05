@@ -124,7 +124,7 @@ limit = 5
 type = 10
 sound_effect = ExtResource("13_7ph86")
 volume = 0
-pitch_randomness = 0.0
+pitch_randomness = 0.3
 audioBus = 1
 
 [node name="SoundManager" type="Node2D"]
