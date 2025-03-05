@@ -2,6 +2,7 @@ extends CharacterBody2D
 class_name flying_child 
 
 @onready var animator=$Animator
+@onready var slider:HSlider = %UI_LightSlider
 
 @export var gravity:float=2
 @export var speedAtWhichFallingAnimTriggers:float=50
@@ -12,20 +13,39 @@ class_name flying_child
 @export var maxVerticalSpeed:float=80
 @export var friction:float=2
 
+@export var maxEnergy:float=100
+var energy:float=20
+@export var initialJumpCost:float=10
+@export var continuedJumpCost:float=2
+
+
+@export var time_to_lose_power:float=10
+var counter_to_lose_power:float=0
+
+
 enum States{IDLE,JUMPING,FALLING,INACTIVE}
 var state:States=States.INACTIVE
+
+
+@export var maxFuelRefillRate:float=5
+@export var minFuelRefillRate:float=3
+@export var maxJumpTime=0.6
+@export var minJumpTime=0.1
+var energyRefillRatePerSecond:float=maxFuelRefillRate
+
 
 var jumpTime:float=0.6
 var jumpTimeCounter:float=0
 
 var lastAnimatedState:States
-
 var holdTime:float=0
-
 var simulatedJumpPressed:bool=false
 
 
+
 func _physics_process(delta: float) -> void:
+	
+	
 	
 	if state==States.INACTIVE:
 		return
@@ -68,17 +88,50 @@ func _physics_process(delta: float) -> void:
 		else:
 			state=States.IDLE
 
+
+	if state!=States.JUMPING:
+		RefillEnergyBar(delta)
+	UpdateEnergyBar()
 	UpdateAnimations()
 	move_and_slide()
+
+func UpdateLife(delta:float):
+	counter_to_lose_power=min(time_to_lose_power, counter_to_lose_power + delta)
+	var progress=counter_to_lose_power/time_to_lose_power
+	
+	jumpTime=lerpf(maxJumpTime,minJumpTime,progress)
+	energyRefillRatePerSecond=lerpf(maxFuelRefillRate,minFuelRefillRate,progress)
+	$Label.text=str(progress)
+
+func RefillEnergyBar(delta:float):
+	
+	var multiplier=delta/1
+	var gain =energyRefillRatePerSecond*multiplier
+	
+	var mult=1
+	if energy>50:
+		mult=0.5
+	
+	energy=min(maxEnergy,energy+gain*mult)
+	
+
+func UpdateEnergyBar():
+	if slider:
+		slider.value=energy
+	
+	pass
+
 	
 func _on_animator_animation_finished() -> void:
 	pass # Replace with function body.
 
 func initiateJump(_holdtime:float):
+	
 	if state==States.JUMPING:
 		return
-		
+	
 	state=States.JUMPING
+	energy-=initialJumpCost
 
 	if _holdtime>0:
 		simulatedJumpPressed=true
@@ -89,6 +142,7 @@ func initiateJump(_holdtime:float):
 	pass
 	
 func continueJump(delta:float):
+	energy-continuedJumpCost
 	velocity.y-=heldJumpSpeed
 	jumpTimeCounter+=delta
 	if jumpTimeCounter>=jumpTime:
@@ -118,3 +172,12 @@ func UpdateAnimations():
 				animator.animation="down"
 	
 		lastAnimatedState=state
+
+
+func _on_star_fragment_checker_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
+	
+	var starfragment:star_fragment=area.get_parent()
+	energy+=starfragment.worth
+	starfragment.queue_free()
+	
+	pass # Replace with function body.

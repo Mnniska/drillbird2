@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://djowxohivfhhb"]
+[gd_scene load_steps=15 format=3 uid="uid://djowxohivfhhb"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/flying_child.gd" id="1_xqyjr"]
 [ext_resource type="Texture2D" uid="uid://d4gvtpoxcih3j" path="res://Art/characters/child/childFlying_decending1.png" id="2_pnp1f"]
@@ -66,11 +66,16 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_m7bmd"]
 radius = 12.0416
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_w5b2a"]
+
 [node name="FlyingChild" type="CharacterBody2D"]
 collision_layer = 16
-collision_mask = 0
+collision_mask = 4
 script = ExtResource("1_xqyjr")
-gravity = 1.5
+initialJumpCost = 6.0
+continuedJumpCost = 1.0
+time_to_lose_power = 25.0
+maxFuelRefillRate = 3.5
 
 [node name="Animator" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_vrtup")
@@ -84,4 +89,12 @@ shape = SubResource("CircleShape2D_m7bmd")
 offset_right = 40.0
 offset_bottom = 23.0
 
+[node name="starFragmentChecker" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="starFragmentChecker"]
+shape = SubResource("CircleShape2D_w5b2a")
+
 [connection signal="animation_finished" from="Animator" to="." method="_on_animator_animation_finished"]
+[connection signal="area_shape_entered" from="starFragmentChecker" to="." method="_on_star_fragment_checker_area_shape_entered"]
