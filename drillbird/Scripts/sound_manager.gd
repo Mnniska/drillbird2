@@ -1,16 +1,12 @@
 extends Node2D
+class_name sound_manager
 
 @export var SOUND_EFFECTS:Array[abstract_SoundEffectSetting]
 
 
-var soundEffectDict={}
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var index=0
-	for n : abstract_SoundEffectSetting in SOUND_EFFECTS:
-		soundEffectDict[index]=n.type
-		index+=1
 	
 	pass # Replace with function body.
 
@@ -63,7 +59,7 @@ func PlaySoundGlobal(type:abstract_SoundEffectSetting.SoundEffectEnum,pitch:floa
 		
 		var new_2D_audio = AudioStreamPlayer2D.new()
 		add_child(new_2D_audio)
-		new_2D_audio.global_position=GlobalVariables.PlayerController.global_position
+		new_2D_audio.global_position=GlobalVariables.MainSceneReferenceConnector.ref_camera.global_position
 		
 		new_2D_audio=SetupCommonSoundSettings(soundEffectSetting ,new_2D_audio)
 		if pitch!=-1:

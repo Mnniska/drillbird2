@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://c6kxrgykfp1c1"]
+[gd_scene load_steps=39 format=3 uid="uid://c6kxrgykfp1c1"]
 
 [ext_resource type="Script" path="res://Scripts/sound_manager.gd" id="1_kivlo"]
 [ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_SoundEffectSetting.gd" id="2_ba8up"]
@@ -11,7 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://bkn6d73ogba4u" path="res://Audio/SFX/ore_grabbed.wav" id="10_4crdv"]
 [ext_resource type="AudioStream" uid="uid://mkkn175q2oj0" path="res://Audio/Ambience/ambience_surface.wav" id="10_l466u"]
 [ext_resource type="AudioStream" uid="uid://dalpro3l37ots" path="res://Audio/SFX/ore_land.wav" id="11_reqvu"]
-[ext_resource type="AudioStream" uid="uid://bkend8hbxki0p" path="res://Audio/Music/mus_Home.wav" id="12_any0t"]
+[ext_resource type="AudioStream" uid="uid://bkend8hbxki0p" path="res://Audio/MUSIC/mus_Home.wav" id="12_any0t"]
 [ext_resource type="AudioStream" uid="uid://drsg7tlwye4oa" path="res://Audio/SFX/player_damage.wav" id="13_7ph86"]
 [ext_resource type="Resource" uid="uid://bcfjktr5bgh23" path="res://Audio/SFX/home_menu_down.tres" id="14_0ocus"]
 [ext_resource type="Resource" uid="uid://dqlcy8kk3asuu" path="res://Audio/SFX/home_menu_purchase_no.tres" id="15_ml3a0"]
@@ -24,6 +24,9 @@
 [ext_resource type="Resource" uid="uid://cgaws20rqmqyn" path="res://Audio/SFX/home_giveOres_poff.tres" id="22_kknpr"]
 [ext_resource type="Resource" uid="uid://bf3mrqa0pfmfc" path="res://Audio/SFX/enemies/audio_generic_death.tres" id="23_mwuym"]
 [ext_resource type="Resource" uid="uid://ic37xl80st14" path="res://Audio/SFX/enemies/fallblock_falling_Shake.tres" id="24_qdclh"]
+[ext_resource type="Resource" uid="uid://2edu0hnldqv5" path="res://Audio/cutscenes/intro/intro_scene1.tres" id="25_7lp3a"]
+[ext_resource type="Resource" uid="uid://dflsd6kmj1cfq" path="res://Audio/cutscenes/intro/intro_scene2.tres" id="26_mor80"]
+[ext_resource type="Resource" uid="uid://c8hmydot5o7np" path="res://Audio/cutscenes/intro/intro_scene3.tres" id="27_2oioi"]
 
 [sub_resource type="Resource" id="Resource_0hq0f"]
 script = ExtResource("2_ba8up")
@@ -126,4 +129,4 @@ audioBus = 1
 
 [node name="SoundManager" type="Node2D"]
 script = ExtResource("1_kivlo")
-SOUND_EFFECTS = Array[ExtResource("2_ba8up")]([SubResource("Resource_0hq0f"), SubResource("Resource_4wqnx"), SubResource("Resource_560ql"), SubResource("Resource_phbpy"), SubResource("Resource_3bcde"), SubResource("Resource_dy3hh"), SubResource("Resource_avwkg"), SubResource("Resource_gpl43"), SubResource("Resource_eecqi"), SubResource("Resource_i15mf"), SubResource("Resource_efqg6"), ExtResource("14_0ocus"), ExtResource("15_ml3a0"), ExtResource("16_xsp05"), ExtResource("17_bvdjt"), ExtResource("18_r5cpv"), ExtResource("19_chhhc"), ExtResource("20_brk7d"), ExtResource("21_ia80u"), ExtResource("22_kknpr"), ExtResource("23_mwuym"), ExtResource("24_qdclh")])
+SOUND_EFFECTS = Array[ExtResource("2_ba8up")]([SubResource("Resource_0hq0f"), SubResource("Resource_4wqnx"), SubResource("Resource_560ql"), SubResource("Resource_phbpy"), SubResource("Resource_3bcde"), SubResource("Resource_dy3hh"), SubResource("Resource_avwkg"), SubResource("Resource_gpl43"), SubResource("Resource_eecqi"), SubResource("Resource_i15mf"), SubResource("Resource_efqg6"), ExtResource("14_0ocus"), ExtResource("15_ml3a0"), ExtResource("16_xsp05"), ExtResource("17_bvdjt"), ExtResource("18_r5cpv"), ExtResource("19_chhhc"), ExtResource("20_brk7d"), ExtResource("21_ia80u"), ExtResource("22_kknpr"), ExtResource("23_mwuym"), ExtResource("24_qdclh"), ExtResource("25_7lp3a"), ExtResource("26_mor80"), ExtResource("27_2oioi"), ExtResource("25_7lp3a")])

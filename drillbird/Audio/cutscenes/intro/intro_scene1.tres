@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="abstract_SoundEffectSetting" load_steps=3 format=3 uid="uid://2edu0hnldqv5"]
+
+[ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_SoundEffectSetting.gd" id="1_apk7q"]
+[ext_resource type="AudioStream" uid="uid://dci46ylvv8xxc" path="res://Audio/cutscenes/intro/intro_birdy_appear_pling_fall.wav" id="2_c1n4i"]
+
+[resource]
+script = ExtResource("1_apk7q")
+limit = 5
+type = 25
+sound_effect = ExtResource("2_c1n4i")
+volume = 0
+pitch_randomness = 0.2
+audioBus = 1

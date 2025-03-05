@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="abstract_SoundEffectSetting" load_steps=3 format=3 uid="uid://dflsd6kmj1cfq"]
+
+[ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_SoundEffectSetting.gd" id="1_g7ijs"]
+[ext_resource type="AudioStream" uid="uid://bjwpdkfd0cp28" path="res://Audio/cutscenes/intro/intro_birdy_falling.wav" id="2_jqnrl"]
+
+[resource]
+script = ExtResource("1_g7ijs")
+limit = 1
+type = 26
+sound_effect = ExtResource("2_jqnrl")
+volume = 0
+pitch_randomness = 0.0
+audioBus = 1

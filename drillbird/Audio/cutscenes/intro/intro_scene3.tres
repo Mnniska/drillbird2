@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="abstract_SoundEffectSetting" load_steps=3 format=3 uid="uid://c8hmydot5o7np"]
+
+[ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_SoundEffectSetting.gd" id="1_uvied"]
+[ext_resource type="AudioStream" uid="uid://tbmgm4y8kxhk" path="res://Audio/cutscenes/intro/intro_birdy_crash_boom.wav" id="2_cygt1"]
+
+[resource]
+script = ExtResource("1_uvied")
+limit = 1
+type = 27
+sound_effect = ExtResource("2_cygt1")
+volume = 0
+pitch_randomness = 0.0
+audioBus = 1

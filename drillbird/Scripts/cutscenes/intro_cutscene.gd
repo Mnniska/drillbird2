@@ -4,6 +4,8 @@ signal cutscene_finished
 var camera:game_camera
 var switchingScene:bool=false
 
+enum cutsceneSounds{ scene1,scene2,scene3 }
+
 @export var cameraPositions:Array[Node2D]
 var currentpos:int=0
 # Called when the node enters the scene tree for the first time.
@@ -42,5 +44,23 @@ func PlayScene(anim:int):
 	player.play(thing)
 	camera.StartNewLerp(cameraPositions[anim-1].global_position,0)
 
+	
+func PlaySound(sound:cutsceneSounds):
+	
+	var soundEffectType:abstract_SoundEffectSetting.SoundEffectEnum
+	
+	match sound:
+		cutsceneSounds.scene1:
+			soundEffectType=abstract_SoundEffectSetting.SoundEffectEnum.INTRO_CUTSCENE_SCENE1
+			pass
+		cutsceneSounds.scene2:
+			soundEffectType=abstract_SoundEffectSetting.SoundEffectEnum.INTRO_CUTSCENE_SCENE2
+			pass
+		cutsceneSounds.scene3:
+			soundEffectType=abstract_SoundEffectSetting.SoundEffectEnum.INTRO_CUTSCENE_SCENE3
+			pass
+				
+	SoundManager.PlaySoundGlobal(soundEffectType)
+	
 	
 	pass
