@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ckg08cx7byl1x"
-path="res://.godot/imported/symbol_Z.png-f974d60cdf057bd9539adca1a782b3c3.ctex"
+path="res://.godot/imported/symbol_Z.png-5ae624e46c902ae2edb07a42cc97b32f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/ui/Symbols/symbol_Z.png"
-dest_files=["res://.godot/imported/symbol_Z.png-f974d60cdf057bd9539adca1a782b3c3.ctex"]
+source_file="res://Art/UI/Symbols/symbol_Z.png"
+dest_files=["res://.godot/imported/symbol_Z.png-5ae624e46c902ae2edb07a42cc97b32f.ctex"]
 
 [params]
 
