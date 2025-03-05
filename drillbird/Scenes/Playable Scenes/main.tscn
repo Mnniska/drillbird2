@@ -535,7 +535,7 @@ AIRJUMP_VELOCITY = -160
 [node name="Camera2D" type="Camera2D" parent="."]
 unique_name_in_owner = true
 z_index = 2
-position = Vector2(1, -240)
+position = Vector2(-1309, -262)
 process_callback = 0
 limit_top = -450
 position_smoothing_speed = 8.0
@@ -1561,7 +1561,6 @@ visible = false
 shape = SubResource("CircleShape2D_mstut")
 
 [node name="PlayerSpawnLocations" type="Node2D" parent="."]
-visible = false
 
 [node name="OriginalSpawnPos" type="Sprite2D" parent="PlayerSpawnLocations"]
 position = Vector2(-616, 518)
@@ -1584,7 +1583,7 @@ position = Vector2(0, -77)
 texture = ExtResource("64_yk8d7")
 
 [node name="Spawnpos_LastThird" type="Sprite2D" parent="PlayerSpawnLocations"]
-position = Vector2(-31, 456)
+position = Vector2(249, 1835)
 texture = ExtResource("64_yk8d7")
 
 [node name="Spawnpos_FlowerTutorial" type="Sprite2D" parent="PlayerSpawnLocations"]

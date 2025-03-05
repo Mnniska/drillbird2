@@ -23,30 +23,18 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += -get_gravity() * delta * 0.3
 
-	if state==States.WALK:
-		
-		if direction:
-			velocity.x = direction * SPEED
-		else:
-			velocity.x = move_toward(velocity.x, 0, SPEED)
 
-	var anim="idle"
-	
-	if state==States.WALK:
-		anim="run"
-	
-	
-	isFalling = GetIsFalling()
-	if isFalling:
-		anim="fall"
-
+	var anim="run"
 
 	move_and_slide()
-	UpdateAnimations(anim)
 
 	if state==States.WALK:
+		anim="run"
 		
-		if !GetIsFalling() and !isFalling:
+		velocity.x = direction * SPEED
+		
+		var diff=abs(positionLastFrame-position)
+		if diff.x < 0.1 and !isFalling:
 			turningCounter+=delta
 			if turningCounter>=timeBeforeTurning:
 				turningCounter=0
@@ -58,13 +46,21 @@ func _physics_process(delta: float) -> void:
 
 
 	if state==States.WAIT:
+		anim="idle"
 		waitCounter+=delta
 		if waitCounter>timeInWait:
 			waitCounter=0
 			state=States.WALK
 
 	#Done at the end of upate, used in the next loop
+	isFalling = GetIsFalling()
+	if isFalling:
+		anim="fall"
+	
+	
 	positionLastFrame=position
+	UpdateAnimations(anim)
+
 
 func UpdateAnimations(_anim:String):
 

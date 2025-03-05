@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://e3titjk1as46"]
+[gd_scene load_steps=67 format=3 uid="uid://e3titjk1as46"]
 
 [ext_resource type="Script" path="res://Scripts/playermovement.gd" id="1_llgr2"]
 [ext_resource type="Texture2D" uid="uid://dqsglx1jll3rm" path="res://Art/effects/BirdyLightEffect1.png" id="2_65ywu"]
@@ -45,6 +45,7 @@
 [ext_resource type="Texture2D" uid="uid://c4kbqht4juyov" path="res://Art/characters/Drillbird/anim_drill/drilling_down_fall.png" id="23_fmdch"]
 [ext_resource type="Texture2D" uid="uid://bdnsaxsutvhq8" path="res://Art/effects/sprite_jumpCrystal3.png" id="24_nofj5"]
 [ext_resource type="Texture2D" uid="uid://d1fxkvrdmxu4l" path="res://Art/effects/sprite_jumpCrystal4.png" id="25_ehp6o"]
+[ext_resource type="Texture2D" uid="uid://bevem4o77nqs8" path="res://Art/characters/Drillbird/birdy_dropOres.png" id="31_ouow2"]
 [ext_resource type="Texture2D" uid="uid://5wrxmdf1hats" path="res://Art/characters/Drillbird/birdie_flowerFly.png" id="32_shida"]
 [ext_resource type="Theme" uid="uid://bfr5y4lo7m1ux" path="res://Resources/Fonts/fontTheme.tres" id="38_sekb7"]
 
@@ -207,6 +208,14 @@ animations = [{
 "loop": true,
 "name": &"drill_up",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("31_ouow2")
+}],
+"loop": true,
+"name": &"drop_ores",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -387,7 +396,7 @@ randomness = 1.0
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 2
 sprite_frames = SubResource("SpriteFrames_3vbtj")
-animation = &"flyingUp"
+animation = &"drop_ores"
 autoplay = "idle"
 
 [node name="jumpCrystal1" type="AnimatedSprite2D" parent="AnimatedSprite2D"]
