@@ -1,4 +1,4 @@
-[gd_scene load_steps=180 format=4 uid="uid://d2wv7igie5stg"]
+[gd_scene load_steps=146 format=4 uid="uid://d2wv7igie5stg"]
 
 [ext_resource type="TileSet" uid="uid://grpd2pyu7pgk" path="res://Resources/MainTileset.tres" id="1_1imtu"]
 [ext_resource type="Script" path="res://Scenes/Playable Scenes/SaveManager.gd" id="1_iickb"]
@@ -85,37 +85,7 @@
 [ext_resource type="Texture2D" uid="uid://cteniqfiutkpm" path="res://Art/environment/solid_decorations/Hub_Grass_01.png" id="72_f67e5"]
 [ext_resource type="Texture2D" uid="uid://cjoiufc0rcyin" path="res://Art/environment/solid_decorations/HangingMoss_Chunk_02.png" id="75_svg4d"]
 [ext_resource type="PackedScene" uid="uid://bjaykfdp1s4y" path="res://Scenes/Objects and Enemies/Torch_scene.tscn" id="77_3plt1"]
-[ext_resource type="Script" path="res://Scripts/cutscenes/intro_cutscene.gd" id="86_7l2kb"]
-[ext_resource type="Texture2D" uid="uid://d0ot502nge360" path="res://Art/environment/SpaceBackground/background_space_spaceLayer.png" id="86_nj1f0"]
-[ext_resource type="Texture2D" uid="uid://cppaqyj108bva" path="res://Art/cutscenes/intro/intro_fallingstar1.png" id="87_xus08"]
-[ext_resource type="Texture2D" uid="uid://b0215hmdus73b" path="res://Art/cutscenes/intro/intro_fallingstar2.png" id="88_rimy3"]
-[ext_resource type="Texture2D" uid="uid://crhesgxekjf7t" path="res://Art/cutscenes/intro/intro_fallingstar3.png" id="89_u3igf"]
-[ext_resource type="Texture2D" uid="uid://dp6y35c2cl8lg" path="res://Art/cutscenes/intro/intro_fallingstar4.png" id="90_ewmhl"]
-[ext_resource type="Texture2D" uid="uid://sf8272wwlnj7" path="res://Art/cutscenes/intro/intro_fallingstar5.png" id="91_sxqnc"]
-[ext_resource type="Texture2D" uid="uid://c8jcuusuxcykh" path="res://Art/cutscenes/intro/intro_fallingstar6.png" id="92_ptu4k"]
-[ext_resource type="Texture2D" uid="uid://bchx7qmnvx2w1" path="res://Art/cutscenes/intro/intro_fallingstar7.png" id="93_8v1im"]
-[ext_resource type="Texture2D" uid="uid://crgib445at7le" path="res://Art/cutscenes/intro/intro_fallingstar8.png" id="94_0aapp"]
-[ext_resource type="Texture2D" uid="uid://1kb5ojr3lmw1" path="res://Art/cutscenes/intro/intro_fallingstar9.png" id="95_edgtq"]
-[ext_resource type="Texture2D" uid="uid://dsiu8qu8v2ygm" path="res://Art/cutscenes/intro/intro_fallingstar10.png" id="96_8wdvy"]
-[ext_resource type="Texture2D" uid="uid://df0oq4fehu348" path="res://Art/cutscenes/intro/intro_fallingstar11.png" id="97_nab0f"]
-[ext_resource type="Texture2D" uid="uid://c0ukp2xx1alq4" path="res://Art/cutscenes/intro/intro_fallingstar12.png" id="98_olqnw"]
-[ext_resource type="Texture2D" uid="uid://b4ahnqqu2xp6w" path="res://Art/cutscenes/intro/intro_fallingstar13.png" id="99_t0vwh"]
-[ext_resource type="Texture2D" uid="uid://nor8k745nsvc" path="res://Art/cutscenes/intro/intro_fallingstar14.png" id="100_eadcs"]
-[ext_resource type="Texture2D" uid="uid://q71wthfvu681" path="res://Art/cutscenes/intro/intro_fallingstar15.png" id="101_l4r5p"]
-[ext_resource type="Shader" path="res://Shaders/UVTextureScrollShader.gdshader" id="102_icsb3"]
-[ext_resource type="Texture2D" uid="uid://b3lpuesrmtdma" path="res://Art/cutscenes/intro/intro_flyingbirdy1.png" id="103_yt8sp"]
-[ext_resource type="Texture2D" uid="uid://cxoxj78t6pad8" path="res://Art/cutscenes/intro/intro_flyingbirdy2.png" id="104_l70kh"]
-[ext_resource type="Texture2D" uid="uid://bsgc32b0wuepj" path="res://Art/cutscenes/intro/intro_flyingbirdy3.png" id="105_hi5v5"]
-[ext_resource type="Texture2D" uid="uid://cq2c2aj0x4ypo" path="res://Art/cutscenes/intro/intro_flyingbirdy4.png" id="106_opxw8"]
-[ext_resource type="Texture2D" uid="uid://brddijd460nyp" path="res://Art/cutscenes/intro/intro_starcrashl1.png" id="107_lbkkn"]
-[ext_resource type="Texture2D" uid="uid://duldptrwat3ay" path="res://Art/cutscenes/intro/intro_starcrashl2.png" id="108_xabun"]
-[ext_resource type="Texture2D" uid="uid://b0iq44vnfvm6j" path="res://Art/cutscenes/intro/intro_starcrashl3.png" id="109_gpov5"]
-[ext_resource type="Texture2D" uid="uid://d37tt64ht22ol" path="res://Art/cutscenes/intro/intro_starcrashl4.png" id="110_6sggl"]
-[ext_resource type="Texture2D" uid="uid://behn1m1t24mt0" path="res://Art/cutscenes/intro/intro_starcrashl5.png" id="111_6p2e1"]
-[ext_resource type="Texture2D" uid="uid://dw41ew4p4qdyb" path="res://Art/cutscenes/intro/intro_starcrashl6.png" id="112_r7l1k"]
-[ext_resource type="Texture2D" uid="uid://b455tmyjvqmv8" path="res://Art/cutscenes/intro/intro_starcrashl7.png" id="113_avoew"]
-[ext_resource type="Texture2D" uid="uid://d5utklggs16d" path="res://Art/cutscenes/intro/intro_starcrashl8.png" id="114_c4kt6"]
-[ext_resource type="Texture2D" uid="uid://bcueq4thl3gk0" path="res://Art/cutscenes/intro/intro_starcrashl9.png" id="115_pwnk8"]
+[ext_resource type="PackedScene" uid="uid://beb5rv0u4ftaa" path="res://Scenes/cutscenes/intro_cutscene.tscn" id="86_d8wwr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b7p1b"]
 texture = ExtResource("2_8xt30")
@@ -403,125 +373,6 @@ radius = 424.019
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aulbw"]
 size = Vector2(73, 20)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_edr6v"]
-animations = [{
-"frames": [],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("87_xus08")
-}, {
-"duration": 1.0,
-"texture": ExtResource("88_rimy3")
-}, {
-"duration": 1.0,
-"texture": ExtResource("89_u3igf")
-}, {
-"duration": 1.0,
-"texture": ExtResource("90_ewmhl")
-}, {
-"duration": 1.0,
-"texture": ExtResource("91_sxqnc")
-}, {
-"duration": 1.0,
-"texture": ExtResource("92_ptu4k")
-}, {
-"duration": 1.0,
-"texture": ExtResource("93_8v1im")
-}, {
-"duration": 1.0,
-"texture": ExtResource("94_0aapp")
-}, {
-"duration": 1.0,
-"texture": ExtResource("95_edgtq")
-}, {
-"duration": 1.0,
-"texture": ExtResource("96_8wdvy")
-}, {
-"duration": 1.0,
-"texture": ExtResource("97_nab0f")
-}, {
-"duration": 1.0,
-"texture": ExtResource("98_olqnw")
-}, {
-"duration": 1.0,
-"texture": ExtResource("99_t0vwh")
-}, {
-"duration": 1.0,
-"texture": ExtResource("100_eadcs")
-}, {
-"duration": 1.0,
-"texture": ExtResource("101_l4r5p")
-}],
-"loop": true,
-"name": &"fall",
-"speed": 12.0
-}]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7gj13"]
-shader = ExtResource("102_icsb3")
-shader_parameter/motion = Vector2(1000, 0)
-shader_parameter/scale = 1.0
-shader_parameter/offset = Vector2(0, 0)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_ogayo"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("103_yt8sp")
-}, {
-"duration": 1.0,
-"texture": ExtResource("104_l70kh")
-}, {
-"duration": 1.0,
-"texture": ExtResource("105_hi5v5")
-}, {
-"duration": 1.0,
-"texture": ExtResource("106_opxw8")
-}],
-"loop": true,
-"name": &"default",
-"speed": 12.0
-}]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_1d3pf"]
-animations = [{
-"frames": [{
-"duration": 6.0,
-"texture": ExtResource("107_lbkkn")
-}, {
-"duration": 1.0,
-"texture": ExtResource("108_xabun")
-}, {
-"duration": 1.0,
-"texture": ExtResource("109_gpov5")
-}, {
-"duration": 1.0,
-"texture": ExtResource("110_6sggl")
-}, {
-"duration": 1.0,
-"texture": ExtResource("111_6p2e1")
-}, {
-"duration": 1.0,
-"texture": ExtResource("112_r7l1k")
-}, {
-"duration": 3.0,
-"texture": ExtResource("113_avoew")
-}, {
-"duration": 3.0,
-"texture": ExtResource("114_c4kt6")
-}, {
-"duration": 3.0,
-"texture": ExtResource("115_pwnk8")
-}],
-"loop": true,
-"name": &"default",
-"speed": 8.0
-}]
-
 [node name="Node" type="Node"]
 script = ExtResource("1_iickb")
 
@@ -685,7 +536,7 @@ AIRJUMP_VELOCITY = -160
 [node name="Camera2D" type="Camera2D" parent="."]
 unique_name_in_owner = true
 z_index = 2
-position = Vector2(-2200, 17)
+position = Vector2(-2159, -320)
 scale = Vector2(0.5, 0.5)
 process_callback = 0
 limit_top = -450
@@ -694,7 +545,7 @@ script = ExtResource("15_sox0p")
 
 [node name="Darkness" type="PointLight2D" parent="Camera2D"]
 position = Vector2(16.5, -78.5)
-scale = Vector2(2.78846, 1.71364)
+scale = Vector2(5.576, 3.428)
 blend_mode = 2
 range_z_max = 0
 range_item_cull_mask = 7
@@ -702,6 +553,7 @@ texture = SubResource("GradientTexture2D_ywsei")
 
 [node name="ShopHandler" type="Node2D" parent="Camera2D" node_paths=PackedStringArray("UI_purchasables")]
 visible = false
+scale = Vector2(2, 2)
 script = ExtResource("26_mk1t6")
 UI_purchasables = [NodePath("Purchasable1"), NodePath("Purchasable2"), NodePath("Purchasable3"), NodePath("Purchasable4"), NodePath("Button_Continue")]
 abstract_purchasables = Array[ExtResource("27_hx1y5")]([ExtResource("28_iowjc"), ExtResource("29_cp1r6"), ExtResource("30_yx4wb"), ExtResource("31_4ia3e"), ExtResource("30_4yogw")])
@@ -746,12 +598,13 @@ vertical_alignment = 1
 [node name="darkness" type="Sprite2D" parent="Camera2D"]
 visible = false
 z_index = 2
-position = Vector2(-0.499992, -3.50001)
-scale = Vector2(1.27734, 185)
+position = Vector2(-0.499992, -15)
+scale = Vector2(2.554, 502)
 texture = SubResource("GradientTexture1D_ea32y")
 
 [node name="DebugFunctionality" type="Node2D" parent="Camera2D"]
 z_index = 2
+scale = Vector2(2, 2)
 script = ExtResource("47_igpia")
 menu = Array[ExtResource("48_cl8sw")]([SubResource("Resource_dq3mr"), SubResource("Resource_5ornm"), SubResource("Resource_77at3"), SubResource("Resource_v3nii"), SubResource("Resource_co6uo"), SubResource("Resource_o5w6h"), SubResource("Resource_1t4wb"), SubResource("Resource_i5oq0"), SubResource("Resource_2iaja")])
 oreToSpawn = ExtResource("48_0rfc7")
@@ -762,19 +615,20 @@ finalHeartOre = ExtResource("22_nstd1")
 offset_left = -160.0
 offset_top = -96.0
 offset_right = 95.0
-offset_bottom = 7.0
+offset_bottom = 65.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 theme = ExtResource("42_e8s0s")
 
 [node name="Day counter" type="RichTextLabel" parent="Camera2D"]
 clip_contents = false
-offset_left = -156.0
-offset_top = -99.0
-offset_right = -9.0
-offset_bottom = -72.0
+offset_left = -320.0
+offset_top = -44.0
+offset_right = 320.0
+offset_bottom = 54.0
 theme = ExtResource("42_e8s0s")
 bbcode_enabled = true
+text = "[center]hello"
 scroll_active = false
 autowrap_mode = 0
 shortcut_keys_enabled = false
@@ -1745,66 +1599,7 @@ texture = ExtResource("64_yk8d7")
 position = Vector2(-902, 2608)
 texture = ExtResource("64_yk8d7")
 
-[node name="IntroCutscene" type="Node2D" parent="."]
-script = ExtResource("86_7l2kb")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="IntroCutscene"]
-
-[node name="scene1" type="Node2D" parent="IntroCutscene"]
-position = Vector2(-3260, -12)
-
-[node name="scene1_bg" type="Sprite2D" parent="IntroCutscene/scene1"]
-position = Vector2(-15, 120)
-texture = ExtResource("86_nj1f0")
-
-[node name="scene1_starfall" type="AnimatedSprite2D" parent="IntroCutscene/scene1"]
-position = Vector2(0, 131)
-sprite_frames = SubResource("SpriteFrames_edr6v")
-animation = &"fall"
-autoplay = "default"
-frame_progress = 0.868454
-
-[node name="cameraLocation" type="Node2D" parent="IntroCutscene/scene1"]
-position = Vector2(1, 116)
-
-[node name="scene2" type="Node2D" parent="IntroCutscene"]
-position = Vector2(-2633, 43)
-
-[node name="BG_base" type="Sprite2D" parent="IntroCutscene/scene2"]
-light_mask = 0
-visibility_layer = 4
-texture_repeat = 2
-material = SubResource("ShaderMaterial_7gj13")
-position = Vector2(-9, 123)
-rotation = 0.849135
-texture = ExtResource("86_nj1f0")
-region_enabled = true
-region_rect = Rect2(0, 0, 500, 500)
-
-[node name="birdyFalling" type="AnimatedSprite2D" parent="IntroCutscene/scene2"]
-position = Vector2(0, 131)
-sprite_frames = SubResource("SpriteFrames_ogayo")
-autoplay = "default"
-frame_progress = 0.536868
-
-[node name="cameraLocation2" type="Node2D" parent="IntroCutscene/scene2"]
-position = Vector2(-10, 122)
-
-[node name="scene3" type="Node2D" parent="IntroCutscene"]
-position = Vector2(-2043, -6)
-
-[node name="scene1_bg" type="Sprite2D" parent="IntroCutscene/scene3"]
-position = Vector2(-15, 120)
-texture = ExtResource("86_nj1f0")
-
-[node name="scene1_starfall" type="AnimatedSprite2D" parent="IntroCutscene/scene3"]
-position = Vector2(1, 116)
-sprite_frames = SubResource("SpriteFrames_1d3pf")
-autoplay = "default"
-frame_progress = 0.24842
-
-[node name="cameraLocation" type="Node2D" parent="IntroCutscene/scene3"]
-position = Vector2(1, 116)
+[node name="IntroCutscene" parent="." instance=ExtResource("86_d8wwr")]
 
 [connection signal="MaterialChanged" from="TileCrack" to="Player" method="_on_tile_crack_material_changed"]
 [connection signal="newTileCrack" from="Player" to="TileCrack" method="_on_player_new_tile_crack"]

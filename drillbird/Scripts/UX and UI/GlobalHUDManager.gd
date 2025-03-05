@@ -105,7 +105,6 @@ func SetState(_state:menuStates):
 	previousMenuState=state
 	state=_state
 	
-	
 	match state:
 		menuStates.MAIN:
 			SetHudVisible(false)
@@ -113,6 +112,7 @@ func SetState(_state:menuStates):
 			MainMenu.GenerateMainMenu()
 			GlobalVariables.PlayerController.SetPlayerHidden(true)
 			GlobalVariables.playerStatus=GlobalVariables.playerStatusEnum.MENU
+			
 			OptionsMenu.SetActive(false)
 			PauseMenu.SetActive(false)
 
@@ -133,7 +133,8 @@ func SetState(_state:menuStates):
 
 			pass
 		menuStates.PLAY:
-			SetHudVisible(true)
+			SetHudVisible(true)			
+			GlobalVariables.MainSceneReferenceConnector.ref_camera.SetFollowPlayer(true)
 			GlobalVariables.PlayerController.SetPlayerHidden(false)
 			GlobalVariables.playerStatus=GlobalVariables.playerStatusEnum.DIG
 			MainMenu.Deactivate()
@@ -169,7 +170,23 @@ func SetSceneState(state:sceneStates):
 	pass
 
 func _on_main_menu_new_game() -> void:
+	
+	if !GlobalVariables.hasSeenIntroCutscene:
+		MainMenu.FadeAway(false)
+		await get_tree().create_timer(2).timeout
+		
+		var introCutscene=GlobalVariables.MainSceneReferenceConnector.introCutscene
+		
+		
+		introCutscene.Play()
+		introCutscene.cutscene_finished.connect(introCutsceneFinished)
+	else:
+		SetState(menuStates.PLAY)
+		
+
+func introCutsceneFinished():
 	SetState(menuStates.PLAY)
+	GlobalVariables.hasSeenIntroCutscene=true
 
 	pass # Replace with function body.
 

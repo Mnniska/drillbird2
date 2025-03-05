@@ -30,11 +30,12 @@ var holdCounter:float=0
 var justWokeUp:bool=false
 
 enum states{NO_EGG,IDLE,SELL,RESTPOSSIBLE,SLEEP,SELLING,FINALCUTSCENE}
-var state:states=states.NO_EGG
+var state:states=states.IDLE
 
 	
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -45,7 +46,8 @@ func _process(delta: float) -> void:
 
 func CheckState():
 	
-		
+	if HUD.state!=HUD.menuStates.PLAY:
+		return
 	
 	if state==states.SLEEP or state==states.SELLING or state==states.FINALCUTSCENE or state==states.NO_EGG:
 		UpdateButtons()
@@ -186,6 +188,7 @@ func EggFinishedHatching():
 
 func MainMenu_SetupSleepIdle():
 	
+	Camera.StartNewLerp(CameraLerpPosition.global_position,0)
 	EggHandler.SetBirdyVisible(true)
 	animSleep.animation="asleep"
 	animSleep.play()
@@ -277,7 +280,7 @@ func EggCutsceneFinished():
 
 func _on_nest_collider_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
 	
-	if state==states.NO_EGG:
+	if EggHandler.eggState==EggHandler.eggStates.NOTHING and !GlobalVariables.InitialSetup:
 		PlayLayEggCutscene()
 		return
 

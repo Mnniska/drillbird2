@@ -46,6 +46,7 @@ func Setup():
 	
 	eggState=GlobalVariables.eggState
 	SetEggState(eggState)
+
 	
 	#TODO: Egg state should initially be EMPTY and change to growing after the egg spawning cutscene
 	if eggState==eggStates.GROWING:

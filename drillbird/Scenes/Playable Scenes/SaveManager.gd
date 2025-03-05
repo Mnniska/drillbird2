@@ -6,6 +6,7 @@ extends Node
 @onready var OreSpawner=$TilemapOres
 @onready var player = $Player
 @onready var OriginalSpawnPos=$PlayerSpawnLocations/OriginalSpawnPos
+@onready var introCutscene=$IntroCutscene
 
 signal signal_GameAboutToBeSaved
 
@@ -21,6 +22,7 @@ func _ready() -> void:
 	LoadDestroyedTiles()
 	GlobalVariables.InitialSetup=false
 	
+	SetupMiscGameLogicBeforeStart()
 	pass # Replace with function body.
 
 func _init() -> void:
@@ -48,8 +50,9 @@ func SaveGame():
 	PlayerData.upgrade_light=GlobalVariables.upgradeLevel_light
 	PlayerData.health=GlobalVariables.playerHealth
 	PlayerData.money=GlobalVariables.playerMoney
-	PlayerData.totalMoneyGained=GlobalVariables.totalExperienceGained
+	PlayerData.totalEGGsperienceGained=GlobalVariables.totalEGGsperienceGained
 	PlayerData.playerSpawnPosition = GlobalVariables.playerSpawnPos
+	PlayerData.hasSeenIntroCutscene=GlobalVariables.hasSeenIntroCutscene
 	
 	PlayerData.currentDay=GlobalVariables.currentDay
 	PlayerData.eggState=GlobalVariables.eggState
@@ -145,11 +148,19 @@ func SetGlobalVariablesToLoadedGame():
 	GlobalVariables.currentDay=PlayerData.currentDay
 	GlobalVariables.eggState=PlayerData.eggState
 	
-	if PlayerData.playerSpawnPosition==Vector2(0,0):
+	GlobalVariables.hasSeenIntroCutscene=PlayerData.hasSeenIntroCutscene
+	
+		
+	
+func SetupMiscGameLogicBeforeStart():
+	var camera:game_camera= GlobalVariables.MainSceneReferenceConnector.ref_camera
+
+	if !PlayerData.hasSeenIntroCutscene:
 		PlayerData.playerSpawnPosition=OriginalSpawnPos.global_position
 		player.global_position=PlayerData.playerSpawnPosition
+		camera.StartNewLerp(introCutscene.cameraPositions[0].global_position,0)
 	else:
 		player.global_position=PlayerData.playerSpawnPosition
-	
-	
+
+		
 	pass

@@ -1,4 +1,5 @@
 extends Camera2D
+class_name game_camera
 @onready var Player: CharacterBody2D =$"../Player"
 
 signal LerpFinished
@@ -42,7 +43,10 @@ func StartNewLerp(_destination:Vector2, _time:float):
 	if _time>0:
 		lerpTime=_time
 	else:
-		lerpTime=0.1
+		self.global_position=_destination
+		state=states.WAITING
+		LerpFinished.emit()
+		return
 	lerpDestinationPos=_destination
 	startLerpPos=position
 	timeCounter=0

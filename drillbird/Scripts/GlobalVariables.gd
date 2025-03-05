@@ -6,7 +6,7 @@ signal signal_IsPlayerInMenuChanged(inMenu:bool)
 var MainSceneReferenceConnector:main_scene_reference_connector
 var playerSpawnPos:Vector2
 var eggState:int=0
-
+var hasSeenIntroCutscene:bool=false
 enum playerActions{DRILL,JUMP,DROPORE,INTERACT}
 
 enum typeEnum{DRILL, INVENTORY, HEALTH, LIGHT}

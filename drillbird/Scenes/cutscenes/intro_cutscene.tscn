@@ -1,0 +1,352 @@
+[gd_scene load_steps=46 format=3 uid="uid://beb5rv0u4ftaa"]
+
+[ext_resource type="Script" path="res://Scripts/cutscenes/intro_cutscene.gd" id="1_oqykf"]
+[ext_resource type="Texture2D" uid="uid://d0ot502nge360" path="res://Art/environment/SpaceBackground/background_space_spaceLayer.png" id="2_33qrj"]
+[ext_resource type="Texture2D" uid="uid://cppaqyj108bva" path="res://Art/cutscenes/intro/intro_fallingstar1.png" id="3_33ygt"]
+[ext_resource type="Texture2D" uid="uid://be62r58yrr0tm" path="res://Art/environment/SpaceBackground/background_space_starLayer.png" id="3_owieh"]
+[ext_resource type="Texture2D" uid="uid://c288pgae2xq7d" path="res://Art/environment/SpaceBackground/background_space_planetLayer.png" id="4_0yjtm"]
+[ext_resource type="Texture2D" uid="uid://b0215hmdus73b" path="res://Art/cutscenes/intro/intro_fallingstar2.png" id="4_s58iu"]
+[ext_resource type="Texture2D" uid="uid://crhesgxekjf7t" path="res://Art/cutscenes/intro/intro_fallingstar3.png" id="5_gg37m"]
+[ext_resource type="Texture2D" uid="uid://dp6y35c2cl8lg" path="res://Art/cutscenes/intro/intro_fallingstar4.png" id="6_kirkg"]
+[ext_resource type="Texture2D" uid="uid://sf8272wwlnj7" path="res://Art/cutscenes/intro/intro_fallingstar5.png" id="7_h21i4"]
+[ext_resource type="Texture2D" uid="uid://c8jcuusuxcykh" path="res://Art/cutscenes/intro/intro_fallingstar6.png" id="8_x8v01"]
+[ext_resource type="Texture2D" uid="uid://bchx7qmnvx2w1" path="res://Art/cutscenes/intro/intro_fallingstar7.png" id="9_ofm0n"]
+[ext_resource type="Texture2D" uid="uid://crgib445at7le" path="res://Art/cutscenes/intro/intro_fallingstar8.png" id="10_vr7ws"]
+[ext_resource type="Texture2D" uid="uid://1kb5ojr3lmw1" path="res://Art/cutscenes/intro/intro_fallingstar9.png" id="11_m08ea"]
+[ext_resource type="Texture2D" uid="uid://dsiu8qu8v2ygm" path="res://Art/cutscenes/intro/intro_fallingstar10.png" id="12_hdjx3"]
+[ext_resource type="Texture2D" uid="uid://df0oq4fehu348" path="res://Art/cutscenes/intro/intro_fallingstar11.png" id="13_jphqk"]
+[ext_resource type="Texture2D" uid="uid://c0ukp2xx1alq4" path="res://Art/cutscenes/intro/intro_fallingstar12.png" id="14_1vr5y"]
+[ext_resource type="Texture2D" uid="uid://b4ahnqqu2xp6w" path="res://Art/cutscenes/intro/intro_fallingstar13.png" id="15_mqpjr"]
+[ext_resource type="Texture2D" uid="uid://nor8k745nsvc" path="res://Art/cutscenes/intro/intro_fallingstar14.png" id="16_tvgvm"]
+[ext_resource type="Texture2D" uid="uid://q71wthfvu681" path="res://Art/cutscenes/intro/intro_fallingstar15.png" id="17_34bml"]
+[ext_resource type="Shader" path="res://Shaders/UVTextureScrollShader.gdshader" id="18_4ev28"]
+[ext_resource type="Texture2D" uid="uid://b3lpuesrmtdma" path="res://Art/cutscenes/intro/intro_flyingbirdy1.png" id="19_eptxy"]
+[ext_resource type="Texture2D" uid="uid://cxoxj78t6pad8" path="res://Art/cutscenes/intro/intro_flyingbirdy2.png" id="20_mh0pe"]
+[ext_resource type="Texture2D" uid="uid://bsgc32b0wuepj" path="res://Art/cutscenes/intro/intro_flyingbirdy3.png" id="21_uhqec"]
+[ext_resource type="Texture2D" uid="uid://cq2c2aj0x4ypo" path="res://Art/cutscenes/intro/intro_flyingbirdy4.png" id="22_vlhqn"]
+[ext_resource type="Texture2D" uid="uid://brddijd460nyp" path="res://Art/cutscenes/intro/intro_starcrashl1.png" id="23_38tvk"]
+[ext_resource type="Texture2D" uid="uid://duldptrwat3ay" path="res://Art/cutscenes/intro/intro_starcrashl2.png" id="24_ak65q"]
+[ext_resource type="Texture2D" uid="uid://dhw4bpqwor87d" path="res://Art/environment/SpaceBackground/background_space_base.png" id="25_c6b2e"]
+[ext_resource type="Texture2D" uid="uid://b0iq44vnfvm6j" path="res://Art/cutscenes/intro/intro_starcrashl3.png" id="25_vkoxn"]
+[ext_resource type="Texture2D" uid="uid://d37tt64ht22ol" path="res://Art/cutscenes/intro/intro_starcrashl4.png" id="26_3wyk8"]
+[ext_resource type="Texture2D" uid="uid://behn1m1t24mt0" path="res://Art/cutscenes/intro/intro_starcrashl5.png" id="27_p6rl3"]
+[ext_resource type="Texture2D" uid="uid://dw41ew4p4qdyb" path="res://Art/cutscenes/intro/intro_starcrashl6.png" id="28_dvyf3"]
+[ext_resource type="Texture2D" uid="uid://b455tmyjvqmv8" path="res://Art/cutscenes/intro/intro_starcrashl7.png" id="29_8ins0"]
+[ext_resource type="Texture2D" uid="uid://d5utklggs16d" path="res://Art/cutscenes/intro/intro_starcrashl8.png" id="30_4n1wm"]
+[ext_resource type="Texture2D" uid="uid://bcueq4thl3gk0" path="res://Art/cutscenes/intro/intro_starcrashl9.png" id="31_1ei0x"]
+
+[sub_resource type="Animation" id="Animation_ie4gr"]
+resource_name = "1"
+length = 2.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("scene1/scene1_starfall")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"", 1.0, false],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_bhbtu"]
+resource_name = "default"
+
+[sub_resource type="Animation" id="Animation_ug2fb"]
+resource_name = "2"
+length = 2.8
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("scene2/birdyFalling")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.83333),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [&"", 1.0, false],
+"method": &"play"
+}, {
+"args": [],
+"method": &"is_playing"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_bkqqa"]
+resource_name = "3"
+length = 4.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("scene3/scene3_meteorImpact")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1.03333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"", 1.0, false],
+"method": &"play"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("scene3/scene3_meteorImpact:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.03333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"default"]
+}
+
+[sub_resource type="Animation" id="Animation_8anha"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("scene3/scene3_meteorImpact:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"default"]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8dipo"]
+_data = {
+"1": SubResource("Animation_ie4gr"),
+"2": SubResource("Animation_ug2fb"),
+"3": SubResource("Animation_bkqqa"),
+"RESET": SubResource("Animation_8anha"),
+"default": SubResource("Animation_bhbtu")
+}
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_edr6v"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_33ygt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_s58iu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_gg37m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_kirkg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_h21i4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_x8v01")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ofm0n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_vr7ws")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_m08ea")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_hdjx3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_jphqk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_1vr5y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_mqpjr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_tvgvm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_34bml")
+}],
+"loop": false,
+"name": &"fall",
+"speed": 12.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7gj13"]
+shader = ExtResource("18_4ev28")
+shader_parameter/motion = Vector2(1000, 0)
+shader_parameter/scale = 1.0
+shader_parameter/offset = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y7r5y"]
+shader = ExtResource("18_4ev28")
+shader_parameter/motion = Vector2(5000, 0)
+shader_parameter/scale = 1.0
+shader_parameter/offset = Vector2(0, 0)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ogayo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("19_eptxy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_mh0pe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_uhqec")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_vlhqn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1d3pf"]
+animations = [{
+"frames": [{
+"duration": 6.0,
+"texture": ExtResource("23_38tvk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_ak65q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_vkoxn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_3wyk8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_p6rl3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_dvyf3")
+}, {
+"duration": 3.0,
+"texture": ExtResource("29_8ins0")
+}, {
+"duration": 3.0,
+"texture": ExtResource("30_4n1wm")
+}, {
+"duration": 3.0,
+"texture": ExtResource("31_1ei0x")
+}],
+"loop": false,
+"name": &"default",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("23_38tvk")
+}],
+"loop": false,
+"name": &"wait",
+"speed": 5.0
+}]
+
+[node name="IntroCutscene" type="Node2D" node_paths=PackedStringArray("cameraPositions")]
+script = ExtResource("1_oqykf")
+cameraPositions = [NodePath("scene1/cameraLocation"), NodePath("scene2/cameraLocation2"), NodePath("scene3/cameraLocation")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8dipo")
+}
+autoplay = "default"
+
+[node name="scene1" type="Node2D" parent="."]
+position = Vector2(-3260, -12)
+
+[node name="scene1_bg" type="Sprite2D" parent="scene1"]
+position = Vector2(-15, 120)
+texture = ExtResource("2_33qrj")
+
+[node name="scene1_bg2" type="Sprite2D" parent="scene1"]
+position = Vector2(-15, 120)
+texture = ExtResource("3_owieh")
+
+[node name="scene1_bg3" type="Sprite2D" parent="scene1"]
+position = Vector2(88, 78)
+texture = ExtResource("4_0yjtm")
+
+[node name="scene1_starfall" type="AnimatedSprite2D" parent="scene1"]
+position = Vector2(0, 131)
+sprite_frames = SubResource("SpriteFrames_edr6v")
+animation = &"fall"
+autoplay = "default"
+frame = 14
+frame_progress = 1.0
+
+[node name="cameraLocation" type="Node2D" parent="scene1"]
+position = Vector2(1, 116)
+
+[node name="scene2" type="Node2D" parent="."]
+position = Vector2(-2633, 43)
+
+[node name="BG_base" type="Sprite2D" parent="scene2"]
+light_mask = 0
+visibility_layer = 4
+texture_repeat = 2
+material = SubResource("ShaderMaterial_7gj13")
+position = Vector2(-9, 123)
+rotation = 0.849135
+texture = ExtResource("2_33qrj")
+region_enabled = true
+region_rect = Rect2(0, 0, 500, 500)
+
+[node name="BG_base2" type="Sprite2D" parent="scene2"]
+light_mask = 0
+visibility_layer = 4
+texture_repeat = 2
+material = SubResource("ShaderMaterial_y7r5y")
+position = Vector2(-9, 123)
+rotation = 0.849135
+texture = ExtResource("3_owieh")
+region_enabled = true
+region_rect = Rect2(0, 0, 500, 500)
+
+[node name="birdyFalling" type="AnimatedSprite2D" parent="scene2"]
+position = Vector2(0, 131)
+sprite_frames = SubResource("SpriteFrames_ogayo")
+autoplay = "default"
+frame_progress = 0.224175
+
+[node name="cameraLocation2" type="Node2D" parent="scene2"]
+position = Vector2(-10, 122)
+
+[node name="scene3" type="Node2D" parent="."]
+position = Vector2(-2043, -6)
+
+[node name="scene3bg" type="Sprite2D" parent="scene3"]
+position = Vector2(-15, 114)
+texture = ExtResource("25_c6b2e")
+
+[node name="scene3_meteorImpact" type="AnimatedSprite2D" parent="scene3"]
+position = Vector2(1, 116)
+sprite_frames = SubResource("SpriteFrames_1d3pf")
+autoplay = "wait"
+
+[node name="cameraLocation" type="Node2D" parent="scene3"]
+position = Vector2(1, 116)
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

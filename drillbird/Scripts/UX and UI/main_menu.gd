@@ -16,6 +16,11 @@ var selection:int=0
 var active:bool=false
 var cooldown:float=0
 
+var fadeValue:float=1
+var shouldBeVisible:bool=true
+var timeToFade:float=1
+var fadeCounter:float=2
+
 # Called when the node enters the scene tree for the first time.
 
 
@@ -44,6 +49,17 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("jump"):
 		PressButton()
 	
+	if shouldBeVisible and fadeValue<1:
+		fadeCounter=min(timeToFade,fadeCounter+delta)
+		fadeValue=fadeCounter/timeToFade
+		UpdateMenuFade(fadeValue)
+		
+	if !shouldBeVisible and fadeValue>0:
+		fadeCounter=max(0,fadeCounter-delta)
+		fadeValue=fadeCounter/timeToFade
+		UpdateMenuFade(fadeValue)
+
+
 	pass
 
 func GenerateMainMenu():
@@ -87,3 +103,21 @@ func PressButton():
 		
 	
 	pass
+
+func FadeAway(visible:bool):
+	shouldBeVisible=visible
+	
+	if visible:
+		menuText.show()
+	else:
+		menuText.hide()
+	
+
+func UpdateMenuFade(progress:float):
+	
+	var color=Color(Color.WHITE,progress)
+	self.modulate=color
+	
+		
+
+	

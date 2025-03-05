@@ -7,7 +7,7 @@ var txt_gameSaved:String="Game Saved! "
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	txt.text=""
+	txt.text="[center]"
 	pass # Replace with function body.
 
 
@@ -19,7 +19,7 @@ func _process(delta: float) -> void:
 
 func Activate(day:int):
 	
-	txt.text=txt_gameSaved
+	txt.text="[center]"+txt_gameSaved
 	txt.self_modulate=Color(1,1,1,1)
 
 	var length= await DisplayText(0)
