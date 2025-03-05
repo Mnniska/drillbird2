@@ -1,4 +1,4 @@
-[gd_scene load_steps=147 format=4 uid="uid://d2wv7igie5stg"]
+[gd_scene load_steps=145 format=4 uid="uid://d2wv7igie5stg"]
 
 [ext_resource type="TileSet" uid="uid://grpd2pyu7pgk" path="res://Resources/MainTileset.tres" id="1_1imtu"]
 [ext_resource type="Script" path="res://Scenes/Playable Scenes/SaveManager.gd" id="1_iickb"]
@@ -83,8 +83,6 @@
 [ext_resource type="Texture2D" uid="uid://c8j53qcfdb0h0" path="res://Art/environment/solid_decorations/Hub_Grass_03.png" id="70_66ibh"]
 [ext_resource type="Texture2D" uid="uid://cmr0114vcevay" path="res://Art/environment/solid_decorations/Hub_Grass_02.png" id="71_qcfv1"]
 [ext_resource type="Texture2D" uid="uid://cteniqfiutkpm" path="res://Art/environment/solid_decorations/Hub_Grass_01.png" id="72_f67e5"]
-[ext_resource type="Texture2D" uid="uid://dsnccjr7gyjxj" path="res://Art/environment/solid_decorations/Hub_flower_01.png" id="73_m50cv"]
-[ext_resource type="Texture2D" uid="uid://b58f217ayqp62" path="res://Art/environment/solid_decorations/Hub_flower_02.png" id="74_rvdtr"]
 [ext_resource type="Texture2D" uid="uid://cjoiufc0rcyin" path="res://Art/environment/solid_decorations/HangingMoss_Chunk_02.png" id="75_svg4d"]
 [ext_resource type="PackedScene" uid="uid://bjaykfdp1s4y" path="res://Scenes/Objects and Enemies/Torch_scene.tscn" id="77_3plt1"]
 
@@ -1369,40 +1367,6 @@ texture = ExtResource("70_66ibh")
 position = Vector2(-268, -278)
 texture = ExtResource("70_66ibh")
 
-[node name="HubFlower01" type="Sprite2D" parent="Sprites_HUBBackground"]
-position = Vector2(-36, -11)
-texture = ExtResource("73_m50cv")
-
-[node name="HubFlower02" type="Sprite2D" parent="Sprites_HUBBackground"]
-position = Vector2(-118, 21)
-texture = ExtResource("73_m50cv")
-
-[node name="HubFlower03" type="Sprite2D" parent="Sprites_HUBBackground"]
-z_index = 3
-position = Vector2(322, -63)
-texture = ExtResource("73_m50cv")
-
-[node name="HubFlower04" type="Sprite2D" parent="Sprites_HUBBackground"]
-z_index = 3
-position = Vector2(316, -52)
-texture = ExtResource("73_m50cv")
-
-[node name="HubFlower05" type="Sprite2D" parent="Sprites_HUBBackground"]
-position = Vector2(-37, -6)
-texture = ExtResource("74_rvdtr")
-
-[node name="HubFlower06" type="Sprite2D" parent="Sprites_HUBBackground"]
-position = Vector2(-66, 9)
-texture = ExtResource("74_rvdtr")
-
-[node name="HubFlower07" type="Sprite2D" parent="Sprites_HUBBackground"]
-position = Vector2(40, -7)
-texture = ExtResource("74_rvdtr")
-
-[node name="HubFlower08" type="Sprite2D" parent="Sprites_HUBBackground"]
-position = Vector2(68, 9)
-texture = ExtResource("74_rvdtr")
-
 [node name="HangingMossChunk02" type="Sprite2D" parent="Sprites_HUBBackground"]
 position = Vector2(-495, -115)
 texture = ExtResource("75_svg4d")
@@ -1424,18 +1388,6 @@ texture = ExtResource("75_svg4d")
 [node name="HangingMossChunk06" type="Sprite2D" parent="Sprites_HUBBackground"]
 position = Vector2(-640, 448)
 texture = ExtResource("75_svg4d")
-
-[node name="HubFlower09" type="Sprite2D" parent="Sprites_HUBBackground"]
-position = Vector2(-223, -91)
-texture = ExtResource("73_m50cv")
-
-[node name="HubFlower10" type="Sprite2D" parent="Sprites_HUBBackground"]
-position = Vector2(-80, 27)
-texture = ExtResource("73_m50cv")
-
-[node name="HubFlower11" type="Sprite2D" parent="Sprites_HUBBackground"]
-position = Vector2(82, 26)
-texture = ExtResource("73_m50cv")
 
 [node name="WorldScripts" type="Node" parent="."]
 script = ExtResource("59_a6oue")
