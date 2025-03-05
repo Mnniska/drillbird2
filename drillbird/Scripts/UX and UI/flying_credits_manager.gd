@@ -2,6 +2,8 @@ extends Node
 class_name flying_credits_manager 
 
 @onready var flyer:flying_child=$FlyingChild
+@onready var credits=$Credits
+@onready var valueSpawner=$ValueSpawner
 
 @onready var backgroundBase:Sprite2D=$BG_base
 @onready var backgroundStars:Sprite2D=$BG_Stars
@@ -11,6 +13,7 @@ class_name flying_credits_manager
 
 @export var BaseSpeed:float=50
 
+@export var debugSkipCredits:bool=false
 
 func _ready() -> void:
 	HUD.SetState(HUD.menuStates.CREDITS)
@@ -19,6 +22,15 @@ func _ready() -> void:
 	await get_tree().create_timer(1).timeout
 	flyer.initiateJump(1)
 
+	if debugSkipCredits:
+		valueSpawner.active=true
+	else:
+		credits.active=true
+		credits.signal_credits_finished.connect(CreditsFinished)
+		
+
+func CreditsFinished():
+	valueSpawner.active=true
 
 func SetupParallax():
 	
