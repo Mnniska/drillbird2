@@ -19,18 +19,12 @@ var energy:float=20
 @export var continuedJumpCost:float=2
 
 
-@export var time_to_lose_power:float=10
-var counter_to_lose_power:float=0
-
-
-enum States{IDLE,JUMPING,FALLING,INACTIVE}
+enum States{IDLE,JUMPING,FALLING,INACTIVE,GROWN}
 var state:States=States.INACTIVE
 
 
 @export var maxFuelRefillRate:float=5
-@export var minFuelRefillRate:float=3
 @export var maxJumpTime=0.6
-@export var minJumpTime=0.1
 var energyRefillRatePerSecond:float=maxFuelRefillRate
 
 
@@ -41,13 +35,21 @@ var lastAnimatedState:States
 var holdTime:float=0
 var simulatedJumpPressed:bool=false
 
+var shake:bool=false
+@onready var evolveShine=$anim_evolve_shine
+
 
 
 func _physics_process(delta: float) -> void:
 	
-	
+	if Input.is_action_just_pressed("debug_tab"):
+		GrowUp()
 	
 	if state==States.INACTIVE:
+		return
+	
+	if state==States.GROWN:
+		GrownUpdate(delta)
 		return
 	
 	if holdTime>0:
@@ -95,13 +97,16 @@ func _physics_process(delta: float) -> void:
 	UpdateAnimations()
 	move_and_slide()
 
-func UpdateLife(delta:float):
-	counter_to_lose_power=min(time_to_lose_power, counter_to_lose_power + delta)
-	var progress=counter_to_lose_power/time_to_lose_power
+func GrownUpdate(delta:float):
 	
-	jumpTime=lerpf(maxJumpTime,minJumpTime,progress)
-	energyRefillRatePerSecond=lerpf(maxFuelRefillRate,minFuelRefillRate,progress)
-	$Label.text=str(progress)
+	if shake:
+		var variance=2
+		var rand=randf_range(-variance,variance)
+		animator.position=Vector2(rand,0)
+	
+	velocity.y+=gravity*delta*1.5
+	UpdateAnimations()
+	move_and_slide()
 
 func RefillEnergyBar(delta:float):
 	
@@ -121,13 +126,25 @@ func UpdateEnergyBar():
 	
 	pass
 
+func GrowUp():
+	velocity.y=0
+	velocity.x=clampf(velocity.x,-2,2)
+	state=States.GROWN
+	animator.animation="growup"
+	animator.play()
+	shake=true
+	await get_tree().create_timer(1).timeout
+	shake=false
+	evolveShine.play()
 	
+	
+	pass
 func _on_animator_animation_finished() -> void:
 	pass # Replace with function body.
 
 func initiateJump(_holdtime:float):
 	
-	if state==States.JUMPING:
+	if state==States.JUMPING or state==States.GROWN:
 		return
 	
 	state=States.JUMPING
