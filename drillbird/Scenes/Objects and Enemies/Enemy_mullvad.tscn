@@ -94,10 +94,8 @@ shape = SubResource("RectangleShape2D_khmiv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_of4cw")
-animation = &"death"
+animation = &"fall"
 autoplay = "run"
-frame = 3
-frame_progress = 1.0
 
 [node name="EnemyCollisionChecker" type="Area2D" parent="."]
 collision_layer = 0

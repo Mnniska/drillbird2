@@ -53,7 +53,14 @@ func _physics_process(delta: float) -> void:
 			state=States.WALK
 
 	#Done at the end of upate, used in the next loop
-	isFalling = GetIsFalling()
+	
+	if GetIsFalling():
+		if !isFalling:
+			SoundManager.PlaySoundAtLocation(global_position,abstract_SoundEffectSetting.SoundEffectEnum.ENEMY_GENERIC_FALL)
+		isFalling=true
+	else:
+		isFalling=false
+	
 	if isFalling:
 		anim="fall"
 	
@@ -61,6 +68,10 @@ func _physics_process(delta: float) -> void:
 	positionLastFrame=position
 	UpdateAnimations(anim)
 
+func DealDamage(value:int): #MUST HAVE
+	if value>0:
+		Kill(abstract_SoundEffectSetting.SoundEffectEnum.ENEMY_CLOUD_DEATH)
+		#TODO: Fancy kill animation
 
 func UpdateAnimations(_anim:String):
 

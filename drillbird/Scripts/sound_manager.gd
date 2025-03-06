@@ -83,10 +83,6 @@ func PlaySoundAtLocation(location:Vector2,type:abstract_SoundEffectSetting.Sound
 	if !typeFound:
 		push_error("Attempted to play an invalid sound!")	
 		
-		
-	for n in SOUND_EFFECTS:
-		if n.type==type:
-			soundEffectSetting=n
 	
 	if soundEffectSetting.has_open_limit(): #ensure the same effect can only play X times
 		soundEffectSetting.change_audio_count(1)

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="abstract_SoundEffectSetting" load_steps=3 format=3 uid="uid://d2rsh33no26kq"]
+
+[ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_SoundEffectSetting.gd" id="1_tedeo"]
+[ext_resource type="AudioStream" uid="uid://cmicrd88rlp76" path="res://Audio/SFX/enemies/enemy_generic_step.wav" id="2_qhqr5"]
+
+[resource]
+script = ExtResource("1_tedeo")
+limit = 5
+type = 29
+sound_effect = ExtResource("2_qhqr5")
+volume = 4
+pitch_randomness = 0.3
+audioBus = 1

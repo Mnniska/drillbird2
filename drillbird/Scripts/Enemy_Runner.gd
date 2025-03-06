@@ -38,8 +38,7 @@ func Setup(info:abstract_enemy): #MUST HAVE
 
 func DealDamage(value:int): #MUST HAVE
 	if value>0:
-		Kill()
-		#TODO: Fancy kill animation
+		Kill(abstract_SoundEffectSetting.SoundEffectEnum.ENEMY_WALKER_DEATH)
 
 
 
@@ -92,10 +91,20 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	
-	isFalling=GetIsFalling()
+
 
 	move_and_slide()
+
+	if GetIsFalling():
+		if !isFalling:
+			SoundManager.PlaySoundAtLocation(global_position,abstract_SoundEffectSetting.SoundEffectEnum.ENEMY_GENERIC_FALL)
+		isFalling=true
+		anim="fall"
+	else:
+		isFalling=false
+
 	UpdateAnimations(anim)
+
 
 	if state==States.WALK:
 		

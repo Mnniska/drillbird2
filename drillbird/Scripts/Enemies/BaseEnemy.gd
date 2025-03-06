@@ -9,7 +9,7 @@ var spawnPositionLocal:Vector2
 @onready var anim:AnimatedSprite2D=$AnimatedSprite2D
 var gamePaused:bool=true
 var enemySleep:bool=true
-var positionLastFrame:Vector2
+@onready var positionLastFrame:Vector2=position
 var isFalling:bool=false
 
 var textbubble=preload("res://Scenes/UI/text_bubble.tscn")
@@ -46,6 +46,8 @@ func GetIsFalling():
 	#Make sure to update PositionLastFrame AFTER this
 	var speed = abs(positionLastFrame-position)
 	
+
+	
 	return speed.y>0.1
 	
 		
@@ -65,9 +67,10 @@ func TurnEnemyOff(hideInstantly:bool=true):
 	velocity=Vector2(0,0)
 	
 	
-func Kill(showEffects:bool=true):
+func Kill(showEffects:bool=true,soundToPlay:abstract_SoundEffectSetting.SoundEffectEnum=-1):
 	
-	
+	if soundToPlay!=-1:
+		SoundManager.PlaySoundAtLocation(global_position,soundToPlay)
 	
 	if enemyInfo.dead:
 		return
@@ -119,6 +122,8 @@ func get_current_animation_length(animated_sprite: AnimatedSprite2D = anim) -> f
 
 	return -1.0
 
+
+
 func CheckIfSleeping(delta:float):
 	updateCounter+=delta
 	
@@ -131,6 +136,7 @@ func CheckIfSleeping(delta:float):
 			enemySleep=true
 		else:
 			enemySleep=false
+			
 
 func _physics_process(delta: float) -> void:
 	
@@ -142,9 +148,11 @@ func _physics_process(delta: float) -> void:
 	if enemySleep:
 		return
 	
+	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
+	
 	
 	isFalling = GetIsFalling()
 	positionLastFrame=position #must be called before move_and_slide but after functions that need it

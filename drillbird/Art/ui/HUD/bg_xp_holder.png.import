@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b8wmuf0rlke0l"
-path="res://.godot/imported/bg_xp_holder.png-bea472bb7e4b1e10b89148d8755e9863.ctex"
+path="res://.godot/imported/bg_xp_holder.png-09eb2980671d76ade7b1fa3a0f4f2a23.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/UI/HUD/bg_xp_holder.png"
-dest_files=["res://.godot/imported/bg_xp_holder.png-bea472bb7e4b1e10b89148d8755e9863.ctex"]
+source_file="res://Art/ui/HUD/bg_xp_holder.png"
+dest_files=["res://.godot/imported/bg_xp_holder.png-09eb2980671d76ade7b1fa3a0f4f2a23.ctex"]
 
 [params]
 

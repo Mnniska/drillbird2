@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="abstract_SoundEffectSetting" load_steps=3 format=3 uid="uid://sethmg4ry8ab"]
+
+[ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_SoundEffectSetting.gd" id="1_1vw2n"]
+[ext_resource type="AudioStream" uid="uid://cak4hbrn2p2y" path="res://Audio/SFX/enemies/PLACEHOLDER_SOUND.wav" id="2_1s2pr"]
+
+[resource]
+script = ExtResource("1_1vw2n")
+limit = 5
+type = 31
+sound_effect = ExtResource("2_1s2pr")
+volume = 5
+pitch_randomness = 0.3
+audioBus = 1

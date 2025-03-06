@@ -43,9 +43,13 @@ func _physics_process(delta: float) -> void:
 	if enemySleep:
 		return
 		
+	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta*0.5
+	
+	if !isFalling and GetIsFalling():
+		SoundManager.PlaySoundAtLocation(self.global_position,abstract_SoundEffectSetting.SoundEffectEnum.ENEMY_GENERIC_FALL)
 	
 	isFalling = GetIsFalling()
 	positionLastFrame=position #must be called before move_and_slide but after functions that need it
@@ -120,9 +124,8 @@ func Setup(info:abstract_enemy): #MUST HAVE
 
 func DealDamage(value:int): #MUST HAVE
 	if value>0:
-		Kill()
-		#TODO: Fancy kill animation
-
+		var killsound=abstract_SoundEffectSetting.SoundEffectEnum.ENEMY_FOLLOWER_DEATH
+		Kill(killsound)
 
 
 func TurnEnemyOff(hideInstantly:bool=true):
@@ -180,6 +183,7 @@ func _on_vision_field_body_shape_entered(body_rid: RID, body: Node2D, body_shape
 	
 	if state==States.IDLE:
 		state=States.ALERT
+		#SoundManager.PlaySoundAtLocation(global_position,abstract_SoundEffectSetting.SoundEffectEnum.ENEMY_FOLLOWER_DETECT)
 	
 	pass # Replace with function body.
 
@@ -207,7 +211,10 @@ func _on_vision_field_body_shape_exited(body_rid: RID, body: Node2D, body_shape_
 
 func _on_lose_detection_timer_timeout() -> void:
 	chosenActor=null
+
+	if state!=States.IDLE:
+		pass
+		#SoundManager.PlaySoundAtLocation(global_position,abstract_SoundEffectSetting.SoundEffectEnum.ENEMY_FOLLOWER_LOSEDETECT)
 	state=States.IDLE
 	#todo: move towards the center of a tile
 	
-	pass # Replace with function body.
