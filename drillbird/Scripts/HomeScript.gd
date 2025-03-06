@@ -172,6 +172,8 @@ func OreFinishedSelling(amount:int):
 	pass
 
 func HatchEgg():
+	Player.hide()
+	
 	EggHandler.SetEggState(EggHandler.eggStates.FINALCUTSCENE)
 	state=states.FINALCUTSCENE
 	Camera.StartNewLerp(CameraLerpPosition.position, 0.5)

@@ -7,7 +7,7 @@ var isShaking:bool=false
 var shakeAmount:float=2
 @onready var originalPosition:Vector2=self.position
 @onready var animator=$AnimatedSprite2D
-@onready var anim_birds=$Anim_birds_hatching
+@onready var hatchAnimation=$Anim_birds_hatching
 
 enum finalFormStates{FINAL_INACTIVE,FINAL_HEARTLESS,FINAL_HEART,FINAL_HATCHING}
 var finalFormState:finalFormStates=finalFormStates.FINAL_HEARTLESS
@@ -50,13 +50,11 @@ func SetState(_state:finalFormStates):
 func HatchEgg():
 	isShaking=true
 	animator.animation="hatch"
-	await get_tree().create_timer(2).timeout
+	hatchAnimation.animation="hatch"
+	hatchAnimation.play()
+	hatchAnimation.animation_finished.connect(HatchCutsceneFinished)
+	await get_tree().create_timer(1).timeout
 	isShaking=false
-	await get_tree().create_timer(3).timeout
-
-	anim_birds.animation="hatch"
-	anim_birds.play()
-	anim_birds.animation_finished.connect(HatchCutsceneFinished)
 
 	
 func HatchCutsceneFinished():

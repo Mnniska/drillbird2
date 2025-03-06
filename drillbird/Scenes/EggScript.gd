@@ -95,6 +95,7 @@ func SetEggState(_state:eggStates):
 			pass
 		eggStates.FINALCUTSCENE:
 			#THIS WILL likely never be saved, so won't be used. but who knows :) 
+			$nest_front.hide()
 			hideEggs()
 			finalFormEgg.SetState(finalFormEgg.finalFormStates.FINAL_HATCHING)
 			pass
