@@ -1573,7 +1573,7 @@ position = Vector2(-616, 518)
 texture = ExtResource("64_yk8d7")
 
 [node name="PlayerLocationSaver" type="Area2D" parent="PlayerSpawnLocations" node_paths=PackedStringArray("Spawnpos")]
-position = Vector2(-302, -73)
+position = Vector2(-186, -9)
 collision_layer = 0
 collision_mask = 16
 script = ExtResource("65_25d1u")
