@@ -1,5 +1,9 @@
 extends Sprite2D
-@export var speedModifier:float=1
+@export var speedModifier:float=1:
+	get:return speedModifier
+	set(value):
+		speedModifier=value
+		UpdateParallax(speedModifier*baseSpeed)
 @export var baseSpeed=50
 
 var showParallax:bool=true

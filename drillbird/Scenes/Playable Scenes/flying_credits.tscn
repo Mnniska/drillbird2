@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://chmegxltn4stt"]
+[gd_scene load_steps=39 format=3 uid="uid://chmegxltn4stt"]
 
 [ext_resource type="Script" path="res://Scripts/UX and UI/flying_credits_manager.gd" id="1_xtpho"]
 [ext_resource type="PackedScene" uid="uid://djowxohivfhhb" path="res://Scenes/Objects and Enemies/flying_child.tscn" id="2_eruml"]
@@ -17,6 +17,11 @@
 [ext_resource type="Texture2D" uid="uid://nb5wx244cjbj" path="res://Art/ui/HUD/UI_LightBar_Indicator.png" id="14_yjti0"]
 [ext_resource type="Script" path="res://Scripts/cutscenes/credits_value_spawner.gd" id="15_ob5l2"]
 [ext_resource type="AudioStream" uid="uid://di4mq56e3hnqv" path="res://Audio/Music/mus_Drillbird_Theme_Credits.wav" id="17_rlcle"]
+[ext_resource type="Texture2D" uid="uid://b3lpuesrmtdma" path="res://Art/cutscenes/intro/intro_flyingbirdy1.png" id="18_cx0np"]
+[ext_resource type="Texture2D" uid="uid://cxoxj78t6pad8" path="res://Art/cutscenes/intro/intro_flyingbirdy2.png" id="19_udnqe"]
+[ext_resource type="Texture2D" uid="uid://bsgc32b0wuepj" path="res://Art/cutscenes/intro/intro_flyingbirdy3.png" id="20_0du72"]
+[ext_resource type="Texture2D" uid="uid://cq2c2aj0x4ypo" path="res://Art/cutscenes/intro/intro_flyingbirdy4.png" id="21_h88sl"]
+[ext_resource type="Script" path="res://Scripts/Tools/credits_scene_reference_connector.gd" id="22_sgrwg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uva2n"]
 shader = ExtResource("3_nxjs3")
@@ -72,6 +77,139 @@ expand_margin_left = 2.0
 expand_margin_right = 2.0
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
+
+[sub_resource type="Animation" id="Animation_v2x4p"]
+resource_name = "default"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer/fallingScene:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_hgixc"]
+resource_name = "fall"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer/fallingScene:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer/fallingScene/BG_base:speedModifier")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimationPlayer/fallingScene:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2.63333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.274017]
+}
+
+[sub_resource type="Animation" id="Animation_m5i14"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer/fallingScene:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer/fallingScene/BG_base:speedModifier")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimationPlayer/fallingScene:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dm1k7"]
+_data = {
+"RESET": SubResource("Animation_m5i14"),
+"default": SubResource("Animation_v2x4p"),
+"fall": SubResource("Animation_hgixc")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_su3q2"]
+shader = ExtResource("3_nxjs3")
+shader_parameter/motion = Vector2(900, 0)
+shader_parameter/scale = 1.0
+shader_parameter/offset = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uh200"]
+shader = ExtResource("3_nxjs3")
+shader_parameter/motion = Vector2(1000, 0)
+shader_parameter/scale = 1.0
+shader_parameter/offset = Vector2(0, 0)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ot7w6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_cx0np")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_udnqe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_0du72")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_h88sl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
 
 [node name="FlyingCredits" type="Node"]
 script = ExtResource("1_xtpho")
@@ -291,6 +429,53 @@ points = PackedVector2Array(0, 0, 0, 158.64)
 [node name="music" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("17_rlcle")
 autoplay = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_dm1k7")
+}
+
+[node name="fallingScene" type="Node2D" parent="AnimationPlayer"]
+visible = false
+z_index = 4
+position = Vector2(22, 20)
+
+[node name="BG_base" type="Sprite2D" parent="AnimationPlayer/fallingScene"]
+light_mask = 0
+visibility_layer = 4
+texture_repeat = 2
+material = SubResource("ShaderMaterial_su3q2")
+position = Vector2(-17.1645, -25.1645)
+rotation = 0.849135
+texture = ExtResource("3_a3sr5")
+region_enabled = true
+region_rect = Rect2(0, 0, 500, 500)
+script = ExtResource("4_snu6u")
+
+[node name="BG_base2" type="Sprite2D" parent="AnimationPlayer/fallingScene"]
+light_mask = 0
+visibility_layer = 4
+texture_repeat = 2
+material = SubResource("ShaderMaterial_uh200")
+position = Vector2(-17.1645, -25.1645)
+rotation = 0.849135
+texture = ExtResource("5_7onrn")
+region_enabled = true
+region_rect = Rect2(0, 0, 500, 500)
+script = ExtResource("4_snu6u")
+baseSpeed = 60
+
+[node name="birdyFalling" type="AnimatedSprite2D" parent="AnimationPlayer/fallingScene"]
+position = Vector2(-59.1645, -48.1645)
+sprite_frames = SubResource("SpriteFrames_ot7w6")
+autoplay = "default"
+frame_progress = 0.752486
+
+[node name="cameraLocation2" type="Node2D" parent="AnimationPlayer/fallingScene"]
+position = Vector2(-69.1645, -57.1645)
+
+[node name="CreditsReferenceConnector" type="Node" parent="."]
+script = ExtResource("22_sgrwg")
 
 [connection signal="body_shape_entered" from="PlayerDetector" to="." method="_on_player_detector_body_shape_entered"]
 [connection signal="hasEvolved" from="FlyingChild" to="." method="_on_flying_child_has_evolved"]

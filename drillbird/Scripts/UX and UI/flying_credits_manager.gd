@@ -53,6 +53,8 @@ func _on_flying_child_has_evolved() -> void:
 
 
 func _on_flying_child_has_evolved_off_screen() -> void:
+	var anim:AnimationPlayer=$AnimationPlayer
+	anim.play("fall")
+	await get_tree().create_timer(3).timeout
+	HUD.SetSceneState(HUD.sceneStates.MAIN)
 	
-	#TODO: Load title screen	
-	pass # Replace with function body.

@@ -34,10 +34,8 @@ var lerpingOres:Array[ore_sell_visualizer]
 func _ready() -> void:
 	GlobalVariables.upgradeChange_Inventory.connect(upgradeChangeInventory)
 	GlobalVariables.SetupComplete.connect(InitializationCompleteSetup)
-	#Todo: Read the inventoryStat from globalVariables and figure out how much the player should have based on that
-	
-	
-	pass # Replace with function body.
+
+
 
 func InitializationCompleteSetup():
 	OreSpawner=GlobalVariables.MainSceneReferenceConnector.ref_oreTilemap

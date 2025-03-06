@@ -130,7 +130,7 @@ func SetLightPosition():
 func _process(delta: float) -> void:
 	
 	
-	if HUD.sceneState==HUD.sceneStates.CREDITS or gamePaused:
+	if HUD.sceneState==HUD.sceneStates.CREDITS or gamePaused or GlobalVariables.InitialSetup:
 		return
 	
 	handleInputs()

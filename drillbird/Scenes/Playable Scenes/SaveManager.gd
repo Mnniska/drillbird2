@@ -20,9 +20,11 @@ func _ready() -> void:
 	verify_save_directory(save_file_path)
 	LoadGame()
 	LoadDestroyedTiles()
-	GlobalVariables.InitialSetup=false
 	
 	SetupMiscGameLogicBeforeStart()
+ 	
+	GlobalVariables.InitialSetup=false
+
 	pass # Replace with function body.
 
 func _init() -> void:

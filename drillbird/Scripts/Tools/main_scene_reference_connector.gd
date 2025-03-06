@@ -11,6 +11,6 @@ class_name main_scene_reference_connector
 @onready var introCutscene=$"../IntroCutscene"
 
 
+
 func _ready() -> void:
-	
 	GlobalVariables.MainSceneReferenceConnector=self

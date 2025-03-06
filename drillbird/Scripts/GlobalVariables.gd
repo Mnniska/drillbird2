@@ -4,6 +4,7 @@ signal PlayerIsDrillingTileChanged(answer:bool)
 signal signal_IsPlayerInMenuChanged(inMenu:bool)
 
 var MainSceneReferenceConnector:main_scene_reference_connector
+var CreditsSceneReferenceConnector:credits_scene_reference_connector
 var playerSpawnPos:Vector2
 var eggState:int=0
 var hasSeenIntroCutscene:bool=false
@@ -29,8 +30,10 @@ var InitialSetup:bool=true:
 	get:
 		return InitialSetup
 	set(value):
+		
+		if InitialSetup and !value:
+			SetupComplete.emit()
 		InitialSetup=value
-		SetupComplete.emit()
 
 var playerStatus:playerStatusEnum = playerStatusEnum.DIG:
 	get:

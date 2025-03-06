@@ -31,6 +31,7 @@ var pos_top_hidden:Vector2
 var pos_bottom_visible:Vector2
 var pos_bottom_hidden:Vector2
 
+
 @export var scene_credits:PackedScene
 @export var scene_main:PackedScene
 
@@ -82,6 +83,16 @@ func UpdateHUDPosition(show:bool):
 	pass
 
 func _process(delta: float) -> void:
+	
+	if Input.is_action_just_pressed("debug_tab") and Input.is_action_pressed("escape"):
+		
+		if sceneState==sceneStates.MAIN:
+			SetSceneState(sceneStates.CREDITS)
+			
+		elif sceneState==sceneStates.CREDITS:
+			SetSceneState(sceneStates.MAIN)
+			
+
 	
 	if isLerping:
 		lerpCounter+=delta
@@ -159,13 +170,19 @@ func SetSceneState(state:sceneStates):
 	
 	sceneState=state
 	if sceneState==sceneStates.MAIN:
-		pass
+		if GlobalVariables.CreditsSceneReferenceConnector:
+			var scene = GlobalVariables.CreditsSceneReferenceConnector.ref_credits_parent
+			scene.get_tree().change_scene_to_packed(scene_main)
+			
+			GlobalVariables.InitialSetup=true
+			await GlobalVariables.SetupComplete
+			SetState(menuStates.MAIN)
+		
 	
 	if sceneState==sceneStates.CREDITS:
 		var scene = GlobalVariables.MainSceneReferenceConnector.mainScene
 		scene.get_tree().change_scene_to_packed(scene_credits)
 		
-		pass
 	
 	pass
 
