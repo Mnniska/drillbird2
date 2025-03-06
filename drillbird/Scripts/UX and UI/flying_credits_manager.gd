@@ -15,34 +15,31 @@ class_name flying_credits_manager
 
 @export var debugSkipCredits:bool=false
 
+var cloudsVisible:bool=true
+var cloudsVisibleLerper:float=0
+
 func _ready() -> void:
 	HUD.SetState(HUD.menuStates.CREDITS)
-	SetupParallax()
 	
 	await get_tree().create_timer(1).timeout
 	flyer.initiateJump(1)
 
 	if debugSkipCredits:
 		valueSpawner.active=true
+		SetCloudsVisible(false)
 	else:
+		SetCloudsVisible(true)
 		credits.active=true
 		credits.signal_credits_finished.connect(CreditsFinished)
 		
 
 func CreditsFinished():
 	valueSpawner.active=true
+	SetCloudsVisible(false)
 
-func SetupParallax():
-	
-	var speed=BaseSpeed
-	#backgroundBase.material.set_shader_parameter("motion",Vector2i(0,0))
-	backgroundStars.material.set_shader_parameter("motion",Vector2i(speed*0.1,0))
-	backgroundPlanets.material.set_shader_parameter("motion",Vector2i(speed*0.4,0))
-	backgroundClouds.material.set_shader_parameter("motion",Vector2i(speed,0))
-	backgroundCloudsCloser.material.set_shader_parameter("motion",Vector2i(speed*1.5,0))
-	
-	
-	pass
+func SetCloudsVisible(visible:bool):
+	backgroundClouds.showParallax=visible
+	backgroundCloudsCloser.showParallax=visible
 
 
 func _on_player_detector_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:

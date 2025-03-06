@@ -1,10 +1,11 @@
-[gd_scene load_steps=25 format=3 uid="uid://chmegxltn4stt"]
+[gd_scene load_steps=26 format=3 uid="uid://chmegxltn4stt"]
 
 [ext_resource type="Script" path="res://Scripts/UX and UI/flying_credits_manager.gd" id="1_xtpho"]
 [ext_resource type="PackedScene" uid="uid://djowxohivfhhb" path="res://Scenes/Objects and Enemies/flying_child.tscn" id="2_eruml"]
 [ext_resource type="Texture2D" uid="uid://d0ot502nge360" path="res://Art/environment/SpaceBackground/background_space_spaceLayer.png" id="3_a3sr5"]
 [ext_resource type="Shader" path="res://Shaders/UVTextureScrollShader.gdshader" id="3_nxjs3"]
 [ext_resource type="Texture2D" uid="uid://c288pgae2xq7d" path="res://Art/environment/SpaceBackground/background_space_planetLayer.png" id="4_bbomm"]
+[ext_resource type="Script" path="res://Scripts/cutscenes/credits_parallax.gd" id="4_snu6u"]
 [ext_resource type="Texture2D" uid="uid://be62r58yrr0tm" path="res://Art/environment/SpaceBackground/background_space_starLayer.png" id="5_7onrn"]
 [ext_resource type="Texture2D" uid="uid://c03h0e4txuitu" path="res://Art/environment/SpaceBackground/background_space_cloudLayer.png" id="6_govxu"]
 [ext_resource type="Texture2D" uid="uid://da8yq4gnjptge" path="res://Art/environment/SpaceBackground/background_space_cloudLayer2.png" id="7_iktqh"]
@@ -83,6 +84,8 @@ position = Vector2(0, -139)
 texture = ExtResource("3_a3sr5")
 region_enabled = true
 region_rect = Rect2(0, 0, 2000, 1000)
+script = ExtResource("4_snu6u")
+speedModifier = 0.0
 
 [node name="BG_Stars" type="Sprite2D" parent="."]
 light_mask = 0
@@ -93,6 +96,8 @@ position = Vector2(0, -139)
 texture = ExtResource("5_7onrn")
 region_enabled = true
 region_rect = Rect2(0, 0, 2000, 1000)
+script = ExtResource("4_snu6u")
+speedModifier = 0.1
 
 [node name="BG_planets" type="Sprite2D" parent="."]
 light_mask = 0
@@ -103,6 +108,8 @@ position = Vector2(0, -139)
 texture = ExtResource("4_bbomm")
 region_enabled = true
 region_rect = Rect2(0, 0, 2000, 1000)
+script = ExtResource("4_snu6u")
+speedModifier = 0.4
 
 [node name="BG_clouds" type="Sprite2D" parent="."]
 light_mask = 0
@@ -113,6 +120,8 @@ position = Vector2(0, -139)
 texture = ExtResource("6_govxu")
 region_enabled = true
 region_rect = Rect2(0, 0, 2000, 1000)
+script = ExtResource("4_snu6u")
+timeToFadeTimer = 3.5
 
 [node name="BG_clouds2" type="Sprite2D" parent="."]
 light_mask = 0
@@ -123,6 +132,8 @@ position = Vector2(0, -139)
 texture = ExtResource("7_iktqh")
 region_enabled = true
 region_rect = Rect2(0, 0, 2000, 1000)
+script = ExtResource("4_snu6u")
+speedModifier = 1.5
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -232,9 +243,6 @@ position = Vector2(-121, 130)
 [node name="energyMeter" type="Node2D" parent="."]
 position = Vector2(0, 90)
 
-[node name="sliderbackground" type="Sprite2D" parent="energyMeter"]
-texture = ExtResource("11_ap520")
-
 [node name="UI_LightSlider" type="HSlider" parent="energyMeter"]
 unique_name_in_owner = true
 z_index = 3
@@ -261,7 +269,7 @@ offset_top = -203.0
 offset_right = 21.0
 offset_bottom = -180.0
 theme = ExtResource("8_8r2fg")
-text = "Maturity:"
+text = "growth"
 horizontal_alignment = 1
 
 [node name="Sprite2D2" type="Sprite2D" parent="energyMeter"]
