@@ -179,6 +179,11 @@ func GrowUp():
 	hasFullyEvolved=true
 	hasEvolved.emit()
 	
+	await get_tree().create_timer(3).timeout
+	
+	animator.animation="adult_fall"
+	animator.play()
+	
 	
 func _on_animator_animation_finished() -> void:
 	pass # Replace with function body.

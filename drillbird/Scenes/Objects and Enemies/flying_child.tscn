@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://djowxohivfhhb"]
+[gd_scene load_steps=40 format=3 uid="uid://djowxohivfhhb"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/flying_child.gd" id="1_xqyjr"]
 [ext_resource type="Texture2D" uid="uid://cgxkdks7kbtrr" path="res://Art/effects/CharacterEffects/child evolving shine/childEvolveLightEffect1.png" id="2_0vj7l"]
@@ -16,10 +16,13 @@
 [ext_resource type="Texture2D" uid="uid://dhrvhcsf7e45a" path="res://Art/effects/empty.png" id="7_a32wu"]
 [ext_resource type="Texture2D" uid="uid://kxpwmlh4dpms" path="res://Art/characters/child/childFlying_idle3.png" id="7_dks0j"]
 [ext_resource type="Texture2D" uid="uid://dyuypli6hw1bc" path="res://Art/characters/child/childTransform2.png" id="7_i6647"]
+[ext_resource type="Texture2D" uid="uid://cr3nknepnnwa3" path="res://Art/characters/child/childTransform_adultFall1.png" id="8_5rpar"]
 [ext_resource type="Texture2D" uid="uid://5xfnofxnvv44" path="res://Art/characters/child/childTransform3.png" id="8_a16o0"]
 [ext_resource type="Texture2D" uid="uid://vqwrj6x7nvy8" path="res://Art/characters/child/childFlying_up1.png" id="8_f7lwn"]
 [ext_resource type="Texture2D" uid="uid://mypam21at8kb" path="res://Art/characters/child/childFlying_up2.png" id="9_3rnx2"]
+[ext_resource type="Texture2D" uid="uid://bclnuilqcnkhr" path="res://Art/characters/child/childTransform_adultFall2.png" id="9_86byo"]
 [ext_resource type="Texture2D" uid="uid://benwcrncm31vd" path="res://Art/characters/child/childTransform4.png" id="9_sgt24"]
+[ext_resource type="Texture2D" uid="uid://q4cde6078io" path="res://Art/characters/child/childTransform_adultFall3.png" id="10_87rle"]
 [ext_resource type="Texture2D" uid="uid://bjokyq38ohtb" path="res://Art/characters/child/childTransform5.png" id="10_f1et4"]
 [ext_resource type="Texture2D" uid="uid://byy218kcc36gb" path="res://Art/characters/child/childFlying_up3.png" id="11_lg8m5"]
 [ext_resource type="Texture2D" uid="uid://v2dnbkx38vc0" path="res://Art/characters/child/childTransform6.png" id="11_mkc6d"]
@@ -61,6 +64,20 @@ animations = [{
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vrtup"]
 animations = [{
+"frames": [{
+"duration": 10.0,
+"texture": ExtResource("8_5rpar")
+}, {
+"duration": 10.0,
+"texture": ExtResource("9_86byo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_87rle")
+}],
+"loop": false,
+"name": &"adult_fall",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_pnp1f")
@@ -178,10 +195,8 @@ frame_progress = 1.0
 
 [node name="Animator" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_vrtup")
-animation = &"growup"
+animation = &"adult_fall"
 autoplay = "idle"
-frame = 13
-frame_progress = 1.0
 
 [node name="Label" type="Label" parent="."]
 offset_right = 40.0
