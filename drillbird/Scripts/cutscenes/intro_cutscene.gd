@@ -15,12 +15,7 @@ func _ready() -> void:
 func SetupComplete():
 	camera=GlobalVariables.MainSceneReferenceConnector.ref_camera
 
-func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("debug_tab"):
-		#camera.StartNewLerp(cameraPositions[currentpos].global_position,0)
-		#currentpos+=1
-		
-		Play()
+
 
 func Play():
 	_on_animation_player_animation_finished("")
