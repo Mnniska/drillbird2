@@ -83,7 +83,6 @@ func _physics_process(delta: float) -> void:
 	velocity.x=min(maxHorizontalSpeed,velocity.x)
 	velocity.x=max(-maxHorizontalSpeed,velocity.x)
 	velocity.y=clampf(velocity.y,-maxVerticalSpeed,maxVerticalSpeed)
-	$Label.text=str(velocity.y)
 
 	if Input.is_action_just_pressed("jump"):
 		if state!=States.JUMPING:
@@ -145,10 +144,11 @@ func RefillEnergyBar(delta:float):
 	energy=min(maxEnergy,energy+gain*mult)
 
 func SetCanEvolve(canEvolve:bool):
-	velocity.y=-5
 	evolutionPossible=canEvolve
 	if evolutionPossible:
 		evolveText.show()
+		velocity.y=-5
+
 	else:
 		evolveText.hide()
 	
