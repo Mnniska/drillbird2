@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://chmegxltn4stt"]
+[gd_scene load_steps=50 format=3 uid="uid://chmegxltn4stt"]
 
 [ext_resource type="Script" path="res://Scripts/UX and UI/flying_credits_manager.gd" id="1_xtpho"]
 [ext_resource type="PackedScene" uid="uid://djowxohivfhhb" path="res://Scenes/Objects and Enemies/flying_child.tscn" id="2_eruml"]
@@ -14,13 +14,23 @@
 [ext_resource type="Texture2D" uid="uid://buh3ysmbicdnm" path="res://Art/ui/HUD/UI_LightBar_darkness.png" id="11_ap520"]
 [ext_resource type="Texture2D" uid="uid://b7scxroc66kxr" path="res://Art/ui/HUD/UI_LightBar_frame.png" id="12_kbn20"]
 [ext_resource type="Texture2D" uid="uid://1so80dql7icj" path="res://Art/ui/HUD/UI_LightBar_light.png" id="13_2gem5"]
+[ext_resource type="Texture2D" uid="uid://dhw4bpqwor87d" path="res://Art/environment/SpaceBackground/background_space_base.png" id="13_e5b48"]
+[ext_resource type="Texture2D" uid="uid://brddijd460nyp" path="res://Art/cutscenes/intro/intro_starcrashl1.png" id="14_ly4po"]
 [ext_resource type="Texture2D" uid="uid://nb5wx244cjbj" path="res://Art/ui/HUD/UI_LightBar_Indicator.png" id="14_yjti0"]
+[ext_resource type="Texture2D" uid="uid://duldptrwat3ay" path="res://Art/cutscenes/intro/intro_starcrashl2.png" id="15_codur"]
 [ext_resource type="Script" path="res://Scripts/cutscenes/credits_value_spawner.gd" id="15_ob5l2"]
+[ext_resource type="Texture2D" uid="uid://b0iq44vnfvm6j" path="res://Art/cutscenes/intro/intro_starcrashl3.png" id="16_kml35"]
 [ext_resource type="AudioStream" uid="uid://di4mq56e3hnqv" path="res://Audio/Music/mus_Drillbird_Theme_Credits.wav" id="17_rlcle"]
+[ext_resource type="Texture2D" uid="uid://d37tt64ht22ol" path="res://Art/cutscenes/intro/intro_starcrashl4.png" id="17_xiwm8"]
 [ext_resource type="Texture2D" uid="uid://b3lpuesrmtdma" path="res://Art/cutscenes/intro/intro_flyingbirdy1.png" id="18_cx0np"]
+[ext_resource type="Texture2D" uid="uid://behn1m1t24mt0" path="res://Art/cutscenes/intro/intro_starcrashl5.png" id="18_li2jk"]
+[ext_resource type="Texture2D" uid="uid://dw41ew4p4qdyb" path="res://Art/cutscenes/intro/intro_starcrashl6.png" id="19_pwu5f"]
 [ext_resource type="Texture2D" uid="uid://cxoxj78t6pad8" path="res://Art/cutscenes/intro/intro_flyingbirdy2.png" id="19_udnqe"]
 [ext_resource type="Texture2D" uid="uid://bsgc32b0wuepj" path="res://Art/cutscenes/intro/intro_flyingbirdy3.png" id="20_0du72"]
+[ext_resource type="Texture2D" uid="uid://b455tmyjvqmv8" path="res://Art/cutscenes/intro/intro_starcrashl7.png" id="20_um8u8"]
+[ext_resource type="Texture2D" uid="uid://d5utklggs16d" path="res://Art/cutscenes/intro/intro_starcrashl8.png" id="21_57q1v"]
 [ext_resource type="Texture2D" uid="uid://cq2c2aj0x4ypo" path="res://Art/cutscenes/intro/intro_flyingbirdy4.png" id="21_h88sl"]
+[ext_resource type="Texture2D" uid="uid://bcueq4thl3gk0" path="res://Art/cutscenes/intro/intro_starcrashl9.png" id="22_hb2tp"]
 [ext_resource type="Script" path="res://Scripts/Tools/credits_scene_reference_connector.gd" id="22_sgrwg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uva2n"]
@@ -53,31 +63,6 @@ shader_parameter/motion = Vector2(0, 0)
 shader_parameter/scale = 1.0
 shader_parameter/offset = Vector2(0, 0)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_deru2"]
-size = Vector2(331, 12)
-
-[sub_resource type="ImageTexture" id="ImageTexture_4wt0i"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wxlv5"]
-texture = ExtResource("12_kbn20")
-texture_margin_left = 2.0
-texture_margin_top = 16.0
-texture_margin_right = 2.0
-expand_margin_left = 2.0
-expand_margin_right = 2.0
-axis_stretch_horizontal = 1
-axis_stretch_vertical = 1
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kaoqp"]
-texture = ExtResource("13_2gem5")
-texture_margin_left = 2.0
-texture_margin_right = 2.0
-texture_margin_bottom = 2.0
-expand_margin_left = 2.0
-expand_margin_right = 2.0
-axis_stretch_horizontal = 1
-axis_stretch_vertical = 1
-
 [sub_resource type="Animation" id="Animation_v2x4p"]
 resource_name = "default"
 tracks/0/type = "value"
@@ -92,10 +77,22 @@ tracks/0/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer/impactScene:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_hgixc"]
 resource_name = "fall"
-length = 4.0
+length = 6.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -131,6 +128,44 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 0.274017]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimationPlayer/impactScene:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(0, 0),
+"update": 1,
+"values": [false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AnimationPlayer/impactScene/anim:animation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AnimationPlayer/impactScene/anim")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(4.56667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"default", 1.0, false],
+"method": &"play"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_m5i14"]
@@ -170,6 +205,30 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimationPlayer/impactScene:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AnimationPlayer/impactScene/anim:animation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"default"]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dm1k7"]
@@ -211,9 +270,68 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_67ds7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_ly4po")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_codur")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_kml35")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_xiwm8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_li2jk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_pwu5f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_um8u8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_57q1v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_hb2tp")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_deru2"]
+size = Vector2(331, 12)
+
+[sub_resource type="ImageTexture" id="ImageTexture_4wt0i"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wxlv5"]
+texture = ExtResource("12_kbn20")
+texture_margin_left = 2.0
+texture_margin_top = 16.0
+texture_margin_right = 2.0
+expand_margin_left = 2.0
+expand_margin_right = 2.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kaoqp"]
+texture = ExtResource("13_2gem5")
+texture_margin_left = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 2.0
+expand_margin_left = 2.0
+expand_margin_right = 2.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
 [node name="FlyingCredits" type="Node"]
 script = ExtResource("1_xtpho")
-debugSkipCredits = true
 
 [node name="BG_base" type="Sprite2D" parent="."]
 light_mask = 0
@@ -275,7 +393,68 @@ region_rect = Rect2(0, 0, 2000, 1000)
 script = ExtResource("4_snu6u")
 speedModifier = 1.5
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_dm1k7")
+}
+
+[node name="fallingScene" type="Node2D" parent="AnimationPlayer"]
+visible = false
+z_index = 5
+position = Vector2(22, 20)
+
+[node name="BG_base" type="Sprite2D" parent="AnimationPlayer/fallingScene"]
+light_mask = 0
+visibility_layer = 4
+texture_repeat = 2
+material = SubResource("ShaderMaterial_su3q2")
+position = Vector2(-17.1645, -25.1645)
+rotation = 0.849135
+texture = ExtResource("3_a3sr5")
+region_enabled = true
+region_rect = Rect2(0, 0, 500, 500)
+script = ExtResource("4_snu6u")
+
+[node name="BG_base2" type="Sprite2D" parent="AnimationPlayer/fallingScene"]
+light_mask = 0
+visibility_layer = 4
+texture_repeat = 2
+material = SubResource("ShaderMaterial_uh200")
+position = Vector2(-17.1645, -25.1645)
+rotation = 0.849135
+texture = ExtResource("5_7onrn")
+region_enabled = true
+region_rect = Rect2(0, 0, 500, 500)
+script = ExtResource("4_snu6u")
+baseSpeed = 60
+
+[node name="birdyFalling" type="AnimatedSprite2D" parent="AnimationPlayer/fallingScene"]
+position = Vector2(-59.1645, -48.1645)
+sprite_frames = SubResource("SpriteFrames_ot7w6")
+autoplay = "default"
+frame_progress = 0.207706
+
+[node name="cameraLocation2" type="Node2D" parent="AnimationPlayer/fallingScene"]
+position = Vector2(-69.1645, -57.1645)
+
+[node name="impactScene" type="Node2D" parent="AnimationPlayer"]
+visible = false
+z_index = 5
+position = Vector2(-2, -117)
+
+[node name="scene3bg" type="Sprite2D" parent="AnimationPlayer/impactScene"]
+position = Vector2(-15, 114)
+texture = ExtResource("13_e5b48")
+
+[node name="anim" type="AnimatedSprite2D" parent="AnimationPlayer/impactScene"]
+position = Vector2(1, 116)
+sprite_frames = SubResource("SpriteFrames_67ds7")
+
+[node name="cameraLocation" type="Node2D" parent="AnimationPlayer/impactScene"]
+position = Vector2(1, 116)
+
 [node name="Camera2D" type="Camera2D" parent="."]
+z_index = 5
 
 [node name="Credits" type="Node2D" parent="."]
 script = ExtResource("8_p2dai")
@@ -287,7 +466,7 @@ offset_right = 160.0
 offset_bottom = 1461.0
 theme = ExtResource("8_8r2fg")
 bbcode_enabled = true
-text = "[center]Thank you for playing Drillbird!!
+text = "[center]Thank you for playing Drillbird!
 
 
 
@@ -304,7 +483,7 @@ Art
 [color=green]Hampus Mellin [/color]
 Sound Design, Music 
 
-[color=green]Luiza Flores da Cunha[/color]
+[color=green]Luiza Flôres da Cunha[/color]
 Game Logo, Noise Acting 
 
 
@@ -429,50 +608,6 @@ points = PackedVector2Array(0, 0, 0, 158.64)
 [node name="music" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("17_rlcle")
 autoplay = true
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_dm1k7")
-}
-
-[node name="fallingScene" type="Node2D" parent="AnimationPlayer"]
-visible = false
-z_index = 4
-position = Vector2(22, 20)
-
-[node name="BG_base" type="Sprite2D" parent="AnimationPlayer/fallingScene"]
-light_mask = 0
-visibility_layer = 4
-texture_repeat = 2
-material = SubResource("ShaderMaterial_su3q2")
-position = Vector2(-17.1645, -25.1645)
-rotation = 0.849135
-texture = ExtResource("3_a3sr5")
-region_enabled = true
-region_rect = Rect2(0, 0, 500, 500)
-script = ExtResource("4_snu6u")
-
-[node name="BG_base2" type="Sprite2D" parent="AnimationPlayer/fallingScene"]
-light_mask = 0
-visibility_layer = 4
-texture_repeat = 2
-material = SubResource("ShaderMaterial_uh200")
-position = Vector2(-17.1645, -25.1645)
-rotation = 0.849135
-texture = ExtResource("5_7onrn")
-region_enabled = true
-region_rect = Rect2(0, 0, 500, 500)
-script = ExtResource("4_snu6u")
-baseSpeed = 60
-
-[node name="birdyFalling" type="AnimatedSprite2D" parent="AnimationPlayer/fallingScene"]
-position = Vector2(-59.1645, -48.1645)
-sprite_frames = SubResource("SpriteFrames_ot7w6")
-autoplay = "default"
-frame_progress = 0.752486
-
-[node name="cameraLocation2" type="Node2D" parent="AnimationPlayer/fallingScene"]
-position = Vector2(-69.1645, -57.1645)
 
 [node name="CreditsReferenceConnector" type="Node" parent="."]
 script = ExtResource("22_sgrwg")

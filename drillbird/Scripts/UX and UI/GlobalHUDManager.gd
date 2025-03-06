@@ -87,10 +87,10 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("debug_tab") and Input.is_action_pressed("escape"):
 		
 		if sceneState==sceneStates.MAIN:
-			SetSceneState(sceneStates.CREDITS)
+			SetSceneState(sceneStates.CREDITS,true)
 			
 		elif sceneState==sceneStates.CREDITS:
-			SetSceneState(sceneStates.MAIN)
+			SetSceneState(sceneStates.MAIN,true)
 			
 
 	
@@ -163,21 +163,28 @@ func SetState(_state:menuStates):
 
 			
 			
+func ResetSaveData():
+	
+	
+	pass
 
-func SetSceneState(state:sceneStates):
-	if state==sceneState:
-		return
+func SetSceneState(state:sceneStates,debug:bool=false):
 	
 	sceneState=state
 	if sceneState==sceneStates.MAIN:
 		if GlobalVariables.CreditsSceneReferenceConnector:
+			
+
+			GlobalVariables.ResetSaveData() #Resets the players progress!! To be handled with care
+			$TransitionToMain.play("FadeBack")
+			await get_tree().create_timer(0.05).timeout
+			
 			var scene = GlobalVariables.CreditsSceneReferenceConnector.ref_credits_parent
 			scene.get_tree().change_scene_to_packed(scene_main)
-			
 			GlobalVariables.InitialSetup=true
 			await GlobalVariables.SetupComplete
 			SetState(menuStates.MAIN)
-		
+			
 	
 	if sceneState==sceneStates.CREDITS:
 		var scene = GlobalVariables.MainSceneReferenceConnector.mainScene

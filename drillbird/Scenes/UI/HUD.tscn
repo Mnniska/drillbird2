@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://bxacqh1cbwxw5"]
+[gd_scene load_steps=39 format=3 uid="uid://bxacqh1cbwxw5"]
 
 [ext_resource type="Script" path="res://Scripts/UX and UI/GlobalHUDManager.gd" id="1_u1olj"]
 [ext_resource type="Texture2D" uid="uid://cp6xuvmo0rguj" path="res://Art/ui/HUD/UI_BlackBorder.png" id="1_vcacc"]
@@ -25,6 +25,7 @@
 [ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_debugMenuOption.gd" id="20_hlahx"]
 [ext_resource type="PackedScene" uid="uid://bldt1ha11vmuu" path="res://Scenes/UI/menu_options.tscn" id="23_sv2nb"]
 [ext_resource type="PackedScene" uid="uid://bgj42edyan2we" path="res://Scenes/UI/menu_pause.tscn" id="24_p58jt"]
+[ext_resource type="Texture2D" uid="uid://bcueq4thl3gk0" path="res://Art/cutscenes/intro/intro_starcrashl9.png" id="26_y1son"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_ese10"]
 
@@ -85,6 +86,67 @@ script = ExtResource("20_hlahx")
 name = "Options"
 options = Array[ExtResource("20_hlahx")]([])
 isAction = true
+
+[sub_resource type="Animation" id="Animation_0g03v"]
+resource_name = "FadeBack"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TransitionToMain/white:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.86667, 2.03333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TransitionToMain/white:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_ygpwv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TransitionToMain/white:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TransitionToMain/white:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ypq5t"]
+_data = {
+"FadeBack": SubResource("Animation_0g03v"),
+"RESET": SubResource("Animation_ygpwv")
+}
 
 [node name="HUD" type="CanvasLayer"]
 layer = 10
@@ -298,6 +360,19 @@ position = Vector2(161, 120)
 
 [node name="PAUSE" parent="." instance=ExtResource("24_p58jt")]
 visible = false
+
+[node name="TransitionToMain" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ypq5t")
+}
+
+[node name="white" type="Sprite2D" parent="TransitionToMain"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+z_index = 10
+position = Vector2(159.5, 116.5)
+scale = Vector2(1.12813, 1.12444)
+texture = ExtResource("26_y1son")
 
 [connection signal="NewGame" from="MainMenu" to="." method="_on_main_menu_new_game"]
 [connection signal="press_options" from="MainMenu" to="." method="_on_main_menu_press_options"]

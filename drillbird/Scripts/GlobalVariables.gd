@@ -3,6 +3,9 @@ signal playerAction()
 signal PlayerIsDrillingTileChanged(answer:bool)
 signal signal_IsPlayerInMenuChanged(inMenu:bool)
 
+var save_file_path = "user://save/"
+var save_file_name="DrillbirdPlayerSave.tres"
+
 var MainSceneReferenceConnector:main_scene_reference_connector
 var CreditsSceneReferenceConnector:credits_scene_reference_connector
 var playerSpawnPos:Vector2
@@ -16,6 +19,12 @@ signal playerStatusChanged
 signal SetupComplete
 
 var PlayerController:CharacterBody2D
+
+func ResetSaveData():
+	var newData=abstract_savegame.new()
+	ResourceSaver.save(newData,save_file_path+save_file_name)
+	pass
+
 func SetupPlayerReference(ctrl:CharacterBody2D):
 	PlayerController=ctrl
 

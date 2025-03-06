@@ -17,6 +17,7 @@ class_name flying_credits_manager
 
 var cloudsVisible:bool=true
 var cloudsVisibleLerper:float=0
+var isTransitioningToMainAgain:bool=false
 
 func _ready() -> void:
 	HUD.SetState(HUD.menuStates.CREDITS)
@@ -53,8 +54,11 @@ func _on_flying_child_has_evolved() -> void:
 
 
 func _on_flying_child_has_evolved_off_screen() -> void:
+	if isTransitioningToMainAgain:
+		return
+	isTransitioningToMainAgain=true
 	var anim:AnimationPlayer=$AnimationPlayer
 	anim.play("fall")
-	await get_tree().create_timer(3).timeout
+	await get_tree().create_timer(6).timeout
 	HUD.SetSceneState(HUD.sceneStates.MAIN)
 	

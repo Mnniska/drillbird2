@@ -11,7 +11,7 @@ var textShowCounter:float=0
 
 var currentLine=0
 
-
+var defaultScrollSpeed=15
 var scrollSpeed:float=0
 var scrollAcc:float=0.1
 var maxScrollSpeed:float=80
@@ -32,14 +32,13 @@ func _physics_process(delta: float) -> void:
 	if !active:
 		return
 		
-	if Input.is_action_pressed("up"):
-		scrollSpeed-=scrollAcc
-	if Input.is_action_pressed("down"):
-		scrollSpeed+=scrollAcc
+	if Input.is_action_pressed("drill"):
+		scrollSpeed=maxScrollSpeed
+	else:
+		scrollSpeed=defaultScrollSpeed
 	
-	scrollSpeed=clampf(scrollSpeed,-maxScrollSpeed,maxScrollSpeed)
 	
-	text.position.y+=scrollSpeed*delta
+	text.position.y-=scrollSpeed*delta
 	
 	if !creditsDone:
 		if GetAreCreditsDone():	

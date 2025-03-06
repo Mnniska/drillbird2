@@ -10,8 +10,8 @@ extends Node
 
 signal signal_GameAboutToBeSaved
 
-var save_file_path = "user://save/"
-var save_file_name="DrillbirdPlayerSave.tres"
+@onready var save_file_path = GlobalVariables.save_file_path
+@onready var save_file_name= GlobalVariables.save_file_name
 
 var PlayerData=abstract_savegame.new()
 
