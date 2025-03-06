@@ -10,9 +10,9 @@ func GetStringDecoded(_str:String):
 	#parses through [symbols] and replaces them wqith appropiate image links
 	for _char in _str:
 		
-		if _char =='[' or symbolName.length()>0:
+		if _char =='(' or symbolName.length()>0:
 			symbolName+=_char
-			if _char==']':
+			if _char==')':
 				text+="[img]"+GetSymbolFromString(symbolName)+"[/img]"
 
 				symbolName=""

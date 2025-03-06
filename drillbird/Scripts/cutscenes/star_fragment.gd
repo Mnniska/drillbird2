@@ -1,7 +1,7 @@
 extends Node2D
 class_name star_fragment
 
-@export var worth:float=10
+@export var worth:float=20
 @export var speedMax:float=100
 @export var speedMin=50
 var speed=0

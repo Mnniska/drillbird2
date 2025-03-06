@@ -45,3 +45,14 @@ func SetCloudsVisible(visible:bool):
 func _on_player_detector_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
 	flyer.initiateJump(randf_range(0.3,0.6))
 	pass # Replace with function body.
+
+
+func _on_flying_child_has_evolved() -> void:
+	valueSpawner.active=false
+	
+
+
+func _on_flying_child_has_evolved_off_screen() -> void:
+	
+	#TODO: Load title screen	
+	pass # Replace with function body.

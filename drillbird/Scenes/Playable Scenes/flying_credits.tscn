@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://chmegxltn4stt"]
+[gd_scene load_steps=27 format=3 uid="uid://chmegxltn4stt"]
 
 [ext_resource type="Script" path="res://Scripts/UX and UI/flying_credits_manager.gd" id="1_xtpho"]
 [ext_resource type="PackedScene" uid="uid://djowxohivfhhb" path="res://Scenes/Objects and Enemies/flying_child.tscn" id="2_eruml"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://1so80dql7icj" path="res://Art/ui/HUD/UI_LightBar_light.png" id="13_2gem5"]
 [ext_resource type="Texture2D" uid="uid://nb5wx244cjbj" path="res://Art/ui/HUD/UI_LightBar_Indicator.png" id="14_yjti0"]
 [ext_resource type="Script" path="res://Scripts/cutscenes/credits_value_spawner.gd" id="15_ob5l2"]
+[ext_resource type="AudioStream" uid="uid://di4mq56e3hnqv" path="res://Audio/Music/mus_Drillbird_Theme_Credits.wav" id="17_rlcle"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uva2n"]
 shader = ExtResource("3_nxjs3")
@@ -233,6 +234,7 @@ position = Vector2(-160, 172)
 [node name="PlayerDetector" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 16
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
 position = Vector2(0, 117)
@@ -287,4 +289,10 @@ maxTimeBeforeSpawn = 4.0
 position = Vector2(205, -76)
 points = PackedVector2Array(0, 0, 0, 158.64)
 
+[node name="music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("17_rlcle")
+autoplay = true
+
 [connection signal="body_shape_entered" from="PlayerDetector" to="." method="_on_player_detector_body_shape_entered"]
+[connection signal="hasEvolved" from="FlyingChild" to="." method="_on_flying_child_has_evolved"]
+[connection signal="hasEvolvedOffScreen" from="FlyingChild" to="." method="_on_flying_child_has_evolved_off_screen"]

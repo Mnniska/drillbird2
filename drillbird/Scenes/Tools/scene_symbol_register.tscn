@@ -5,19 +5,19 @@
 
 [sub_resource type="Resource" id="Resource_ygeou"]
 script = ExtResource("2_kpm2m")
-code = "[drill]"
+code = "(drill)"
 img_path_gamepad = "res://Art/ui/buttonSymbol_left.png"
 img_path_keyboard = "res://Art/ui/Symbols/symbol_X.png"
 
 [sub_resource type="Resource" id="Resource_qn514"]
 script = ExtResource("2_kpm2m")
-code = "[jump]"
+code = "(jump)"
 img_path_gamepad = "res://Art/ui/buttonSymbol_down.png"
 img_path_keyboard = "res://Art/ui/Symbols/symbol_Z.png"
 
 [sub_resource type="Resource" id="Resource_yco71"]
 script = ExtResource("2_kpm2m")
-code = "[inventory]"
+code = "(inventory)"
 img_path_gamepad = "res://Art/ui/buttonSymbol_top.png"
 img_path_keyboard = "res://Art/ui/Symbols/symbol_Q.png"
 

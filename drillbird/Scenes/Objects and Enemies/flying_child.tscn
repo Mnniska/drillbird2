@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://djowxohivfhhb"]
+[gd_scene load_steps=37 format=3 uid="uid://djowxohivfhhb"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/flying_child.gd" id="1_xqyjr"]
 [ext_resource type="Texture2D" uid="uid://cgxkdks7kbtrr" path="res://Art/effects/CharacterEffects/child evolving shine/childEvolveLightEffect1.png" id="2_0vj7l"]
@@ -31,6 +31,7 @@
 [ext_resource type="Texture2D" uid="uid://c7fxyncxkv3cb" path="res://Art/characters/child/childTransform12.png" id="17_q44bq"]
 [ext_resource type="Texture2D" uid="uid://by76vb2kv072j" path="res://Art/characters/child/childTransform13.png" id="18_dd534"]
 [ext_resource type="Texture2D" uid="uid://c65kwjskuax12" path="res://Art/characters/child/childTransform14.png" id="19_vjyq4"]
+[ext_resource type="Theme" uid="uid://bfr5y4lo7m1ux" path="res://Resources/Fonts/fontTheme.tres" id="32_fax8h"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_x77kq"]
 animations = [{
@@ -156,18 +157,18 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_m7bmd"]
-radius = 12.0416
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_w5b2a"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_oun34"]
+
 [node name="FlyingChild" type="CharacterBody2D"]
-collision_layer = 16
-collision_mask = 4
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("1_xqyjr")
-initialJumpCost = 6.0
-continuedJumpCost = 1.0
+initialJumpCost = 8.0
+continuedJumpCost = 0.5
 maxFuelRefillRate = 3.5
+evolveTextString = "[center][shake] (inventory) to evolve"
 
 [node name="anim_evolve_shine" type="AnimatedSprite2D" parent="."]
 position = Vector2(3, -13)
@@ -182,9 +183,6 @@ autoplay = "idle"
 frame = 13
 frame_progress = 1.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_m7bmd")
-
 [node name="Label" type="Label" parent="."]
 offset_right = 40.0
 offset_bottom = 23.0
@@ -195,6 +193,18 @@ collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="starFragmentChecker"]
 shape = SubResource("CircleShape2D_w5b2a")
+
+[node name="evolveText" type="RichTextLabel" parent="."]
+offset_left = -40.0
+offset_top = 19.0
+offset_right = 39.0
+offset_bottom = 59.0
+theme = ExtResource("32_fax8h")
+bbcode_enabled = true
+text = "[center][inventory] to evolve"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_oun34")
 
 [connection signal="animation_finished" from="Animator" to="." method="_on_animator_animation_finished"]
 [connection signal="area_shape_entered" from="starFragmentChecker" to="." method="_on_star_fragment_checker_area_shape_entered"]

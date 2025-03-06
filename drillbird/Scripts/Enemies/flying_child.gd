@@ -1,6 +1,9 @@
 extends CharacterBody2D
 class_name flying_child 
 
+signal hasEvolved
+signal hasEvolvedOffScreen
+
 @onready var animator=$Animator
 @onready var slider:HSlider = %UI_LightSlider
 
@@ -20,7 +23,7 @@ var energy:float=20
 
 
 enum States{IDLE,JUMPING,FALLING,INACTIVE,GROWN}
-var state:States=States.INACTIVE
+var state:States=States.IDLE
 
 
 @export var maxFuelRefillRate:float=5
@@ -35,14 +38,26 @@ var lastAnimatedState:States
 var holdTime:float=0
 var simulatedJumpPressed:bool=false
 
+
+var evolutionPossible:bool
 var shake:bool=false
 @onready var evolveShine=$anim_evolve_shine
+var hasFullyEvolved:bool=false
 
+@onready var evolveText=$evolveText
+@export var evolveTextString:String
 
+func _ready() -> void:
+	evolveText.text=GlobalSymbolRegister.GetStringDecoded(evolveTextString)
+	evolveText.hide()
+	
 
 func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("debug_tab"):
+		GrowUp()
+	
+	if evolutionPossible and Input.is_action_just_pressed("interact"):
 		GrowUp()
 	
 	if state==States.INACTIVE:
@@ -58,16 +73,18 @@ func _physics_process(delta: float) -> void:
 			simulatedJumpPressed=false
 	
 	velocity.x=move_toward(velocity.x,0,friction)
-	if Input.is_action_pressed("left"):
+	var lol=140
+	if Input.is_action_pressed("left") and global_position.x>-lol:
 		velocity.x-=moveSpeed
 
-	if Input.is_action_pressed("right"):
+	if Input.is_action_pressed("right") and global_position.x < lol:
 		velocity.x+=moveSpeed
 	
 	velocity.x=min(maxHorizontalSpeed,velocity.x)
 	velocity.x=max(-maxHorizontalSpeed,velocity.x)
 	velocity.y=clampf(velocity.y,-maxVerticalSpeed,maxVerticalSpeed)
-	
+	$Label.text=str(velocity.y)
+
 	if Input.is_action_just_pressed("jump"):
 		if state!=States.JUMPING:
 			initiateJump(0)
@@ -83,7 +100,6 @@ func _physics_process(delta: float) -> void:
 		modifier=0.5
 	
 	velocity.y+=gravity*modifier
-	
 	if state!=States.JUMPING:
 		if velocity.y > speedAtWhichFallingAnimTriggers:
 			state=States.FALLING
@@ -100,13 +116,18 @@ func _physics_process(delta: float) -> void:
 func GrownUpdate(delta:float):
 	
 	if shake:
-		var variance=2
+		var variance=1.3
 		var rand=randf_range(-variance,variance)
 		animator.position=Vector2(rand,0)
 	
-	velocity.y+=gravity*delta*1.5
+	if global_position.y>120:
+		hasEvolvedOffScreen.emit()
+	
+	if hasFullyEvolved:
+		velocity.y+=gravity*delta*2
 	UpdateAnimations()
 	move_and_slide()
+	
 
 func RefillEnergyBar(delta:float):
 	
@@ -114,21 +135,38 @@ func RefillEnergyBar(delta:float):
 	var gain =energyRefillRatePerSecond*multiplier
 	
 	var mult=1
-	if energy>50:
-		mult=0.5
+	
+	if energy<25:
+		mult=1.5
+	
+	if energy>45:
+		mult=0
 	
 	energy=min(maxEnergy,energy+gain*mult)
+
+func SetCanEvolve(canEvolve:bool):
+	velocity.y=-5
+	evolutionPossible=canEvolve
+	if evolutionPossible:
+		evolveText.show()
+	else:
+		evolveText.hide()
 	
 
 func UpdateEnergyBar():
 	if slider:
 		slider.value=energy
 	
+	if slider.value>95:
+		SetCanEvolve(true)
+	else:
+		SetCanEvolve(false)	
 	pass
 
 func GrowUp():
+	SetCanEvolve(false)
 	velocity.y=0
-	velocity.x=clampf(velocity.x,-2,2)
+	velocity.x=clampf(velocity.x,-5,5)
 	state=States.GROWN
 	animator.animation="growup"
 	animator.play()
@@ -137,8 +175,11 @@ func GrowUp():
 	shake=false
 	evolveShine.play()
 	
+	await get_tree().create_timer(1.2).timeout
+	hasFullyEvolved=true
+	hasEvolved.emit()
 	
-	pass
+	
 func _on_animator_animation_finished() -> void:
 	pass # Replace with function body.
 
@@ -148,7 +189,7 @@ func initiateJump(_holdtime:float):
 		return
 	
 	state=States.JUMPING
-	energy-=initialJumpCost
+	energy=max(0,energy-initialJumpCost)
 
 	if _holdtime>0:
 		simulatedJumpPressed=true
@@ -159,7 +200,7 @@ func initiateJump(_holdtime:float):
 	pass
 	
 func continueJump(delta:float):
-	energy-continuedJumpCost
+	energy=max(0,energy-continuedJumpCost)
 	velocity.y-=heldJumpSpeed
 	jumpTimeCounter+=delta
 	if jumpTimeCounter>=jumpTime:
