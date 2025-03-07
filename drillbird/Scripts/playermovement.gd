@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name player_script
 
 
 signal playerStoppedDrillingTile
@@ -703,6 +704,12 @@ func CreateInfoBubble(text:String):
 	node.Setup(abstract_textEffect.effectEnum.WAVE,text_bubble.behaviourEnum.FADE)
 	node.ShowText(text)
 
+
+func TriggerTeleportEffect():
+	invincible=true
+	invincibilityCounter=0
+	
+	pass
 
 #FLOWER SHENANIGANS
 
