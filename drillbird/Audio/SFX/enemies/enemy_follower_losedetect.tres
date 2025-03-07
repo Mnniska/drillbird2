@@ -1,13 +1,13 @@
 [gd_resource type="Resource" script_class="abstract_SoundEffectSetting" load_steps=3 format=3 uid="uid://c4f1ma2jb2tt5"]
 
 [ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_SoundEffectSetting.gd" id="1_8vlva"]
-[ext_resource type="AudioStream" uid="uid://cak4hbrn2p2y" path="res://Audio/SFX/enemies/PLACEHOLDER_SOUND.wav" id="2_31mc8"]
+[ext_resource type="AudioStream" uid="uid://wkq5q5g0l03h" path="res://Audio/SFX/enemies/enemy_follower_loosedetect.wav" id="2_njuep"]
 
 [resource]
 script = ExtResource("1_8vlva")
 limit = 5
 type = 34
-sound_effect = ExtResource("2_31mc8")
+sound_effect = ExtResource("2_njuep")
 volume = 5
 pitch_randomness = 0.3
 audioBus = 1

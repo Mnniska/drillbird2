@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="abstract_SoundEffectSetting" load_steps=3 format=3 uid="uid://d2rsh33no26kq"]
+[gd_resource type="Resource" script_class="abstract_SoundEffectSetting" load_steps=3 format=3 uid="uid://dheeuh7ka7wi2"]
 
 [ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_SoundEffectSetting.gd" id="1_tedeo"]
 [ext_resource type="AudioStream" uid="uid://cmicrd88rlp76" path="res://Audio/SFX/enemies/enemy_generic_step.wav" id="2_qhqr5"]
