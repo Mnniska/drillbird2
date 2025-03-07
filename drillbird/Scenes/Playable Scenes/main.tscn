@@ -544,7 +544,7 @@ AIRJUMP_VELOCITY = -160
 [node name="Camera2D" type="Camera2D" parent="."]
 unique_name_in_owner = true
 z_index = 2
-position = Vector2(-2159, -320)
+position = Vector2(949, -210)
 scale = Vector2(0.5, 0.5)
 process_callback = 0
 limit_top = -450
@@ -568,7 +568,14 @@ abstract_purchasables = Array[ExtResource("27_hx1y5")]([ExtResource("28_iowjc"),
 
 [node name="ShopBackground" type="Sprite2D" parent="Camera2D/ShopHandler"]
 z_index = -2
-position = Vector2(1, 0)
+position = Vector2(1, 18)
+scale = Vector2(1.25, 1)
+texture = ExtResource("30_okg02")
+
+[node name="ShopBackground2" type="Sprite2D" parent="Camera2D/ShopHandler"]
+z_index = -2
+position = Vector2(1, -211)
+rotation = 3.14159
 scale = Vector2(1.25, 1)
 texture = ExtResource("30_okg02")
 
@@ -1553,13 +1560,13 @@ visible = false
 shape = SubResource("CircleShape2D_mstut")
 
 [node name="CameraLimiter" parent="WorldScripts" instance=ExtResource("87_yr03e")]
-position = Vector2(-1060, 361)
+position = Vector2(-1154, 361)
 limit_top = true
 limit_bottom = true
 limit_left = true
 
 [node name="PlayerTeleporter" parent="WorldScripts/CameraLimiter" instance=ExtResource("88_5m6q5")]
-position = Vector2(-310, 614)
+position = Vector2(-216, 614)
 
 [node name="collider" parent="WorldScripts/CameraLimiter/PlayerTeleporter" index="0"]
 position = Vector2(1.5, -7.5)

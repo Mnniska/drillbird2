@@ -6,6 +6,9 @@ var switchingScene:bool=false
 
 enum cutsceneSounds{ scene1,scene2,scene3 }
 
+var skipTime:float=3
+var skipTimeCounter:float=0
+
 @export var cameraPositions:Array[Node2D]
 var currentpos:int=0
 # Called when the node enters the scene tree for the first time.
@@ -15,6 +18,15 @@ func _ready() -> void:
 func SetupComplete():
 	camera=GlobalVariables.MainSceneReferenceConnector.ref_camera
 
+func _process(delta: float) -> void:
+	
+	if Input.is_action_pressed("drill") or Input.is_action_pressed("interact"):
+		skipTimeCounter+=delta
+		if skipTimeCounter>skipTime:
+			_on_animation_player_animation_finished("3")
+			pass
+	else:
+		skipTimeCounter = max(0, skipTimeCounter-delta)
 
 
 func Play():
