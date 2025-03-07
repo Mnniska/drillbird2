@@ -8,8 +8,6 @@ var oreSellLocations:Array[sell_location_script]
 
 
 
-@onready var PlayerXPGainFeedback=$"../PlayerXPGainedVisualizer"
-@onready var playerXPTextBubble:text_bubble_xp=$"../PlayerXPGainedVisualizer/oreXPCollider_PLAYER/TextBubbleXP"
 var playerXPGainedThisSell:int=0
 var targetXPGainedThisSell:int=0
 
@@ -66,8 +64,6 @@ func _process(delta: float) -> void:
 	if !xpFollowPlayer:
 		return
 	
-	if playerRef!=null:
-		PlayerXPGainFeedback.global_position=playerRef.global_position
 
 func SellThisOre(ore:abstract_ore,_oreBodyReference:Node2D):
 	

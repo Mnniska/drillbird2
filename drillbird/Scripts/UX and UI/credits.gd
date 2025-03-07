@@ -32,7 +32,7 @@ func _physics_process(delta: float) -> void:
 	if !active:
 		return
 		
-	if Input.is_action_pressed("drill"):
+	if Input.is_action_pressed("drill") or Input.is_action_pressed("interact"):
 		scrollSpeed=maxScrollSpeed
 	else:
 		scrollSpeed=defaultScrollSpeed

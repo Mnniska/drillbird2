@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://ckl0ibm5pfs7u"]
+[gd_scene load_steps=45 format=3 uid="uid://ckl0ibm5pfs7u"]
 
 [ext_resource type="Script" path="res://Scripts/HomeScript.gd" id="1_qel16"]
 [ext_resource type="Texture2D" uid="uid://xpp18icbqb1y" path="res://Art/environment/Home/nest_back.png" id="2_4e54y"]
@@ -29,11 +29,10 @@
 [ext_resource type="Texture2D" uid="uid://gvnhgn5vrd5e" path="res://Art/Collectibles/ore_3_red.png" id="24_g3ew8"]
 [ext_resource type="Script" path="res://Scripts/UX and UI/ore_sell_visuals_manager.gd" id="24_quikh"]
 [ext_resource type="Script" path="res://Scripts/UX and UI/oreSellLocationScript.gd" id="25_t76gh"]
-[ext_resource type="PackedScene" uid="uid://cwhafht4ce2yx" path="res://Scenes/UI/text_bubble_XP.tscn" id="26_e3agt"]
 [ext_resource type="Script" path="res://Scripts/Tools/hub_music_player.gd" id="30_88ool"]
-[ext_resource type="AudioStream" uid="uid://bkend8hbxki0p" path="res://Audio/Music/mus_Home.wav" id="31_o3cgh"]
-[ext_resource type="AudioStream" uid="uid://biff4rn2yb8wv" path="res://Audio/Music/mus_dreaming.wav" id="32_68fby"]
-[ext_resource type="AudioStream" uid="uid://cxlg8p0plwoxu" path="res://Audio/Music/mus_Home_progress.wav" id="33_1h6f6"]
+[ext_resource type="AudioStream" uid="uid://bkend8hbxki0p" path="res://Audio/MUSIC/mus_Home.wav" id="31_o3cgh"]
+[ext_resource type="AudioStream" uid="uid://biff4rn2yb8wv" path="res://Audio/MUSIC/mus_dreaming.wav" id="32_68fby"]
+[ext_resource type="AudioStream" uid="uid://cxlg8p0plwoxu" path="res://Audio/MUSIC/mus_Home_progress.wav" id="33_1h6f6"]
 [ext_resource type="PackedScene" uid="uid://dkq7ywpgbbtsf" path="res://Scenes/cutscenes/nest_cutscene.tscn" id="35_gnmfd"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xb0mn"]
@@ -112,9 +111,6 @@ alpha_curve = SubResource("CurveTexture_h315v")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d3sup"]
 size = Vector2(65, 68)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_b21c8"]
-radius = 4.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y1qs5"]
 size = Vector2(62, 53)
@@ -531,20 +527,6 @@ script = ExtResource("25_t76gh")
 [node name="Sprite2D" type="Sprite2D" parent="OreSellParent/NodePositions/OreLocation24"]
 texture = ExtResource("24_g3ew8")
 
-[node name="PlayerXPGainedVisualizer" type="Node2D" parent="."]
-position = Vector2(-51, -14)
-
-[node name="oreXPCollider_PLAYER" type="Area2D" parent="PlayerXPGainedVisualizer"]
-collision_layer = 0
-collision_mask = 512
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerXPGainedVisualizer/oreXPCollider_PLAYER"]
-shape = SubResource("CircleShape2D_b21c8")
-debug_color = Color(0.275867, 0.500649, 1, 0.42)
-
-[node name="TextBubbleXP" parent="PlayerXPGainedVisualizer/oreXPCollider_PLAYER" instance=ExtResource("26_e3agt")]
-position = Vector2(0, -17)
-
 [node name="SellOreCollider" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 4
@@ -584,5 +566,4 @@ position = Vector2(0, 0)
 [connection signal="body_shape_exited" from="NestCollider" to="." method="_on_nest_collider_body_shape_exited"]
 [connection signal="timeout" from="cutsceneTimer" to="." method="_on_cutscene_timer_timeout"]
 [connection signal="timeout" from="JustWokeUpTimer" to="." method="_on_just_woke_up_timer_timeout"]
-[connection signal="area_shape_entered" from="PlayerXPGainedVisualizer/oreXPCollider_PLAYER" to="OreSellParent" method="_on_ore_xp_collider_player_area_shape_entered"]
 [connection signal="body_shape_entered" from="SellOreCollider" to="." method="_on_sell_ore_collider_body_shape_entered"]

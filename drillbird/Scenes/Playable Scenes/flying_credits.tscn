@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://chmegxltn4stt"]
+[gd_scene load_steps=52 format=3 uid="uid://chmegxltn4stt"]
 
 [ext_resource type="Script" path="res://Scripts/UX and UI/flying_credits_manager.gd" id="1_xtpho"]
 [ext_resource type="PackedScene" uid="uid://djowxohivfhhb" path="res://Scenes/Objects and Enemies/flying_child.tscn" id="2_eruml"]
@@ -20,7 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://duldptrwat3ay" path="res://Art/cutscenes/intro/intro_starcrashl2.png" id="15_codur"]
 [ext_resource type="Script" path="res://Scripts/cutscenes/credits_value_spawner.gd" id="15_ob5l2"]
 [ext_resource type="Texture2D" uid="uid://b0iq44vnfvm6j" path="res://Art/cutscenes/intro/intro_starcrashl3.png" id="16_kml35"]
-[ext_resource type="AudioStream" uid="uid://di4mq56e3hnqv" path="res://Audio/Music/mus_Drillbird_Theme_Credits.wav" id="17_rlcle"]
+[ext_resource type="AudioStream" uid="uid://di4mq56e3hnqv" path="res://Audio/MUSIC/mus_Drillbird_Theme_Credits.wav" id="17_rlcle"]
 [ext_resource type="Texture2D" uid="uid://d37tt64ht22ol" path="res://Art/cutscenes/intro/intro_starcrashl4.png" id="17_xiwm8"]
 [ext_resource type="Texture2D" uid="uid://b3lpuesrmtdma" path="res://Art/cutscenes/intro/intro_flyingbirdy1.png" id="18_cx0np"]
 [ext_resource type="Texture2D" uid="uid://behn1m1t24mt0" path="res://Art/cutscenes/intro/intro_starcrashl5.png" id="18_li2jk"]
@@ -32,6 +32,8 @@
 [ext_resource type="Texture2D" uid="uid://cq2c2aj0x4ypo" path="res://Art/cutscenes/intro/intro_flyingbirdy4.png" id="21_h88sl"]
 [ext_resource type="Texture2D" uid="uid://bcueq4thl3gk0" path="res://Art/cutscenes/intro/intro_starcrashl9.png" id="22_hb2tp"]
 [ext_resource type="Script" path="res://Scripts/Tools/credits_scene_reference_connector.gd" id="22_sgrwg"]
+[ext_resource type="Texture2D" uid="uid://bjo3ij85d33yx" path="res://Art/Collectibles/ore_gold.png" id="25_skkcw"]
+[ext_resource type="Texture2D" uid="uid://c1a6277712y7w" path="res://Art/Collectibles/ore_2_blue.png" id="26_2u4hx"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uva2n"]
 shader = ExtResource("3_nxjs3")
@@ -62,6 +64,69 @@ shader = ExtResource("3_nxjs3")
 shader_parameter/motion = Vector2(0, 0)
 shader_parameter/scale = 1.0
 shader_parameter/offset = Vector2(0, 0)
+
+[sub_resource type="Animation" id="Animation_m5i14"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer/fallingScene:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer/fallingScene/BG_base:speedModifier")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimationPlayer/fallingScene:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimationPlayer/impactScene:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AnimationPlayer/impactScene/anim:animation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"default"]
+}
 
 [sub_resource type="Animation" id="Animation_v2x4p"]
 resource_name = "default"
@@ -166,69 +231,6 @@ tracks/5/keys = {
 "args": [&"default", 1.0, false],
 "method": &"play"
 }]
-}
-
-[sub_resource type="Animation" id="Animation_m5i14"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimationPlayer/fallingScene:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimationPlayer/fallingScene/BG_base:speedModifier")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [1.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("AnimationPlayer/fallingScene:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("AnimationPlayer/impactScene:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("AnimationPlayer/impactScene/anim:animation")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"default"]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dm1k7"]
@@ -483,9 +485,32 @@ Art
 [color=green]Hampus Mellin [/color]
 Sound Design, Music 
 
+[color=green]Isabelle Neuman[/color]
+Cutscene Animation Support 
+
 [color=green]Luiza Flôres da Cunha[/color]
 Game Logo, Noise Acting 
 
+[font_size={32}]~~~ Resources ~~~ [/font_size]
+
+[color=green]Software[/color]
+Godot - Game Engine
+Asesprite - Drawing Sprites
+Github - Source Control
+
+[color=green]Fonts used[/color]
+M5xy by Daniel Linssen: 
+https://managore.itch.io/m5x7 
+
+Pixelated Elegance by GGBotNet: 
+https://ggbot.itch.io/pixelated-elegance-font 
+
+QuinqueFive by GGBotNet 
+https://www.dafont.com/quinquefive.font 
+
+[color=green]Also I used this one tutorial to set up the sound system:[/color]
+'How I do Sound Effects in Godot' by Aarimous 
+https://www.youtube.com/watch?v=Egf2jgET3nQ&t=242s 
 
 [font_size={32}]~~~ Playtesters ~~~ [/font_size]
 
@@ -499,49 +524,45 @@ Billy Rosehag
 Lukas Orsvärn 
 Johanna something (Lukas Sambo) 
 Tanel (enter last name) 
-
+Markus Månsson
+Keira Lundberg Larsson
+Victor Werngren
+Oliver Lincke 
+Jesper Krogh Kristiansen 
+Gaspar Stiglich
+Markus Noren
+InfiRandia
+Henry Fåhrelius
 
 [font_size={32}]~~~ Special Thanks ~~~[/font_size]
 
-Lulu Flôres da Cunha for eternal support 
-Tanel for being Drillbirds greatest hypeman 
+Tanel for being Drillbirds greatest hype person
+Malmö Devhub Game Habitat 
+The TF Malmö Discord 
+
+Lulu Flôres da Cunha 
 
 
 
 
 
 
+Bye!
 
-Bye!"
+"
 scroll_active = false
 scroll_following = true
 
 [node name="CreditsEnd" type="Node2D" parent="Credits/RichTextLabel"]
-position = Vector2(160, 569)
+position = Vector2(160, 1089)
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="Credits"]
-visible = false
-offset_left = -153.0
-offset_top = -101.0
-offset_right = 167.0
-offset_bottom = 1238.0
-theme = ExtResource("8_8r2fg")
-bbcode_enabled = true
-text = "	[font_size={32}]DrillBird contributors [/font_size]
+[node name="ore" type="Sprite2D" parent="Credits/RichTextLabel"]
+position = Vector2(256, 364)
+texture = ExtResource("25_skkcw")
 
-	[color=green]Sebastian Larsson[/color]
-	Design, Code, Art 
-
-	[color=green]Hampus Mellin [/color]
-	Sound Design, Music 
-
-	[color=green]Andrea Harty[/color]		
-	Art 
-
-	[color=green]Luiza Flores da Cunha[/color]
-	Game Logo, Noise Acting "
-scroll_active = false
-scroll_following = true
+[node name="ore2" type="Sprite2D" parent="Credits/RichTextLabel"]
+position = Vector2(267, 354)
+texture = ExtResource("26_2u4hx")
 
 [node name="StartPos" type="Node2D" parent="Credits"]
 position = Vector2(-160, 172)
@@ -583,12 +604,12 @@ texture = ExtResource("11_ap520")
 
 [node name="Label" type="Label" parent="energyMeter"]
 z_index = 4
-offset_left = -23.0
-offset_top = -203.0
-offset_right = 21.0
-offset_bottom = -180.0
+offset_left = -21.0
+offset_top = -202.0
+offset_right = 23.0
+offset_bottom = -179.0
 theme = ExtResource("8_8r2fg")
-text = "growth"
+text = "Growth"
 horizontal_alignment = 1
 
 [node name="Sprite2D2" type="Sprite2D" parent="energyMeter"]
