@@ -1,4 +1,4 @@
-[gd_scene load_steps=104 format=3 uid="uid://uk01ajvakw2b"]
+[gd_scene load_steps=117 format=3 uid="uid://uk01ajvakw2b"]
 
 [ext_resource type="Script" path="res://Scripts/egg_final_form.gd" id="1_fasbe"]
 [ext_resource type="Texture2D" uid="uid://bbqb5jjiqxbtc" path="res://Art/environment/Home/FinalForm/egg_finalForm.png" id="2_06bq8"]
@@ -33,17 +33,30 @@
 [ext_resource type="Texture2D" uid="uid://bmia46fmq6g45" path="res://Art/environment/Home/FinalForm/egg_finalForm_transition20.png" id="22_gh5y1"]
 [ext_resource type="Texture2D" uid="uid://5y4l3dbigvg4" path="res://Art/environment/Home/FinalForm/egg_finalForm_transition21.png" id="23_qxuas"]
 [ext_resource type="Texture2D" uid="uid://dhrvhcsf7e45a" path="res://Art/effects/empty.png" id="33_ms2ps"]
+[ext_resource type="Texture2D" uid="uid://df407img6bvuh" path="res://Art/cutscenes/hatchingEggDrillbird/DrillbirdIdle.png" id="34_fl78l"]
 [ext_resource type="Texture2D" uid="uid://bgcst487wjyan" path="res://Art/cutscenes/hatchingEgg/HatchingCutscene1.png" id="35_1f66s"]
+[ext_resource type="Texture2D" uid="uid://uk1i7q0jwd3x" path="res://Art/cutscenes/hatchingEggDrillbird/DrillbirdShock1.png" id="35_d5pf1"]
 [ext_resource type="Texture2D" uid="uid://da2gjdw6642rl" path="res://Art/cutscenes/hatchingEgg/HatchingCutscene2.png" id="36_p704y"]
+[ext_resource type="Texture2D" uid="uid://cpg0xrrkmf1pg" path="res://Art/cutscenes/hatchingEggDrillbird/DrillbirdShock2.png" id="36_wdkq4"]
 [ext_resource type="Texture2D" uid="uid://qs362ye8ln2f" path="res://Art/cutscenes/hatchingEgg/HatchingCutscene3.png" id="37_0bnoe"]
+[ext_resource type="Texture2D" uid="uid://b1pxs0h3j57a2" path="res://Art/cutscenes/hatchingEggDrillbird/DrillbirdShock3.png" id="37_xtwam"]
 [ext_resource type="Texture2D" uid="uid://cojiapsna86mm" path="res://Art/cutscenes/hatchingEgg/HatchingCutscene4.png" id="38_c6wf8"]
+[ext_resource type="Texture2D" uid="uid://cr5x21k1o7s3x" path="res://Art/cutscenes/hatchingEggDrillbird/DrillbirdHappy1.png" id="38_tdqs7"]
 [ext_resource type="Texture2D" uid="uid://0073v1fm6sv2" path="res://Art/cutscenes/hatchingEgg/HatchingCutscene5.png" id="39_aicdj"]
+[ext_resource type="Texture2D" uid="uid://6lutpcbea333" path="res://Art/cutscenes/hatchingEggDrillbird/DrillbirdHappy2.png" id="39_o7obs"]
 [ext_resource type="Texture2D" uid="uid://dpupd6wq8nyvo" path="res://Art/cutscenes/hatchingEgg/HatchingCutscene6.png" id="40_efl8q"]
+[ext_resource type="Texture2D" uid="uid://dmefbuon00144" path="res://Art/cutscenes/hatchingEggDrillbird/DrillbirdHappy3.png" id="40_kua1g"]
 [ext_resource type="Texture2D" uid="uid://b3hj5nal4m0gg" path="res://Art/cutscenes/hatchingEgg/HatchingCutscene7.png" id="41_jwg3k"]
+[ext_resource type="Texture2D" uid="uid://dh8lp51nd807k" path="res://Art/cutscenes/hatchingEggDrillbird/DrillbirdKiss1.png" id="41_twi2b"]
+[ext_resource type="Texture2D" uid="uid://c6nqpalx3am0k" path="res://Art/cutscenes/hatchingEggDrillbird/DrillbirdKiss2.png" id="42_0umev"]
 [ext_resource type="Texture2D" uid="uid://puhxp884gwf0" path="res://Art/cutscenes/hatchingEgg/HatchingCutscene8.png" id="42_ypokv"]
 [ext_resource type="Texture2D" uid="uid://b1wsn8g8bnn7l" path="res://Art/cutscenes/hatchingEgg/HatchingCutscene9.png" id="43_231ft"]
+[ext_resource type="Texture2D" uid="uid://c08obqoxnmu7u" path="res://Art/cutscenes/hatchingEggDrillbird/DrillbirdKiss3.png" id="43_pu8p7"]
 [ext_resource type="Texture2D" uid="uid://cval5sbnks1ug" path="res://Art/cutscenes/hatchingEgg/HatchingCutscene10.png" id="44_04s5w"]
+[ext_resource type="Texture2D" uid="uid://706r5ubq1w8m" path="res://Art/cutscenes/hatchingEggDrillbird/DrillbirdKiss4.png" id="44_tdnym"]
 [ext_resource type="Texture2D" uid="uid://1jr1h7em3w8j" path="res://Art/cutscenes/hatchingEgg/HatchingCutscene11.png" id="45_abbut"]
+[ext_resource type="Texture2D" uid="uid://df4xqfnkbt46n" path="res://Art/cutscenes/hatchingEggDrillbird/DrillbirdKiss5.png" id="45_m3wr0"]
+[ext_resource type="Texture2D" uid="uid://gaac7blk4dao" path="res://Art/cutscenes/hatchingEggDrillbird/DrillbirdKiss6.png" id="46_gc6i0"]
 [ext_resource type="Texture2D" uid="uid://di8tkt523xocm" path="res://Art/cutscenes/hatchingEgg/HatchingCutscene12.png" id="46_k78td"]
 [ext_resource type="Texture2D" uid="uid://d17r1e5n8g53u" path="res://Art/cutscenes/hatchingEgg/HatchingCutscene13.png" id="47_t61fu"]
 [ext_resource type="Texture2D" uid="uid://b4vqp4o0047bo" path="res://Art/cutscenes/hatchingEgg/HatchingCutscene14.png" id="48_gveya"]
@@ -231,6 +244,77 @@ animations = [{
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lku8d"]
 animations = [{
+"frames": [{
+"duration": 5.0,
+"texture": ExtResource("34_fl78l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_d5pf1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_wdkq4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_xtwam")
+}, {
+"duration": 5.0,
+"texture": ExtResource("34_fl78l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_tdqs7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_o7obs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_kua1g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_tdqs7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_o7obs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_kua1g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_tdqs7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_o7obs")
+}, {
+"duration": 2.0,
+"texture": ExtResource("40_kua1g")
+}, {
+"duration": 4.0,
+"texture": ExtResource("34_fl78l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_twi2b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_0umev")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_pu8p7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_tdnym")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_m3wr0")
+}, {
+"duration": 5.0,
+"texture": ExtResource("46_gc6i0")
+}, {
+"duration": 30.0,
+"texture": ExtResource("34_fl78l")
+}],
+"loop": true,
+"name": &"Drillbird",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 6.0,
 "texture": ExtResource("57_38xms")
@@ -465,9 +549,7 @@ position = Vector2(-1, -40)
 
 [node name="Anim_birds_hatching" type="AnimatedSprite2D" parent="."]
 z_index = 1
-position = Vector2(-2, -65)
+position = Vector2(-2, -83)
 sprite_frames = SubResource("SpriteFrames_lku8d")
-animation = &"hatch"
+animation = &"Drillbird"
 autoplay = "default"
-frame = 9
-frame_progress = 0.802091
