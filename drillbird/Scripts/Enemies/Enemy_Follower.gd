@@ -125,7 +125,7 @@ func Setup(info:abstract_enemy): #MUST HAVE
 func DealDamage(value:int): #MUST HAVE
 	if value>0:
 		var killsound=abstract_SoundEffectSetting.SoundEffectEnum.ENEMY_FOLLOWER_DEATH
-		Kill(killsound)
+		Kill(true,killsound)
 
 
 func TurnEnemyOff(hideInstantly:bool=true):
@@ -183,7 +183,7 @@ func _on_vision_field_body_shape_entered(body_rid: RID, body: Node2D, body_shape
 	
 	if state==States.IDLE:
 		state=States.ALERT
-		#SoundManager.PlaySoundAtLocation(global_position,abstract_SoundEffectSetting.SoundEffectEnum.ENEMY_FOLLOWER_DETECT)
+		SoundManager.PlaySoundAtLocation(global_position,abstract_SoundEffectSetting.SoundEffectEnum.ENEMY_FOLLOWER_DETECT)
 	
 	pass # Replace with function body.
 
@@ -214,7 +214,7 @@ func _on_lose_detection_timer_timeout() -> void:
 
 	if state!=States.IDLE:
 		pass
-		#SoundManager.PlaySoundAtLocation(global_position,abstract_SoundEffectSetting.SoundEffectEnum.ENEMY_FOLLOWER_LOSEDETECT)
+		SoundManager.PlaySoundAtLocation(global_position,abstract_SoundEffectSetting.SoundEffectEnum.ENEMY_FOLLOWER_LOSEDETECT)
 	state=States.IDLE
 	#todo: move towards the center of a tile
 	

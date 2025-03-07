@@ -92,7 +92,7 @@ func PlaySoundAtLocation(location:Vector2,type:abstract_SoundEffectSetting.Sound
 		new_2D_audio.position=location
 		
 		new_2D_audio=SetupCommonSoundSettings(soundEffectSetting ,new_2D_audio)
-
+		new_2D_audio.max_distance=16*15
 		new_2D_audio.finished.connect(soundEffectSetting.on_audio_finished) 
 		new_2D_audio.finished.connect(new_2D_audio.queue_free)
 		new_2D_audio.play()

@@ -69,8 +69,7 @@ func TurnEnemyOff(hideInstantly:bool=true):
 	
 func Kill(showEffects:bool=true,soundToPlay:abstract_SoundEffectSetting.SoundEffectEnum=-1):
 	
-	if soundToPlay!=-1:
-		SoundManager.PlaySoundAtLocation(global_position,soundToPlay)
+
 	
 	if enemyInfo.dead:
 		return
@@ -78,7 +77,8 @@ func Kill(showEffects:bool=true,soundToPlay:abstract_SoundEffectSetting.SoundEff
 	TurnEnemyOff(false)
 
 	if showEffects:
-		SoundManager.PlaySoundAtLocation(self.global_position,abstract_SoundEffectSetting.SoundEffectEnum.ENEMY_GENERIC_DEATH)
+		if soundToPlay!=-1:
+			SoundManager.PlaySoundAtLocation(global_position,soundToPlay)
 		anim.animation="death"
 		var timeToDie:float=get_current_animation_length()		
 		await get_tree().create_timer(timeToDie).timeout

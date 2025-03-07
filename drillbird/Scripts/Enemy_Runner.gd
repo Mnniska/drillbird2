@@ -38,7 +38,7 @@ func Setup(info:abstract_enemy): #MUST HAVE
 
 func DealDamage(value:int): #MUST HAVE
 	if value>0:
-		Kill(abstract_SoundEffectSetting.SoundEffectEnum.ENEMY_WALKER_DEATH)
+		Kill(true,abstract_SoundEffectSetting.SoundEffectEnum.ENEMY_WALKER_DEATH)
 
 
 
@@ -89,7 +89,7 @@ func _physics_process(delta: float) -> void:
 	
 	# Add the gravity.
 	if not is_on_floor():
-		velocity += get_gravity() * delta
+		velocity += get_gravity() * delta * 0.5
 	
 
 

@@ -70,7 +70,7 @@ func _physics_process(delta: float) -> void:
 
 func DealDamage(value:int): #MUST HAVE
 	if value>0:
-		Kill(abstract_SoundEffectSetting.SoundEffectEnum.ENEMY_CLOUD_DEATH)
+		Kill(true,abstract_SoundEffectSetting.SoundEffectEnum.ENEMY_CLOUD_DEATH)
 		#TODO: Fancy kill animation
 
 func UpdateAnimations(_anim:String):
