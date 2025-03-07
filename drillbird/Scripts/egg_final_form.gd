@@ -4,10 +4,11 @@ signal signal_hatching_complete
 
 var isActive:bool=false
 var isShaking:bool=false
-var shakeAmount:float=2
-@onready var originalPosition:Vector2=self.position
+var shakeAmount:float=1.8
+
 @onready var animator=$AnimatedSprite2D
 @onready var hatchAnimation=$Anim_birds_hatching
+@onready var EggOriginalPosition:Vector2=hatchAnimation.position
 
 enum finalFormStates{FINAL_INACTIVE,FINAL_HEARTLESS,FINAL_HEART,FINAL_HATCHING}
 var finalFormState:finalFormStates=finalFormStates.FINAL_HEARTLESS
@@ -15,11 +16,8 @@ var finalFormState:finalFormStates=finalFormStates.FINAL_HEARTLESS
 	
 func _process(delta: float) -> void:
 	
-	if Input.is_action_just_pressed("debug_tab"):
-		TransitionToFinalForm()
-	
 	if isShaking:
-		position=originalPosition+Vector2(randf_range(-shakeAmount,shakeAmount),0)
+		hatchAnimation.position=EggOriginalPosition+Vector2(randf_range(-shakeAmount,shakeAmount),0)
 
 func GetFinalHeartPosition():
 	return $FinalHeartPosition.global_position
@@ -52,6 +50,8 @@ func HatchEgg():
 	animator.animation="hatch"
 	hatchAnimation.animation="hatch"
 	hatchAnimation.play()
+	$Anim_hatching_drillbird.animation="hatch"
+	$Anim_hatching_drillbird.play()
 	hatchAnimation.animation_finished.connect(HatchCutsceneFinished)
 	await get_tree().create_timer(1).timeout
 	isShaking=false

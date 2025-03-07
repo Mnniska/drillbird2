@@ -40,7 +40,8 @@ func ShowText(_txt:String,timeBeforeFade:float=0.2):
 	textToShow=GlobalSymbolRegister.GetStringDecoded(_txt)
 			
 	textObject.text=centerB+effect.beginEffect+textToShow+effect.endEffect+centerE
-	textObject.self_modulate=(Color(1,1,1,1))
+	textObject.modulate=textColor
+
 	TypeWriteText(timeBeforeFade)
 	
 
@@ -49,7 +50,6 @@ func Setup(_effectType:abstract_textEffect.effectEnum=abstract_textEffect.effect
 	behavior=_behaviour
 	effect=texteffects[_effectType]
 	textColor=col
-	textObject.modulate=textColor
 	
 	pass
 
