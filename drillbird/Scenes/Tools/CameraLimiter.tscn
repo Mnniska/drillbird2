@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dvu5hnwsh7ut2"]
+
+[ext_resource type="Script" path="res://Scripts/Tools/camera_limiter.gd" id="1_bmlw5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jf3fw"]
+size = Vector2(982.75, 1103.5)
+
+[node name="CameraLimiter" type="Node2D"]
+script = ExtResource("1_bmlw5")
+
+[node name="AffectedArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AffectedArea"]
+shape = SubResource("RectangleShape2D_jf3fw")
+
+[connection signal="body_shape_entered" from="AffectedArea" to="." method="_on_affected_area_body_shape_entered"]
+[connection signal="body_shape_exited" from="AffectedArea" to="." method="_on_affected_area_body_shape_exited"]

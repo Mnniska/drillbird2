@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://w40gfx4fqwa7"]
+
+[ext_resource type="Script" path="res://Scripts/Tools/player_teleporter.gd" id="1_xe5ym"]
+[ext_resource type="Texture2D" uid="uid://bvtd87mo25snw" path="res://Art/ui/UI_rest_arrow_dark.png" id="2_j60uh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gobd3"]
+size = Vector2(369, 47)
+
+[node name="PlayerTeleporter" type="Area2D"]
+collision_layer = 0
+collision_mask = 16
+script = ExtResource("1_xe5ym")
+
+[node name="collider" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_gobd3")
+
+[node name="TeleportPosition" type="Sprite2D" parent="."]
+rotation = 3.14159
+texture = ExtResource("2_j60uh")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
