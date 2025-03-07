@@ -637,12 +637,14 @@ theme = ExtResource("42_e8s0s")
 [node name="Day counter" type="RichTextLabel" parent="Camera2D"]
 clip_contents = false
 offset_left = -320.0
-offset_top = -44.0
+offset_top = -148.0
 offset_right = 320.0
-offset_bottom = 54.0
+offset_bottom = -50.0
 theme = ExtResource("42_e8s0s")
+theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
-text = "[center]hello"
+text = "	[center] Game Saved! [p][center] Day: 2
+"
 scroll_active = false
 autowrap_mode = 0
 shortcut_keys_enabled = false

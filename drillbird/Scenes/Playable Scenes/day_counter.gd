@@ -20,20 +20,21 @@ func _process(delta: float) -> void:
 func Activate(day:int):
 	
 	txt.text="[center]"+txt_gameSaved
+	
 	txt.self_modulate=Color(1,1,1,1)
 
 	var length= await DisplayText(0)
 	
 	var txtday:String=str(day-1)
 	
-	txt.text+= "Day:"
+	txt.text+= "[p][center][shake] Day:"
 	
-	await DisplayText(length)
+	await get_tree().create_timer(0.3).timeout
 	
-	txtday=txt_dayeffect_start+str(day)+txt_dayeffect_end
-	txt.text=txt_gameSaved+"Day: "+txtday
+	txt.text="[center]"+txt_gameSaved+"[p][center][shake] Day: "+txtday
 	txt.visible_characters=-1
-	
+	await get_tree().create_timer(0.4).timeout
+
 	
 	var val=1
 	
