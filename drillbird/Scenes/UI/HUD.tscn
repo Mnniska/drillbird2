@@ -154,17 +154,19 @@ script = ExtResource("1_u1olj")
 scene_credits = ExtResource("2_lsdg3")
 scene_main = ExtResource("3_wspqp")
 
-[node name="topUI" type="Sprite2D" parent="."]
+[node name="topUI" type="Node2D" parent="."]
 z_index = 2
 position = Vector2(160, 8)
-scale = Vector2(1.25, 1)
+
+[node name="background" type="Sprite2D" parent="topUI"]
+position = Vector2(7.5, 0)
+scale = Vector2(1.35547, 1)
 texture = ExtResource("1_vcacc")
 
 [node name="InventoryHandler" type="Node2D" parent="topUI"]
 unique_name_in_owner = true
 z_index = 2
-position = Vector2(108, 0)
-scale = Vector2(0.8, 1)
+position = Vector2(141, 0)
 script = ExtResource("11_qie2v")
 inventoryUpgradeTree = ExtResource("12_mfl1u")
 
@@ -188,7 +190,6 @@ text_direction = 1
 
 [node name="LightHandler" type="Node2D" parent="topUI"]
 position = Vector2(3.90244, 1)
-scale = Vector2(0.780488, 1)
 script = ExtResource("2_01nkd")
 time_DrillMultiplier = 3.0
 
@@ -230,8 +231,7 @@ offset_bottom = 93.0
 
 [node name="CashHolder" type="Node2D" parent="topUI"]
 z_index = 2
-position = Vector2(98.4, 16)
-scale = Vector2(0.8, 1)
+position = Vector2(129, 16)
 
 [node name="cash symbol" type="Sprite2D" parent="topUI/CashHolder"]
 visible = false
@@ -258,8 +258,7 @@ texture = ExtResource("14_a35vt")
 
 [node name="HealthUIHandler" type="Node2D" parent="topUI"]
 z_index = 2
-position = Vector2(-118.634, 0)
-scale = Vector2(0.780488, 1)
+position = Vector2(-149, 0)
 script = ExtResource("9_uhcmx")
 HealthUpgrades = ExtResource("10_3kqti")
 
@@ -315,6 +314,7 @@ vertical_alignment = 1
 [node name="Button_Continue" parent="UI_Death" instance=ExtResource("16_281dp")]
 
 [node name="MainMenu" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5

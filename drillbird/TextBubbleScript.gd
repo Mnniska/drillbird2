@@ -15,6 +15,7 @@ var DestroyAfterFadingOut:bool=true
 var UseTypewriteEffect:bool=true
 var MoveUp:bool=false
 var alpha=1
+var textColor:Color=Color.WHITE
 
 
 
@@ -31,7 +32,7 @@ func _process(delta: float) -> void:
 	
 	pass
 
-func ShowText(_txt:String):
+func ShowText(_txt:String,timeBeforeFade:float=0.2):
 	textObject.text=""
 	textToShow=""
 	alpha=1	
@@ -40,17 +41,19 @@ func ShowText(_txt:String):
 			
 	textObject.text=centerB+effect.beginEffect+textToShow+effect.endEffect+centerE
 	textObject.self_modulate=(Color(1,1,1,1))
-	TypeWriteText()
+	TypeWriteText(timeBeforeFade)
 	
 
-func Setup(_effectType:abstract_textEffect.effectEnum,_behaviour:behaviourEnum):
+func Setup(_effectType:abstract_textEffect.effectEnum=abstract_textEffect.effectEnum.STILL,_behaviour:behaviourEnum=behaviourEnum.FADE,col:Color=Color.WHITE):
 
 	behavior=_behaviour
 	effect=texteffects[_effectType]
+	textColor=col
+	textObject.modulate=textColor
 	
 	pass
 
-func TypeWriteText():
+func TypeWriteText(timeBeforeFade:float=0.2):
 	
 	
 	var displayedText:int=0
@@ -66,7 +69,7 @@ func TypeWriteText():
 		pass
 	
 	if behavior==behaviourEnum.FADE:
-		await get_tree().create_timer(0.2).timeout
+		await get_tree().create_timer(timeBeforeFade).timeout
 		FadeOut()
 	
 	pass
@@ -78,8 +81,8 @@ func FadeOut():
 	
 	
 	while alpha>0:
-		
-		textObject.self_modulate=(Color(1,1,1,alpha))
+		textColor.a=5
+		textObject.self_modulate=(Color(textColor.r,textColor.g,textColor.b,alpha))
 		alpha-=step
 		await get_tree().create_timer(0.1).timeout
 

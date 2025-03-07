@@ -21,6 +21,15 @@ var playerIsLit:bool=false
 var outOfLight:bool=false
 var playerIsDrillingTile:bool=false
 
+var hasWarnedPlayer:bool=false:
+	get: return hasWarnedPlayer
+	set(value):
+		if value and !hasWarnedPlayer:
+			LowOnLightWarning()
+		hasWarnedPlayer=value
+
+var textBubblePath=preload("res://Scenes/UI/text_bubble.tscn")
+
 #get player light
 @onready var PlayerLight
 @onready var LightSlider:Slider=$LightSliderParent/UI_LightSlider
@@ -163,6 +172,10 @@ func _process(delta: float) -> void:
 			
 			if darknessClose:
 				PlayerLight.SetLight(progress)
+				if progress<0.2:
+					hasWarnedPlayer=true
+					#This bool triggers a function to warn the player
+
 			
 	else:
 		#will only set itself to be out of light once
@@ -189,7 +202,6 @@ func DepleteLight():
 	
 func RefillLight():
 	
-
 	for n in lightBulbArray:
 		n.SetActive(true)
 	
@@ -200,9 +212,12 @@ func RefillLight():
 	outOfLight=false
 	UpdatePlayerLightStatus()
 	UpdateLightbulbLocations()
+	hasWarnedPlayer=false
+
 
 func handleInputs():
-	
+	if Input.is_action_just_pressed("debug_tab"):
+		LowOnLightWarning()
 	pass # Replace with function body.
 
 func UpdatePlayerLightStatus():
@@ -234,6 +249,29 @@ func AddLightbulbRequest():
 func upgradeChangeLight():
 	if !GlobalVariables.InitialSetup:
 		AddLightbulbRequest()
+
+func LowOnLightWarning():
+	var textbubble:text_bubble= textBubblePath.instantiate()
+	add_child(textbubble)
+	
+	if GlobalVariables.currentDay<3:
+		textbubble.Setup(abstract_textEffect.effectEnum.STILL,text_bubble.behaviourEnum.FADE,Color.DARK_ORANGE)
+		textbubble.ShowText("Low on fuel.. Go home and rest",2)
+	else:
+		textbubble.Setup(abstract_textEffect.effectEnum.WAVE,text_bubble.behaviourEnum.FADE,Color.DARK_ORANGE)
+		var rand=randf()
+		var text="Low on fuel.."
+		if rand>0.4:
+			text= "Almost dark.."
+		if rand >0.9:
+			text="she's coming.."
+		
+		textbubble.ShowText(text)
+	
+
+	var offset:Vector2=Vector2(0,24)
+	textbubble.position=LightSlider.position+offset
+	
 	pass
 
 func lightsourceChangeLight():
