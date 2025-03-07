@@ -9,5 +9,5 @@ limit = 5
 type = 31
 sound_effect = ExtResource("2_c4kb5")
 volume = 5
-pitch_randomness = 0.3
+pitch_randomness = 0.1
 audioBus = 1
