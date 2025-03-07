@@ -19,6 +19,7 @@ var offset:Vector2=Vector2(0,4)
 var speedTimeCounter:float=0
 
 var currentSpeed=SPEED
+var HasBeenSpawnedViaTilemap:bool=true
 
 enum States{ IDLE, MOVE_UP, MOVE_DOWN, GROWING}
 var state:States=States.IDLE

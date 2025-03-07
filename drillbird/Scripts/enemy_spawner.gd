@@ -207,9 +207,17 @@ func GetFlowerUpdate()->Array[Vector2i]:
 	var p:Array[Vector2i]
 
 	for flower in spawnedFlowers:
-		var pos:Vector2i=gameTilemap.local_to_map(gameTilemap.to_local(flower.global_position))
-		p.append(pos)
+		pass
+		#var pos:Vector2i=gameTilemap.local_to_map(gameTilemap.to_local(flower.global_position))
+		#p.append(pos)
 	
+	for flower:climb_flower in get_tree().get_nodes_in_group("flower"):
+		
+		if !flower.HasBeenSpawnedViaTilemap and flower.state!=flower.States.GROWING:
+			var pos:Vector2i=gameTilemap.local_to_map(gameTilemap.to_local(flower.global_position))
+			p.append(pos)
+		
+
 	
 	return p 
 
@@ -243,6 +251,7 @@ func CreateNewFlowerFromGlobalPos(globalPos:Vector2,blossomed:bool=false):
 	
 	add_child(node)
 	node.SetHasBlossomed(blossomed)
+	node.HasBeenSpawnedViaTilemap=false
 	spawnedFlowers.append(node)
 
 	return node

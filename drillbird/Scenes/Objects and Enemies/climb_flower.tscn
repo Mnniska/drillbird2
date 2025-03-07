@@ -84,7 +84,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="ClimbFlower" type="Node2D"]
+[node name="ClimbFlower" type="Node2D" groups=["flower"]]
 script = ExtResource("1_n4nt3")
 collider = SubResource("Resource_eoj21")
 SPEED = 115.0
