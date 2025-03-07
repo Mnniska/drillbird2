@@ -6,18 +6,35 @@ signal CutsceneComplete
 @onready var skyCameraPos:Vector2=$cameraLerpPos_sky.global_position
 @onready var nestCameraPos:Vector2=$cameraLerpPos_nest.global_position
 
+@onready var fakePlayer:AnimatedSprite2D=$PlayerVisuals
+var lerpTime:float=2
+var lerpCounter:float=0
+var isLerping:bool=false
+var lerpStartPos:Vector2
+
 var birdVibrate:bool=false
-@onready var originalPos=$birdy.position
+@onready var birdyPosition=$birdy.global_position
 
 func _ready() -> void:
 	hide()
 
 func _process(delta: float) -> void:
 
+	if isLerping:
+
+		lerpCounter+=delta
+		var progress=lerpCounter/lerpTime
+		var pos:Vector2=Vector2(lerpf(lerpStartPos.x,birdyPosition.x,progress),lerpf(lerpStartPos.y,birdyPosition.y,progress))
+		fakePlayer.global_position=pos
+		
+		if progress>=1:
+			isLerping=false
+			fakePlayer.hide()
+		
 		
 	if birdVibrate:
 		var vibrate=1
-		birdySpriteframes.position = originalPos + Vector2(randf_range(-vibrate,vibrate),0)
+		birdySpriteframes.global_position = birdyPosition + Vector2(randf_range(-vibrate,vibrate),0)
 
 func VibrateBird():
 	birdVibrate=true
@@ -34,14 +51,27 @@ func CameraPanToSky():
 func CameraPanBack():
 	pass
 
+func TransitionToCutscene(playerpos:Vector2,transitionTime:float):
+	
+	lerpStartPos=playerpos
+	fakePlayer.global_position=lerpStartPos
+	isLerping=true
+	fakePlayer.show()
+	
+	pass
+
 func Play():
 	birdVibrate=false
-	GlobalVariables.MainSceneReferenceConnector.camera.StartNewLerp(nestCameraPos,1)
-	await get_tree().create_timer(1.2).timeout
-
+	var transitionTime:float=2
+	TransitionToCutscene(GlobalVariables.PlayerController.global_position,transitionTime)
+	GlobalVariables.MainSceneReferenceConnector.camera.StartNewLerp(nestCameraPos,transitionTime/1.5)
+	
 	show()
-	anim.play("play")
+	anim.play("wait")
 	birdySpriteframes.play()
+
+	await get_tree().create_timer(transitionTime).timeout
+	anim.play("play")
 
 	#anim.animation_finished.connect(AnimFinished)
 	

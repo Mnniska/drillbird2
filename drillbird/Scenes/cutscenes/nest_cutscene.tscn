@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dkq7ywpgbbtsf"]
+[gd_scene load_steps=31 format=3 uid="uid://dkq7ywpgbbtsf"]
 
 [ext_resource type="Script" path="res://Scripts/Tools/NestCutsceneScript.gd" id="1_bjev6"]
 [ext_resource type="Texture2D" uid="uid://dhrvhcsf7e45a" path="res://Art/effects/empty.png" id="2_13lbe"]
@@ -18,6 +18,11 @@
 [ext_resource type="Texture2D" uid="uid://dj8ir3wjcibbd" path="res://Art/cutscenes/layingEgg/cutscene_egg_sprites5.png" id="16_53qk1"]
 [ext_resource type="Texture2D" uid="uid://bxrxa30ar7jd4" path="res://Art/cutscenes/layingEgg/cutscene_egg_sprites6.png" id="17_t5cby"]
 [ext_resource type="Texture2D" uid="uid://c5uwpke1lapld" path="res://Art/cutscenes/layingEgg/cutscene_egg_sprites11.png" id="18_e0xwm"]
+[ext_resource type="Texture2D" uid="uid://b4oe7gr5h25gw" path="res://Art/characters/Drillbird/anim_Run1.png" id="19_ouc0t"]
+[ext_resource type="Texture2D" uid="uid://cghvbkkjjm3i7" path="res://Art/characters/Drillbird/anim_Run2.png" id="20_nd6u2"]
+[ext_resource type="Texture2D" uid="uid://br6j25q4duhb6" path="res://Art/characters/Drillbird/anim_Run3.png" id="21_qqvov"]
+[ext_resource type="Texture2D" uid="uid://crf0vmvyj55mo" path="res://Art/characters/Drillbird/anim_Run4.png" id="22_l362y"]
+[ext_resource type="Texture2D" uid="uid://dufocv1m0ls2c" path="res://Art/characters/Drillbird/anim_Run5.png" id="23_l27cj"]
 
 [sub_resource type="Animation" id="Animation_cotuc"]
 length = 0.001
@@ -115,10 +120,38 @@ tracks/3/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_4e8yk"]
+resource_name = "wait"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("birdy:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [&"null"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("nest:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"0"]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dqgdt"]
 _data = {
 "RESET": SubResource("Animation_cotuc"),
-"play": SubResource("Animation_2e5p2")
+"play": SubResource("Animation_2e5p2"),
+"wait": SubResource("Animation_4e8yk")
 }
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rl2a7"]
@@ -240,8 +273,35 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_cyc4j"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("19_ouc0t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_nd6u2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_qqvov")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_l362y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_l27cj")
+}],
+"loop": true,
+"name": &"walking",
+"speed": 10.0
+}]
+
 [node name="NestCutscene" type="Node2D"]
-visible = false
 position = Vector2(1, 0)
 script = ExtResource("1_bjev6")
 
@@ -266,3 +326,10 @@ position = Vector2(0, -186)
 
 [node name="cameraLerpPos_nest" type="Node2D" parent="."]
 position = Vector2(0, -52)
+
+[node name="PlayerVisuals" type="AnimatedSprite2D" parent="."]
+position = Vector2(-70, -8)
+sprite_frames = SubResource("SpriteFrames_cyc4j")
+animation = &"walking"
+autoplay = "walking"
+frame_progress = 0.257306
