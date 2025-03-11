@@ -238,6 +238,5 @@ func _on_star_fragment_checker_area_shape_entered(area_rid: RID, area: Area2D, a
 	
 	var starfragment:star_fragment=area.get_parent()
 	energy+=starfragment.worth
-	starfragment.queue_free()
+	starfragment.DestroySelfAfterAnimation()
 	
-	pass # Replace with function body.

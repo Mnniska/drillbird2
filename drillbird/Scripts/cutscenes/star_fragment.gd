@@ -1,5 +1,6 @@
 extends Node2D
 class_name star_fragment
+@onready var anim = $AnimatedSprite2D
 
 @export var worth:float=20
 @export var speedMax:float=100
@@ -17,4 +18,13 @@ func _process(delta: float) -> void:
 	
 	position.x-=speed*delta
 	
+	if position.x<-500:
+		queue_free()
+	
 	pass
+
+func DestroySelfAfterAnimation():
+	anim.animation="collect"
+	anim.play()
+	await get_tree().create_timer(1.5).timeout
+	queue_free()	
