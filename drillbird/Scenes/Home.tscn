@@ -215,6 +215,7 @@ texture = ExtResource("3_erd2o")
 z_index = 2
 position = Vector2(6, -59)
 script = ExtResource("18_v7coh")
+textToShow = "(inventory) feed Egg"
 
 [node name="bg_start2" type="Sprite2D" parent="InteractButton_depositOres"]
 self_modulate = Color(1, 1, 1, 0.72549)
@@ -240,9 +241,10 @@ offset_bottom = 9.0
 theme = ExtResource("8_k4jyb")
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 bbcode_enabled = true
-text = "[O] Feed Ores"
+text = "(O) Feed Egg"
 
 [node name="InteractButton_EndDay" type="Node2D" parent="."]
+visible = false
 z_index = 2
 position = Vector2(0, -58)
 script = ExtResource("22_v3vjt")
@@ -281,6 +283,7 @@ text = "Hold"
 vertical_alignment = 1
 
 [node name="InteractButton_HatchEgg" type="Node2D" parent="."]
+visible = false
 z_index = 2
 position = Vector2(0, 15)
 script = ExtResource("22_v3vjt")

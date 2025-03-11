@@ -62,6 +62,7 @@ func TriggerText():
 	pass
 	
 func StopTimer():
+	timer.stop()
 	
 	pass
 
