@@ -1,4 +1,4 @@
-[gd_scene load_steps=150 format=4 uid="uid://d2wv7igie5stg"]
+[gd_scene load_steps=152 format=4 uid="uid://d2wv7igie5stg"]
 
 [ext_resource type="TileSet" uid="uid://grpd2pyu7pgk" path="res://Resources/MainTileset.tres" id="1_1imtu"]
 [ext_resource type="Script" path="res://Scenes/Playable Scenes/SaveManager.gd" id="1_iickb"]
@@ -146,6 +146,12 @@ size = Vector2(2777, 1056)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_88d1h"]
 size = Vector2(18, 17)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r8h0k"]
+size = Vector2(609, 220)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xqd1y"]
+size = Vector2(609, 220)
 
 [sub_resource type="Gradient" id="Gradient_ekb11"]
 offsets = PackedFloat32Array(0, 0.536432)
@@ -531,8 +537,20 @@ collision_mask = 4
 position = Vector2(0, 2.5)
 shape = SubResource("RectangleShape2D_88d1h")
 
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="GhostManager/HeartsRightfulPlaceArea"]
+position = Vector2(873.5, -3221)
+shape = SubResource("RectangleShape2D_r8h0k")
+
 [node name="warningLocation" type="Node2D" parent="GhostManager"]
 position = Vector2(121, 41)
+
+[node name="GhostAcceptanceArea" type="Area2D" parent="GhostManager"]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="GhostManager/GhostAcceptanceArea"]
+position = Vector2(995.5, -2550)
+shape = SubResource("RectangleShape2D_xqd1y")
 
 [node name="Player" parent="." instance=ExtResource("12_u5tqu")]
 position = Vector2(1159, 814)

@@ -15,6 +15,7 @@ var ghostIsComing:bool=false
 var textBubblePath=preload("res://Scenes/UI/text_bubble.tscn")
 var orespawner:ore_manager
 @export var heartOreReference:abstract_ore
+@onready var ghostAcceptanceArea=$GhostAcceptanceArea
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -66,6 +67,10 @@ func DropHeartInRightfulPlace():
 	
 
 func HeartPickedUpByPlayer():
+	
+	for bod in ghostAcceptanceArea.get_overlapping_bodies():
+		return
+	
 	if !ghostSpawned:
 		SpawnGhost()
 		
