@@ -41,6 +41,7 @@ func SpikesSpawnSetup():
 func TurnEnemyOff():
 	hide()
 	$".".set_deferred("disabled",true)
+	$SpikeAffectedCollider.set_deferred("disabled",true)
 	$Collider.set_deferred("disabled",true)
 	$Collider.set_deferred("monitoring",false)
 	enemyInfo.dead=true	
