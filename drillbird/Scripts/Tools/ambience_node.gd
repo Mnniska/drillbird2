@@ -24,7 +24,8 @@ func _ready() -> void:
 	GlobalVariables.SetupComplete.connect(SetupComplete)
 
 func SetupComplete():
-	player=GlobalVariables.PlayerController
+	
+	player=GlobalVariables.MainSceneReferenceConnector.player
 	audioplayer.play()
 	pass
 	
@@ -60,17 +61,15 @@ func SetAmbienceActive(_active):
 func _process(delta: float) -> void:
 	
 	
+	if player==null or HUD.sceneState==HUD.sceneStates.CREDITS:
+		return
+
 	
-	if player==null:
+	if global_position.distance_to(player.global_position)>average+sizebuffer:
 		return
 	
-	while global_position.distance_to(player.global_position)>average+sizebuffer:
-		if HUD.sceneState==HUD.sceneStates.CREDITS:
-			return
-		await get_tree().create_timer(3).timeout
-
 	if player!=null:
-		var playerpos=player.global_position
+		var playerpos:Vector2 = player.global_position
 		var posx=playerpos.x
 		var posy=playerpos.y
 		if playerpos.x<boundingBoxBegin.x:
