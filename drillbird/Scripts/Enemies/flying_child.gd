@@ -3,6 +3,7 @@ class_name flying_child
 
 signal hasEvolved
 signal hasEvolvedOffScreen
+signal canEvolveUpdate(yes:bool)
 
 @onready var animator=$Animator
 @onready var slider:HSlider = %UI_LightSlider
@@ -141,6 +142,7 @@ func RefillEnergyBar(delta:float):
 	energy=min(maxEnergy,energy+gain*mult)
 
 func SetCanEvolve(canEvolve:bool):
+	canEvolveUpdate.emit(canEvolve)
 	evolutionPossible=canEvolve
 	if evolutionPossible:
 		evolveText.show()

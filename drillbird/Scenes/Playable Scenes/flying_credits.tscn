@@ -334,7 +334,6 @@ axis_stretch_vertical = 1
 
 [node name="FlyingCredits" type="Node"]
 script = ExtResource("1_xtpho")
-debugSkipCredits = true
 
 [node name="BG_base" type="Sprite2D" parent="."]
 light_mask = 0
@@ -635,5 +634,6 @@ autoplay = true
 script = ExtResource("22_sgrwg")
 
 [connection signal="body_shape_entered" from="PlayerDetector" to="." method="_on_player_detector_body_shape_entered"]
+[connection signal="canEvolveUpdate" from="FlyingChild" to="." method="_on_flying_child_can_evolve_update"]
 [connection signal="hasEvolved" from="FlyingChild" to="." method="_on_flying_child_has_evolved"]
 [connection signal="hasEvolvedOffScreen" from="FlyingChild" to="." method="_on_flying_child_has_evolved_off_screen"]

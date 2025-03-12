@@ -15,10 +15,22 @@ class_name flying_credits_manager
 
 @export var debugSkipCredits:bool=false
 
+@onready var music = $music
+var musicTargetVolume:float=1
+var musicVolume:float=1
+var musicMaxVolume:float=0
+var musicMinVolume:float=-80
+
 var cloudsVisible:bool=true
 var cloudsVisibleLerper:float=0
 var isTransitioningToMainAgain:bool=false
 
+func _process(delta: float) -> void:
+	if musicVolume!=musicTargetVolume:
+		musicVolume= lerpf(musicVolume,musicTargetVolume,delta)
+		var vol=lerpf(musicMinVolume,musicMaxVolume,musicVolume)
+		music.volume_db=vol
+		
 func _ready() -> void:
 	HUD.SetState(HUD.menuStates.CREDITS)
 	
@@ -62,3 +74,15 @@ func _on_flying_child_has_evolved_off_screen() -> void:
 	await get_tree().create_timer(6).timeout
 	HUD.SetSceneState(HUD.sceneStates.MAIN)
 	
+
+	
+	
+
+
+func _on_flying_child_can_evolve_update(yes: bool) -> void:
+	if yes:
+		pass
+		musicTargetVolume=0
+	else:
+		pass
+		musicTargetVolume=1
