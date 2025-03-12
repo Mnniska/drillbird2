@@ -638,7 +638,7 @@ script = ExtResource("1_fasbe")
 z_index = 1
 position = Vector2(-2, -40)
 sprite_frames = SubResource("SpriteFrames_dcmve")
-animation = &"hatch"
+animation = &"go_to_final_form"
 autoplay = "final_form_with_heart_idle"
 
 [node name="FinalHeartPosition" type="Node2D" parent="."]
@@ -649,7 +649,7 @@ position = Vector2(-1, -40)
 z_index = 1
 position = Vector2(-2, -83)
 sprite_frames = SubResource("SpriteFrames_lku8d")
-animation = &"wait"
+animation = &"hatch"
 autoplay = "default"
 
 [node name="Anim_hatching_drillbird" type="AnimatedSprite2D" parent="."]
