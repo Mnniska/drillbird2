@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="abstract_SoundEffectSetting" load_steps=3 format=3 uid="uid://cw56brrkw2j0"]
+
+[ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_SoundEffectSetting.gd" id="1_a6p5s"]
+[ext_resource type="AudioStream" uid="uid://dxqmfu1rsp8op" path="res://Audio/SFX/player_flap.wav" id="2_jtmol"]
+
+[resource]
+script = ExtResource("1_a6p5s")
+limit = 3
+type = 40
+sound_effect = ExtResource("2_jtmol")
+volume = 10
+pitch_randomness = 0.2
+audioBus = 1

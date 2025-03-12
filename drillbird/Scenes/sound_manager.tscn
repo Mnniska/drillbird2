@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://c6kxrgykfp1c1"]
+[gd_scene load_steps=51 format=3 uid="uid://c6kxrgykfp1c1"]
 
 [ext_resource type="Script" path="res://Scripts/sound_manager.gd" id="1_kivlo"]
 [ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_SoundEffectSetting.gd" id="2_ba8up"]
@@ -38,6 +38,7 @@
 [ext_resource type="Resource" uid="uid://bllmxs40uajjp" path="res://Audio/cutscenes/hatching/outro_egg_hatch_scene.tres" id="36_62dhl"]
 [ext_resource type="Resource" uid="uid://f0mef6oudm3" path="res://Audio/SFX/flower_spawn.tres" id="37_oo0o0"]
 [ext_resource type="Resource" uid="uid://o0glptnrawu3" path="res://Audio/cutscenes/nesting_scene.tres" id="38_xskd2"]
+[ext_resource type="Resource" uid="uid://cw56brrkw2j0" path="res://Audio/SFX/player_flap.tres" id="39_uhsgl"]
 
 [sub_resource type="Resource" id="Resource_0hq0f"]
 script = ExtResource("2_ba8up")
@@ -140,6 +141,6 @@ audioBus = 1
 
 [node name="SoundManager" type="Node2D"]
 script = ExtResource("1_kivlo")
-SOUND_EFFECTS = Array[ExtResource("2_ba8up")]([SubResource("Resource_0hq0f"), SubResource("Resource_4wqnx"), SubResource("Resource_560ql"), SubResource("Resource_phbpy"), SubResource("Resource_3bcde"), SubResource("Resource_dy3hh"), SubResource("Resource_avwkg"), SubResource("Resource_gpl43"), SubResource("Resource_eecqi"), SubResource("Resource_i15mf"), SubResource("Resource_efqg6"), ExtResource("14_0ocus"), ExtResource("15_ml3a0"), ExtResource("16_xsp05"), ExtResource("17_bvdjt"), ExtResource("18_r5cpv"), ExtResource("19_chhhc"), ExtResource("20_brk7d"), ExtResource("21_ia80u"), ExtResource("22_kknpr"), ExtResource("23_mwuym"), ExtResource("24_qdclh"), ExtResource("25_7lp3a"), ExtResource("26_mor80"), ExtResource("27_2oioi"), ExtResource("25_7lp3a"), ExtResource("28_1u4a0"), ExtResource("29_pxknn"), ExtResource("30_xy7u3"), ExtResource("31_qnpey"), ExtResource("32_ocexy"), ExtResource("33_x2wn4"), ExtResource("34_l26e5"), ExtResource("35_ftbny"), ExtResource("36_62dhl"), ExtResource("37_oo0o0"), ExtResource("38_xskd2")])
+SOUND_EFFECTS = Array[ExtResource("2_ba8up")]([SubResource("Resource_0hq0f"), SubResource("Resource_4wqnx"), SubResource("Resource_560ql"), SubResource("Resource_phbpy"), SubResource("Resource_3bcde"), SubResource("Resource_dy3hh"), SubResource("Resource_avwkg"), SubResource("Resource_gpl43"), SubResource("Resource_eecqi"), SubResource("Resource_i15mf"), SubResource("Resource_efqg6"), ExtResource("14_0ocus"), ExtResource("15_ml3a0"), ExtResource("16_xsp05"), ExtResource("17_bvdjt"), ExtResource("18_r5cpv"), ExtResource("19_chhhc"), ExtResource("20_brk7d"), ExtResource("21_ia80u"), ExtResource("22_kknpr"), ExtResource("23_mwuym"), ExtResource("24_qdclh"), ExtResource("25_7lp3a"), ExtResource("26_mor80"), ExtResource("27_2oioi"), ExtResource("25_7lp3a"), ExtResource("28_1u4a0"), ExtResource("29_pxknn"), ExtResource("30_xy7u3"), ExtResource("31_qnpey"), ExtResource("32_ocexy"), ExtResource("33_x2wn4"), ExtResource("34_l26e5"), ExtResource("35_ftbny"), ExtResource("36_62dhl"), ExtResource("37_oo0o0"), ExtResource("38_xskd2"), ExtResource("39_uhsgl")])
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]

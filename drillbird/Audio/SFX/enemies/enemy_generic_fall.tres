@@ -1,11 +1,13 @@
-[gd_resource type="Resource" script_class="abstract_SoundEffectSetting" load_steps=2 format=3 uid="uid://dmhx53x8jiu7r"]
+[gd_resource type="Resource" script_class="abstract_SoundEffectSetting" load_steps=3 format=3 uid="uid://dmhx53x8jiu7r"]
 
 [ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_SoundEffectSetting.gd" id="1_i0qkp"]
+[ext_resource type="AudioStream" uid="uid://dhxga1dg8d40q" path="res://Audio/SFX/enemies/enemy_generic_fall.wav" id="2_vwnj0"]
 
 [resource]
 script = ExtResource("1_i0qkp")
 limit = 5
 type = 30
+sound_effect = ExtResource("2_vwnj0")
 volume = 5
-pitch_randomness = 0.3
+pitch_randomness = 0.1
 audioBus = 1

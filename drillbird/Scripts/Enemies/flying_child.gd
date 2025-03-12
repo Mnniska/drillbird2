@@ -190,6 +190,7 @@ func initiateJump(_holdtime:float):
 	if state==States.JUMPING or state==States.GROWN:
 		return
 	
+	SoundManager.PlaySoundAtLocation(global_position,abstract_SoundEffectSetting.SoundEffectEnum.PLAYER_FLAP)
 	state=States.JUMPING
 	energy=max(0,energy-initialJumpCost)
 
