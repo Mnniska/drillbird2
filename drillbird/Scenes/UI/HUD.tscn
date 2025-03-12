@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://bxacqh1cbwxw5"]
+[gd_scene load_steps=40 format=3 uid="uid://bxacqh1cbwxw5"]
 
 [ext_resource type="Script" path="res://Scripts/UX and UI/GlobalHUDManager.gd" id="1_u1olj"]
 [ext_resource type="Texture2D" uid="uid://cp6xuvmo0rguj" path="res://Art/ui/HUD/UI_BlackBorder.png" id="1_vcacc"]
@@ -84,6 +84,12 @@ isAction = true
 [sub_resource type="Resource" id="Resource_q3x01"]
 script = ExtResource("20_hlahx")
 name = "Options"
+options = Array[ExtResource("20_hlahx")]([])
+isAction = true
+
+[sub_resource type="Resource" id="Resource_b7xf6"]
+script = ExtResource("20_hlahx")
+name = "Quit Game"
 options = Array[ExtResource("20_hlahx")]([])
 isAction = true
 
@@ -325,7 +331,7 @@ offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("19_qssi7")
-options = Array[ExtResource("20_hlahx")]([SubResource("Resource_jrvhg"), SubResource("Resource_q3x01")])
+options = Array[ExtResource("20_hlahx")]([SubResource("Resource_jrvhg"), SubResource("Resource_q3x01"), SubResource("Resource_b7xf6")])
 
 [node name="Logo" type="Sprite2D" parent="MainMenu"]
 position = Vector2(0, -63)
@@ -386,5 +392,6 @@ texture = ExtResource("26_y1son")
 
 [connection signal="NewGame" from="MainMenu" to="." method="_on_main_menu_new_game"]
 [connection signal="press_options" from="MainMenu" to="." method="_on_main_menu_press_options"]
+[connection signal="press_quit" from="MainMenu" to="." method="QuitGame"]
 [connection signal="optionsClosed" from="Options" to="." method="_on_options_options_closed"]
 [connection signal="signal_pause_menu_closed" from="PAUSE" to="." method="_on_pause_signal_pause_menu_closed"]

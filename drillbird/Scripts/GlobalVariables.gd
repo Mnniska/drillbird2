@@ -12,7 +12,7 @@ var playerSpawnPos:Vector2
 var eggState:int=0
 var hasSeenIntroCutscene:bool=false
 enum playerActions{DRILL,JUMP,DROPORE,INTERACT}
-
+var timeLastSaved:float=0
 enum typeEnum{DRILL, INVENTORY, HEALTH, LIGHT}
 enum playerStatusEnum {DIG,SLEEP,SHOP,NEWDAY,MENU}
 signal playerStatusChanged

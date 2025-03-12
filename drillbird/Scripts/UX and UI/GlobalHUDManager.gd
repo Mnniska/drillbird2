@@ -120,6 +120,7 @@ func SetState(_state:menuStates):
 		menuStates.MAIN:
 			SetHudVisible(false)
 			MainMenu.show()
+			MainMenu.SetShouldBeVisible(true)
 			MainMenu.GenerateMainMenu()
 			GlobalVariables.PlayerController.SetPlayerHidden(true)
 			GlobalVariables.playerStatus=GlobalVariables.playerStatusEnum.MENU
@@ -196,7 +197,7 @@ func SetSceneState(state:sceneStates,debug:bool=false):
 func _on_main_menu_new_game() -> void:
 	
 	if !GlobalVariables.hasSeenIntroCutscene:
-		MainMenu.FadeAway(false)
+		MainMenu.SetShouldBeVisible(false)
 		await get_tree().create_timer(2).timeout
 		
 		var introCutscene=GlobalVariables.MainSceneReferenceConnector.introCutscene
@@ -236,3 +237,10 @@ func _on_pause_signal_pause_menu_closed() -> void:
 	SetState(menuStates.PLAY)
 	
 	pass # Replace with function body.
+
+
+func QuitGame():
+
+	get_tree().quit()
+	
+	pass

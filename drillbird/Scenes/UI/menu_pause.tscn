@@ -7,7 +7,7 @@
 
 [node name="PAUSE" type="Node2D" node_paths=PackedStringArray("options")]
 script = ExtResource("1_w7cnh")
-options = [NodePath("Return"), NodePath("Options")]
+options = [NodePath("Return"), NodePath("Options"), NodePath("Quit Game")]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.396078)
@@ -31,3 +31,16 @@ optionName = "Return"
 [node name="Options" parent="." instance=ExtResource("4_vbmoi")]
 position = Vector2(159, 96)
 optionName = "Options"
+
+[node name="Quit Game" parent="." instance=ExtResource("4_vbmoi")]
+position = Vector2(159, 121)
+optionName = "Quit Game"
+
+[node name="QuitConfirmation" type="RichTextLabel" parent="."]
+visible = false
+offset_top = 156.0
+offset_right = 321.0
+offset_bottom = 236.0
+theme = ExtResource("3_44x14")
+bbcode_enabled = true
+text = "[center]Last save was made XXXX minutes ago.[p][center] Are you sure you'd like to quit? "

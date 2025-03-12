@@ -28,3 +28,5 @@ class_name abstract_savegame
 @export var oreIDs:Array[int]
 @export var oreLocations:Array[Vector2i]
 @export var hasSeenIntroCutscene:bool=false
+
+@export var timeLastSaved:float=0

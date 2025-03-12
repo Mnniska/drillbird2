@@ -7,6 +7,9 @@ var selectedOption:int=0
 var oldSelection:int=0
 var isHoldingEscape:bool=false
 
+var hasClickedQuitOnce:bool=false
+@onready var quitInfoText=$QuitConfirmation
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	SetActive(false)
@@ -27,8 +30,25 @@ func ButtonPressed(_name:String):
 	if _name=="Options":
 		SetActive(false)
 		HUD.SetState(HUD.menuStates.OPTIONS)
+		
+	if _name=="Quit Game":
+		
+		if !hasClickedQuitOnce:
+			
+
+			var end_time = Time.get_unix_time_from_system() #captures the end time in unix time
+			var elapsed_time = (end_time - GlobalVariables.timeLastSaved) / 60 #this calculates the elapsed time in minutes - divisor will need to be adjusted if you want hours, days, etc.
+			
+			quitInfoText.text="[center]Last save was made "+str(floor(elapsed_time))+" minutes ago.[p][center] Are you sure you'd like to quit? "
+			
+			quitInfoText.show()
+			hasClickedQuitOnce=true
+		else:
+			get_tree().quit()
+		
+		pass
 	
-	pass
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -64,9 +84,12 @@ func _process(delta: float) -> void:
 func SetActive(_active:bool):
 	menuActive=_active
 	if menuActive:
+
 		show()
 		UpdateMenu()
 		isHoldingEscape=true
+		hasClickedQuitOnce=false
+		quitInfoText.hide()
 	else:
 		hide()
 		for n in options:
@@ -78,4 +101,7 @@ func UpdateMenu():
 	for n in options:
 		n.SetActive(index==selectedOption)
 		index+=1
+	
+
+	
 	pass

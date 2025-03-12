@@ -2,6 +2,7 @@ extends Control
 
 signal NewGame
 signal press_options
+signal press_quit
 
 @export var options:Array[abstract_debugMenuOption]
 @onready var menuText=$mainMenuText
@@ -35,12 +36,12 @@ func _physics_process(delta: float) -> void:
 		if cooldown<0.4:
 			return
 		
-	if Input.is_action_just_pressed("down"):
+	if Input.is_action_just_pressed("up"):
 		selection-=1
 		if selection<0:
 			selection=options.size()-1
 		GenerateMainMenu()
-	if Input.is_action_just_pressed("up"):
+	if Input.is_action_just_pressed("down"):
 		selection+=1
 		if selection>options.size()-1:
 			selection=0
@@ -100,11 +101,11 @@ func PressButton():
 			NewGame.emit()
 		"Options":
 			press_options.emit()
-		
+		"Quit Game":
+			press_quit.emit()
 	
-	pass
 
-func FadeAway(visible:bool):
+func SetShouldBeVisible(visible:bool):
 	shouldBeVisible=visible
 	
 	if visible:

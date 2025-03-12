@@ -30,9 +30,9 @@
 [ext_resource type="Script" path="res://Scripts/UX and UI/ore_sell_visuals_manager.gd" id="24_quikh"]
 [ext_resource type="Script" path="res://Scripts/UX and UI/oreSellLocationScript.gd" id="25_t76gh"]
 [ext_resource type="Script" path="res://Scripts/Tools/hub_music_player.gd" id="30_88ool"]
-[ext_resource type="AudioStream" uid="uid://bkend8hbxki0p" path="res://Audio/Music/mus_Home.wav" id="31_o3cgh"]
-[ext_resource type="AudioStream" uid="uid://biff4rn2yb8wv" path="res://Audio/Music/mus_dreaming.wav" id="32_68fby"]
-[ext_resource type="AudioStream" uid="uid://cxlg8p0plwoxu" path="res://Audio/Music/mus_Home_progress.wav" id="33_1h6f6"]
+[ext_resource type="AudioStream" uid="uid://bkend8hbxki0p" path="res://Audio/MUSIC/mus_Home.wav" id="31_o3cgh"]
+[ext_resource type="AudioStream" uid="uid://biff4rn2yb8wv" path="res://Audio/MUSIC/mus_dreaming.wav" id="32_68fby"]
+[ext_resource type="AudioStream" uid="uid://cxlg8p0plwoxu" path="res://Audio/MUSIC/mus_Home_progress.wav" id="33_1h6f6"]
 [ext_resource type="PackedScene" uid="uid://dkq7ywpgbbtsf" path="res://Scenes/cutscenes/nest_cutscene.tscn" id="35_gnmfd"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xb0mn"]

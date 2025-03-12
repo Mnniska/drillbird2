@@ -46,6 +46,11 @@ func ResetSaveData():
 func SaveGame():
 	signal_GameAboutToBeSaved.emit()
 	await get_tree().create_timer(0.02).timeout
+	
+	#Saves the time the game was last saved. used for warning users b4 discarding savedata
+	PlayerData.timeLastSaved = Time.get_unix_time_from_system() #captures the initial unix time
+	GlobalVariables.timeLastSaved=PlayerData.timeLastSaved
+	
 	PlayerData.upgrade_drill=GlobalVariables.upgradeLevel_drill
 	PlayerData.upgrade_health=GlobalVariables.upgradeLevel_health
 	PlayerData.upgrade_inventory=GlobalVariables.upgradeLevel_inventory
@@ -127,6 +132,11 @@ func LoadGame():
 	ResourceLoader.CACHE_MODE_IGNORE
 	if ResourceLoader.load(save_file_path+save_file_name)!=null:
 		PlayerData=ResourceLoader.load(save_file_path+save_file_name)
+	
+	#Sets time last saved upon starting the game
+	PlayerData.timeLastSaved = Time.get_unix_time_from_system() #captures the initial unix time
+	GlobalVariables.timeLastSaved=PlayerData.timeLastSaved
+	
 	SetGlobalVariablesToLoadedGame()
 	LoadEnemyPositions()
 	LoadFlowers()
