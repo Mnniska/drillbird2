@@ -6,7 +6,7 @@ class_name enemy_Fallblock
 var BlockDestroyer:crack_script
 
 enum states{idle,fallprep,fall}
-var state:states=states.fall
+var state:states=states.fallprep
 @export var timeBeforeFall:float=0.8
 var timeBeforeFallCounter:float=0
 var fast:bool=false
