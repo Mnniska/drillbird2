@@ -19,11 +19,17 @@ var lastpos:Vector2
 @onready var anim=$sprite
 
 var isCarryingHeart:bool=false
+var musicProgress:float=0
 
 var heart_misplaced:bool=true
 var heart_playerHasHeart:bool=false
 
 var parent:ghost_manager
+
+var isPersuingHeart:bool=false
+var isPlayingChaseMusic:bool=false
+@export var idle_music:AudioStreamWAV
+@export var chase_music:AudioStreamWAV
 
 enum states{CHASE_PLAYER,CHASE_HEART,RETURN_HEART}
 var state:states=states.CHASE_PLAYER
@@ -35,6 +41,18 @@ func GetCollType():
 func _ready() -> void:
 	GlobalVariables.signal_IsPlayerInMenuChanged.connect(SetGamePaused)
 	pass # Replace with function body.
+
+func UpdateMusic(chasing:bool):
+	var ghost =$GhostMusic
+	if chasing:
+		ghost.max_distance=1000
+		ghost.stream=chase_music
+		ghost.play()
+	else:
+		ghost.stream=idle_music
+		ghost.play()
+		ghost.max_distance=200
+	
 
 func SetGamePaused(paused:bool):
 	gamePaused=paused
@@ -77,11 +95,13 @@ func GameIsBeingSaved():
 func PlayerPickedUpHeart():
 	NewHaunting(parent.player)
 	state=states.CHASE_PLAYER
+	UpdateMusic(true)
 	pass
 
 func PlayerDroppedHeartInUnproperPlace(heart:Node2D):
 	NewHaunting(heart)
 	state=states.CHASE_HEART
+	UpdateMusic(false)
 	pass
 
 func HauntObject(delta:float):

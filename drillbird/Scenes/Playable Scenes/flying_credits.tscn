@@ -20,7 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://duldptrwat3ay" path="res://Art/cutscenes/intro/intro_starcrashl2.png" id="15_codur"]
 [ext_resource type="Script" path="res://Scripts/cutscenes/credits_value_spawner.gd" id="15_ob5l2"]
 [ext_resource type="Texture2D" uid="uid://b0iq44vnfvm6j" path="res://Art/cutscenes/intro/intro_starcrashl3.png" id="16_kml35"]
-[ext_resource type="AudioStream" uid="uid://di4mq56e3hnqv" path="res://Audio/Music/mus_Drillbird_Theme_Credits.wav" id="17_rlcle"]
+[ext_resource type="AudioStream" uid="uid://di4mq56e3hnqv" path="res://Audio/MUSIC/mus_Drillbird_Theme_Credits.wav" id="17_rlcle"]
 [ext_resource type="Texture2D" uid="uid://d37tt64ht22ol" path="res://Art/cutscenes/intro/intro_starcrashl4.png" id="17_xiwm8"]
 [ext_resource type="Texture2D" uid="uid://b3lpuesrmtdma" path="res://Art/cutscenes/intro/intro_flyingbirdy1.png" id="18_cx0np"]
 [ext_resource type="Texture2D" uid="uid://behn1m1t24mt0" path="res://Art/cutscenes/intro/intro_starcrashl5.png" id="18_li2jk"]

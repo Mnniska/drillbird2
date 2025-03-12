@@ -1,10 +1,11 @@
-[gd_scene load_steps=21 format=3 uid="uid://vd1oghkdp3nq"]
+[gd_scene load_steps=22 format=3 uid="uid://vd1oghkdp3nq"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy_Ghost.gd" id="1_0nsmt"]
 [ext_resource type="Texture2D" uid="uid://cfqueon1nbitt" path="res://Art/characters/Ghost/ghost_idle1.png" id="2_rfldp"]
 [ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_collidable.gd" id="2_tg5lq"]
 [ext_resource type="Texture2D" uid="uid://d1ojgl3ssl7jx" path="res://Art/characters/Ghost/ghost_idle2.png" id="3_andcq"]
 [ext_resource type="Texture2D" uid="uid://dufrjqla7um7r" path="res://Art/characters/Ghost/ghost_idle3.png" id="4_7jbq0"]
+[ext_resource type="AudioStream" uid="uid://3bbwrj24tf" path="res://Audio/MUSIC/mus_Chase.wav" id="4_m1ryh"]
 [ext_resource type="Texture2D" uid="uid://dg1qn1g0kvssq" path="res://Art/characters/Ghost/ghost_idle4.png" id="5_sik3a"]
 [ext_resource type="Texture2D" uid="uid://ytksgvcq8cy6" path="res://Art/characters/Ghost/ghost_idle5.png" id="6_tefmn"]
 [ext_resource type="Texture2D" uid="uid://dmfwwmxrcwe13" path="res://Art/characters/Ghost/ghost_withHeart1.png" id="7_d07up"]
@@ -85,6 +86,8 @@ MAXSPEED = 80.0
 slowestSpeedDist = 120.0
 fastestSpeedDist = 220.0
 collType = SubResource("Resource_dqcsu")
+idle_music = ExtResource("8_7ui1h")
+chase_music = ExtResource("4_m1ryh")
 
 [node name="ghostCollider" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_r11fk")

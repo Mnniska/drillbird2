@@ -25,6 +25,7 @@ func _process(delta: float) -> void:
 
 func DestroySelfAfterAnimation():
 	anim.animation="collect"
+	SoundManager.PlaySoundAtLocation(global_position,abstract_SoundEffectSetting.SoundEffectEnum.HOME_GIVEORE_POFF)
 	anim.play()
 	await get_tree().create_timer(1.5).timeout
 	queue_free()	
