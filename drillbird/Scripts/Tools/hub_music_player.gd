@@ -1,6 +1,8 @@
 extends AudioStreamPlayer2D
 class_name hub_music_player
 
+
+var shouldPlayMusic:bool=true
 @onready var player_idle=$music_idle
 @onready var player_dreaming=$music_dream
 @onready var sleep_sound=$audio_birdySleeping
@@ -48,7 +50,7 @@ func UpdateIdleMusic():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	
-	if musicState==musicStates.IDLE:
+	if musicState==musicStates.IDLE and shouldPlayMusic:
 		if volume_idle<maxVolume:
 			volume_idle+=delta*volumeChangeSpeed
 	else:
@@ -57,7 +59,7 @@ func _process(delta: float) -> void:
 	
 	player_idle.volume_db=volume_idle
 	
-	if musicState==musicStates.DREAM:
+	if musicState==musicStates.DREAM and shouldPlayMusic:
 		if volume_dream< maxVolume:
 			volume_dream+=delta*volumeChangeSpeed
 	else:

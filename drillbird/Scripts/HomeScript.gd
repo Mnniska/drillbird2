@@ -172,6 +172,7 @@ func OreFinishedSelling(amount:int):
 	pass
 
 func HatchEgg():
+	MusicPlayer.shouldPlayMusic=false
 	Player.hide()
 	
 	EggHandler.SetEggState(EggHandler.eggStates.FINALCUTSCENE)
