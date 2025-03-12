@@ -44,7 +44,7 @@ func InitializationCompleteSetup():
 	if OreSpawner==null:
 		push_error("Could not connect OreSpawner in inventory_handler!")
 
-func DropOresRequest(position:Vector2,velocity:Vector2,facingRight:bool):
+func DropOresRequest(position:Vector2,velocity:Vector2,facingRight:bool,facingDown:bool=false):
 
 
 
@@ -52,10 +52,17 @@ func DropOresRequest(position:Vector2,velocity:Vector2,facingRight:bool):
 		var flip=-1
 		if facingRight:
 			flip=1
-		var x=(randf_range(50,100)+velocity.x)*flip
+		var x=((randf_range(50,120))*flip)+velocity.x
 		var y = randf_range(-100,-200)+velocity.y
+		
+		var pos=position
+		if facingDown:
+			pos.x+=randf_range(-8,8)
+			x=0
+			y=0
+		
 		var v=Vector2(x,y)
-		OreSpawner.SpawnOreAtLocation(position,ore,v,true)
+		OreSpawner.SpawnOreAtLocation(pos,ore,v,true)
 
 	currentWeight=0
 	UpdateInventoryText()

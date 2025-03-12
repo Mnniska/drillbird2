@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="abstract_SoundEffectSetting" load_steps=3 format=3 uid="uid://d2otxxqawcxts"]
+
+[ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_SoundEffectSetting.gd" id="1_esdf0"]
+[ext_resource type="AudioStream" uid="uid://c4q0qt3m4072i" path="res://Audio/SFX/player_drop_ores.wav" id="2_u20ja"]
+
+[resource]
+script = ExtResource("1_esdf0")
+limit = 2
+type = 35
+sound_effect = ExtResource("2_u20ja")
+volume = 0
+pitch_randomness = 0.05
+audioBus = 1

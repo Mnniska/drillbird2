@@ -9,7 +9,7 @@ signal signal_PlayerDrilling(drilling:bool)
 
 var animstate=""
 enum Directions {LEFT, RIGHT, UP, DOWN}
-enum States {IDLE, DRILLING, AIR, DEAD, DAMAGE, DEBUG_GHOST,PAUSE,FLOWER}
+enum States {IDLE, DRILLING, AIR, DEAD, DAMAGE, DEBUG_GHOST,PAUSE,FLOWER,DROPPINGORES}
 var state = States.IDLE
 @export var collType:abstract_collidable
 
@@ -20,7 +20,7 @@ var effect_jump=preload("res://Scenes/Effects/jump_puff.tscn")
 var facingDir= Directions.RIGHT
 var facing_right: bool = true
 
-@export var SPEED = 100.0
+@export var SPEED:float = 100.0
 @export var DRILLSPEED= 40.0
 @export var JUMP_VELOCITY = -200
 @export var AIRJUMP_VELOCITY=-100
@@ -45,6 +45,8 @@ var damageTimerCounter:float=0
 @export var invincibilityTime:float=3.5
 var invincibilityCounter:float=0
 var invincible:bool=false
+
+var droppingOresCounter:float=0
 
 #IM DRILLING!! 
 var playerIsDrilling:bool=false
@@ -130,7 +132,7 @@ func _physics_process(delta: float) -> void:
 	
 
 	
-	if !state==States.DAMAGE and !state==States.DEAD and !state==States.FLOWER:
+	if !state==States.DAMAGE and !state==States.DEAD and !state==States.FLOWER and !state==States.DROPPINGORES:
 		newanim=RegularMovement(delta,newanim)
 	elif state==States.DAMAGE:
 		newanim=TakeDamageMovement(delta,newanim)
@@ -140,6 +142,8 @@ func _physics_process(delta: float) -> void:
 		newanim="dead"
 	elif state==States.FLOWER:
 		newanim=FlowerMovement(delta,newanim)
+	elif state==States.DROPPINGORES:
+		newanim=DroppingOresMovement(delta,newanim)
 
 	if invincible:
 		invincibilityCounter+=delta
@@ -165,6 +169,18 @@ func GetClosestFlower():
 				chosenFlower=n
 		return chosenFlower
 
+func DroppingOresMovement(delta:float,currentAnim:String):
+	
+	velocity.y=0
+	velocity.x=velocity.x*0.95
+	
+	droppingOresCounter+=delta
+	if droppingOresCounter>0.5:
+		droppingOresCounter=0
+		state=States.IDLE
+		
+	return "drop_ores"
+	
 
 func FlowerMovement(delta:float,currentAnim:String):
 	
@@ -268,11 +284,16 @@ func RegularMovement(delta:float,currentAnim:String):
 	if Input.is_action_just_pressed("interact"):
 		
 		GlobalVariables.playerAction.emit(GlobalVariables.playerActions.DROPORE)
+		#TODO: Drop ores anim
 		
-		oreInventory.DropOresRequest(global_position,velocity,facing_right) 
+		
+		oreInventory.DropOresRequest(global_position,velocity,facing_right,facingDir==Directions.DOWN) 
 		if heavy:
+			state=States.DROPPINGORES
 			CreateInfoBubble("lightweight!")		
 			heavy=false
+			SoundManager.PlaySoundAtLocation(self.global_position,abstract_SoundEffectSetting.SoundEffectEnum.PLAYER_DROP_ORE)
+			
 	
 	# Check for jump input and add velocity.
 	if Input.is_action_just_pressed("jump"):  
@@ -376,6 +397,7 @@ func RegularMovement(delta:float,currentAnim:String):
 			newanim="run"
 			
 	else:
+
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		if is_on_floor():
 			

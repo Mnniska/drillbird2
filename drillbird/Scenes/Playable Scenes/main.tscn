@@ -1574,6 +1574,7 @@ limit_top = true
 shape = SubResource("RectangleShape2D_y375v")
 
 [node name="PlayerSpawnLocations" type="Node2D" parent="."]
+visible = false
 
 [node name="OriginalSpawnPos" type="Sprite2D" parent="PlayerSpawnLocations"]
 position = Vector2(-616, 518)
