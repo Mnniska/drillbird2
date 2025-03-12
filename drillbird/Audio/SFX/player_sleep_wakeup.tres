@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="abstract_SoundEffectSetting" load_steps=3 format=3 uid="uid://bo1n20mw4vpro"]
+
+[ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_SoundEffectSetting.gd" id="1_4m0mg"]
+[ext_resource type="AudioStream" uid="uid://bthc4aoqhwcus" path="res://Audio/SFX/player_sleep_wakeup.wav" id="2_ilfhp"]
+
+[resource]
+script = ExtResource("1_4m0mg")
+limit = 1
+type = 41
+sound_effect = ExtResource("2_ilfhp")
+volume = 0
+pitch_randomness = 0.0
+audioBus = 1

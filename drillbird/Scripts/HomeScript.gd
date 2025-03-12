@@ -241,6 +241,7 @@ func WakeUp(saveGame:bool):
 	GlobalVariables.playerStatus=GlobalVariables.playerStatusEnum.DIG
 	
 	state=states.IDLE
+	SoundManager.PlaySoundAtLocation(global_position,abstract_SoundEffectSetting.SoundEffectEnum.PLAYER_WAKEUP)
 	
 func ReplendishStats():
 	LightHandler.RefillLight()

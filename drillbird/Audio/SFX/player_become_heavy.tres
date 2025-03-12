@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="abstract_SoundEffectSetting" load_steps=3 format=3 uid="uid://3qjsyj7ux6"]
+
+[ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_SoundEffectSetting.gd" id="1_sv7jm"]
+[ext_resource type="AudioStream" uid="uid://dvfwa80n7xvbj" path="res://Audio/SFX/player_become_heavy.wav" id="2_fa1g1"]
+
+[resource]
+script = ExtResource("1_sv7jm")
+limit = 2
+type = 42
+sound_effect = ExtResource("2_fa1g1")
+volume = 0
+pitch_randomness = 0.05
+audioBus = 1

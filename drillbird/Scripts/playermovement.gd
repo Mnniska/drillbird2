@@ -708,6 +708,7 @@ func _on_detector_body_entered(body: Node2D) -> void:
 				if !heavy:
 					heavy=true 
 					CreateInfoBubble("Heavy")
+					SoundManager.PlaySoundAtLocation(global_position,abstract_SoundEffectSetting.SoundEffectEnum.PLAYER_BECOME_HEAVY)
 				
 			else:
 				CreateInfoBubble("Inventory full!")
