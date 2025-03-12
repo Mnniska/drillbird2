@@ -304,6 +304,8 @@ func RegularMovement(delta:float,currentAnim:String):
 			if HeldFlower!=null:
 				state=States.FLOWER
 				HeldFlower.SetPlayerAttached(true)
+				PlayerStoppedDrillingValidTile()
+				signal_PlayerDrilling.emit(false)
 				return "flyingUp"
 		
 		if is_on_floor() or jumpsMade <= maxJumps or !heavy:
@@ -519,15 +521,13 @@ func PlayerStoppedDrillingValidTile():
 	player_is_drilling_tile =false
 	playerStoppedDrillingTile.emit()
 	FlowerTimer.stop()
-
-	
-
-
+	SetLightEffectActive(false)
 	
 func DealDamage(amount:int):
 	if state==States.DAMAGE or state==States.DEAD or invincible:
 		return false
 	state=States.DAMAGE
+	PlayerStoppedDrillingValidTile()
 	SoundManager.PlaySoundAtLocation(global_position,abstract_SoundEffectSetting.SoundEffectEnum.PLAYER_HURT)
 	
 	#Let go of the flower held

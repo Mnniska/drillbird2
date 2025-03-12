@@ -38,7 +38,7 @@ func MaterialChange(terrain:abstract_terrain_info):
 		audiostream.pitch_scale=minPitch
 		
 	
-	if terrain==null: #This has not yet been implemented - but I think we should in the future
+	if terrain==null: 
 		if !audiostream.playing or audiostream.stream!=sound_air:
 			audiostream.pitch_scale=minPitch
 			SetupAndPlaySoundSetting(sound_air)
