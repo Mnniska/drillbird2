@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://ckl0ibm5pfs7u"]
+[gd_scene load_steps=46 format=3 uid="uid://ckl0ibm5pfs7u"]
 
 [ext_resource type="Script" path="res://Scripts/HomeScript.gd" id="1_qel16"]
 [ext_resource type="Texture2D" uid="uid://xpp18icbqb1y" path="res://Art/environment/Home/nest_back.png" id="2_4e54y"]
@@ -33,6 +33,7 @@
 [ext_resource type="AudioStream" uid="uid://bkend8hbxki0p" path="res://Audio/MUSIC/mus_Home.wav" id="31_o3cgh"]
 [ext_resource type="AudioStream" uid="uid://biff4rn2yb8wv" path="res://Audio/MUSIC/mus_dreaming.wav" id="32_68fby"]
 [ext_resource type="AudioStream" uid="uid://cxlg8p0plwoxu" path="res://Audio/MUSIC/mus_Home_progress.wav" id="33_1h6f6"]
+[ext_resource type="AudioStream" uid="uid://m5o3cjhfbqsf" path="res://Audio/SFX/home_player_sleep.wav" id="34_h80w6"]
 [ext_resource type="PackedScene" uid="uid://dkq7ywpgbbtsf" path="res://Scenes/cutscenes/nest_cutscene.tscn" id="35_gnmfd"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xb0mn"]
@@ -553,6 +554,13 @@ bus = &"Music"
 
 [node name="music_dream" type="AudioStreamPlayer2D" parent="HUBMusicPlayer"]
 stream = ExtResource("32_68fby")
+autoplay = true
+max_distance = 320.0
+bus = &"Music"
+
+[node name="audio_birdySleeping" type="AudioStreamPlayer2D" parent="HUBMusicPlayer"]
+stream = ExtResource("34_h80w6")
+volume_db = -15.0
 autoplay = true
 max_distance = 320.0
 bus = &"Music"

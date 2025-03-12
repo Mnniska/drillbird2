@@ -3,6 +3,8 @@ class_name hub_music_player
 
 @onready var player_idle=$music_idle
 @onready var player_dreaming=$music_dream
+@onready var sleep_sound=$audio_birdySleeping
+
 var volume_idle:float=0
 var volume_dream:float=0
 
@@ -21,6 +23,7 @@ var musicState:musicStates=musicStates.IDLE
 func _ready() -> void:
 	player_idle.finished.connect(player_idle.play)
 	player_dreaming.finished.connect(player_dreaming.play)
+	sleep_sound.finished.connect(sleep_sound.play)
 	GlobalVariables.SetupComplete.connect(SetupComplete)
 
 	pass # Replace with function body.
@@ -61,6 +64,7 @@ func _process(delta: float) -> void:
 		if volume_dream > minVolume:
 			volume_dream-=delta*volumeChangeSpeed
 	player_dreaming.volume_db=volume_dream
+	sleep_sound.volume_db=volume_dream
 	
 	pass
 
@@ -74,6 +78,7 @@ func SetState(_state:musicStates):
 			pass
 		musicStates.DREAM:
 			player_dreaming.play(0)
+			sleep_sound.play(0)
 			
 			pass
 		musicStates.FINALE:
