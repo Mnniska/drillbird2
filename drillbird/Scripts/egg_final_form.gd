@@ -46,10 +46,31 @@ func SetState(_state:finalFormStates):
 			
 
 func HatchEgg():
-	SoundManager.PlaySoundGlobal(abstract_SoundEffectSetting.SoundEffectEnum.OUTRO_EGG_HATCH)
+
+	$Anim_hatching_drillbird.animation="wait"
+	hatchAnimation.animation="wait"
+	animator.animation="hatch"
+
+	isShaking=false
+	await get_tree().create_timer(2).timeout
+
+	isShaking=true
+	await get_tree().create_timer(1).timeout
+	isShaking=false
+	await get_tree().create_timer(0.5).timeout
 	
 	isShaking=true
-	animator.animation="hatch"
+	await get_tree().create_timer(0.5).timeout
+	isShaking=false
+	await get_tree().create_timer(0.5).timeout
+
+	isShaking=true
+	await get_tree().create_timer(1.5).timeout
+	isShaking=false
+	await get_tree().create_timer(2).timeout
+
+	SoundManager.PlaySoundGlobal(abstract_SoundEffectSetting.SoundEffectEnum.OUTRO_EGG_HATCH)	
+	isShaking=true
 	hatchAnimation.animation="hatch"
 	hatchAnimation.play()
 	$Anim_hatching_drillbird.animation="hatch"

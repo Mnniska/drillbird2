@@ -531,6 +531,14 @@ animations = [{
 "loop": false,
 "name": &"hatch",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 3.0,
+"texture": ExtResource("35_1f66s")
+}],
+"loop": true,
+"name": &"wait",
+"speed": 5.0
 }]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ovqsl"]
@@ -613,6 +621,14 @@ animations = [{
 "loop": false,
 "name": &"hatch",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 5.0,
+"texture": ExtResource("34_fl78l")
+}],
+"loop": true,
+"name": &"wait",
+"speed": 5.0
 }]
 
 [node name="Egg_FinalForm" type="Node2D"]
@@ -633,10 +649,12 @@ position = Vector2(-1, -40)
 z_index = 1
 position = Vector2(-2, -83)
 sprite_frames = SubResource("SpriteFrames_lku8d")
+animation = &"wait"
 autoplay = "default"
 
 [node name="Anim_hatching_drillbird" type="AnimatedSprite2D" parent="."]
 z_index = 1
 position = Vector2(-2, -83)
 sprite_frames = SubResource("SpriteFrames_ovqsl")
+animation = &"wait"
 autoplay = "default"
