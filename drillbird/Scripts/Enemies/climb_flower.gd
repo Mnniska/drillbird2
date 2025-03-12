@@ -107,8 +107,11 @@ func Update_Active(delta:float):
 	pass
 	
 	
-func SetHasBlossomed(hasBlossomed:bool):
+func SetHasBlossomed(hasBlossomed:bool,playsound:bool=true):
 	if hasBlossomed:
+		if playsound:
+			SoundManager.PlaySoundAtLocation(global_position,abstract_SoundEffectSetting.SoundEffectEnum.FLOWER_SPAWN)
+		
 		state=States.IDLE
 		FlowerRootAnim.animation="idle"
 		flowerBody.SetActive(true)

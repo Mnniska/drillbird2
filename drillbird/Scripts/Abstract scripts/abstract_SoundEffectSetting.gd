@@ -51,6 +51,7 @@ enum SoundEffectEnum
 	OUTRO_EGG_HATCH,
 	PLAYER_SLEEP_LOOP,
 	FLOWER_SPAWN
+	
 }
 
 @export_range(0,10) var limit:int=5

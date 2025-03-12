@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="abstract_SoundEffectSetting" load_steps=3 format=3 uid="uid://f0mef6oudm3"]
+
+[ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_SoundEffectSetting.gd" id="1_sin0v"]
+[ext_resource type="AudioStream" uid="uid://bap7mwkftme0t" path="res://Audio/SFX/flower_spawn.wav" id="2_rthkp"]
+
+[resource]
+script = ExtResource("1_sin0v")
+limit = 2
+type = 38
+sound_effect = ExtResource("2_rthkp")
+volume = 15
+pitch_randomness = 0.0
+audioBus = 1
