@@ -40,8 +40,6 @@ func SetupCommonSoundSettings(soundEffectSetting:abstract_SoundEffectSetting,aud
 	audio.bus=soundEffectSetting.AudioBusEnum.keys()[soundEffectSetting.audioBus]
 	return audio
 
-
-
 func PlaySoundGlobal(type:abstract_SoundEffectSetting.SoundEffectEnum,pitch:float=-1):
 
 	var soundEffectSetting:abstract_SoundEffectSetting=SOUND_EFFECTS[0]

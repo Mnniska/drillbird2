@@ -46,6 +46,8 @@ func SetState(_state:finalFormStates):
 			
 
 func HatchEgg():
+	SoundManager.PlaySoundGlobal(abstract_SoundEffectSetting.SoundEffectEnum.OUTRO_EGG_HATCH)
+	
 	isShaking=true
 	animator.animation="hatch"
 	hatchAnimation.animation="hatch"
@@ -74,7 +76,6 @@ func TransitionToFinalForm():
 	pass
 
 func RecieveHeartCutscene():
-	#TODO: Final form with heart transition
 	finalFormState=finalFormStates.FINAL_HEART
 	animator.animation="final_form_with_heart_idle"
 	animator.play()
