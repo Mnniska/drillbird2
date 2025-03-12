@@ -48,10 +48,10 @@ func SetActive(detected:bool):
 	
 	if active:
 		if limit_left:
-			camera.limit_left=boundingBoxBegin.x
+			camera.limit_left=boundingBoxBegin.x+cameraOffsetHorizontal
 			
 		if limit_right:
-			camera.limit_right=boundingBoxEnd.x
+			camera.limit_right=boundingBoxEnd.x-cameraOffsetHorizontal
 			
 		if limit_bottom:
 			camera.limit_bottom=boundingBoxEnd.y
