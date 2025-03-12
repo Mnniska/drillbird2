@@ -72,7 +72,7 @@ func Play():
 
 	await get_tree().create_timer(transitionTime).timeout
 	anim.play("play")
-
+	SoundManager.PlaySoundAtLocation(global_position,abstract_SoundEffectSetting.SoundEffectEnum.SCENE_NESTING)
 	#anim.animation_finished.connect(AnimFinished)
 	
 func AnimFinished():
