@@ -54,6 +54,8 @@ func HatchEgg():
 	isShaking=false
 	await get_tree().create_timer(2).timeout
 
+	SoundManager.PlaySoundGlobal(abstract_SoundEffectSetting.SoundEffectEnum.OUTRO_EGG_HATCH)	
+
 	isShaking=true
 	await get_tree().create_timer(1).timeout
 	isShaking=false
@@ -69,7 +71,6 @@ func HatchEgg():
 	isShaking=false
 	await get_tree().create_timer(2).timeout
 
-	SoundManager.PlaySoundGlobal(abstract_SoundEffectSetting.SoundEffectEnum.OUTRO_EGG_HATCH)	
 	isShaking=true
 	hatchAnimation.animation="hatch"
 	hatchAnimation.play()
