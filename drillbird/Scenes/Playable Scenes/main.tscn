@@ -388,7 +388,7 @@ size = Vector2(2788, 2934.5)
 size = Vector2(2257, 979)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mstut"]
-radius = 424.019
+radius = 784.23
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1iuvu"]
 size = Vector2(714.375, 341.75)
@@ -681,10 +681,11 @@ shortcut_keys_enabled = false
 script = ExtResource("52_hrk5v")
 
 [node name="PlayerDarkness" type="Node2D" parent="." node_paths=PackedStringArray("lightSource")]
-position = Vector2(412, 26)
+position = Vector2(130, 166)
 script = ExtResource("35_54gud")
 lightTexture = ExtResource("36_yw5ht")
 lightSource = NodePath("light_full")
+minLight = 0.25
 
 [node name="light_full" type="PointLight2D" parent="PlayerDarkness"]
 blend_mode = 2
@@ -1566,12 +1567,12 @@ AmbiencesToPlay = Array[AudioStreamWAV]([ExtResource("62_i2265")])
 [node name="CollisionShape2D" parent="WorldScripts/AmbiencePlayers/AmbienceNode_cave3/AffectedArea" index="0"]
 shape = SubResource("RectangleShape2D_lpygi")
 
-[node name="Torch" parent="WorldScripts" instance=ExtResource("77_3plt1")]
+[node name="TutorialTorch" parent="WorldScripts" instance=ExtResource("77_3plt1")]
 position = Vector2(-838, 120)
 range = 2695
 
-[node name="CollisionShape2D" parent="WorldScripts/Torch/Area2D" index="0"]
-visible = false
+[node name="CollisionShape2D" parent="WorldScripts/TutorialTorch/Area2D" index="0"]
+position = Vector2(-341, -32)
 shape = SubResource("CircleShape2D_mstut")
 
 [node name="CameraLimiter" parent="WorldScripts" instance=ExtResource("87_yr03e")]
@@ -1662,7 +1663,7 @@ texture = ExtResource("64_yk8d7")
 [editable path="WorldScripts/AmbiencePlayers/AmbienceNode_cave0"]
 [editable path="WorldScripts/AmbiencePlayers/AmbienceNode_cave2"]
 [editable path="WorldScripts/AmbiencePlayers/AmbienceNode_cave3"]
-[editable path="WorldScripts/Torch"]
+[editable path="WorldScripts/TutorialTorch"]
 [editable path="WorldScripts/CameraLimiter"]
 [editable path="WorldScripts/CameraLimiter/PlayerTeleporter"]
 [editable path="WorldScripts/CameraLimiter_hub"]
