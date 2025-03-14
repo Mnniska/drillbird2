@@ -27,8 +27,8 @@ GlobalSymbolRegister="*res://Scenes/Tools/scene_symbol_register.tscn"
 
 window/size/viewport_width=320
 window/size/viewport_height=224
-window/size/window_width_override=1024
-window/size/window_height_override=896
+window/size/window_width_override=1920
+window/size/window_height_override=1344
 window/stretch/mode="viewport"
 window/stretch/scale_mode="integer"
 window/vsync/vsync_mode=0

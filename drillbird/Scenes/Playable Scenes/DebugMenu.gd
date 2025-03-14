@@ -13,6 +13,7 @@ var playerHidden:bool=false
 @export var oreTypeToAssignSpawnedOre:abstract_ore
 
 @export var finalHeartOre:abstract_ore
+var hudHidden:bool=false
 
 
 # Called when the node enters the scene tree for the first time.
@@ -192,6 +193,11 @@ func ExecuteAction(action:String):
 				$"../../Player".hide()
 			else:
 				$"../../Player".show()
+				
+		"ToggleHUDHidden":
+			hudHidden=!hudHidden
+			HUD.SetHudVisible(hudHidden)			
+			
 		"spawnOre":
 			var node=oreToSpawn.instantiate()
 			node.transform.origin=get_parent().to_local(GlobalVariables.MainSceneReferenceConnector.player.global_position+Vector2(16,-16)) 
