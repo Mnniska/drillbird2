@@ -44,6 +44,9 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		cutscene_finished.emit()
 		player.play("default")
 		camera.SetFollowPlayer(true)
+		
+		GlobalVariables.PlayerController.TriggerDazed()
+		#this is a pretty lmao way to trigger the dazed state but I will take it
 
 	
 func PlayScene(anim:int):

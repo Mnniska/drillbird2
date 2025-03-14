@@ -9,7 +9,7 @@ signal signal_PlayerDrilling(drilling:bool)
 
 var animstate=""
 enum Directions {LEFT, RIGHT, UP, DOWN}
-enum States {IDLE, DRILLING, AIR, DEAD, DAMAGE, DEBUG_GHOST,PAUSE,FLOWER,DROPPINGORES}
+enum States {IDLE, DRILLING, AIR, DEAD, DAMAGE, DEBUG_GHOST,PAUSE,FLOWER,DROPPINGORES,DAZED}
 var state = States.IDLE
 @export var collType:abstract_collidable
 
@@ -28,6 +28,8 @@ var facing_right: bool = true
 var DebugTeleporLocParent:Node2D
 var DebugTeleportLocations:Array[Vector2]
 var currentTeleportationIndex:int
+
+var isgettingup:bool=false
 
 
 #Jump variables
@@ -98,6 +100,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	
+
 				
 	if Input.is_action_just_pressed("debug_1"):
 		
@@ -132,7 +135,7 @@ func _physics_process(delta: float) -> void:
 	
 
 	
-	if !state==States.DAMAGE and !state==States.DEAD and !state==States.FLOWER and !state==States.DROPPINGORES:
+	if !state==States.DAMAGE and !state==States.DEAD and !state==States.FLOWER and !state==States.DROPPINGORES and !state==States.DAZED:
 		newanim=RegularMovement(delta,newanim)
 	elif state==States.DAMAGE:
 		newanim=TakeDamageMovement(delta,newanim)
@@ -144,6 +147,8 @@ func _physics_process(delta: float) -> void:
 		newanim=FlowerMovement(delta,newanim)
 	elif state==States.DROPPINGORES:
 		newanim=DroppingOresMovement(delta,newanim)
+	elif state==States.DAZED:
+		newanim=DazedMovement(delta,newanim)
 
 	if invincible:
 		invincibilityCounter+=delta
@@ -154,6 +159,7 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 	Update_Animations(newanim)
+	
 
 func GetClosestFlower():
 	for n in closeFlowers:
@@ -274,8 +280,33 @@ func DebugGhostMovement(delta:float,currentAnim:String):
 	velocity.x=directionX*SPEED*2*speedMult
 	velocity.y=directionY*SPEED*2*speedMult
 	
+	pass
+
+func TriggerDazed():
+	state=States.DAZED
+	SetLightEffectActive(false)
+	for crystal in jump_crystals:
+		crystal.hide()
 	
+
+func DazedMovement(delta:float,currentAnim:String):
 	
+	if Input.is_action_just_pressed("jump") or Input.is_action_just_pressed("left")or Input.is_action_just_pressed("right") or Input.is_action_just_pressed("up") or Input.is_action_just_pressed("down") or Input.is_action_just_pressed("drill") or Input.is_action_just_pressed("inventory"):
+		if !isgettingup:
+			GetUp()
+
+	if isgettingup:
+		return "dazed_get_up"	
+	else:
+		return "dazed"
+
+func GetUp():
+	if !isgettingup:
+		isgettingup=true
+		await get_tree().create_timer(4).timeout
+		state=States.IDLE
+		SoundManager.PlaySoundAtLocation(global_position,abstract_SoundEffectSetting.SoundEffectEnum.PLAYER_WAKEUP)
+		isgettingup=false
 	pass
 
 func RegularMovement(delta:float,currentAnim:String):
@@ -598,6 +629,7 @@ func Update_Animations(newanim):
 	if newanim !=animstate:
 		animstate=newanim
 		playerAnim.animation=animstate
+		playerAnim.play() 
 		
 		if animstate=="run":
 			CreateEffect(effectEnum.RUN_START,facingLeft)

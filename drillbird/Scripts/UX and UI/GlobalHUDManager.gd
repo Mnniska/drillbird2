@@ -70,6 +70,7 @@ func GetLightManager():
 	return HUD_lightBulbManager
 
 func SetHudVisible(_show:bool):
+	
 	if showHud!=_show:
 		isLerping=true
 		lerpCounter=0

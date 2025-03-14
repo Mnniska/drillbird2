@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=3 uid="uid://e3titjk1as46"]
+[gd_scene load_steps=70 format=3 uid="uid://e3titjk1as46"]
 
 [ext_resource type="Script" path="res://Scripts/playermovement.gd" id="1_llgr2"]
 [ext_resource type="Texture2D" uid="uid://dqsglx1jll3rm" path="res://Art/effects/BirdyLightEffect1.png" id="2_65ywu"]
@@ -27,8 +27,11 @@
 [ext_resource type="Texture2D" uid="uid://b4oe7gr5h25gw" path="res://Art/characters/Drillbird/anim_Run1.png" id="9_aurpt"]
 [ext_resource type="Texture2D" uid="uid://bmfwcjvm3dwbc" path="res://Art/characters/Drillbird/anim_drill/anim_WalkingDrillSide4.png" id="9_tox0r"]
 [ext_resource type="Texture2D" uid="uid://cghvbkkjjm3i7" path="res://Art/characters/Drillbird/anim_Run2.png" id="10_1ey0x"]
+[ext_resource type="Texture2D" uid="uid://dhwtml1wxpbo1" path="res://Art/characters/Drillbird/player_get_up1.png" id="10_e20mu"]
+[ext_resource type="Texture2D" uid="uid://e38g4th4rtjl" path="res://Art/characters/Drillbird/player_get_up2.png" id="11_r433t"]
 [ext_resource type="Texture2D" uid="uid://dweivlq7fn3n7" path="res://Art/characters/Drillbird/anim_drill/drilling_up1.png" id="11_rpkpv"]
 [ext_resource type="Texture2D" uid="uid://br6j25q4duhb6" path="res://Art/characters/Drillbird/anim_Run3.png" id="11_tqmmp"]
+[ext_resource type="Texture2D" uid="uid://dgi7xal2a2uh4" path="res://Art/characters/Drillbird/player_get_up3.png" id="12_1fq4g"]
 [ext_resource type="Texture2D" uid="uid://djl1lyu63ma4" path="res://Art/characters/Drillbird/anim_drill/drilling_up2.png" id="12_jhmal"]
 [ext_resource type="Texture2D" uid="uid://dcfyr4savlsgk" path="res://Art/characters/Drillbird/fall.png" id="12_mu8wo"]
 [ext_resource type="Texture2D" uid="uid://bne1hheyw13my" path="res://Art/characters/Drillbird/birdy_idle_up.png" id="13_5fdn4"]
@@ -119,6 +122,34 @@ animations = [{
 }],
 "loop": true,
 "name": &"damage",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_e20mu")
+}],
+"loop": true,
+"name": &"dazed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.5,
+"texture": ExtResource("10_e20mu")
+}, {
+"duration": 6.0,
+"texture": ExtResource("11_r433t")
+}, {
+"duration": 0.5,
+"texture": ExtResource("10_e20mu")
+}, {
+"duration": 6.0,
+"texture": ExtResource("11_r433t")
+}, {
+"duration": 6.0,
+"texture": ExtResource("12_1fq4g")
+}],
+"loop": false,
+"name": &"dazed_get_up",
 "speed": 5.0
 }, {
 "frames": [{
@@ -396,8 +427,10 @@ randomness = 1.0
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 2
 sprite_frames = SubResource("SpriteFrames_3vbtj")
-animation = &"drop_ores"
+animation = &"run"
 autoplay = "idle"
+frame = 4
+frame_progress = 0.259652
 
 [node name="jumpCrystal1" type="AnimatedSprite2D" parent="AnimatedSprite2D"]
 position = Vector2(-4, 10)

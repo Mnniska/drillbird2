@@ -1576,6 +1576,7 @@ position = Vector2(1.5, -7.5)
 
 [node name="TeleportPosition" parent="WorldScripts/CameraLimiter/PlayerTeleporter" index="1"]
 position = Vector2(98, -776)
+texture = null
 
 [node name="CameraLimiter_hub" parent="WorldScripts" instance=ExtResource("87_yr03e")]
 position = Vector2(13, -327)
@@ -1595,7 +1596,7 @@ shape = SubResource("RectangleShape2D_y375v")
 visible = false
 
 [node name="OriginalSpawnPos" type="Sprite2D" parent="PlayerSpawnLocations"]
-position = Vector2(-616, 518)
+position = Vector2(-616, 520)
 texture = ExtResource("64_yk8d7")
 
 [node name="PlayerLocationSaver" type="Area2D" parent="PlayerSpawnLocations" node_paths=PackedStringArray("Spawnpos")]
