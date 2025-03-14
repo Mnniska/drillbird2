@@ -141,8 +141,9 @@ func RefillEnergyBar(delta:float):
 	
 	energy=min(maxEnergy,energy+gain*mult)
 
-func SetCanEvolve(canEvolve:bool):
-	canEvolveUpdate.emit(canEvolve)
+func SetCanEvolve(canEvolve:bool,triggerSignal:bool=true):
+	if triggerSignal:
+		canEvolveUpdate.emit(canEvolve)
 	evolutionPossible=canEvolve
 	if evolutionPossible:
 		evolveText.show()
@@ -163,7 +164,7 @@ func UpdateEnergyBar():
 	pass
 
 func GrowUp():
-	SetCanEvolve(false)
+	SetCanEvolve(false,false)
 	velocity.y=0
 	velocity.x=clampf(velocity.x,-5,5)
 	state=States.GROWN
@@ -174,9 +175,10 @@ func GrowUp():
 	shake=false
 	evolveShine.play()
 	
+	hasEvolved.emit()
 	await get_tree().create_timer(1.2).timeout
 	hasFullyEvolved=true
-	hasEvolved.emit()
+	
 	
 	await get_tree().create_timer(3).timeout
 	

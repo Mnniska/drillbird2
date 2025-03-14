@@ -1,5 +1,7 @@
 extends CanvasLayer
 
+@export var version:String
+
 @onready var HUD_lightBulbManager=$topUI/LightHandler
 @onready var HUD_healthManager=$topUI/HealthUIHandler
 @onready var HUD_cashText=$topUI/CashHolder/cashNumber
@@ -48,6 +50,7 @@ func _ready() -> void:
 	
 	UpdateHUDPosition(showHud)
 	
+	$MainMenu/Label.text=version
 	pass # Replace with function body.
 
 func SetupComplete():

@@ -127,6 +127,9 @@ func GenerateObjectsAndEnemiesFromTilemap():
 			newtile.loc=tileLoc
 			newtile.terrainIdentifier=tileTerrain
 			
+		
+
+			
 			tilesToUpdateTerrainOn.append(newtile)
 
 			pass

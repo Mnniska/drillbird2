@@ -1,7 +1,8 @@
-[gd_scene load_steps=52 format=3 uid="uid://chmegxltn4stt"]
+[gd_scene load_steps=53 format=3 uid="uid://chmegxltn4stt"]
 
 [ext_resource type="Script" path="res://Scripts/UX and UI/flying_credits_manager.gd" id="1_xtpho"]
 [ext_resource type="PackedScene" uid="uid://djowxohivfhhb" path="res://Scenes/Objects and Enemies/flying_child.tscn" id="2_eruml"]
+[ext_resource type="AudioStream" uid="uid://dnjdsewidm3dt" path="res://Audio/Music/mus_credits_ending.wav" id="2_nkdfi"]
 [ext_resource type="Texture2D" uid="uid://d0ot502nge360" path="res://Art/environment/SpaceBackground/background_space_spaceLayer.png" id="3_a3sr5"]
 [ext_resource type="Shader" path="res://Shaders/UVTextureScrollShader.gdshader" id="3_nxjs3"]
 [ext_resource type="Texture2D" uid="uid://c288pgae2xq7d" path="res://Art/environment/SpaceBackground/background_space_planetLayer.png" id="4_bbomm"]
@@ -20,7 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://duldptrwat3ay" path="res://Art/cutscenes/intro/intro_starcrashl2.png" id="15_codur"]
 [ext_resource type="Script" path="res://Scripts/cutscenes/credits_value_spawner.gd" id="15_ob5l2"]
 [ext_resource type="Texture2D" uid="uid://b0iq44vnfvm6j" path="res://Art/cutscenes/intro/intro_starcrashl3.png" id="16_kml35"]
-[ext_resource type="AudioStream" uid="uid://di4mq56e3hnqv" path="res://Audio/MUSIC/mus_Drillbird_Theme_Credits.wav" id="17_rlcle"]
+[ext_resource type="AudioStream" uid="uid://di4mq56e3hnqv" path="res://Audio/Music/mus_Drillbird_Theme_Credits.wav" id="17_rlcle"]
 [ext_resource type="Texture2D" uid="uid://d37tt64ht22ol" path="res://Art/cutscenes/intro/intro_starcrashl4.png" id="17_xiwm8"]
 [ext_resource type="Texture2D" uid="uid://b3lpuesrmtdma" path="res://Art/cutscenes/intro/intro_flyingbirdy1.png" id="18_cx0np"]
 [ext_resource type="Texture2D" uid="uid://behn1m1t24mt0" path="res://Art/cutscenes/intro/intro_starcrashl5.png" id="18_li2jk"]
@@ -334,6 +335,8 @@ axis_stretch_vertical = 1
 
 [node name="FlyingCredits" type="Node"]
 script = ExtResource("1_xtpho")
+debugSkipCredits = true
+evolveAudio = ExtResource("2_nkdfi")
 
 [node name="BG_base" type="Sprite2D" parent="."]
 light_mask = 0

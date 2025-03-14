@@ -15,6 +15,8 @@ class_name flying_credits_manager
 
 @export var debugSkipCredits:bool=false
 
+@export var evolveAudio:AudioStreamWAV
+var hasEvolved:bool=false
 @onready var music = $music
 var musicTargetVolume:float=1
 var musicVolume:float=1
@@ -33,6 +35,8 @@ func _process(delta: float) -> void:
 		
 func _ready() -> void:
 	HUD.SetState(HUD.menuStates.CREDITS)
+	music.finished.connect(music.play)
+	
 	
 	await get_tree().create_timer(1).timeout
 	flyer.initiateJump(1)
@@ -62,6 +66,19 @@ func _on_player_detector_body_shape_entered(body_rid: RID, body: Node2D, body_sh
 
 func _on_flying_child_has_evolved() -> void:
 	valueSpawner.active=false
+	TriggerFinalZinger()
+
+func MusicRepeat():
+	if !hasEvolved:
+		music.play()
+
+func TriggerFinalZinger():
+	
+	hasEvolved=true
+	musicVolume=0.9
+	musicTargetVolume=1
+	music.stream = evolveAudio
+	music.play()
 	
 
 
@@ -73,10 +90,6 @@ func _on_flying_child_has_evolved_off_screen() -> void:
 	anim.play("fall")
 	await get_tree().create_timer(6).timeout
 	HUD.SetSceneState(HUD.sceneStates.MAIN)
-	
-
-	
-	
 
 
 func _on_flying_child_can_evolve_update(yes: bool) -> void:

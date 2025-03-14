@@ -157,6 +157,7 @@ _data = {
 [node name="HUD" type="CanvasLayer"]
 layer = 10
 script = ExtResource("1_u1olj")
+version = "[rainbow]Version 1.02[/rainbow][p]2025-03-13"
 scene_credits = ExtResource("2_lsdg3")
 scene_main = ExtResource("3_wspqp")
 
@@ -363,12 +364,13 @@ scroll_active = false
 layout_mode = 0
 offset_left = -155.0
 offset_top = 70.0
-offset_right = -23.0
+offset_right = -88.0
 offset_bottom = 112.0
 theme = ExtResource("15_nxi4s")
+theme_override_colors/default_color = Color(1, 1, 1, 0.807843)
+theme_override_colors/font_selected_color = Color(1, 1, 1, 1)
 bbcode_enabled = true
-text = "[rainbow]Version 1.0[/rainbow]
-2025-03-07"
+text = "[rainbow]Version 1.0[/rainbow][p]2025-03-07"
 
 [node name="Options" parent="." instance=ExtResource("23_sv2nb")]
 visible = false
