@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://1sxr7tr7gbh6"
-path="res://.godot/imported/symbol_Q.png-69f91632448839a7327ec415715a9683.ctex"
+path="res://.godot/imported/symbol_Q.png-6beb7cab5b3db06ece3007570a2dc6cf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/ui/Symbols/symbol_Q.png"
-dest_files=["res://.godot/imported/symbol_Q.png-69f91632448839a7327ec415715a9683.ctex"]
+source_file="res://Art/UI/Symbols/symbol_Q.png"
+dest_files=["res://.godot/imported/symbol_Q.png-6beb7cab5b3db06ece3007570a2dc6cf.ctex"]
 
 [params]
 
