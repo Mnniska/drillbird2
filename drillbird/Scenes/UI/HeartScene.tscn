@@ -1,11 +1,11 @@
 [gd_scene load_steps=8 format=3 uid="uid://clvrvbyhgvgld"]
 
 [ext_resource type="Script" path="res://Scripts/HeartScript.gd" id="1_6ciuw"]
-[ext_resource type="Texture2D" uid="uid://bs35on34ynxiv" path="res://Art/ui/HUD/Health/HUD_Health_available.png" id="2_5ygl3"]
-[ext_resource type="Texture2D" uid="uid://cfgy4eebpl26v" path="res://Art/ui/HUD/Health/HUD_Health_empty.png" id="3_2c5u6"]
-[ext_resource type="Texture2D" uid="uid://c3717ycl1fxar" path="res://Art/ui/HUD/Health/HUD_Health_full.png" id="4_rqvoi"]
-[ext_resource type="Texture2D" uid="uid://bcqqmefcr7n3c" path="res://Art/ui/HUD/Health/HUD_Health_LastFull1.png" id="5_l3qhl"]
-[ext_resource type="Texture2D" uid="uid://bxfxswct2mpse" path="res://Art/ui/HUD/Health/HUD_Health_LastFull2.png" id="6_j15rn"]
+[ext_resource type="Texture2D" uid="uid://bs35on34ynxiv" path="res://Art/UI/HUD/Health/HUD_Health_available.png" id="2_5ygl3"]
+[ext_resource type="Texture2D" uid="uid://cfgy4eebpl26v" path="res://Art/UI/HUD/Health/HUD_Health_empty.png" id="3_2c5u6"]
+[ext_resource type="Texture2D" uid="uid://c3717ycl1fxar" path="res://Art/UI/HUD/Health/HUD_Health_full.png" id="4_rqvoi"]
+[ext_resource type="Texture2D" uid="uid://bcqqmefcr7n3c" path="res://Art/UI/HUD/Health/HUD_Health_LastFull1.png" id="5_l3qhl"]
+[ext_resource type="Texture2D" uid="uid://bxfxswct2mpse" path="res://Art/UI/HUD/Health/HUD_Health_LastFull2.png" id="6_j15rn"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qd07m"]
 animations = [{

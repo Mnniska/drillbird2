@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://btprkjg6l7i8t" path="res://Art/Objects/Fallblock/fallblock_activated.png" id="4_44cdc"]
 [ext_resource type="Texture2D" uid="uid://uq5gd061j3wq" path="res://Art/Objects/Fallblock/fallblock.png" id="4_pky87"]
 [ext_resource type="PackedScene" uid="uid://2lykflhwivex" path="res://Scenes/observer.tscn" id="5_bl8ye"]
-[ext_resource type="Texture2D" uid="uid://gixivpytn5wl" path="res://Art/ui/HUD/UI_LightBar_bulb.png" id="6_eqsls"]
+[ext_resource type="Texture2D" uid="uid://gixivpytn5wl" path="res://Art/UI/HUD/UI_LightBar_bulb.png" id="6_eqsls"]
 [ext_resource type="Texture2D" uid="uid://c5hnvu5af64hv" path="res://Art/effects/FallBlockImpact/effect_fallBlockImpact1.png" id="7_fd2bn"]
 [ext_resource type="Texture2D" uid="uid://dpfrroh41a5r5" path="res://Art/effects/FallBlockImpact/effect_fallBlockImpact2.png" id="8_ualrb"]
 [ext_resource type="Texture2D" uid="uid://cai7w2pvbscma" path="res://Art/effects/FallBlockImpact/effect_fallBlockImpact3.png" id="9_dlyhd"]

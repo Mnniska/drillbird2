@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bgj42edyan2we"]
 
 [ext_resource type="Script" path="res://Scripts/UX and UI/menu_pause.gd" id="1_w7cnh"]
-[ext_resource type="Texture2D" uid="uid://cp6xuvmo0rguj" path="res://Art/ui/HUD/UI_BlackBorder.png" id="2_6r7dd"]
+[ext_resource type="Texture2D" uid="uid://cp6xuvmo0rguj" path="res://Art/UI/HUD/UI_BlackBorder.png" id="2_6r7dd"]
 [ext_resource type="Theme" uid="uid://bfr5y4lo7m1ux" path="res://Resources/Fonts/fontTheme.tres" id="3_44x14"]
 [ext_resource type="PackedScene" uid="uid://g8bq4xcafcut" path="res://Scenes/UI/menu_option.tscn" id="4_vbmoi"]
 
