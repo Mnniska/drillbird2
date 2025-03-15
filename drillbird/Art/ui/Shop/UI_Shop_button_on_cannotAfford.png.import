@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bueyua1ex8gq0"
-path="res://.godot/imported/UI_Shop_button_on_cannotAfford.png-abcc9541ee31878ec7217322980765b2.ctex"
+path="res://.godot/imported/UI_Shop_button_on_cannotAfford.png-f4107941706325d7f3ab4fec6b61107c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/ui/Shop/UI_Shop_button_on_cannotAfford.png"
-dest_files=["res://.godot/imported/UI_Shop_button_on_cannotAfford.png-abcc9541ee31878ec7217322980765b2.ctex"]
+source_file="res://Art/UI/Shop/UI_Shop_button_on_cannotAfford.png"
+dest_files=["res://.godot/imported/UI_Shop_button_on_cannotAfford.png-f4107941706325d7f3ab4fec6b61107c.ctex"]
 
 [params]
 

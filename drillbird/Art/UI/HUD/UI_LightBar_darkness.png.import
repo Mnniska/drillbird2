@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://buh3ysmbicdnm"
-path="res://.godot/imported/UI_LightBar_darkness.png-f79095aaac738099dcf714b1e5e81940.ctex"
+path="res://.godot/imported/UI_LightBar_darkness.png-9990f4c85265696be90721c670f7da22.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/ui/HUD/UI_LightBar_darkness.png"
-dest_files=["res://.godot/imported/UI_LightBar_darkness.png-f79095aaac738099dcf714b1e5e81940.ctex"]
+source_file="res://Art/UI/HUD/UI_LightBar_darkness.png"
+dest_files=["res://.godot/imported/UI_LightBar_darkness.png-9990f4c85265696be90721c670f7da22.ctex"]
 
 [params]
 
