@@ -16,6 +16,7 @@ class_name object_spawner
 var spawnedEnemies:Array[Node2D]
 
 var enemiesToSpawnList:Array[abstract_enemy]
+var loadedEnemiesList:Array[abstract_enemy]
 
 func _process(delta: float) -> void:
 	pass
@@ -30,22 +31,25 @@ func GameStart():
 	
 	GenerateObjectsAndEnemiesFromTilemap()
 	SpawnAllEnemies()
-	
-	
-	#EnemyObjectTilemap.hide()
-	#TODO: Instead of hiding tilemap, make sure to hide the object representations
+
 
 	pass
 
-func LoadEnemySpawns(spawnpos:Array[Vector2i],enemytype:Array[int],enemyDead:Array[bool]):
+func LoadEnemySpawns(spawnpos:Array[Vector2i],enemytype:Array[int],enemyDead:Array[bool],currentSpawnPos:Array[Vector2i]):
 	
-	enemiesToSpawnList.clear()
+	loadedEnemiesList.clear()
 	for n in spawnpos.size():
 		var enemy= abstract_enemy.new()
 		enemy.spawnLocation=spawnpos[n]
+		
+		if currentSpawnPos.size()>n:
+			enemy.currentSpawnLocation=currentSpawnPos[n]
+		else:
+			enemy.currentSpawnLocation=spawnpos[n]
+			
 		enemy.type=enemytype[n]
 		enemy.dead=enemyDead[n]
-		enemiesToSpawnList.append(enemy)
+		loadedEnemiesList.append(enemy)
 	
 	pass
 
@@ -60,7 +64,10 @@ func LoadFlowers(flowerSpawnPositions: Array[Vector2i]):
 
 func GenerateObjectsAndEnemiesFromTilemap():
 	
-	enemiesToSpawnList.clear()
+	#commented out in enemy load refactor March 2025
+	#enemiesToSpawnList.clear() # confused - how can we save enemy data if we destroy the list? Seems incorrect. 
+	
+	
 	var tiles:Array[Vector2i] = gameTilemap.get_used_cells()
 
 	var NoSavedEnemies= enemiesToSpawnList.size()<=0
@@ -77,11 +84,24 @@ func GenerateObjectsAndEnemiesFromTilemap():
 
 		#Is it an enemy? If so, add it to the list of enemies to spawn
 		#Enemies are spawned in the SpawnAllEnemies function
-		if NoSavedEnemies && !tile.get_custom_data("enemy_type")==0: #zero is default value, meaning this is not an enemy
+		if tile.get_custom_data("enemy_type")!=0: #if it's not zero, then it's an enemy!
 			var newEnemy=abstract_enemy.new()
 			newEnemy.type=tile.get_custom_data("enemy_type")-1 #We put -1 here since the value for NO enemy in the EnvironmentTilemap is zero, but the enemy spawn list starts at zero
 			newEnemy.spawnLocation=tileLoc
-			newEnemy.dead=false
+			var foundmatch:bool=false
+			
+			for enemy in loadedEnemiesList: #is there a better way do this this then to loop through ALL of the enmies for each enemy spawned? lol
+				if enemy.spawnLocation==newEnemy.spawnLocation: 
+					#Check whether there is a saved enemy with the same spawn pos as the tilemap
+					#if so - spawns the enemy with the saved data
+					foundmatch=true
+					newEnemy.dead=enemy.dead
+					newEnemy.currentSpawnLocation=enemy.currentSpawnLocation
+			
+			if !foundmatch: #If no save data found, spawn with default values
+				newEnemy.dead=false
+				newEnemy.currentSpawnLocation=newEnemy.spawnLocation
+				
 			enemiesToSpawnList.append(newEnemy)
 			RemoveTile(tileLoc)
 		
@@ -103,7 +123,7 @@ func GenerateObjectsAndEnemiesFromTilemap():
 				flower.SetHasBlossomed(true)
 		
 	#Does the tile have an ore? If so, place it in the OreTilemap!
-		if tile.get_custom_data("oreblock_terrain")>0: #zero is default value, meaning this is not an enemy
+		if tile.get_custom_data("oreblock_terrain")>0: #is ore if greater than zero
 			
 			#Here, we wanna create an ORE SPRITE that matches the current ore region
 			var oreRegion:int=GetRelevantOreRegion(tileLoc)
@@ -183,22 +203,19 @@ func SpawnAllEnemies():
 	#Spawns all enemies in the EnemiesToSpawn list. This list is loaded from savefile or setup during first play
 
 	var index=0
-	for n in enemiesToSpawnList:
+	for enemyInfo in enemiesToSpawnList:
 		
-		var enemy = load(potentialEnemyStrings[enemiesToSpawnList[index].type]) #
+		var enemy = load(potentialEnemyStrings[enemyInfo.type]) #
 		var node = enemy.instantiate()
 		spawnedEnemies.append(node)	
 
-		#We convert it to map coords so that enemy is spawned in the middle of the tile
-		var SpawnPositionInMapCoordinates= gameTilemap.local_to_map(gameTilemap.to_local(enemiesToSpawnList[index].spawnLocation))
+		var spawnPosLocalCoords=gameTilemap.map_to_local(enemyInfo.currentSpawnLocation)
 		
-		var spawnPosLocalCoords=gameTilemap.map_to_local(enemiesToSpawnList[index].spawnLocation)
-		
+
 		if node.enemyInfo.type==abstract_enemy.enemyTypes.FALLBLOCK:
 			node.BlockDestroyer=tileDestroyer
-			
 		
-		node.Setup(n)
+		node.Setup(enemyInfo)
 		node.transform.origin = spawnPosLocalCoords
 		add_child(node)
 		index+=1
@@ -225,17 +242,8 @@ func GetEnemyUpdate():
 	for n in spawnedEnemies:
 		
 		enemiesToSpawnList[index].dead=n.enemyInfo.dead
-
-		#Converts enemy spawn position into closest tilemap coordinate
-		var spawnpos:Vector2i=gameTilemap.local_to_map(gameTilemap.to_local(n.GetLocalSpawnPosition()))
-		#Converts CURRENT position into tilemap coordinates
-		var newpos:Vector2i=gameTilemap.local_to_map(gameTilemap.to_local(n.position))
-
-		if spawnpos!=newpos:
-			#MoveTileToNewPos(spawnpos,newpos)
-			enemiesToSpawnList[index].spawnLocation=newpos
-		
-		pass
+		var currentPos:Vector2i=gameTilemap.local_to_map(gameTilemap.to_local(n.position)) #get enemy pos and convert it to map coords
+		enemiesToSpawnList[index].currentSpawnLocation=currentPos
 		index+=1
 	return enemiesToSpawnList
 	pass

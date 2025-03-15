@@ -40,6 +40,7 @@ func GetLocalSpawnPosition(): #MUST HAVE
 	
 func Setup(info:abstract_enemy): #MUST HAVE
 	enemyInfo.spawnLocation=info.spawnLocation
+	enemyInfo.currentSpawnLocation=info.currentSpawnLocation
 	enemyInfo.dead=info.dead
 
 func GetIsFalling():

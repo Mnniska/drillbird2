@@ -37,10 +37,19 @@ func _process(delta: float) -> void:
 func verify_save_directory(path:String):
 	DirAccess.make_dir_absolute(path)
 
-func ResetSaveData():
-	PlayerData=null
-	PlayerData=abstract_savegame.new()
+func ResetSaveData(onlyResetEnemiesAndTiles:bool=false):
+	
+	if onlyResetEnemiesAndTiles:
+		PlayerData.enemyCurrentSpawnPositions.clear()
+		PlayerData.enemyDead.clear()
+		PlayerData.enemyTypes.clear()
+		PlayerData.enemySpawnPositions.clear()
+		PlayerData.destroyed_tiles.clear()
+	else:
+		PlayerData=null
+		PlayerData=abstract_savegame.new()
 	ResourceSaver.save(PlayerData,save_file_path+save_file_name)
+	
 
 
 func SaveGame():
@@ -91,16 +100,16 @@ func LoadLeftoverOres():
 func SaveEnemies():
 
 	PlayerData.enemySpawnPositions.clear()
+	PlayerData.enemyCurrentSpawnPositions.clear()
 	PlayerData.enemyTypes.clear()
 	PlayerData.enemyDead.clear()
 
 	for n:abstract_enemy in EnemySpawner.GetEnemyUpdate():
 		
 		PlayerData.enemySpawnPositions.append(n.spawnLocation)
+		PlayerData.enemyCurrentSpawnPositions.append(n.currentSpawnLocation)
 		PlayerData.enemyTypes.append(n.type)
 		PlayerData.enemyDead.append(n.dead)
-	
-		print_debug("spawnpos "+ str(n.spawnLocation))
 		
 	pass
 
@@ -112,7 +121,7 @@ func SaveFlowers():
 
 func LoadEnemyPositions():
 	#This is currently NOT USED
-	EnemySpawner.LoadEnemySpawns(PlayerData.enemySpawnPositions,PlayerData.enemyTypes,PlayerData.enemyDead)
+	EnemySpawner.LoadEnemySpawns(PlayerData.enemySpawnPositions,PlayerData.enemyTypes,PlayerData.enemyDead,PlayerData.enemyCurrentSpawnPositions)
 
 func LoadFlowers():
 	EnemySpawner.LoadFlowers(PlayerData.flowerSpawnPositions)

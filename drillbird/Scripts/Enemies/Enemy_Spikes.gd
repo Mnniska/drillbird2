@@ -26,15 +26,18 @@ func _ready() -> void:
 func SpikesSpawnSetup():
 	raycast.force_raycast_update()
 	if raycast.is_colliding():
-		var col:TileMapLayer =raycast.get_collider()
+		var col =raycast.get_collider()
+		if col is TileMapLayer:
 
-		var spikePos=col.local_to_map( col.to_local( raycast.global_position) )
-		var affectedTile= col.get_cell_tile_data(spikePos)
-		var terrain = affectedTile.terrain
-		
-		$Sprite2D.texture=spriteVariations[min(spriteVariations.size()-1,terrain) ] 
-		
-		return true
+			var spikePos=col.local_to_map( col.to_local( raycast.global_position) )
+			var affectedTile= col.get_cell_tile_data(spikePos)
+			var terrain = affectedTile.terrain
+			
+			$Sprite2D.texture=spriteVariations[min(spriteVariations.size()-1,terrain) ] 
+			
+			return true
+		else:
+			TurnEnemyOff()
 	else:
 		TurnEnemyOff()
 

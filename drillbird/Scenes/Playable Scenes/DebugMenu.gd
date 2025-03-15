@@ -174,6 +174,9 @@ func ExecuteAction(action:String):
 		"reset_save_data":
 			$"../..".ResetSaveData()
 		
+		"reset_save_data_enemies_and_tiles":
+			$"../..".ResetSaveData(true)
+		
 		"toggleMenu":
 			mainMenuShowing=!mainMenuShowing
 			var mainmenu=HUD.MainMenu

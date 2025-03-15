@@ -3,6 +3,7 @@ signal cutscene_finished
 @onready var player:AnimationPlayer=$AnimationPlayer
 var camera:game_camera
 var switchingScene:bool=false
+var isPlaying:bool=false
 
 enum cutsceneSounds{ scene1,scene2,scene3 }
 
@@ -19,6 +20,8 @@ func SetupComplete():
 	camera=GlobalVariables.MainSceneReferenceConnector.ref_camera
 
 func _process(delta: float) -> void:
+	if !isPlaying:
+		return
 	
 	if Input.is_action_pressed("drill") or Input.is_action_pressed("interact"):
 		skipTimeCounter+=delta
@@ -30,6 +33,7 @@ func _process(delta: float) -> void:
 
 
 func Play():
+	isPlaying=true
 	_on_animation_player_animation_finished("")
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
@@ -44,7 +48,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		cutscene_finished.emit()
 		player.play("default")
 		camera.SetFollowPlayer(true)
-		
+		isPlaying=false
 		GlobalVariables.PlayerController.TriggerDazed()
 		#this is a pretty lmao way to trigger the dazed state but I will take it
 

@@ -1,10 +1,11 @@
 [gd_scene load_steps=2 format=3 uid="uid://f30dqpc0wmhe"]
 
-[ext_resource type="Texture2D" uid="uid://gixivpytn5wl" path="res://Art/ui/HUD/UI_LightBar_bulb.png" id="1_kvin5"]
+[ext_resource type="Texture2D" uid="uid://uq5gd061j3wq" path="res://Art/Objects/Fallblock/fallblock.png" id="1_lsh3y"]
 
 [node name="DebugSpawnable" type="Sprite2D"]
-z_index = 10
-texture = ExtResource("1_kvin5")
+modulate = Color(1, 1, 0, 0.627451)
+z_index = 20
+texture = ExtResource("1_lsh3y")
 
 [node name="Label" type="Label" parent="."]
 offset_right = 40.0

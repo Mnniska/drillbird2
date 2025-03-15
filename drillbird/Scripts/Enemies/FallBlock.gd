@@ -1,4 +1,4 @@
-extends "res://Scripts/Enemies/BaseEnemy.gd"
+extends Base_Enemy
 class_name enemy_Fallblock
 
 @onready var raycast=$Raaycast
@@ -75,7 +75,7 @@ func _physics_process(delta: float) -> void:
 					playImpactEffect=true
 
 			else:
-				velocity += get_gravity() * delta
+				velocity.y += get_gravity().y * delta
 
 	UpdateAnimations(animToPlay)
 
