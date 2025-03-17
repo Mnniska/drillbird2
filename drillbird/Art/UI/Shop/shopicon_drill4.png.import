@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b63sh7j5jc1j7"
-path="res://.godot/imported/shop_placeholder.png-c72bc086b36291e1e3e90d660102f611.ctex"
+uid="uid://cqcgllpuckeco"
+path="res://.godot/imported/shopicon_drill4.png-ed218875e5ec96a6f512512b64cd1442.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/UI/Shop/shop_placeholder.png"
-dest_files=["res://.godot/imported/shop_placeholder.png-c72bc086b36291e1e3e90d660102f611.ctex"]
+source_file="res://Art/UI/Shop/shopicon_drill4.png"
+dest_files=["res://.godot/imported/shopicon_drill4.png-ed218875e5ec96a6f512512b64cd1442.ctex"]
 
 [params]
 

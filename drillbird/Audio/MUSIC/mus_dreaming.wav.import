@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://biff4rn2yb8wv"
-path="res://.godot/imported/mus_dreaming.wav-25a38b8c540fe932db14734e6fd604e9.sample"
+path="res://.godot/imported/mus_dreaming.wav-046d7eb1288bb52f69d3a06177801abd.sample"
 
 [deps]
 
-source_file="res://Audio/MUSIC/mus_dreaming.wav"
-dest_files=["res://.godot/imported/mus_dreaming.wav-25a38b8c540fe932db14734e6fd604e9.sample"]
+source_file="res://Audio/Music/mus_dreaming.wav"
+dest_files=["res://.godot/imported/mus_dreaming.wav-046d7eb1288bb52f69d3a06177801abd.sample"]
 
 [params]
 

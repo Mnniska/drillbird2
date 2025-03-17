@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://di4mq56e3hnqv"
-path="res://.godot/imported/mus_Drillbird_Theme_Credits.wav-40f534c35dec916e0a07dee0fe590f71.sample"
+path="res://.godot/imported/mus_Drillbird_Theme_Credits.wav-b0a6417ac3dda696f67cca7714a5a32f.sample"
 
 [deps]
 
-source_file="res://Audio/MUSIC/mus_Drillbird_Theme_Credits.wav"
-dest_files=["res://.godot/imported/mus_Drillbird_Theme_Credits.wav-40f534c35dec916e0a07dee0fe590f71.sample"]
+source_file="res://Audio/Music/mus_Drillbird_Theme_Credits.wav"
+dest_files=["res://.godot/imported/mus_Drillbird_Theme_Credits.wav-b0a6417ac3dda696f67cca7714a5a32f.sample"]
 
 [params]
 

@@ -300,6 +300,9 @@ func DazedMovement(delta:float,currentAnim:String):
 	else:
 		return "dazed"
 
+func StopWalkSound():
+	pass
+
 func GetUp():
 	if !isgettingup:
 		isgettingup=true
@@ -667,14 +670,12 @@ func CreateEffect(effect:effectEnum, right:bool):
 	
 
 func _on_animated_sprite_2d_animation_looped() -> void:
-	if animstate=="run":
-		if randf()>0.5:
-			SoundManager.PlaySoundAtLocation(global_position,abstract_SoundEffectSetting.SoundEffectEnum.PLAYER_FOOTSTEP_ONE)
-		else:
-			SoundManager.PlaySoundAtLocation(global_position,abstract_SoundEffectSetting.SoundEffectEnum.PLAYER_FOOTSTEP_TWO)
-
-	
-	pass # Replace with function body.
+	if GlobalVariables.playerStatus==GlobalVariables.playerStatusEnum.DIG:
+		if animstate=="run":
+			if randf()>0.5:
+				SoundManager.PlaySoundAtLocation(global_position,abstract_SoundEffectSetting.SoundEffectEnum.PLAYER_FOOTSTEP_ONE)
+			else:
+				SoundManager.PlaySoundAtLocation(global_position,abstract_SoundEffectSetting.SoundEffectEnum.PLAYER_FOOTSTEP_TWO)
 	
 
 func _on_tile_crack_material_changed(terrain: abstract_terrain_info) -> void:

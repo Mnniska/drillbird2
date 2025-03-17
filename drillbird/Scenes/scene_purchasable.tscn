@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://3d04qrtunccs"]
+[gd_scene load_steps=35 format=3 uid="uid://3d04qrtunccs"]
 
 [ext_resource type="Script" path="res://Scripts/Purchasable.gd" id="1_gej8r"]
 [ext_resource type="Texture2D" uid="uid://boy08vwlonxv5" path="res://Art/UI/Shop/UI_Shop_select_on.png" id="2_cxk1t"]
@@ -9,10 +9,148 @@
 [ext_resource type="Texture2D" uid="uid://boulllpt4vy8" path="res://Art/UI/Shop/UI_Shop_button_on_canAfford.png" id="7_0oi30"]
 [ext_resource type="Texture2D" uid="uid://de2ouaamnu8d0" path="res://Art/UI/Shop/UI_Shop_button_off_unavailable.png" id="8_sik50"]
 [ext_resource type="Texture2D" uid="uid://bhl0wrpfdjcmt" path="res://Art/UI/Shop/UI_Shop_button_off_canAfford.png" id="9_iepxl"]
-[ext_resource type="Texture2D" uid="uid://dd5qv322e1hvn" path="res://Art/UI/Shop/UI_Shop_icon_inventory.png" id="10_odim8"]
 [ext_resource type="Theme" uid="uid://bfr5y4lo7m1ux" path="res://Resources/Fonts/fontTheme.tres" id="11_hei2b"]
 [ext_resource type="Texture2D" uid="uid://5j8n4l5xcmt2" path="res://Art/UI/Shop/UI_Shop_knob_on.png" id="12_ebvh8"]
+[ext_resource type="Texture2D" uid="uid://cn08jw5dxd4y2" path="res://Art/UI/Shop/shopicon_drill1.png" id="12_ipm14"]
 [ext_resource type="Texture2D" uid="uid://dk4nbwbyqwktv" path="res://Art/UI/Shop/UI_Shop_knob_off.png" id="13_4jry6"]
+[ext_resource type="Texture2D" uid="uid://dfwci32qfmyw7" path="res://Art/UI/Shop/shopicon_drill2.png" id="13_40f70"]
+[ext_resource type="Texture2D" uid="uid://ouwhtjjo5fqr" path="res://Art/UI/Shop/shopicon_drill3.png" id="14_vla8o"]
+[ext_resource type="Texture2D" uid="uid://cqcgllpuckeco" path="res://Art/UI/Shop/shopicon_drill4.png" id="15_h5cbl"]
+[ext_resource type="Texture2D" uid="uid://b77jic8nj8atl" path="res://Art/UI/Shop/shopicon_drill5.png" id="16_61t7u"]
+[ext_resource type="Texture2D" uid="uid://bslo5xnqdu6i5" path="res://Art/UI/Shop/shopicon_drill6.png" id="17_wik3i"]
+[ext_resource type="Texture2D" uid="uid://dvf77a64d1cn7" path="res://Art/UI/Shop/shopicon_drill7.png" id="18_tvwif"]
+[ext_resource type="Texture2D" uid="uid://dppg7v5r6tpx0" path="res://Art/UI/Shop/shopicon_drill8.png" id="19_y7152"]
+[ext_resource type="Texture2D" uid="uid://bu3yaeyfhsnr4" path="res://Art/UI/Shop/shopicon_fuel1.png" id="20_mdb7p"]
+[ext_resource type="Texture2D" uid="uid://hdvuvaqoss5o" path="res://Art/UI/Shop/shopicon_fuel2.png" id="21_ume08"]
+[ext_resource type="Texture2D" uid="uid://mrx4sig3jdsb" path="res://Art/UI/Shop/shopicon_fuel3.png" id="22_apmkv"]
+[ext_resource type="Texture2D" uid="uid://4p0y71rjuaw0" path="res://Art/UI/Shop/shopicon_fuel4.png" id="23_u0ajc"]
+[ext_resource type="Texture2D" uid="uid://cef4yyqg25ujy" path="res://Art/UI/Shop/shopicon_fuel5.png" id="24_ahecm"]
+[ext_resource type="Texture2D" uid="uid://d1ku3ypybmo4f" path="res://Art/UI/Shop/shopicon_fuel6.png" id="25_wjovh"]
+[ext_resource type="Texture2D" uid="uid://dgc3lx8v87y1u" path="res://Art/UI/Shop/shopicon_fuel7.png" id="26_1o08y"]
+[ext_resource type="Texture2D" uid="uid://3op2mge4sm0p" path="res://Art/UI/Shop/HUD_Health_LastFull1.png" id="27_214j2"]
+[ext_resource type="Texture2D" uid="uid://c5mb1dkcigxnf" path="res://Art/UI/Shop/HUD_Health_LastFull2.png" id="28_8ootd"]
+[ext_resource type="Texture2D" uid="uid://bdqnfjw0ltbpp" path="res://Art/UI/Shop/inventoryIcon1.png" id="29_4214r"]
+[ext_resource type="Texture2D" uid="uid://balrtcr4nq2ly" path="res://Art/UI/Shop/inventoryIcon2.png" id="30_uj2pn"]
+[ext_resource type="Texture2D" uid="uid://djcph6scafmdj" path="res://Art/UI/Shop/inventoryIcon3.png" id="31_6lbgh"]
+[ext_resource type="Texture2D" uid="uid://cnwa3o13lgppo" path="res://Art/UI/Shop/inventoryIcon4.png" id="32_52g0k"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fph6y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_ipm14")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_40f70")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_vla8o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_h5cbl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_61t7u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_wik3i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_tvwif")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_y7152")
+}],
+"loop": true,
+"name": &"drill_active",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_ipm14")
+}],
+"loop": true,
+"name": &"drill_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("20_mdb7p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_ume08")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_apmkv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_u0ajc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_ahecm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_wjovh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_1o08y")
+}],
+"loop": true,
+"name": &"fuel_active",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("20_mdb7p")
+}],
+"loop": true,
+"name": &"fuel_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 4.0,
+"texture": ExtResource("27_214j2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_8ootd")
+}],
+"loop": true,
+"name": &"health_active",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("27_214j2")
+}],
+"loop": true,
+"name": &"health_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 4.0,
+"texture": ExtResource("29_4214r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_uj2pn")
+}, {
+"duration": 3.0,
+"texture": ExtResource("31_6lbgh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_52g0k")
+}],
+"loop": true,
+"name": &"inventory_active",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("29_4214r")
+}],
+"loop": true,
+"name": &"inventory_idle",
+"speed": 5.0
+}]
 
 [node name="Purchasable1" type="Node2D"]
 z_index = 2
@@ -40,9 +178,10 @@ z_index = 2
 position = Vector2(-139, 0)
 texture = ExtResource("4_2yrwy")
 
-[node name="icon" type="Sprite2D" parent="IconContainer"]
-z_index = 2
-texture = ExtResource("10_odim8")
+[node name="icon" type="AnimatedSprite2D" parent="IconContainer"]
+sprite_frames = SubResource("SpriteFrames_fph6y")
+animation = &"health_active"
+frame_progress = 0.899939
 
 [node name="StatHeader" type="Label" parent="."]
 z_index = 2

@@ -263,6 +263,7 @@ func IsPlayerInCollider():
 func PlayLayEggCutscene():
 	GlobalVariables.playerStatus=GlobalVariables.playerStatusEnum.SHOP
 	Player.hide()
+	Player.StopWalkSound()
 	
 	nestCutscene.Play()
 	nestCutscene.CutsceneComplete.connect(EggCutsceneFinished)

@@ -16,7 +16,7 @@ var purchasable:abstract_purchasable
 #onready prep:
 @onready var background=$Background
 @onready var iconContainer=$IconContainer
-@onready var icon=$IconContainer/icon
+@onready var icon:AnimatedSprite2D=$IconContainer/icon
 @onready var Header=$StatHeader
 @onready var Description=$StatExplanation
 @onready var purchaseBtn= $PurchaseButton
@@ -96,6 +96,7 @@ func SetSelected(selected:bool):
 	if selected:
 		background.texture=tex_bg_on
 		iconContainer.texture=tex_icon_on
+		icon.play()
 		
 		if canAfford:
 			purchaseBtn.texture=tex_btn_selected_affordable
@@ -106,6 +107,7 @@ func SetSelected(selected:bool):
 	else:
 		background.texture=tex_bg_off
 		iconContainer.texture=tex_icon_off
+		icon.stop()
 		
 		if canAfford:
 			purchaseBtn.texture=tex_btn_inactive_affordable
@@ -114,7 +116,23 @@ func SetSelected(selected:bool):
 			
 	
 func UpdateStats():
-	icon.texture=purchasable.icon
+	
+	var animToPlay=""
+	match purchasable.type:
+		GlobalVariables.typeEnum.DRILL:
+			animToPlay="drill_active"
+			pass
+		GlobalVariables.typeEnum.LIGHT:
+			animToPlay="fuel_active"
+			pass
+		GlobalVariables.typeEnum.INVENTORY:
+			animToPlay="inventory_active"
+			pass
+		GlobalVariables.typeEnum.HEALTH:
+			animToPlay="health_active"
+			pass
+	
+	icon.animation=animToPlay
 	Header.text=purchasable.itemName
 	Description.text=purchasable.itemDescription
 	var playerLevel=GetCurrentUpgrade()
@@ -128,7 +146,7 @@ func Setup(_purchasable:abstract_purchasable):
 	purchasable=_purchasable
 	SetupKnobs()
 	UpdateStats()
-	
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
