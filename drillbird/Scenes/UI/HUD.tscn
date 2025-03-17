@@ -173,7 +173,7 @@ texture = ExtResource("1_vcacc")
 [node name="InventoryHandler" type="Node2D" parent="topUI"]
 unique_name_in_owner = true
 z_index = 2
-position = Vector2(141, 0)
+position = Vector2(135, 0)
 script = ExtResource("11_qie2v")
 inventoryUpgradeTree = ExtResource("12_mfl1u")
 
@@ -238,7 +238,7 @@ offset_bottom = 93.0
 
 [node name="CashHolder" type="Node2D" parent="topUI"]
 z_index = 2
-position = Vector2(129, 16)
+position = Vector2(123, 16)
 
 [node name="cash symbol" type="Sprite2D" parent="topUI/CashHolder"]
 visible = false
