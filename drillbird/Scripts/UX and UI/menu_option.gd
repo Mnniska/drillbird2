@@ -1,11 +1,13 @@
 extends Node2D
 class_name menu_option
 
-signal button_pressed
+signal button_pressed(option:menu_option)
 signal sliderValueChanged(menuName:String,progress:float)
 
 @export var optionName:String
 @export var isAction:bool=true
+@export var isToggle:bool=false
+@export var options:Array[menu_option]
 
 @onready var text=$RichTextLabel
 @onready var sliderKnob=$slider/knob
@@ -16,13 +18,13 @@ var active:bool=false
 @onready var sliderStartPos:float=$slider/startPos.position.x
 @onready var sliderEndPos:float=$slider/endPos.position.x
 
+
+#Slider stuffff 
 @export var sliderMaxVal:int=10
 @export var sliderStepAmount:float=1
 var sliderValue:float=sliderMaxVal
 var sliderProgress:float=1
-
-
-var sliderMoveTime:float=0.8
+var sliderMoveTime:float=0.2
 var sliderMoveCount:float=0
 
 @export var highlightEffectStart:String
@@ -31,11 +33,23 @@ var sliderMoveCount:float=0
 @export var sample_sound:AudioStreamWAV
 @export var soundAudioBus:String
 @onready var soundPlayer = $AudioExample
-var cooldown:float=0
+
+@export var path_checkbox_on:String
+@export var path_checkbox_off:String
+@export var option_active:bool=false:
+	get:return option_active
+	set(value):
+		option_active=value
+
+
+var cooldownCounter:float=0
+
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	text.text=optionName
+	
 	if isSlider:
 		$slider.show()
 		soundPlayer.stream=sample_sound
@@ -44,7 +58,7 @@ func _ready() -> void:
 
 	else:
 		$slider.hide()
-	
+
 	
 		
 func SetSliderProgress(_progress:float):
@@ -55,28 +69,27 @@ func SetSliderProgress(_progress:float):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	if !active:
-		cooldown=0
+		cooldownCounter=0
 		return
-	else:
-		cooldown+=delta
-		if cooldown<0.3:
-			return
+	elif cooldownCounter<0.01:
+		cooldownCounter+=delta
+		return
+
 	
 	if !isSlider:
 		UpdateButton()
 	else:
-		UpdateSlider()
+		UpdateSlider(delta)
 	
 	
-	pass
+	
 	
 func UpdateButton():
 	if Input.is_action_just_pressed("jump"):
-		button_pressed.emit(optionName)
+		button_pressed.emit(self)	
 	
 	
-	
-func UpdateSlider():
+func UpdateSlider(delta:float):
 	
 	if Input.is_action_just_pressed("right"):
 		MoveSlider(true)
@@ -84,7 +97,16 @@ func UpdateSlider():
 	if Input.is_action_just_pressed("left"):
 		MoveSlider(false)	
 	
-	pass
+	if Input.is_action_pressed("right") or Input.is_action_pressed("left"):
+		sliderMoveCount+=delta
+		if sliderMoveCount>sliderMoveTime:
+			sliderMoveCount=0
+			if Input.is_action_pressed("right"):
+				MoveSlider(true)
+			if Input.is_action_pressed("left"):
+				MoveSlider(false)
+	else:
+		sliderMoveCount=0
 
 func UpdateSliderPos():
 	var progress=sliderValue/sliderMaxVal
@@ -115,6 +137,12 @@ func SetActive(_active:bool):
 		
 	txt+=optionName
 
+	if isToggle:
+		if option_active:
+			txt+="[img]"+path_checkbox_on+"[/img]"
+		else:
+			txt+="[img]"+path_checkbox_off+"[/img]"
+
 	if active:
 		txt+=highlightEffectEnd	
 	
@@ -131,7 +159,7 @@ func SetActive(_active:bool):
 
 func UpdateSoundTest(active:bool):
 	
-	if active:
+	if active and isSlider:
 		if !soundPlayer.playing:
 			soundPlayer.play()
 	else:

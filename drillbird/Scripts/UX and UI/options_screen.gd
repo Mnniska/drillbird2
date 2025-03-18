@@ -96,6 +96,12 @@ func SetActive(_active:bool):
 func _process(delta: float) -> void:
 	if !menuActive:
 		return
+		
+	if Input.is_action_just_pressed("escape"):
+		var escapeOption:menu_option=menu_option.new()
+		escapeOption.optionName="Return"
+		ButtonPressed(escapeOption)
+		escapeOption.queue_free()
 	
 	if Input.is_action_just_pressed("down"):
 		selectedOption+=1
@@ -123,23 +129,21 @@ func UpdateMenu():
 		index+=1
 	pass
 
-func ButtonPressed(_name:String):
-	if _name=="Return":
+func ButtonPressed(_option:menu_option):
+	if _option.optionName=="Return":
 		SavePreferences()
 		SetActive(false)
 		optionsClosed.emit()
 
-	if _name=="Toggle Fullscreen":
+	if _option.optionName=="Toggle Fullscreen":
 		isFullscreen=!isFullscreen
+		_option.option_active=isFullscreen
+		_option.SetActive(true)
 		
 		if isFullscreen:
 			DisplayServer.window_set_mode(DisplayServer.WindowMode.WINDOW_MODE_FULLSCREEN)
 		else:
 			DisplayServer.window_set_mode(DisplayServer.WindowMode.WINDOW_MODE_WINDOWED)
-
-		
-		pass
-
 
 
 func SliderValueChanged(_name:String,_progress:float):

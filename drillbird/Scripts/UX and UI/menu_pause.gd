@@ -22,16 +22,16 @@ func SetupMenu():
 			n.button_pressed.connect(ButtonPressed)
 	pass
 
-func ButtonPressed(_name:String):
-	if _name=="Return":
+func ButtonPressed(_option:menu_option):
+	if _option.optionName=="Return":
 		SetActive(false)
 		signal_pause_menu_closed.emit()
 	
-	if _name=="Options":
+	if _option.optionName=="Options":
 		SetActive(false)
 		HUD.SetState(HUD.menuStates.OPTIONS)
 		
-	if _name=="Quit Game":
+	if _option.optionName=="Quit Game":
 		
 		if !hasClickedQuitOnce:
 			
@@ -73,11 +73,14 @@ func _process(delta: float) -> void:
 		UpdateMenu()
 	
 	if Input.is_action_just_pressed("escape") and !isHoldingEscape:
-		ButtonPressed("Return")
+		var option:menu_option=menu_option.new()
+		option.optionName="Return"
+		option.queue_free()
+		
+		ButtonPressed(option)
 		
 	if Input.is_action_just_released("escape"):
 		isHoldingEscape=false
-			
 	
 	pass
 
