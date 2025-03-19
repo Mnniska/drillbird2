@@ -25,7 +25,7 @@
 [ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_debugMenuOption.gd" id="20_hlahx"]
 [ext_resource type="PackedScene" uid="uid://bldt1ha11vmuu" path="res://Scenes/UI/menu_options.tscn" id="23_sv2nb"]
 [ext_resource type="PackedScene" uid="uid://bgj42edyan2we" path="res://Scenes/UI/menu_pause.tscn" id="24_p58jt"]
-[ext_resource type="Texture2D" uid="uid://bcueq4thl3gk0" path="res://Art/cutscenes/intro/intro_starcrashl9.png" id="26_y1son"]
+[ext_resource type="Texture2D" uid="uid://cdgrv0eh6htfa" path="res://Art/cutscenes/intro/intro_landscape11.png" id="26_4tsov"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_ese10"]
 
@@ -390,7 +390,7 @@ modulate = Color(1, 1, 1, 0)
 z_index = 10
 position = Vector2(159.5, 116.5)
 scale = Vector2(1.12813, 1.12444)
-texture = ExtResource("26_y1son")
+texture = ExtResource("26_4tsov")
 
 [connection signal="NewGame" from="MainMenu" to="." method="_on_main_menu_new_game"]
 [connection signal="press_options" from="MainMenu" to="." method="_on_main_menu_press_options"]

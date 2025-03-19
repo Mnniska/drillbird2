@@ -88,7 +88,7 @@ func _on_flying_child_has_evolved_off_screen() -> void:
 	isTransitioningToMainAgain=true
 	var anim:AnimationPlayer=$AnimationPlayer
 	anim.play("fall")
-	await get_tree().create_timer(6).timeout
+	await get_tree().create_timer(7).timeout
 	HUD.SetSceneState(HUD.sceneStates.MAIN)
 
 

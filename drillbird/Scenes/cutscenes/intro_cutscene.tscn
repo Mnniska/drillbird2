@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://beb5rv0u4ftaa"]
+[gd_scene load_steps=51 format=3 uid="uid://beb5rv0u4ftaa"]
 
 [ext_resource type="Script" path="res://Scripts/cutscenes/intro_cutscene.gd" id="1_oqykf"]
 [ext_resource type="Texture2D" uid="uid://d0ot502nge360" path="res://Art/environment/SpaceBackground/background_space_spaceLayer.png" id="2_33qrj"]
@@ -24,16 +24,21 @@
 [ext_resource type="Texture2D" uid="uid://cxoxj78t6pad8" path="res://Art/cutscenes/intro/intro_flyingbirdy2.png" id="20_mh0pe"]
 [ext_resource type="Texture2D" uid="uid://bsgc32b0wuepj" path="res://Art/cutscenes/intro/intro_flyingbirdy3.png" id="21_uhqec"]
 [ext_resource type="Texture2D" uid="uid://cq2c2aj0x4ypo" path="res://Art/cutscenes/intro/intro_flyingbirdy4.png" id="22_vlhqn"]
-[ext_resource type="Texture2D" uid="uid://brddijd460nyp" path="res://Art/cutscenes/intro/intro_starcrashl1.png" id="23_38tvk"]
-[ext_resource type="Texture2D" uid="uid://duldptrwat3ay" path="res://Art/cutscenes/intro/intro_starcrashl2.png" id="24_ak65q"]
-[ext_resource type="Texture2D" uid="uid://dhw4bpqwor87d" path="res://Art/environment/SpaceBackground/background_space_base.png" id="25_c6b2e"]
-[ext_resource type="Texture2D" uid="uid://b0iq44vnfvm6j" path="res://Art/cutscenes/intro/intro_starcrashl3.png" id="25_vkoxn"]
-[ext_resource type="Texture2D" uid="uid://d37tt64ht22ol" path="res://Art/cutscenes/intro/intro_starcrashl4.png" id="26_3wyk8"]
-[ext_resource type="Texture2D" uid="uid://behn1m1t24mt0" path="res://Art/cutscenes/intro/intro_starcrashl5.png" id="27_p6rl3"]
-[ext_resource type="Texture2D" uid="uid://dw41ew4p4qdyb" path="res://Art/cutscenes/intro/intro_starcrashl6.png" id="28_dvyf3"]
-[ext_resource type="Texture2D" uid="uid://b455tmyjvqmv8" path="res://Art/cutscenes/intro/intro_starcrashl7.png" id="29_8ins0"]
-[ext_resource type="Texture2D" uid="uid://d5utklggs16d" path="res://Art/cutscenes/intro/intro_starcrashl8.png" id="30_4n1wm"]
-[ext_resource type="Texture2D" uid="uid://bcueq4thl3gk0" path="res://Art/cutscenes/intro/intro_starcrashl9.png" id="31_1ei0x"]
+[ext_resource type="Texture2D" uid="uid://b1um7oudax8mn" path="res://Art/cutscenes/intro/intro_flyingbirdy5.png" id="25_qsjgu"]
+[ext_resource type="Texture2D" uid="uid://bls3cwd3p20av" path="res://Art/cutscenes/intro/intro_flyingbirdy6.png" id="26_ho52k"]
+[ext_resource type="Texture2D" uid="uid://c7bpkqws55upo" path="res://Art/cutscenes/intro/intro_flyingbirdy7.png" id="27_xjrdb"]
+[ext_resource type="Texture2D" uid="uid://74py7m8636wb" path="res://Art/cutscenes/intro/intro_flyingbirdy8.png" id="28_q7vy8"]
+[ext_resource type="Texture2D" uid="uid://cy07e7heiyeg4" path="res://Art/cutscenes/intro/intro_landscape1.png" id="29_qg7o4"]
+[ext_resource type="Texture2D" uid="uid://dott7fquts35q" path="res://Art/cutscenes/intro/intro_landscape2.png" id="30_x3db3"]
+[ext_resource type="Texture2D" uid="uid://og5n3tdrglvc" path="res://Art/cutscenes/intro/intro_landscape3.png" id="31_8utdc"]
+[ext_resource type="Texture2D" uid="uid://dup0bomkiuhem" path="res://Art/cutscenes/intro/intro_landscape4.png" id="32_akvme"]
+[ext_resource type="Texture2D" uid="uid://cknm8yec3jd7y" path="res://Art/cutscenes/intro/intro_landscape5.png" id="33_8i45i"]
+[ext_resource type="Texture2D" uid="uid://bla8kmm7flapd" path="res://Art/cutscenes/intro/intro_landscape6.png" id="34_gsl7n"]
+[ext_resource type="Texture2D" uid="uid://cdmw61fatsldx" path="res://Art/cutscenes/intro/intro_landscape7.png" id="35_dv02n"]
+[ext_resource type="Texture2D" uid="uid://bar2hc6mleo02" path="res://Art/cutscenes/intro/intro_landscape8.png" id="36_j0xvy"]
+[ext_resource type="Texture2D" uid="uid://b8bn8vqhjhu1s" path="res://Art/cutscenes/intro/intro_landscape9.png" id="37_i06dy"]
+[ext_resource type="Texture2D" uid="uid://dnagjnmtqftx0" path="res://Art/cutscenes/intro/intro_landscape10.png" id="38_v0rb3"]
+[ext_resource type="Texture2D" uid="uid://cdgrv0eh6htfa" path="res://Art/cutscenes/intro/intro_landscape11.png" id="39_8d8k0"]
 
 [sub_resource type="Animation" id="Animation_ie4gr"]
 resource_name = "1"
@@ -257,6 +262,18 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("22_vlhqn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_qsjgu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_ho52k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_xjrdb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_q7vy8")
 }],
 "loop": true,
 "name": &"default",
@@ -267,31 +284,37 @@ animations = [{
 animations = [{
 "frames": [{
 "duration": 6.0,
-"texture": ExtResource("23_38tvk")
+"texture": ExtResource("29_qg7o4")
 }, {
 "duration": 1.0,
-"texture": ExtResource("24_ak65q")
+"texture": ExtResource("30_x3db3")
 }, {
 "duration": 1.0,
-"texture": ExtResource("25_vkoxn")
+"texture": ExtResource("31_8utdc")
 }, {
 "duration": 1.0,
-"texture": ExtResource("26_3wyk8")
+"texture": ExtResource("32_akvme")
 }, {
 "duration": 1.0,
-"texture": ExtResource("27_p6rl3")
+"texture": ExtResource("33_8i45i")
 }, {
 "duration": 1.0,
-"texture": ExtResource("28_dvyf3")
+"texture": ExtResource("34_gsl7n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_dv02n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_j0xvy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_i06dy")
 }, {
 "duration": 3.0,
-"texture": ExtResource("29_8ins0")
+"texture": ExtResource("38_v0rb3")
 }, {
 "duration": 3.0,
-"texture": ExtResource("30_4n1wm")
-}, {
-"duration": 3.0,
-"texture": ExtResource("31_1ei0x")
+"texture": ExtResource("39_8d8k0")
 }],
 "loop": false,
 "name": &"default",
@@ -299,7 +322,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("23_38tvk")
+"texture": ExtResource("29_qg7o4")
 }],
 "loop": false,
 "name": &"wait",
@@ -371,17 +394,13 @@ region_rect = Rect2(0, 0, 500, 500)
 position = Vector2(0, 131)
 sprite_frames = SubResource("SpriteFrames_ogayo")
 autoplay = "default"
-frame_progress = 0.224175
+frame_progress = 0.993092
 
 [node name="cameraLocation2" type="Node2D" parent="scene2"]
 position = Vector2(-10, 122)
 
 [node name="scene3" type="Node2D" parent="."]
 position = Vector2(-2043, -6)
-
-[node name="scene3bg" type="Sprite2D" parent="scene3"]
-position = Vector2(-15, 114)
-texture = ExtResource("25_c6b2e")
 
 [node name="scene3_meteorImpact" type="AnimatedSprite2D" parent="scene3"]
 position = Vector2(1, 116)

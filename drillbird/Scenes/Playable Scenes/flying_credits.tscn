@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://chmegxltn4stt"]
+[gd_scene load_steps=58 format=3 uid="uid://chmegxltn4stt"]
 
 [ext_resource type="Script" path="res://Scripts/UX and UI/flying_credits_manager.gd" id="1_xtpho"]
 [ext_resource type="PackedScene" uid="uid://djowxohivfhhb" path="res://Scenes/Objects and Enemies/flying_child.tscn" id="2_eruml"]
@@ -13,26 +13,31 @@
 [ext_resource type="Script" path="res://Scripts/UX and UI/credits.gd" id="8_p2dai"]
 [ext_resource type="Texture2D" uid="uid://buh3ysmbicdnm" path="res://Art/UI/HUD/UI_LightBar_darkness.png" id="11_ap520"]
 [ext_resource type="Texture2D" uid="uid://b7scxroc66kxr" path="res://Art/UI/HUD/UI_LightBar_frame.png" id="12_kbn20"]
+[ext_resource type="Texture2D" uid="uid://b1um7oudax8mn" path="res://Art/cutscenes/intro/intro_flyingbirdy5.png" id="13_1r5kn"]
 [ext_resource type="Texture2D" uid="uid://1so80dql7icj" path="res://Art/UI/HUD/UI_LightBar_light.png" id="13_2gem5"]
-[ext_resource type="Texture2D" uid="uid://dhw4bpqwor87d" path="res://Art/environment/SpaceBackground/background_space_base.png" id="13_e5b48"]
-[ext_resource type="Texture2D" uid="uid://brddijd460nyp" path="res://Art/cutscenes/intro/intro_starcrashl1.png" id="14_ly4po"]
+[ext_resource type="Texture2D" uid="uid://bls3cwd3p20av" path="res://Art/cutscenes/intro/intro_flyingbirdy6.png" id="14_ycave"]
 [ext_resource type="Texture2D" uid="uid://nb5wx244cjbj" path="res://Art/UI/HUD/UI_LightBar_Indicator.png" id="14_yjti0"]
-[ext_resource type="Texture2D" uid="uid://duldptrwat3ay" path="res://Art/cutscenes/intro/intro_starcrashl2.png" id="15_codur"]
 [ext_resource type="Script" path="res://Scripts/cutscenes/credits_value_spawner.gd" id="15_ob5l2"]
-[ext_resource type="Texture2D" uid="uid://b0iq44vnfvm6j" path="res://Art/cutscenes/intro/intro_starcrashl3.png" id="16_kml35"]
-[ext_resource type="Texture2D" uid="uid://d37tt64ht22ol" path="res://Art/cutscenes/intro/intro_starcrashl4.png" id="17_xiwm8"]
+[ext_resource type="Texture2D" uid="uid://c7bpkqws55upo" path="res://Art/cutscenes/intro/intro_flyingbirdy7.png" id="15_ucb3t"]
+[ext_resource type="Texture2D" uid="uid://74py7m8636wb" path="res://Art/cutscenes/intro/intro_flyingbirdy8.png" id="16_jgq50"]
 [ext_resource type="Texture2D" uid="uid://b3lpuesrmtdma" path="res://Art/cutscenes/intro/intro_flyingbirdy1.png" id="18_cx0np"]
-[ext_resource type="Texture2D" uid="uid://behn1m1t24mt0" path="res://Art/cutscenes/intro/intro_starcrashl5.png" id="18_li2jk"]
-[ext_resource type="Texture2D" uid="uid://dw41ew4p4qdyb" path="res://Art/cutscenes/intro/intro_starcrashl6.png" id="19_pwu5f"]
+[ext_resource type="Texture2D" uid="uid://cy07e7heiyeg4" path="res://Art/cutscenes/intro/intro_landscape1.png" id="18_shekx"]
+[ext_resource type="Texture2D" uid="uid://dott7fquts35q" path="res://Art/cutscenes/intro/intro_landscape2.png" id="19_d5y3p"]
 [ext_resource type="Texture2D" uid="uid://cxoxj78t6pad8" path="res://Art/cutscenes/intro/intro_flyingbirdy2.png" id="19_udnqe"]
 [ext_resource type="Texture2D" uid="uid://bsgc32b0wuepj" path="res://Art/cutscenes/intro/intro_flyingbirdy3.png" id="20_0du72"]
-[ext_resource type="Texture2D" uid="uid://b455tmyjvqmv8" path="res://Art/cutscenes/intro/intro_starcrashl7.png" id="20_um8u8"]
-[ext_resource type="Texture2D" uid="uid://d5utklggs16d" path="res://Art/cutscenes/intro/intro_starcrashl8.png" id="21_57q1v"]
+[ext_resource type="Texture2D" uid="uid://og5n3tdrglvc" path="res://Art/cutscenes/intro/intro_landscape3.png" id="20_m7iqp"]
 [ext_resource type="Texture2D" uid="uid://cq2c2aj0x4ypo" path="res://Art/cutscenes/intro/intro_flyingbirdy4.png" id="21_h88sl"]
-[ext_resource type="Texture2D" uid="uid://bcueq4thl3gk0" path="res://Art/cutscenes/intro/intro_starcrashl9.png" id="22_hb2tp"]
+[ext_resource type="Texture2D" uid="uid://dup0bomkiuhem" path="res://Art/cutscenes/intro/intro_landscape4.png" id="21_yhiso"]
+[ext_resource type="Texture2D" uid="uid://cknm8yec3jd7y" path="res://Art/cutscenes/intro/intro_landscape5.png" id="22_jf6nb"]
 [ext_resource type="Script" path="res://Scripts/Tools/credits_scene_reference_connector.gd" id="22_sgrwg"]
+[ext_resource type="Texture2D" uid="uid://bla8kmm7flapd" path="res://Art/cutscenes/intro/intro_landscape6.png" id="23_v2y3d"]
+[ext_resource type="Texture2D" uid="uid://cdmw61fatsldx" path="res://Art/cutscenes/intro/intro_landscape7.png" id="24_p08ou"]
+[ext_resource type="Texture2D" uid="uid://bar2hc6mleo02" path="res://Art/cutscenes/intro/intro_landscape8.png" id="25_ffngr"]
 [ext_resource type="Texture2D" uid="uid://bjo3ij85d33yx" path="res://Art/Collectibles/ore_gold.png" id="25_skkcw"]
 [ext_resource type="Texture2D" uid="uid://c1a6277712y7w" path="res://Art/Collectibles/ore_2_blue.png" id="26_2u4hx"]
+[ext_resource type="Texture2D" uid="uid://b8bn8vqhjhu1s" path="res://Art/cutscenes/intro/intro_landscape9.png" id="26_rlx87"]
+[ext_resource type="Texture2D" uid="uid://dnagjnmtqftx0" path="res://Art/cutscenes/intro/intro_landscape10.png" id="27_6rtut"]
+[ext_resource type="Texture2D" uid="uid://cdgrv0eh6htfa" path="res://Art/cutscenes/intro/intro_landscape11.png" id="28_djc2e"]
 [ext_resource type="AudioStream" uid="uid://bwynx1ih755ll" path="res://Audio/MUSIC/Drillbird Theme.mp3" id="33_ca1sj"]
 
 [sub_resource type="Resource" id="Resource_6xtrl"]
@@ -160,7 +165,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_hgixc"]
 resource_name = "fall"
-length = 6.6
+length = 7.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -269,6 +274,18 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("21_h88sl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_1r5kn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_ycave")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_ucb3t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_jgq50")
 }],
 "loop": true,
 "name": &"default",
@@ -279,31 +296,37 @@ animations = [{
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("14_ly4po")
+"texture": ExtResource("18_shekx")
 }, {
 "duration": 1.0,
-"texture": ExtResource("15_codur")
+"texture": ExtResource("19_d5y3p")
 }, {
 "duration": 1.0,
-"texture": ExtResource("16_kml35")
+"texture": ExtResource("20_m7iqp")
 }, {
 "duration": 1.0,
-"texture": ExtResource("17_xiwm8")
+"texture": ExtResource("21_yhiso")
 }, {
 "duration": 1.0,
-"texture": ExtResource("18_li2jk")
+"texture": ExtResource("22_jf6nb")
 }, {
 "duration": 1.0,
-"texture": ExtResource("19_pwu5f")
+"texture": ExtResource("23_v2y3d")
 }, {
 "duration": 1.0,
-"texture": ExtResource("20_um8u8")
+"texture": ExtResource("24_p08ou")
 }, {
 "duration": 1.0,
-"texture": ExtResource("21_57q1v")
+"texture": ExtResource("25_ffngr")
 }, {
 "duration": 1.0,
-"texture": ExtResource("22_hb2tp")
+"texture": ExtResource("26_rlx87")
+}, {
+"duration": 3.0,
+"texture": ExtResource("27_6rtut")
+}, {
+"duration": 3.0,
+"texture": ExtResource("28_djc2e")
 }],
 "loop": false,
 "name": &"default",
@@ -439,7 +462,8 @@ baseSpeed = 60
 position = Vector2(-59.1645, -48.1645)
 sprite_frames = SubResource("SpriteFrames_ot7w6")
 autoplay = "default"
-frame_progress = 0.207706
+frame = 7
+frame_progress = 0.263379
 
 [node name="cameraLocation2" type="Node2D" parent="AnimationPlayer/fallingScene"]
 position = Vector2(-69.1645, -57.1645)
@@ -448,10 +472,6 @@ position = Vector2(-69.1645, -57.1645)
 visible = false
 z_index = 5
 position = Vector2(-2, -117)
-
-[node name="scene3bg" type="Sprite2D" parent="AnimationPlayer/impactScene"]
-position = Vector2(-15, 114)
-texture = ExtResource("13_e5b48")
 
 [node name="anim" type="AnimatedSprite2D" parent="AnimationPlayer/impactScene"]
 position = Vector2(1, 116)

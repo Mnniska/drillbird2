@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dw41ew4p4qdyb"
-path="res://.godot/imported/intro_starcrashl6.png-6c30aa8e1e710a9f3c45143127b922ba.ctex"
+uid="uid://c7bpkqws55upo"
+path="res://.godot/imported/intro_flyingbirdy7.png-9eb185145e64374f6be7a89b11c65e5d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/cutscenes/intro/intro_starcrashl6.png"
-dest_files=["res://.godot/imported/intro_starcrashl6.png-6c30aa8e1e710a9f3c45143127b922ba.ctex"]
+source_file="res://Art/cutscenes/intro/intro_flyingbirdy7.png"
+dest_files=["res://.godot/imported/intro_flyingbirdy7.png-9eb185145e64374f6be7a89b11c65e5d.ctex"]
 
 [params]
 

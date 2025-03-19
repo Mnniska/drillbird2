@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://behn1m1t24mt0"
-path="res://.godot/imported/intro_starcrashl5.png-a7664bd21f378755b6471357454fbafe.ctex"
+uid="uid://og5n3tdrglvc"
+path="res://.godot/imported/intro_landscape3.png-f6e89d28d6704d7add978933f20a41ae.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/cutscenes/intro/intro_starcrashl5.png"
-dest_files=["res://.godot/imported/intro_starcrashl5.png-a7664bd21f378755b6471357454fbafe.ctex"]
+source_file="res://Art/cutscenes/intro/intro_landscape3.png"
+dest_files=["res://.godot/imported/intro_landscape3.png-f6e89d28d6704d7add978933f20a41ae.ctex"]
 
 [params]
 
