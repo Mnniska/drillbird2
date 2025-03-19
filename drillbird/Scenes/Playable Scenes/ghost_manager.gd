@@ -16,6 +16,7 @@ var textBubblePath=preload("res://Scenes/UI/text_bubble.tscn")
 var orespawner:ore_manager
 @export var heartOreReference:abstract_ore
 @onready var ghostAcceptanceArea=$GhostAcceptanceArea
+var heartInEgg:bool=false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -44,12 +45,20 @@ func Setup():
 
 func HeartSpawned(heart:Node2D):
 	
+	#TODO - make sure rightful place is considered nest
+	
 	await get_tree().create_timer(0.1).timeout
-	#Check if the ore is in the right place
+	
+	#The heart will despawn when given to the egg
+	if heart==null:
+		if ghostSpawned:
+			ghostInScene.Disappear(false)
+		return
+	
 	for body in HeartRightfulPlace.get_overlapping_bodies():
 		if body.GetOre().ID==10:		
 			if ghostSpawned:
-				ghostInScene.Disappear()
+				ghostInScene.Disappear(true)
 				
 			return
 	

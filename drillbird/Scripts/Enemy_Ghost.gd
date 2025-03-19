@@ -31,7 +31,7 @@ var isPlayingChaseMusic:bool=false
 @export var idle_music:AudioStreamWAV
 @export var chase_music:AudioStreamWAV
 
-enum states{CHASE_PLAYER,CHASE_HEART,RETURN_HEART}
+enum states{CHASE_PLAYER,CHASE_HEART,RETURN_HEART,DISAPPEARING}
 var state:states=states.CHASE_PLAYER
 
 func GetCollType():
@@ -81,6 +81,8 @@ func _process(delta: float) -> void:
 		states.RETURN_HEART:
 			if haunting && hauntedObject!=null:
 				HauntObject(delta)			
+		states.DISAPPEARING:
+			
 			pass
 	
 
@@ -183,9 +185,16 @@ func GiveParentReference(_parent:ghost_manager):
 	parent = _parent
 	pass
 
-func Disappear():
-	parent.GhostHasDespawned()
-	queue_free()
+func Disappear(useAnimation:bool=true):
+	if state!=states.DISAPPEARING:
+		state=states.DISAPPEARING
+		
+		if useAnimation:
+			anim.animation="death"
+			anim.play()
+			await get_tree().create_timer(2).timeout
+		parent.GhostHasDespawned()
+		queue_free()
 
 func NewHaunting(object:Node2D):
 	hauntedObject=object

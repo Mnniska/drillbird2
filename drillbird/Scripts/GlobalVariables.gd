@@ -19,6 +19,7 @@ signal playerStatusChanged
 signal SetupComplete
 
 var PlayerController:CharacterBody2D
+var heartInEgg:bool=false
 
 func ResetSaveData():
 	var newData=abstract_savegame.new()

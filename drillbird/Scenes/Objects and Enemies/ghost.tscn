@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://vd1oghkdp3nq"]
+[gd_scene load_steps=38 format=3 uid="uid://vd1oghkdp3nq"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy_Ghost.gd" id="1_0nsmt"]
 [ext_resource type="Texture2D" uid="uid://cfqueon1nbitt" path="res://Art/characters/Ghost/ghost_idle1.png" id="2_rfldp"]
@@ -6,16 +6,32 @@
 [ext_resource type="Texture2D" uid="uid://d1ojgl3ssl7jx" path="res://Art/characters/Ghost/ghost_idle2.png" id="3_andcq"]
 [ext_resource type="Texture2D" uid="uid://dufrjqla7um7r" path="res://Art/characters/Ghost/ghost_idle3.png" id="4_7jbq0"]
 [ext_resource type="AudioStream" uid="uid://3bbwrj24tf" path="res://Audio/MUSIC/mus_Chase.wav" id="4_m1ryh"]
+[ext_resource type="Texture2D" uid="uid://bfiyndasw3t0r" path="res://Art/characters/Ghost/ghost_fadeaway1.png" id="5_i3iw8"]
 [ext_resource type="Texture2D" uid="uid://dg1qn1g0kvssq" path="res://Art/characters/Ghost/ghost_idle4.png" id="5_sik3a"]
+[ext_resource type="Texture2D" uid="uid://cry75msdmjdne" path="res://Art/characters/Ghost/ghost_fadeaway2.png" id="6_4mtgx"]
 [ext_resource type="Texture2D" uid="uid://ytksgvcq8cy6" path="res://Art/characters/Ghost/ghost_idle5.png" id="6_tefmn"]
 [ext_resource type="Texture2D" uid="uid://dmfwwmxrcwe13" path="res://Art/characters/Ghost/ghost_withHeart1.png" id="7_d07up"]
+[ext_resource type="Texture2D" uid="uid://ckbrcqbgsrijv" path="res://Art/characters/Ghost/ghost_fadeaway3.png" id="7_oswcq"]
 [ext_resource type="AudioStream" uid="uid://d0eo35f1t7kdx" path="res://Audio/MUSIC/mus_darkness.wav" id="8_7ui1h"]
 [ext_resource type="Texture2D" uid="uid://b0owveecjrxhr" path="res://Art/characters/Ghost/ghost_withHeart2.png" id="8_ndff5"]
+[ext_resource type="Texture2D" uid="uid://sfthisonhabb" path="res://Art/characters/Ghost/ghost_fadeaway4.png" id="8_xxark"]
+[ext_resource type="Texture2D" uid="uid://k88klv5xyuml" path="res://Art/characters/Ghost/ghost_fadeaway5.png" id="9_brtpg"]
 [ext_resource type="Texture2D" uid="uid://bxj1wf57bree7" path="res://Art/characters/Ghost/ghost_withHeart3.png" id="9_dejgr"]
 [ext_resource type="Theme" uid="uid://bfr5y4lo7m1ux" path="res://Resources/Fonts/fontTheme.tres" id="9_scd0l"]
+[ext_resource type="Texture2D" uid="uid://bkqlw443a8wpb" path="res://Art/characters/Ghost/ghost_fadeaway6.png" id="10_6b8ug"]
 [ext_resource type="Texture2D" uid="uid://utebu6x86i3b" path="res://Art/characters/Ghost/ghost_withHeart4.png" id="10_wonuh"]
 [ext_resource type="Texture2D" uid="uid://c7im0flypwrsn" path="res://Art/characters/Ghost/ghost_withHeart5.png" id="11_mxwk4"]
+[ext_resource type="Texture2D" uid="uid://b2ssd7y0eiowo" path="res://Art/characters/Ghost/ghost_fadeaway7.png" id="11_vig5s"]
 [ext_resource type="Texture2D" uid="uid://d0mgpvcbw60ds" path="res://Art/characters/Ghost/ghost_withHeart6.png" id="12_1w6sv"]
+[ext_resource type="Texture2D" uid="uid://cgargpyn2eb02" path="res://Art/characters/Ghost/ghost_fadeaway8.png" id="12_lyl7e"]
+[ext_resource type="Texture2D" uid="uid://cduo46q4cba8e" path="res://Art/characters/Ghost/ghost_fadeaway9.png" id="13_f8xpo"]
+[ext_resource type="Texture2D" uid="uid://clvoe1gnv3hls" path="res://Art/characters/Ghost/ghost_fadeaway10.png" id="14_x5642"]
+[ext_resource type="Texture2D" uid="uid://vaeuffp8yy62" path="res://Art/characters/Ghost/ghost_fadeaway11.png" id="15_mqd16"]
+[ext_resource type="Texture2D" uid="uid://bcb4ag3vp0kuf" path="res://Art/characters/Ghost/ghost_fadeaway12.png" id="16_xfxk1"]
+[ext_resource type="Texture2D" uid="uid://0xpq7g065pmf" path="res://Art/characters/Ghost/ghost_fadeaway13.png" id="17_x10no"]
+[ext_resource type="Texture2D" uid="uid://biaao0ardqnq4" path="res://Art/characters/Ghost/ghost_fadeaway14.png" id="18_2lmab"]
+[ext_resource type="Texture2D" uid="uid://85hm8k25l5uw" path="res://Art/characters/Ghost/ghost_fadeaway15.png" id="19_wmkpx"]
+[ext_resource type="Texture2D" uid="uid://dmu1gw3q6qvh8" path="res://Art/characters/Ghost/ghost_fadeaway16.png" id="20_1qi2e"]
 
 [sub_resource type="Resource" id="Resource_dqcsu"]
 script = ExtResource("2_tg5lq")
@@ -27,6 +43,59 @@ radius = 15.0333
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_c18y6"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_i3iw8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_4mtgx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_oswcq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_xxark")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_brtpg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_6b8ug")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_vig5s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_lyl7e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_f8xpo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_x5642")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_mqd16")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_xfxk1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_x10no")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_2lmab")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_wmkpx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_1qi2e")
+}],
+"loop": false,
+"name": &"death",
+"speed": 10.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_rfldp")
@@ -96,9 +165,8 @@ debug_color = Color(0.739368, 0.415576, 0.568864, 0.42)
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 z_index = 1
 sprite_frames = SubResource("SpriteFrames_c18y6")
-animation = &"idle_heart"
+animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.907173
 
 [node name="GhostMusic" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_7ui1h")

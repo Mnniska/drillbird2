@@ -105,6 +105,3 @@ func UpdateMenu():
 		n.SetActive(index==selectedOption)
 		index+=1
 	
-
-	
-	pass
