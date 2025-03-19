@@ -3,7 +3,7 @@ extends Node2D
 var player:Node2D
 
 @onready var audioplayer=$AudioStreamPlayer2D
-@export var AmbiencesToPlay:Array[AudioStreamWAV]
+@export var AmbiencesToPlay:Array[AudioStreamMP3]
 
 #Variables to make sound player follow player pos
 var sizebuffer=500

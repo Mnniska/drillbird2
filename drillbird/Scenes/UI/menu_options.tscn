@@ -1,13 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://bldt1ha11vmuu"]
+[gd_scene load_steps=8 format=3 uid="uid://bldt1ha11vmuu"]
 
 [ext_resource type="Script" path="res://Scripts/UX and UI/options_screen.gd" id="1_5gtrn"]
 [ext_resource type="Texture2D" uid="uid://cp6xuvmo0rguj" path="res://Art/UI/HUD/UI_BlackBorder.png" id="2_eej8b"]
 [ext_resource type="PackedScene" uid="uid://g8bq4xcafcut" path="res://Scenes/UI/menu_option.tscn" id="2_x5nw2"]
 [ext_resource type="Theme" uid="uid://bfr5y4lo7m1ux" path="res://Resources/Fonts/fontTheme.tres" id="3_208bg"]
 [ext_resource type="AudioStream" uid="uid://biff4rn2yb8wv" path="res://Audio/MUSIC/mus_dreaming.wav" id="3_ttclj"]
-[ext_resource type="AudioStream" uid="uid://di4mq56e3hnqv" path="res://Audio/MUSIC/mus_Drillbird_Theme_Credits.wav" id="5_6r1j7"]
 [ext_resource type="AudioStream" uid="uid://m5o3cjhfbqsf" path="res://Audio/SFX/home_player_sleep.wav" id="6_kpxvh"]
-[ext_resource type="AudioStream" uid="uid://mkkn175q2oj0" path="res://Audio/Ambience/ambience_surface.wav" id="6_wrpie"]
+[ext_resource type="AudioStream" uid="uid://cygmw124vctks" path="res://Audio/Ambience/ambience_surface.mp3" id="6_wrpie"]
 
 [node name="Options" type="Node2D" node_paths=PackedStringArray("options")]
 script = ExtResource("1_5gtrn")
@@ -39,7 +38,7 @@ soundAudioBus = "Master"
 position = Vector2(0, 16)
 optionName = "Music Volume"
 isSlider = true
-sample_sound = ExtResource("5_6r1j7")
+sample_sound = ExtResource("3_ttclj")
 soundAudioBus = "Music"
 
 [node name="SFX" parent="." instance=ExtResource("2_x5nw2")]

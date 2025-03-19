@@ -14,8 +14,8 @@ var volume_dream:float=0
 @export var maxVolume=0
 @export var volumeChangeSpeed=20
 
-@export var mus_idle_beginning:AudioStreamWAV
-@export var mus_idle_end:AudioStreamWAV
+@export var mus_idle_beginning:AudioStreamMP3
+@export var mus_idle_end:AudioStreamMP3
 
 
 enum musicStates{IDLE, DREAM, FINALE}
