@@ -18,7 +18,8 @@ var isFullscreen:bool=false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-
+	return
+	#temporary
 	verify_save_directory(save_file_path)
 	LoadPreferences()
 	
@@ -53,6 +54,7 @@ func SaveSliderValue(_name:String,_progress:float):
 			PlayerPreferences.volumeAmbience=_progress
 	
 func LoadPreferences():
+	
 	if ResourceLoader.load(save_file_path+save_file_name)!=null:
 		PlayerPreferences=ResourceLoader.load(save_file_path+save_file_name)
 

@@ -14,9 +14,12 @@ var hasClickedQuitOnce:bool=false
 func _ready() -> void:
 	SetActive(false)
 	SetupMenu()
+	
+	HUD.hide()
 	pass # Replace with function body.
 
 func SetupMenu():
+	return
 	for n in options:
 		if !n.isSlider:
 			n.button_pressed.connect(ButtonPressed)
@@ -85,6 +88,7 @@ func _process(delta: float) -> void:
 	pass
 
 func SetActive(_active:bool):
+	return
 	menuActive=_active
 	if menuActive:
 

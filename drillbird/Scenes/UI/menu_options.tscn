@@ -20,38 +20,27 @@ texture = ExtResource("2_eej8b")
 
 [node name="Return" parent="." instance=ExtResource("2_x5nw2")]
 position = Vector2(0, -52)
-optionName = "Return"
 
 [node name="ToggleFullscreen" parent="." instance=ExtResource("2_x5nw2")]
 position = Vector2(0, -33)
-optionName = "Toggle Fullscreen"
-isToggle = true
 
 [node name="Master" parent="." instance=ExtResource("2_x5nw2")]
 position = Vector2(0, -12)
-optionName = "Master Volume"
-isSlider = true
 sample_sound = ExtResource("3_ttclj")
 soundAudioBus = "Master"
 
 [node name="Music" parent="." instance=ExtResource("2_x5nw2")]
 position = Vector2(0, 16)
-optionName = "Music Volume"
-isSlider = true
 sample_sound = ExtResource("3_ttclj")
 soundAudioBus = "Music"
 
 [node name="SFX" parent="." instance=ExtResource("2_x5nw2")]
 position = Vector2(0, 45)
-optionName = "SFX Volume"
-isSlider = true
 sample_sound = ExtResource("6_kpxvh")
 soundAudioBus = "Sfx"
 
 [node name="Ambience" parent="." instance=ExtResource("2_x5nw2")]
 position = Vector2(0, 76)
-optionName = "Ambience Volume"
-isSlider = true
 sample_sound = ExtResource("6_wrpie")
 soundAudioBus = "Ambience"
 
