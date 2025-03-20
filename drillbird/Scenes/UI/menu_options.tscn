@@ -4,13 +4,13 @@
 [ext_resource type="Texture2D" uid="uid://cp6xuvmo0rguj" path="res://Art/UI/HUD/UI_BlackBorder.png" id="2_eej8b"]
 [ext_resource type="PackedScene" uid="uid://g8bq4xcafcut" path="res://Scenes/UI/menu_option.tscn" id="2_x5nw2"]
 [ext_resource type="Theme" uid="uid://bfr5y4lo7m1ux" path="res://Resources/Fonts/fontTheme.tres" id="3_208bg"]
-[ext_resource type="AudioStream" uid="uid://biff4rn2yb8wv" path="res://Audio/MUSIC/mus_dreaming.wav" id="3_ttclj"]
+[ext_resource type="AudioStream" uid="uid://biff4rn2yb8wv" path="res://Audio/Music/mus_dreaming.wav" id="3_ttclj"]
 [ext_resource type="AudioStream" uid="uid://m5o3cjhfbqsf" path="res://Audio/SFX/home_player_sleep.wav" id="6_kpxvh"]
 [ext_resource type="AudioStream" uid="uid://cygmw124vctks" path="res://Audio/Ambience/ambience_surface.mp3" id="6_wrpie"]
 
-[node name="Options" type="Node2D" node_paths=PackedStringArray("options")]
+[node name="Options" type="Node2D" node_paths=PackedStringArray("BaseMenu")]
 script = ExtResource("1_5gtrn")
-options = [NodePath("Return"), NodePath("ToggleFullscreen"), NodePath("Master"), NodePath("Music"), NodePath("SFX"), NodePath("Ambience")]
+BaseMenu = [NodePath("Return2"), NodePath("ToggleFullscreen"), NodePath("Audio Options"), NodePath("Game Options")]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.396078)
@@ -18,7 +18,7 @@ position = Vector2(-0.999994, 5.49999)
 scale = Vector2(1.73438, 20.4375)
 texture = ExtResource("2_eej8b")
 
-[node name="Return" parent="." instance=ExtResource("2_x5nw2")]
+[node name="Return2" parent="." instance=ExtResource("2_x5nw2")]
 position = Vector2(0, -52)
 optionName = "Return"
 
@@ -27,7 +27,18 @@ position = Vector2(0, -33)
 optionName = "Toggle Fullscreen"
 isToggle = true
 
+[node name="Audio Options" parent="." node_paths=PackedStringArray("options") instance=ExtResource("2_x5nw2")]
+position = Vector2(0, -12)
+optionName = "Audio Options"
+options = [NodePath("../Return"), NodePath("../Master"), NodePath("../Music"), NodePath("../SFX"), NodePath("../Ambience")]
+
+[node name="Return" parent="." instance=ExtResource("2_x5nw2")]
+visible = false
+position = Vector2(0, -52)
+optionName = "Return"
+
 [node name="Master" parent="." instance=ExtResource("2_x5nw2")]
+visible = false
 position = Vector2(0, -12)
 optionName = "Master Volume"
 isSlider = true
@@ -35,6 +46,7 @@ sample_sound = ExtResource("3_ttclj")
 soundAudioBus = "Master"
 
 [node name="Music" parent="." instance=ExtResource("2_x5nw2")]
+visible = false
 position = Vector2(0, 16)
 optionName = "Music Volume"
 isSlider = true
@@ -42,6 +54,7 @@ sample_sound = ExtResource("3_ttclj")
 soundAudioBus = "Music"
 
 [node name="SFX" parent="." instance=ExtResource("2_x5nw2")]
+visible = false
 position = Vector2(0, 45)
 optionName = "SFX Volume"
 isSlider = true
@@ -49,11 +62,42 @@ sample_sound = ExtResource("6_kpxvh")
 soundAudioBus = "Sfx"
 
 [node name="Ambience" parent="." instance=ExtResource("2_x5nw2")]
+visible = false
 position = Vector2(0, 76)
 optionName = "Ambience Volume"
 isSlider = true
 sample_sound = ExtResource("6_wrpie")
 soundAudioBus = "Ambience"
+
+[node name="Game Options" parent="." node_paths=PackedStringArray("options") instance=ExtResource("2_x5nw2")]
+position = Vector2(0, 8)
+optionName = "Game Options"
+options = [NodePath("../Return2"), NodePath("../toggle ghost"), NodePath("../save data")]
+
+[node name="toggle ghost" parent="." instance=ExtResource("2_x5nw2")]
+position = Vector2(0, -33)
+optionName = "Haunted by Ghost"
+isToggle = true
+sample_sound = ExtResource("6_wrpie")
+soundAudioBus = "Ambience"
+
+[node name="save data" parent="." node_paths=PackedStringArray("extraConfirmzationMessage") instance=ExtResource("2_x5nw2")]
+position = Vector2(0, -12)
+optionName = "Reset Save Data"
+RequireExtraConfirmation = true
+extraConfirmzationMessage = NodePath("SaveDataExtraInfo")
+sample_sound = ExtResource("6_wrpie")
+soundAudioBus = "Ambience"
+
+[node name="SaveDataExtraInfo" type="RichTextLabel" parent="save data"]
+visible = false
+offset_left = -155.0
+offset_top = 34.0
+offset_right = 166.0
+offset_bottom = 94.0
+theme = ExtResource("3_208bg")
+bbcode_enabled = true
+text = "Warning: This will reset all progress and quit the game - allowing you to start fresh. Click again to confirm. "
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 offset_left = -160.0

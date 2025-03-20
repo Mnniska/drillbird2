@@ -44,7 +44,8 @@ func Setup():
 	
 
 func HeartSpawned(heart:Node2D):
-	
+	if !GlobalVariables.ghostActive:
+		return
 	#TODO - make sure rightful place is considered nest
 	
 	await get_tree().create_timer(0.1).timeout
@@ -76,7 +77,9 @@ func DropHeartInRightfulPlace():
 	
 
 func HeartPickedUpByPlayer():
-	
+	if !GlobalVariables.ghostActive:
+		return
+		
 	for bod in ghostAcceptanceArea.get_overlapping_bodies():
 		return
 	
@@ -96,7 +99,8 @@ func HeartPickedUpByPlayer():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-
+	if !GlobalVariables.ghostActive:
+			return
 	if ghostIsComing and !ghostSpawned:
 		ghostTimeCounter+=delta
 		if ghostTimeCounter>TimeBeforeGhostComes:

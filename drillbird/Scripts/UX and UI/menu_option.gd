@@ -9,10 +9,14 @@ signal sliderValueChanged(menuName:String,progress:float)
 @export var isToggle:bool=false
 @export var options:Array[menu_option]
 
+@export var RequireExtraConfirmation:bool=false
+var hasclickedonce:bool=false
+@export var extraConfirmzationMessage:RichTextLabel
+
 @onready var text=$RichTextLabel
 @onready var sliderKnob=$slider/knob
 
-var active:bool=false
+var option_hovered:bool=false
 
 @export var isSlider:bool=false
 @onready var sliderStartPos:float=$slider/startPos.position.x
@@ -36,10 +40,7 @@ var sliderMoveCount:float=0
 
 @export var path_checkbox_on:String
 @export var path_checkbox_off:String
-@export var option_active:bool=false:
-	get:return option_active
-	set(value):
-		option_active=value
+@export var option_active:bool=false
 
 
 var cooldownCounter:float=0
@@ -68,7 +69,7 @@ func SetSliderProgress(_progress:float):
 	pass
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
-	if !active:
+	if !option_hovered:
 		cooldownCounter=0
 		return
 	elif cooldownCounter<0.01:
@@ -86,8 +87,15 @@ func _physics_process(delta: float) -> void:
 	
 func UpdateButton():
 	if Input.is_action_just_pressed("jump"):
-		button_pressed.emit(self)	
-	
+		if RequireExtraConfirmation:
+			if hasclickedonce:
+				button_pressed.emit(self)	
+			else:
+				hasclickedonce=true
+				extraConfirmzationMessage.show()
+		else:
+			button_pressed.emit(self)
+
 	
 func UpdateSlider(delta:float):
 	
@@ -127,12 +135,13 @@ func MoveSlider(right:bool):
 	pass
 
 func SetActive(_active:bool):
-	if _active==active:
-		pass
-	active=_active
+	if RequireExtraConfirmation:
+		hasclickedonce=false
+		extraConfirmzationMessage.hide()
+	option_hovered=_active
 	
 	var txt="[center]"
-	if active:
+	if option_hovered:
 		txt+=highlightEffectStart
 		
 	txt+=optionName
@@ -143,7 +152,7 @@ func SetActive(_active:bool):
 		else:
 			txt+="[img]"+path_checkbox_off+"[/img]"
 
-	if active:
+	if option_hovered:
 		txt+=highlightEffectEnd	
 	
 	txt+="[/center]"
@@ -151,7 +160,7 @@ func SetActive(_active:bool):
 	text.text=txt
 	
 
-	UpdateSoundTest(active)
+	UpdateSoundTest(option_hovered)
 	
 
 	

@@ -129,21 +129,21 @@ func SetState(_state:menuStates):
 			GlobalVariables.PlayerController.SetPlayerHidden(true)
 			GlobalVariables.playerStatus=GlobalVariables.playerStatusEnum.MENU
 			
-			OptionsMenu.SetActive(false)
+			OptionsMenu.SetMenuActive(false)
 			PauseMenu.SetActive(false)
 
 
 			pass
 		menuStates.PAUSE:
 			MainMenu.Deactivate()
-			OptionsMenu.SetActive(false)
+			OptionsMenu.SetMenuActive(false)
 			GlobalVariables.playerStatus=GlobalVariables.playerStatusEnum.MENU
 			PauseMenu.SetActive(true)
 
 			pass
 		menuStates.OPTIONS:
 			MainMenu.Deactivate()
-			OptionsMenu.SetActive(true)
+			OptionsMenu.SetMenuActive(true)
 			PauseMenu.SetActive(false)
 
 
@@ -154,7 +154,7 @@ func SetState(_state:menuStates):
 			GlobalVariables.PlayerController.SetPlayerHidden(false)
 			GlobalVariables.playerStatus=GlobalVariables.playerStatusEnum.DIG
 			MainMenu.Deactivate()
-			OptionsMenu.SetActive(false)
+			OptionsMenu.SetMenuActive(false)
 			PauseMenu.SetActive(false)
 			
 			#If player has saved game, wake up on egg
@@ -163,7 +163,7 @@ func SetState(_state:menuStates):
 		menuStates.CREDITS:
 			SetHudVisible(false)
 			MainMenu.Deactivate()
-			OptionsMenu.SetActive(false)
+			OptionsMenu.SetMenuActive(false)
 			PauseMenu.SetActive(false)
 
 			
