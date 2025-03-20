@@ -25,7 +25,7 @@ func Activate(day:int):
 
 	var length= await DisplayText(0)
 	
-	var txtday:String=str(day-1)
+	var txtday:String=str(day)
 	
 	txt.text+= "[p][center][shake] Day:"
 	

@@ -16,9 +16,9 @@ scale = Vector2(1.36719, 15.6875)
 texture = ExtResource("2_6r7dd")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-offset_top = 19.0
+offset_top = 11.0
 offset_right = 321.0
-offset_bottom = 99.0
+offset_bottom = 91.0
 theme = ExtResource("3_44x14")
 theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
@@ -44,3 +44,12 @@ offset_bottom = 236.0
 theme = ExtResource("3_44x14")
 bbcode_enabled = true
 text = "[center]Last save was made XXXX minutes ago.[p][center] Are you sure you'd like to quit? "
+
+[node name="DayCounter" type="RichTextLabel" parent="."]
+offset_left = 124.0
+offset_top = 35.0
+offset_right = 194.0
+offset_bottom = 81.0
+theme = ExtResource("3_44x14")
+bbcode_enabled = true
+text = "Day 2"

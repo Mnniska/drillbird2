@@ -10,6 +10,8 @@ var isHoldingEscape:bool=false
 var hasClickedQuitOnce:bool=false
 @onready var quitInfoText=$QuitConfirmation
 
+@onready var daycounter:RichTextLabel=$DayCounter
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	SetActive(false)
@@ -93,6 +95,8 @@ func SetActive(_active:bool):
 		isHoldingEscape=true
 		hasClickedQuitOnce=false
 		quitInfoText.hide()
+		daycounter.text="[center]Day "+str(GlobalVariables.currentDay)
+		
 	else:
 		hide()
 		for n in options:
