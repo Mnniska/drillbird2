@@ -251,6 +251,9 @@ func ReplendishStats():
 func Respawn():
 	ReplendishStats()
 	WakeUp(true)#temporary - will do a custom one later
+	
+	#Sometimes the player will take damage upon respawning if the source of dmg is present where they died. This shoooould solve that - moving the player b4 telling it everything is normal
+	await get_tree().create_timer(0.05).timeout
 	Player.state=Player.States.IDLE
 	
 	pass
