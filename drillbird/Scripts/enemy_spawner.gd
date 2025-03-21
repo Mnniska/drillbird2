@@ -59,7 +59,7 @@ func LoadFlowers(flowerSpawnPositions: Array[Vector2i]):
 	for pos in flowerSpawnPositions:
 		
 		var spawnpos = to_global(gameTilemap.map_to_local(pos))
-		CreateNewFlowerFromGlobalPos(spawnpos,true)
+		CreateNewFlowerFromGlobalPos(spawnpos,true,false)
 			
 
 func GenerateObjectsAndEnemiesFromTilemap():
@@ -248,7 +248,7 @@ func GetEnemyUpdate():
 	return enemiesToSpawnList
 	pass
 
-func CreateNewFlowerFromGlobalPos(globalPos:Vector2,blossomed:bool=false):
+func CreateNewFlowerFromGlobalPos(globalPos:Vector2,blossomed:bool=false,playSound:bool=true):
 	
 	var node:climb_flower=flowerReference.instantiate()
 	var mapPos = gameTilemap.local_to_map(to_local(globalPos))
@@ -256,9 +256,9 @@ func CreateNewFlowerFromGlobalPos(globalPos:Vector2,blossomed:bool=false):
 	node.transform.origin=gPos
 	
 	add_child(node)
-	node.SetHasBlossomed(blossomed)
 	node.HasBeenSpawnedViaTilemap=false
-
+	node.SetHasBlossomed(blossomed,playSound)
+	
 	return node
 	
 

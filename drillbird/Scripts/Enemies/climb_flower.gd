@@ -111,6 +111,9 @@ func SetHasBlossomed(hasBlossomed:bool,playsound:bool=true):
 	if hasBlossomed:
 		if playsound:
 			SoundManager.PlaySoundAtLocation(global_position,abstract_SoundEffectSetting.SoundEffectEnum.FLOWER_SPAWN)
+	
+		if !HasBeenSpawnedViaTilemap:
+			GlobalVariables.playerAction.emit(GlobalVariables.playerActions.SPAWNFLOWER)
 		
 		state=States.IDLE
 		FlowerRootAnim.animation="idle"

@@ -24,6 +24,10 @@ func PlayerAction(action:GlobalVariables.playerActions):
 		if $Tutorial_drill.textShown:
 			pass
 	
+	if action==GlobalVariables.playerActions.SPAWNFLOWER:
+		flowerTutorial.PassedTest()
+		
+	
 	pass
 
 
@@ -37,4 +41,9 @@ func _on_player_checker_jump_tutorial_body_shape_entered(body_rid: RID, body: No
 	$Tutorial_jump.PassedTest()
 	$Tutorial_drill.BeginTimerWhenEntered=true
 	
+	pass # Replace with function body.
+
+@onready var flowerTutorial=$Tutorial_Flower
+func _on_player_checker_flower_tutorial_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
+	flowerTutorial.tutorialActive=true
 	pass # Replace with function body.

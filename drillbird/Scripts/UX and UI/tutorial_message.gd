@@ -5,6 +5,7 @@ class_name tutorial_message
 @onready var timer=$Timer
 @export var textToShow:String="undefined"
 @export var pauseTimerWhenNotInArea:bool=true
+@export var tutorialActive:bool=true
 var textShown:bool=false
 var passedTest:bool=false
 
@@ -86,7 +87,8 @@ func CheckCollisions():
 
 
 func _on_area_2d_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
-	PlayerEnteredArea()
+	if tutorialActive:
+		PlayerEnteredArea()
 	
 	pass # Replace with function body.
 
@@ -98,5 +100,6 @@ func _on_area_2d_body_shape_exited(body_rid: RID, body: Node2D, body_shape_index
 
 
 func _on_timer_timeout() -> void:
-	TriggerText()
+	if tutorialActive:
+		TriggerText()
 	pass # Replace with function body.
