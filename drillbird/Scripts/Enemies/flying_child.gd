@@ -55,6 +55,9 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	
+	if Input.is_action_just_pressed("debug_tab"):
+		GrowUp()
+	
 	if evolutionPossible and Input.is_action_just_pressed("interact"):
 		GrowUp()
 	
@@ -119,9 +122,16 @@ func GrownUpdate(delta:float):
 	
 	if global_position.y>120:
 		hasEvolvedOffScreen.emit()
+	var lol=120
+	if position.x<-lol:
+		velocity.x+=1
+	elif position.x>lol:
+		velocity.x-=1
+	else:
+		velocity.x=0
 	
 	if hasFullyEvolved:
-		velocity.y+=gravity*delta*2
+		velocity.y+=gravity*delta*2.5
 	UpdateAnimations()
 	move_and_slide()
 	
@@ -147,7 +157,11 @@ func SetCanEvolve(canEvolve:bool,triggerSignal:bool=true):
 	evolutionPossible=canEvolve
 	if evolutionPossible:
 		evolveText.show()
-		velocity.y=-5
+		
+		if position.y>10:
+			velocity.y=-5
+		else:
+			velocity.y=0
 
 	else:
 		evolveText.hide()
