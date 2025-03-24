@@ -318,12 +318,11 @@ func RegularMovement(delta:float,currentAnim:String):
 	if Input.is_action_just_pressed("interact"):
 		
 		GlobalVariables.playerAction.emit(GlobalVariables.playerActions.DROPORE)
-		#TODO: Drop ores anim
-		
-		
+
 		oreInventory.DropOresRequest(global_position,velocity,facing_right,facingDir==Directions.DOWN) 
 		if heavy:
 			state=States.DROPPINGORES
+			
 			CreateInfoBubble("lightweight!")		
 			heavy=false
 			SoundManager.PlaySoundAtLocation(self.global_position,abstract_SoundEffectSetting.SoundEffectEnum.PLAYER_DROP_ORE)
@@ -740,10 +739,13 @@ func _on_detector_body_entered(body: Node2D) -> void:
 				#Used to check if player can fly high
 				if !heavy:
 					heavy=true 
+					
+					
 					CreateInfoBubble("Heavy")
 					SoundManager.PlaySoundAtLocation(global_position,abstract_SoundEffectSetting.SoundEffectEnum.PLAYER_BECOME_HEAVY)
 				
 			else:
+				
 				CreateInfoBubble("Inventory full!")
 
 	if collider.type==collider.types.FLOWER:
@@ -751,6 +753,8 @@ func _on_detector_body_entered(body: Node2D) -> void:
 
 				
 func CreateInfoBubble(text:String):
+	if !GlobalVariables.displayPopups:
+		return
 	var txt=load("res://Scenes/UI/text_bubble.tscn")
 	var node:text_bubble=txt.instantiate()
 	

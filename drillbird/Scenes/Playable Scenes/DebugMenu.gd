@@ -180,9 +180,7 @@ func ExecuteAction(action:String):
 		"toggleMenu":
 			mainMenuShowing=!mainMenuShowing
 			var mainmenu=HUD.MainMenu
-
-			
-			
+		
 			if mainMenuShowing:
 				mainmenu.show()
 				HUD.SetHudVisible(false)
@@ -227,5 +225,9 @@ func ExecuteAction(action:String):
 			pass
 		"CalculateOreRegion4":
 			OreRegions.GetValueOfOresForRegion(4)
+			pass
+			
+		"ToggleDisplayPopups":
+			GlobalVariables.displayPopups=!GlobalVariables.displayPopups
 			pass
 	pass

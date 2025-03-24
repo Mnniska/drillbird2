@@ -24,7 +24,7 @@ var playerIsDrillingTile:bool=false
 var hasWarnedPlayer:bool=false:
 	get: return hasWarnedPlayer
 	set(value):
-		if value and !hasWarnedPlayer:
+		if value and !hasWarnedPlayer and GlobalVariables.displayPopups:
 			LowOnLightWarning()
 		hasWarnedPlayer=value
 
@@ -216,8 +216,6 @@ func RefillLight():
 
 
 func handleInputs():
-	if Input.is_action_just_pressed("debug_tab"):
-		LowOnLightWarning()
 	pass # Replace with function body.
 
 func UpdatePlayerLightStatus():

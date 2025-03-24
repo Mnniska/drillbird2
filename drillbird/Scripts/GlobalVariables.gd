@@ -21,6 +21,7 @@ signal SetupComplete
 var PlayerController:CharacterBody2D
 var heartInEgg:bool=false
 var ghostActive:bool=true
+var displayPopups:bool=true
 
 func ResetSaveData():
 	var newData=abstract_savegame.new()

@@ -20,6 +20,11 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	
+	if Input.is_action_just_pressed("up") and Input.is_action_pressed("debug_tab"):
+		SetZoomLevel(zoom.x+0.1)
+	if Input.is_action_just_pressed("down") and Input.is_action_pressed("debug_tab"):
+		SetZoomLevel(zoom.x-0.1)
+	
 	match state:
 		states.WAITING:
 			
@@ -31,6 +36,9 @@ func _process(_delta: float) -> void:
 			followPlayer()
 			
 	pass
+
+func SetZoomLevel(zoom:float):
+	self.zoom=Vector2(zoom,zoom)
 
 func SetFollowPlayer(follow:bool):
 	if follow:

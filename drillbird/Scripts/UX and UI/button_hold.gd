@@ -31,7 +31,7 @@ func _ready() -> void:
 
 func SetActive(_active:bool):
 	buttonActive=_active
-	if buttonActive:
+	if buttonActive and GlobalVariables.displayPopups:
 		show()
 	else:
 		hide()
