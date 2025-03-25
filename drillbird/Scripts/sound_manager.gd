@@ -57,7 +57,10 @@ func PlaySoundGlobal(type:abstract_SoundEffectSetting.SoundEffectEnum,pitch:floa
 		
 		var new_2D_audio = AudioStreamPlayer2D.new()
 		add_child(new_2D_audio)
+	
 		new_2D_audio.global_position=GlobalVariables.MainSceneReferenceConnector.ref_camera.global_position
+	
+
 		
 		new_2D_audio=SetupCommonSoundSettings(soundEffectSetting ,new_2D_audio)
 		if pitch!=-1:

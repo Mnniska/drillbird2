@@ -6,6 +6,7 @@ class_name star_fragment
 @export var speedMax:float=100
 @export var speedMin=50
 var speed=0
+var dead:bool=false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -24,8 +25,10 @@ func _process(delta: float) -> void:
 	pass
 
 func DestroySelfAfterAnimation():
+	dead=true
 	anim.animation="collect"
 	SoundManager.PlaySoundAtLocation(global_position,abstract_SoundEffectSetting.SoundEffectEnum.HOME_GIVEORE_POFF)
-	anim.play()
-	await get_tree().create_timer(1.5).timeout
+	anim.play("collect")
+	speed=speed*0.2
+	await get_tree().create_timer(0.8).timeout
 	queue_free()	

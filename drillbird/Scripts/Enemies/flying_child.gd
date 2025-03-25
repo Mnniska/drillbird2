@@ -254,8 +254,9 @@ func UpdateAnimations():
 
 
 func _on_star_fragment_checker_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
-	
+
 	var starfragment:star_fragment=area.get_parent()
-	energy+=starfragment.worth
-	starfragment.DestroySelfAfterAnimation()
+	if !starfragment.dead:
+		energy+=starfragment.worth
+		starfragment.DestroySelfAfterAnimation()
 	

@@ -15,7 +15,6 @@ class_name flying_credits_manager
 
 @export var debugSkipCredits:bool=false
 
-@export var evolveAudio:AudioStreamMP3
 var hasEvolved:bool=false
 @onready var music = $music
 var musicTargetVolume:float=1
@@ -28,6 +27,7 @@ var cloudsVisibleLerper:float=0
 var isTransitioningToMainAgain:bool=false
 
 func _process(delta: float) -> void:
+
 	if musicVolume!=musicTargetVolume:
 		musicVolume= lerpf(musicVolume,musicTargetVolume,delta)
 		var vol=lerpf(musicMinVolume,musicMaxVolume,musicVolume)
@@ -69,16 +69,16 @@ func _on_flying_child_has_evolved() -> void:
 	TriggerFinalZinger()
 
 func MusicRepeat():
-	if !hasEvolved:
-		music.play()
+	music.play()
 
 func TriggerFinalZinger():
 	
+	
 	hasEvolved=true
-	musicVolume=0.9
-	musicTargetVolume=1
-	music.stream = evolveAudio
-	music.play()
+	SoundManager.PlaySoundAtLocation($Camera2D.global_position,abstract_SoundEffectSetting.SoundEffectEnum.DRILLBIRD_OUTRO_ZINGER)
+	
+	await get_tree().create_timer(10).timeout
+	musicTargetVolume=0.85
 	
 
 

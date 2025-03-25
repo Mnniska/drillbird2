@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="abstract_SoundEffectSetting" load_steps=3 format=3 uid="uid://3xpyp1xrk6ao"]
+
+[ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_SoundEffectSetting.gd" id="1_q25x2"]
+[ext_resource type="AudioStream" uid="uid://b4dje82yt76ep" path="res://Audio/Music/Drillbird Ending.wav" id="2_c5q46"]
+
+[resource]
+script = ExtResource("1_q25x2")
+limit = 1
+type = 43
+sound_effect = ExtResource("2_c5q46")
+volume = 0
+pitch_randomness = 0.0
+audioBus = 2

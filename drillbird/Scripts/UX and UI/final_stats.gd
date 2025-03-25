@@ -107,14 +107,19 @@ func TypewriteText(label:RichTextLabel):
 	while label.visible_characters<label.text.length()-1:
 		textshown+=1
 		label.visible_characters=textshown
-		if label.text[textshown]=='[': #ensures there's no pausing for hidden bbcode stuff
+		if label.text[textshown]=="[": #ensures there's no pausing for hidden bbcode stuff
 			skip=true
 			
 		if skip:
-			if label.text[textshown]==']':
+			if label.text[textshown]=="]":
 				skip=false
 		else:
+			
+			if !skip:
+				SoundManager.PlaySoundAtLocation($bg.global_position,abstract_SoundEffectSetting.SoundEffectEnum.TYPEWRITER_CLICK)
 			await get_tree().create_timer(typewritePause).timeout
+			
+			
 		if textIsReady:
 			label.visible_characters=label.text.length()
 			break

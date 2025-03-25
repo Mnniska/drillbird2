@@ -1,13 +1,21 @@
 [gd_scene load_steps=25 format=3 uid="uid://bmpaycayn64qf"]
 
 [ext_resource type="Script" path="res://Scripts/cutscenes/star_fragment.gd" id="1_o42e1"]
+[ext_resource type="Texture2D" uid="uid://cn7v52cmd8485" path="res://Art/Collectibles/starbit/starbit_explode1.png" id="2_3r6bs"]
 [ext_resource type="Texture2D" uid="uid://ctiifbdx88nn8" path="res://Art/Collectibles/starbit/starbit_idle1.png" id="2_fp745"]
 [ext_resource type="Texture2D" uid="uid://b266g1y4xvj5e" path="res://Art/Collectibles/starbit/starbit_idle2.png" id="3_hvloq"]
+[ext_resource type="Texture2D" uid="uid://46jexrnbu50m" path="res://Art/Collectibles/starbit/starbit_explode2.png" id="3_lkg5e"]
+[ext_resource type="Texture2D" uid="uid://coestl3irj0tv" path="res://Art/Collectibles/starbit/starbit_explode3.png" id="4_31boa"]
 [ext_resource type="Texture2D" uid="uid://r62d8rhg3iug" path="res://Art/Collectibles/starbit/starbit_idle3.png" id="4_hv6bj"]
+[ext_resource type="Texture2D" uid="uid://dd6b8jaiboq6i" path="res://Art/Collectibles/starbit/starbit_explode4.png" id="5_ijm17"]
 [ext_resource type="Texture2D" uid="uid://h8vmfs868sfo" path="res://Art/Collectibles/starbit/starbit_idle4.png" id="5_w2jyq"]
 [ext_resource type="Texture2D" uid="uid://ca50mfyk3o2fr" path="res://Art/Collectibles/starbit/starbit_idle5.png" id="6_ejq26"]
+[ext_resource type="Texture2D" uid="uid://bchvji2txek2p" path="res://Art/Collectibles/starbit/starbit_explode5.png" id="6_p2cgj"]
 [ext_resource type="Texture2D" uid="uid://dy8vw3he1ahvi" path="res://Art/Collectibles/starbit/starbit_idle6.png" id="7_4pt3m"]
+[ext_resource type="Texture2D" uid="uid://olakvhvqdytl" path="res://Art/Collectibles/starbit/starbit_explode6.png" id="7_fdjbw"]
+[ext_resource type="Texture2D" uid="uid://buoe75fhkikb6" path="res://Art/Collectibles/starbit/starbit_explode7.png" id="8_34asy"]
 [ext_resource type="Texture2D" uid="uid://c3ej2wch1qstk" path="res://Art/Collectibles/starbit/starbit_idle7.png" id="8_fongp"]
+[ext_resource type="Texture2D" uid="uid://cl6op0tsjlkmd" path="res://Art/Collectibles/starbit/starbit_explode8.png" id="9_hrvn3"]
 [ext_resource type="Texture2D" uid="uid://bw3brj38oqqbk" path="res://Art/Collectibles/starbit/starbit_idle8.png" id="9_npi7a"]
 [ext_resource type="Texture2D" uid="uid://d3vpmoybd2rpt" path="res://Art/Collectibles/starbit/starbit_idle9.png" id="10_x2wsj"]
 [ext_resource type="Texture2D" uid="uid://srno7n5fbib8" path="res://Art/Collectibles/starbit/starbit_idle10.png" id="11_1ru0i"]
@@ -15,50 +23,34 @@
 [ext_resource type="Texture2D" uid="uid://3mktf53bhd30" path="res://Art/Collectibles/starbit/starbit_idle12.png" id="13_a6sp7"]
 [ext_resource type="Texture2D" uid="uid://6se5aro2kxi5" path="res://Art/Collectibles/starbit/starbit_idle13.png" id="14_ettod"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ix5vr"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_f1bw5"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_e507a"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_bja78"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_28le2"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3dai7"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_fxaas"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_v4uy2"]
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_nl8ph"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("CompressedTexture2D_ix5vr")
+"texture": ExtResource("2_3r6bs")
 }, {
 "duration": 1.0,
-"texture": SubResource("CompressedTexture2D_f1bw5")
+"texture": ExtResource("3_lkg5e")
 }, {
 "duration": 1.0,
-"texture": SubResource("CompressedTexture2D_e507a")
+"texture": ExtResource("4_31boa")
 }, {
 "duration": 1.0,
-"texture": SubResource("CompressedTexture2D_bja78")
+"texture": ExtResource("5_ijm17")
 }, {
 "duration": 1.0,
-"texture": SubResource("CompressedTexture2D_28le2")
+"texture": ExtResource("6_p2cgj")
 }, {
 "duration": 1.0,
-"texture": SubResource("CompressedTexture2D_3dai7")
+"texture": ExtResource("7_fdjbw")
 }, {
 "duration": 1.0,
-"texture": SubResource("CompressedTexture2D_fxaas")
+"texture": ExtResource("8_34asy")
 }, {
 "duration": 1.0,
-"texture": SubResource("CompressedTexture2D_v4uy2")
+"texture": ExtResource("9_hrvn3")
 }],
-"loop": true,
+"loop": false,
 "name": &"collect",
 "speed": 8.0
 }, {
@@ -120,6 +112,8 @@ position = Vector2(0, -2)
 sprite_frames = SubResource("SpriteFrames_nl8ph")
 animation = &"collect"
 autoplay = "idle"
+frame = 7
+frame_progress = 1.0
 
 [node name="collider" type="Area2D" parent="."]
 collision_layer = 4
