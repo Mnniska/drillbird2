@@ -1,7 +1,8 @@
-[gd_scene load_steps=58 format=3 uid="uid://chmegxltn4stt"]
+[gd_scene load_steps=59 format=3 uid="uid://chmegxltn4stt"]
 
 [ext_resource type="Script" path="res://Scripts/UX and UI/flying_credits_manager.gd" id="1_xtpho"]
 [ext_resource type="PackedScene" uid="uid://djowxohivfhhb" path="res://Scenes/Objects and Enemies/flying_child.tscn" id="2_eruml"]
+[ext_resource type="AudioStream" uid="uid://k7wshpll1wm0" path="res://Audio/Music/Drillbird Ending.mp3" id="2_jum88"]
 [ext_resource type="Texture2D" uid="uid://d0ot502nge360" path="res://Art/environment/SpaceBackground/background_space_spaceLayer.png" id="3_a3sr5"]
 [ext_resource type="Shader" path="res://Shaders/UVTextureScrollShader.gdshader" id="3_nxjs3"]
 [ext_resource type="Texture2D" uid="uid://c288pgae2xq7d" path="res://Art/environment/SpaceBackground/background_space_planetLayer.png" id="4_bbomm"]
@@ -39,9 +40,7 @@
 [ext_resource type="Texture2D" uid="uid://dnagjnmtqftx0" path="res://Art/cutscenes/intro/intro_landscape10.png" id="27_6rtut"]
 [ext_resource type="Texture2D" uid="uid://cdgrv0eh6htfa" path="res://Art/cutscenes/intro/intro_landscape11.png" id="28_djc2e"]
 [ext_resource type="AudioStream" uid="uid://bwynx1ih755ll" path="res://Audio/Music/Drillbird Theme.mp3" id="33_ca1sj"]
-
-[sub_resource type="Resource" id="Resource_6xtrl"]
-metadata/__load_path__ = "res://Audio/MUSIC/mus_Drillbird_Theme_Credits.wav"
+[ext_resource type="PackedScene" uid="uid://ddgttu2odky5f" path="res://Scenes/UI/final_stats.tscn" id="40_dvi8g"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uva2n"]
 shader = ExtResource("3_nxjs3")
@@ -361,7 +360,7 @@ axis_stretch_vertical = 1
 [node name="FlyingCredits" type="Node"]
 script = ExtResource("1_xtpho")
 debugSkipCredits = true
-evolveAudio = SubResource("Resource_6xtrl")
+evolveAudio = ExtResource("2_jum88")
 
 [node name="BG_base" type="Sprite2D" parent="."]
 light_mask = 0
@@ -481,7 +480,7 @@ sprite_frames = SubResource("SpriteFrames_67ds7")
 position = Vector2(1, 116)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-z_index = 5
+z_index = 6
 
 [node name="Credits" type="Node2D" parent="."]
 script = ExtResource("8_p2dai")
@@ -644,8 +643,8 @@ texture = ExtResource("14_yjti0")
 
 [node name="ValueSpawner" type="Node2D" parent="."]
 script = ExtResource("15_ob5l2")
-minTimeBeforeSpawn = 1.0
-maxTimeBeforeSpawn = 4.0
+minTimeBeforeSpawn = 0.8
+maxTimeBeforeSpawn = 2.0
 
 [node name="Line2D" type="Line2D" parent="ValueSpawner"]
 position = Vector2(205, -76)
@@ -657,6 +656,11 @@ autoplay = true
 
 [node name="CreditsReferenceConnector" type="Node" parent="."]
 script = ExtResource("22_sgrwg")
+
+[node name="Final stats" parent="." instance=ExtResource("40_dvi8g")]
+visible = false
+z_index = 5
+position = Vector2(-160, -111)
 
 [connection signal="body_shape_entered" from="PlayerDetector" to="." method="_on_player_detector_body_shape_entered"]
 [connection signal="canEvolveUpdate" from="FlyingChild" to="." method="_on_flying_child_can_evolve_update"]

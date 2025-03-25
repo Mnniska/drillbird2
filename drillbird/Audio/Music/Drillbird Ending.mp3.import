@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://k7wshpll1wm0"
+path="res://.godot/imported/Drillbird Ending.mp3-056a3c533c9c503822662d5aebad4acf.mp3str"
+
+[deps]
+
+source_file="res://Audio/Music/Drillbird Ending.mp3"
+dest_files=["res://.godot/imported/Drillbird Ending.mp3-056a3c533c9c503822662d5aebad4acf.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

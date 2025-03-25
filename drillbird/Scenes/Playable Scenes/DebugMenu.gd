@@ -230,4 +230,8 @@ func ExecuteAction(action:String):
 		"ToggleDisplayPopups":
 			GlobalVariables.displayPopups=!GlobalVariables.displayPopups
 			pass
+		"Go_to_credits":
+			HUD.SetSceneState(HUD.sceneStates.CREDITS)
+
+			#GlobalVariables.MainSceneReferenceConnector.ref_h
 	pass

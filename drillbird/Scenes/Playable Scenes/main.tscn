@@ -1,4 +1,4 @@
-[gd_scene load_steps=162 format=4 uid="uid://d2wv7igie5stg"]
+[gd_scene load_steps=163 format=4 uid="uid://d2wv7igie5stg"]
 
 [ext_resource type="TileSet" uid="uid://grpd2pyu7pgk" path="res://Resources/MainTileset.tres" id="1_1imtu"]
 [ext_resource type="Script" path="res://Scenes/Playable Scenes/SaveManager.gd" id="1_iickb"]
@@ -340,10 +340,16 @@ name = "reset_save_data_enemies_and_tiles"
 options = Array[ExtResource("48_cl8sw")]([])
 isAction = true
 
+[sub_resource type="Resource" id="Resource_m7lwc"]
+script = ExtResource("48_cl8sw")
+name = "Go_to_credits"
+options = Array[ExtResource("48_cl8sw")]([])
+isAction = true
+
 [sub_resource type="Resource" id="Resource_o5w6h"]
 script = ExtResource("48_cl8sw")
 name = "Saving and Loading"
-options = Array[ExtResource("48_cl8sw")]([SubResource("Resource_7ffnp"), SubResource("Resource_321et"), SubResource("Resource_sgi1m")])
+options = Array[ExtResource("48_cl8sw")]([SubResource("Resource_7ffnp"), SubResource("Resource_321et"), SubResource("Resource_sgi1m"), SubResource("Resource_m7lwc")])
 isAction = false
 
 [sub_resource type="Resource" id="Resource_p5f3n"]

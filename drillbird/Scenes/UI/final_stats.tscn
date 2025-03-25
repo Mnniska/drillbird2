@@ -1,0 +1,87 @@
+[gd_scene load_steps=6 format=3 uid="uid://ddgttu2odky5f"]
+
+[ext_resource type="Script" path="res://Scripts/UX and UI/final_stats.gd" id="1_bixtf"]
+[ext_resource type="Theme" uid="uid://bfr5y4lo7m1ux" path="res://Resources/Fonts/fontTheme.tres" id="1_ogkgr"]
+[ext_resource type="Texture2D" uid="uid://bi6q51sklyetd" path="res://Art/environment/SpaceBackground/background_space_allLayers.png" id="2_7c53m"]
+[ext_resource type="Texture2D" uid="uid://cbb3vuv26jji3" path="res://Art/UI/MainMenu/DrillBird_LOGO_WIDE.png" id="3_fdk1x"]
+[ext_resource type="Texture2D" uid="uid://cdgrv0eh6htfa" path="res://Art/cutscenes/intro/intro_landscape11.png" id="5_0q7ff"]
+
+[node name="Final stats" type="Node2D"]
+script = ExtResource("1_bixtf")
+finalchoicetext_erase = "[center]Would you like to reset your save data and begin anew, or return to right before you hatched the egg? [p][/p] [center]  [wave][rainbow]Begin Anew[/rainbow][/wave]     Go back in time"
+finalchoicetext_goback = "[center]Would you like to reset your save data and begin anew, or return to right before you hatched the egg? [p][/p] [center] Begin Anew      [wave][rainbow]Go back in time[/rainbow][/wave]"
+
+[node name="bg" type="Sprite2D" parent="."]
+position = Vector2(145, 128)
+texture = ExtResource("2_7c53m")
+
+[node name="STATS" type="Node2D" parent="."]
+
+[node name="logo" type="Sprite2D" parent="STATS"]
+position = Vector2(163, 47.25)
+scale = Vector2(0.17246, 0.17246)
+texture = ExtResource("3_fdk1x")
+
+[node name="headr" type="RichTextLabel" parent="STATS"]
+offset_top = 48.25
+offset_right = 320.0
+offset_bottom = 88.25
+theme = ExtResource("1_ogkgr")
+theme_override_colors/default_color = Color(0.933333, 0.901961, 0.831373, 1)
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[center]Final Stats"
+
+[node name="stats" type="RichTextLabel" parent="STATS"]
+offset_left = 32.0
+offset_top = 89.0
+offset_right = 286.0
+offset_bottom = 223.0
+theme = ExtResource("1_ogkgr")
+theme_override_colors/default_color = Color(0.933333, 0.901961, 0.831373, 1)
+bbcode_enabled = true
+text = "Days taken to hatch: 8
+
+Time taken: 2 h, 10 min, 5 secs and 44 ms
+
+Ores collected: 102/123
+
+
+[center][wave][rainbow]Continue"
+
+[node name="Sebs message" type="RichTextLabel" parent="."]
+visible = false
+offset_top = 67.0
+offset_right = 320.0
+offset_bottom = 224.0
+theme = ExtResource("1_ogkgr")
+theme_override_colors/default_color = Color(0.933333, 0.901961, 0.831373, 1)
+bbcode_enabled = true
+text = "[center]Thank you for playing Drillbird! 
+
+If you enjoyed the game - 
+please  tell someone you like about it. 
+
+Take care out there
+/Seb
+
+[wave][rainbow]Continue[/rainbow][/wave]"
+
+[node name="choice" type="RichTextLabel" parent="."]
+visible = false
+offset_left = 12.0
+offset_top = 89.0
+offset_right = 304.0
+offset_bottom = 224.0
+theme = ExtResource("1_ogkgr")
+theme_override_colors/default_color = Color(0.933333, 0.901961, 0.831373, 1)
+bbcode_enabled = true
+text = "[center]Would you like to reset your save data and begin anew, or return to right before you hatched the egg? [p][/p] [center]  [wave][rainbow]Begin Anew[/rainbow][/wave]     Go back in time"
+
+[node name="white_background" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(0.988235, 0.988235, 0.988235, 1)
+z_index = 10
+position = Vector2(146, 124)
+scale = Vector2(1.12813, 1.12444)
+texture = ExtResource("5_0q7ff")

@@ -15,7 +15,7 @@ class_name flying_credits_manager
 
 @export var debugSkipCredits:bool=false
 
-@export var evolveAudio:AudioStreamWAV
+@export var evolveAudio:AudioStreamMP3
 var hasEvolved:bool=false
 @onready var music = $music
 var musicTargetVolume:float=1
@@ -89,9 +89,17 @@ func _on_flying_child_has_evolved_off_screen() -> void:
 	var anim:AnimationPlayer=$AnimationPlayer
 	anim.play("fall")
 	await get_tree().create_timer(7).timeout
-	HUD.SetSceneState(HUD.sceneStates.MAIN)
+	ShowStats()
 
-
+func ShowStats():
+	var stats = $"Final stats"
+	stats.DisplaySebsMessage()
+	stats.statsFinished.connect(StatsFinished)
+	
+func StatsFinished(eraseData:bool):
+	
+	HUD.SetSceneState(HUD.sceneStates.MAIN,false,eraseData)
+	
 func _on_flying_child_can_evolve_update(yes: bool) -> void:
 	if yes:
 		pass

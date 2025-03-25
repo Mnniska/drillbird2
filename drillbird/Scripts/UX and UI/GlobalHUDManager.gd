@@ -173,14 +173,14 @@ func ResetSaveData():
 	
 	pass
 
-func SetSceneState(state:sceneStates,debug:bool=false):
+func SetSceneState(state:sceneStates,debug:bool=false,resetSaveData:bool=true):
 	
 	sceneState=state
 	if sceneState==sceneStates.MAIN:
 		if GlobalVariables.CreditsSceneReferenceConnector:
 			
-
-			GlobalVariables.ResetSaveData() #Resets the players progress!! To be handled with care
+			if resetSaveData:
+				GlobalVariables.ResetSaveData() #Resets the players progress!! To be handled with care
 			$TransitionToMain.play("FadeBack")
 			await get_tree().create_timer(0.05).timeout
 			
