@@ -22,6 +22,8 @@ var PlayerController:CharacterBody2D
 var heartInEgg:bool=false
 var ghostActive:bool=true
 var displayPopups:bool=true
+var totalOres:int=0
+var oresFound:int=0
 
 func ResetSaveData():
 	var newData=abstract_savegame.new()

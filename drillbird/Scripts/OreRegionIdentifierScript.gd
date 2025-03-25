@@ -14,6 +14,13 @@ func _ready() -> void:
 		if n.name!="CheckerArea" && n.name!="RayCast2D":
 			oreAreas.append(n)
 
+func GetAmountOfOreTiles():
+	var amount:int=0
+	for oreLoc in oreTilemap.get_used_cells():
+		amount+=1
+	
+	return amount
+
 func GetValueOfOresForRegion(regionID:int):
 	if regionID<0:
 		push_error("Recieved invalid region ID: "+str(regionID) )

@@ -232,6 +232,9 @@ func ExecuteAction(action:String):
 			pass
 		"Go_to_credits":
 			HUD.SetSceneState(HUD.sceneStates.CREDITS)
+		
+		"GetAmountOfOres":
+			print_debug("Amount of ores: "+str(OreRegions.GetAmountOfOreTiles()))
 
 			#GlobalVariables.MainSceneReferenceConnector.ref_h
 	pass

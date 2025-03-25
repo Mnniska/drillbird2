@@ -113,11 +113,10 @@ func TypewriteText(label:RichTextLabel):
 		if skip:
 			if label.text[textshown]=="]":
 				skip=false
-		else:
-			
-			if !skip:
+		
+		if !skip:
 				SoundManager.PlaySoundAtLocation($bg.global_position,abstract_SoundEffectSetting.SoundEffectEnum.TYPEWRITER_CLICK)
-			await get_tree().create_timer(typewritePause).timeout
+				await get_tree().create_timer(typewritePause).timeout
 			
 			
 		if textIsReady:
@@ -130,8 +129,13 @@ func TypewriteText(label:RichTextLabel):
 	
 func ConstructStatsString()->String:
 	var text:String
-	text+="Days taken to hatch:   " 
+	text+=" Days taken to hatch:    " 
 	text+="[color=orange]"+ str(GlobalVariables.currentDay)+"[/color]"+"[p] [/p]"
+	text+="Ores given:    "+str(GlobalVariables.oresFound)+" / "+str(GlobalVariables.totalOres)+"[p] [/p]"
+	
+	#print_debug("Player has found and given "+str(PlayerData.oresFound)+" / "+str(PlayerData.totalOres)+" ores")
+
+	
 	text+="[center][wave][rainbow]Continue"
 	
 	"Time taken: 2 h, 10 min, 5 secs and 44 ms

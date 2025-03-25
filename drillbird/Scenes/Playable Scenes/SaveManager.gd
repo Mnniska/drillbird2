@@ -7,7 +7,7 @@ extends Node
 @onready var player = $Player
 @onready var OriginalSpawnPos=$PlayerSpawnLocations/OriginalSpawnPos
 @onready var introCutscene=$IntroCutscene
-
+@onready var oreAreas=$TilemapOres/OreRegions
 signal signal_GameAboutToBeSaved
 
 @onready var save_file_path = GlobalVariables.save_file_path
@@ -24,6 +24,12 @@ func _ready() -> void:
 	SetupMiscGameLogicBeforeStart()
  	
 	GlobalVariables.InitialSetup=false
+	
+	await get_tree().create_timer(0.1).timeout
+	
+	if !PlayerData.hasSeenIntroCutscene: #Save total amount of ores when starting the game fresh
+		PlayerData.totalOres=oreAreas.GetAmountOfOreTiles()
+		print_debug("total ores: "+str(PlayerData.totalOres))
 
 	pass # Replace with function body.
 
@@ -60,6 +66,7 @@ func SaveGame():
 	PlayerData.timeLastSaved = Time.get_unix_time_from_system() #captures the initial unix time
 	GlobalVariables.timeLastSaved=PlayerData.timeLastSaved
 	
+	
 	PlayerData.upgrade_drill=GlobalVariables.upgradeLevel_drill
 	PlayerData.upgrade_health=GlobalVariables.upgradeLevel_health
 	PlayerData.upgrade_inventory=GlobalVariables.upgradeLevel_inventory
@@ -76,6 +83,8 @@ func SaveGame():
 	SaveEnemies()
 	SaveFlowers()
 	SaveLeftoverOres()
+
+	
 	
 	ResourceSaver.save(PlayerData,save_file_path+save_file_name)
 	print_debug("game saved")
@@ -89,8 +98,16 @@ func SaveLeftoverOres():
 	var ids=a[0]
 	var locs=a[1]
 	
+	var count=0
+	for n in locs:
+		count+=1
+	
+	
 	PlayerData.oreIDs=ids
 	PlayerData.oreLocations=locs
+	PlayerData.oresFound=PlayerData.totalOres-(oreAreas.GetAmountOfOreTiles()+count)
+	GlobalVariables.oresFound=PlayerData.oresFound #Move ore info into global variables so that stats screen in credits can use em 
+	GlobalVariables.totalOres=PlayerData.totalOres
 
 func LoadLeftoverOres():
 	
@@ -158,6 +175,8 @@ func LoadGame():
 	
 func SetGlobalVariablesToLoadedGame():
 	
+	GlobalVariables.totalOres=PlayerData.totalOres
+	GlobalVariables.oresFound=PlayerData.oresFound
 	GlobalVariables.upgradeLevel_light=PlayerData.upgrade_light
 	GlobalVariables.upgradeLevel_health=PlayerData.upgrade_health
 	GlobalVariables.upgradeLevel_inventory=PlayerData.upgrade_inventory
@@ -180,6 +199,8 @@ func SetupMiscGameLogicBeforeStart():
 		PlayerData.playerSpawnPosition=OriginalSpawnPos.global_position
 		player.global_position=PlayerData.playerSpawnPosition
 		camera.StartNewLerp(introCutscene.cameraPositions[0].global_position,0)
+		
+		
 	else:
 		player.global_position=PlayerData.playerSpawnPosition
 
