@@ -1,4 +1,4 @@
-[gd_scene load_steps=161 format=4 uid="uid://d2wv7igie5stg"]
+[gd_scene load_steps=162 format=4 uid="uid://d2wv7igie5stg"]
 
 [ext_resource type="TileSet" uid="uid://grpd2pyu7pgk" path="res://Resources/MainTileset.tres" id="1_1imtu"]
 [ext_resource type="Script" path="res://Scenes/Playable Scenes/SaveManager.gd" id="1_iickb"]
@@ -89,6 +89,7 @@
 [ext_resource type="PackedScene" uid="uid://beb5rv0u4ftaa" path="res://Scenes/cutscenes/intro_cutscene.tscn" id="86_d8wwr"]
 [ext_resource type="PackedScene" uid="uid://dvu5hnwsh7ut2" path="res://Scenes/Tools/CameraLimiter.tscn" id="87_yr03e"]
 [ext_resource type="PackedScene" uid="uid://w40gfx4fqwa7" path="res://Scenes/Tools/player_teleporter.tscn" id="88_5m6q5"]
+[ext_resource type="Texture2D" uid="uid://cdfdcp4kqa8fb" path="res://Art/environment/UniqueAssets/Masoleum.png" id="90_ausxe"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b7p1b"]
 texture = ExtResource("2_8xt30")
@@ -1702,6 +1703,10 @@ position = Vector2(-902, 2608)
 texture = ExtResource("64_yk8d7")
 
 [node name="IntroCutscene" parent="." instance=ExtResource("86_d8wwr")]
+
+[node name="Masoleum" type="Sprite2D" parent="."]
+position = Vector2(-1145, 2768)
+texture = ExtResource("90_ausxe")
 
 [connection signal="MaterialChanged" from="TileCrack" to="Player" method="_on_tile_crack_material_changed"]
 [connection signal="newTileCrack" from="Player" to="TileCrack" method="_on_player_new_tile_crack"]
