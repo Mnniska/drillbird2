@@ -3,12 +3,12 @@
 importer="mp3"
 type="AudioStreamMP3"
 uid="uid://k7wshpll1wm0"
-path="res://.godot/imported/Drillbird Ending.mp3-056a3c533c9c503822662d5aebad4acf.mp3str"
+path="res://.godot/imported/Drillbird Ending.mp3-d77657dd9a5f794a6968980721de03a2.mp3str"
 
 [deps]
 
-source_file="res://Audio/Music/Drillbird Ending.mp3"
-dest_files=["res://.godot/imported/Drillbird Ending.mp3-056a3c533c9c503822662d5aebad4acf.mp3str"]
+source_file="res://Audio/MUSIC/Drillbird Ending.mp3"
+dest_files=["res://.godot/imported/Drillbird Ending.mp3-d77657dd9a5f794a6968980721de03a2.mp3str"]
 
 [params]
 
