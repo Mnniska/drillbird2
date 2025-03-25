@@ -358,7 +358,6 @@ axis_stretch_vertical = 1
 
 [node name="FlyingCredits" type="Node"]
 script = ExtResource("1_xtpho")
-debugSkipCredits = true
 
 [node name="BG_base" type="Sprite2D" parent="."]
 light_mask = 0
@@ -487,7 +486,7 @@ script = ExtResource("8_p2dai")
 offset_left = -160.0
 offset_top = 122.0
 offset_right = 160.0
-offset_bottom = 1461.0
+offset_bottom = 2446.0
 theme = ExtResource("8_8r2fg")
 bbcode_enabled = true
 text = "[center]Thank you for playing Drillbird!
@@ -531,7 +530,7 @@ QuinqueFive by GGBotNet
 https://www.dafont.com/quinquefive.font 
 
 [color=green]Also I used this one tutorial to set up the sound system:[/color]
-'How I do Sound Effects in Godot' by Aarimous 
+“How I do Sound Effects in Godot” by Aarimous 
 https://www.youtube.com/watch?v=Egf2jgET3nQ&t=242s 
 
 [font_size={32}]~~~ Playtesters ~~~ [/font_size]
@@ -545,7 +544,7 @@ Tekla Larsson
 Billy Rosehag 
 Lukas Orsvärn 
 Johanna something (Lukas Sambo) 
-Tanel (enter last name) 
+Tanel (Forestherd) Marran
 Markus Månsson
 Keira Lundberg Larsson
 Victor Werngren
@@ -555,14 +554,22 @@ Gaspar Stiglich
 Markus Noren
 InfiRandia
 Henry Fåhrelius
+Marcus Ingvarsson
+Johanna Österlind
+Martin Silve
+Ossian Borén aka catnipped
+Flamegirl & Snorkelitzor
+Robert Olsén
+Jacob Lind
+
 
 [font_size={32}]~~~ Special Thanks ~~~[/font_size]
 
-Tanel for being Drillbirds greatest hype person
-Malmö Devhub Game Habitat 
+Tanel (Forestherd) Marran for being a great hype person
+Malmö Devhub Game Habitat - A great community and coworking space <3 
 The TF Malmö Discord 
 
-Lulu Flôres da Cunha 
+Lulu Flôres da Cunha for eternal support 
 
 
 
@@ -572,11 +579,12 @@ Lulu Flôres da Cunha
 Bye!
 
 "
+fit_content = true
 scroll_active = false
-scroll_following = true
+shortcut_keys_enabled = false
 
 [node name="CreditsEnd" type="Node2D" parent="Credits/RichTextLabel"]
-position = Vector2(160, 1089)
+position = Vector2(160, 1273)
 
 [node name="ore" type="Sprite2D" parent="Credits/RichTextLabel"]
 position = Vector2(256, 364)
