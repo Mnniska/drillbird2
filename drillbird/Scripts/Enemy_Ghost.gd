@@ -28,8 +28,9 @@ var parent:ghost_manager
 
 var isPersuingHeart:bool=false
 var isPlayingChaseMusic:bool=false
-@export var idle_music:AudioStreamWAV
-@export var chase_music:AudioStreamWAV
+@export var idle_music:AudioStreamMP3
+@export var chase_music:AudioStreamMP3
+@onready var musicplayer=$GhostMusic
 
 enum states{CHASE_PLAYER,CHASE_HEART,RETURN_HEART,DISAPPEARING}
 var state:states=states.CHASE_PLAYER
@@ -40,6 +41,7 @@ func GetCollType():
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	GlobalVariables.signal_IsPlayerInMenuChanged.connect(SetGamePaused)
+	musicplayer.finished.connect(musicplayer.play)
 	pass # Replace with function body.
 
 func UpdateMusic(chasing:bool):
