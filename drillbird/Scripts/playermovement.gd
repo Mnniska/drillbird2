@@ -101,21 +101,21 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	
 
-				
+
 	if Input.is_action_just_pressed("debug_1"):
+		if OS.is_debug_build():
 		
-		
-		if state==States.DEBUG_GHOST:
-			SetDebugMoveActive(false)
-		else:
-			SetDebugMoveActive(true)
+			if state==States.DEBUG_GHOST:
+				SetDebugMoveActive(false)
+			else:
+				SetDebugMoveActive(true)
 
 	if Input.is_action_just_pressed("debug_2"):
-		
-		if !state==States.PAUSE:
-			state=States.PAUSE
-		else:
-			state=States.IDLE	
+		if OS.is_debug_build():
+			if !state==States.PAUSE:
+				state=States.PAUSE
+			else:
+				state=States.IDLE	
 		
 	#skips player physics update if in shop
 	if GlobalVariables.playerStatus==GlobalVariables.playerStatusEnum.SHOP:

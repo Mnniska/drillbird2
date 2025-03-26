@@ -14,12 +14,14 @@ var playerHidden:bool=false
 
 @export var finalHeartOre:abstract_ore
 var hudHidden:bool=false
+var debugAvailable:bool=true
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	currentMenu=menu
-
+	debugAvailable = OS.is_debug_build()
+		
 	pass # Replace with function body.
 
 func SelectionLogic():
@@ -27,6 +29,9 @@ func SelectionLogic():
 	pass
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	
+	if !debugAvailable:
+		return
 	
 	if Input.is_action_just_pressed("debug_2"):
 		if !Active:
