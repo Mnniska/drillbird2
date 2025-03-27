@@ -20,9 +20,9 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	
-	if Input.is_action_just_pressed("up") and Input.is_action_pressed("debug_tab"):
+	if Input.is_action_just_pressed("up") and Input.is_action_pressed("debug_tab") and GlobalVariables.DebugEnabled:
 		SetZoomLevel(zoom.x+0.1)
-	if Input.is_action_just_pressed("down") and Input.is_action_pressed("debug_tab"):
+	if Input.is_action_just_pressed("down") and Input.is_action_pressed("debug_tab") and GlobalVariables.DebugEnabled:
 		SetZoomLevel(zoom.x-0.1)
 	
 	match state:

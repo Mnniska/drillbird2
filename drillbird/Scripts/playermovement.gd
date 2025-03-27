@@ -103,7 +103,7 @@ func _physics_process(delta: float) -> void:
 
 
 	if Input.is_action_just_pressed("debug_1"):
-		if OS.is_debug_build():
+		if GlobalVariables.DebugEnabled:
 		
 			if state==States.DEBUG_GHOST:
 				SetDebugMoveActive(false)
@@ -111,7 +111,7 @@ func _physics_process(delta: float) -> void:
 				SetDebugMoveActive(true)
 
 	if Input.is_action_just_pressed("debug_2"):
-		if OS.is_debug_build():
+		if GlobalVariables.DebugEnabled:
 			if !state==States.PAUSE:
 				state=States.PAUSE
 			else:

@@ -20,7 +20,7 @@ var debugAvailable:bool=true
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	currentMenu=menu
-	debugAvailable = OS.is_debug_build()
+	debugAvailable = GlobalVariables.DebugEnabled
 		
 	pass # Replace with function body.
 

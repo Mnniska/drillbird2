@@ -2,6 +2,7 @@ extends Node
 signal playerAction()
 signal PlayerIsDrillingTileChanged(answer:bool)
 signal signal_IsPlayerInMenuChanged(inMenu:bool)
+@export var DebugEnabled:bool=false
 
 var save_file_path = "user://save/"
 var save_file_name="DrillbirdPlayerSave.tres"
