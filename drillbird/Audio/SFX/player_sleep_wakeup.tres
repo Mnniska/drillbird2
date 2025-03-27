@@ -8,6 +8,6 @@ script = ExtResource("1_4m0mg")
 limit = 1
 type = 41
 sound_effect = ExtResource("2_ilfhp")
-volume = 0
+volume = 1
 pitch_randomness = 0.0
 audioBus = 1
