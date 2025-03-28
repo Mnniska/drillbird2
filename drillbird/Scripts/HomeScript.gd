@@ -289,7 +289,6 @@ func EggCutsceneFinished():
 func _on_nest_collider_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
 	
 	if EggHandler.eggState==EggHandler.eggStates.NOTHING and !GlobalVariables.InitialSetup:
-		PlayLayEggCutscene()
 		return
 
 	
@@ -329,4 +328,12 @@ func _on_cutscene_timer_timeout() -> void:
 
 func _on_shop_handler_shop_closed() -> void:
 	WakeUp(true)	
+	pass # Replace with function body.
+
+
+func _on_egg_cutscene_trigger_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
+	if EggHandler.eggState==EggHandler.eggStates.NOTHING and !GlobalVariables.InitialSetup:
+		PlayLayEggCutscene()
+		return
+	
 	pass # Replace with function body.

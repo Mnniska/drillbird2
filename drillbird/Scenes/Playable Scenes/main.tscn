@@ -406,7 +406,7 @@ size = Vector2(21, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ywfok"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qly0s"]
-size = Vector2(120, 99)
+size = Vector2(90, 99)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0bq5k"]
 size = Vector2(120, 99)
@@ -1537,10 +1537,11 @@ shape = SubResource("RectangleShape2D_ywfok")
 position = Vector2(-853, 549)
 timeBeforeMessageShows = 6.0
 textToShow = "Hold (drill) to drill"
+pauseTimerWhenNotInArea = false
 BeginTimerWhenEntered = false
 
 [node name="CollisionShape2D" parent="WorldScripts/Tutorial_drill/Area2D" index="0"]
-position = Vector2(33, 9.5)
+position = Vector2(18, 9.5)
 shape = SubResource("RectangleShape2D_qly0s")
 
 [node name="TextBubble" parent="WorldScripts/Tutorial_drill" index="1"]
