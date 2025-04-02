@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://chmegxltn4stt"]
+[gd_scene load_steps=56 format=3 uid="uid://chmegxltn4stt"]
 
 [ext_resource type="Script" path="res://Scripts/UX and UI/flying_credits_manager.gd" id="1_xtpho"]
 [ext_resource type="PackedScene" uid="uid://djowxohivfhhb" path="res://Scenes/Objects and Enemies/flying_child.tscn" id="2_eruml"]
@@ -10,7 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://c03h0e4txuitu" path="res://Art/environment/SpaceBackground/background_space_cloudLayer.png" id="6_govxu"]
 [ext_resource type="Texture2D" uid="uid://da8yq4gnjptge" path="res://Art/environment/SpaceBackground/background_space_cloudLayer2.png" id="7_iktqh"]
 [ext_resource type="Theme" uid="uid://bfr5y4lo7m1ux" path="res://Resources/Fonts/fontTheme.tres" id="8_8r2fg"]
-[ext_resource type="Script" path="res://Scripts/UX and UI/credits.gd" id="8_p2dai"]
 [ext_resource type="Texture2D" uid="uid://buh3ysmbicdnm" path="res://Art/UI/HUD/UI_LightBar_darkness.png" id="11_ap520"]
 [ext_resource type="Texture2D" uid="uid://b7scxroc66kxr" path="res://Art/UI/HUD/UI_LightBar_frame.png" id="12_kbn20"]
 [ext_resource type="Texture2D" uid="uid://b1um7oudax8mn" path="res://Art/cutscenes/intro/intro_flyingbirdy5.png" id="13_1r5kn"]
@@ -33,11 +32,10 @@
 [ext_resource type="Texture2D" uid="uid://bla8kmm7flapd" path="res://Art/cutscenes/intro/intro_landscape6.png" id="23_v2y3d"]
 [ext_resource type="Texture2D" uid="uid://cdmw61fatsldx" path="res://Art/cutscenes/intro/intro_landscape7.png" id="24_p08ou"]
 [ext_resource type="Texture2D" uid="uid://bar2hc6mleo02" path="res://Art/cutscenes/intro/intro_landscape8.png" id="25_ffngr"]
-[ext_resource type="Texture2D" uid="uid://bjo3ij85d33yx" path="res://Art/Collectibles/ore_gold.png" id="25_skkcw"]
-[ext_resource type="Texture2D" uid="uid://c1a6277712y7w" path="res://Art/Collectibles/ore_2_blue.png" id="26_2u4hx"]
 [ext_resource type="Texture2D" uid="uid://b8bn8vqhjhu1s" path="res://Art/cutscenes/intro/intro_landscape9.png" id="26_rlx87"]
 [ext_resource type="Texture2D" uid="uid://dnagjnmtqftx0" path="res://Art/cutscenes/intro/intro_landscape10.png" id="27_6rtut"]
 [ext_resource type="Texture2D" uid="uid://cdgrv0eh6htfa" path="res://Art/cutscenes/intro/intro_landscape11.png" id="28_djc2e"]
+[ext_resource type="PackedScene" uid="uid://l6j5lsi56hrl" path="res://Scenes/UI/credits.tscn" id="28_nqrmd"]
 [ext_resource type="AudioStream" uid="uid://bwynx1ih755ll" path="res://Audio/MUSIC/Drillbird Theme.mp3" id="33_ca1sj"]
 [ext_resource type="PackedScene" uid="uid://ddgttu2odky5f" path="res://Scenes/UI/final_stats.tscn" id="40_dvi8g"]
 
@@ -479,125 +477,7 @@ position = Vector2(1, 116)
 [node name="Camera2D" type="Camera2D" parent="."]
 z_index = 6
 
-[node name="Credits" type="Node2D" parent="."]
-script = ExtResource("8_p2dai")
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Credits"]
-offset_left = -160.0
-offset_top = 122.0
-offset_right = 160.0
-offset_bottom = 2446.0
-theme = ExtResource("8_8r2fg")
-bbcode_enabled = true
-text = "[center]Thank you for playing Drillbird!
-
-
-
-
-
-[font_size={32}]~~~ DrillBird contributors ~~~[/font_size]
-
-[color=green]Sebastian Larsson[/color]
-Design, Code, Art 
-
-[color=green]Andrea Harty[/color]
-Art 
-
-[color=green]Hampus Mellin [/color]
-Sound Design, Music 
-
-[color=green]Isabelle Neuman[/color]
-Cutscene Animation Support 
-
-[color=green]Luiza Flôres da Cunha[/color]
-Game Logo, Noise Acting 
-
-[font_size={32}]~~~ Resources ~~~ [/font_size]
-
-[color=green]Software[/color]
-Godot - Game Engine
-Asesprite - Drawing Sprites
-Github - Source Control
-
-[color=green]Fonts used[/color]
-M5xy by Daniel Linssen: 
-https://managore.itch.io/m5x7 
-
-Pixelated Elegance by GGBotNet: 
-https://ggbot.itch.io/pixelated-elegance-font 
-
-QuinqueFive by GGBotNet 
-https://www.dafont.com/quinquefive.font 
-
-[color=green]Also I used this one tutorial to set up the sound system:[/color]
-“How I do Sound Effects in Godot” by Aarimous 
-https://www.youtube.com/watch?v=Egf2jgET3nQ&t=242s 
-
-[font_size={32}]~~~ Playtesters ~~~ [/font_size]
-
-Luiza Flôres da Cunha
-Erik Flôres da Cunha
-Malin Larsson
-Johanna Larsson 
-Ture Hellqvist 
-Tekla Larsson 
-Billy Rosehag 
-Lukas Orsvärn 
-Johanna Österlind
-Tanel (Forestherd) Marran
-Markus Månsson
-Keira Lundberg Larsson
-Victor Werngren
-Oliver Lincke 
-Jesper Krogh Kristiansen 
-Gaspar Stiglich
-Markus Noren
-InfiRandia
-Henry Fåhrelius
-Marcus Ingvarsson
-Johanna Österlind
-Martin Silve
-Ossian Borén aka catnipped
-Flamegirl & Snorkelitzor
-Robert Olsén
-Jacob Lind
-
-
-[font_size={32}]~~~ Special Thanks ~~~[/font_size]
-
-Tanel (Forestherd) Marran for being a great hype person
-Malmö Devhub Game Habitat - A great community and coworking space <3 
-The TF Malmö Discord 
-
-Lulu Flôres da Cunha for eternal support 
-
-
-
-
-
-
-Bye!
-
-"
-fit_content = true
-scroll_active = false
-shortcut_keys_enabled = false
-
-[node name="CreditsEnd" type="Node2D" parent="Credits/RichTextLabel"]
-position = Vector2(160, 1273)
-
-[node name="ore" type="Sprite2D" parent="Credits/RichTextLabel"]
-position = Vector2(256, 364)
-texture = ExtResource("25_skkcw")
-
-[node name="ore2" type="Sprite2D" parent="Credits/RichTextLabel"]
-position = Vector2(267, 354)
-texture = ExtResource("26_2u4hx")
-
-[node name="StartPos" type="Node2D" parent="Credits"]
-position = Vector2(-160, 172)
-
-[node name="CenterOfScreen" type="Node2D" parent="Credits"]
+[node name="Credits" parent="." instance=ExtResource("28_nqrmd")]
 
 [node name="PlayerDetector" type="Area2D" parent="."]
 collision_layer = 0

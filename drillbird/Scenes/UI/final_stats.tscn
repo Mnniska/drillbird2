@@ -12,7 +12,7 @@ finalchoicetext_erase = "[center]Would you like to reset your save data and begi
 finalchoicetext_goback = "[center]Would you like to reset your save data and begin anew, or return to right before you hatched the egg? [p][/p] [center] Begin Anew      [wave][rainbow]Go back in time[/rainbow][/wave]"
 
 [node name="bg" type="Sprite2D" parent="."]
-position = Vector2(145, 128)
+position = Vector2(144, 123)
 texture = ExtResource("2_7c53m")
 
 [node name="STATS" type="Node2D" parent="."]

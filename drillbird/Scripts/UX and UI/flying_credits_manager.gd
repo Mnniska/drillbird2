@@ -77,7 +77,7 @@ func TriggerFinalZinger():
 	hasEvolved=true
 	SoundManager.PlaySoundAtLocation($Camera2D.global_position,abstract_SoundEffectSetting.SoundEffectEnum.DRILLBIRD_OUTRO_ZINGER)
 	
-	await get_tree().create_timer(10).timeout
+	await get_tree().create_timer(13).timeout
 	musicTargetVolume=0.85
 	
 

@@ -47,5 +47,5 @@ onlyAButton = false
 type = 2
 icon = SubResource("Resource_3ltva")
 itemName = "Health"
-itemDescription = "Make more mistakes before death"
+itemDescription = "Take more hits before death"
 items = Array[ExtResource("2_wg2lt")]([SubResource("Resource_ldy6v"), SubResource("Resource_nookp"), SubResource("Resource_aum1u"), SubResource("Resource_l4iij"), SubResource("Resource_kmln2"), SubResource("Resource_yo3mh"), SubResource("Resource_uqv7b")])
