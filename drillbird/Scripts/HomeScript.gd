@@ -223,11 +223,13 @@ func GoToBed():
 	
 	$cutsceneTimer.start()
 
-func WakeUp(saveGame:bool):
+func WakeUp(saveGame:bool,progressDay:bool=true):
 	
 	if saveGame:
-		GlobalVariables.currentDay+=1
 		$"..".SaveGame()
+		
+		if progressDay: #assumption: we never wanna not save but still progress day
+			GlobalVariables.currentDay+=1
 	justWokeUp=true
 	MusicPlayer.UpdateIdleMusic()
 	MusicPlayer.SetState(hub_music_player.musicStates.IDLE)
@@ -282,7 +284,7 @@ func EggCutsceneFinished():
 	animSleep.play()
 	
 	await get_tree().create_timer(6).timeout
-	WakeUp(true)
+	WakeUp(true,false)
 	
 	pass
 
