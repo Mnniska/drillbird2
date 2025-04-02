@@ -16,6 +16,9 @@ var playerHidden:bool=false
 var hudHidden:bool=false
 var debugAvailable:bool=true
 
+var debugUnlockCount:int=0
+var debugUnlockTimeoutTimer:float=0.5
+var debugUnlockTimeourCounter:float=0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -31,6 +34,20 @@ func SelectionLogic():
 func _process(delta: float) -> void:
 	
 	if !debugAvailable:
+		if Input.is_action_just_pressed("debug_tab"):
+			debugUnlockCount+=1
+			debugUnlockTimeourCounter=debugUnlockTimeoutTimer
+			if debugUnlockCount>=10:
+				GlobalVariables.DebugEnabled=!GlobalVariables.DebugEnabled
+				debugAvailable=GlobalVariables.DebugEnabled
+				debugUnlockCount=0
+				SoundManager.PlaySoundGlobal(abstract_SoundEffectSetting.SoundEffectEnum.PLAYER_WAKEUP)
+		
+		if debugUnlockTimeourCounter>0:
+			debugUnlockTimeourCounter-=delta
+		else:
+			debugUnlockCount=0
+		
 		return
 	
 	if Input.is_action_just_pressed("debug_2"):
