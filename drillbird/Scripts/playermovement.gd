@@ -336,6 +336,14 @@ func RegularMovement(delta:float,currentAnim:String):
 			HeldFlower=GetClosestFlower()
 			if HeldFlower!=null:
 				state=States.FLOWER
+				
+				#Reset player jumps so they can jump again
+				if heavy:
+					jumpsMade=1
+					for index in jump_crystals.size():
+						jump_crystals[index].show()
+				
+				
 				HeldFlower.SetPlayerAttached(true)
 				PlayerStoppedDrillingValidTile()
 				signal_PlayerDrilling.emit(false)
