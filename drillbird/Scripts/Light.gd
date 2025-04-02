@@ -30,11 +30,8 @@ func playerStateChanged():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	
-	if isFollowingPlayer:
-		self.position=playerAvatar.position
-	else:
-		self.position=Camera.position
-	pass
+	self.position=Camera.get_screen_center_position()
+
 
 func SetLight(lightstr):
 	

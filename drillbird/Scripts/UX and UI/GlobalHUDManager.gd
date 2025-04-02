@@ -88,7 +88,7 @@ func UpdateHUDPosition(show:bool):
 
 func _process(delta: float) -> void:
 	
-	if Input.is_action_just_pressed("debug_tab") and Input.is_action_pressed("escape"):
+	if Input.is_action_just_pressed("debug_tab") and Input.is_action_pressed("escape") and GlobalVariables.DebugEnabled:
 		
 		if sceneState==sceneStates.MAIN:
 			SetSceneState(sceneStates.CREDITS,true)
