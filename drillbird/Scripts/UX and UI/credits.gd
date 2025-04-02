@@ -48,21 +48,3 @@ func _physics_process(delta: float) -> void:
 
 func GetAreCreditsDone()->bool:
 	return $RichTextLabel/CreditsEnd.global_position.y<$CenterOfScreen.global_position.y
-
-func DisplayText(delta:float):
-	textShowCounter+=delta
-
-	if textShowCounter>textShowTime:
-		textShowTime=textShowTimeDefault
-		textShowCounter=0
-		text.visible_characters+=1
-		
-		if text.text[text.visible_characters]=="\n":
-			pass
-		
-		var p=text.get_character_line(text.visible_characters)
-		print_debug(str(text.visible_characters))
-		if p>currentLine:
-			currentLine=p
-			textShowTime=linePauseTime
-	pass

@@ -1,0 +1,126 @@
+[gd_scene load_steps=5 format=3 uid="uid://l6j5lsi56hrl"]
+
+[ext_resource type="Script" path="res://Scripts/UX and UI/credits.gd" id="1_3w0v5"]
+[ext_resource type="Theme" uid="uid://bfr5y4lo7m1ux" path="res://Resources/Fonts/fontTheme.tres" id="2_hgymx"]
+[ext_resource type="Texture2D" uid="uid://bjo3ij85d33yx" path="res://Art/Collectibles/ore_gold.png" id="3_vm07v"]
+[ext_resource type="Texture2D" uid="uid://c1a6277712y7w" path="res://Art/Collectibles/ore_2_blue.png" id="4_odh6m"]
+
+[node name="Credits" type="Node2D"]
+script = ExtResource("1_3w0v5")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = -160.0
+offset_top = 122.0
+offset_right = 160.0
+offset_bottom = 2446.0
+theme = ExtResource("2_hgymx")
+bbcode_enabled = true
+text = "[center]Thank you for playing Drillbird!
+
+
+
+
+
+[font_size={32}]~~~ DrillBird contributors ~~~[/font_size]
+
+[color=green]Sebastian Larsson[/color]
+Design, Code, Art 
+
+[color=green]Andrea Harty[/color]
+Art 
+
+[color=green]Hampus Melin [/color]
+Sound Design, Music 
+
+[color=green]Isabelle Neuman[/color]
+Cutscene Animation Support 
+
+[color=green]Luiza Flôres da Cunha[/color]
+Game Logo, Noise Acting 
+
+[font_size={32}]~~~ Resources ~~~ [/font_size]
+
+[color=green]Software[/color]
+Godot - Game Engine
+Asesprite - Drawing Sprites
+Github - Source Control
+
+[color=green]Fonts used[/color]
+M5xy by Daniel Linssen: 
+https://managore.itch.io/m5x7 
+
+Pixelated Elegance by GGBotNet: 
+https://ggbot.itch.io/pixelated-elegance-font 
+
+QuinqueFive by GGBotNet 
+https://www.dafont.com/quinquefive.font 
+
+[color=green]Also I used this one tutorial to set up the sound system:[/color]
+“How I do Sound Effects in Godot” by Aarimous 
+https://www.youtube.com/watch?v=Egf2jgET3nQ&t=242s 
+
+[font_size={32}]~~~ Playtesters ~~~ [/font_size]
+
+Luiza Flôres da Cunha
+Erik Flôres da Cunha
+Malin Larsson
+Johanna Larsson 
+Ture Hellqvist 
+Tekla Larsson 
+Billy Rosehag 
+Lukas Orsvärn 
+Johanna Österlind
+Tanel (Forestherd) Marran
+Markus Månsson
+Keira Lundberg Larsson
+Victor Werngren
+Oliver Lincke 
+Jesper Krogh Kristiansen 
+Gaspar Stiglich
+Markus Noren
+InfiRandia
+Henry Fåhrelius
+Marcus Ingvarsson
+Johanna Österlind
+Martin Silve
+Ossian Borén aka catnipped
+Flamegirl & Snorkelitzor
+Robert Olsén
+Jacob Lind
+
+
+[font_size={32}]~~~ Special Thanks ~~~[/font_size]
+
+Tanel (Forestherd) Marran for being a great hype person
+Malmö Devhub Game Habitat - A great community and coworking space <3 
+The TF Malmö Discord 
+
+Lulu Flôres da Cunha for eternal support 
+
+
+
+
+
+
+Bye!
+
+"
+fit_content = true
+scroll_active = false
+shortcut_keys_enabled = false
+
+[node name="CreditsEnd" type="Node2D" parent="RichTextLabel"]
+position = Vector2(160, 1273)
+
+[node name="ore" type="Sprite2D" parent="RichTextLabel"]
+position = Vector2(256, 364)
+texture = ExtResource("3_vm07v")
+
+[node name="ore2" type="Sprite2D" parent="RichTextLabel"]
+position = Vector2(267, 354)
+texture = ExtResource("4_odh6m")
+
+[node name="StartPos" type="Node2D" parent="."]
+position = Vector2(-160, 172)
+
+[node name="CenterOfScreen" type="Node2D" parent="."]
