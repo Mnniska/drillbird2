@@ -8,6 +8,7 @@
 [node name="PAUSE" type="Node2D" node_paths=PackedStringArray("options")]
 script = ExtResource("1_w7cnh")
 options = [NodePath("Return"), NodePath("Options"), NodePath("Quit Game")]
+instructions = "[color=gray](jump) = jump [p](drill) = Drill blocks[p](inventory) = Drop ores"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.396078)
@@ -53,3 +54,14 @@ offset_bottom = 81.0
 theme = ExtResource("3_44x14")
 bbcode_enabled = true
 text = "[center]Day 2"
+
+[node name="instructions" type="RichTextLabel" parent="."]
+offset_left = 5.0
+offset_top = 166.0
+offset_right = 318.0
+offset_bottom = 233.0
+theme = ExtResource("3_44x14")
+theme_override_constants/line_separation = 2
+bbcode_enabled = true
+text = "[color=gray](jump) = jump [p](drill) = Drill blocks[p](inventory) = Drop ores
+"

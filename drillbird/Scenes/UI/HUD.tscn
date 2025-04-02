@@ -392,6 +392,41 @@ position = Vector2(159.5, 116.5)
 scale = Vector2(1.12813, 1.12444)
 texture = ExtResource("26_4tsov")
 
+[node name="How to play" type="Node2D" parent="."]
+visible = false
+
+[node name="Header" type="RichTextLabel" parent="How to play"]
+offset_left = 2.0
+offset_top = 19.0
+offset_right = 323.0
+offset_bottom = 99.0
+theme = ExtResource("15_nxi4s")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[center]Tips and Tricks"
+metadata/_edit_use_anchors_ = true
+
+[node name="hi" type="RichTextLabel" parent="How to play"]
+offset_left = 6.0
+offset_top = 53.0
+offset_right = 319.0
+offset_bottom = 251.0
+theme = ExtResource("15_nxi4s")
+bbcode_enabled = true
+text = "Press (jump) to jump. 
+- While Lightweight, Birdy can fly forever! 
+- When carrying ores, Birdy can fly three times. 
+
+Press (inventory) to drop ores
+- Tip: Pressing DOWN + (inventory) sets ores down gently 
+- Tip: Ores never disappear - they remain where left 
+
+Hold (drill) to drill blocks
+- Hold DOWN or UP + (drill) to drill in different directions
+- Tip: While drilling, Birdy will never walk off a ledge 
+
+Good luck! "
+
 [connection signal="NewGame" from="MainMenu" to="." method="_on_main_menu_new_game"]
 [connection signal="press_options" from="MainMenu" to="." method="_on_main_menu_press_options"]
 [connection signal="press_quit" from="MainMenu" to="." method="QuitGame"]

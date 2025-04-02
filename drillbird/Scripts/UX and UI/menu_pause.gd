@@ -6,7 +6,8 @@ var menuActive:bool=false
 var selectedOption:int=0
 var oldSelection:int=0
 var isHoldingEscape:bool=false
-
+@export var instructions:String
+@onready var instructions_text=$instructions
 var hasClickedQuitOnce:bool=false
 @onready var quitInfoText=$QuitConfirmation
 
@@ -74,12 +75,13 @@ func _process(delta: float) -> void:
 
 		UpdateMenu()
 	
-	if Input.is_action_just_pressed("escape") and !isHoldingEscape:
-		var option:menu_option=menu_option.new()
-		option.optionName="Return"
-		option.queue_free()
-		
-		ButtonPressed(option)
+	if Input.is_action_just_pressed("escape") or Input.is_action_just_pressed("escape_light"):
+		if  !isHoldingEscape:
+			var option:menu_option=menu_option.new()
+			option.optionName="Return"
+			option.queue_free()
+			
+			ButtonPressed(option)
 		
 	if Input.is_action_just_released("escape"):
 		isHoldingEscape=false
@@ -108,4 +110,10 @@ func UpdateMenu():
 	for n in options:
 		n.SetActive(index==selectedOption)
 		index+=1
+	UpdateTutorialInstructions()
+	
+func UpdateTutorialInstructions():
+	var decodedText = GlobalSymbolRegister.GetStringDecoded(instructions)
+	instructions_text.text=decodedText
+	
 	

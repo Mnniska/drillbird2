@@ -128,7 +128,7 @@ func _process(delta: float) -> void:
 	if !menuActive:
 		return
 		
-	if Input.is_action_just_pressed("escape"):
+	if Input.is_action_just_pressed("escape") or Input.is_action_just_pressed("escape_light"):
 		var escapeOption:menu_option=menu_option.new()
 		escapeOption.optionName="Return"
 		ButtonPressed(escapeOption)
