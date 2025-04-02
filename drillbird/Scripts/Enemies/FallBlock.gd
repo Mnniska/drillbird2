@@ -9,9 +9,12 @@ enum states{idle,fallprep,fall}
 var state:states=states.fallprep
 @export var timeBeforeFall:float=0.8
 var timeBeforeFallCounter:float=0
-var fast:bool=false
 
 var playImpactEffect:bool=false
+
+var fallOrigin:Vector2
+var distanceFallen:float=0
+@export var blocksFallenBeforeBreaking:float=1.5
 
 
 func _physics_process(delta: float) -> void:
@@ -66,13 +69,20 @@ func _physics_process(delta: float) -> void:
 				animToPlay="idle"
 				if playImpactEffect:
 					PlayImpactEffect()
-				if fast && raycast.is_colliding():
-					if BlockDestroyer!=null:
-						if BlockDestroyer.DestroyTileWithGlobalPosition(self.global_position+Vector2(0,16),true):
-							state=states.fallprep
-							animToPlay="falling"
 				elif state==states.idle and !playImpactEffect:
 					playImpactEffect=true
+				
+				#Break blocks below if fallen far enough
+				distanceFallen= abs(fallOrigin.y-global_position.y)
+				if distanceFallen>blocksFallenBeforeBreaking*16:
+					raycast.force_raycast_update()
+					if raycast.is_colliding():
+						if BlockDestroyer!=null:
+							if BlockDestroyer.DestroyTileWithGlobalPosition(self.global_position+Vector2(0,16),true):
+								state=states.fallprep
+								animToPlay="falling"
+								
+
 
 			else:
 				velocity.y += get_gravity().y * delta
@@ -82,7 +92,8 @@ func _physics_process(delta: float) -> void:
 func InitiateFall():
 	state=states.fall
 	anim.position=Vector2(0,0)
-	fast=GetWillBeFast()
+	
+	fallOrigin=global_position
 
 	#If any fallblocks are above - tell them to also fall
 	for n in $FallblockTrigger.get_overlapping_bodies():
@@ -97,17 +108,6 @@ func PlayImpactEffect():
 	impactEffect.play()
 	SoundManager.PlaySoundAtLocation(global_position,abstract_SoundEffectSetting.SoundEffectEnum.FALLBLOCK_LAND)
 	pass
-
-func GetWillBeFast():
-	var tilesBeforeFast:float=1.5
-	raycast.target_position=raycast.position+Vector2(0,tilesBeforeFast*16)
-	raycast.force_raycast_update()
-	if raycast.is_colliding():
-		raycast.target_position=raycast.position+Vector2(0,15)
-		return false
-	else:
-		raycast.target_position=raycast.position+Vector2(0,15)
-		return true
 
 
 func CheckOverlappingCollisions():

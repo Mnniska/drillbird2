@@ -130,8 +130,9 @@ autoplay = "idle"
 position = Vector2(0, 14)
 
 [node name="Raaycast" type="RayCast2D" parent="."]
-position = Vector2(0, 8)
+position = Vector2(0, 9)
 target_position = Vector2(0, 15)
+hit_from_inside = true
 
 [node name="Label" type="Label" parent="."]
 offset_right = 40.0
