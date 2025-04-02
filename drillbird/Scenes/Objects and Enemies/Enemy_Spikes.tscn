@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bq54e07l6op7s"]
+[gd_scene load_steps=13 format=3 uid="uid://bq54e07l6op7s"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/Enemy_Spikes.gd" id="1_7x1o5"]
 [ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_enemy.gd" id="2_2jfye"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://d3akbw8r1vn2h" path="res://Art/Objects/spikes_solid.png" id="4_w182k"]
 [ext_resource type="Texture2D" uid="uid://b7vcltncq1csy" path="res://Art/Objects/spikes_dirt1.png" id="6_375ry"]
 [ext_resource type="PackedScene" uid="uid://2lykflhwivex" path="res://Scenes/observer.tscn" id="7_712w8"]
+[ext_resource type="Texture2D" uid="uid://dkswvqekhrcnr" path="res://Art/Objects/spikes_dirt3.png" id="7_r6yq0"]
 
 [sub_resource type="Resource" id="Resource_6nq8s"]
 script = ExtResource("2_2jfye")
@@ -30,7 +31,7 @@ collision_mask = 0
 script = ExtResource("1_7x1o5")
 enemyInfo = SubResource("Resource_6nq8s")
 collType = SubResource("Resource_5mg7v")
-spriteVariations = Array[CompressedTexture2D]([ExtResource("4_w182k"), ExtResource("2_v5q25"), ExtResource("6_375ry"), ExtResource("2_v5q25")])
+spriteVariations = Array[CompressedTexture2D]([ExtResource("4_w182k"), ExtResource("2_v5q25"), ExtResource("6_375ry"), ExtResource("7_r6yq0"), ExtResource("2_v5q25")])
 
 [node name="SpikeAffectedCollider" type="CollisionShape2D" parent="."]
 position = Vector2(0, 7)
