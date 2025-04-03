@@ -2,7 +2,7 @@ extends Node2D
 class_name heart_script
 
 
-enum states {EMPTY,FULL,LASTFULL,AVAILABLE}
+enum states {EMPTY,FULL,LASTFULL,AVAILABLE,LIGHTHEART}
 var state=states.EMPTY
 var full:bool=true
 @onready var animator=$HealthAnimation
@@ -20,7 +20,7 @@ func GetStateEnum():
 	return states
 
 func TakeDamage():
-	if full:
+	if full or state==states.LIGHTHEART:
 		SetState(states.EMPTY)
 		full=false
 		return true
@@ -31,8 +31,12 @@ func RefillHeart():
 	SetState(states.FULL)
 	full=true
 
-func SetIsLastHeart():
-	SetState(states.LASTFULL)
+func SetIsLastHeart(isLightHeart:bool=false):
+	
+	if isLightHeart:
+		SetState(states.LIGHTHEART)
+	else:
+		SetState(states.LASTFULL)
 
 func SetState(_state:states):
 	state=_state
@@ -49,6 +53,8 @@ func SetState(_state:states):
 			
 		states.AVAILABLE:
 			anim="available"
+		states.LIGHTHEART:
+			anim="lightheart"
 	
 	animator.animation=anim
 	animator.play()

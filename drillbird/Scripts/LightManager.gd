@@ -49,6 +49,11 @@ func _ready() -> void:
 func GamePausedChange(paused:bool):
 	gamePaused=paused
 	
+func RequestRefillHealthWithLight():
+	if !outOfLight:
+		DepleteLight()
+		return true
+	return false
 	
 
 func SetupLightFunctionality():
@@ -134,6 +139,8 @@ func SetLightPosition():
 	var progress = size*(LightSlider.value/100)
 	DrillLightParticle.position=offset+Vector2(progress,0)
 	pass
+
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

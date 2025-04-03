@@ -5,7 +5,8 @@ var HealthScene
 @export var HealthUpgrades:abstract_purchasable
 var HeartScene = preload("res://Scenes/UI/HeartScene.tscn")
 @onready var UI_DeathPopup=$"../../UI_Death"
-
+@onready var lightManager=$"../LightHandler"
+var isOnLightHeart:bool=false
 
 	
 # Called when the node enters the scene tree for the first time.
@@ -50,6 +51,7 @@ func HealthSetup():
 	pass
 	
 func RefillHealth():
+	isOnLightHeart = false
 	for n in HealthArray:
 		n.RefillHeart()
 	GlobalVariables.playerHealth=HealthUpgrades.items[GlobalVariables.upgradeLevel_health].power
@@ -57,11 +59,11 @@ func RefillHealth():
 func TakeDamage(amount:int):
 
 	GlobalVariables.playerHealth-=amount #reduce player health
+	
+	
+	
 	var DamageCounter:int=0
 	var index:int=0
-
-
-
 
 	for heart:heart_script in HealthArray:
 		
@@ -71,7 +73,7 @@ func TakeDamage(amount:int):
 		if currentHeart.TakeDamage():
 		
 			if heartID==1:
-				HealthArray[0].SetIsLastHeart()
+				HealthArray[0].SetIsLastHeart(isOnLightHeart)
 		
 			#continue removing health until specified amount has been taken
 			DamageCounter+=1
@@ -80,12 +82,24 @@ func TakeDamage(amount:int):
 		
 		index+=1
 		
+	if GlobalVariables.playerHealth<=0:
+		if isOnLightHeart:
+			UI_DeathPopup.ShowUI()
+		else:
+			if lightManager.RequestRefillHealthWithLight():
+				isOnLightHeart = true
+				GlobalVariables.playerHealth=1
+				HealthArray[0].SetIsLastHeart(isOnLightHeart)
+
+				pass
+				#give player one last health and make it yellow 
+			else:
+				UI_DeathPopup.ShowUI()
 
 		
 		pass
 	
-	if GlobalVariables.playerHealth<=0:
-		UI_DeathPopup.ShowUI()
+
 	
 "	var survived:bool=false
 	for n in HealthArray:

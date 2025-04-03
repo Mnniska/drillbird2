@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://clvrvbyhgvgld"]
+[gd_scene load_steps=14 format=3 uid="uid://clvrvbyhgvgld"]
 
 [ext_resource type="Script" path="res://Scripts/HeartScript.gd" id="1_6ciuw"]
 [ext_resource type="Texture2D" uid="uid://bs35on34ynxiv" path="res://Art/UI/HUD/Health/HUD_Health_available.png" id="2_5ygl3"]
@@ -6,6 +6,12 @@
 [ext_resource type="Texture2D" uid="uid://c3717ycl1fxar" path="res://Art/UI/HUD/Health/HUD_Health_full.png" id="4_rqvoi"]
 [ext_resource type="Texture2D" uid="uid://bcqqmefcr7n3c" path="res://Art/UI/HUD/Health/HUD_Health_LastFull1.png" id="5_l3qhl"]
 [ext_resource type="Texture2D" uid="uid://bxfxswct2mpse" path="res://Art/UI/HUD/Health/HUD_Health_LastFull2.png" id="6_j15rn"]
+[ext_resource type="Texture2D" uid="uid://c8xu6eked6800" path="res://Art/UI/HUD/Health/HUD_Health_Lightheart1.png" id="7_lycbp"]
+[ext_resource type="Texture2D" uid="uid://ctbgm0fxfoay2" path="res://Art/UI/HUD/Health/HUD_Health_Lightheart2.png" id="8_ot7pg"]
+[ext_resource type="Texture2D" uid="uid://tveeqt2el6h1" path="res://Art/UI/HUD/Health/HUD_Health_Lightheart3.png" id="9_tdqvq"]
+[ext_resource type="Texture2D" uid="uid://22ugtynfrcr2" path="res://Art/UI/HUD/Health/HUD_Health_Lightheart4.png" id="10_1bmnm"]
+[ext_resource type="Texture2D" uid="uid://c31ymw5ji3p7w" path="res://Art/UI/HUD/Health/HUD_Health_Lightheart5.png" id="11_woani"]
+[ext_resource type="Texture2D" uid="uid://cb3hus38bus8g" path="res://Art/UI/HUD/Health/HUD_Health_Lightheart6.png" id="12_w0mdo"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qd07m"]
 animations = [{
@@ -43,6 +49,29 @@ animations = [{
 "loop": true,
 "name": &"full_last",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_lycbp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ot7pg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_tdqvq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_1bmnm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_woani")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_w0mdo")
+}],
+"loop": true,
+"name": &"lightheart",
+"speed": 8.0
 }]
 
 [node name="Health" type="Node2D"]
@@ -50,5 +79,5 @@ script = ExtResource("1_6ciuw")
 
 [node name="HealthAnimation" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_qd07m")
-animation = &"full_last"
-frame_progress = 0.385912
+animation = &"full"
+frame_progress = 0.232311
