@@ -2,6 +2,8 @@ extends Node2D
 
 signal optionsClosed
 
+@onready var options_header=$Header
+
 #created in ready by getting the menu_options thta are children to script
 var EntireMenu:Array[menu_option]
 @export var BaseMenu:Array[menu_option]
@@ -154,6 +156,8 @@ func _process(delta: float) -> void:
 	pass
 
 func UpdateMenu():
+	
+	options_header.text="[center]"+tr("menu_options")
 	
 	for option in EntireMenu:
 		option.hide()

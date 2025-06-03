@@ -50,7 +50,7 @@ func PassedTest():
 		StopTimer()
 		if textShown:
 			textBubble.Setup(abstract_textEffect.effectEnum.WAVE,text_bubble.behaviourEnum.FADE)
-			textBubble.ShowText("nice ~")
+			textBubble.ShowText(tr("tut_passed"))
 	
 	pass
 

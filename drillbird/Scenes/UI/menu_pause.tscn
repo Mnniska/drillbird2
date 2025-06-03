@@ -8,7 +8,6 @@
 [node name="PAUSE" type="Node2D" node_paths=PackedStringArray("options")]
 script = ExtResource("1_w7cnh")
 options = [NodePath("Return"), NodePath("Options"), NodePath("Quit Game")]
-instructions = "[color=gray](jump) = jump [p](drill) = Drill blocks[p](inventory) = Drop ores"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.396078)
@@ -16,7 +15,7 @@ position = Vector2(164, 117.5)
 scale = Vector2(1.36719, 15.6875)
 texture = ExtResource("2_6r7dd")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="Header" type="RichTextLabel" parent="."]
 offset_top = 11.0
 offset_right = 321.0
 offset_bottom = 91.0
@@ -28,14 +27,17 @@ text = "[center]Paused"
 [node name="Return" parent="." instance=ExtResource("4_vbmoi")]
 position = Vector2(159, 73)
 optionName = "Return"
+localizationID = "options_return"
 
 [node name="Options" parent="." instance=ExtResource("4_vbmoi")]
 position = Vector2(159, 96)
 optionName = "Options"
+localizationID = "menu_options"
 
 [node name="Quit Game" parent="." instance=ExtResource("4_vbmoi")]
 position = Vector2(159, 121)
 optionName = "Quit Game"
+localizationID = "menu_quit"
 
 [node name="QuitConfirmation" type="RichTextLabel" parent="."]
 visible = false

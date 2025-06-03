@@ -5,6 +5,7 @@ signal button_pressed(option:menu_option)
 signal sliderValueChanged(menuName:String,progress:float)
 
 @export var optionName:String
+@export var localizationID:String
 @export var isAction:bool=true
 @export var isToggle:bool=false
 @export var options:Array[menu_option]
@@ -49,7 +50,7 @@ var cooldownCounter:float=0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	text.text=optionName
+	text.text=tr(localizationID)
 	
 	if isSlider:
 		$slider.show()
@@ -144,7 +145,7 @@ func SetActive(_active:bool):
 	if option_hovered:
 		txt+=highlightEffectStart
 		
-	txt+=optionName
+	txt+=tr(localizationID)
 
 	if isToggle:
 		if option_active:

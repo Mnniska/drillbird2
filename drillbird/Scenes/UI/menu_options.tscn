@@ -21,26 +21,31 @@ texture = ExtResource("2_eej8b")
 [node name="Return2" parent="." instance=ExtResource("2_x5nw2")]
 position = Vector2(0, -52)
 optionName = "Return"
+localizationID = "options_return"
 
 [node name="ToggleFullscreen" parent="." instance=ExtResource("2_x5nw2")]
 position = Vector2(0, -33)
 optionName = "Toggle Fullscreen"
+localizationID = "options_fullscreen"
 isToggle = true
 
 [node name="Audio Options" parent="." node_paths=PackedStringArray("options") instance=ExtResource("2_x5nw2")]
 position = Vector2(0, -12)
 optionName = "Audio Options"
+localizationID = "options_audio"
 options = [NodePath("../Return"), NodePath("../Master"), NodePath("../Music"), NodePath("../SFX"), NodePath("../Ambience")]
 
 [node name="Return" parent="." instance=ExtResource("2_x5nw2")]
 visible = false
 position = Vector2(0, -52)
 optionName = "Return"
+localizationID = "options_return"
 
 [node name="Master" parent="." instance=ExtResource("2_x5nw2")]
 visible = false
 position = Vector2(0, -12)
 optionName = "Master Volume"
+localizationID = "sound_master"
 isSlider = true
 sample_sound = ExtResource("3_ttclj")
 soundAudioBus = "Master"
@@ -49,6 +54,7 @@ soundAudioBus = "Master"
 visible = false
 position = Vector2(0, 16)
 optionName = "Music Volume"
+localizationID = "sound_music"
 isSlider = true
 sample_sound = ExtResource("3_ttclj")
 soundAudioBus = "Music"
@@ -57,6 +63,7 @@ soundAudioBus = "Music"
 visible = false
 position = Vector2(0, 45)
 optionName = "SFX Volume"
+localizationID = "sound_SFX"
 isSlider = true
 sample_sound = ExtResource("6_kpxvh")
 soundAudioBus = "Sfx"
@@ -65,6 +72,7 @@ soundAudioBus = "Sfx"
 visible = false
 position = Vector2(0, 76)
 optionName = "Ambience Volume"
+localizationID = "sound_ambience"
 isSlider = true
 sample_sound = ExtResource("6_wrpie")
 soundAudioBus = "Ambience"
@@ -72,11 +80,13 @@ soundAudioBus = "Ambience"
 [node name="Game Options" parent="." node_paths=PackedStringArray("options") instance=ExtResource("2_x5nw2")]
 position = Vector2(0, 8)
 optionName = "Game Options"
+localizationID = "options_game"
 options = [NodePath("../Return2"), NodePath("../toggle ghost"), NodePath("../save data")]
 
 [node name="toggle ghost" parent="." instance=ExtResource("2_x5nw2")]
 position = Vector2(0, -33)
 optionName = "Haunted by Ghost"
+localizationID = "options_ghost"
 isToggle = true
 sample_sound = ExtResource("6_wrpie")
 soundAudioBus = "Ambience"
@@ -84,6 +94,7 @@ soundAudioBus = "Ambience"
 [node name="save data" parent="." node_paths=PackedStringArray("extraConfirmzationMessage") instance=ExtResource("2_x5nw2")]
 position = Vector2(0, -12)
 optionName = "Reset Save Data"
+localizationID = "options_reset_save_data"
 RequireExtraConfirmation = true
 extraConfirmzationMessage = NodePath("SaveDataExtraInfo")
 sample_sound = ExtResource("6_wrpie")
@@ -99,7 +110,7 @@ theme = ExtResource("3_208bg")
 bbcode_enabled = true
 text = "Warning: This will reset all progress and quit the game - allowing you to start fresh. Click again to confirm. "
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="Header" type="RichTextLabel" parent="."]
 offset_left = -160.0
 offset_top = -95.0
 offset_right = 161.0
@@ -107,4 +118,4 @@ offset_bottom = -35.0
 theme = ExtResource("3_208bg")
 theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
-text = "[center]Options"
+text = "[center]tr(Options)"

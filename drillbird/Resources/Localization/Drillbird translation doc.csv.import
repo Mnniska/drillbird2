@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://cfed1ou0mr3yf"
+
+[deps]
+
+files=["res://Resources/Localization/Drillbird translation doc.Category.translation", "res://Resources/Localization/Drillbird translation doc.English.translation", "res://Resources/Localization/Drillbird translation doc.Swedish.translation", "res://Resources/Localization/Drillbird translation doc.Japanese.translation"]
+
+source_file="res://Resources/Localization/Drillbird translation doc.csv"
+dest_files=["res://Resources/Localization/Drillbird translation doc.Category.translation", "res://Resources/Localization/Drillbird translation doc.English.translation", "res://Resources/Localization/Drillbird translation doc.Swedish.translation", "res://Resources/Localization/Drillbird translation doc.Japanese.translation"]
+
+[params]
+
+compress=true
+delimiter=0

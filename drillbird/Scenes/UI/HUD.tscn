@@ -77,19 +77,19 @@ default_font_size = 16
 
 [sub_resource type="Resource" id="Resource_jrvhg"]
 script = ExtResource("20_hlahx")
-name = "New Game"
+name = "menu_new_game"
 options = Array[ExtResource("20_hlahx")]([])
 isAction = true
 
 [sub_resource type="Resource" id="Resource_q3x01"]
 script = ExtResource("20_hlahx")
-name = "Options"
+name = "menu_options"
 options = Array[ExtResource("20_hlahx")]([])
 isAction = true
 
 [sub_resource type="Resource" id="Resource_b7xf6"]
 script = ExtResource("20_hlahx")
-name = "Quit Game"
+name = "menu_quit"
 options = Array[ExtResource("20_hlahx")]([])
 isAction = true
 
@@ -370,7 +370,7 @@ theme = ExtResource("15_nxi4s")
 theme_override_colors/default_color = Color(1, 1, 1, 0.807843)
 theme_override_colors/font_selected_color = Color(1, 1, 1, 1)
 bbcode_enabled = true
-text = "[rainbow]Version 1.0[/rainbow][p]2025-03-07"
+text = "[rainbow]Version 1.11[/rainbow][p]2025-03-07 "
 
 [node name="Options" parent="." instance=ExtResource("23_sv2nb")]
 visible = false

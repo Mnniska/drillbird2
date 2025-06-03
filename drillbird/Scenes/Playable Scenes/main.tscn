@@ -1471,15 +1471,19 @@ script = ExtResource("59_a6oue")
 [node name="Tutorial_DropOres" parent="WorldScripts" instance=ExtResource("59_8sapw")]
 position = Vector2(-678, 232)
 timeBeforeMessageShows = 8.0
-textToShow = "Ores are valuable, but heavy. Press (inventory) to drop ores and become lighter"
+textToShow = "tut_drop"
 
 [node name="CollisionShape2D" parent="WorldScripts/Tutorial_DropOres/Area2D" index="0"]
 position = Vector2(-16.5, -7)
 shape = SubResource("RectangleShape2D_4e7ml")
 
+[node name="RichTextLabel" parent="WorldScripts/Tutorial_DropOres/TextBubble" index="0"]
+offset_left = -74.0
+offset_right = 81.0
+
 [node name="Tutorial_Flower" parent="WorldScripts" instance=ExtResource("59_8sapw")]
 position = Vector2(1001, 2367)
-textToShow = "Drill any SOLID block for a while to plant a flower"
+textToShow = "tut_flower"
 tutorialActive = false
 
 [node name="CollisionShape2D" parent="WorldScripts/Tutorial_Flower/Area2D" index="0"]
@@ -1492,7 +1496,7 @@ position = Vector2(1, 6)
 [node name="Tutorial_LongDrill" parent="WorldScripts" node_paths=PackedStringArray("collisionShapeThatPassesTest") instance=ExtResource("59_8sapw")]
 position = Vector2(-399, 65)
 timeBeforeMessageShows = 5.0
-textToShow = "Stand on an edge to drill across a gap"
+textToShow = "tut_long_drill"
 pauseTimerWhenNotInArea = false
 collisionShapeThatPassesTest = NodePath("PlayerChecker_LongDrillTutorial")
 
@@ -1514,7 +1518,7 @@ shape = SubResource("RectangleShape2D_kgagq")
 [node name="Tutorial_LedgeUp" parent="WorldScripts" node_paths=PackedStringArray("collisionShapeThatPassesTest") instance=ExtResource("59_8sapw")]
 position = Vector2(-278, 34)
 timeBeforeMessageShows = 6.0
-textToShow = "Stand on an edge and drill upwards to drill tricky blocks"
+textToShow = "tut_ledge_drill"
 pauseTimerWhenNotInArea = false
 collisionShapeThatPassesTest = NodePath("PlayerChecker_LongDrillTutorial2")
 
@@ -1536,7 +1540,7 @@ shape = SubResource("RectangleShape2D_ywfok")
 [node name="Tutorial_drill" parent="WorldScripts" instance=ExtResource("59_8sapw")]
 position = Vector2(-853, 549)
 timeBeforeMessageShows = 6.0
-textToShow = "Hold (drill) to drill"
+textToShow = "tut_drill"
 pauseTimerWhenNotInArea = false
 BeginTimerWhenEntered = false
 
@@ -1550,7 +1554,7 @@ position = Vector2(-1, 4)
 [node name="tutorial_doubleJump" parent="WorldScripts" instance=ExtResource("59_8sapw")]
 position = Vector2(-1052, 399)
 timeBeforeMessageShows = 5.0
-textToShow = "Jump (jump) multiple times to fly further"
+textToShow = "tut_fly"
 
 [node name="CollisionShape2D" parent="WorldScripts/tutorial_doubleJump/Area2D" index="0"]
 position = Vector2(33, -53)
@@ -1562,7 +1566,7 @@ position = Vector2(11, -7)
 [node name="Tutorial_jump" parent="WorldScripts" instance=ExtResource("59_8sapw")]
 position = Vector2(-775, 559)
 timeBeforeMessageShows = 8.0
-textToShow = "Press (jump) to jump"
+textToShow = "tut_jump"
 
 [node name="CollisionShape2D" parent="WorldScripts/Tutorial_jump/Area2D" index="0"]
 position = Vector2(47, -16.75)
@@ -1740,6 +1744,7 @@ texture = ExtResource("64_yk8d7")
 [connection signal="body_shape_entered" from="PlayerSpawnLocations/PlayerLocationSaver" to="PlayerSpawnLocations/PlayerLocationSaver" method="_on_body_shape_entered"]
 
 [editable path="WorldScripts/Tutorial_DropOres"]
+[editable path="WorldScripts/Tutorial_DropOres/TextBubble"]
 [editable path="WorldScripts/Tutorial_Flower"]
 [editable path="WorldScripts/Tutorial_LongDrill"]
 [editable path="WorldScripts/Tutorial_LedgeUp"]

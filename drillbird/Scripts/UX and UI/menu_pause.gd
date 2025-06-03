@@ -6,12 +6,14 @@ var menuActive:bool=false
 var selectedOption:int=0
 var oldSelection:int=0
 var isHoldingEscape:bool=false
-@export var instructions:String
 @onready var instructions_text=$instructions
 var hasClickedQuitOnce:bool=false
 @onready var quitInfoText=$QuitConfirmation
 
 @onready var daycounter:RichTextLabel=$DayCounter
+
+@onready var text_header = $Header
+@onready var text_instructions=$instructions
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -42,7 +44,7 @@ func ButtonPressed(_option:menu_option):
 			var end_time = Time.get_unix_time_from_system() #captures the end time in unix time
 			var elapsed_time = (end_time - GlobalVariables.timeLastSaved) / 60 #this calculates the elapsed time in minutes - divisor will need to be adjusted if you want hours, days, etc.
 			
-			quitInfoText.text="[center]Last save was made "+str(floor(elapsed_time))+" minutes ago.[p][center] Are you sure you'd like to quit? "
+			quitInfoText.text=tr("options_quit_warning_part1")+str(floor(elapsed_time))+" "+tr("options_quit_warning_part2")
 			
 			quitInfoText.show()
 			hasClickedQuitOnce=true
@@ -89,6 +91,10 @@ func _process(delta: float) -> void:
 	pass
 
 func SetActive(_active:bool):
+	
+	text_header.text="[center]"+tr("menu_paused")
+	text_instructions.text=tr("menu_instructions")
+	
 	menuActive=_active
 	if menuActive:
 
@@ -97,7 +103,7 @@ func SetActive(_active:bool):
 		isHoldingEscape=true
 		hasClickedQuitOnce=false
 		quitInfoText.hide()
-		daycounter.text="[center]Day "+str(GlobalVariables.currentDay)
+		daycounter.text="[center]"+tr("menu_day")+str(GlobalVariables.currentDay)
 		
 	else:
 		hide()
@@ -113,7 +119,7 @@ func UpdateMenu():
 	UpdateTutorialInstructions()
 	
 func UpdateTutorialInstructions():
-	var decodedText = GlobalSymbolRegister.GetStringDecoded(instructions)
+	var decodedText = GlobalSymbolRegister.GetStringDecoded(tr("menu_instructions"))
 	instructions_text.text=decodedText
 	
 	

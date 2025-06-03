@@ -1,0 +1,91 @@
+String ID,Category,English,Swedish,Japanese
+Tutorial Strings,,,,
+tut_jump,Tutorial,Press (jump) to jump,Hoppa med (jump),
+tut_drill,Tutorial,Hold (drill) to drill,Borra med (drill),
+tut_fly,Tutorial,Jump (jump) multiple times to fly further,Hoppa (jump) flera gånger för att flyga ,
+tut_drop,Tutorial,"Ores are valuable, but heavy. Press (inventory) to drop ores and become lighter","Mineraler är värdefulla, men tunga. Tryck på (inventory) för att släppa mineraler så att du kan flyga",
+tut_long_drill,Tutorial,Stand on an edge to drill across a gap,Stå på en kant för att gräva över ett gap,
+tut_ledge_drill,Tutorial,Stand on an edge and drill upwards to drill tricky blocks,Stå på en kant och borra uppåt för att gräva kluriga block,
+tut_flower,Tutorial,Drill any SOLID block for a while to plant a flower,Borra ett solidt block länge för att plantera en blomma,
+tut_passed,Tutorial,nice ~,Snyggt ~,
+Menu Strings,,,,
+menu_continue,menu,Continue,Fortsätt,
+menu_new_game,menu,New Game,Nytt Spel,
+menu_options,menu,Options,Inställningar,
+menu_version,menu,Version [X],Version,
+menu_quit,menu,Quit Game,Avsluta,
+options_return,menu_options,Return,Tillbaka,
+options_fullscreen,menu_options,Toggle Fullscreen,Slå på/av fullskärm,
+options_audio,menu_options,Audio Options,Ljudinställningar,
+options_game,menu_options,Game Options,Spelinställningar,
+sound_master,menu_options_sound,Master Volume,Spelvolym,
+sound_music,menu_options_sound,Music Volume,Musik,
+sound_SFX,menu_options_sound,SFX Volume,Ljudeffekter,
+sound_ambience,menu_options_sound,Ambience Volume,Bakgrundsljud,
+options_ghost,menu_options_game,Haunted by Ghost,Jagad av spöket,
+options_reset_save_data,menu_options_game,Reset Save Data,Återställ spardata,
+options_reset_save_data_warning,menu_options_game,Warning: This will reset all progress and quit the game - allowing you to start fresh. Click again to confirm. ,Varning: Din progression kommer återställas och spelet avslutas - så att du kan börja om på nytt. Klicka igen för att konfirmera,
+options_quit_warning_part1,menu_pause,[center]Last save was made ,[center]Spelet sparades för ,
+options_quit_warning_part2,menu_pause,minutes ago.[p][center] Are you sure you'd like to quit?, minuter sedan. [p][center] Är du säker på att du vill avsluta?,
+menu_paused,menu_pause,Paused,Pausat,
+menu_day,menu_pause,Day ,Dag ,
+menu_instructions,menu_pause,[color=gray](jump) = jump [p](drill) = Drill blocks[p](inventory) = Drop ores,[color=gray](jump) = Hoppa [p](drill) = Borra block[p](inventory) = Släpp mineraler,
+menu_tut_drill,menu_pause,[drill] = drill,[drill] = borra,
+menu_tut_drop,menu_pause,[interact] = Drop ores,[ineract] = Släpp mineraler,
+,,,,
+menu_dead_header,menu_dead,Birdy died!,Birdy dog!,
+menu_dead_ores_dropped,menu_dead,- All ores were dropped,- Alla mineraler har släppts på marken,
+menu_dead_respawn,menu_dead,- Birdy will respawn at Home next day,- Birdy kommer att vakna upp Hemma efter en dag,
+in-game strings,,,,
+game_egg_sleep,Game_popup,Hold [up] to End Day,Håll inne [up] för att avsluta dagen,
+game_egg_feed,Game_popup,[interact] Feed Egg,[interact] mata ägget,
+popup_heavy,Game_popup,Heavy,Tung,
+popup_lightweight,Game_popup,Lightweight!,Lätt,
+popup_gohome0,Game_popup,Low on fuel.. Go home and rest,Snart slut på bränsle.. gå hem och lägg dig,
+popup_gohome1,Game_popup,Low on fuel..,Snart slut på bränsle.. ,
+popup_gohome2,Game_popup,Almost dark..,Nästan mörkt,
+popup_gohome3,Game_popup,she's coming..,Hon kommer..,
+HUD_weight,HUD,kg,kg,
+HUD_experience,HUD,xp,xp,
+popup_gamesaved,Game_popup,Game Saved! Day,Spelet har sparats! Dag,
+popup_ghost_bark,Game_popup,How dare you!?,Hur vågar du!?,
+,,,,
+,,,,
+Shop strings,,,,
+shop_inventory_header,Shop,Inventory,Väska,
+shop_inventory_desc,Shop,Carry heavier loads,Bär fler och tyngre mineraler,
+shop_fuel_header,Shop,Fuel,Bränsle,
+shop_fuel_description,Shop,Drill more before darkness descends,Borra mer innan mörkret kommer,
+shop_health_header,Shop,Health,Hälsa,
+shop_health_desc,Shop,Take more hits before death,Ta mer skada innan döden,
+shop_drill_header,Shop,Drill Power,Borrstyrka,
+shop_drill_desc,Shop,Drill tougher blocks faster,Gräv block snabbare,
+shop_awaken,Shop,Awaken,Vakna,
+,,,,
+,,,,
+Credits,,,,
+credits_all_of_it_lol,Credits,https://docs.google.com/document/d/1LVnF9-QyD7OLRa1lRAYrfbC2fuhyVkGhRcBz5NYnFA4/edit?tab=t.0,,
+credits_growth,Credits,Growth,Mognad,
+credits_evolve_popup,Credits,Press [interact] to evolve,Tryck på [interact] för att växa upp,
+credits_thanks_for_playing,Credits,"[center]Thank you for playing Drillbird! 
+
+If you enjoyed the game - 
+please tell someone you like about it!
+
+Take care out there
+/Seb
+
+[wave][rainbow]Continue[/rainbow][/wave]","[center] Tack för att du spelat Drillbird! 
+
+Om du gillade spelet - berätta om det för någon du tycker om vetja!
+
+Ta hand om dig
+/Seb 
+
+[wave][rainbow]Fortsätt[/rainbow][/wave]",
+credits_stats_header,Credits_stats,Final Stats,Slutresultat,
+credits_stats_hatchtime,Credits_stats,Days taken to hatch:,Antal dagar till kläckning:,
+credits_stats_ores,Credits_stats,Ores found:,Mineraler hittade:,
+credits_stats_continue,Credits_stats,Continue,Fortsätt,
+credits_reset_save_data,Credits_stats,"[center]Would you like to reset your save data and begin anew, or return to right before you hatched the egg? [p][/p] [center]  [wave][rainbow]Begin Anew[/rainbow][/wave]     Go back in time","Vill du ta bort din sparfil och börja om ifrån början, eller gå tillbaka till precis innan ägget kläcktes? 
+[p][/p] [center]  [wave][rainbow]Börja om[/rainbow][/wave]     Gå tillbaka i tiden",

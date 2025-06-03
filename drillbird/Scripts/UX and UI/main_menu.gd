@@ -28,6 +28,12 @@ var fadeCounter:float=2
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	
+	if Input.is_action_just_pressed("debug_1"):
+		if TranslationServer.get_locale() == "English":
+			TranslationServer.set_locale("Swedish")
+		else:
+			TranslationServer.set_locale("English")
+	
 	if !active:
 		cooldown=0
 		return
@@ -68,9 +74,9 @@ func GenerateMainMenu():
 	active=true
 	#If the player starts the game during day 1, we can assume they do not ahve an active save game
 	if GlobalVariables.currentDay==1:
-		options[0].name="New Game"
+		options[0].name="menu_new_game"
 	else:
-		options[0].name="Continue"
+		options[0].name="menu_continue"
 	
 	var textstring=textbegin
 	
@@ -79,7 +85,7 @@ func GenerateMainMenu():
 		if selection==index:
 			textstring+=selectionEffectBegin
 			
-		textstring+=option.name+"\n"
+		textstring+=tr(option.name)+"\n"
 		
 		if selection==index:
 			textstring+=selectionEffectEnd
@@ -95,13 +101,13 @@ func Deactivate():
 func PressButton():
 	
 	match options[selection].name:
-		"New Game":
+		"menu_new_game":
 			NewGame.emit()
-		"Continue":
+		"menu_continue":
 			NewGame.emit()
-		"Options":
+		"menu_options":
 			press_options.emit()
-		"Quit Game":
+		"menu_quit":
 			press_quit.emit()
 	
 

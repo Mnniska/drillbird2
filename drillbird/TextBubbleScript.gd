@@ -37,7 +37,7 @@ func ShowText(_txt:String,timeBeforeFade:float=0.2):
 	textToShow=""
 	alpha=1	
 	
-	textToShow=GlobalSymbolRegister.GetStringDecoded(_txt)
+	textToShow=GlobalSymbolRegister.GetStringDecoded(tr(_txt))
 			
 	textObject.text=centerB+effect.beginEffect+textToShow+effect.endEffect+centerE
 	textObject.modulate=textColor

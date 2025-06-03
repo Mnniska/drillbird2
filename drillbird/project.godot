@@ -133,6 +133,10 @@ escape_light={
 ]
 }
 
+[internationalization]
+
+locale/translations=PackedStringArray("res://Resources/Localization/Drillbird translation doc.English.translation", "res://Resources/Localization/Drillbird translation doc.Swedish.translation")
+
 [layer_names]
 
 2d_render/layer_1="Tiles"

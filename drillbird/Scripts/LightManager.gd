@@ -256,6 +256,8 @@ func upgradeChangeLight():
 		AddLightbulbRequest()
 
 func LowOnLightWarning():
+	#TODO: Make this localized, not hard coded lol
+	
 	var textbubble:text_bubble= textBubblePath.instantiate()
 	add_child(textbubble)
 	
