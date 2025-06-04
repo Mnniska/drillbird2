@@ -9,8 +9,6 @@ extends Node2D
 @export var tex_btn_inactive_expensive:Texture2D
 @export var tex_btn_inactive_affordable:Texture2D
 
-
-
 var purchasable:abstract_purchasable
 
 #onready prep:
@@ -133,8 +131,8 @@ func UpdateStats():
 			pass
 	
 	icon.animation=animToPlay
-	Header.text=purchasable.itemName
-	Description.text=purchasable.itemDescription
+	Header.text=tr(purchasable.itemNameID)
+	Description.text=tr(purchasable.itemDescriptionID)
 	var playerLevel=GetCurrentUpgrade()
 	if purchasable.items.size()>playerLevel+1:
 		cost.text=str( purchasable.items[ playerLevel+1].cost)

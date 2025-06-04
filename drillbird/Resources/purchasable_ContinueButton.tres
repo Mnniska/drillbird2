@@ -7,6 +7,6 @@
 script = ExtResource("3_3mnxg")
 onlyAButton = true
 type = 0
-itemName = "default"
-itemDescription = "default description"
+itemNameID = "shop_awaken"
+itemDescriptionID = "shop_awaken"
 items = Array[ExtResource("2_sir5s")]([])

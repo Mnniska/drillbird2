@@ -8,6 +8,7 @@ signal ShopClosed
 @export var UI_purchasables:Array[Node2D]
 
 @export var abstract_purchasables:Array[abstract_purchasable]
+@onready var text_continue=$Button_Continue/text_continue
 var shopActive:bool=false
 #playerstats 
 var currentSelection:int=0
@@ -51,6 +52,9 @@ func SetActive(active:bool):
 		
 
 func UpdateShop():
+	
+	text_continue.text=tr("shop_awaken")
+	
 	var index:int=0
 	for n in UI_purchasables:
 		#ensure setselected is implemented
