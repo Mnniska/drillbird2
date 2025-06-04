@@ -49,7 +49,7 @@ var hasFullyEvolved:bool=false
 @export var evolveTextString:String
 
 func _ready() -> void:
-	evolveText.text=GlobalSymbolRegister.GetStringDecoded(evolveTextString)
+	evolveText.text="[center][shake] "+GlobalSymbolRegister.GetStringDecoded(tr("credits_evolve_popup"))
 	evolveText.hide()
 	
 
@@ -153,6 +153,7 @@ func SetCanEvolve(canEvolve:bool,triggerSignal:bool=true):
 		canEvolveUpdate.emit(canEvolve)
 	evolutionPossible=canEvolve
 	if evolutionPossible:
+		evolveText.text="[center][shake] "+GlobalSymbolRegister.GetStringDecoded(tr("credits_evolve_popup"))
 		evolveText.show()
 		
 		if position.y>10:

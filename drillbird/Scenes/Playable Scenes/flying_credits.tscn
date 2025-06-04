@@ -512,14 +512,14 @@ position = Vector2(-4, -234)
 scale = Vector2(5.0125, 8.65417)
 texture = ExtResource("11_ap520")
 
-[node name="Label" type="Label" parent="energyMeter"]
+[node name="text_growth" type="Label" parent="energyMeter"]
 z_index = 4
-offset_left = -21.0
+offset_left = -75.0
 offset_top = -202.0
-offset_right = 23.0
+offset_right = 75.0
 offset_bottom = -179.0
 theme = ExtResource("8_8r2fg")
-text = "Growth"
+text = "Growthdddddddddd"
 horizontal_alignment = 1
 
 [node name="Sprite2D2" type="Sprite2D" parent="energyMeter"]

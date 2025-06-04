@@ -185,7 +185,6 @@ script = ExtResource("1_xqyjr")
 initialJumpCost = 6.0
 continuedJumpCost = 0.5
 maxFuelRefillRate = 3.5
-evolveTextString = "[center][shake] (inventory) to evolve"
 
 [node name="anim_evolve_shine" type="AnimatedSprite2D" parent="."]
 position = Vector2(3, -13)
@@ -198,7 +197,7 @@ sprite_frames = SubResource("SpriteFrames_vrtup")
 animation = &"adult_fall"
 autoplay = "idle"
 
-[node name="Label" type="Label" parent="."]
+[node name="text_evolve" type="Label" parent="."]
 offset_right = 40.0
 offset_bottom = 23.0
 

@@ -69,9 +69,184 @@ shop_awaken,Shop,Awaken,Vakna,
 ,,,,
 ,,,,
 Credits,,,,
-credits_all_of_it_lol,Credits,https://docs.google.com/document/d/1LVnF9-QyD7OLRa1lRAYrfbC2fuhyVkGhRcBz5NYnFA4/edit?tab=t.0,,
+credits_all_of_it_lol,Credits,"[center]Thank you for playing Drillbird!
+
+
+
+
+
+[font_size={32}]~~~ DrillBird contributors ~~~[/font_size]
+
+[color=green]Sebastian Larsson[/color]
+Design, Code, Art 
+
+[color=green]Andrea Harty[/color]
+Art 
+
+[color=green]Hampus Mellin [/color]
+Sound Design, Music 
+
+[color=green]Isabelle Neuman[/color]
+Cutscene Animation Support 
+
+[color=green]Luiza Flôres da Cunha[/color]
+Game Logo, Noise Acting 
+
+[font_size={32}]~~~ Resources ~~~ [/font_size]
+
+[color=green]Software[/color]
+Godot - Game Engine
+Asesprite - Drawing Sprites
+Github - Source Control
+
+[color=green]Fonts used[/color]
+M5xy by Daniel Linssen: 
+https://managore.itch.io/m5x7 
+
+Pixelated Elegance by GGBotNet: 
+https://ggbot.itch.io/pixelated-elegance-font 
+
+QuinqueFive by GGBotNet 
+https://www.dafont.com/quinquefive.font 
+
+[color=green]Also I used this one tutorial to set up the sound system:[/color]
+“How I do Sound Effects in Godot” by Aarimous 
+https://www.youtube.com/watch?v=Egf2jgET3nQ&t=242s 
+
+[font_size={32}]~~~ Playtesters ~~~ [/font_size]
+
+Luiza Flôres da Cunha
+Erik Flôres da Cunha
+Malin Larsson
+Johanna Larsson 
+Ture Hellqvist 
+Tekla Larsson 
+Billy Rosehag 
+Lukas Orsvärn 
+Johanna Österlind
+Tanel (Forestherd) Marran
+Markus Månsson
+Keira Lundberg Larsson
+Victor Werngren
+Oliver Lincke 
+Jesper Krogh Kristiansen 
+Gaspar Stiglich
+Markus Noren
+InfiRandia
+Henry Fåhrelius
+Marcus Ingvarsson
+Johanna Österlind
+Martin Silve
+Ossian Borén aka catnipped
+Flamegirl & Snorkelitzor
+Robert Olsén
+Jacob Lind
+
+
+[font_size={32}]~~~ Special Thanks ~~~[/font_size]
+
+Tanel (Forestherd) Marran for being a great hype person
+Malmö Devhub Game Habitat - A great community and coworking space <3 
+The TF Malmö Discord 
+
+Lulu Flôres da Cunha for eternal support 
+
+
+
+
+
+
+Bye!
+","[center]Tack för att du spelat Drillbird!
+
+
+
+
+
+[font_size={32}]~~~ Drillbirds utvecklare ~~~[/font_size]
+
+[color=green]Sebastian Larsson[/color]
+Design, Kod, Grafik
+
+[color=green]Andrea Harty[/color]
+Grafik
+
+[color=green]Hampus Mellin [/color]
+Ljuddesign, Musik 
+
+[color=green]Isabelle Neuman[/color]
+Support för cutscenes
+
+[color=green]Luiza Flôres da Cunha[/color]
+Spelets logga, Ljudskådespel 
+
+[font_size={32}]~~~ Resources ~~~ [/font_size]
+
+[color=green]Mjukvara[/color]
+Godot - Spelmotor
+Asesprite - För att rita grafiken
+Github - Source Control
+
+[color=green]Typsnitt[/color]
+M5xy av Daniel Linssen: 
+https://managore.itch.io/m5x7 
+
+Pixelated Elegance av GGBotNet: 
+https://ggbot.itch.io/pixelated-elegance-font 
+
+QuinqueFive av GGBotNet 
+https://www.dafont.com/quinquefive.font 
+
+[color=green]En tutorial jag använde mig av för att sätta upp ljudsystemet:[/color]
+“How I do Sound Effects in Godot” by Aarimous 
+https://www.youtube.com/watch?v=Egf2jgET3nQ&t=242s 
+
+[font_size={32}]~~~ Speltestare ~~~ [/font_size]
+
+Luiza Flôres da Cunha
+Erik Flôres da Cunha
+Malin Larsson
+Johanna Larsson 
+Ture Hellqvist 
+Tekla Larsson 
+Billy Rosehag 
+Lukas Orsvärn 
+Johanna Österlind
+Tanel (Forestherd) Marran
+Markus Månsson
+Keira Lundberg Larsson
+Victor Werngren
+Oliver Lincke 
+Jesper Krogh Kristiansen 
+Gaspar Stiglich
+Markus Noren
+InfiRandia
+Henry Fåhrelius
+Marcus Ingvarsson
+Johanna Österlind
+Martin Silve
+Ossian Borén aka catnipped
+Flamegirl & Snorkelitzor
+Robert Olsén
+Jacob Lind
+
+
+[font_size={32}]~~~ Tack till ~~~[/font_size]
+
+Tanel (Forestherd) Marran för support och pepp
+Malmö Devhub Game Habitat - Ett fantastiskt coworking space 
+TF Malmö Discord 
+
+Lulu Flôres da Cunha 
+
+
+
+
+
+Hejdå!
+",
 credits_growth,Credits,Growth,Mognad,
-credits_evolve_popup,Credits,Press [interact] to evolve,Tryck på [interact] för att växa upp,
+credits_evolve_popup,Credits,(inventory) to evolve,(inventory) för att växa upp,
 credits_thanks_for_playing,Credits,"[center]Thank you for playing Drillbird! 
 
 If you enjoyed the game - 

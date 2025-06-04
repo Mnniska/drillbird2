@@ -9,7 +9,7 @@ enum states{inactive,info,seb,choice}
 var state:states=states.inactive
 signal textFinishedShowing()
 signal statsFinished(bool)
-
+@onready var text_header= $STATS/headr
 
 var textshown:int=0
 @export var typewritePause:float=0.04
@@ -25,6 +25,11 @@ func _ready() -> void:
 	SebsMessage.hide()
 	choiceMessage.hide()
 
+func TranslateMessages():
+	SebsMessage.text=tr("credits_thanks_for_playing")
+	choiceMessage.text=tr("credits_reset_save_data")
+	text_header.text=tr("credits_stats_header")
+
 func FadeFromWhite():
 	white.show()
 	var alpha=1
@@ -36,6 +41,7 @@ func FadeFromWhite():
 	white.hide()
 
 func DisplayStats():
+	
 	hidestuff()
 	state=states.info
 	statsMessage.text=ConstructStatsString()
@@ -50,6 +56,7 @@ func hidestuff():
 	choiceMessage.hide()
 
 func DisplaySebsMessage():
+	TranslateMessages()
 	hidestuff()
 	show()
 	FadeFromWhite()
@@ -129,23 +136,14 @@ func TypewriteText(label:RichTextLabel):
 	
 func ConstructStatsString()->String:
 	var text:String
-	text+=" Days taken to hatch:    " 
+	text+=tr("credits_stats_hatchtime")
 	text+="[color=orange]"+ str(GlobalVariables.currentDay)+"[/color]"+"[p] [/p]"
-	text+="Ores given:    "+str(GlobalVariables.oresFound)+" / "+str(GlobalVariables.totalOres)+"[p] [/p]"
+	text+=tr("credits_stats_ores")+str(GlobalVariables.oresFound)+" / "+str(GlobalVariables.totalOres)+"[p] [/p]"
 	
 	#print_debug("Player has found and given "+str(PlayerData.oresFound)+" / "+str(PlayerData.totalOres)+" ores")
 
 	
-	text+="[center][wave][rainbow]Continue"
-	
-	"Time taken: 2 h, 10 min, 5 secs and 44 ms
-
-Ores collected: 102/123
-
-
-[center][wave][rainbow]Continue"
-	
-	
+	text+="[center][wave][rainbow]"+tr("credits_stats_continue")
 	
 	
 	return text

@@ -2,7 +2,6 @@ extends Node2D
 signal signal_credits_finished
 
 @onready var text:RichTextLabel=$RichTextLabel
-@onready var creditsFile=FileAccess.open("res://Resources/credits.txt", FileAccess.READ)
 
 var textShowTimeDefault:float=0.02
 var textShowTime:float=textShowTimeDefault
@@ -23,11 +22,16 @@ var creditsDone:bool=false
 
 
 func _ready() -> void:
-	#text.text=creditsFile.get_as_text()
 	scrollSpeed=-14
 	text.position=creditsStartPos.position
 
+func TranslateCredits():
+	text.text=tr("credits_all_of_it_lol")
+
+
 func _physics_process(delta: float) -> void:
+	
+
 	
 	if !active:
 		return

@@ -11,6 +11,8 @@ class_name flying_credits_manager
 @onready var backgroundClouds:Sprite2D=$BG_clouds
 @onready var backgroundCloudsCloser:Sprite2D=$BG_clouds2
 
+@onready var text_growth=$energyMeter/text_growth
+
 @export var BaseSpeed:float=50
 
 @export var debugSkipCredits:bool=false
@@ -28,12 +30,23 @@ var isTransitioningToMainAgain:bool=false
 
 func _process(delta: float) -> void:
 
+	if Input.is_action_just_pressed("debug_1"):
+		if TranslationServer.get_locale() == "English":
+			TranslationServer.set_locale("Swedish")
+		else:
+			TranslationServer.set_locale("English")
+			
+
 	if musicVolume!=musicTargetVolume:
 		musicVolume= lerpf(musicVolume,musicTargetVolume,delta)
 		var vol=lerpf(musicMinVolume,musicMaxVolume,musicVolume)
 		music.volume_db=vol
 		
 func _ready() -> void:
+	#TODO:Remove
+	TranslationServer.set_locale("Swedish")
+	credits.TranslateCredits()
+	text_growth.text=tr("credits_growth")
 	HUD.SetState(HUD.menuStates.CREDITS)
 	music.finished.connect(music.play)
 	
