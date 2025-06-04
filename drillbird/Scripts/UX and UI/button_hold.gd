@@ -1,7 +1,15 @@
 extends Node2D
 class_name button_hold
 
+@export var textID_hold:String=""
+@export var textID_toDoX:String=""
+
 @export var holdTime:float=1.5
+@onready var text_hold=$HBoxContainer/text_hold
+@onready var text_toendday=$HBoxContainer/text_toEndDay
+@onready var icon=$HBoxContainer/iconHolder/icon
+@onready var icon_filler=$HBoxContainer/iconHolder/icon/active
+
 var holdCounter:float=0
 var buttonActive:bool=false
 var pressed:bool=false
@@ -18,10 +26,10 @@ signal buttonProgressChanged(progress:bool)
 
 func SetupIconDirection():
 	if dirToHold==directions.up:	
-		$icon.rotation=0
+		icon.rotation=0
 
 	if dirToHold==directions.down:
-		$icon.rotation_degrees=180
+		icon.rotation_degrees=180
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -30,6 +38,10 @@ func _ready() -> void:
 	
 
 func SetActive(_active:bool):
+	
+	text_hold.text=tr(textID_hold)
+	text_toendday.text=tr(textID_toDoX)
+	
 	buttonActive=_active
 	if buttonActive and GlobalVariables.displayPopups:
 		show()
@@ -57,7 +69,7 @@ func _process(delta: float) -> void:
 func SetHoldProgress(progress:float):
 	var min = 15
 	var pos=lerp(min,0,progress)
-	$icon/active.position.y=pos
+	icon_filler.position.y=pos
 
 func ProgressButtonHeld(buttonHeld:bool,delta:float):
 	if pressed!=buttonHeld:

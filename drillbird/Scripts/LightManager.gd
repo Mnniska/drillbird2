@@ -263,15 +263,15 @@ func LowOnLightWarning():
 	
 	if GlobalVariables.currentDay<3:
 		textbubble.Setup(abstract_textEffect.effectEnum.STILL,text_bubble.behaviourEnum.FADE,Color.DARK_ORANGE)
-		textbubble.ShowText("Low on fuel.. Go home and rest",2)
+		textbubble.ShowText(tr("popup_gohome0"),2)
 	else:
 		textbubble.Setup(abstract_textEffect.effectEnum.WAVE,text_bubble.behaviourEnum.FADE,Color.DARK_ORANGE)
 		var rand=randf()
-		var text="Low on fuel.."
+		var text=tr("popup_gohome1")
 		if rand>0.4:
-			text= "Almost dark.."
+			text= tr("popup_gohome2")
 		if rand >0.9:
-			text="she's coming.."
+			text=tr("popup_gohome3")
 		
 		textbubble.ShowText(text)
 	

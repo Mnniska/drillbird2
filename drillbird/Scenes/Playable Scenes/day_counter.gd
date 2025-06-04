@@ -3,7 +3,6 @@ extends RichTextLabel
 
 var txt_dayeffect_start:String="[shake rate=20.0 level=5 connected=1]"
 var txt_dayeffect_end:String="[/shake]"
-var txt_gameSaved:String="Game Saved! "
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -19,7 +18,7 @@ func _process(delta: float) -> void:
 
 func Activate(day:int):
 	
-	txt.text="[center]"+txt_gameSaved
+	txt.text="[center]"+tr("popup_gamesaved")
 	
 	txt.self_modulate=Color(1,1,1,1)
 
@@ -31,7 +30,7 @@ func Activate(day:int):
 	
 	await get_tree().create_timer(0.3).timeout
 	
-	txt.text="[center]"+txt_gameSaved+"[p][center][shake] Day: "+txtday
+	txt.text="[center]"+tr("popup_gamesaved")+"[p][center][shake]"+tr("popup_gamesaved_day")+txtday
 	txt.visible_characters=-1
 	await get_tree().create_timer(0.4).timeout
 

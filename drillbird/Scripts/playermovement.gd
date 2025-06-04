@@ -323,7 +323,7 @@ func RegularMovement(delta:float,currentAnim:String):
 		if heavy:
 			state=States.DROPPINGORES
 			
-			CreateInfoBubble("lightweight!")		
+			CreateInfoBubble(tr("popup_lightweight"))		
 			heavy=false
 			SoundManager.PlaySoundAtLocation(self.global_position,abstract_SoundEffectSetting.SoundEffectEnum.PLAYER_DROP_ORE)
 			
@@ -749,12 +749,12 @@ func _on_detector_body_entered(body: Node2D) -> void:
 					heavy=true 
 					
 					
-					CreateInfoBubble("Heavy")
+					CreateInfoBubble(tr("popup_heavy"))
 					SoundManager.PlaySoundAtLocation(global_position,abstract_SoundEffectSetting.SoundEffectEnum.PLAYER_BECOME_HEAVY)
 				
 			else:
 				
-				CreateInfoBubble("Inventory full!")
+				CreateInfoBubble(tr("popup_inventory_full"))
 
 	if collider.type==collider.types.FLOWER:
 		closeFlowers.append(body.GetParent())
