@@ -28,12 +28,7 @@ var fadeCounter:float=2
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	
-	if Input.is_action_just_pressed("debug_1"):
-		if TranslationServer.get_locale() == "English":
-			TranslationServer.set_locale("Swedish")
-		else:
-			TranslationServer.set_locale("English")
-	
+
 	if !active:
 		cooldown=0
 		return

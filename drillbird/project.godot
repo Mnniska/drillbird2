@@ -135,7 +135,7 @@ escape_light={
 
 [internationalization]
 
-locale/translations=PackedStringArray("res://Resources/Localization/Drillbird translation doc.English.translation", "res://Resources/Localization/Drillbird translation doc.Swedish.translation")
+locale/translations=PackedStringArray("res://Resources/Localization/Drillbird translation doc.en.translation", "res://Resources/Localization/Drillbird translation doc.sv.translation")
 
 [layer_names]
 

@@ -1,8 +1,15 @@
 extends Node
 class_name global_symbol_register
 
+enum languages{en,sv,ja,zh,ru}
+var currentLanguage:languages
+
 var usingGamepad:bool=true
 @export var symbols:Array[abstract_symbol_info]
+
+func _ready() -> void:
+	pass
+	
 
 func GetStringDecoded(_str:String):
 	var symbolName:String=""

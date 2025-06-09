@@ -6,10 +6,10 @@ uid="uid://cfed1ou0mr3yf"
 
 [deps]
 
-files=["res://Resources/Localization/Drillbird translation doc.Category.translation", "res://Resources/Localization/Drillbird translation doc.English.translation", "res://Resources/Localization/Drillbird translation doc.Swedish.translation", "res://Resources/Localization/Drillbird translation doc.Japanese.translation"]
+files=["res://Resources/Localization/Drillbird translation doc.Category.translation", "res://Resources/Localization/Drillbird translation doc.en.translation", "res://Resources/Localization/Drillbird translation doc.sv.translation", "res://Resources/Localization/Drillbird translation doc.ja.translation"]
 
 source_file="res://Resources/Localization/Drillbird translation doc.csv"
-dest_files=["res://Resources/Localization/Drillbird translation doc.Category.translation", "res://Resources/Localization/Drillbird translation doc.English.translation", "res://Resources/Localization/Drillbird translation doc.Swedish.translation", "res://Resources/Localization/Drillbird translation doc.Japanese.translation"]
+dest_files=["res://Resources/Localization/Drillbird translation doc.Category.translation", "res://Resources/Localization/Drillbird translation doc.en.translation", "res://Resources/Localization/Drillbird translation doc.sv.translation", "res://Resources/Localization/Drillbird translation doc.ja.translation"]
 
 [params]
 

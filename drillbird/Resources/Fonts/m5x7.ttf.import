@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/m5x7.ttf-01776d13770cb799e878b34bbd51bb83.fon
 [params]
 
 Rendering=null
-antialiasing=1
+antialiasing=0
 generate_mipmaps=false
 disable_embedded_bitmaps=true
 multichannel_signed_distance_field=false
@@ -25,10 +25,17 @@ hinting=1
 subpixel_positioning=1
 oversampling=0.0
 Fallbacks=null
-fallbacks=[]
+fallbacks=[Resource("res://Resources/Fonts/DotGothic16-Regular.ttf")]
 Compress=null
 compress=true
-preload=[]
+preload=[{
+"chars": [],
+"glyphs": [],
+"name": "New Configuration",
+"size": Vector2i(16, 0),
+"variation_embolden": 0.0,
+"variation_opentype": {}
+}]
 language_support={}
 script_support={}
 opentype_features={}

@@ -1,4 +1,4 @@
-String ID,Category,English,Swedish,Japanese
+String ID,Category,en,sv,ja
 Tutorial Strings,,,,
 tut_jump,Tutorial,Press (jump) to jump,Hoppa med (jump),
 tut_drill,Tutorial,Hold (drill) to drill,Borra med (drill),
@@ -31,8 +31,12 @@ menu_paused,menu_pause,Paused,Pausat,
 menu_day,menu_pause,Day ,Dag ,
 menu_instructions,menu_pause,[color=gray](jump) = jump [p](drill) = Drill blocks[p](inventory) = Drop ores,[color=gray](jump) = Hoppa [p](drill) = Borra block[p](inventory) = Släpp mineraler,
 ,,,,
-,,,,
-,,,,
+options_language,menu language options,Select Language,Välj Språk,
+lang_en,menu language options,English,English,English
+lang_ja,menu language options,日本語,日本語,日本語
+lang_zh,menu language options,中国人,中国人,中国人
+lang_ru,menu language options,Рыска,Рыска,Рыска
+lang_sv,menu language options,Svenska,Svenska,Svenska
 menu_dead_header,menu_dead,Birdy died!,Birdy dog!,
 menu_dead_ores_dropped,menu_dead,- All ores were dropped,- Alla mineraler har släppts på marken,
 menu_dead_respawn,menu_dead,- Birdy will respawn at Home next day,- Birdy kommer att vakna upp Hemma efter en dag,
@@ -180,7 +184,7 @@ Support för cutscenes
 [color=green]Luiza Flôres da Cunha[/color]
 Spelets logga, Ljudskådespel 
 
-[font_size={32}]~~~ Resources ~~~ [/font_size]
+[font_size={32}]~~~ Verktyg och resurser ~~~ [/font_size]
 
 [color=green]Mjukvara[/color]
 Godot - Spelmotor
@@ -263,9 +267,9 @@ Ta hand om dig
 /Seb 
 
 [wave][rainbow]Fortsätt[/rainbow][/wave]",
-credits_stats_header,Credits_stats,Final Stats,Slutresultat,
-credits_stats_hatchtime,Credits_stats,Days taken to hatch:,Antal dagar till kläckning:,
-credits_stats_ores,Credits_stats,Ores found:,Mineraler hittade:,
+credits_stats_header,Credits_stats,[center]Final Stats,[center]Slutresultat,
+credits_stats_hatchtime,Credits_stats,Days taken to hatch: ,Antal dagar till kläckning: ,
+credits_stats_ores,Credits_stats,Ores given to egg: ,Mineraler som getts till ägget: ,
 credits_stats_continue,Credits_stats,Continue,Fortsätt,
 credits_reset_save_data,Credits_stats,"[center]Would you like to reset your save data and begin anew, or return to right before you hatched the egg? [p][/p] [center]  [wave][rainbow]Begin Anew[/rainbow][/wave]     Go back in time","Vill du ta bort din sparfil och börja om ifrån början, eller gå tillbaka till precis innan ägget kläcktes? 
 [p][/p] [center]  [wave][rainbow]Börja om[/rainbow][/wave]     Gå tillbaka i tiden",

@@ -206,6 +206,29 @@ func ButtonPressed(_option:menu_option):
 	if _option.optionName=="Reset Save Data":
 		GlobalVariables.ResetSaveData()
 		HUD.QuitGame()
+		
+		
+	if _option.optionName=="lang_sv":
+		SetLanguage("sv")
+		pass
+	if _option.optionName=="lang_en":
+		SetLanguage("en")
+		pass
+	if _option.optionName=="lang_ru":
+		SetLanguage("ru")
+		pass
+	if _option.optionName=="lang_zh":
+		SetLanguage("zh")
+		pass
+	if _option.optionName=="lang_ja":
+		SetLanguage("ja")
+		pass
+
+func SetLanguage(lang:String):
+	TranslationServer.set_locale(lang)
+	UpdateMenu()
+
+	
 
 func SetFullscreenActive(active:bool):
 	isFullscreen=active

@@ -10,7 +10,7 @@
 
 [node name="Options" type="Node2D" node_paths=PackedStringArray("BaseMenu")]
 script = ExtResource("1_5gtrn")
-BaseMenu = [NodePath("Return2"), NodePath("ToggleFullscreen"), NodePath("Audio Options"), NodePath("Game Options")]
+BaseMenu = [NodePath("Return2"), NodePath("ToggleFullscreen"), NodePath("Audio Options"), NodePath("Game Options"), NodePath("Language options")]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.396078)
@@ -82,6 +82,43 @@ position = Vector2(0, 8)
 optionName = "Game Options"
 localizationID = "options_game"
 options = [NodePath("../Return2"), NodePath("../toggle ghost"), NodePath("../save data")]
+
+[node name="Language options" parent="." node_paths=PackedStringArray("options") instance=ExtResource("2_x5nw2")]
+position = Vector2(0, 26)
+optionName = "Language options"
+localizationID = "options_language"
+isAction = false
+options = [NodePath("../Return2"), NodePath("../Lang_english"), NodePath("../Lang_Japanese"), NodePath("../Lang_Chinese"), NodePath("../Lang_Russian"), NodePath("../Lang_Sve")]
+
+[node name="Lang_english" parent="." instance=ExtResource("2_x5nw2")]
+visible = false
+position = Vector2(0, -33)
+optionName = "lang_en"
+localizationID = "lang_en"
+
+[node name="Lang_Japanese" parent="." instance=ExtResource("2_x5nw2")]
+visible = false
+position = Vector2(0, -14)
+optionName = "lang_ja"
+localizationID = "lang_ja"
+
+[node name="Lang_Chinese" parent="." instance=ExtResource("2_x5nw2")]
+visible = false
+position = Vector2(0, 4)
+optionName = "lang_zh"
+localizationID = "lang_zh"
+
+[node name="Lang_Russian" parent="." instance=ExtResource("2_x5nw2")]
+visible = false
+position = Vector2(0, 22)
+optionName = "lang_ru"
+localizationID = "lang_ru"
+
+[node name="Lang_Sve" parent="." instance=ExtResource("2_x5nw2")]
+visible = false
+position = Vector2(0, 41)
+optionName = "lang_sv"
+localizationID = "lang_sv"
 
 [node name="toggle ghost" parent="." instance=ExtResource("2_x5nw2")]
 position = Vector2(0, -33)
