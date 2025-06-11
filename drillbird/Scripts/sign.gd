@@ -1,5 +1,7 @@
 extends Node2D
+@export var stringToShowID:String="default"
 
+@onready var text=$Sign/VBoxContainer/PanelContainer/MarginContainer/text_sign
 @onready var collider=$Area2D_show_sign
 @onready var sign = $Sign
 var playerInArea:bool=false
@@ -26,13 +28,18 @@ func _process(delta: float) -> void:
 
 func SetSignVisible(visible:bool):
 	
+	
+	
 	if visible==showing_sign:
 		return
 	else:
 		showing_sign=visible
 	
 	if showing_sign:
+
+		text.text=tr(stringToShowID)
 		sign.show()
+		
 	else:
 		sign.hide()
 	

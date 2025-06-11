@@ -20,6 +20,7 @@ axis_stretch_vertical = 1
 
 [node name="Sign" type="Node2D"]
 script = ExtResource("1_hyej3")
+stringToShowID = "demo_sign"
 
 [node name="visual" type="Sprite2D" parent="."]
 texture = ExtResource("2_25kti")
