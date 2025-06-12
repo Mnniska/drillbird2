@@ -373,7 +373,7 @@ theme_override_colors/font_selected_color = Color(1, 1, 1, 1)
 bbcode_enabled = true
 text = "[rainbow]Version 1.11[/rainbow][p]2025-03-07 "
 
-[node name="Label2" type="RichTextLabel" parent="MainMenu"]
+[node name="text_demo" type="RichTextLabel" parent="MainMenu"]
 layout_mode = 0
 offset_left = -62.0
 offset_top = -38.0
@@ -385,7 +385,7 @@ theme_override_colors/default_color = Color(1, 1, 1, 0.807843)
 theme_override_colors/font_selected_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
-text = "[center][wave][rainbow]Demo"
+text = "[center][rainbow]Demo"
 
 [node name="Options" parent="." instance=ExtResource("23_sv2nb")]
 visible = false

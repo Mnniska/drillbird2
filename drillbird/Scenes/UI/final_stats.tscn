@@ -8,8 +8,8 @@
 
 [node name="Final stats" type="Node2D"]
 script = ExtResource("1_bixtf")
-finalchoicetext_erase = "[center]Would you like to reset your save data and begin anew, or return to right before you hatched the egg? [p][/p] [center]  [wave][rainbow]Begin Anew[/rainbow][/wave]     Go back in time"
-finalchoicetext_goback = "[center]Would you like to reset your save data and begin anew, or return to right before you hatched the egg? [p][/p] [center] Begin Anew      [wave][rainbow]Go back in time[/rainbow][/wave]"
+finalchoicetext_erase = "credits_reset_save_data_erasedata"
+finalchoicetext_goback = "credits_reset_save_data_goback"
 
 [node name="bg" type="Sprite2D" parent="."]
 position = Vector2(144, 123)

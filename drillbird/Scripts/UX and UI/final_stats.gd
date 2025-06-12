@@ -27,7 +27,7 @@ func _ready() -> void:
 
 func TranslateMessages():
 	SebsMessage.text=tr("credits_thanks_for_playing")
-	choiceMessage.text=tr("credits_reset_save_data")
+	choiceMessage.text=tr(finalchoicetext_erase)
 	text_header.text=tr("credits_stats_header")
 
 func FadeFromWhite():
@@ -100,9 +100,9 @@ func _process(delta: float) -> void:
 func UpdateFinalChoiceText():
 	
 	if finalChoiceIsToErase:
-		choiceMessage.text=finalchoicetext_erase
+		choiceMessage.text=tr(finalchoicetext_erase)
 	else:
-		choiceMessage.text=finalchoicetext_goback
+		choiceMessage.text=tr(finalchoicetext_goback)
 	
 	pass
 
