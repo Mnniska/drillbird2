@@ -4,54 +4,51 @@ extends Node2D
 @onready var text=$Sign/VBoxContainer/PanelContainer/MarginContainer/text_sign
 @onready var collider=$Area2D_show_sign
 @onready var sign = $Sign
+@onready var animationplayer=$AnimationPlayer
 var playerInArea:bool=false
-var readingSignCounter:float=0
-var sign_activation_time=0.1
+
 
 var showing_sign:bool=false
+var busy:bool=false
+
+var signshowfloat:float=0
+var timeToAppear:float=1.5
+var signAnimshouldPlay:bool=false
+var sign_has_been_read:bool=false
+
+
+func _ready() -> void:
+	sign.modulate=Color(Color.WHITE,signshowfloat) 
 
 func _process(delta: float) -> void:
 	
 	#The reason for the timer is that the player switches active collider depending on if they're airborne or not - so the layer will flicker on/off. 
 	#By adding a short delay b4 sign shows, I ensure the collision registers without flickering
 	if playerInArea:
-		readingSignCounter=max(sign_activation_time,readingSignCounter+delta)
-	else:
-		readingSignCounter=min(0,readingSignCounter-delta) 
-	
-	if readingSignCounter>sign_activation_time:
-		SetSignVisible(true)
-	
-	if readingSignCounter<=0:
-		SetSignVisible(false)
+		signshowfloat=min(1,signshowfloat+delta)
 		
-
-func SetSignVisible(visible:bool):
-	
-	
-	
-	if visible==showing_sign:
-		return
-	else:
-		showing_sign=visible
-	
-	if showing_sign:
-
-		text.text=tr(stringToShowID)
-		sign.show()
+		if !signAnimshouldPlay:
+			animationplayer.play("appear")
+		signAnimshouldPlay=true
+		$exclamation_mark.hide()
 		
 	else:
-		sign.hide()
+		signshowfloat=max(0,signshowfloat-delta*2)
 	
+	if signshowfloat<=0:
+		signAnimshouldPlay=false
+	sign.modulate=Color(Color.WHITE,signshowfloat) 
+		
+
+
 
 func _on_area_2d_show_sign_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
-	SetSignVisible(true)
-	
+
 	playerInArea=true
 	pass # Replace with function body.
 
 
 func _on_area_2d_show_sign_body_shape_exited(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
-	SetSignVisible(false)
+
 	playerInArea=false
 	pass # Replace with function body.

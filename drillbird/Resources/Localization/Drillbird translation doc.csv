@@ -10,9 +10,9 @@ tut_flower,Tutorial,Drill any SOLID block for a while to plant a flower,Borra et
 tut_passed,Tutorial,nice ~,Snyggt ~,,,
 demo_sign,Demo,"[center]You've reached the border of Drillbirds demo!
 
-Please check out the [wave]full release [/wave]to experience the rest
+()Please check out the [wave]full release [/wave]to experience the rest
 
-You can continue exploring the upper parts for as long as you like. ",,,,
+()You can continue exploring the upper parts for as long as you like. ",,,,
 Menu Strings,,,,,,
 menu_continue,menu,Continue,Fortsätt,,,
 menu_new_game,menu,New Game,Nytt Spel,,,

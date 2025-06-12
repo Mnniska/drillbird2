@@ -1,22 +1,150 @@
-[gd_scene load_steps=8 format=3 uid="uid://dsyfi85u2qe66"]
+[gd_scene load_steps=21 format=3 uid="uid://dsyfi85u2qe66"]
 
 [ext_resource type="Script" path="res://Scripts/sign.gd" id="1_hyej3"]
 [ext_resource type="Texture2D" uid="uid://7uvlw4nyd357" path="res://Art/environment/UniqueAssets/sign.png" id="2_25kti"]
 [ext_resource type="Texture2D" uid="uid://crworbxeyan2m" path="res://Art/UI/sign_bg_arrowt.png" id="3_s7mla"]
 [ext_resource type="Texture2D" uid="uid://dg3rahv61itpg" path="res://Art/UI/sign_bg.png" id="4_1s8aq"]
 [ext_resource type="Theme" uid="uid://bfr5y4lo7m1ux" path="res://Resources/Fonts/fontTheme.tres" id="4_81g5a"]
+[ext_resource type="Texture2D" uid="uid://ca5dxikvy2caa" path="res://Art/UI/exclamation_mark/UI_exclamationMarkJump1.png" id="6_82jmn"]
+[ext_resource type="Texture2D" uid="uid://b2ok1e3v0vlfb" path="res://Art/UI/exclamation_mark/UI_exclamationMarkJump2.png" id="7_5d5ae"]
+[ext_resource type="Texture2D" uid="uid://sewp01vdeb38" path="res://Art/UI/exclamation_mark/UI_exclamationMarkJump3.png" id="8_3tffc"]
+[ext_resource type="Texture2D" uid="uid://byoud2hq05thk" path="res://Art/UI/exclamation_mark/UI_exclamationMarkJump4.png" id="9_8lr7w"]
+[ext_resource type="Texture2D" uid="uid://bh6hcnkykw2ne" path="res://Art/UI/exclamation_mark/UI_exclamationMarkJump5.png" id="10_mp08e"]
+[ext_resource type="Texture2D" uid="uid://cbqmtga1g4suy" path="res://Art/UI/exclamation_mark/UI_exclamationMarkJump6.png" id="11_28aep"]
+[ext_resource type="Texture2D" uid="uid://drf77cbswftej" path="res://Art/UI/exclamation_mark/UI_exclamationMarkJump7.png" id="12_7s3d2"]
+[ext_resource type="Texture2D" uid="uid://bpm2yafw1ch5s" path="res://Art/UI/exclamation_mark/UI_exclamationMarkJump8.png" id="13_cuoga"]
+[ext_resource type="Texture2D" uid="uid://bgdfucm7lskne" path="res://Art/UI/exclamation_mark/UI_exclamationMarkJump9.png" id="14_b5nwf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_min60"]
-size = Vector2(62, 47)
+size = Vector2(62, 35)
+
+[sub_resource type="Animation" id="Animation_s6c2n"]
+resource_name = "appear"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sign:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 10), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sign:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.366667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.2, 0.2), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sign/VBoxContainer:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.366667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-126, -156), Vector2(-126, -166)]
+}
+
+[sub_resource type="Animation" id="Animation_dijkh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sign:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sign:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sign/VBoxContainer:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-126, -166)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ywsl1"]
+_data = {
+"RESET": SubResource("Animation_dijkh"),
+"appear": SubResource("Animation_s6c2n")
+}
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tfibh"]
 texture = ExtResource("4_1s8aq")
-texture_margin_left = 4.0
-texture_margin_top = 4.0
-texture_margin_right = 4.0
-texture_margin_bottom = 4.0
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y338r"]
+animations = [{
+"frames": [{
+"duration": 6.0,
+"texture": ExtResource("6_82jmn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_5d5ae")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_3tffc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_8lr7w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_mp08e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_28aep")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_7s3d2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_cuoga")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_b5nwf")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 12.0
+}]
 
 [node name="Sign" type="Node2D"]
 script = ExtResource("1_hyej3")
@@ -30,20 +158,25 @@ collision_layer = 16
 collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_show_sign"]
-position = Vector2(0, -13.5)
+z_index = -5
+position = Vector2(0, -7.5)
 shape = SubResource("RectangleShape2D_min60")
 
 [node name="sign_visuals" type="Sprite2D" parent="."]
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ywsl1")
+}
+
 [node name="Sign" type="Node2D" parent="."]
-visible = false
 
 [node name="TextureRect" type="TextureRect" parent="Sign"]
 z_index = -2
 offset_left = -21.0
-offset_top = -28.0
+offset_top = -25.0
 offset_right = 21.0
-offset_bottom = -10.0
+offset_bottom = -9.0
 texture = ExtResource("3_s7mla")
 stretch_mode = 5
 
@@ -54,12 +187,13 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -126.0
-offset_top = -150.0
+offset_top = -166.0
 offset_right = 127.0
 offset_bottom = -25.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_vertical = 8
+alignment = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="Sign/VBoxContainer"]
 clip_contents = true
@@ -80,6 +214,8 @@ custom_minimum_size = Vector2(220, 0)
 layout_mode = 2
 size_flags_vertical = 8
 theme = ExtResource("4_81g5a")
+theme_override_colors/default_color = Color(0.882353, 0.827451, 0.54902, 1)
+theme_override_colors/font_shadow_color = Color(0.210792, 0.130631, 0.0710954, 1)
 bbcode_enabled = true
 text = "[center]You've reached the border of Drillbirds demo!
 
@@ -88,6 +224,13 @@ Please check out the [wave]full release [/wave]to experience the rest
 You can continue exploring the upper parts for as long as you like. 
 "
 fit_content = true
+
+[node name="exclamation_mark" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -15)
+sprite_frames = SubResource("SpriteFrames_y338r")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.919773
 
 [connection signal="body_shape_entered" from="Area2D_show_sign" to="." method="_on_area_2d_show_sign_body_shape_entered"]
 [connection signal="body_shape_exited" from="Area2D_show_sign" to="." method="_on_area_2d_show_sign_body_shape_exited"]
