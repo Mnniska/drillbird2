@@ -230,7 +230,7 @@ position = Vector2(0, -15)
 sprite_frames = SubResource("SpriteFrames_y338r")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.919773
+frame_progress = 0.0700485
 
 [connection signal="body_shape_entered" from="Area2D_show_sign" to="." method="_on_area_2d_show_sign_body_shape_entered"]
 [connection signal="body_shape_exited" from="Area2D_show_sign" to="." method="_on_area_2d_show_sign_body_shape_exited"]

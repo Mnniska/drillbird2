@@ -347,10 +347,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -46.5
-offset_top = -20.0
-offset_right = 46.5
-offset_bottom = 20.0
+offset_left = -46.0
+offset_top = -2.0
+offset_right = 47.0
+offset_bottom = 69.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("15_nxi4s")
@@ -361,6 +361,7 @@ Options"
 scroll_active = false
 
 [node name="Label" type="RichTextLabel" parent="MainMenu"]
+visible = false
 layout_mode = 0
 offset_left = -155.0
 offset_top = 70.0
@@ -371,6 +372,20 @@ theme_override_colors/default_color = Color(1, 1, 1, 0.807843)
 theme_override_colors/font_selected_color = Color(1, 1, 1, 1)
 bbcode_enabled = true
 text = "[rainbow]Version 1.11[/rainbow][p]2025-03-07 "
+
+[node name="Label2" type="RichTextLabel" parent="MainMenu"]
+layout_mode = 0
+offset_left = -62.0
+offset_top = -38.0
+offset_right = 69.0
+offset_bottom = -6.0
+rotation = 0.0402469
+theme = ExtResource("15_nxi4s")
+theme_override_colors/default_color = Color(1, 1, 1, 0.807843)
+theme_override_colors/font_selected_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[center][wave][rainbow]Demo"
 
 [node name="Options" parent="." instance=ExtResource("23_sv2nb")]
 visible = false
