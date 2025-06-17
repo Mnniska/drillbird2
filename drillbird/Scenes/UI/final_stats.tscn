@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/UX and UI/final_stats.gd" id="1_bixtf"]
 [ext_resource type="Theme" uid="uid://bfr5y4lo7m1ux" path="res://Resources/Fonts/fontTheme.tres" id="1_ogkgr"]
 [ext_resource type="Texture2D" uid="uid://bi6q51sklyetd" path="res://Art/environment/SpaceBackground/background_space_allLayers.png" id="2_7c53m"]
-[ext_resource type="Texture2D" uid="uid://cbb3vuv26jji3" path="res://Art/UI/MainMenu/DrillBird_LOGO_WIDE.png" id="3_fdk1x"]
+[ext_resource type="Texture2D" uid="uid://bpa8olbvx4ufv" path="res://Art/UI/MainMenu/DrillBird_LOGO.png" id="3_86pvv"]
 [ext_resource type="Texture2D" uid="uid://cdgrv0eh6htfa" path="res://Art/cutscenes/intro/intro_landscape11.png" id="5_0q7ff"]
 
 [node name="Final stats" type="Node2D"]
@@ -18,14 +18,14 @@ texture = ExtResource("2_7c53m")
 [node name="STATS" type="Node2D" parent="."]
 
 [node name="logo" type="Sprite2D" parent="STATS"]
-position = Vector2(163, 47.25)
+position = Vector2(161, 38)
 scale = Vector2(0.17246, 0.17246)
-texture = ExtResource("3_fdk1x")
+texture = ExtResource("3_86pvv")
 
 [node name="headr" type="RichTextLabel" parent="STATS"]
-offset_top = 48.25
+offset_top = 65.0
 offset_right = 320.0
-offset_bottom = 88.25
+offset_bottom = 105.0
 theme = ExtResource("1_ogkgr")
 theme_override_colors/default_color = Color(0.933333, 0.901961, 0.831373, 1)
 theme_override_font_sizes/normal_font_size = 32
@@ -34,9 +34,9 @@ text = "[center]Final Stats"
 
 [node name="stats" type="RichTextLabel" parent="STATS"]
 offset_left = 32.0
-offset_top = 89.0
+offset_top = 104.0
 offset_right = 286.0
-offset_bottom = 223.0
+offset_bottom = 238.0
 theme = ExtResource("1_ogkgr")
 theme_override_colors/default_color = Color(0.933333, 0.901961, 0.831373, 1)
 bbcode_enabled = true
