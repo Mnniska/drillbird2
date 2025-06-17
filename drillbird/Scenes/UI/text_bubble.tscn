@@ -1,8 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cyshcvv6qcxud"]
+[gd_scene load_steps=6 format=3 uid="uid://cyshcvv6qcxud"]
 
 [ext_resource type="Script" path="res://TextBubbleScript.gd" id="1_tcyi6"]
 [ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_textEffect.gd" id="2_o3jiy"]
-[ext_resource type="FontFile" uid="uid://uexmj2mb3qjg" path="res://Resources/Fonts/Pixelated Elegance.ttf" id="2_xqbb0"]
+[ext_resource type="Theme" uid="uid://bfr5y4lo7m1ux" path="res://Resources/Fonts/fontTheme.tres" id="3_o1tup"]
 
 [sub_resource type="Resource" id="Resource_82kfo"]
 script = ExtResource("2_o3jiy")
@@ -16,10 +16,6 @@ type = 1
 beginEffect = ""
 endEffect = ""
 
-[sub_resource type="Theme" id="Theme_exdyw"]
-default_font = ExtResource("2_xqbb0")
-default_font_size = 9
-
 [node name="TextBubble" type="Node2D"]
 z_index = 2
 script = ExtResource("1_tcyi6")
@@ -29,10 +25,10 @@ textToShow = ""
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 z_index = 2
 clip_contents = false
-offset_left = -45.0
-offset_right = 48.0
-offset_bottom = 38.0
-theme = SubResource("Theme_exdyw")
+offset_left = -77.0
+offset_right = 77.0
+offset_bottom = 96.0
+theme = ExtResource("3_o1tup")
 bbcode_enabled = true
 fit_content = true
 scroll_active = false

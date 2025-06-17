@@ -7,6 +7,10 @@ var currentLanguage:languages
 var usingGamepad:bool=true
 @export var symbols:Array[abstract_symbol_info]
 
+var keyboard_effect_begin="[wave][color=orange][font_size=32]"
+var keyboard_effect_end="[/font_size][/color][/wave]"
+
+
 func _ready() -> void:
 	pass
 	
@@ -31,9 +35,17 @@ func GetSymbolFromString(_str:String)->String:
 	for symbol in symbols:
 		if symbol.code==_str:
 			if usingGamepad:
-				return symbol.img_path_gamepad
+				return "[img]"+symbol.img_path_gamepad+"[/img]"
 			else:
-				return symbol.img_path_keyboard
+				var key_name =""
+				#assigning your input action from Project Settings Input Map
+				var prompt_action = symbol.img_path_keyboard
+				if InputMap.has_action(prompt_action):
+					# will depend on how many keys assigned to action
+					var key_action = InputMap.action_get_events(prompt_action)[0]
+					var key_string = OS.get_keycode_string(key_action.physical_keycode)
+					key_name = str(key_string)
+					return keyboard_effect_begin+key_name+keyboard_effect_end
 	
 	push_error("Could not find a matching symbol! "+str(_str)+" was asked for but I dunno what that is?")
 	return ""
