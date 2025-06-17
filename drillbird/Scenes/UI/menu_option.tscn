@@ -13,9 +13,10 @@ path_checkbox_on = "res://Art/UI/MainMenu/checkbox_on.png"
 path_checkbox_off = "res://Art/UI/MainMenu/checkbox_off.png"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-offset_left = -63.0
+clip_contents = false
+offset_left = -132.0
 offset_top = -8.0
-offset_right = 69.0
+offset_right = 132.0
 offset_bottom = 32.0
 theme = ExtResource("2_a12fx")
 bbcode_enabled = true

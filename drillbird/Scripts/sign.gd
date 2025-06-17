@@ -43,7 +43,7 @@ func _process(delta: float) -> void:
 
 
 func _on_area_2d_show_sign_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
-
+	text.text=tr("demo_sign")
 	playerInArea=true
 	pass # Replace with function body.
 

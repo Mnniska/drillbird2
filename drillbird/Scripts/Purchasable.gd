@@ -86,6 +86,7 @@ func isButton():
 	return false
 	
 func SetSelected(selected:bool):
+	UpdateTranslation()
 	var canAfford:bool=false
 	if purchasable.items.size()>GetCurrentUpgrade()+1:
 		canAfford = purchasable.items[GetCurrentUpgrade()+1].cost<=GlobalVariables.playerMoney
@@ -131,8 +132,7 @@ func UpdateStats():
 			pass
 	
 	icon.animation=animToPlay
-	Header.text=tr(purchasable.itemNameID)
-	Description.text=tr(purchasable.itemDescriptionID)
+
 	var playerLevel=GetCurrentUpgrade()
 	if purchasable.items.size()>playerLevel+1:
 		cost.text=str( purchasable.items[ playerLevel+1].cost)
@@ -140,10 +140,16 @@ func UpdateStats():
 		cost.text="Max"
 	UpdateKnobs()
 
+func UpdateTranslation():
+	Header.text=tr(purchasable.itemNameID)
+	Description.text=tr(purchasable.itemDescriptionID)
+	pass
+
 func Setup(_purchasable:abstract_purchasable):
 	purchasable=_purchasable
 	SetupKnobs()
 	UpdateStats()
+	UpdateTranslation()
 
 
 

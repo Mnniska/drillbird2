@@ -92,7 +92,7 @@ func _process(delta: float) -> void:
 
 func SetActive(_active:bool):
 	
-	text_header.text="[center]"+tr("menu_paused")
+	text_header.text="[center][font_size={32}]"+tr("menu_paused")+"[/font_size][p]"+"[center]"+tr("menu_day")+str(GlobalVariables.currentDay)
 	text_instructions.text=tr("menu_instructions")
 	
 	menuActive=_active
@@ -103,7 +103,7 @@ func SetActive(_active:bool):
 		isHoldingEscape=true
 		hasClickedQuitOnce=false
 		quitInfoText.hide()
-		daycounter.text="[center]"+tr("menu_day")+str(GlobalVariables.currentDay)
+		daycounter.text=""
 		
 	else:
 		hide()
