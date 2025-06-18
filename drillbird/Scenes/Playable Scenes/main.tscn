@@ -1,4 +1,4 @@
-[gd_scene load_steps=170 format=4 uid="uid://d2wv7igie5stg"]
+[gd_scene load_steps=168 format=4 uid="uid://d2wv7igie5stg"]
 
 [ext_resource type="TileSet" uid="uid://grpd2pyu7pgk" path="res://Resources/MainTileset.tres" id="1_1imtu"]
 [ext_resource type="Script" path="res://Scenes/Playable Scenes/SaveManager.gd" id="1_iickb"]
@@ -44,7 +44,6 @@
 [ext_resource type="Texture2D" uid="uid://boulllpt4vy8" path="res://Art/UI/Shop/UI_Shop_button_on_canAfford.png" id="34_jlsrn"]
 [ext_resource type="Texture2D" uid="uid://de2ouaamnu8d0" path="res://Art/UI/Shop/UI_Shop_button_off_unavailable.png" id="34_nmxkn"]
 [ext_resource type="Script" path="res://Scripts/Light.gd" id="35_54gud"]
-[ext_resource type="FontFile" uid="uid://cicu24cmxgshq" path="res://Resources/Fonts/Quinquefive-ALoRM.ttf" id="35_m1x1i"]
 [ext_resource type="Texture2D" uid="uid://ct20o1j7iuiva" path="res://Resources/LightTexture.tres" id="36_yw5ht"]
 [ext_resource type="Texture2D" uid="uid://bi6q51sklyetd" path="res://Art/environment/SpaceBackground/background_space_allLayers.png" id="37_6eo6t"]
 [ext_resource type="PackedScene" uid="uid://ckl0ibm5pfs7u" path="res://Scenes/Home.tscn" id="38_pj4ey"]
@@ -182,10 +181,6 @@ emission_box_extents = Vector3(120, 20, 1)
 gravity = Vector3(0, 0, 0)
 anim_speed_min = 1.0
 anim_speed_max = 1.0
-
-[sub_resource type="Theme" id="Theme_046mq"]
-default_font = ExtResource("35_m1x1i")
-default_font_size = 5
 
 [sub_resource type="Gradient" id="Gradient_8jrys"]
 offsets = PackedFloat32Array(0)
@@ -693,18 +688,18 @@ texture_selected = ExtResource("34_jlsrn")
 texture_inactive = ExtResource("34_nmxkn")
 
 [node name="buttonFrame" type="Sprite2D" parent="Camera2D/ShopHandler/Button_Continue"]
-position = Vector2(-3.99998, 0)
-scale = Vector2(1.14894, 1)
+position = Vector2(-3.99998, -2)
+scale = Vector2(1.14894, 1.21053)
 texture = ExtResource("34_nmxkn")
 centered = false
 
-[node name="text_continue" type="Label" parent="Camera2D/ShopHandler/Button_Continue"]
+[node name="text" type="Label" parent="Camera2D/ShopHandler/Button_Continue"]
 offset_left = 1.0
 offset_top = 1.0
 offset_right = 46.0
-offset_bottom = 19.0
-theme = SubResource("Theme_046mq")
-text = "awaken"
+offset_bottom = 17.0
+theme = ExtResource("42_e8s0s")
+text = "AWAKEN"
 horizontal_alignment = 1
 vertical_alignment = 1
 

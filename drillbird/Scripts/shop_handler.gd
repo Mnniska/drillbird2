@@ -8,7 +8,7 @@ signal ShopClosed
 @export var UI_purchasables:Array[Node2D]
 
 @export var abstract_purchasables:Array[abstract_purchasable]
-@onready var text_continue=$Button_Continue/text_continue
+@onready var text_continue=$Button_Continue/text
 var shopActive:bool=false
 #playerstats 
 var currentSelection:int=0
@@ -23,11 +23,11 @@ func InitializationComplete():
 	SetupShop()
 
 func PlayerMoneyChanged():
-	moneyUI.text=str(GlobalVariables.playerMoney)+" xp"
+	moneyUI.text=str(GlobalVariables.playerMoney)+" "+tr("HUD_experience")
 	pass
 func SetupShop():
 	var index:int=0
-	moneyUI.text=str(GlobalVariables.playerMoney)+" xp"
+	moneyUI.text=str(GlobalVariables.playerMoney)+" "+tr("HUD_experience")
 	for n in UI_purchasables:
 		if index!=UI_purchasables.size()-1: #The last item is not setup since it's a simple btn
 			n.Setup(abstract_purchasables[index])

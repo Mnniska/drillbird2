@@ -23,38 +23,14 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sign:position")
+tracks/0/path = NodePath("Sign:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sign:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
 "values": [Vector2(1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sign/VBoxContainer:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-126, -166)]
 }
 
 [sub_resource type="Animation" id="Animation_s6c2n"]
@@ -62,38 +38,14 @@ resource_name = "appear"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sign:position")
+tracks/0/path = NodePath("Sign:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.666667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 10), Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sign:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.366667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(0.2, 0.2), Vector2(1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sign/VBoxContainer:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.366667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-126, -156), Vector2(-126, -166)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ywsl1"]
@@ -186,9 +138,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -126.0
-offset_top = -166.0
-offset_right = 127.0
+offset_left = -149.0
+offset_top = -259.0
+offset_right = 150.0
 offset_bottom = -25.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -210,14 +162,17 @@ theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
 [node name="text_sign" type="RichTextLabel" parent="Sign/VBoxContainer/PanelContainer/MarginContainer"]
-custom_minimum_size = Vector2(220, 0)
+custom_minimum_size = Vector2(260, 0)
 layout_mode = 2
 size_flags_vertical = 8
 theme = ExtResource("4_81g5a")
 theme_override_colors/default_color = Color(0.882353, 0.827451, 0.54902, 1)
 theme_override_colors/font_shadow_color = Color(0.210792, 0.130631, 0.0710954, 1)
 bbcode_enabled = true
-text = "[center]You've reached the border of Drillbirds demo!
+text = "elease [/wave]to experience the rest
+
+You can continue exploring the upper parts for as long as you like. 
+[center]You've reached the border of Drillbirds demo!
 
 Please check out the [wave]full release [/wave]to experience the rest
 

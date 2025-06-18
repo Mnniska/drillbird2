@@ -13,19 +13,19 @@ dest_files=["res://.godot/imported/m5x7.ttf-01776d13770cb799e878b34bbd51bb83.fon
 [params]
 
 Rendering=null
-antialiasing=1
+antialiasing=0
 generate_mipmaps=false
-disable_embedded_bitmaps=true
-multichannel_signed_distance_field=true
+disable_embedded_bitmaps=false
+multichannel_signed_distance_field=false
 msdf_pixel_range=8
 msdf_size=48
-allow_system_fallback=true
+allow_system_fallback=false
 force_autohinter=false
 hinting=1
-subpixel_positioning=1
+subpixel_positioning=0
 oversampling=0.0
 Fallbacks=null
-fallbacks=[Resource("res://Resources/Fonts/VonwaonBitmap-16px.ttf"), Resource("res://Resources/Fonts/unifont-16.0.04.otf")]
+fallbacks=[Resource("res://Resources/Fonts/unifont-16.0.04.otf")]
 Compress=null
 compress=false
 preload=[{

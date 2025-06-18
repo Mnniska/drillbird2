@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://c7fmkurwcl737"]
+
+[ext_resource type="FontFile" uid="uid://cfqp6n0vaubbe" path="res://Resources/Fonts/x12y16pxMaruMonica.ttf" id="1_ln5h5"]
+
+[resource]
+default_font = ExtResource("1_ln5h5")
+default_font_size = 16
