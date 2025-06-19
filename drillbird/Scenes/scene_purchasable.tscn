@@ -1,8 +1,6 @@
-[gd_scene load_steps=35 format=3 uid="uid://3d04qrtunccs"]
+[gd_scene load_steps=34 format=3 uid="uid://3d04qrtunccs"]
 
 [ext_resource type="Script" path="res://Scripts/Purchasable.gd" id="1_gej8r"]
-[ext_resource type="Texture2D" uid="uid://boy08vwlonxv5" path="res://Art/UI/Shop/UI_Shop_select_on.png" id="2_cxk1t"]
-[ext_resource type="Texture2D" uid="uid://bjvkj4tdobv14" path="res://Art/UI/Shop/UI_Shop_select_off.png" id="3_265ke"]
 [ext_resource type="Texture2D" uid="uid://d20lbc17xts0c" path="res://Art/UI/Shop/UI_Shop_IconHolder_off.png" id="4_2yrwy"]
 [ext_resource type="Texture2D" uid="uid://1rmh550r7gjp" path="res://Art/UI/Shop/UI_Shop_IconHolder_on.png" id="5_wytr4"]
 [ext_resource type="Texture2D" uid="uid://bueyua1ex8gq0" path="res://Art/UI/Shop/UI_Shop_button_on_cannotAfford.png" id="6_k7iay"]
@@ -10,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://de2ouaamnu8d0" path="res://Art/UI/Shop/UI_Shop_button_off_unavailable.png" id="8_sik50"]
 [ext_resource type="Texture2D" uid="uid://bhl0wrpfdjcmt" path="res://Art/UI/Shop/UI_Shop_button_off_canAfford.png" id="9_iepxl"]
 [ext_resource type="Theme" uid="uid://bfr5y4lo7m1ux" path="res://Resources/Fonts/fontTheme.tres" id="11_hei2b"]
+[ext_resource type="StyleBox" uid="uid://b1cgag3b3iq7x" path="res://Art/UI/Shop/theme_stylebox_shop_inactive.tres" id="12_0hvb2"]
 [ext_resource type="Texture2D" uid="uid://5j8n4l5xcmt2" path="res://Art/UI/Shop/UI_Shop_knob_on.png" id="12_ebvh8"]
 [ext_resource type="Texture2D" uid="uid://cn08jw5dxd4y2" path="res://Art/UI/Shop/shopicon_drill1.png" id="12_ipm14"]
 [ext_resource type="Texture2D" uid="uid://dk4nbwbyqwktv" path="res://Art/UI/Shop/UI_Shop_knob_off.png" id="13_4jry6"]
@@ -152,12 +151,13 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Purchasable1" type="Node2D"]
+[node name="Purchasable1" type="PanelContainer"]
 z_index = 2
-position = Vector2(0, -44)
+offset_top = -44.0
+offset_right = 400.0
+offset_bottom = -12.0
+theme_override_styles/panel = ExtResource("12_0hvb2")
 script = ExtResource("1_gej8r")
-tex_bg_on = ExtResource("2_cxk1t")
-tex_bg_off = ExtResource("3_265ke")
 tex_icon_off = ExtResource("4_2yrwy")
 tex_icon_on = ExtResource("5_wytr4")
 tex_btn_selected_expensive = ExtResource("6_k7iay")
@@ -167,47 +167,9 @@ tex_btn_inactive_affordable = ExtResource("9_iepxl")
 tex_knob_active = ExtResource("12_ebvh8")
 tex_knob_inactive = ExtResource("13_4jry6")
 
-[node name="Background" type="Sprite2D" parent="."]
-z_index = 2
-position = Vector2(0.500004, 0)
-scale = Vector2(1.25391, 1)
-texture = ExtResource("3_265ke")
-
-[node name="IconContainer" type="Sprite2D" parent="."]
-z_index = 2
-position = Vector2(-139, 0)
-texture = ExtResource("4_2yrwy")
-
-[node name="icon" type="AnimatedSprite2D" parent="IconContainer"]
-sprite_frames = SubResource("SpriteFrames_fph6y")
-animation = &"health_active"
-frame_progress = 0.899939
-
-[node name="StatHeader" type="Label" parent="."]
-z_index = 2
-offset_left = -125.0
-offset_top = -13.0
-offset_right = -47.0
-theme = ExtResource("11_hei2b")
-theme_override_colors/font_color = Color(0.184314, 0, 0, 1)
-text = "Header"
-autowrap_mode = 2
-metadata/_edit_use_anchors_ = true
-
-[node name="StatExplanation" type="Label" parent="."]
-z_index = 2
-offset_left = -125.0
-offset_top = -3.0
-offset_right = 40.0
-offset_bottom = 20.0
-theme = ExtResource("11_hei2b")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Upgrade description"
-metadata/_edit_use_anchors_ = true
-
 [node name="PurchaseButton" type="Sprite2D" parent="."]
 z_index = 2
-position = Vector2(122, 1)
+position = Vector2(282, 17)
 texture = ExtResource("8_sik50")
 
 [node name="Cost" type="Label" parent="PurchaseButton"]
@@ -222,6 +184,58 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="KnobStartPos" type="Node2D" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+z_index = 3
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="spacing_begin" type="Control" parent="HBoxContainer"]
+custom_minimum_size = Vector2(8.28, 0)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/margin_top = 7
+
+[node name="icon_bg" type="TextureRect" parent="HBoxContainer/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("4_2yrwy")
+stretch_mode = 4
+
+[node name="icon" type="AnimatedSprite2D" parent="HBoxContainer/MarginContainer/icon_bg"]
+position = Vector2(9, 9)
+sprite_frames = SubResource("SpriteFrames_fph6y")
+animation = &"health_active"
+frame_progress = 0.899939
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="StatHeader" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
 z_index = 2
-position = Vector2(-66, -5)
+layout_mode = 2
+theme = ExtResource("11_hei2b")
+theme_override_colors/font_color = Color(0.184314, 0, 0, 1)
+text = "存货"
+metadata/_edit_use_anchors_ = true
+
+[node name="knob_start_pos" type="Control" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="text_description" type="RichTextLabel" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+theme = ExtResource("11_hei2b")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+text = "让你钻孔更长时间让"
+fit_content = true

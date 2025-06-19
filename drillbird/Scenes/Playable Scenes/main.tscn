@@ -1,4 +1,4 @@
-[gd_scene load_steps=168 format=4 uid="uid://d2wv7igie5stg"]
+[gd_scene load_steps=169 format=4 uid="uid://d2wv7igie5stg"]
 
 [ext_resource type="TileSet" uid="uid://grpd2pyu7pgk" path="res://Resources/MainTileset.tres" id="1_1imtu"]
 [ext_resource type="Script" path="res://Scenes/Playable Scenes/SaveManager.gd" id="1_iickb"]
@@ -49,6 +49,7 @@
 [ext_resource type="PackedScene" uid="uid://ckl0ibm5pfs7u" path="res://Scenes/Home.tscn" id="38_pj4ey"]
 [ext_resource type="Texture2D" uid="uid://ck6onelfbqg5y" path="res://Art/UI/Shop/spritesheet_sparkle_A.png" id="42_86qik"]
 [ext_resource type="Theme" uid="uid://bfr5y4lo7m1ux" path="res://Resources/Fonts/fontTheme.tres" id="42_e8s0s"]
+[ext_resource type="Script" path="res://Scripts/UX and UI/script_shop_continue_button_rerouter.gd" id="44_ipqpk"]
 [ext_resource type="Script" path="res://Scenes/Playable Scenes/DebugMenu.gd" id="47_igpia"]
 [ext_resource type="PackedScene" uid="uid://splm2us27kop" path="res://Scenes/Objects and Enemies/Object_Ore.tscn" id="48_0rfc7"]
 [ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_debugMenuOption.gd" id="48_cl8sw"]
@@ -648,10 +649,9 @@ range_item_cull_mask = 7
 texture = SubResource("GradientTexture2D_ywsei")
 
 [node name="ShopHandler" type="Node2D" parent="Camera2D" node_paths=PackedStringArray("UI_purchasables")]
-visible = false
 scale = Vector2(2, 2)
 script = ExtResource("26_mk1t6")
-UI_purchasables = [NodePath("Purchasable1"), NodePath("Purchasable2"), NodePath("Purchasable3"), NodePath("Purchasable4"), NodePath("Button_Continue")]
+UI_purchasables = [NodePath("VBoxContainer/Purchasable1"), NodePath("VBoxContainer/Purchasable2"), NodePath("VBoxContainer/Purchasable3"), NodePath("VBoxContainer/Purchasable4"), NodePath("VBoxContainer/Control")]
 abstract_purchasables = Array[ExtResource("27_hx1y5")]([ExtResource("28_iowjc"), ExtResource("29_cp1r6"), ExtResource("30_yx4wb"), ExtResource("31_4ia3e"), ExtResource("30_4yogw")])
 
 [node name="ShopBackground" type="Sprite2D" parent="Camera2D/ShopHandler"]
@@ -669,31 +669,45 @@ process_material = SubResource("ParticleProcessMaterial_faea6")
 texture = ExtResource("42_86qik")
 lifetime = 0.6
 
-[node name="Purchasable1" parent="Camera2D/ShopHandler" instance=ExtResource("33_svcml")]
-position = Vector2(0, -58)
+[node name="VBoxContainer" type="VBoxContainer" parent="Camera2D/ShopHandler"]
+offset_left = -160.0
+offset_top = -76.0
+offset_right = 160.0
+offset_bottom = 128.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
 
-[node name="Purchasable2" parent="Camera2D/ShopHandler" instance=ExtResource("33_svcml")]
-position = Vector2(0, -28)
+[node name="Purchasable1" parent="Camera2D/ShopHandler/VBoxContainer" instance=ExtResource("33_svcml")]
+layout_mode = 2
 
-[node name="Purchasable3" parent="Camera2D/ShopHandler" instance=ExtResource("33_svcml")]
-position = Vector2(0, 2)
+[node name="Purchasable2" parent="Camera2D/ShopHandler/VBoxContainer" instance=ExtResource("33_svcml")]
+layout_mode = 2
 
-[node name="Purchasable4" parent="Camera2D/ShopHandler" instance=ExtResource("33_svcml")]
-position = Vector2(0, 32)
+[node name="Purchasable3" parent="Camera2D/ShopHandler/VBoxContainer" instance=ExtResource("33_svcml")]
+layout_mode = 2
 
-[node name="Button_Continue" type="Node2D" parent="Camera2D/ShopHandler"]
-position = Vector2(99, 51)
+[node name="Purchasable4" parent="Camera2D/ShopHandler/VBoxContainer" instance=ExtResource("33_svcml")]
+layout_mode = 2
+
+[node name="Control" type="PanelContainer" parent="Camera2D/ShopHandler/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+script = ExtResource("44_ipqpk")
+
+[node name="Button_Continue" type="Node2D" parent="Camera2D/ShopHandler/VBoxContainer/Control"]
+position = Vector2(257, -1)
 script = ExtResource("33_a1jua")
 texture_selected = ExtResource("34_jlsrn")
 texture_inactive = ExtResource("34_nmxkn")
 
-[node name="buttonFrame" type="Sprite2D" parent="Camera2D/ShopHandler/Button_Continue"]
+[node name="buttonFrame" type="Sprite2D" parent="Camera2D/ShopHandler/VBoxContainer/Control/Button_Continue"]
 position = Vector2(-3.99998, -2)
-scale = Vector2(1.14894, 1.21053)
+scale = Vector2(1.23404, 1.21053)
 texture = ExtResource("34_nmxkn")
 centered = false
 
-[node name="text" type="Label" parent="Camera2D/ShopHandler/Button_Continue"]
+[node name="text" type="Label" parent="Camera2D/ShopHandler/VBoxContainer/Control/Button_Continue"]
 offset_left = 1.0
 offset_top = 1.0
 offset_right = 46.0
@@ -1774,7 +1788,7 @@ texture_mode = 1
 round_precision = 1
 
 [node name="Sign" parent="." instance=ExtResource("76_uqphw")]
-position = Vector2(520, 1144)
+position = Vector2(521, 1144)
 
 [connection signal="MaterialChanged" from="TileCrack" to="Player" method="_on_tile_crack_material_changed"]
 [connection signal="newTileCrack" from="Player" to="TileCrack" method="_on_player_new_tile_crack"]

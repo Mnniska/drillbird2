@@ -1,7 +1,7 @@
-extends Node2D
+extends Control
 
-@export var tex_bg_on:Texture2D
-@export var tex_bg_off:Texture2D
+@export var background_theme_on:Theme
+@export var background_theme_off:Theme
 @export var tex_icon_off:Texture2D
 @export var tex_icon_on:Texture2D
 @export var tex_btn_selected_expensive:Texture2D
@@ -12,13 +12,14 @@ extends Node2D
 var purchasable:abstract_purchasable
 
 #onready prep:
-@onready var background=$Background
-@onready var iconContainer=$IconContainer
-@onready var icon:AnimatedSprite2D=$IconContainer/icon
-@onready var Header=$StatHeader
-@onready var Description=$StatExplanation
+@onready var background:PanelContainer=$"."
+@onready var iconContainer:TextureRect=$HBoxContainer/MarginContainer/icon_bg
+@onready var icon:AnimatedSprite2D=$HBoxContainer/MarginContainer/icon_bg/icon
+@onready var Header:Label=$HBoxContainer/VBoxContainer/HBoxContainer/StatHeader
+@onready var Description:RichTextLabel=$HBoxContainer/VBoxContainer/text_description
 @onready var purchaseBtn= $PurchaseButton
-@onready var cost=$PurchaseButton/Cost
+@onready var cost = $PurchaseButton/Cost
+@onready var KnobPosition=$HBoxContainer/VBoxContainer/HBoxContainer/knob_start_pos
 
 #upgrade knobs 
 #@onready var KnobStartPos=$KnobStartPos
@@ -57,7 +58,7 @@ func SetupKnobs():
 	for n in purchasable.items.size()-1:
 		var sprite = Sprite2D.new()
 		sprite.z_index=2
-		$KnobStartPos.add_child(sprite) 
+		KnobPosition.add_child(sprite) 
 		knobArray.append(sprite)
 	pass
 
@@ -93,7 +94,8 @@ func SetSelected(selected:bool):
 		pass
 	
 	if selected:
-		background.texture=tex_bg_on
+		#background.theme=
+		background.theme=background_theme_on
 		iconContainer.texture=tex_icon_on
 		icon.play()
 		
@@ -104,7 +106,7 @@ func SetSelected(selected:bool):
 			pass
 		
 	else:
-		background.texture=tex_bg_off
+		background.theme=background_theme_off
 		iconContainer.texture=tex_icon_off
 		icon.stop()
 		

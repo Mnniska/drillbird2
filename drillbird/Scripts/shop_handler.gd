@@ -5,10 +5,10 @@ signal ShopClosed
 @onready var moneyUI=HUD.HUD_cashText
 
 #add continue button to UI_Purchasables
-@export var UI_purchasables:Array[Node2D]
+@export var UI_purchasables:Array[PanelContainer]
 
 @export var abstract_purchasables:Array[abstract_purchasable]
-@onready var text_continue=$Button_Continue/text
+@onready var text_continue=$VBoxContainer/Control/Button_Continue/text
 var shopActive:bool=false
 #playerstats 
 var currentSelection:int=0

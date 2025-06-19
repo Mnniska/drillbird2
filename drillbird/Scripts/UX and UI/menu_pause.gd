@@ -6,14 +6,13 @@ var menuActive:bool=false
 var selectedOption:int=0
 var oldSelection:int=0
 var isHoldingEscape:bool=false
-@onready var instructions_text=$instructions
 var hasClickedQuitOnce:bool=false
 @onready var quitInfoText=$QuitConfirmation
 
 @onready var daycounter:RichTextLabel=$DayCounter
 
 @onready var text_header = $Header
-@onready var text_instructions=$instructions
+@onready var text_instructions=$VBoxContainer/instructions
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -120,6 +119,6 @@ func UpdateMenu():
 	
 func UpdateTutorialInstructions():
 	var decodedText = GlobalSymbolRegister.GetStringDecoded(tr("menu_instructions"))
-	instructions_text.text=decodedText
+	text_instructions.text=decodedText
 	
 	

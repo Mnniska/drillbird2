@@ -1,4 +1,6 @@
 extends Node2D
+class_name button_script
+
 var selected:bool=false
 @export var texture_selected:Texture
 @export var texture_inactive:Texture
