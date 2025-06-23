@@ -106,7 +106,7 @@ func SetSelected(selected:bool):
 		add_theme_stylebox_override("panel", styleBox)
 		
 
-		Description.fit_content=true
+
 		
 		iconContainer.texture=tex_icon_on
 		icon.play()
@@ -122,7 +122,7 @@ func SetSelected(selected:bool):
 		styleBox.set("texture", tex_bg_off)
 		add_theme_stylebox_override("panel", styleBox)
 		iconContainer.texture=tex_icon_off
-		Description.fit_content=true
+	
 		
 		icon.stop()
 		

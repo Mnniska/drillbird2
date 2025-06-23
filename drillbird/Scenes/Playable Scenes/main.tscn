@@ -39,7 +39,6 @@
 [ext_resource type="Texture2D" uid="uid://fsljdsvdyr3v" path="res://Art/UI/Shop/UI_Shop_DreamBackground.png" id="30_okg02"]
 [ext_resource type="Resource" uid="uid://dd3l8ir1bmcm5" path="res://Resources/Economy/purchasable_health.tres" id="30_yx4wb"]
 [ext_resource type="Resource" uid="uid://deqhaf8e1onhf" path="res://Resources/Economy/purchasable_drill.tres" id="31_4ia3e"]
-[ext_resource type="Script" path="res://Scenes/Playable Scenes/ButtonScript.gd" id="33_a1jua"]
 [ext_resource type="PackedScene" uid="uid://3d04qrtunccs" path="res://Scenes/scene_purchasable.tscn" id="33_svcml"]
 [ext_resource type="Texture2D" uid="uid://boulllpt4vy8" path="res://Art/UI/Shop/UI_Shop_button_on_canAfford.png" id="34_jlsrn"]
 [ext_resource type="Texture2D" uid="uid://de2ouaamnu8d0" path="res://Art/UI/Shop/UI_Shop_button_off_unavailable.png" id="34_nmxkn"]
@@ -182,6 +181,13 @@ emission_box_extents = Vector3(120, 20, 1)
 gravity = Vector3(0, 0, 0)
 anim_speed_min = 1.0
 anim_speed_max = 1.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wxo57"]
+texture = ExtResource("34_nmxkn")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
 
 [sub_resource type="Gradient" id="Gradient_8jrys"]
 offsets = PackedFloat32Array(0)
@@ -652,7 +658,7 @@ texture = SubResource("GradientTexture2D_ywsei")
 visible = false
 scale = Vector2(2, 2)
 script = ExtResource("26_mk1t6")
-UI_purchasables = [NodePath("VBoxContainer/Purchasable1"), NodePath("VBoxContainer/Purchasable2"), NodePath("VBoxContainer/Purchasable3"), NodePath("VBoxContainer/Purchasable4"), NodePath("VBoxContainer/Control")]
+UI_purchasables = [NodePath("VBoxContainer/Purchasable1"), NodePath("VBoxContainer/Purchasable2"), NodePath("VBoxContainer/Purchasable3"), NodePath("VBoxContainer/Purchasable4"), NodePath("VBoxContainer/Button_continue")]
 abstract_purchasables = Array[ExtResource("27_hx1y5")]([ExtResource("28_iowjc"), ExtResource("29_cp1r6"), ExtResource("30_yx4wb"), ExtResource("31_4ia3e"), ExtResource("30_4yogw")])
 
 [node name="ShopBackground" type="Sprite2D" parent="Camera2D/ShopHandler"]
@@ -672,9 +678,9 @@ lifetime = 0.6
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Camera2D/ShopHandler"]
 offset_left = -160.0
-offset_top = -83.0
+offset_top = -76.0
 offset_right = 160.0
-offset_bottom = 145.0
+offset_bottom = 152.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 
@@ -690,31 +696,40 @@ layout_mode = 2
 [node name="Purchasable4" parent="Camera2D/ShopHandler/VBoxContainer" instance=ExtResource("33_svcml")]
 layout_mode = 2
 
-[node name="Control" type="PanelContainer" parent="Camera2D/ShopHandler/VBoxContainer"]
+[node name="Button_continue" type="PanelContainer" parent="Camera2D/ShopHandler/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 script = ExtResource("44_ipqpk")
+tex_bg_off = ExtResource("34_nmxkn")
+tex_bg_active = ExtResource("34_jlsrn")
 
-[node name="Button_Continue" type="Node2D" parent="Camera2D/ShopHandler/VBoxContainer/Control"]
-position = Vector2(257, -1)
-script = ExtResource("33_a1jua")
-texture_selected = ExtResource("34_jlsrn")
-texture_inactive = ExtResource("34_nmxkn")
+[node name="placement_node" type="Node2D" parent="Camera2D/ShopHandler/VBoxContainer/Button_continue"]
+position = Vector2(261, 10)
 
-[node name="buttonFrame" type="Sprite2D" parent="Camera2D/ShopHandler/VBoxContainer/Control/Button_Continue"]
-position = Vector2(-3.99998, -2)
-scale = Vector2(1.23404, 1.21053)
-texture = ExtResource("34_nmxkn")
-centered = false
+[node name="BoxContainer" type="BoxContainer" parent="Camera2D/ShopHandler/VBoxContainer/Button_continue/placement_node"]
+offset_left = -63.0
+offset_top = -11.0
+offset_right = 45.0
+offset_bottom = 13.0
+alignment = 1
 
-[node name="text" type="Label" parent="Camera2D/ShopHandler/VBoxContainer/Control/Button_Continue"]
-offset_left = 1.0
-offset_top = -1.0
-offset_right = 41.0
-offset_bottom = 15.0
+[node name="PanelContainer" type="PanelContainer" parent="Camera2D/ShopHandler/VBoxContainer/Button_continue/placement_node/BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 6
+theme_override_styles/panel = SubResource("StyleBoxTexture_wxo57")
+
+[node name="MarginContainer" type="MarginContainer" parent="Camera2D/ShopHandler/VBoxContainer/Button_continue/placement_node/BoxContainer/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_right = 2
+
+[node name="text" type="Label" parent="Camera2D/ShopHandler/VBoxContainer/Button_continue/placement_node/BoxContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
 theme = ExtResource("42_e8s0s")
-text = "AWAKEN"
+text = "Awaken"
 horizontal_alignment = 1
 vertical_alignment = 1
 

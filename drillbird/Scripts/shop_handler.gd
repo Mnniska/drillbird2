@@ -8,7 +8,7 @@ signal ShopClosed
 @export var UI_purchasables:Array[PanelContainer]
 
 @export var abstract_purchasables:Array[abstract_purchasable]
-@onready var text_continue=$VBoxContainer/Control/Button_Continue/text
+@onready var text_continue=$VBoxContainer/Button_continue/placement_node/BoxContainer/PanelContainer/MarginContainer/text
 var shopActive:bool=false
 #playerstats 
 var currentSelection:int=0

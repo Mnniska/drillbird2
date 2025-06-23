@@ -1,13 +1,26 @@
 extends PanelContainer
 
-@onready var continueButton:button_script = $Button_Continue
+@onready var background=$placement_node/BoxContainer/PanelContainer
+
+@export var tex_bg_off:Texture
+@export var tex_bg_active:Texture
+
+
+
 
 func IsButton():
-	return continueButton.isButton()
+	return true
 
 func SetSelected(selected:bool): 
-	continueButton.SetSelected(selected)
-
+	
+	var tex=tex_bg_off
+	if selected:
+		tex=tex_bg_active
+	
+	var styleBox: StyleBoxTexture = background.get_theme_stylebox("panel").duplicate()
+	styleBox.set("texture", tex)
+	background.add_theme_stylebox_override("panel", styleBox)
+	
 func isButton():
 	return true
 
