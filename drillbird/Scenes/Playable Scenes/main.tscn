@@ -649,6 +649,7 @@ range_item_cull_mask = 7
 texture = SubResource("GradientTexture2D_ywsei")
 
 [node name="ShopHandler" type="Node2D" parent="Camera2D" node_paths=PackedStringArray("UI_purchasables")]
+visible = false
 scale = Vector2(2, 2)
 script = ExtResource("26_mk1t6")
 UI_purchasables = [NodePath("VBoxContainer/Purchasable1"), NodePath("VBoxContainer/Purchasable2"), NodePath("VBoxContainer/Purchasable3"), NodePath("VBoxContainer/Purchasable4"), NodePath("VBoxContainer/Control")]
@@ -671,9 +672,9 @@ lifetime = 0.6
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Camera2D/ShopHandler"]
 offset_left = -160.0
-offset_top = -76.0
+offset_top = -83.0
 offset_right = 160.0
-offset_bottom = 128.0
+offset_bottom = 145.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 
@@ -709,9 +710,9 @@ centered = false
 
 [node name="text" type="Label" parent="Camera2D/ShopHandler/VBoxContainer/Control/Button_Continue"]
 offset_left = 1.0
-offset_top = 1.0
-offset_right = 46.0
-offset_bottom = 17.0
+offset_top = -1.0
+offset_right = 41.0
+offset_bottom = 15.0
 theme = ExtResource("42_e8s0s")
 text = "AWAKEN"
 horizontal_alignment = 1

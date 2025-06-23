@@ -5,3 +5,4 @@
 [resource]
 default_font = ExtResource("1_ln5h5")
 default_font_size = 16
+VBoxContainer/constants/separation = -1

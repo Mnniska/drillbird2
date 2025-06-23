@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bvlpbiblgm4kr"]
+
+[ext_resource type="StyleBox" uid="uid://b1cgag3b3iq7x" path="res://Art/UI/Shop/theme_stylebox_shop_inactive.tres" id="1_41nil"]
+
+[resource]
+Panel/styles/panel = ExtResource("1_41nil")

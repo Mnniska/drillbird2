@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://woyu5th1dweb" path="res://Art/UI/HUD/UI_LightBar_light2.png" id="5_5ophj"]
 [ext_resource type="Texture2D" uid="uid://c2fj0vknmdoys" path="res://Art/UI/Shop/money_symbol.png" id="6_3yotd"]
 [ext_resource type="Texture2D" uid="uid://druhh76xwxih5" path="res://Art/UI/HUD/HUD_icon_inventory.png" id="6_cgigq"]
-[ext_resource type="FontFile" uid="uid://bvh0dsp2kmrr0" path="res://Resources/Fonts/m5x7.ttf" id="7_pre4c"]
+[ext_resource type="FontFile" uid="uid://c8n7dxyc0uu3i" path="res://Resources/Fonts/m5x7.ttf" id="7_pre4c"]
 [ext_resource type="Script" path="res://Scripts/HealthUIHandler.gd" id="9_uhcmx"]
 [ext_resource type="Resource" uid="uid://dd3l8ir1bmcm5" path="res://Resources/Economy/purchasable_health.tres" id="10_3kqti"]
 [ext_resource type="Script" path="res://Scripts/inventory_handler.gd" id="11_qie2v"]

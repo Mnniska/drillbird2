@@ -2,6 +2,10 @@ extends Control
 
 @export var background_theme_on:Theme
 @export var background_theme_off:Theme
+@export var tex_bg_off:Texture
+@export var tex_bg_on:Texture
+
+
 @export var tex_icon_off:Texture2D
 @export var tex_icon_on:Texture2D
 @export var tex_btn_selected_expensive:Texture2D
@@ -15,11 +19,12 @@ var purchasable:abstract_purchasable
 @onready var background:PanelContainer=$"."
 @onready var iconContainer:TextureRect=$HBoxContainer/MarginContainer/icon_bg
 @onready var icon:AnimatedSprite2D=$HBoxContainer/MarginContainer/icon_bg/icon
-@onready var Header:Label=$HBoxContainer/VBoxContainer/HBoxContainer/StatHeader
-@onready var Description:RichTextLabel=$HBoxContainer/VBoxContainer/text_description
+@onready var Header:Label=%StatHeader
+@onready var Description:RichTextLabel=%text_description
 @onready var purchaseBtn= $PurchaseButton
 @onready var cost = $PurchaseButton/Cost
-@onready var KnobPosition=$HBoxContainer/VBoxContainer/HBoxContainer/knob_start_pos
+@onready var KnobPosition=%knob_start_pos_mover
+@onready var KnobSpawnOrigin=%knob_start_setter
 
 #upgrade knobs 
 #@onready var KnobStartPos=$KnobStartPos
@@ -58,7 +63,7 @@ func SetupKnobs():
 	for n in purchasable.items.size()-1:
 		var sprite = Sprite2D.new()
 		sprite.z_index=2
-		KnobPosition.add_child(sprite) 
+		KnobSpawnOrigin.add_child(sprite) 
 		knobArray.append(sprite)
 	pass
 
@@ -95,7 +100,14 @@ func SetSelected(selected:bool):
 	
 	if selected:
 		#background.theme=
-		background.theme=background_theme_on
+
+		var styleBox: StyleBoxTexture = get_theme_stylebox("panel").duplicate()
+		styleBox.set("texture", tex_bg_on)
+		add_theme_stylebox_override("panel", styleBox)
+		
+
+		Description.fit_content=true
+		
 		iconContainer.texture=tex_icon_on
 		icon.play()
 		
@@ -106,8 +118,12 @@ func SetSelected(selected:bool):
 			pass
 		
 	else:
-		background.theme=background_theme_off
+		var styleBox: StyleBoxTexture = get_theme_stylebox("panel").duplicate()
+		styleBox.set("texture", tex_bg_off)
+		add_theme_stylebox_override("panel", styleBox)
 		iconContainer.texture=tex_icon_off
+		Description.fit_content=true
+		
 		icon.stop()
 		
 		if canAfford:

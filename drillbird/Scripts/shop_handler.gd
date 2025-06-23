@@ -1,5 +1,5 @@
 extends Node2D
-
+class_name script_shop
 #handling the shop
 signal ShopClosed
 @onready var moneyUI=HUD.HUD_cashText

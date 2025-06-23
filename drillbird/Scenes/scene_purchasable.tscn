@@ -1,14 +1,18 @@
-[gd_scene load_steps=34 format=3 uid="uid://3d04qrtunccs"]
+[gd_scene load_steps=38 format=3 uid="uid://3d04qrtunccs"]
 
+[ext_resource type="Theme" uid="uid://bvlpbiblgm4kr" path="res://Art/UI/Shop/themes/theme_shop_inactive.tres" id="1_3a5gg"]
 [ext_resource type="Script" path="res://Scripts/Purchasable.gd" id="1_gej8r"]
+[ext_resource type="StyleBox" uid="uid://b1cgag3b3iq7x" path="res://Art/UI/Shop/theme_stylebox_shop_inactive.tres" id="2_gk6ia"]
 [ext_resource type="Texture2D" uid="uid://d20lbc17xts0c" path="res://Art/UI/Shop/UI_Shop_IconHolder_off.png" id="4_2yrwy"]
+[ext_resource type="Theme" uid="uid://11oiho5yvyjc" path="res://Art/UI/Shop/themes/theme_shop_active.tres" id="4_b405a"]
+[ext_resource type="Texture2D" uid="uid://bjvkj4tdobv14" path="res://Art/UI/Shop/UI_Shop_select_off.png" id="4_vqj2w"]
+[ext_resource type="Texture2D" uid="uid://boy08vwlonxv5" path="res://Art/UI/Shop/UI_Shop_select_on.png" id="5_7bvxb"]
 [ext_resource type="Texture2D" uid="uid://1rmh550r7gjp" path="res://Art/UI/Shop/UI_Shop_IconHolder_on.png" id="5_wytr4"]
 [ext_resource type="Texture2D" uid="uid://bueyua1ex8gq0" path="res://Art/UI/Shop/UI_Shop_button_on_cannotAfford.png" id="6_k7iay"]
 [ext_resource type="Texture2D" uid="uid://boulllpt4vy8" path="res://Art/UI/Shop/UI_Shop_button_on_canAfford.png" id="7_0oi30"]
 [ext_resource type="Texture2D" uid="uid://de2ouaamnu8d0" path="res://Art/UI/Shop/UI_Shop_button_off_unavailable.png" id="8_sik50"]
 [ext_resource type="Texture2D" uid="uid://bhl0wrpfdjcmt" path="res://Art/UI/Shop/UI_Shop_button_off_canAfford.png" id="9_iepxl"]
 [ext_resource type="Theme" uid="uid://bfr5y4lo7m1ux" path="res://Resources/Fonts/fontTheme.tres" id="11_hei2b"]
-[ext_resource type="StyleBox" uid="uid://b1cgag3b3iq7x" path="res://Art/UI/Shop/theme_stylebox_shop_inactive.tres" id="12_0hvb2"]
 [ext_resource type="Texture2D" uid="uid://5j8n4l5xcmt2" path="res://Art/UI/Shop/UI_Shop_knob_on.png" id="12_ebvh8"]
 [ext_resource type="Texture2D" uid="uid://cn08jw5dxd4y2" path="res://Art/UI/Shop/shopicon_drill1.png" id="12_ipm14"]
 [ext_resource type="Texture2D" uid="uid://dk4nbwbyqwktv" path="res://Art/UI/Shop/UI_Shop_knob_off.png" id="13_4jry6"]
@@ -156,8 +160,13 @@ z_index = 2
 offset_top = -44.0
 offset_right = 400.0
 offset_bottom = -12.0
-theme_override_styles/panel = ExtResource("12_0hvb2")
+theme = ExtResource("4_b405a")
+theme_override_styles/panel = ExtResource("2_gk6ia")
 script = ExtResource("1_gej8r")
+background_theme_on = ExtResource("4_b405a")
+background_theme_off = ExtResource("1_3a5gg")
+tex_bg_off = ExtResource("4_vqj2w")
+tex_bg_on = ExtResource("5_7bvxb")
 tex_icon_off = ExtResource("4_2yrwy")
 tex_icon_on = ExtResource("5_wytr4")
 tex_btn_selected_expensive = ExtResource("6_k7iay")
@@ -211,15 +220,21 @@ sprite_frames = SubResource("SpriteFrames_fph6y")
 animation = &"health_active"
 frame_progress = 0.899939
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+[node name="Margin" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_bottom = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Margin"]
 layout_mode = 2
 size_flags_vertical = 0
-theme_override_constants/separation = 0
+theme = ExtResource("11_hei2b")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/Margin/VBoxContainer"]
 layout_mode = 2
 
-[node name="StatHeader" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="StatHeader" type="Label" parent="HBoxContainer/Margin/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
 z_index = 2
 layout_mode = 2
 theme = ExtResource("11_hei2b")
@@ -227,15 +242,43 @@ theme_override_colors/font_color = Color(0.184314, 0, 0, 1)
 text = "存货"
 metadata/_edit_use_anchors_ = true
 
-[node name="knob_start_pos" type="Control" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="knob_start_pos_mover" type="Control" parent="HBoxContainer/Margin/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="text_description" type="RichTextLabel" parent="HBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(220, 0)
+[node name="knob_start_setter" type="Control" parent="HBoxContainer/Margin/VBoxContainer/HBoxContainer/knob_start_pos_mover"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(1, 1)
 layout_mode = 2
+anchors_preset = 0
+offset_left = 1.0
+offset_top = 7.0
+offset_right = 17.0
+offset_bottom = 23.0
+size_flags_horizontal = 4
+
+[node name="text_description" type="RichTextLabel" parent="HBoxContainer/Margin/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(222, 18)
+layout_mode = 2
+size_flags_vertical = 0
 theme = ExtResource("11_hei2b")
 theme_override_colors/default_color = Color(0, 0, 0, 1)
-text = "让你钻孔更长时间让"
-fit_content = true
+theme_override_constants/table_h_separation = 8
+theme_override_constants/line_separation = -4
+text = "Дольше бурите до наступления темнотыДольше бурите "
+scroll_active = false
+autowrap_mode = 2
+
+[node name="to be continued" type="Label" parent="HBoxContainer/Margin/VBoxContainer/text_description"]
+visible = false
+layout_mode = 2
+offset_left = 216.0
+offset_top = 3.0
+offset_right = 224.0
+offset_bottom = 19.0
+theme = ExtResource("11_hei2b")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "..."
