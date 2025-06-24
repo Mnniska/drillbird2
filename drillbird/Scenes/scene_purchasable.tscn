@@ -178,7 +178,7 @@ tex_knob_inactive = ExtResource("13_4jry6")
 
 [node name="PurchaseButton" type="Sprite2D" parent="."]
 z_index = 2
-position = Vector2(282, 17)
+position = Vector2(282, 15)
 texture = ExtResource("8_sik50")
 
 [node name="Cost" type="Label" parent="PurchaseButton"]
@@ -207,7 +207,7 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
-theme_override_constants/margin_top = 7
+theme_override_constants/margin_top = 5
 
 [node name="icon_bg" type="TextureRect" parent="HBoxContainer/MarginContainer"]
 layout_mode = 2
@@ -239,7 +239,7 @@ z_index = 2
 layout_mode = 2
 theme = ExtResource("11_hei2b")
 theme_override_colors/font_color = Color(0.184314, 0, 0, 1)
-text = "存货"
+text = "I am a header"
 metadata/_edit_use_anchors_ = true
 
 [node name="knob_start_pos_mover" type="Control" parent="HBoxContainer/Margin/VBoxContainer/HBoxContainer"]
@@ -254,9 +254,9 @@ custom_minimum_size = Vector2(1, 1)
 layout_mode = 2
 anchors_preset = 0
 offset_left = 1.0
-offset_top = 7.0
+offset_top = 9.0
 offset_right = 17.0
-offset_bottom = 23.0
+offset_bottom = 25.0
 size_flags_horizontal = 4
 
 [node name="text_description" type="RichTextLabel" parent="HBoxContainer/Margin/VBoxContainer"]
@@ -268,18 +268,7 @@ theme = ExtResource("11_hei2b")
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_constants/table_h_separation = 8
 theme_override_constants/line_separation = -4
-text = "Дольше бурите до наступления темнотыДольше бурите "
+text = "I am a description"
 fit_content = true
 scroll_active = false
 autowrap_mode = 2
-
-[node name="to be continued" type="Label" parent="HBoxContainer/Margin/VBoxContainer/text_description"]
-visible = false
-layout_mode = 2
-offset_left = 216.0
-offset_top = 3.0
-offset_right = 224.0
-offset_bottom = 19.0
-theme = ExtResource("11_hei2b")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "..."
