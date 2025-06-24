@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://bxacqh1cbwxw5"]
+[gd_scene load_steps=38 format=3 uid="uid://bxacqh1cbwxw5"]
 
 [ext_resource type="Script" path="res://Scripts/UX and UI/GlobalHUDManager.gd" id="1_u1olj"]
 [ext_resource type="Texture2D" uid="uid://cp6xuvmo0rguj" path="res://Art/UI/HUD/UI_BlackBorder.png" id="1_vcacc"]
@@ -11,15 +11,14 @@
 [ext_resource type="Texture2D" uid="uid://c2fj0vknmdoys" path="res://Art/UI/Shop/money_symbol.png" id="6_3yotd"]
 [ext_resource type="Texture2D" uid="uid://druhh76xwxih5" path="res://Art/UI/HUD/HUD_icon_inventory.png" id="6_cgigq"]
 [ext_resource type="FontFile" uid="uid://c8n7dxyc0uu3i" path="res://Resources/Fonts/m5x7.ttf" id="7_pre4c"]
+[ext_resource type="FontFile" uid="uid://co7jpnljheg23" path="res://Resources/Fonts/testing tinier cyrillic font/Equipe 9p.ttf" id="8_bp3jv"]
 [ext_resource type="Script" path="res://Scripts/HealthUIHandler.gd" id="9_uhcmx"]
 [ext_resource type="Resource" uid="uid://dd3l8ir1bmcm5" path="res://Resources/Economy/purchasable_health.tres" id="10_3kqti"]
 [ext_resource type="Script" path="res://Scripts/inventory_handler.gd" id="11_qie2v"]
 [ext_resource type="Resource" uid="uid://b26ws3o4u42p3" path="res://Resources/Economy/purchasable_inventory.tres" id="12_mfl1u"]
-[ext_resource type="Script" path="res://Scenes/Playable Scenes/ui_death.gd" id="13_1fwbs"]
-[ext_resource type="Texture2D" uid="uid://bntebnpau35mm" path="res://Art/UI/UI_Death_background.png" id="14_0gadq"]
 [ext_resource type="Texture2D" uid="uid://b8wmuf0rlke0l" path="res://Art/UI/HUD/bg_xp_holder.png" id="14_a35vt"]
 [ext_resource type="Theme" uid="uid://bfr5y4lo7m1ux" path="res://Resources/Fonts/fontTheme.tres" id="15_nxi4s"]
-[ext_resource type="PackedScene" uid="uid://v1t8rfk5hqfa" path="res://Scenes/UI/button.tscn" id="16_281dp"]
+[ext_resource type="PackedScene" uid="uid://ccfkycw4won1m" path="res://Scenes/UI/scene_ui_death.tscn" id="18_6hqox"]
 [ext_resource type="Texture2D" uid="uid://bpa8olbvx4ufv" path="res://Art/UI/MainMenu/DrillBird_LOGO.png" id="19_hr1yg"]
 [ext_resource type="Script" path="res://Scripts/UX and UI/main_menu.gd" id="19_qssi7"]
 [ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_debugMenuOption.gd" id="20_hlahx"]
@@ -70,10 +69,6 @@ gravity = Vector3(0, 90, 0)
 scale_curve = SubResource("CurveTexture_c1j2j")
 hue_variation_min = -0.89
 hue_variation_max = -0.77
-
-[sub_resource type="Theme" id="Theme_ush66"]
-default_font = ExtResource("7_pre4c")
-default_font_size = 16
 
 [sub_resource type="Resource" id="Resource_jrvhg"]
 script = ExtResource("20_hlahx")
@@ -182,15 +177,15 @@ position = Vector2(1, 0)
 texture = ExtResource("6_cgigq")
 
 [node name="oreSpawnOrigin" type="Node2D" parent="topUI/InventoryHandler"]
-position = Vector2(-145, 108)
+position = Vector2(-145, 110)
 
 [node name="inventoryNumber" type="RichTextLabel" parent="topUI/InventoryHandler"]
 offset_left = -85.0
 offset_top = -6.0
 offset_right = -7.0
-offset_bottom = 14.0
-theme = ExtResource("15_nxi4s")
+offset_bottom = 10.0
 theme_override_colors/default_color = Color(0.827451, 0.717647, 0.556863, 1)
+theme_override_fonts/normal_font = ExtResource("8_bp3jv")
 bbcode_enabled = true
 text = "[right]0/1200 kg"
 text_direction = 1
@@ -253,7 +248,7 @@ offset_left = -21.0
 offset_top = -9.0
 offset_right = 20.0
 offset_bottom = 7.0
-theme = SubResource("Theme_ush66")
+theme_override_fonts/font = ExtResource("7_pre4c")
 text = "0 xp"
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
@@ -283,42 +278,7 @@ position = Vector2(-1.12942, 16)
 scale = Vector2(0.997063, 1)
 texture = ExtResource("1_vcacc")
 
-[node name="UI_Death" type="Node2D" parent="."]
-visible = false
-position = Vector2(161, 88)
-script = ExtResource("13_1fwbs")
-
-[node name="Background" type="Sprite2D" parent="UI_Death"]
-position = Vector2(7.62939e-06, 0)
-scale = Vector2(1.24615, 1)
-texture = ExtResource("14_0gadq")
-
-[node name="header" type="Label" parent="UI_Death"]
-offset_left = -128.0
-offset_top = -36.0
-offset_right = 128.0
-offset_bottom = -10.0
-size_flags_horizontal = 0
-theme = ExtResource("15_nxi4s")
-theme_override_colors/font_color = Color(0.92549, 0.862745, 0.443137, 1)
-theme_override_font_sizes/font_size = 32
-text = "Birdy died!"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="header2" type="Label" parent="UI_Death"]
-offset_left = -101.0
-offset_top = -7.0
-offset_right = 107.0
-offset_bottom = 22.0
-size_flags_horizontal = 0
-theme = ExtResource("15_nxi4s")
-theme_override_colors/font_color = Color(0.670588, 0.447059, 0.341176, 1)
-text = "- All ores were dropped
-- Birdy will respawn at Home next day"
-vertical_alignment = 1
-
-[node name="Button_Continue" parent="UI_Death" instance=ExtResource("16_281dp")]
+[node name="UI_Death" parent="." instance=ExtResource("18_6hqox")]
 
 [node name="MainMenu" type="Control" parent="."]
 layout_mode = 3

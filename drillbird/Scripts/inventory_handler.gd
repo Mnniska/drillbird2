@@ -132,7 +132,7 @@ func OreFinishedLerp(amount:int):
 	pass
 
 func UpdateInventoryText():
-	inventoryNumber.text=textPreface+str(currentWeight)+"/"+str(maxWeight)+"kg"
+	inventoryNumber.text="[outline_size={2}]"+textPreface+str(currentWeight)+"/"+str(maxWeight)+tr("HUD_weight")
 
 	
 

@@ -13,6 +13,7 @@ signal sliderValueChanged(menuName:String,progress:float)
 @export var RequireExtraConfirmation:bool=false
 var hasclickedonce:bool=false
 @export var extraConfirmzationMessage:RichTextLabel
+@export var extraConfirmationMessageLocalizationID:String
 
 @onready var text=$RichTextLabel
 @onready var sliderKnob=$slider/knob
@@ -93,6 +94,7 @@ func UpdateButton():
 				button_pressed.emit(self)	
 			else:
 				hasclickedonce=true
+				extraConfirmzationMessage.text=tr(extraConfirmationMessageLocalizationID)
 				extraConfirmzationMessage.show()
 		else:
 			button_pressed.emit(self)

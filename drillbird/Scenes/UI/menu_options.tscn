@@ -134,10 +134,13 @@ optionName = "Reset Save Data"
 localizationID = "options_reset_save_data"
 RequireExtraConfirmation = true
 extraConfirmzationMessage = NodePath("SaveDataExtraInfo")
+extraConfirmationMessageLocalizationID = "options_reset_save_data_warning"
 sample_sound = ExtResource("6_wrpie")
 soundAudioBus = "Ambience"
 
 [node name="SaveDataExtraInfo" type="RichTextLabel" parent="save data"]
+auto_translate_mode = 1
+editor_description = "warn"
 visible = false
 offset_left = -155.0
 offset_top = 34.0
@@ -145,7 +148,7 @@ offset_right = 166.0
 offset_bottom = 94.0
 theme = ExtResource("3_208bg")
 bbcode_enabled = true
-text = "Warning: This will reset all progress and quit the game - allowing you to start fresh. Click again to confirm. "
+text = "options_reset_save_data_warning"
 
 [node name="Header" type="RichTextLabel" parent="."]
 offset_left = -160.0

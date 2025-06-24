@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://3d04qrtunccs"]
+[gd_scene load_steps=39 format=3 uid="uid://3d04qrtunccs"]
 
 [ext_resource type="Theme" uid="uid://bvlpbiblgm4kr" path="res://Art/UI/Shop/themes/theme_shop_inactive.tres" id="1_3a5gg"]
 [ext_resource type="Script" path="res://Scripts/Purchasable.gd" id="1_gej8r"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://dfwci32qfmyw7" path="res://Art/UI/Shop/shopicon_drill2.png" id="13_40f70"]
 [ext_resource type="Texture2D" uid="uid://ouwhtjjo5fqr" path="res://Art/UI/Shop/shopicon_drill3.png" id="14_vla8o"]
 [ext_resource type="Texture2D" uid="uid://cqcgllpuckeco" path="res://Art/UI/Shop/shopicon_drill4.png" id="15_h5cbl"]
+[ext_resource type="FontFile" uid="uid://c8n7dxyc0uu3i" path="res://Resources/Fonts/m5x7.ttf" id="15_t1vci"]
 [ext_resource type="Texture2D" uid="uid://b77jic8nj8atl" path="res://Art/UI/Shop/shopicon_drill5.png" id="16_61t7u"]
 [ext_resource type="Texture2D" uid="uid://bslo5xnqdu6i5" path="res://Art/UI/Shop/shopicon_drill6.png" id="17_wik3i"]
 [ext_resource type="Texture2D" uid="uid://dvf77a64d1cn7" path="res://Art/UI/Shop/shopicon_drill7.png" id="18_tvwif"]
@@ -187,7 +188,8 @@ offset_left = -23.0
 offset_top = -9.0
 offset_right = 25.0
 offset_bottom = 8.0
-theme = ExtResource("11_hei2b")
+theme_override_fonts/font = ExtResource("15_t1vci")
+theme_override_font_sizes/font_size = 16
 text = "243"
 horizontal_alignment = 1
 vertical_alignment = 1
