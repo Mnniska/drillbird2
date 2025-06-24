@@ -655,6 +655,7 @@ range_item_cull_mask = 7
 texture = SubResource("GradientTexture2D_ywsei")
 
 [node name="ShopHandler" type="Node2D" parent="Camera2D" node_paths=PackedStringArray("UI_purchasables")]
+visible = false
 scale = Vector2(2, 2)
 script = ExtResource("26_mk1t6")
 UI_purchasables = [NodePath("VBoxContainer/Purchasable1"), NodePath("VBoxContainer/Purchasable2"), NodePath("VBoxContainer/Purchasable3"), NodePath("VBoxContainer/Purchasable4"), NodePath("VBoxContainer/Button_continue")]
