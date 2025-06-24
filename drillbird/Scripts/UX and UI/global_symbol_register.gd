@@ -7,15 +7,15 @@ var currentLanguage:languages
 var usingGamepad:bool=true
 @export var symbols:Array[abstract_symbol_info]
 
-var keyboard_effect_begin="[wave][color=orange][font_size=32]"
-var keyboard_effect_end="[/font_size][/color][/wave]"
+var keyboard_effect_begin="[wave][color=orange]"
+var keyboard_effect_end="[/color][/wave]"
 
 
 func _ready() -> void:
 	pass
 	
 
-func GetStringDecoded(_str:String):
+func GetStringDecoded(_str:String,useoutline:bool=false):
 	var symbolName:String=""
 	var text=""
 	#parses through [symbols] and replaces them wqith appropiate image links
@@ -24,14 +24,14 @@ func GetStringDecoded(_str:String):
 		if _char =='(' or symbolName.length()>0:
 			symbolName+=_char
 			if _char==')':
-				text+="[img]"+GetSymbolFromString(symbolName)+"[/img]"
+				text+="[img]"+GetSymbolFromString(symbolName,useoutline)+"[/img]"
 
 				symbolName=""
 		else:
 			text+=_char
 	return text
 
-func GetSymbolFromString(_str:String)->String:
+func GetSymbolFromString(_str:String,useoutline:bool=false)->String:
 	for symbol in symbols:
 		if symbol.code==_str:
 			if usingGamepad:
@@ -45,7 +45,16 @@ func GetSymbolFromString(_str:String)->String:
 					var key_action = InputMap.action_get_events(prompt_action)[0]
 					var key_string = OS.get_keycode_string(key_action.physical_keycode)
 					key_name = str(key_string)
-					return keyboard_effect_begin+key_name+keyboard_effect_end
+					
+					var outline_begin=""
+					var outline_end=""
+					
+					if useoutline:
+						outline_begin="[outline_size={2}]"
+						outline_end="[/outline_size]"
+					
+					
+					return outline_begin+keyboard_effect_begin+key_name+keyboard_effect_end+outline_end
 	
 	push_error("Could not find a matching symbol! "+str(_str)+" was asked for but I dunno what that is?")
 	return ""

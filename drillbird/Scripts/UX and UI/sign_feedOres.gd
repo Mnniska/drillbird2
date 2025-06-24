@@ -12,7 +12,7 @@ func SetActive(_active:bool):
 	active=_active
 	
 	if active and GlobalVariables.displayPopups:
-		text_icon.text="[center]"+GlobalSymbolRegister.GetStringDecoded("(inventory)")
+		text_icon.text="[center]"+GlobalSymbolRegister.GetStringDecoded("(inventory)",true)
 		text_feedEgg.text=tr(textToShow)
 
 		show()
