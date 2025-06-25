@@ -13,22 +13,28 @@ dest_files=["res://.godot/imported/x12y16pxMaruMonica.ttf-b24b7815a3a5162a00044f
 [params]
 
 Rendering=null
-antialiasing=1
+antialiasing=0
 generate_mipmaps=false
-disable_embedded_bitmaps=true
+disable_embedded_bitmaps=false
 multichannel_signed_distance_field=false
 msdf_pixel_range=8
 msdf_size=48
-allow_system_fallback=true
+allow_system_fallback=false
 force_autohinter=false
-hinting=1
-subpixel_positioning=1
+hinting=0
+subpixel_positioning=0
 oversampling=0.0
 Fallbacks=null
-fallbacks=[]
+fallbacks=[Resource("res://Resources/Fonts/m5x7.ttf"), Resource("res://Resources/Fonts/unifont-16.0.04.otf")]
 Compress=null
 compress=true
-preload=[]
+preload=[{
+"chars": [],
+"glyphs": [],
+"name": "New Configuration",
+"size": Vector2i(16, 0),
+"variation_embolden": 0.0
+}]
 language_support={}
 script_support={}
 opentype_features={}

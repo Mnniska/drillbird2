@@ -26,11 +26,11 @@ func Activate(day:int):
 	
 	var txtday:String=str(day)
 	
-	txt.text+= "[p][center][shake] Day:"
+	txt.text+= "[p][center][shake]"+tr("popup_gamesaved_day")
 	
 	await get_tree().create_timer(0.3).timeout
 	
-	txt.text="[center]"+tr("popup_gamesaved")+"[p][center][shake]"+tr("popup_gamesaved_day")+txtday
+	txt.text+=txtday
 	txt.visible_characters=-1
 	await get_tree().create_timer(0.4).timeout
 
