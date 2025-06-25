@@ -226,6 +226,7 @@ func ButtonPressed(_option:menu_option):
 
 func SetLanguage(lang:String):
 	TranslationServer.set_locale(lang)
+
 	UpdateMenu()
 	GlobalVariables.MainSceneReferenceConnector.shop.UpdateShop()
 	
