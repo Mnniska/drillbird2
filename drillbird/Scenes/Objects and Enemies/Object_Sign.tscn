@@ -122,6 +122,7 @@ libraries = {
 }
 
 [node name="Sign" type="Node2D" parent="."]
+modulate = Color(1, 1, 1, 0)
 light_mask = 0
 visibility_layer = 4
 
