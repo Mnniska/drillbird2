@@ -11,6 +11,7 @@ var mainMenuShowing:bool=false
 var playerHidden:bool=false
 @export var oreToSpawn:PackedScene
 @export var oreTypeToAssignSpawnedOre:abstract_ore
+@export var canEnableDebug:bool=true
 
 @export var finalHeartOre:abstract_ore
 var hudHidden:bool=false
@@ -33,8 +34,10 @@ func SelectionLogic():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	
+	
 	if !debugAvailable:
-		if Input.is_action_just_pressed("debug_tab"):
+		
+		if Input.is_action_just_pressed("debug_tab") and canEnableDebug:
 			debugUnlockCount+=1
 			debugUnlockTimeourCounter=debugUnlockTimeoutTimer
 			if debugUnlockCount>=10:
@@ -48,6 +51,7 @@ func _process(delta: float) -> void:
 		else:
 			debugUnlockCount=0
 		
+		#cannot access debug features if it is not turned on
 		return
 	
 	if Input.is_action_just_pressed("debug_2"):

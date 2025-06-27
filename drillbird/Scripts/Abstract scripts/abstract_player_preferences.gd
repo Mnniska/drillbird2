@@ -7,4 +7,4 @@ class_name abstract_player_preferences
 @export var volumeAmbience:float=1
 
 @export var ghostActive:bool=true
-@export var fullscreenActive:bool=false
+@export var fullscreenActive:bool=true
