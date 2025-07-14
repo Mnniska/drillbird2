@@ -29,6 +29,8 @@ var fadeCounter:float=2
 func _physics_process(delta: float) -> void:
 	
 
+	UpdateMenuOpacity(delta)
+
 	if !active:
 		cooldown=0
 		return
@@ -51,6 +53,9 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("jump"):
 		PressButton()
 	
+
+
+func UpdateMenuOpacity(delta:float):
 	if shouldBeVisible and fadeValue<1:
 		fadeCounter=min(timeToFade,fadeCounter+delta)
 		fadeValue=fadeCounter/timeToFade
@@ -60,9 +65,6 @@ func _physics_process(delta: float) -> void:
 		fadeCounter=max(0,fadeCounter-delta)
 		fadeValue=fadeCounter/timeToFade
 		UpdateMenuFade(fadeValue)
-
-
-	pass
 
 func GenerateMainMenu():
 	
@@ -94,7 +96,8 @@ func Deactivate():
 	hide()
 	
 func PressButton():
-	
+	if !active:
+		return
 	match options[selection].name:
 		"menu_new_game":
 			NewGame.emit()
@@ -111,8 +114,11 @@ func SetShouldBeVisible(visible:bool):
 	
 	if visible:
 		menuText.show()
+		active=true
+	
 	else:
 		menuText.hide()
+		active=false
 	
 
 func UpdateMenuFade(progress:float):

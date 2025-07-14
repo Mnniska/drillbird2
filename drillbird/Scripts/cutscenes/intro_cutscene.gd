@@ -19,6 +19,9 @@ func _ready() -> void:
 func SetupComplete():
 	camera=GlobalVariables.MainSceneReferenceConnector.ref_camera
 
+func GetIsPlaying():
+	return isPlaying
+
 func _process(delta: float) -> void:
 	if !isPlaying:
 		return

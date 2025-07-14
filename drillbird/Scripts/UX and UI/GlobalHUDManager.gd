@@ -57,7 +57,7 @@ func _ready() -> void:
 
 func SetupComplete():
 	
-	var hasSaveGame= !GlobalVariables.currentDay==1
+	var hasSaveGame= !GlobalVariables.currentDay==1 #lmao
 	StartMainMenu(hasSaveGame)
 
 
@@ -203,21 +203,25 @@ func SetSceneState(state:sceneStates,debug:bool=false,resetSaveData:bool=true):
 func _on_main_menu_new_game() -> void:
 	
 	if !GlobalVariables.hasSeenIntroCutscene:
-		MainMenu.SetShouldBeVisible(false)
-		await get_tree().create_timer(2).timeout
 		
+		#plays the intro cutscene 
 		var introCutscene=GlobalVariables.MainSceneReferenceConnector.introCutscene
 		
-		
-		introCutscene.Play()
-		introCutscene.cutscene_finished.connect(introCutsceneFinished)
+		if !introCutscene.GetIsPlaying():
+			MainMenu.SetShouldBeVisible(false)
+			await get_tree().create_timer(2).timeout
+			introCutscene.Play()
+			introCutscene.cutscene_finished.connect(introCutsceneFinished)
 	else:
+		
+		#this is when you press "continue" instead of "new game" 
 		SetState(menuStates.PLAY)
 		
 
 func introCutsceneFinished():
 	SetState(menuStates.PLAY)
 	GlobalVariables.hasSeenIntroCutscene=true
+	$TransitionToMain.play("FadeBack")
 
 	pass # Replace with function body.
 
