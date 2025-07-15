@@ -13,13 +13,25 @@ tut_flower,Tutorial,https://youtu.be/u7hrqY9PqU8?t=469,Drill any SOLID block for
 tut_passed,Tutorial,https://youtu.be/u7hrqY9PqU8?t=153,nice ~,Snyggt ~,ナイス〜,不错~,Круто~
 demo_sign,Demo,Displayed at a sign at the end of the drillbird demo. ,"[center]You've reached the border of Drillbirds demo!
 
-()Please check out the [wave]full release [/wave]to experience the rest
+Please check out the [wave]full release [/wave]to experience the rest
 
-()You can continue exploring the upper parts for as long as you like. ","[center]Nu har du kommit till slutet av demot!
+You can continue exploring the upper parts for as long as you like. ","[center]Nu har du kommit till slutet av demot!
 
 Kolla in [wave]det färdiga spelet [/wave]för att uppleva resten
 
-Du kan fortsätta utforska de tidigare sektionerna så länge du vill",[center]ドリルバードのデモの境界に到達しました！\n\n()ぜひ[wave]完全版[/wave]をチェックして続きを体験してください\n\n()上のエリアは自由に探索できます。,[center]你已到达Drill Bird演示版的边界！\n\n()请查看[wave]完整版本[/wave]以体验完整内容\n\n()你可以随意探索上方区域。,"[center]Вы дошли до границы демо Drill Bird!\n\n()Пожалуйста, посмотрите [wave]полную версию[/wave], чтобы продолжить приключение\n\n()Вы можете продолжать исследовать верхние уровни сколько захотите."
+Du kan fortsätta utforska de tidigare sektionerna så länge du vill","[center]ドリルバードのデモの境界に到達しました！\n\n
+
+ぜひ[wave]完全版[/wave]をチェックして続きを体験してください\n\n
+
+上のエリアは自由に探索できます。","[center]你已到达Drill Bird演示版的边界！\n\n
+
+请查看[wave]完整版本[/wave]以体验完整内容\n\n
+
+你可以随意探索上方区域。","[center]Вы дошли до границы демо Drill Bird!\n\n
+
+Пожалуйста, посмотрите [wave]полную версию[/wave], чтобы продолжить приключение\n\n
+
+Вы можете продолжать исследовать верхние уровни сколько захотите."
 Menu Strings,,video walkthrough: https://youtu.be/u7hrqY9PqU8?t=14 ,,,,,
 menu_continue,menu,https://youtu.be/u7hrqY9PqU8?t=14,Continue,Fortsätt,続きから,继续,Продолжить
 menu_new_game,menu,see above,New Game,Nytt Spel,ニューゲーム,新游戏,Новая игра
@@ -475,7 +487,34 @@ Om du gillade spelet - berätta om det för någon du tycker om vetja!
 Ta hand om dig
 /Seb 
 
-[wave][rainbow]Fortsätt[/rainbow][/wave]",[center]Drillbirdをプレイしてくれてありがとう！ ...,[center]感谢游玩Drillbird！ ...,[center]Спасибо за игру в Drillbird! ...
+[wave][rainbow]Fortsätt[/rainbow][/wave]","[center]『ドリルバード』を遊んでくれてありがとう！
+
+もし気に入ってくれたなら—
+ぜひ大切な人に教えてあげてね！
+
+気をつけて
+/Seb
+
+[wave][rainbow]つづける[/rainbow][/wave]
+","[center]感谢游玩《钻头鸟》！
+
+如果你喜欢这款游戏——
+请推荐给你喜欢的人吧！
+
+保重
+/Seb
+
+[wave][rainbow]继续游戏[/rainbow][/wave]
+","[center]Спасибо за игру в Drillbird!
+
+Если вам понравилась игра —
+расскажите о ней кому-нибудь, кто вам дорог!
+
+Берегите себя
+/Seb
+
+[wave][rainbow]Продолжить[/rainbow][/wave]
+"
 credits_stats_header,Credits_stats,https://youtu.be/u7hrqY9PqU8?t=696,[center]Final Stats,[center]Slutresultat,[center]最終結果,[center]最终统计,[center]Итоговая статистика
 credits_stats_hatchtime,Credits_stats,^,Days taken to hatch: ,Antal dagar till kläckning: ,孵化までの日数:,孵化所需天数:,Дней до вылупления:
 credits_stats_ores,Credits_stats,^,Ores given to egg: ,Mineraler som getts till ägget: ,卵にあげた鉱石の数:,给蛋的矿石数:,Руды отдано яйцу:

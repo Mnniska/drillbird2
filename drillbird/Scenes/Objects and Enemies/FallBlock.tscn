@@ -123,7 +123,7 @@ debug_color = Color(0.940031, 1.14551e-05, 0.61679, 0.42)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_yimnr")
-animation = &"falling"
+animation = &"idle"
 autoplay = "idle"
 
 [node name="Observer" parent="." instance=ExtResource("5_bl8ye")]
