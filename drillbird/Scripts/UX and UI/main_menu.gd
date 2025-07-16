@@ -66,14 +66,38 @@ func UpdateMenuOpacity(delta:float):
 		fadeValue=fadeCounter/timeToFade
 		UpdateMenuFade(fadeValue)
 
+func SetMenuMusicActive(active:bool=true):
+	
+	var music:AudioStreamPlayer2D = $MenuMusic
+	
+	if active:
+		if !music.playing:
+			music.volume_db=0
+			music.play()
+			
+	else:
+		FadeOutMusic()
+
+func FadeOutMusic():
+	var music:AudioStreamPlayer2D = $MenuMusic
+	while music.volume_db>-70:
+		music.volume_db-=1
+		await get_tree().create_timer(0.035).timeout
+	
+	music.stop()
+	
+	pass
+
 func GenerateMainMenu():
 	
 	active=true
-	#If the player starts the game during day 1, we can assume they do not ahve an active save game
-	if GlobalVariables.currentDay==1:
+	
+	if !GlobalVariables.hasSeenIntroCutscene:
 		options[0].name="menu_new_game"
+		SetMenuMusicActive(true)
 	else:
 		options[0].name="menu_continue"
+
 	
 	var textstring=textbegin
 	
@@ -101,6 +125,7 @@ func PressButton():
 	match options[selection].name:
 		"menu_new_game":
 			NewGame.emit()
+			SetMenuMusicActive(false)
 		"menu_continue":
 			NewGame.emit()
 		"menu_options":
