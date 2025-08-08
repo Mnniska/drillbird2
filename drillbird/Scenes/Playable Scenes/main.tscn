@@ -1,4 +1,4 @@
-[gd_scene load_steps=170 format=4 uid="uid://d2wv7igie5stg"]
+[gd_scene load_steps=169 format=4 uid="uid://d2wv7igie5stg"]
 
 [ext_resource type="TileSet" uid="uid://grpd2pyu7pgk" path="res://Resources/MainTileset.tres" id="1_1imtu"]
 [ext_resource type="Script" path="res://Scenes/Playable Scenes/SaveManager.gd" id="1_iickb"]
@@ -92,7 +92,6 @@
 [ext_resource type="PackedScene" uid="uid://w40gfx4fqwa7" path="res://Scenes/Tools/player_teleporter.tscn" id="88_5m6q5"]
 [ext_resource type="Shader" path="res://Scenes/Playable Scenes/line_move.gdshader" id="92_gwwde"]
 [ext_resource type="Texture2D" uid="uid://14yxxj65ylm" path="res://Art/UI/dotted_line.png" id="93_3q8cl"]
-[ext_resource type="PackedScene" uid="uid://d3meut0pktph2" path="res://Scenes/Effects/eggsplosion.tscn" id="93_hu32i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b7p1b"]
 texture = ExtResource("2_8xt30")
@@ -1806,9 +1805,6 @@ round_precision = 1
 
 [node name="Sign" parent="." instance=ExtResource("76_uqphw")]
 position = Vector2(521, 1144)
-
-[node name="Eggsplosion" parent="." instance=ExtResource("93_hu32i")]
-position = Vector2(-63, -36)
 
 [connection signal="MaterialChanged" from="TileCrack" to="Player" method="_on_tile_crack_material_changed"]
 [connection signal="newTileCrack" from="Player" to="TileCrack" method="_on_player_new_tile_crack"]

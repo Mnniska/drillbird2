@@ -3,6 +3,7 @@ extends Node2D
 signal optionsClosed
 
 @onready var options_header=$Header
+@onready var optionScroller=$OptionScroller
 
 #created in ready by getting the menu_options thta are children to script
 var EntireMenu:Array[menu_option]
@@ -28,6 +29,13 @@ func _ready() -> void:
 	for child in get_children():
 		if child is menu_option:
 			EntireMenu.append(child)
+			
+			#loop through the options in the language menu as well so that we can listen to their signals
+		if child is option_scroller:
+			for child2 in child.get_children(): 
+				if child2 is menu_option:
+					EntireMenu.append(child2)
+			pass
 			
 	verify_save_directory(save_file_path)
 	LoadPreferences()
@@ -150,7 +158,8 @@ func _process(delta: float) -> void:
 		
 		if selectedOption > CurrentMenu.size()-1:
 			selectedOption = 0
-
+		
+		optionScroller.NewTarget(selectedOption)
 		UpdateMenu()
 	
 	pass
@@ -222,6 +231,12 @@ func ButtonPressed(_option:menu_option):
 		pass
 	if _option.optionName=="lang_ja":
 		SetLanguage("ja")
+		pass
+	if _option.optionName=="lang_fr":
+		SetLanguage("fr")
+		pass
+	if _option.optionName=="lang_de":
+		SetLanguage("de")
 		pass
 
 func SetLanguage(lang:String):

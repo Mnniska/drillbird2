@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bldt1ha11vmuu"]
+[gd_scene load_steps=13 format=3 uid="uid://bldt1ha11vmuu"]
 
 [ext_resource type="Script" path="res://Scripts/UX and UI/options_screen.gd" id="1_5gtrn"]
 [ext_resource type="Texture2D" uid="uid://cp6xuvmo0rguj" path="res://Art/UI/HUD/UI_BlackBorder.png" id="2_eej8b"]
@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://cygmw124vctks" path="res://Audio/Ambience/ambience_surface.mp3" id="6_wrpie"]
 [ext_resource type="FontFile" uid="uid://cfqp6n0vaubbe" path="res://Resources/Fonts/x12y16pxMaruMonica.ttf" id="7_ji3uf"]
 [ext_resource type="FontFile" uid="uid://c8n7dxyc0uu3i" path="res://Resources/Fonts/m5x7.ttf" id="7_rg54n"]
+[ext_resource type="Script" path="res://Scenes/UI/options_scroller.gd" id="7_uviax"]
 [ext_resource type="FontFile" uid="uid://blllxnysqdqwj" path="res://Resources/Fonts/VonwaonBitmap-16px.ttf" id="8_cof03"]
 [ext_resource type="FontFile" uid="uid://co7jpnljheg23" path="res://Resources/Fonts/testing tinier cyrillic font/Equipe 9p.ttf" id="9_mfdpj"]
 
@@ -23,17 +24,20 @@ scale = Vector2(1.73438, 20.4375)
 texture = ExtResource("2_eej8b")
 
 [node name="Return2" parent="." instance=ExtResource("2_x5nw2")]
+visible = false
 position = Vector2(0, -52)
 optionName = "Return"
 localizationID = "options_return"
 
 [node name="ToggleFullscreen" parent="." instance=ExtResource("2_x5nw2")]
+visible = false
 position = Vector2(0, -33)
 optionName = "Toggle Fullscreen"
 localizationID = "options_fullscreen"
 isToggle = true
 
 [node name="Audio Options" parent="." node_paths=PackedStringArray("options") instance=ExtResource("2_x5nw2")]
+visible = false
 position = Vector2(0, -12)
 optionName = "Audio Options"
 localizationID = "options_audio"
@@ -82,63 +86,90 @@ sample_sound = ExtResource("6_wrpie")
 soundAudioBus = "Ambience"
 
 [node name="Game Options" parent="." node_paths=PackedStringArray("options") instance=ExtResource("2_x5nw2")]
+visible = false
 position = Vector2(0, 8)
 optionName = "Game Options"
 localizationID = "options_game"
 options = [NodePath("../Return2"), NodePath("../toggle ghost"), NodePath("../save data")]
 
 [node name="Language options" parent="." node_paths=PackedStringArray("options") instance=ExtResource("2_x5nw2")]
+visible = false
 position = Vector2(0, 26)
 optionName = "Language options"
 localizationID = "options_language"
 isAction = false
-options = [NodePath("../Return2"), NodePath("../Lang_english"), NodePath("../Lang_Japanese"), NodePath("../Lang_Chinese"), NodePath("../Lang_Russian"), NodePath("../Lang_Sve")]
+options = [NodePath("../OptionScroller/Langmenu_Return"), NodePath("../OptionScroller/Lang_english"), NodePath("../OptionScroller/Lang_Japanese"), NodePath("../OptionScroller/Lang_Chinese"), NodePath("../OptionScroller/Lang_Russian"), NodePath("../OptionScroller/Lang_Sve"), NodePath("../OptionScroller/Lang_French"), NodePath("../OptionScroller/Lang_de")]
 
-[node name="Lang_english" parent="." instance=ExtResource("2_x5nw2")]
-visible = false
-position = Vector2(0, -33)
+[node name="OptionScroller" type="Node2D" parent="."]
+position = Vector2(0, -35)
+script = ExtResource("7_uviax")
+distance = 14
+
+[node name="Langmenu_Return" parent="OptionScroller" instance=ExtResource("2_x5nw2")]
+optionName = "Return"
+localizationID = "options_return"
+
+[node name="RichTextLabel" parent="OptionScroller/Langmenu_Return" index="0"]
+theme_override_fonts/normal_font = ExtResource("7_rg54n")
+
+[node name="Lang_english" parent="OptionScroller" instance=ExtResource("2_x5nw2")]
+position = Vector2(0, 19)
 optionName = "lang_en"
 localizationID = "lang_en"
 
-[node name="RichTextLabel" parent="Lang_english" index="0"]
+[node name="RichTextLabel" parent="OptionScroller/Lang_english" index="0"]
 theme_override_fonts/normal_font = ExtResource("7_rg54n")
 
-[node name="Lang_Japanese" parent="." instance=ExtResource("2_x5nw2")]
-visible = false
-position = Vector2(0, -14)
+[node name="Lang_Japanese" parent="OptionScroller" instance=ExtResource("2_x5nw2")]
+position = Vector2(0, 38)
 optionName = "lang_ja"
 localizationID = "lang_ja"
 
-[node name="RichTextLabel" parent="Lang_Japanese" index="0"]
+[node name="RichTextLabel" parent="OptionScroller/Lang_Japanese" index="0"]
 theme_override_fonts/normal_font = ExtResource("7_ji3uf")
 
-[node name="Lang_Chinese" parent="." instance=ExtResource("2_x5nw2")]
-position = Vector2(0, 4)
+[node name="Lang_Chinese" parent="OptionScroller" instance=ExtResource("2_x5nw2")]
+position = Vector2(0, 56)
 optionName = "lang_zh"
 localizationID = "lang_zh"
 
-[node name="RichTextLabel" parent="Lang_Chinese" index="0"]
+[node name="RichTextLabel" parent="OptionScroller/Lang_Chinese" index="0"]
 theme_override_fonts/normal_font = ExtResource("8_cof03")
 
-[node name="Lang_Russian" parent="." instance=ExtResource("2_x5nw2")]
-visible = false
-position = Vector2(0, 22)
+[node name="Lang_Russian" parent="OptionScroller" instance=ExtResource("2_x5nw2")]
+position = Vector2(0, 74)
 optionName = "lang_ru"
 localizationID = "lang_ru"
 
-[node name="RichTextLabel" parent="Lang_Russian" index="0"]
+[node name="RichTextLabel" parent="OptionScroller/Lang_Russian" index="0"]
 theme_override_fonts/normal_font = ExtResource("9_mfdpj")
 
-[node name="Lang_Sve" parent="." instance=ExtResource("2_x5nw2")]
-visible = false
-position = Vector2(0, 41)
+[node name="Lang_Sve" parent="OptionScroller" instance=ExtResource("2_x5nw2")]
+position = Vector2(0, 93)
 optionName = "lang_sv"
 localizationID = "lang_sv"
 
-[node name="RichTextLabel" parent="Lang_Sve" index="0"]
+[node name="RichTextLabel" parent="OptionScroller/Lang_Sve" index="0"]
+theme_override_fonts/normal_font = ExtResource("7_rg54n")
+
+[node name="Lang_French" parent="OptionScroller" instance=ExtResource("2_x5nw2")]
+position = Vector2(0, 112)
+optionName = "lang_fr"
+localizationID = "lang_fr"
+
+[node name="RichTextLabel" parent="OptionScroller/Lang_French" index="0"]
+theme_override_fonts/normal_font = ExtResource("7_rg54n")
+
+[node name="Lang_de" parent="OptionScroller" instance=ExtResource("2_x5nw2")]
+position = Vector2(0, 129)
+optionName = "lang_de"
+localizationID = "lang_de"
+
+[node name="RichTextLabel" parent="OptionScroller/Lang_de" index="0"]
 theme_override_fonts/normal_font = ExtResource("7_rg54n")
 
 [node name="toggle ghost" parent="." instance=ExtResource("2_x5nw2")]
+visible = false
 position = Vector2(0, -33)
 optionName = "Haunted by Ghost"
 localizationID = "options_ghost"
@@ -147,6 +178,7 @@ sample_sound = ExtResource("6_wrpie")
 soundAudioBus = "Ambience"
 
 [node name="save data" parent="." node_paths=PackedStringArray("extraConfirmzationMessage") instance=ExtResource("2_x5nw2")]
+visible = false
 position = Vector2(0, -12)
 optionName = "Reset Save Data"
 localizationID = "options_reset_save_data"
@@ -172,14 +204,19 @@ text = "options_reset_save_data_warning"
 offset_left = -160.0
 offset_top = -95.0
 offset_right = 161.0
-offset_bottom = -35.0
+offset_bottom = -55.0
 theme = ExtResource("3_208bg")
+theme_override_colors/font_shadow_color = Color(0.147103, 0.0914168, 0.0157968, 1)
+theme_override_constants/shadow_outline_size = 5
 theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "[center]tr(Options)"
 
-[editable path="Lang_english"]
-[editable path="Lang_Japanese"]
-[editable path="Lang_Chinese"]
-[editable path="Lang_Russian"]
-[editable path="Lang_Sve"]
+[editable path="OptionScroller/Langmenu_Return"]
+[editable path="OptionScroller/Lang_english"]
+[editable path="OptionScroller/Lang_Japanese"]
+[editable path="OptionScroller/Lang_Chinese"]
+[editable path="OptionScroller/Lang_Russian"]
+[editable path="OptionScroller/Lang_Sve"]
+[editable path="OptionScroller/Lang_French"]
+[editable path="OptionScroller/Lang_de"]

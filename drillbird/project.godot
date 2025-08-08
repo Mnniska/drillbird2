@@ -145,7 +145,7 @@ locale/translation_remaps={
 "res://Art/UI/MainMenu/DrillBird_LOGO.png": PackedStringArray("res://Art/UI/MainMenu/DrillBird_LOGO_ja.png:ja"),
 "res://Resources/Fonts/fontTheme.tres": PackedStringArray("res://Resources/Fonts/fontTheme_japanese.tres:ja", "res://Resources/Fonts/fontTheme_chinese.tres:zh", "res://Resources/Fonts/fontTheme_russian.tres:ru")
 }
-locale/translations=PackedStringArray("res://Resources/Localization/Drillbird translation doc.en.translation", "res://Resources/Localization/Drillbird translation doc.sv.translation", "res://Resources/Localization/Drillbird translation doc.ja.translation", "res://Resources/Localization/Drillbird translation doc.ru.translation", "res://Resources/Localization/Drillbird translation doc.zh.translation")
+locale/translations=PackedStringArray("res://Resources/Localization/Drillbird translation doc.en.translation", "res://Resources/Localization/Drillbird translation doc.sv.translation", "res://Resources/Localization/Drillbird translation doc.ja.translation", "res://Resources/Localization/Drillbird translation doc.ru.translation", "res://Resources/Localization/Drillbird translation doc.zh.translation", "res://Resources/Localization/Drillbird translation doc.fr.translation", "res://Resources/Localization/Drillbird translation doc.de.translation")
 
 [layer_names]
 
