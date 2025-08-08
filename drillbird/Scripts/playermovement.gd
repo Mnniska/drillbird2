@@ -262,6 +262,15 @@ func DebugGhostMovement(delta:float,currentAnim:String):
 	
 	if Input.is_action_pressed("jump"):
 		speedMult=2.5
+		
+	if Input.is_action_just_pressed("drill"):
+		var scene = load("res://Scenes/Effects/eggsplosion.tscn")
+		var node = scene.instantiate()
+		
+		node.transform.origin=self.position
+		get_parent().add_child(node)
+		
+		#node.position-=Vector2(-200,0)	
 	
 	if Input.is_action_just_pressed("debug_tab"):
 		if DebugTeleportLocations.size()>0:

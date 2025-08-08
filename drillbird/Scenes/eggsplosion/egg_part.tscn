@@ -1,0 +1,21 @@
+[gd_scene load_steps=8 format=3 uid="uid://rge1xpwlp4hx"]
+
+[ext_resource type="Texture2D" uid="uid://chhh2ehq4og2q" path="res://Art/cutscenes/nightmares/eggshell.png" id="1_2eeds"]
+[ext_resource type="Script" path="res://Scenes/eggsplosion/_script_egg_part.gd" id="1_l3y2x"]
+[ext_resource type="Texture2D" uid="uid://bfi1fg0papcq" path="res://Art/cutscenes/nightmares/eggshells/eggshell1.png" id="2_lt8gh"]
+[ext_resource type="Texture2D" uid="uid://bl616545spcgq" path="res://Art/cutscenes/nightmares/eggshells/eggshell2.png" id="3_oe47w"]
+[ext_resource type="Texture2D" uid="uid://nkdmgyo6n060" path="res://Art/cutscenes/nightmares/eggshells/eggshell3.png" id="4_fcoo2"]
+[ext_resource type="Texture2D" uid="uid://cjkwcfa5b81yy" path="res://Art/cutscenes/nightmares/eggshells/eggshell4.png" id="5_ewbn3"]
+[ext_resource type="Texture2D" uid="uid://juhjs6jeuw8l" path="res://Art/cutscenes/nightmares/eggshells/eggshell5.png" id="6_6vnjl"]
+
+[node name="egg_part" type="RigidBody2D"]
+collision_layer = 0
+collision_mask = 17
+script = ExtResource("1_l3y2x")
+egg_variants = Array[Texture2D]([ExtResource("2_lt8gh"), ExtResource("3_oe47w"), ExtResource("4_fcoo2"), ExtResource("5_ewbn3"), ExtResource("6_6vnjl")])
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-1, -3, 1, -3, 3, -1, 3, 1, 1, 3, -1, 3, -3, 1, -3, -1)
+
+[node name="eggpart" type="Sprite2D" parent="."]
+texture = ExtResource("1_2eeds")
