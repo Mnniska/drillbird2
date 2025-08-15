@@ -50,6 +50,8 @@ var InitialSetup:bool=true:
 			SetupComplete.emit()
 		InitialSetup=value
 
+
+
 var playerStatus:playerStatusEnum = playerStatusEnum.DIG:
 	get:
 		return playerStatus

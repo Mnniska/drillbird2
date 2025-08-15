@@ -261,6 +261,8 @@ func ExecuteAction(action:String):
 		
 		"GetAmountOfOres":
 			print_debug("Amount of ores: "+str(OreRegions.GetAmountOfOreTiles()))
-
 			#GlobalVariables.MainSceneReferenceConnector.ref_h
+			
+		"test_achievement":
+			SteamHandler.TryUnlockAchievement("ACH_TEST")
 	pass

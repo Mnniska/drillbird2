@@ -25,12 +25,12 @@ GlobalVariables="*res://Scripts/GlobalVariables.gd"
 SoundManager="*res://Scenes/sound_manager.tscn"
 HUD="*res://Scenes/UI/HUD.tscn"
 GlobalSymbolRegister="*res://Scenes/Tools/scene_symbol_register.tscn"
+SteamHandler="*res://Scenes/Tools/scene_SteamHandler.tscn"
 
 [display]
 
 window/size/viewport_width=320
 window/size/viewport_height=224
-window/size/mode=3
 window/size/window_width_override=640
 window/size/window_height_override=448
 window/stretch/mode="viewport"
