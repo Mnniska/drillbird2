@@ -53,12 +53,12 @@ options_reset_save_data_warning,menu_options_game,see above,Warning: This will r
 options_quit_warning_part1,menu_pause,"Not in video. When quitting from the Pause menu, the game warns the player how much progress they'll lose. This is part 1 of this string - in the middle is the time since the last save, followed by part 2 which is the below entry",[center]Last save was made ,[center]Spelet sparades för ,[center]最後のセーブ:,[center]上次保存于,[center]Последнее сохранение было,"Du bist dabei, die Demo zu verlassen.",[center]Dernière sauvegarde il y a
 options_quit_warning_part2,menu_pause,see above,minutes ago.[p][center] Are you sure you'd like to quit?, minuter sedan. [p][center] Är du säker på att du vill avsluta?,分前です。[p][center]本当に終了しますか？,分钟前。[p][center]确定要退出吗？,"минут назад.[p][center] Вы уверены, что хотите выйти?",Der Fortschritt wird nicht gespeichert.,minutes.[p][center] Es-tu sûr de vouloir quitter ?
 menu_paused,menu_pause,Header for the pause menu - lets player know the game is paused,Paused,Pausat,一時停止中,已暂停,Пауза,Pause,Pause
-menu_day,menu_pause,"Not in video. When pausing, one can see which day it is ",Day ,Dag ,日目,第X天,День,Tag,Jour
-menu_instructions,menu_pause,"Instructions for how to play the game. The stuff inside [] brackets is formatting, can be left as-is. The stuff inside () paranthesis are symbols that appear differently depending on whether player is playing on mouse or keyboard - should also be left as-is.",[color=gray](jump) = jump [p](drill) = Drill blocks[p](inventory) = Drop ores,[color=gray](jump) = Hoppa [p](drill) = Borra block[p](inventory) = Släpp mineraler,[color=gray](jump)=ジャンプ [p](drill)=ブロックを掘る [p](inventory)=鉱石を捨てる,[color=gray](jump)=跳跃 [p](drill)=挖掘方块 [p](inventory)=丢弃矿石,[color=gray](jump)=прыжок [p](drill)=бурить блоки [p](inventory)=сбрасывать руды,Steuerung,color=gray = saut p = Forer des blocs p = Lâcher les minerais
+menu_day,menu_pause,"Not in video. When pausing, one can see which day it is ",Day ,Dag ,日目 ,第X天,День,Tag ,Jour 
+menu_instructions,menu_pause,"Instructions for how to play the game. The stuff inside [] brackets is formatting, can be left as-is. The stuff inside () paranthesis are symbols that appear differently depending on whether player is playing on mouse or keyboard - should also be left as-is.",[color=gray](jump) = jump [p](drill) = Drill blocks[p](inventory) = Drop ores,[color=gray](jump) = Hoppa [p](drill) = Borra block[p](inventory) = Släpp mineraler,[color=gray](jump)=ジャンプ [p](drill)=ブロックを掘る [p](inventory)=鉱石を捨てる,[color=gray](jump)=跳跃 [p](drill)=挖掘方块 [p](inventory)=丢弃矿石,[color=gray](jump)=прыжок [p](drill)=бурить блоки [p](inventory)=сбрасывать руды,Steuerung,[color=gray](jump) = saut [p](drill)= Forer des blocs [p](inventory) = Lâcher les minerais
 ,,,,,,,,,
 options_language,menu language options,header for the lamguage options,Select Language,Välj Språk,言語を選択,选择语言,Выберите язык,Sprache,Choisir la langue
-lang_en,menu language options,,English,English,English,English,English,Englisch,Anglais
-lang_ja,menu language options,,日本語 ,日本語 ,日本語 ,日本語 ,日本語 ,Japanisch,Japonais
+lang_en,menu language options,,English,English,English,English,English,English,English
+lang_ja,menu language options,,日本語 ,日本語 ,日本語 ,日本語 ,日本語 ,日本語 ,日本語 
 lang_zh,menu language options,,中文,中文,中文,中文,中文,中文,中文
 lang_ru,menu language options,,Русский,Русский,Русский,Русский,Русский,Русский,Русский
 lang_sv,menu language options,,Svenska,Svenska,Svenska,Svenska,Svenska,Svenska,Svenska
@@ -80,10 +80,10 @@ popup_gohome0,Game_popup,https://youtu.be/u7hrqY9PqU8?t=398,Low on fuel.. Go hom
 popup_gohome1,Game_popup,^,Low on fuel..,Snart slut på bränsle.. ,燃料が少ない…,燃料不足…,Топливо на исходе...,Bring es zurück ins Nest,Plus de carburant…
 popup_gohome2,Game_popup,^,Almost dark..,Nästan mörkt,もうすぐ暗くなる…,天快黑了…,Почти стемнело...,Zum Nest bringen,Il fait presque nuit…
 popup_gohome3,Game_popup,^,she's coming..,Hon kommer..,彼女が来る…,她来了…,Она идет...,Zur Basis zurückkehren,Elle arrive…
-HUD_weight,HUD,https://youtu.be/u7hrqY9PqU8?t=111,kg,kg,kg,kg,кг,Gewicht,kg
+HUD_weight,HUD,https://youtu.be/u7hrqY9PqU8?t=111,kg,kg,kg,kg,кг, kg,kg
 HUD_experience,HUD,https://youtu.be/u7hrqY9PqU8?t=111,xp,xp,xp,xp,xp,EP,xp
 popup_gamesaved,Game_popup,https://youtu.be/u7hrqY9PqU8?t=360,Game Saved! ,Spelet har sparats! ,セーブしました！,游戏已保存！,Игра сохранена!,Spiel gespeichert,Partie sauvegardée !
-popup_gamesaved_day,Game_popup,^,Day: ,Dag: ,日:,天:,День:,Neuer Tag,Jour :
+popup_gamesaved_day,Game_popup,^,Day: ,Dag: ,日:,天:,День:,Tag: ,Jour: 
 popup_ghost_bark,Game_popup,"There is a section of the game where the player steals a heart from a ghost. When they do, the ghost exclaims ""How dare you!?"" to create some tension to the upcoming chase",How dare you!?,Hur vågar du!?,よくもそんなことを！？,你怎么敢！？,Как ты посмел!?,Wuff!,Comment oses-tu !?
 popup_not_ready,Game_popup,https://youtu.be/u7hrqY9PqU8?t=522,I'm not ready yet..,,まだ準備ができていない…,我还没准备好…,Я еще не готов...,Noch nicht bereit,Je ne suis pas encore prêt…
 ,,,,,,,,,
