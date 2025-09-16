@@ -296,7 +296,7 @@ script = ExtResource("19_qssi7")
 options = Array[ExtResource("20_hlahx")]([SubResource("Resource_jrvhg"), SubResource("Resource_q3x01"), SubResource("Resource_b7xf6")])
 
 [node name="Logo" type="Sprite2D" parent="MainMenu"]
-position = Vector2(0, -63)
+position = Vector2(0, -47)
 scale = Vector2(0.186497, 0.186497)
 texture = ExtResource("19_hr1yg")
 
@@ -332,20 +332,6 @@ theme_override_colors/default_color = Color(1, 1, 1, 0.807843)
 theme_override_colors/font_selected_color = Color(1, 1, 1, 1)
 bbcode_enabled = true
 text = "this text will be replaced"
-
-[node name="text_demo" type="RichTextLabel" parent="MainMenu"]
-layout_mode = 0
-offset_left = -62.0
-offset_top = -38.0
-offset_right = 69.0
-offset_bottom = -6.0
-rotation = 0.0402469
-theme = ExtResource("15_nxi4s")
-theme_override_colors/default_color = Color(1, 1, 1, 0.807843)
-theme_override_colors/font_selected_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/normal_font_size = 32
-bbcode_enabled = true
-text = "[center][rainbow]Demo"
 
 [node name="MenuMusic" type="AudioStreamPlayer2D" parent="MainMenu"]
 position = Vector2(-8, -2)
