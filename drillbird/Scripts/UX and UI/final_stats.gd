@@ -1,4 +1,5 @@
 extends Node2D
+
 @onready var StatsParent=$STATS
 @onready var statsMessage=$STATS/stats
 @onready var SebsMessage=$"Sebs message"
@@ -141,12 +142,17 @@ func ConstructStatsString()->String:
 	text+=tr("credits_stats_ores")+str(GlobalVariables.oresFound)+" / "+str(GlobalVariables.totalOres)+"[p] [/p]"
 	
 	#print_debug("Player has found and given "+str(PlayerData.oresFound)+" / "+str(PlayerData.totalOres)+" ores")
-
 	
 	text+="[center][wave][rainbow]"+tr("credits_stats_continue")
 	
 	
 	return text
 	
+func CheckFinishAchievements():
+	if 	GlobalVariables.currentDay <= SteamHandler.stat_ach_days_fast:
+		SteamHandler.TryUnlockAchievement("ach_days_fast")
+		pass
+	
+		
 	
 	pass
