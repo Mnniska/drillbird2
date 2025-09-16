@@ -28,6 +28,7 @@ func TryUnlockAchievement(name:String):
 		return
 	
 	Steam.setAchievement(name)
+	Steam.storeStats()
 	
 	
 	pass
