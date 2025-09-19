@@ -172,6 +172,7 @@ autoplay = "idle"
 stream = ExtResource("3_0qhv7")
 autoplay = true
 max_distance = 180.0
+bus = &"Sfx"
 
 [node name="PlayerChecker" type="Area2D" parent="."]
 collision_layer = 0

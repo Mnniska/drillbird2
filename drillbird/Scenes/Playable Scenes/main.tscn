@@ -615,7 +615,7 @@ position = Vector2(873.5, -3221)
 shape = SubResource("RectangleShape2D_r8h0k")
 
 [node name="warningLocation" type="Node2D" parent="GhostManager"]
-position = Vector2(121, 41)
+position = Vector2(121, 645)
 
 [node name="GhostAcceptanceArea" type="Area2D" parent="GhostManager"]
 visible = false

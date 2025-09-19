@@ -46,7 +46,6 @@ func Setup():
 func HeartSpawned(heart:Node2D):
 	if !GlobalVariables.ghostActive:
 		return
-	#TODO - make sure rightful place is considered nest
 	
 	await get_tree().create_timer(0.1).timeout
 	
@@ -56,6 +55,7 @@ func HeartSpawned(heart:Node2D):
 			ghostInScene.Disappear(false)
 		return
 	
+	#The ghost checks if the heart is in a nice place. If so, it despawns itself and ends the haunt. 
 	for body in HeartRightfulPlace.get_overlapping_bodies():
 		if body.GetOre().ID==10:		
 			if ghostSpawned:
@@ -63,10 +63,9 @@ func HeartSpawned(heart:Node2D):
 				
 			return
 	
-	#TODO: Ghost should not persue player, only get the heart and return home with it <3 
+	#if the heart is spawned in an unproper place, the ghost will come and attempt to retreive it 
 	if !ghostSpawned:
 		SpawnGhost()
-	
 	ghostInScene.PlayerDroppedHeartInUnproperPlace(heart)
 	
 	pass
@@ -80,6 +79,7 @@ func HeartPickedUpByPlayer():
 	if !GlobalVariables.ghostActive:
 		return
 		
+	#if the player picks up the heart in the nest - ghost will ignore it
 	for bod in ghostAcceptanceArea.get_overlapping_bodies():
 		return
 	
@@ -132,6 +132,6 @@ func SpawnGhost():
 	
 	pass
 
-func GhostHasDespawned():
+func GhostHasDespawned(): #called from the ghost object when despawning itself. Needs to be done there since it reacts to light
 	ghostInScene=null
 	ghostSpawned=false

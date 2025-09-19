@@ -337,6 +337,7 @@ text = "this text will be replaced"
 position = Vector2(-8, -2)
 stream = ExtResource("23_p7qe8")
 max_distance = 10000.0
+bus = &"Music"
 
 [node name="Options" parent="." instance=ExtResource("23_sv2nb")]
 visible = false

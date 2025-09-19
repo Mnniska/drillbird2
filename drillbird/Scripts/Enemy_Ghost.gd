@@ -45,12 +45,16 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 func UpdateMusic(chasing:bool):
-	var ghost =$GhostMusic
+	var ghost:AudioStreamPlayer2D =$GhostMusic
 	if chasing:
+		if ghost.bus!="Music":
+			ghost.bus="Music"
 		ghost.max_distance=1000
 		ghost.stream=chase_music
 		ghost.play()
 	else:
+		if ghost.bus!="Sfx":
+			ghost.bus="Sfx"
 		ghost.stream=idle_music
 		ghost.play()
 		ghost.max_distance=200
@@ -189,13 +193,14 @@ func GiveParentReference(_parent:ghost_manager):
 
 func Disappear(useAnimation:bool=true):
 	if state!=states.DISAPPEARING:
+		parent.GhostHasDespawned()
 		state=states.DISAPPEARING
 		
 		if useAnimation:
 			anim.animation="death"
 			anim.play()
 			await get_tree().create_timer(2).timeout
-		parent.GhostHasDespawned()
+		
 		queue_free()
 
 func NewHaunting(object:Node2D):
