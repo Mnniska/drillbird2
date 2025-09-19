@@ -31,7 +31,7 @@ collision_mask = 0
 script = ExtResource("1_7x1o5")
 enemyInfo = SubResource("Resource_6nq8s")
 collType = SubResource("Resource_5mg7v")
-spriteVariations = Array[CompressedTexture2D]([ExtResource("4_w182k"), ExtResource("2_v5q25"), ExtResource("6_375ry"), ExtResource("7_r6yq0"), ExtResource("2_v5q25")])
+spriteVariations = Array[CompressedTexture2D]([ExtResource("4_w182k"), ExtResource("2_v5q25"), ExtResource("6_375ry"), ExtResource("6_375ry"), ExtResource("7_r6yq0"), ExtResource("2_v5q25")])
 
 [node name="SpikeAffectedCollider" type="CollisionShape2D" parent="."]
 position = Vector2(0, 7)

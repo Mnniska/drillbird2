@@ -1,4 +1,4 @@
-[gd_scene load_steps=166 format=4 uid="uid://d2wv7igie5stg"]
+[gd_scene load_steps=165 format=4 uid="uid://d2wv7igie5stg"]
 
 [ext_resource type="TileSet" uid="uid://grpd2pyu7pgk" path="res://Resources/MainTileset.tres" id="1_1imtu"]
 [ext_resource type="Script" path="res://Scenes/Playable Scenes/SaveManager.gd" id="1_iickb"]
@@ -452,9 +452,6 @@ radius = 784.23
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1iuvu"]
 size = Vector2(714.375, 341.75)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_l1gae"]
-size = Vector2(526, 119.859)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y375v"]
 size = Vector2(1878, 543.75)
@@ -1726,14 +1723,6 @@ limit_top = true
 [node name="CollisionShape2D" parent="WorldScripts/CameraLimiter_hub/AffectedArea" index="0"]
 shape = SubResource("RectangleShape2D_1iuvu")
 
-[node name="CameraLimiter_demo" parent="WorldScripts" instance=ExtResource("87_yr03e")]
-visible = false
-position = Vector2(523, 1112)
-limit_bottom = true
-
-[node name="CollisionShape2D" parent="WorldScripts/CameraLimiter_demo/AffectedArea" index="0"]
-shape = SubResource("RectangleShape2D_l1gae")
-
 [node name="CameraLimiter2" parent="WorldScripts" instance=ExtResource("87_yr03e")]
 visible = false
 position = Vector2(-1376, 2656)
@@ -1807,5 +1796,4 @@ texture = ExtResource("64_yk8d7")
 [editable path="WorldScripts/CameraLimiter"]
 [editable path="WorldScripts/CameraLimiter/PlayerTeleporter"]
 [editable path="WorldScripts/CameraLimiter_hub"]
-[editable path="WorldScripts/CameraLimiter_demo"]
 [editable path="WorldScripts/CameraLimiter2"]
