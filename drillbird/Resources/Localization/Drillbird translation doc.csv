@@ -3,14 +3,14 @@ Tutorial Strings,,"General info:
 - When () paranthesis are used - the game will replace what's in them with the appropiate image, depending on if the player uses keyboard or controller.
 - Things inside [bracket] [/bracket] brackets are instructions for the game's bbcode to do text effects. They should be left in as-is to effect the text inside the brackets
 - Give me a ping if anything is unclear! :) I'm available at sebastian.a.larsson@gmail.com",,,,,,,
-tut_jump,Tutorial,https://youtu.be/u7hrqY9PqU8?t=130,Press (jump) to jump,Hoppa med (jump),(jump)でジャンプ,按(jump)跳跃,"Нажмите (jump), чтобы прыгнуть",Drücke (jump) zum Springen,Appuie sur (jump) pour sauter
-tut_drill,Tutorial,https://youtu.be/u7hrqY9PqU8?t=160,Hold (drill) to drill,Borra med (drill),(drill)を長押しで掘る,长按(drill)进行钻探,"Удерживайте (drill), чтобы бурить","Halte (drill), um zu bohren",Maintiens (drill) pour forer
-tut_fly,Tutorial,https://youtu.be/u7hrqY9PqU8?t=175,Jump (jump) multiple times to fly further,Hoppa (jump) flera gånger för att flyga ,(jump)を連続で押すと遠くまで飛べる,多次按(jump)可以飞得更远,"Нажимайте (jump) несколько раз, чтобы лететь дальше",Drücke (jump) mehrmals zum Fliegen,Appuie plusieurs fois sur (jump) pour voler plus loin
-tut_drop,Tutorial,https://youtu.be/u7hrqY9PqU8?t=219,"Ores are valuable, but heavy. Press (inventory) to drop ores and become lighter","Mineraler är värdefulla, men tunga. Tryck på (inventory) för att släppa mineraler så att du kan flyga",鉱石は貴重ですが重いです。(inventory)で鉱石を捨てて軽くなりましょう,矿石很有价值，但很重。按(inventory)丢弃矿石以减轻负重,"Руды ценны, но тяжелы. Нажмите (inventory), чтобы сбросить руды и стать легче","Erze sind wertvoll, aber schwer. Drücke (inventory), um sie fallen zu lassen","Les minerais sont précieux, mais lourds. Appuie sur (inventory) pour les lâcher et t’alléger"
+tut_jump,Tutorial,https://youtu.be/u7hrqY9PqU8?t=130,Press (jump) to jump,Hoppa med (jump),(jump)でジャンプ,按(jump)跳跃,"Нажмите (jump), чтобы прыгнуть",Zum Springen (jump) drücken,Appuie sur (jump) pour sauter
+tut_drill,Tutorial,https://youtu.be/u7hrqY9PqU8?t=160,Hold (drill) to drill,Borra med (drill),(drill)を長押しで掘る,长按(drill)进行钻探,"Удерживайте (drill), чтобы бурить",Zum Bohren (drill) gedrückt halten,Maintiens (drill) pour forer
+tut_fly,Tutorial,https://youtu.be/u7hrqY9PqU8?t=175,Jump (jump) multiple times to fly further,Hoppa (jump) flera gånger för att flyga ,(jump)を連続で押すと遠くまで飛べる,多次按(jump)可以飞得更远,"Нажимайте (jump) несколько раз, чтобы лететь дальше",Zum Fliegen mehrmal (jump) drücken,Appuie plusieurs fois sur (jump) pour voler plus loin
+tut_drop,Tutorial,https://youtu.be/u7hrqY9PqU8?t=219,"Ores are valuable, but heavy. Press (inventory) to drop ores and become lighter","Mineraler är värdefulla, men tunga. Tryck på (inventory) för att släppa mineraler så att du kan flyga",鉱石は貴重ですが重いです。(inventory)で鉱石を捨てて軽くなりましょう,矿石很有价值，但很重。按(inventory)丢弃矿石以减轻负重,"Руды ценны, но тяжелы. Нажмите (inventory), чтобы сбросить руды и стать легче","Erze sind wertvoll, aber schwer. Drücke (inventory), um Erze fallen zu lassen und leichter zu werden.","Les minerais sont précieux, mais lourds. Appuie sur (inventory) pour les lâcher et t’alléger"
 tut_long_drill,Tutorial,https://youtu.be/u7hrqY9PqU8?t=242,Stand on an edge to drill across a gap,Stå på en kant för att gräva över ett gap,崖の端に立って向こう側を掘ろう,站在边缘钻穿空隙,"Встаньте на край и бурите, чтобы преодолеть пропасть","Stell dich an den Rand, um über eine Lücke zu bohren",Tiens-toi au bord pour forer de l’autre côté
-tut_ledge_drill,Tutorial,https://youtu.be/u7hrqY9PqU8?t=258,Stand on an edge and drill upwards to drill tricky blocks,Stå på en kant och borra uppåt för att gräva kluriga block,崖の端に立ち、上向きに掘って難しいブロックに届こう,站在边缘向上钻以够到难钻的方块,"Встаньте на край и бурите вверх, чтобы достать до трудных блоков",Stell dich an den Rand und bohre nach oben,Tiens-toi au bord et fore vers le haut pour casser les blocs difficiles
+tut_ledge_drill,Tutorial,https://youtu.be/u7hrqY9PqU8?t=258,Stand on an edge and drill upwards to drill tricky blocks,Stå på en kant och borra uppåt för att gräva kluriga block,崖の端に立ち、上向きに掘って難しいブロックに届こう,站在边缘向上钻以够到难钻的方块,"Встаньте на край и бурите вверх, чтобы достать до трудных блоков","Stell dich an den Rand und bohre nach oben, um knifflige Blöcke zu erreichen.",Tiens-toi au bord et fore vers le haut pour casser les blocs difficiles
 tut_flower,Tutorial,https://youtu.be/u7hrqY9PqU8?t=469,Drill any SOLID block for a while to plant a flower,Borra ett solidt block länge för att plantera en blomma,固いブロックをしばらく掘ると花が咲きます,长时间钻坚硬的方块可以种出花,"Долго бурите твёрдый блок, чтобы посадить цветок","Bohre länger in einen FESTEN Block, um eine Blume zu pflanzen",Fore un bloc SOLIDE pendant un moment pour y faire pousser une fleur
-tut_passed,Tutorial,https://youtu.be/u7hrqY9PqU8?t=153,nice ~,Snyggt ~,ナイス〜,不错~,Круто~,schön ~,joli ~
+tut_passed,Tutorial,https://youtu.be/u7hrqY9PqU8?t=153,nice ~,Snyggt ~,ナイス〜,不错~,Круто~,Sauber  ~,joli ~
 demo_sign,Demo,Displayed at a sign at the end of the drillbird demo. ,"[center]You've reached the border of Drillbirds demo!
 
 Please check out the [wave]full release [/wave]to experience the rest
@@ -31,7 +31,11 @@ Du kan fortsätta utforska de tidigare sektionerna så länge du vill","[center]
 
 Пожалуйста, посмотрите [wave]полную версию[/wave], чтобы продолжить приключение
 
-Вы можете продолжать исследовать верхние уровни сколько захотите.",[center]Du hast das Ende der Demo erreicht. Gut gemacht![/center],[center]Tu es arrivé à la fin de la démo de Drillbird !Découvre le [wave]jeu complet[/wave] pour explorer la suite.Tu peux continuer à explorer les zones supérieures aussi longtemps que tu veux.
+Вы можете продолжать исследовать верхние уровни сколько захотите.","[center]Du hast das Ende der Demo erreicht!
+
+Schau dir [wave]das fertige Spiel[/wave] an, um den Rest zu erleben
+
+Du kannst die vorherigen Bereiche so lange erkunden, wie du willst.",[center]Tu es arrivé à la fin de la démo de Drillbird !Découvre le [wave]jeu complet[/wave] pour explorer la suite.Tu peux continuer à explorer les zones supérieures aussi longtemps que tu veux.
 Menu Strings,,video walkthrough: https://youtu.be/u7hrqY9PqU8?t=14 ,,,,,,,
 menu_continue,menu,https://youtu.be/u7hrqY9PqU8?t=14,Continue,Fortsätt,続きから,继续,Продолжить,Fortsetzen,Continuer
 menu_new_game,menu,see above,New Game,Nytt Spel,ニューゲーム,新游戏,Новая игра,Neues Spiel,Nouvelle partie
@@ -40,23 +44,23 @@ menu_version,menu,"The current version of the game. Not listed in the demo relea
 menu_quit,menu,https://youtu.be/u7hrqY9PqU8?t=14,Quit Game,Avsluta,ゲーム終了,退出游戏,Выйти из игры,Spiel beenden,Quitter le jeu
 menu_demo,menu,see above,[center][rainbow]Demo,[center][rainbow]Demo,[center][rainbow]デモ,[center][rainbow]演示版,[center][rainbow]Демо,[center][rainbow]Demo,[center][rainbow]Démo
 options_return,menu_options,see above,Return,Tillbaka,戻る,返回,Назад,Zurück,Retour
-options_fullscreen,menu_options,see above,Toggle Fullscreen,Slå på/av fullskärm,フルスクリーン切替,切换全屏,Переключить полный экран,Vollbild umschalten,Mode plein écran
+options_fullscreen,menu_options,see above,Toggle Fullscreen,Slå på/av fullskärm,フルスクリーン切替,切换全屏,Переключить полный экран,Vollbildmodus,Mode plein écran
 options_audio,menu_options,see above,Audio Options,Ljudinställningar,オーディオ設定,音频设置,Настройки аудио,Audioeinstellungen,Audio
 options_game,menu_options,see above,Game Options,Spelinställningar,ゲーム設定,游戏设置,Настройки игры,Spieleinstellungen,Jeu
 sound_master,menu_options_sound,see above,Master Volume,Spelvolym,マスターボリューム,主音量,Главная громкость,Gesamtlautstärke,Volume général
 sound_music,menu_options_sound,see above,Music Volume,Musik,音楽音量,音乐音量,Громкость музыки,Musiklautstärke,Volume musique
 sound_SFX,menu_options_sound,see above,SFX Volume,Ljudeffekter,効果音音量,音效音量,Громкость эффектов,Effektlautstärke,Volume effets
 sound_ambience,menu_options_sound,see above,Ambience Volume,Bakgrundsljud,環境音音量,环境音量,Громкость окружения,Umgebungslautstärke,Volume ambiance
-options_ghost,menu_options_game,see above,Haunted by Ghost,Jagad av spöket,ゴーストに取り憑かれる,被幽灵缠身,Преследует призрак,Geistermodus,Hanté par un fantôme
+options_ghost,menu_options_game,see above,Haunted by Ghost,Jagad av spöket,ゴーストに取り憑かれる,被幽灵缠身,Преследует призрак,Verfolgt vom Geist,Hanté par un fantôme
 options_reset_save_data,menu_options_game,see above,Reset Save Data,Återställ spardata,セーブデータをリセット,重置存档数据,Сбросить сохранение,Spielstand zurücksetzen,Réinitialiser la sauvegarde
-options_reset_save_data_warning,menu_options_game,see above,Warning: This will reset all progress and quit the game - allowing you to start fresh. Click again to confirm. ,Varning: Din progression kommer återställas och spelet avslutas - så att du kan börja om på nytt. Klicka igen för att konfirmera,警告: これで全進行がリセットされ、ゲームが終了します。最初からやり直せます。もう一度クリックで確認。,警告：这将重置所有进度并退出游戏，重新开始。再次点击确认。,"Внимание: это сбросит весь прогресс и закроет игру, позволяя начать заново. Нажмите снова для подтверждения.",Bist du sicher? Das kann nicht rückgängig gemacht werden.,Attention : cela réinitialisera toute la progression et quittera le jeu – tu pourras alors recommencer. Clique à nouveau pour confirmer.
-options_quit_warning_part1,menu_pause,"Not in video. When quitting from the Pause menu, the game warns the player how much progress they'll lose. This is part 1 of this string - in the middle is the time since the last save, followed by part 2 which is the below entry",[center]Last save was made ,[center]Spelet sparades för ,[center]最後のセーブ:,[center]上次保存于,[center]Последнее сохранение было,"Du bist dabei, die Demo zu verlassen.",[center]Dernière sauvegarde il y a
-options_quit_warning_part2,menu_pause,see above,minutes ago.[p][center] Are you sure you'd like to quit?, minuter sedan. [p][center] Är du säker på att du vill avsluta?,分前です。[p][center]本当に終了しますか？,分钟前。[p][center]确定要退出吗？,"минут назад.[p][center] Вы уверены, что хотите выйти?",Der Fortschritt wird nicht gespeichert.,minutes.[p][center] Es-tu sûr de vouloir quitter ?
+options_reset_save_data_warning,menu_options_game,see above,Warning: This will reset all progress and quit the game - allowing you to start fresh. Click again to confirm. ,Varning: Din progression kommer återställas och spelet avslutas - så att du kan börja om på nytt. Klicka igen för att konfirmera,警告: これで全進行がリセットされ、ゲームが終了します。最初からやり直せます。もう一度クリックで確認。,警告：这将重置所有进度并退出游戏，重新开始。再次点击确认。,"Внимание: это сбросит весь прогресс и закроет игру, позволяя начать заново. Нажмите снова для подтверждения.","Warnung: Dadurch wird dein gesamter Fortschritt zurückgesetzt und das Spiel beendet – so kannst du von vorne beginnen. Klicke erneut, um zu bestätigen.",Attention : cela réinitialisera toute la progression et quittera le jeu – tu pourras alors recommencer. Clique à nouveau pour confirmer.
+options_quit_warning_part1,menu_pause,"Not in video. When quitting from the Pause menu, the game warns the player how much progress they'll lose. This is part 1 of this string - in the middle is the time since the last save, followed by part 2 which is the below entry",[center]Last save was made ,[center]Spelet sparades för ,[center]最後のセーブ:,[center]上次保存于,[center]Последнее сохранение было,[center]Zuletzt gespeichert vor ,[center]Dernière sauvegarde il y a
+options_quit_warning_part2,menu_pause,see above,minutes ago.[p][center] Are you sure you'd like to quit?, minuter sedan. [p][center] Är du säker på att du vill avsluta?,分前です。[p][center]本当に終了しますか？,分钟前。[p][center]确定要退出吗？,"минут назад.[p][center] Вы уверены, что хотите выйти?","Minuten. [p][center]Bist du sicher, dass du beenden möchtest?",minutes.[p][center] Es-tu sûr de vouloir quitter ?
 menu_paused,menu_pause,Header for the pause menu - lets player know the game is paused,Paused,Pausat,一時停止中,已暂停,Пауза,Pause,Pause
 menu_day,menu_pause,"Not in video. When pausing, one can see which day it is ",Day ,Dag ,日目 ,第X天,День,Tag ,Jour 
-menu_instructions,menu_pause,"Instructions for how to play the game. The stuff inside [] brackets is formatting, can be left as-is. The stuff inside () paranthesis are symbols that appear differently depending on whether player is playing on mouse or keyboard - should also be left as-is.",[color=gray](jump) = jump [p](drill) = Drill blocks[p](inventory) = Drop ores,[color=gray](jump) = Hoppa [p](drill) = Borra block[p](inventory) = Släpp mineraler,[color=gray](jump)=ジャンプ [p](drill)=ブロックを掘る [p](inventory)=鉱石を捨てる,[color=gray](jump)=跳跃 [p](drill)=挖掘方块 [p](inventory)=丢弃矿石,[color=gray](jump)=прыжок [p](drill)=бурить блоки [p](inventory)=сбрасывать руды,Steuerung,[color=gray](jump) = saut [p](drill)= Forer des blocs [p](inventory) = Lâcher les minerais
+menu_instructions,menu_pause,"Instructions for how to play the game. The stuff inside [] brackets is formatting, can be left as-is. The stuff inside () paranthesis are symbols that appear differently depending on whether player is playing on mouse or keyboard - should also be left as-is.",[color=gray](jump) = jump [p](drill) = Drill blocks[p](inventory) = Drop ores,[color=gray](jump) = Hoppa [p](drill) = Borra block[p](inventory) = Släpp mineraler,[color=gray](jump)=ジャンプ [p](drill)=ブロックを掘る [p](inventory)=鉱石を捨てる,[color=gray](jump)=跳跃 [p](drill)=挖掘方块 [p](inventory)=丢弃矿石,[color=gray](jump)=прыжок [p](drill)=бурить блоки [p](inventory)=сбрасывать руды,[color=gray](jump) = Springen [p](drill) = Blöcke bohren [p](inventory) = Erze fallen lassen,[color=gray](jump) = saut [p](drill)= Forer des blocs [p](inventory) = Lâcher les minerais
 ,,,,,,,,,
-options_language,menu language options,header for the lamguage options,Select Language,Välj Språk,言語を選択,选择语言,Выберите язык,Sprache,Choisir la langue
+options_language,menu language options,header for the lamguage options,Select Language,Välj Språk,言語を選択,选择语言,Выберите язык,Sprache auswählen,Choisir la langue
 lang_en,menu language options,,English,English,English,English,English,English,English
 lang_ja,menu language options,,日本語 ,日本語 ,日本語 ,日本語 ,日本語 ,日本語 ,日本語 
 lang_zh,menu language options,,中文,中文,中文,中文,中文,中文,中文
@@ -64,39 +68,39 @@ lang_ru,menu language options,,Русский,Русский,Русский,Ру
 lang_sv,menu language options,,Svenska,Svenska,Svenska,Svenska,Svenska,Svenska,Svenska
 lang_fr,,,Français,Français,Français,Français,Français,Français,Français
 lang_de,,,Deutsch,Deutsch,Deutsch,Deutsch,Deutsch,Deutsch,Deutsch
-menu_dead_header,menu_dead,https://youtu.be/u7hrqY9PqU8?t=433,Birdy died!,Birdy dog!,バーディーが死んだ！,小鸟死了！,Птичка погибла!,Du bist gestorben,Birdy est mort !
-menu_dead_ores_dropped,menu_dead,^,- All ores were dropped,- Alla mineraler har släppts på marken,- 鉱石をすべて落とした,- 所有矿石已丢弃,- Все руды сброшены,- Alle Erze verloren,– Tous les minerais ont été perdus
-menu_dead_respawn,menu_dead,^,- Birdy will respawn at Home next day,- Birdy kommer att vakna upp Hemma efter en dag,- バーディーは翌日ホームで復活する,- 小鸟将在第二天在家重生,- Птичка возродится дома на следующий день,- Wiederbeleben,– Birdy réapparaîtra à la maison le lendemain
+menu_dead_header,menu_dead,https://youtu.be/u7hrqY9PqU8?t=433,Birdy died!,Birdy dog!,バーディーが死んだ！,小鸟死了！,Птичка погибла!,Birdy ist gestorben! ,Birdy est mort !
+menu_dead_ores_dropped,menu_dead,^,- All ores were dropped,- Alla mineraler har släppts på marken,- 鉱石をすべて落とした,- 所有矿石已丢弃,- Все руды сброшены,- Alle Erze wurden fallen gelassen,– Tous les minerais ont été perdus
+menu_dead_respawn,menu_dead,^,- Birdy will respawn at Home next day,- Birdy kommer att vakna upp Hemma efter en dag,- バーディーは翌日ホームで復活する,- 小鸟将在第二天在家重生,- Птичка возродится дома на следующий день,- Birdy wacht am nächsten Tag wieder zu Hause auf,– Birdy réapparaîtra à la maison le lendemain
 in-game strings,,,,,,,,,
-game_egg_hold,Game_popup,https://youtu.be/u7hrqY9PqU8?t=293,Hold ,Håll inne ,長押し,长按,Удерживайте,"Halte (interact), um zu streicheln",Maintenir
-game_egg_endDay,Game_popup,https://youtu.be/u7hrqY9PqU8?t=293, to End Day, för att avsluta dagen,日を終える,结束一天,чтобы закончить день,Tag beenden,pour terminer la journée
-game_egg_feed,Game_popup,https://youtu.be/u7hrqY9PqU8?t=271, Feed Egg, mata ägget,卵に餌をやる,喂蛋,Покормить яйцо,Füttern,Nourrir l’œuf
-game_egg_hatch_hold,Game_popup,https://youtu.be/u7hrqY9PqU8?t=544,Hold ,Håll inne ,長押し,长按,Удерживайте,"Halte (interact), um auszubrüten",Maintenir
-game_egg_hatch_tohatchegg,Game_popup,^, to hatch Egg, för att kläcka ägget,卵を孵す,孵化蛋,чтобы вылупилось яйцо,"Bring das Ei nach Hause, um es auszubrüten",pour faire éclore l’œuf
-popup_heavy,Game_popup,https://youtu.be/u7hrqY9PqU8?t=384,Heavy,Tung,重い,很重,Тяжело,Zu schwer!,Trop lourd
-popup_lightweight,Game_popup,^,Lightweight!,Lätt,軽い！,很轻！,Легко!,Leicht genug zum Fliegen!,Poids plume !
-popup_inventory_full,Game_popup,https://youtu.be/u7hrqY9PqU8?t=423,Inventory full!,Väskan är full!,インベントリがいっぱい！,背包已满！,Инвентарь полон!,Inventar voll,Inventaire plein !
-popup_gohome0,Game_popup,https://youtu.be/u7hrqY9PqU8?t=398,Low on fuel.. Go home and rest,Snart slut på bränsle.. gå hem och lägg dig,燃料が少ない…帰って休もう,燃料不足…回家休息吧,Топливо на исходе... Идите домой и отдохните,Bring es nach Hause,Plus de carburant… Rentre et repose-toi
-popup_gohome1,Game_popup,^,Low on fuel..,Snart slut på bränsle.. ,燃料が少ない…,燃料不足…,Топливо на исходе...,Bring es zurück ins Nest,Plus de carburant…
-popup_gohome2,Game_popup,^,Almost dark..,Nästan mörkt,もうすぐ暗くなる…,天快黑了…,Почти стемнело...,Zum Nest bringen,Il fait presque nuit…
-popup_gohome3,Game_popup,^,she's coming..,Hon kommer..,彼女が来る…,她来了…,Она идет...,Zur Basis zurückkehren,Elle arrive…
-HUD_weight,HUD,https://youtu.be/u7hrqY9PqU8?t=111,kg,kg,kg,kg,кг, kg,kg
-HUD_experience,HUD,https://youtu.be/u7hrqY9PqU8?t=111,xp,xp,xp,xp,xp,EP,xp
-popup_gamesaved,Game_popup,https://youtu.be/u7hrqY9PqU8?t=360,Game Saved! ,Spelet har sparats! ,セーブしました！,游戏已保存！,Игра сохранена!,Spiel gespeichert,Partie sauvegardée !
+game_egg_hold,Game_popup,https://youtu.be/u7hrqY9PqU8?t=293,Hold ,Håll inne ,長押し,长按,Удерживайте,Halte,Maintenir
+game_egg_endDay,Game_popup,https://youtu.be/u7hrqY9PqU8?t=293, to End Day, för att avsluta dagen,日を終える,结束一天,чтобы закончить день, um den Tag zu beenden,pour terminer la journée
+game_egg_feed,Game_popup,https://youtu.be/u7hrqY9PqU8?t=271, Feed Egg, mata ägget,卵に餌をやる,喂蛋,Покормить яйцо,Ei füttern,Nourrir l’œuf
+game_egg_hatch_hold,Game_popup,https://youtu.be/u7hrqY9PqU8?t=544,Hold ,Håll inne ,長押し,长按,Удерживайте,Halte,Maintenir
+game_egg_hatch_tohatchegg,Game_popup,^, to hatch Egg, för att kläcka ägget,卵を孵す,孵化蛋,чтобы вылупилось яйцо,um das Ei auszubrüten,pour faire éclore l’œuf
+popup_heavy,Game_popup,https://youtu.be/u7hrqY9PqU8?t=384,Heavy,Tung,重い,很重,Тяжело,Schwer,Trop lourd
+popup_lightweight,Game_popup,^,Lightweight!,Lätt,軽い！,很轻！,Легко!,Leicht!,Poids plume !
+popup_inventory_full,Game_popup,https://youtu.be/u7hrqY9PqU8?t=423,Inventory full!,Väskan är full!,インベントリがいっぱい！,背包已满！,Инвентарь полон!,Inventar voll!,Inventaire plein !
+popup_gohome0,Game_popup,https://youtu.be/u7hrqY9PqU8?t=398,Low on fuel.. Go home and rest,Snart slut på bränsle.. gå hem och lägg dig,燃料が少ない…帰って休もう,燃料不足…回家休息吧,Топливо на исходе... Идите домой и отдохните,Die Energie geht zur Neige … Geh nach Hause und ruh dich aus,Plus de carburant… Rentre et repose-toi
+popup_gohome1,Game_popup,^,Low on fuel..,Snart slut på bränsle.. ,燃料が少ない…,燃料不足…,Топливо на исходе...,Die Energie wird knapp ...,Plus de carburant…
+popup_gohome2,Game_popup,^,Almost dark..,Nästan mörkt,もうすぐ暗くなる…,天快黑了…,Почти стемнело...,Schon fast dunkel ...,Il fait presque nuit…
+popup_gohome3,Game_popup,^,she's coming..,Hon kommer..,彼女が来る…,她来了…,Она идет...,Sie kommt ...,Elle arrive…
+HUD_weight,HUD,https://youtu.be/u7hrqY9PqU8?t=111,kg,kg,kg,kg,кг,Kg,kg
+HUD_experience,HUD,https://youtu.be/u7hrqY9PqU8?t=111,xp,xp,xp,xp,xp,Xp,xp
+popup_gamesaved,Game_popup,https://youtu.be/u7hrqY9PqU8?t=360,Game Saved! ,Spelet har sparats! ,セーブしました！,游戏已保存！,Игра сохранена!,Spiel gespeichert!,Partie sauvegardée !
 popup_gamesaved_day,Game_popup,^,Day: ,Dag: ,日:,天:,День:,Tag: ,Jour: 
-popup_ghost_bark,Game_popup,"There is a section of the game where the player steals a heart from a ghost. When they do, the ghost exclaims ""How dare you!?"" to create some tension to the upcoming chase",How dare you!?,Hur vågar du!?,よくもそんなことを！？,你怎么敢！？,Как ты посмел!?,Wuff!,Comment oses-tu !?
-popup_not_ready,Game_popup,https://youtu.be/u7hrqY9PqU8?t=522,I'm not ready yet..,,まだ準備ができていない…,我还没准备好…,Я еще не готов...,Noch nicht bereit,Je ne suis pas encore prêt…
+popup_ghost_bark,Game_popup,"There is a section of the game where the player steals a heart from a ghost. When they do, the ghost exclaims ""How dare you!?"" to create some tension to the upcoming chase",How dare you!?,Hur vågar du!?,よくもそんなことを！？,你怎么敢！？,Как ты посмел!?,Wie kannst du es wagen!?,Comment oses-tu !?
+popup_not_ready,Game_popup,https://youtu.be/u7hrqY9PqU8?t=522,I'm not ready yet..,,まだ準備ができていない…,我还没准备好…,Я еще не готов...,Ich bin noch nicht bereit …,Je ne suis pas encore prêt…
 ,,,,,,,,,
 Shop strings,,,,,,,,,
-shop_inventory_header,Shop,https://youtu.be/u7hrqY9PqU8?t=324,Inventory,Väska,バッグ,背包,Инвентарь,Inventar-Upgrade,Inventaire
-shop_inventory_desc,Shop,see above,Carry heavier loads,Bär fler och tyngre mineraler,より多く重い鉱石を運べる,可携带更重的矿石,Несите больше и тяжелее руды,Mehr Erze tragen,Transporter des charges plus lourdes
-shop_fuel_header,Shop,see above,Fuel,Bränsle,燃料,燃料,Топливо,Treibstoff-Upgrade,Carburant
-shop_fuel_description,Shop,see above,Drill more before darkness descends,Borra mer innan mörkret kommer,暗くなる前にもっと掘れる,天黑前可钻探更久,Дольше бурите до наступления темноты,Länger fliegen,Fore plus longtemps avant la nuit
-shop_health_header,Shop,see above,Health,Hälsa,体力,生命值,Здоровье,Gesundheits-Upgrade,Santé
-shop_health_desc,Shop,see above,Take more hits before death,Ta mer skada innan döden,死ぬまでにもっと攻撃に耐えられる,死前可承受更多攻击,Выдерживайте больше ударов перед смертью,Länger überleben,Encaisser plus de coups
-shop_drill_header,Shop,see above,Drill Power,Borrstyrka,ドリルパワー,钻头威力,Мощность бура,Bohr-Upgrade,Foreuse
-shop_drill_desc,Shop,see above,Drill tougher blocks faster,Gräv block snabbare,固いブロックをより速く掘れる,更快钻开坚硬方块,Быстрее бурите твёрдые блоки,Schneller bohren,Forer les blocs solides plus rapidement
-shop_awaken,Shop,see above,Awaken,Vakna,覚醒,唤醒,Пробудиться,Erwecken,Éveiller
+shop_inventory_header,Shop,https://youtu.be/u7hrqY9PqU8?t=324,Inventory,Väska,バッグ,背包,Инвентарь,Inventar,Inventaire
+shop_inventory_desc,Shop,see above,Carry heavier loads,Bär fler och tyngre mineraler,より多く重い鉱石を運べる,可携带更重的矿石,Несите больше и тяжелее руды,Trage schwerere Lasten,Transporter des charges plus lourdes
+shop_fuel_header,Shop,see above,Fuel,Bränsle,燃料,燃料,Топливо,Energie,Carburant
+shop_fuel_description,Shop,see above,Drill more before darkness descends,Borra mer innan mörkret kommer,暗くなる前にもっと掘れる,天黑前可钻探更久,Дольше бурите до наступления темноты,"Bohre mehr, bevor die Dunkelheit hereinbricht",Fore plus longtemps avant la nuit
+shop_health_header,Shop,see above,Health,Hälsa,体力,生命值,Здоровье,Gesundheit,Santé
+shop_health_desc,Shop,see above,Take more hits before death,Ta mer skada innan döden,死ぬまでにもっと攻撃に耐えられる,死前可承受更多攻击,Выдерживайте больше ударов перед смертью,"Halte mehr Schaden aus, bevor du stirbst",Encaisser plus de coups
+shop_drill_header,Shop,see above,Drill Power,Borrstyrka,ドリルパワー,钻头威力,Мощность бура,Bohrstärke,Foreuse
+shop_drill_desc,Shop,see above,Drill tougher blocks faster,Gräv block snabbare,固いブロックをより速く掘れる,更快钻开坚硬方块,Быстрее бурите твёрдые блоки,Bohre harte Blöcke schneller,Forer les blocs solides plus rapidement
+shop_awaken,Shop,see above,Awaken,Vakna,覚醒,唤醒,Пробудиться,Aufwachen,Éveiller
 ,,,,,,,,,
 ,,,,,,,,,
 Credits,,,,,,,,,
@@ -644,7 +648,7 @@ Lulu Flôres da Cunha – pour ton soutien inconditionnel
 
 À bientôt !"
 credits_growth,Credits,https://youtu.be/u7hrqY9PqU8?t=569,Growth,Mognad,成長,成长,Рост,Entwicklung,Croissance
-credits_evolve_popup,Credits,https://youtu.be/u7hrqY9PqU8?t=634,(inventory) to evolve,(inventory) för att växa upp,(inventory)で成長する,(inventory)进化,(inventory) для развития,"(inventory), um dich weiterzuentwickeln",(inventory) pour évoluer
+credits_evolve_popup,Credits,https://youtu.be/u7hrqY9PqU8?t=634,(inventory) to evolve,(inventory) för att växa upp,(inventory)で成長する,(inventory)进化,(inventory) для развития,Zum Weiterentwickeln (inventory) drücken,(inventory) pour évoluer
 credits_thanks_for_playing,Credits,https://youtu.be/u7hrqY9PqU8?t=681,"[center]Thank you for playing Drillbird! 
 
 If you enjoyed the game - 
@@ -706,8 +710,8 @@ Prends soin de toi
 [wave][rainbow]Continuer[/rainbow][/wave]
 "
 credits_stats_header,Credits_stats,https://youtu.be/u7hrqY9PqU8?t=696,[center]Final Stats,[center]Slutresultat,[center]最終結果,[center]最终统计,[center]Итоговая статистика,[center]Endstatistik,[center]Statistiques finales
-credits_stats_hatchtime,Credits_stats,^,Days taken to hatch: ,Antal dagar till kläckning: ,孵化までの日数:,孵化所需天数:,Дней до вылупления:,Tage bis zum Schlüpfen:,Jours avant l’éclosion :
-credits_stats_ores,Credits_stats,^,Ores given to egg: ,Mineraler som getts till ägget: ,卵にあげた鉱石の数:,给蛋的矿石数:,Руды отдано яйцу:,An das Ei gegebene Erze:,Minerais offerts à l’œuf :
+credits_stats_hatchtime,Credits_stats,^,Days taken to hatch: ,Antal dagar till kläckning: ,孵化までの日数:,孵化所需天数:,Дней до вылупления:,Anzahl der Tage bis zum Schlüpfen:,Jours avant l’éclosion :
+credits_stats_ores,Credits_stats,^,Ores given to egg: ,Mineraler som getts till ägget: ,卵にあげた鉱石の数:,给蛋的矿石数:,Руды отдано яйцу:,An das Ei verfütterte Erze:,Minerais offerts à l’œuf :
 credits_stats_continue,Credits_stats,^,Continue,Fortsätt,続ける,继续,Продолжить,Fortfahren,Continuer 
 credits_reset_save_data_erasedata,Credits_choice,https://youtu.be/u7hrqY9PqU8?t=724,"[center]Would you like to reset your save data and begin anew, or return to right before you hatched the egg? [p][/p] [center]  [wave][rainbow]Begin Anew[/rainbow][/wave]     Go back in time","Vill du ta bort din sparfil och börja om ifrån början, eller gå tillbaka till precis innan ägget kläcktes? 
 [p][/p] [center]  [wave][rainbow]Börja om[/rainbow][/wave]     Gå tillbaka i tiden",[center]セーブデータをリセットして最初からやり直しますか？それとも卵が孵る直前に戻りますか？ [p][/p] [center] [wave][rainbow]最初から[/rainbow][/wave] 時間を戻す,[center]您想重置存档重新开始，还是回到孵化蛋之前？ [p][/p] [center] [wave][rainbow]重新开始[/rainbow][/wave] 回到过去,[center]Хотите сбросить сохранение и начать сначала или вернуться к моменту перед вылуплением яйца? [p][/p] [center] [wave][rainbow]Начать заново[/rainbow][/wave] Вернуться во времени,"[center]Möchtest du deinen Spielstand zurücksetzen und ganz von vorne beginnen,  
