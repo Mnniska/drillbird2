@@ -149,10 +149,16 @@ func ConstructStatsString()->String:
 	return text
 	
 func CheckFinishAchievements():
-	if 	GlobalVariables.currentDay <= SteamHandler.stat_ach_days_fast:
-		SteamHandler.TryUnlockAchievement("ach_days_fast")
-		pass
 	
+	SteamHandler.TryUnlockAchievement("ach_finish")
+	
+	if 	GlobalVariables.currentDay <= SteamHandler.stat_ach_days_fastest:
+		SteamHandler.TryUnlockAchievement("ach_days_fastest")
+	
+	var oresLeft:int= GlobalVariables.totalOres-GlobalVariables.oresFound
+	if oresLeft<=0:
+		SteamHandler.TryUnlockAchievement("ach_all_ores")
 		
+	
 	
 	pass
