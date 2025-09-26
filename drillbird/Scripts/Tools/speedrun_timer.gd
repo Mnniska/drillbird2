@@ -14,7 +14,7 @@ func _physics_process(delta: float) -> void:
 	
 	if shouldUpdateTimerText:
 		if timerText!=null:
-			timerText.text="[right]"+GetTimerString(time)
+			timerText.text="[right]"+GetTimerString(GlobalTime.time)
 
 			
 
