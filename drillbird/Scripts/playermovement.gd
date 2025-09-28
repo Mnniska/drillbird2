@@ -658,7 +658,8 @@ func Update_Animations(newanim):
 	if invincible:
 		var frequency:float = 25
 		var magnitude:float=1
-		var wave = cos(GlobalTime.time*frequency)
+		
+		var wave = cos(HUD.SpeedrunTimer.time*frequency)
 		
 		var alpha:float
 		alpha = 0.4

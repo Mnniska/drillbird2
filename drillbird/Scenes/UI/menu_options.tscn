@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cp6xuvmo0rguj" path="res://Art/UI/HUD/UI_BlackBorder.png" id="2_eej8b"]
 [ext_resource type="PackedScene" uid="uid://g8bq4xcafcut" path="res://Scenes/UI/menu_option.tscn" id="2_x5nw2"]
 [ext_resource type="Theme" uid="uid://bfr5y4lo7m1ux" path="res://Resources/Fonts/fontTheme.tres" id="3_208bg"]
-[ext_resource type="AudioStream" uid="uid://biff4rn2yb8wv" path="res://Audio/Music/mus_dreaming.wav" id="3_ttclj"]
+[ext_resource type="AudioStream" uid="uid://biff4rn2yb8wv" path="res://Audio/MUSIC/mus_dreaming.wav" id="3_ttclj"]
 [ext_resource type="AudioStream" uid="uid://m5o3cjhfbqsf" path="res://Audio/SFX/home_player_sleep.wav" id="6_kpxvh"]
 [ext_resource type="AudioStream" uid="uid://cygmw124vctks" path="res://Audio/Ambience/ambience_surface.mp3" id="6_wrpie"]
 [ext_resource type="FontFile" uid="uid://cfqp6n0vaubbe" path="res://Resources/Fonts/x12y16pxMaruMonica.ttf" id="7_ji3uf"]
@@ -24,7 +24,6 @@ scale = Vector2(1.73438, 20.4375)
 texture = ExtResource("2_eej8b")
 
 [node name="Return2" parent="." instance=ExtResource("2_x5nw2")]
-visible = false
 position = Vector2(0, -52)
 optionName = "Return"
 localizationID = "options_return"
@@ -90,7 +89,7 @@ visible = false
 position = Vector2(0, 8)
 optionName = "Game Options"
 localizationID = "options_game"
-options = [NodePath("../Return2"), NodePath("../toggle ghost"), NodePath("../save data")]
+options = [NodePath("../Return2"), NodePath("../toggle ghost"), NodePath("../toggle timer"), NodePath("../save data")]
 
 [node name="Language options" parent="." node_paths=PackedStringArray("options") instance=ExtResource("2_x5nw2")]
 visible = false
@@ -101,6 +100,7 @@ isAction = false
 options = [NodePath("../OptionScroller/Langmenu_Return"), NodePath("../OptionScroller/Lang_english"), NodePath("../OptionScroller/Lang_Japanese"), NodePath("../OptionScroller/Lang_Chinese"), NodePath("../OptionScroller/Lang_Russian"), NodePath("../OptionScroller/Lang_Sve"), NodePath("../OptionScroller/Lang_French"), NodePath("../OptionScroller/Lang_de")]
 
 [node name="OptionScroller" type="Node2D" parent="."]
+visible = false
 position = Vector2(0, -35)
 script = ExtResource("7_uviax")
 distance = 14
@@ -169,7 +169,6 @@ localizationID = "lang_de"
 theme_override_fonts/normal_font = ExtResource("7_rg54n")
 
 [node name="toggle ghost" parent="." instance=ExtResource("2_x5nw2")]
-visible = false
 position = Vector2(0, -33)
 optionName = "Haunted by Ghost"
 localizationID = "options_ghost"
@@ -177,9 +176,16 @@ isToggle = true
 sample_sound = ExtResource("6_wrpie")
 soundAudioBus = "Ambience"
 
+[node name="toggle timer" parent="." instance=ExtResource("2_x5nw2")]
+position = Vector2(0, -13)
+optionName = "toggle_timer"
+localizationID = "options_timer"
+isToggle = true
+sample_sound = ExtResource("6_wrpie")
+soundAudioBus = "Ambience"
+
 [node name="save data" parent="." node_paths=PackedStringArray("extraConfirmzationMessage") instance=ExtResource("2_x5nw2")]
-visible = false
-position = Vector2(0, -12)
+position = Vector2(0, 8)
 optionName = "Reset Save Data"
 localizationID = "options_reset_save_data"
 RequireExtraConfirmation = true

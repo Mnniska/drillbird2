@@ -216,6 +216,10 @@ func ButtonPressed(_option:menu_option):
 		GlobalVariables.ResetSaveData()
 		HUD.QuitGame()
 		
+	if _option.optionName=="toggle_timer":
+		HUD.SpeedrunTimer.ToggleTimerTextEnabled()
+		_option.option_active=HUD.SpeedrunTimer.shouldUpdateTimerText
+		_option.SetActive(true)
 		
 	if _option.optionName=="lang_sv":
 		SetLanguage("sv")

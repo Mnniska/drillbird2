@@ -24,7 +24,7 @@ func GetStringDecoded(_str:String,useoutline:bool=false):
 		if _char =='(' or symbolName.length()>0:
 			symbolName+=_char
 			if _char==')':
-				text+="[img]"+GetSymbolFromString(symbolName,useoutline)+"[/img]"
+				text+=GetSymbolFromString(symbolName,useoutline)
 
 				symbolName=""
 		else:

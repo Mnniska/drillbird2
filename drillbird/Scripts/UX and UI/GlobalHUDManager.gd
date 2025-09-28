@@ -9,6 +9,7 @@ extends CanvasLayer
 @onready var MainMenu=$MainMenu
 @onready var OptionsMenu=$Options
 @onready var PauseMenu=$PAUSE
+@onready var SpeedrunTimer=$SpeedrunTimer
 
 enum menuStates{MAIN,PAUSE,OPTIONS,PLAY,CREDITS}
 var state:menuStates=menuStates.MAIN
@@ -113,12 +114,14 @@ func _process(delta: float) -> void:
 			isLerping=false
 	
 	if state==menuStates.PLAY:
-		if Input.is_action_just_pressed("escape"):
+		if Input.is_action_just_pressed("escape") and GlobalVariables.playerStatus != GlobalVariables.playerStatusEnum.SHOP:
 			SetState(menuStates.PAUSE)
 			
 func SetState(_state:menuStates):
 	previousMenuState=state
 	state=_state
+	
+	$debuggggg.text="current HUD state: "+str(state)
 	
 	match state:
 		menuStates.MAIN:

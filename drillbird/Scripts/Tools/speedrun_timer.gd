@@ -1,4 +1,5 @@
 extends Node
+class_name speedrun_timer
 
 var time:float=0
 @onready var timerText:RichTextLabel=$"timer text"
@@ -14,7 +15,7 @@ func _physics_process(delta: float) -> void:
 	
 	if shouldUpdateTimerText:
 		if timerText!=null:
-			timerText.text="[right]"+GetTimerString(GlobalTime.time)
+			timerText.text="[right]"+GetTimerString(time)
 
 			
 
@@ -62,9 +63,9 @@ func SetCurrentTime(_time:float):
 func GetCurrentTime():
 	return time
 
-func SetTimerTextEnabled(enabled:bool=false):
-	shouldUpdateTimerText=enabled
-	if enabled:
+func ToggleTimerTextEnabled():
+	shouldUpdateTimerText=!shouldUpdateTimerText
+	if shouldUpdateTimerText:
 		timerText.show()
 	else:
 		timerText.hide()
