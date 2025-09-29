@@ -8,3 +8,4 @@ class_name abstract_player_preferences
 
 @export var ghostActive:bool=true
 @export var fullscreenActive:bool=true
+@export var timerActive:bool=false

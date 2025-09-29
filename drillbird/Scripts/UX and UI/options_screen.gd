@@ -112,7 +112,9 @@ func LoadPreferences():
 			"Haunted by Ghost":
 				GlobalVariables.ghostActive= PlayerPreferences.ghostActive 
 				n.option_active=PlayerPreferences.ghostActive
-				pass
+			"toggle_timer":
+				HUD.SpeedrunTimer.SetTimerEnabled(PlayerPreferences.timerActive)
+				n.option_active=PlayerPreferences.timerActive
 
 func SetupMenuSignals():
 	for n in EntireMenu:

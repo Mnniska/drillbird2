@@ -33,3 +33,5 @@ class_name abstract_savegame
 @export var timeLastSaved:float=0
 @export var totalOres:int=0 #Should be set during first startup
 @export var oresFound:int=0
+
+@export var timeTaken:float=0

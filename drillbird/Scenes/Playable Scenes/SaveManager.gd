@@ -76,6 +76,7 @@ func SaveGame():
 	PlayerData.totalEGGsperienceGained=GlobalVariables.totalEGGsperienceGained
 	PlayerData.playerSpawnPosition = GlobalVariables.playerSpawnPos
 	PlayerData.hasSeenIntroCutscene=GlobalVariables.hasSeenIntroCutscene
+	PlayerData.timeTaken=HUD.SpeedrunTimer.GetCurrentTime()
 	
 	PlayerData.currentDay=GlobalVariables.currentDay
 	PlayerData.eggState=GlobalVariables.eggState
@@ -168,6 +169,7 @@ func LoadGame():
 	LoadFlowers()
 	LoadLeftoverOres()
 	GlobalVariables.playerSpawnPos=PlayerData.playerSpawnPosition
+	HUD.SpeedrunTimer.SetCurrentTime(PlayerData.timeTaken)
 	
 	print_debug("game loaded")
 	

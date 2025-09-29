@@ -69,6 +69,13 @@ func ToggleTimerTextEnabled():
 		timerText.show()
 	else:
 		timerText.hide()
+
+func SetTimerEnabled(enabled:bool):
+	shouldUpdateTimerText=enabled
+	if shouldUpdateTimerText:
+		timerText.show()
+	else:
+		timerText.hide()
 	
 func SetTimerPaused(pause:bool):
 	timePaused=pause
