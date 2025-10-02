@@ -121,7 +121,6 @@ func SetState(_state:menuStates):
 	previousMenuState=state
 	state=_state
 	
-	$debuggggg.text="current HUD state: "+str(state)
 	
 	match state:
 		menuStates.MAIN:

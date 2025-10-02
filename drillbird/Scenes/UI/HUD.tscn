@@ -411,13 +411,6 @@ grow_vertical = 0
 theme = ExtResource("15_nxi4s")
 bbcode_enabled = true
 
-[node name="debuggggg" type="RichTextLabel" parent="."]
-offset_left = 35.0
-offset_top = 56.0
-offset_right = 155.0
-offset_bottom = 96.0
-theme = ExtResource("15_nxi4s")
-
 [connection signal="NewGame" from="MainMenu" to="." method="_on_main_menu_new_game"]
 [connection signal="press_options" from="MainMenu" to="." method="_on_main_menu_press_options"]
 [connection signal="press_quit" from="MainMenu" to="." method="QuitGame"]

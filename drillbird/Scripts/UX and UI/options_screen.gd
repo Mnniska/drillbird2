@@ -38,18 +38,18 @@ func _ready() -> void:
 			pass
 			
 	verify_save_directory(save_file_path)
-	LoadPreferences()
-	
-	
+	GlobalVariables.SetupComplete.connect(readyAfterSetup)
 
-
-	
-	UpdateMenu()
-	SetupMenuSignals()
-	SetMenuActive(menuActive)
 	
 
 	pass # Replace with function body.
+
+func readyAfterSetup():
+	LoadPreferences()
+	UpdateMenu()
+	SetupMenuSignals()
+	SetMenuActive(menuActive)
+	pass
 
 func verify_save_directory(path:String):
 	DirAccess.make_dir_absolute(path)
@@ -70,6 +70,8 @@ func SaveToggleValue(_name:String,_on:bool):
 			PlayerPreferences.ghostActive=_on
 		"Toggle Fullscreen":
 			PlayerPreferences.fullscreenActive=_on
+		"toggle_timer":
+			PlayerPreferences.timerActive=_on
 
 
 func SaveSliderValue(_name:String,_progress:float):
