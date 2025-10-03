@@ -41,8 +41,8 @@ menu_continue,menu,https://youtu.be/u7hrqY9PqU8?t=14,Continue,Fortsätt,続き�
 menu_new_game,menu,see above,New Game,Nytt Spel,ニューゲーム,新游戏,Новая игра,Neues Spiel,Nouvelle partie
 menu_options,menu,see above,Options,Inställningar,オプション,设置,Настройки,Optionen,Options
 menu_version,menu,"The current version of the game. Not listed in the demo release, but will say ""version [X]""",Version,Version,バージョン,版本,Версия,Version,Version
-menu_quit,menu,https://youtu.be/u7hrqY9PqU8?t=14,Quit Game,Avsluta,ゲーム終了,退出游戏,Выйти из игры,Spiel beenden,Quitter le jeu
-menu_demo,menu,see above,[center][rainbow]Demo,[center][rainbow]Demo,[center][rainbow]デモ,[center][rainbow]演示版,[center][rainbow]Демо,[center][rainbow]Demo,[center][rainbow]Démo
+menu_quit,menu,https://youtu.be/u7hrqY9PqU8?t=14,Quit Game,Avsluta,ゲーム終了,退出游戏,Выйти из игры,Spiel zurücksetzen ,Quitter le jeu
+menu_demo,menu,see above,[center][rainbow]Demo,[center][rainbow]Demo,[center][rainbow]デモ,[center][rainbow]演示版,[center][rainbow]Демо,[center][color=orange]A digging game about a tiny bird in a big world,[center][rainbow]Démo
 options_return,menu_options,see above,Return,Tillbaka,戻る,返回,Назад,Zurück,Retour
 options_fullscreen,menu_options,see above,Toggle Fullscreen,Slå på/av fullskärm,フルスクリーン切替,切换全屏,Переключить полный экран,Vollbildmodus,Mode plein écran
 options_audio,menu_options,see above,Audio Options,Ljudinställningar,オーディオ設定,音频设置,Настройки аудио,Audioeinstellungen,Audio
@@ -646,7 +646,8 @@ Lulu Flôres da Cunha – pour ton soutien inconditionnel
 
 
 
-À bientôt !"
+À bientôt !
+"
 credits_growth,Credits,https://youtu.be/u7hrqY9PqU8?t=569,Growth,Mognad,成長,成长,Рост,Entwicklung,Croissance
 credits_evolve_popup,Credits,https://youtu.be/u7hrqY9PqU8?t=634,(inventory) to evolve,(inventory) för att växa upp,(inventory)で成長する,(inventory)进化,(inventory) для развития,Zum Weiterentwickeln (inventory) drücken,(inventory) pour évoluer
 credits_thanks_for_playing,Credits,https://youtu.be/u7hrqY9PqU8?t=681,"[center]Thank you for playing Drillbird! 
@@ -726,7 +727,9 @@ credits_reset_save_data_goback,Credits_choice,^,"[center]Would you like to reset
 [p][/p] [center]  Börja om   [wave][rainbow]Gå tillbaka i tiden[/rainbow][/wave]  ",[center]セーブデータをリセットして最初からやり直しますか？それとも卵が孵る直前に戻りますか？ [p][/p] [center] 最初から [wave][rainbow]時間を戻す[/rainbow][/wave],[center]您想重置存档重新开始，还是回到孵化蛋之前？ [p][/p] [center] 重新开始 [wave][rainbow]回到过去[/rainbow][/wave],[center]Хотите сбросить сохранение и начать сначала или вернуться к моменту перед вылуплением яйца? [p][/p] [center] Начать заново [wave][rainbow]Вернуться во времени[/rainbow][/wave],"[center]Möchtest du deinen Spielstand zurücksetzen und ganz von vorne beginnen,  
 oder lieber zu dem Moment zurückkehren, bevor das Ei geschlüpft ist?  
 [p][/p]  
-[center]  Neu beginnen   [wave][rainbow]In der Zeit zurückreisen[/rainbow][/wave]","[center]Souhaites-tu réinitialiser ta sauvegarde pour recommencer depuis le début,  
+[center]  Neu beginnen   [wave][rainbow]In der Zeit zurückreisen[/rainbow][/wave]
+","[center]Souhaites-tu réinitialiser ta sauvegarde pour recommencer depuis le début,  
 ou revenir juste avant l’éclosion de l’œuf ?  
 [p][/p]  
-[center]  Tout recommencer   [wave][rainbow]Revenir en arrière[/rainbow][/wave]"
+[center]  Tout recommencer   [wave][rainbow]Revenir en arrière[/rainbow][/wave]
+"

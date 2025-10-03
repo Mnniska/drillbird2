@@ -15,7 +15,7 @@
 
 [node name="Options" type="Node2D" node_paths=PackedStringArray("BaseMenu")]
 script = ExtResource("1_5gtrn")
-BaseMenu = [NodePath("Return2"), NodePath("ToggleFullscreen"), NodePath("Audio Options"), NodePath("Game Options"), NodePath("Language options")]
+BaseMenu = [NodePath("Return2"), NodePath("ToggleFullscreen"), NodePath("Audio Options"), NodePath("Language options")]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.396078)

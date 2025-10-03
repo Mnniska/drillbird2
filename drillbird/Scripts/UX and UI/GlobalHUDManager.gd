@@ -9,7 +9,6 @@ extends CanvasLayer
 @onready var MainMenu=$MainMenu
 @onready var OptionsMenu=$Options
 @onready var PauseMenu=$PAUSE
-@onready var text_demo=$MainMenu/text_demo
 
 signal menuStateChanged(state:menuStates)
 
@@ -61,7 +60,6 @@ func _ready() -> void:
 	UpdateHUDPosition(showHud)
 	
 	$MainMenu/Label.text=version
-	text_demo.text=tr("menu_demo")
 	pass # Replace with function body.
 
 func SetupComplete():

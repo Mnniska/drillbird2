@@ -36,21 +36,9 @@ func ButtonPressed(_option:menu_option):
 		HUD.SetState(HUD.menuStates.OPTIONS)
 		
 	if _option.optionName=="Quit Game":
+		HUD.ResetGame()
 		
-		if !hasClickedQuitOnce:
-			
-
-			var end_time = Time.get_unix_time_from_system() #captures the end time in unix time
-			var elapsed_time = (end_time - GlobalVariables.timeLastSaved) / 60 #this calculates the elapsed time in minutes - divisor will need to be adjusted if you want hours, days, etc.
-			
-			quitInfoText.text=tr("options_quit_warning_part1")+str(floor(elapsed_time))+" "+tr("options_quit_warning_part2")
-			
-			quitInfoText.show()
-			hasClickedQuitOnce=true
-		else:
-			get_tree().quit()
 		
-		pass
 	
 	
 

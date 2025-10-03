@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://bxacqh1cbwxw5"]
+[gd_scene load_steps=51 format=3 uid="uid://bxacqh1cbwxw5"]
 
 [ext_resource type="Script" path="res://Scripts/UX and UI/GlobalHUDManager.gd" id="1_u1olj"]
 [ext_resource type="Texture2D" uid="uid://cp6xuvmo0rguj" path="res://Art/UI/HUD/UI_BlackBorder.png" id="1_vcacc"]
@@ -22,11 +22,21 @@
 [ext_resource type="Texture2D" uid="uid://bpa8olbvx4ufv" path="res://Art/UI/MainMenu/DrillBird_LOGO.png" id="19_hr1yg"]
 [ext_resource type="Script" path="res://Scripts/UX and UI/main_menu.gd" id="19_qssi7"]
 [ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_debugMenuOption.gd" id="20_hlahx"]
+[ext_resource type="Texture2D" uid="uid://dg3rahv61itpg" path="res://Art/UI/sign_bg.png" id="23_op6vm"]
 [ext_resource type="AudioStream" uid="uid://bwynx1ih755ll" path="res://Audio/Music/Drillbird Theme.mp3" id="23_p7qe8"]
 [ext_resource type="PackedScene" uid="uid://bldt1ha11vmuu" path="res://Scenes/UI/menu_options.tscn" id="23_sv2nb"]
+[ext_resource type="Texture2D" uid="uid://b4oe7gr5h25gw" path="res://Art/characters/Drillbird/anim_Run1.png" id="24_gmty7"]
 [ext_resource type="PackedScene" uid="uid://bgj42edyan2we" path="res://Scenes/UI/menu_pause.tscn" id="24_p58jt"]
+[ext_resource type="Texture2D" uid="uid://cghvbkkjjm3i7" path="res://Art/characters/Drillbird/anim_Run2.png" id="25_1amd1"]
 [ext_resource type="Texture2D" uid="uid://cdgrv0eh6htfa" path="res://Art/cutscenes/intro/intro_landscape11.png" id="26_4tsov"]
+[ext_resource type="Texture2D" uid="uid://br6j25q4duhb6" path="res://Art/characters/Drillbird/anim_Run3.png" id="26_y5v6k"]
+[ext_resource type="Texture2D" uid="uid://crf0vmvyj55mo" path="res://Art/characters/Drillbird/anim_Run4.png" id="27_78ec7"]
 [ext_resource type="Script" path="res://Scripts/demo_timer.gd" id="27_qhikp"]
+[ext_resource type="Texture2D" uid="uid://dufocv1m0ls2c" path="res://Art/characters/Drillbird/anim_Run5.png" id="28_gvl4f"]
+[ext_resource type="Texture2D" uid="uid://3pwhb3v7bbi6" path="res://Art/characters/Drillbird/anim_drill/anim_WalkingDrillSide1.png" id="30_4hj7y"]
+[ext_resource type="Texture2D" uid="uid://bg1rft51bd7wa" path="res://Art/characters/Drillbird/anim_drill/anim_WalkingDrillSide2.png" id="31_sr5nj"]
+[ext_resource type="Texture2D" uid="uid://d0ynn407go18u" path="res://Art/characters/Drillbird/anim_drill/anim_WalkingDrillSide3.png" id="32_qch34"]
+[ext_resource type="Texture2D" uid="uid://bmfwcjvm3dwbc" path="res://Art/characters/Drillbird/anim_drill/anim_WalkingDrillSide4.png" id="33_oy3t7"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_ese10"]
 
@@ -84,11 +94,48 @@ name = "menu_options"
 options = Array[ExtResource("20_hlahx")]([])
 isAction = true
 
-[sub_resource type="Resource" id="Resource_b7xf6"]
-script = ExtResource("20_hlahx")
-name = "menu_quit"
-options = Array[ExtResource("20_hlahx")]([])
-isAction = true
+[sub_resource type="SpriteFrames" id="SpriteFrames_3b60p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("24_gmty7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_1amd1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_y5v6k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_78ec7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_gvl4f")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_aw0ry"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("30_4hj7y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_sr5nj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_qch34")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_oy3t7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
 
 [sub_resource type="Animation" id="Animation_0g03v"]
 resource_name = "FadeBack"
@@ -154,7 +201,7 @@ _data = {
 [node name="HUD" type="CanvasLayer"]
 layer = 10
 script = ExtResource("1_u1olj")
-version = "[rainbow]Demo v1.11[/rainbow][p]2025-09-16"
+version = "[rainbow]Demo v1.2[/rainbow][p]2025-10-13v"
 scene_credits = ExtResource("2_lsdg3")
 scene_main = ExtResource("3_wspqp")
 
@@ -294,11 +341,11 @@ offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("19_qssi7")
-options = Array[ExtResource("20_hlahx")]([SubResource("Resource_jrvhg"), SubResource("Resource_q3x01"), SubResource("Resource_b7xf6")])
+options = Array[ExtResource("20_hlahx")]([SubResource("Resource_jrvhg"), SubResource("Resource_q3x01")])
 
 [node name="Logo" type="Sprite2D" parent="MainMenu"]
-position = Vector2(0, -63)
-scale = Vector2(0.186497, 0.186497)
+position = Vector2(0, -52)
+scale = Vector2(0.3, 0.3)
 texture = ExtResource("19_hr1yg")
 
 [node name="mainMenuText" type="RichTextLabel" parent="MainMenu"]
@@ -310,9 +357,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -46.0
-offset_top = -2.0
+offset_top = 8.0
 offset_right = 47.0
-offset_bottom = 69.0
+offset_bottom = 79.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("15_nxi4s")
@@ -324,34 +371,57 @@ scroll_active = false
 
 [node name="Label" type="RichTextLabel" parent="MainMenu"]
 layout_mode = 0
-offset_left = -155.0
-offset_top = 70.0
-offset_right = -88.0
-offset_bottom = 112.0
+offset_left = -228.0
+offset_top = 120.0
+offset_right = -161.0
+offset_bottom = 162.0
 theme = ExtResource("15_nxi4s")
 theme_override_colors/default_color = Color(1, 1, 1, 0.807843)
 theme_override_colors/font_selected_color = Color(1, 1, 1, 1)
 bbcode_enabled = true
-text = "[rainbow]Demo v1.11[/rainbow][p]2025-09-16"
+text = "[rainbow]Demo v1.2[/rainbow][p]2025-10-13"
+
+[node name="background2" type="Sprite2D" parent="MainMenu"]
+position = Vector2(4, 84)
+scale = Vector2(1.35547, 2.625)
+texture = ExtResource("1_vcacc")
+
+[node name="Sprite2D" type="Sprite2D" parent="MainMenu"]
+visible = false
+position = Vector2(-1.5, 97)
+scale = Vector2(7.59375, 2.125)
+texture = ExtResource("23_op6vm")
 
 [node name="text_demo" type="RichTextLabel" parent="MainMenu"]
 layout_mode = 0
-offset_left = -62.0
-offset_top = -38.0
-offset_right = 69.0
-offset_bottom = -6.0
-rotation = 0.0402469
+offset_left = -94.0
+offset_top = 69.0
+offset_right = 94.0
+offset_bottom = 101.0
 theme = ExtResource("15_nxi4s")
 theme_override_colors/default_color = Color(1, 1, 1, 0.807843)
 theme_override_colors/font_selected_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
-text = "[center][rainbow]Demo"
+text = "[center][color=orange]Ein Grabspiel über einen kleinen Vogel in einer großen Welt"
 
 [node name="MenuMusic" type="AudioStreamPlayer2D" parent="MainMenu"]
 position = Vector2(-8, -2)
 stream = ExtResource("23_p7qe8")
 max_distance = 10000.0
+
+[node name="birdy1" type="AnimatedSprite2D" parent="MainMenu"]
+position = Vector2(-108, 84)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_3b60p")
+autoplay = "default"
+frame_progress = 0.46719
+
+[node name="birdy2" type="AnimatedSprite2D" parent="MainMenu"]
+position = Vector2(102, 82)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_aw0ry")
+autoplay = "default"
+frame_progress = 0.809069
 
 [node name="Options" parent="." instance=ExtResource("23_sv2nb")]
 visible = false
@@ -410,6 +480,7 @@ Good luck! "
 
 [node name="demo timer" type="Node2D" parent="."]
 script = ExtResource("27_qhikp")
+timeBeforeReset = 180.0
 
 [node name="warning" type="RichTextLabel" parent="demo timer"]
 anchors_preset = 7
@@ -426,6 +497,8 @@ grow_vertical = 0
 theme = ExtResource("15_nxi4s")
 bbcode_enabled = true
 text = "[center]HI HELÖLÖO WERE RESETTING"
+
+[node name="Node2D" type="Node2D" parent="."]
 
 [connection signal="NewGame" from="MainMenu" to="." method="_on_main_menu_new_game"]
 [connection signal="press_options" from="MainMenu" to="." method="_on_main_menu_press_options"]
