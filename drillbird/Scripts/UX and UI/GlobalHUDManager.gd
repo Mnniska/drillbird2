@@ -11,12 +11,21 @@ extends CanvasLayer
 @onready var PauseMenu=$PAUSE
 @onready var text_demo=$MainMenu/text_demo
 
+signal menuStateChanged(state:menuStates)
+
 enum menuStates{MAIN,PAUSE,OPTIONS,PLAY,CREDITS}
-var state:menuStates=menuStates.MAIN
+var state:menuStates=menuStates.MAIN:
+	get:
+		return state
+	set(value):
+		state = value
+		menuStateChanged.emit(state)
+		
 var previousMenuState:menuStates
 
 enum sceneStates{MAIN,CREDITS}
 var sceneState:sceneStates=sceneStates.MAIN
+
 
 
 #HUD manager vars
@@ -169,12 +178,21 @@ func SetState(_state:menuStates):
 			PauseMenu.SetActive(false)
 
 			
-			
-func ResetSaveData():
-	
+
+func ResetGame():
+	sceneState=sceneStates.MAIN
+	GlobalVariables.ResetSaveData()
+	$TransitionToMain.play("FadeBack")
+	await get_tree().create_timer(0.05).timeout
+	var scene = GlobalVariables.MainSceneReferenceConnector.mainScene
+	scene.get_tree().change_scene_to_packed(scene_main)
+	GlobalVariables.InitialSetup=true
+	await GlobalVariables.SetupComplete
+	SetState(menuStates.MAIN)
 	
 	pass
 
+#This changes scene to credits or back to main. 
 func SetSceneState(state:sceneStates,debug:bool=false,resetSaveData:bool=true):
 	
 	sceneState=state

@@ -60,7 +60,11 @@ func SetupLightFunctionality():
 	PlayerLight=GlobalVariables.MainSceneReferenceConnector.playerDarkness
 	if PlayerLight==null:
 		push_error("Could not get player light, something is WRONG")
-	
+
+	#Maybe fixing light not resetting itself when resetting save data	
+	for n in lightBulbArray:
+		n.queue_free()
+	lightBulbArray.clear()
 	
 	time_Countdown=time_TimerLength
 
@@ -242,6 +246,11 @@ func UpdatePlayerLightStatus():
 	
 
 func AddLightbulbRequest():
+	
+	#instead of blindly adding a lightbulb, we should remove all lightbulbs and then 
+	#loop thru the amount of lightbulbs for the current upgrade
+
+	
 	var scene = load("res://Scenes/UI/lightbulb.tscn") 
 	var node = scene.instantiate()
 	var offset= Vector2(0,-4)

@@ -7,7 +7,7 @@ signal signal_IsPlayerInMenuChanged(inMenu:bool)
 var save_file_path = "user://save/"
 var save_file_name="DrillbirdPlayerSave.tres"
 
-var MainSceneReferenceConnector:main_scene_reference_connector
+var MainSceneReferenceConnector:main_scene_reference_connector #where on earth is this set??? fuck 
 var CreditsSceneReferenceConnector:credits_scene_reference_connector
 var playerSpawnPos:Vector2
 var eggState:int=0
