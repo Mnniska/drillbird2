@@ -137,6 +137,10 @@ func UpdateInventoryText():
 	
 
 func SetupInventorySize():
+
+	currentWeight=0
+	carriedOres.clear()
+	
 	maxWeight = inventoryUpgradeTree.items[GlobalVariables.upgradeLevel_inventory].power
 	UpdateInventoryText()
 

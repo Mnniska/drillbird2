@@ -40,7 +40,9 @@ func _process(delta: float) -> void:
 		var n="n"
 		if timeleft<1.5:
 			n=""
-		warning.text="[center]Zurücksetzen in "+ str(round(timeleft))+ " Sekunde"+n
+		if timeleft<=0.5:
+			n="n"
+		warning.text="[center]Reset in "+ str(round(timeleft))+ " Sekunde"+n
 	else:
 		warning.hide()
 	
