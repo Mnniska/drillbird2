@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cp6xuvmo0rguj" path="res://Art/UI/HUD/UI_BlackBorder.png" id="2_eej8b"]
 [ext_resource type="PackedScene" uid="uid://g8bq4xcafcut" path="res://Scenes/UI/menu_option.tscn" id="2_x5nw2"]
 [ext_resource type="Theme" uid="uid://bfr5y4lo7m1ux" path="res://Resources/Fonts/fontTheme.tres" id="3_208bg"]
-[ext_resource type="AudioStream" uid="uid://biff4rn2yb8wv" path="res://Audio/Music/mus_dreaming.wav" id="3_ttclj"]
+[ext_resource type="AudioStream" uid="uid://biff4rn2yb8wv" path="res://Audio/MUSIC/mus_dreaming.wav" id="3_ttclj"]
 [ext_resource type="AudioStream" uid="uid://m5o3cjhfbqsf" path="res://Audio/SFX/home_player_sleep.wav" id="6_kpxvh"]
 [ext_resource type="AudioStream" uid="uid://cygmw124vctks" path="res://Audio/Ambience/ambience_surface.mp3" id="6_wrpie"]
 [ext_resource type="FontFile" uid="uid://cfqp6n0vaubbe" path="res://Resources/Fonts/x12y16pxMaruMonica.ttf" id="7_ji3uf"]

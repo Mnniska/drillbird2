@@ -131,6 +131,28 @@ func SaveEnemies():
 		
 	pass
 
+#Currently not connected - but can be used to calc achievements
+func CalculateEnemyDeaths():
+	var enemyTotal:int=0
+	var deadPeople:int=0
+	var index=0
+	
+	#loop through enemy list and grab things that aren't spikes or fall blocks
+	#Check how many enemies there are, and whether they're dead
+	#used for achievement purposes
+	for n in PlayerData.enemyTypes:
+		if n!=1 and n!=3:
+			enemyTotal+=1
+			if PlayerData.enemyDead[index]:
+				deadPeople+=1
+				pass
+		index+=1
+		
+	print_debug("Amount of enemies:"+str(enemyTotal))	
+	print_debug("Amount of dead enmies:"+str(deadPeople))
+	
+	pass
+
 func SaveFlowers():
 	PlayerData.flowerSpawnPositions.clear()
 	PlayerData.flowerSpawnPositions=EnemySpawner.GetFlowerUpdate()

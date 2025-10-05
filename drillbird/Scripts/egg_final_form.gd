@@ -79,6 +79,12 @@ func HatchEgg():
 	hatchAnimation.animation_finished.connect(HatchCutsceneFinished)
 	await get_tree().create_timer(1).timeout
 	isShaking=false
+	await get_tree().create_timer(1.3).timeout
+	HUD.SpeedrunTimer.finishSpeedrun()
+	
+	#handled here because the timer stops here
+	if HUD.SpeedrunTimer.time< SteamHandler.stat_ach_speed_fastest:
+		SteamHandler.TryUnlockAchievement("ach_speed_fastest")
 
 	
 func HatchCutsceneFinished():

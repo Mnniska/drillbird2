@@ -5,7 +5,7 @@ extends Node2D
 @onready var SebsMessage=$"Sebs message"
 @onready var choiceMessage=$choice
 @onready var white=$white_background
-var textIsReady:bool=false
+var textIsReady:bool=true
 enum states{inactive,info,seb,choice}
 var state:states=states.inactive
 signal textFinishedShowing()
@@ -25,6 +25,12 @@ func _ready() -> void:
 	StatsParent.hide()
 	SebsMessage.hide()
 	choiceMessage.hide()
+	
+	#!!!DEBUG! REMOVE ME!!!
+	HUD.SetState(HUD.menuStates.CREDITS)
+	show()
+	DisplayStats()
+	
 
 func TranslateMessages():
 	SebsMessage.text=tr("credits_thanks_for_playing")
@@ -108,20 +114,32 @@ func UpdateFinalChoiceText():
 	pass
 
 func TypewriteText(label:RichTextLabel):
+	if !textIsReady:
+		return
 	textIsReady=false
 	textshown=0
 	label.visible_characters=0
 	var skip:bool=false
+	
+	var codetext=""
 	while label.visible_characters<label.text.length()-1:
 		textshown+=1
 		label.visible_characters=textshown
 		if label.text[textshown]=="[": #ensures there's no pausing for hidden bbcode stuff
 			skip=true
+			codetext=""
 			
 		if skip:
+			codetext+=label.text[textshown]
+			print_debug(codetext)
+			if codetext=="[p]":
+				await get_tree().create_timer(1).timeout
+				codetext=""
+			
 			if label.text[textshown]=="]":
 				skip=false
-		
+				
+
 		if !skip:
 				SoundManager.PlaySoundAtLocation($bg.global_position,abstract_SoundEffectSetting.SoundEffectEnum.TYPEWRITER_CLICK)
 				await get_tree().create_timer(typewritePause).timeout
@@ -138,11 +156,10 @@ func TypewriteText(label:RichTextLabel):
 func ConstructStatsString()->String:
 	var text:String
 	text+=tr("credits_stats_hatchtime")
-	text+="[color=orange]"+ str(GlobalVariables.currentDay)+"[/color]"+"[p] [/p]"
-	text+=tr("credits_stats_ores")+str(GlobalVariables.oresFound)+" / "+str(GlobalVariables.totalOres)+"[p] [/p]"
-	
-	#print_debug("Player has found and given "+str(PlayerData.oresFound)+" / "+str(PlayerData.totalOres)+" ores")
-	
+	text+="[color=orange]"+ str(GlobalVariables.currentDay)+"[/color]"+"[p][/p]"
+	text+=tr("credits_stats_timetaken")+HUD.SpeedrunTimer.GetTimerString()+"[p][/p]"
+	text+=tr("credits_stats_ores")+str(GlobalVariables.oresFound)+" / "+str(GlobalVariables.totalOres)+"[p][/p]"
+		
 	text+="[center][wave][rainbow]"+tr("credits_stats_continue")
 	
 	
@@ -158,7 +175,4 @@ func CheckFinishAchievements():
 	var oresLeft:int= GlobalVariables.totalOres-GlobalVariables.oresFound
 	if oresLeft<=0:
 		SteamHandler.TryUnlockAchievement("ach_all_ores")
-		
 	
-	
-	pass

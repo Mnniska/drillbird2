@@ -651,6 +651,8 @@ position = Vector2(-2, -83)
 sprite_frames = SubResource("SpriteFrames_lku8d")
 animation = &"hatch"
 autoplay = "default"
+frame = 66
+frame_progress = 1.0
 
 [node name="Anim_hatching_drillbird" type="AnimatedSprite2D" parent="."]
 z_index = 1

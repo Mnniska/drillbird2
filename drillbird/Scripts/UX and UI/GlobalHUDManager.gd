@@ -11,8 +11,13 @@ extends CanvasLayer
 @onready var PauseMenu=$PAUSE
 @onready var SpeedrunTimer=$SpeedrunTimer
 
+signal signal_menuStateChanged
 enum menuStates{MAIN,PAUSE,OPTIONS,PLAY,CREDITS}
-var state:menuStates=menuStates.MAIN
+var state:menuStates=menuStates.MAIN:
+	get: return state
+	set(new_state):
+		state=new_state
+		signal_menuStateChanged.emit(new_state)
 var previousMenuState:menuStates
 
 enum sceneStates{MAIN,CREDITS}

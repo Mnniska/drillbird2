@@ -8,6 +8,7 @@
 
 [node name="Final stats" type="Node2D"]
 script = ExtResource("1_bixtf")
+typewritePause = 0.1
 finalchoicetext_erase = "credits_reset_save_data_erasedata"
 finalchoicetext_goback = "credits_reset_save_data_goback"
 

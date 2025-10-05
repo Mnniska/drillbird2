@@ -5,11 +5,27 @@ var time:float=0
 @onready var timerText:RichTextLabel=$"timer text"
 var shouldUpdateTimerText:bool=false
 var timePaused:bool=false
+var speedrunFinished:bool=false
 
+func _ready() -> void:
+	HUD.signal_menuStateChanged.connect(MenuStateChanged)
+
+func MenuStateChanged(state: HUD.menuStates):
+	timePaused=true
+	
+	#assumption: PLAY is the only state where the timer should be paused. This requires pausing to not give any time benefits..
+	if state==HUD.menuStates.PLAY:
+			timePaused=false
+		
+	
+	pass
 
 func _physics_process(delta: float) -> void:
-	if timePaused:
+	if timePaused or speedrunFinished:
 		return
+		
+	if Input.is_physical_key_pressed(KEY_0):
+		finishSpeedrun()
 	
 	time+=delta
 	
@@ -19,7 +35,22 @@ func _physics_process(delta: float) -> void:
 
 			
 
-func GetTimerString(calcTime:float)->String:
+#called from the egg hatch cutscene in HOME
+func finishSpeedrun():
+	if speedrunFinished:
+		return
+	speedrunFinished=true
+	
+	var numbertext=timerText.text
+	
+	for e in 10:
+		timerText.text="[color=orange][right]"+numbertext
+		await get_tree().create_timer(0.2).timeout
+		timerText.text="[color=white][right]"+numbertext
+		await get_tree().create_timer(0.2).timeout
+	
+
+func GetTimerString(calcTime:float=time)->String:
 	var temptime=calcTime
 	
 	var minutes:int=00
