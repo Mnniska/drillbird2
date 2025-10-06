@@ -480,6 +480,7 @@ Good luck! "
 
 [node name="demo timer" type="Node2D" parent="."]
 script = ExtResource("27_qhikp")
+timeBeforeReset = 60.0
 
 [node name="warning" type="RichTextLabel" parent="demo timer"]
 anchors_preset = 7
