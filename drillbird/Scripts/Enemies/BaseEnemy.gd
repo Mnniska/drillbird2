@@ -11,12 +11,15 @@ var gamePaused:bool=true
 var enemySleep:bool=true
 @onready var positionLastFrame:Vector2=position
 var isFalling:bool=false
-
 var textbubble=preload("res://Scenes/UI/text_bubble.tscn")
 
 @export var updateInterval:float=2
 var updateCounter:float=0
 var activeDistance:float=16*20
+
+var setupComplete:bool=false
+
+var deadFuckYou:bool=false
 
 func GetCollType(): #MUST HAVE
 	return collType
@@ -28,20 +31,36 @@ func SetGamePaused(pause:bool):
 	gamePaused=pause
 
 func _ready() -> void:
-	enemyInfo=enemyInfo.duplicate()
-	if enemyInfo.dead:
-		TurnEnemyOff()
-	
-	spawnPositionLocal=position #MUST HAVE
-	GlobalVariables.signal_IsPlayerInMenuChanged.connect(SetGamePaused)
+
+	pass
+	#now handled in Setup
+
 	
 func GetLocalSpawnPosition(): #MUST HAVE
 	return spawnPositionLocal
 	
 func Setup(info:abstract_enemy): #MUST HAVE
+	#This happens AFTER the enemy has spawned, so i just need to make sure this check has happened b4 enemy spawns
+	enemyInfo=enemyInfo.duplicate()
 	enemyInfo.spawnLocation=info.spawnLocation
 	enemyInfo.currentSpawnLocation=info.currentSpawnLocation
 	enemyInfo.dead=info.dead
+	
+	
+	#this was previously in READY
+	if enemyInfo.dead:
+		TurnEnemyOff()
+	
+	#TODO:
+	#Does the counting seem to work?
+	#Do enemies seem to behave OK? Do they save and die correctly lol 
+	#Check the ready functions and ensure there's no dupe stuff
+	#hugs and kisses <3 
+	
+	spawnPositionLocal=position #MUST HAVE
+	GlobalVariables.signal_IsPlayerInMenuChanged.connect(SetGamePaused)
+	
+	setupComplete=true
 
 func GetIsFalling():
 	#Make sure to update PositionLastFrame AFTER this
@@ -70,9 +89,7 @@ func TurnEnemyOff(hideInstantly:bool=true):
 	
 func Kill(showEffects:bool=true,soundToPlay:abstract_SoundEffectSetting.SoundEffectEnum=-1):
 	
-
-	
-	if enemyInfo.dead:
+	if enemyInfo.dead or !setupComplete:
 		return
 	enemyInfo.dead=true
 	TurnEnemyOff(false)

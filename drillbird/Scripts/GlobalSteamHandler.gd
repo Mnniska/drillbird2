@@ -8,7 +8,19 @@ var AppID="3809940"
 @export var stat_ach_speed_fastest:float=15*60
 
 @export var stat_ach_pacifist:int=10
+@export var stat_ach_murderer:int=100
 
+var enemyDeaths:int=0
+
+func SetEnemyDeaths(amount:int):
+	enemyDeaths=amount
+	print_debug("Enemy count loaded. Count: "+str(enemyDeaths))
+	
+func IncreaseEnemyDeaths():
+	enemyDeaths+=1
+	print_debug("Killed enemy! New count: "+str(enemyDeaths))
+	if enemyDeaths>=stat_ach_murderer:
+		TryUnlockAchievement("ach_murderer")
 
 func _init():
 	OS.set_environment("SteamAppID",AppID)

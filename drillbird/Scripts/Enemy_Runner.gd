@@ -32,9 +32,6 @@ func SetGamePaused(paused:bool):
 func GetLocalSpawnPosition(): #MUST HAVE
 	return spawnPositionLocal
 	
-func Setup(info:abstract_enemy): #MUST HAVE
-	enemyInfo.spawnLocation=info.spawnLocation
-	enemyInfo.dead=info.dead
 
 func DealDamage(value:int): #MUST HAVE
 	if value>0:
