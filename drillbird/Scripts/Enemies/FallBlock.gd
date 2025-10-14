@@ -54,9 +54,18 @@ func _physics_process(delta: float) -> void:
 						n.global_position=self.global_position+Vector2(0,-16) #Hack to ensure player isn't stuck underneath block
 					n.DealDamage(enemyInfo.damage)
 					
+
 					if n.GetCollType().type==abstract_collidable.types.ENEMY:
+						
+
+							
 						var info:abstract_enemy
 						info = n.enemyInfo
+						
+							#trigger steam achievement if fallblock kills something living ;) 
+						if info.type != abstract_enemy.enemyTypes.FALLBLOCK and info.type!=abstract_enemy.enemyTypes.SPIKE:
+							SteamHandler.TryUnlockAchievement("ach_fallblock")
+						
 						if info.type==abstract_enemy.enemyTypes.SPIKE:
 							n.TurnEnemyOff()
 						#custom murder
