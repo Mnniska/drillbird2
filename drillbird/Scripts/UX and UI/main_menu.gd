@@ -9,8 +9,8 @@ signal press_quit
 var textbegin="[center]"
 var textend="[/center]"
 
-var selectionEffectBegin="[wave amp=50.0 freq=5.0 connected=1]"
-var selectionEffectEnd="[/wave]"
+var selectionEffectBegin="[color=orange][wave amp=50.0 freq=5.0 connected=1]"
+var selectionEffectEnd="[/wave][/color]"
 
 var selection:int=0
 
@@ -41,19 +41,41 @@ func _physics_process(delta: float) -> void:
 		
 	if Input.is_action_just_pressed("up"):
 		selection-=1
+		PlayMenuSound(menu_sounds.up)
 		if selection<0:
 			selection=options.size()-1
 		GenerateMainMenu()
 	if Input.is_action_just_pressed("down"):
 		selection+=1
+		PlayMenuSound(menu_sounds.down)
 		if selection>options.size()-1:
 			selection=0
 		GenerateMainMenu()
+		
 	
 	if Input.is_action_just_pressed("jump"):
 		PressButton()
+		PlayMenuSound(menu_sounds.select)
 	
 
+enum menu_sounds{up,down,select,back,toggle_yes,toggle_no}
+
+func PlayMenuSound(sound:menu_sounds):
+	
+	match sound:
+		menu_sounds.up:
+			SoundManager.PlaySoundGlobal(abstract_SoundEffectSetting.SoundEffectEnum.HOME_MENU_UP)
+		menu_sounds.down:
+			SoundManager.PlaySoundGlobal(abstract_SoundEffectSetting.SoundEffectEnum.HOME_MENU_DOWN)
+		menu_sounds.select:
+			SoundManager.PlaySoundGlobal(abstract_SoundEffectSetting.SoundEffectEnum.HOME_MENU_PURCHASE_YES)
+		menu_sounds.back:
+			SoundManager.PlaySoundGlobal(abstract_SoundEffectSetting.SoundEffectEnum.HOME_MENU_PURCHASE_NO)
+		menu_sounds.toggle_yes:
+			SoundManager.PlaySoundGlobal(abstract_SoundEffectSetting.SoundEffectEnum.PLAYER_WAKEUP)
+		menu_sounds.toggle_no:
+			SoundManager.PlaySoundGlobal(abstract_SoundEffectSetting.SoundEffectEnum.PLAYER_BECOME_HEAVY)
+	pass
 
 func UpdateMenuOpacity(delta:float):
 	if shouldBeVisible and fadeValue<1:

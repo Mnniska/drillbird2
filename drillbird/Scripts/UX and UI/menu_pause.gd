@@ -27,9 +27,14 @@ func SetupMenu():
 	pass
 
 func ButtonPressed(_option:menu_option):
+	
+	if _option.optionName!="Return":
+		SoundManager.PlayMenuSound(SoundManager.menu_sounds.select)
+	
 	if _option.optionName=="Return":
 		SetActive(false)
 		signal_pause_menu_closed.emit()
+		
 	
 	if _option.optionName=="Options":
 		SetActive(false)
@@ -39,7 +44,7 @@ func ButtonPressed(_option:menu_option):
 		
 		if !hasClickedQuitOnce:
 			
-
+			SoundManager.PlayMenuSound(SoundManager.menu_sounds.toggle_no)
 			var end_time = Time.get_unix_time_from_system() #captures the end time in unix time
 			var elapsed_time = (end_time - GlobalVariables.timeLastSaved) / 60 #this calculates the elapsed time in minutes - divisor will need to be adjusted if you want hours, days, etc.
 			
@@ -61,9 +66,11 @@ func _process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("down"):
 		selectedOption+=1
+		SoundManager.PlayMenuSound(SoundManager.menu_sounds.down)
 
 	if Input.is_action_just_pressed("up"):
 		selectedOption-=1	
+		SoundManager.PlayMenuSound(SoundManager.menu_sounds.up)
 	
 	if selectedOption!=oldSelection:
 		oldSelection=selectedOption
@@ -83,6 +90,8 @@ func _process(delta: float) -> void:
 			option.queue_free()
 			
 			ButtonPressed(option)
+			SoundManager.PlayMenuSound(SoundManager.menu_sounds.back)
+
 		
 	if Input.is_action_just_released("escape"):
 		isHoldingEscape=false

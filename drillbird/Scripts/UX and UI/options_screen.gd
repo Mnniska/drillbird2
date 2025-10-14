@@ -145,14 +145,17 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("escape") or Input.is_action_just_pressed("escape_light"):
 		var escapeOption:menu_option=menu_option.new()
 		escapeOption.optionName="Return"
+		SoundManager.PlayMenuSound(SoundManager.menu_sounds.back)
 		ButtonPressed(escapeOption)
 		escapeOption.queue_free()
 	
 	if Input.is_action_just_pressed("down"):
 		selectedOption+=1
+		SoundManager.PlayMenuSound(SoundManager.menu_sounds.down)
 
 	if Input.is_action_just_pressed("up"):
 		selectedOption-=1	
+		SoundManager.PlayMenuSound(SoundManager.menu_sounds.up)
 	
 	if selectedOption!=oldSelection:
 		oldSelection=selectedOption
@@ -182,8 +185,30 @@ func UpdateMenu():
 		n.SetActive(index==selectedOption)
 		index+=1
 	pass
+	
+func PlayMenuSoundBasedOnOption(_option:menu_option):
+	if _option.optionName=="Return":
+		SoundManager.PlayMenuSound(SoundManager.menu_sounds.back)
+		return
+	if _option.options.size()>0:
+		SoundManager.PlayMenuSound(SoundManager.menu_sounds.select)
+		return
+	
+	if _option.isToggle:
+		if _option.option_active: #Inversed since the option will change toggle in code down below, I guess I could do it here tho
+			SoundManager.PlayMenuSound(SoundManager.menu_sounds.toggle_no)
+		else:
+			SoundManager.PlayMenuSound(SoundManager.menu_sounds.toggle_yes)
+		return
+	
+	
+	if _option.isAction:
+		SoundManager.PlayMenuSound(SoundManager.menu_sounds.select)
+	
 
 func ButtonPressed(_option:menu_option):
+	
+	PlayMenuSoundBasedOnOption(_option)
 	
 	#Note: "Return" is called when pressing escape, and is used in all sub-menus. basically a "back out" btn
 	#Note: Only supports 1 layer deep submenus, which should be fine for our purposes  
@@ -202,6 +227,7 @@ func ButtonPressed(_option:menu_option):
 		selectedOption=0
 		CurrentMenu=_option.options
 		UpdateMenu()
+		
 
 	if _option.optionName=="Toggle Fullscreen":
 		isFullscreen=!isFullscreen
@@ -215,6 +241,8 @@ func ButtonPressed(_option:menu_option):
 		_option.option_active=hauntedByGhost
 		_option.SetActive(true)
 		GlobalVariables.ghostActive=hauntedByGhost
+
+		
 
 	if _option.optionName=="Reset Save Data":
 		GlobalVariables.ResetSaveData()

@@ -101,3 +101,22 @@ func PlaySoundAtLocation(location:Vector2,type:abstract_SoundEffectSetting.Sound
 		
 	
 	pass
+
+enum menu_sounds{up,down,select,back,toggle_yes,toggle_no}
+
+func PlayMenuSound(sound:menu_sounds):
+	
+	match sound:
+		menu_sounds.up:
+			SoundManager.PlaySoundGlobal(abstract_SoundEffectSetting.SoundEffectEnum.HOME_MENU_UP)
+		menu_sounds.down:
+			SoundManager.PlaySoundGlobal(abstract_SoundEffectSetting.SoundEffectEnum.HOME_MENU_DOWN)
+		menu_sounds.select:
+			SoundManager.PlaySoundGlobal(abstract_SoundEffectSetting.SoundEffectEnum.HOME_MENU_PURCHASE_YES)
+		menu_sounds.back:
+			SoundManager.PlaySoundGlobal(abstract_SoundEffectSetting.SoundEffectEnum.HOME_MENU_PURCHASE_NO)
+		menu_sounds.toggle_yes:
+			SoundManager.PlaySoundGlobal(abstract_SoundEffectSetting.SoundEffectEnum.PLAYER_WAKEUP)
+		menu_sounds.toggle_no:
+			SoundManager.PlaySoundGlobal(abstract_SoundEffectSetting.SoundEffectEnum.PLAYER_BECOME_HEAVY)
+	pass
