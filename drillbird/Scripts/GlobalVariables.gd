@@ -19,6 +19,8 @@ enum playerStatusEnum {DIG,SLEEP,SHOP,NEWDAY,MENU}
 signal playerStatusChanged
 signal SetupComplete
 
+var totalEnemies=0
+var deadEnemies=0
 var PlayerController:CharacterBody2D
 var heartInEgg:bool=false
 var ghostActive:bool=true
@@ -143,9 +145,9 @@ func GivePlayerMoney(value:int,fromOre:bool=true):
 func AddXPFromKill(enemy:abstract_enemy):
 	
 	var min=1
-	var max=2
+	var max=4
 	var amount=randi_range(min,max) 
-	
+	SteamHandler.IncreaseEnemyDeaths()
 	GivePlayerMoney(amount,false)
 	return amount
 	pass

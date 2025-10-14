@@ -147,9 +147,10 @@ func CalculateEnemyDeaths():
 				deadPeople+=1
 				pass
 		index+=1
-		
-	print_debug("Amount of enemies:"+str(enemyTotal))	
-	print_debug("Amount of dead enmies:"+str(deadPeople))
+	
+	GlobalVariables.totalEnemies=enemyTotal
+	GlobalVariables.deadEnemies=deadPeople
+	SteamHandler.SetEnemyDeaths(GlobalVariables.deadEnemies)
 	
 	pass
 
@@ -188,6 +189,7 @@ func LoadGame():
 	
 	SetGlobalVariablesToLoadedGame()
 	LoadEnemyPositions()
+	CalculateEnemyDeaths()
 	LoadFlowers()
 	LoadLeftoverOres()
 	GlobalVariables.playerSpawnPos=PlayerData.playerSpawnPosition

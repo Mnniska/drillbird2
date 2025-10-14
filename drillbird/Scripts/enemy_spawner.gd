@@ -101,7 +101,7 @@ func GenerateObjectsAndEnemiesFromTilemap():
 			if !foundmatch: #If no save data found, spawn with default values
 				newEnemy.dead=false
 				newEnemy.currentSpawnLocation=newEnemy.spawnLocation
-				
+			
 			enemiesToSpawnList.append(newEnemy)
 			RemoveTile(tileLoc)
 		
@@ -214,6 +214,9 @@ func SpawnAllEnemies():
 
 		if node.enemyInfo.type==abstract_enemy.enemyTypes.FALLBLOCK:
 			node.BlockDestroyer=tileDestroyer
+		
+		if enemyInfo.dead==true:
+			print_debug("I found a dead enemy!")
 		
 		node.Setup(enemyInfo)
 		node.transform.origin = spawnPosLocalCoords
