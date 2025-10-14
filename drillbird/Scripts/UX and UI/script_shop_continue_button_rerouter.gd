@@ -7,10 +7,6 @@ extends PanelContainer
 
 
 
-
-func IsButton():
-	return true
-
 func SetSelected(selected:bool): 
 	
 	var tex=tex_bg_off

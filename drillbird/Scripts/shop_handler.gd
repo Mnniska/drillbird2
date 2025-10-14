@@ -62,6 +62,21 @@ func UpdateShop():
 		index+=1
 			
 
+func CheckShopAchievements():
+	
+	var hasAllUpgrades=true
+	for n in UI_purchasables:
+		if !n.isButton():
+			if n.GetIsMaxedOut():
+				SteamHandler.TryUnlockAchievement("ach_onestat")
+			else:
+				hasAllUpgrades=false
+	
+	if hasAllUpgrades:
+		SteamHandler.TryUnlockAchievement("ach_allstats")
+	
+	pass
+
 func AttemptPurchaseSelectedItem():
 	
 	if UI_purchasables[currentSelection].AttemptToPurchase():
@@ -76,6 +91,7 @@ func AttemptPurchaseSelectedItem():
 			UI_purchasables[currentSelection].UpdateStats()
 			UpdateShop()
 			SoundManager.PlaySoundGlobal(abstract_SoundEffectSetting.SoundEffectEnum.HOME_MENU_PURCHASE_YES)
+			CheckShopAchievements()
 			#Tell UI to update itself
 		
 	else:

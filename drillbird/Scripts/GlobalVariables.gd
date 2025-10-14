@@ -177,6 +177,18 @@ func GetPlayerUpgradeLevel(upgradeType:typeEnum):
 			return upgradeLevel_light
 	
 	pass
+
+func IsUpgradeLevelMax(upgradeType:typeEnum):
+	match upgradeType:
+		typeEnum.DRILL:
+			return upgradeLevel_drill
+		typeEnum.INVENTORY:
+			return upgradeLevel_inventory
+		typeEnum.HEALTH:
+			return upgradeLevel_health
+		typeEnum.LIGHT:
+			return upgradeLevel_light
 	
+	pass
 
 	

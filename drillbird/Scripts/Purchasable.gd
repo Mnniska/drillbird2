@@ -40,6 +40,10 @@ func _ready() -> void:
 func GetCurrentUpgrade():
 	return GlobalVariables.GetPlayerUpgradeLevel(purchasable.type)
 
+func GetIsMaxedOut():
+	return !purchasable.items.size()>GetCurrentUpgrade()+1
+
+
 func AttemptToPurchase():
 	#CAN PLAYER AFFORD UPGRADE?
 	if purchasable.items.size()>GetCurrentUpgrade()+1:

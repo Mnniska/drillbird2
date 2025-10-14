@@ -42,13 +42,17 @@ func TryUnlockAchievement(name:String):
 		return
 	
 	var status= Steam.getAchievement(name)
+	if status.size()<=0:
+		print_debug("Steam didn't find the given achievement, it seems: "+name)
+		return
+		
 	if status["achieved"]:
-		print_debug("Already unlocked the achivement: "+name)
+		print_debug("Asked Steam to unlock an achievement which was already unlocked: "+name)
 		return
 	
-	Steam.setAchievement(name)
 	Steam.storeStats()
-	print_debug("Seemingly successfully unlocked achievement: "+name)
+	Steam.setAchievement(name)
+	print_debug("Have asked Steam to unlock the achievement: "+name)
 	
 	
 	pass
