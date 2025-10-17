@@ -114,6 +114,7 @@ func SetHasBlossomed(hasBlossomed:bool,playsound:bool=true):
 	
 		if !HasBeenSpawnedViaTilemap:
 			GlobalVariables.playerAction.emit(GlobalVariables.playerActions.SPAWNFLOWER)
+			SteamHandler.TryUnlockAchievement("ach_flower")
 		
 		state=States.IDLE
 		FlowerRootAnim.animation="idle"

@@ -176,3 +176,6 @@ func CheckFinishAchievements():
 	if oresLeft<=0:
 		SteamHandler.TryUnlockAchievement("ach_all_ores")
 	
+	if SteamHandler.count_enemyDeaths<=SteamHandler.stat_ach_pacifist:
+		SteamHandler.TryUnlockAchievement("ach_pacifist")
+	

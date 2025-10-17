@@ -10,16 +10,16 @@ var AppID="3809940"
 @export var stat_ach_pacifist:int=10
 @export var stat_ach_murderer:int=100
 
-var enemyDeaths:int=0
+var count_enemyDeaths:int=0
 
 func SetEnemyDeaths(amount:int):
-	enemyDeaths=amount
-	print_debug("Enemy count loaded. Count: "+str(enemyDeaths))
+	count_enemyDeaths=amount
+	print_debug("Enemy count loaded. Count: "+str(count_enemyDeaths))
 	
 func IncreaseEnemyDeaths():
-	enemyDeaths+=1
-	print_debug("Killed enemy! New count: "+str(enemyDeaths))
-	if enemyDeaths>=stat_ach_murderer:
+	count_enemyDeaths+=1
+	print_debug("Killed enemy! New count: "+str(count_enemyDeaths))
+	if count_enemyDeaths>=stat_ach_murderer:
 		TryUnlockAchievement("ach_murderer")
 
 func _init():
