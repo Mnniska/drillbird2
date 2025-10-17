@@ -1,4 +1,4 @@
-[gd_scene load_steps=165 format=4 uid="uid://d2wv7igie5stg"]
+[gd_scene load_steps=168 format=4 uid="uid://d2wv7igie5stg"]
 
 [ext_resource type="TileSet" uid="uid://grpd2pyu7pgk" path="res://Resources/MainTileset.tres" id="1_1imtu"]
 [ext_resource type="Script" path="res://Scenes/Playable Scenes/SaveManager.gd" id="1_iickb"]
@@ -31,7 +31,9 @@
 [ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_terrain_info.gd" id="20_cqxjh"]
 [ext_resource type="Script" path="res://Scenes/Playable Scenes/ghost_manager.gd" id="21_mqj7b"]
 [ext_resource type="Resource" uid="uid://biejw6c2k7wry" path="res://Resources/Economy/ore_HEART.tres" id="22_nstd1"]
+[ext_resource type="TileSet" uid="uid://bqk3a8stcfvc2" path="res://Resources/MainTileset_Secrets.tres" id="26_mett5"]
 [ext_resource type="Script" path="res://Scripts/shop_handler.gd" id="26_mk1t6"]
+[ext_resource type="Script" path="res://Scripts/secret_revealer.gd" id="27_6rhl8"]
 [ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_purchasable.gd" id="27_hx1y5"]
 [ext_resource type="Resource" uid="uid://b26ws3o4u42p3" path="res://Resources/Economy/purchasable_inventory.tres" id="28_iowjc"]
 [ext_resource type="Resource" uid="uid://cgdqluba62y80" path="res://Resources/Economy/purchasable_light.tres" id="29_cp1r6"]
@@ -144,6 +146,9 @@ size = Vector2(1095, 544)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4u7ha"]
 size = Vector2(2777, 1056)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cbwd4"]
+size = Vector2(59, 28)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_88d1h"]
 size = Vector2(18, 17)
@@ -581,6 +586,25 @@ collision_mask = 64
 hit_from_inside = true
 collide_with_areas = true
 collide_with_bodies = false
+
+[node name="Tilemap_secrets" type="TileMapLayer" parent="."]
+unique_name_in_owner = true
+z_index = 100
+tile_map_data = PackedByteArray("AAAWAPj/AwAJAAIAAAAXAPj/AwAJAAIAAAAXAPn/AwAFAAIAAAAWAPn/AwAJAAIAAAAVAPb/AwAJAAIAAAAWAPb/AwAJAAIAAAAXAPf/AwAJAAIAAAAWAPf/AwAJAAIAAAAYAPn/AwAMAAEAAAAYAPr/AwAJAAIAAAAYAPv/AwAJAAIAAAAYAPz/AwAJAAIAAAAZAPr/AwAMAAAAAAAZAPn/AwAMAAEAAAAZAPj/AwAJAAIAAAAZAPf/AwAJAAIAAAAYAPb/AwAJAAIAAAAYAPf/AwAJAAIAAAAYAPj/AwAJAAIAAAAXAPr/AwAJAAIAAAAXAPv/AwAJAAIAAAAWAPz/AwAJAAIAAAAXAPz/AwAMAAMAAAAXAPb/AwAJAAIAAAAZAPb/AwAJAAIAAAAaAPb/AwAJAAIAAAAbAPb/AwAJAAIAAAAbAPf/AwAJAAIAAAAaAPn/AwAMAAMAAAAaAPr/AwAJAAIAAAAaAPv/AwAMAAMAAAAaAPf/AwAJAAIAAAAaAPj/AwAJAAIAAAAZAPv/AwAJAAIAAAAZAPz/AwAMAAEAAAAaAPz/AwAJAAIAAAAbAPv/AwAJAAIAAAAXAP3/AwAJAAIAAAAbAPz/AwAGAAIAAAAZAAEAAwAAAAMAAAAYAAAAAwALAAMAAAAcAPb/AwAJAAIAAAAcAPf/AwAJAAIAAAAVAPr/AwAJAAIAAAAWAPr/AwAJAAIAAAAWAPv/AwAJAAIAAAAWAP3/AwAJAAIAAAAeAAEAAwAJAAIAAAAYAP//AwALAAIAAAAXAP7/AwAJAAIAAAAYAP7/AwALAAIAAAAYAP3/AwAGAAIAAAAZAP3/AwAJAAMAAAAaAP3/AwAJAAMAAAAbAP3/AwALAAMAAAAcAPz/AwAFAAMAAAAcAPv/AwAJAAIAAAAXAP//AwAJAAIAAAAXAAAAAwAMAAEAAAAWAP//AwAJAAIAAAAWAP7/AwAMAAEAAAAVAP3/AwAMAAIAAAAVAPz/AwAJAAIAAAAVAPv/AwAJAAIAAAAUAPb/AwAJAAIAAAAYAPX/AwAMAAIAAAAZAPX/AwAJAAIAAAAaAPX/AwAMAAEAAAAbAPX/AwAJAAIAAAAcAPX/AwAJAAIAAAAcAPn/AwAJAAIAAAAVAPj/AwAIAAEAAAAVAPn/AwAFAAEAAAAVAPf/AwAFAAIAAAA=")
+tile_set = ExtResource("26_mett5")
+
+[node name="SecretRevealer" type="Node2D" parent="Tilemap_secrets"]
+position = Vector2(425, -38)
+script = ExtResource("27_6rhl8")
+
+[node name="AffectedArea" type="Area2D" parent="Tilemap_secrets/SecretRevealer"]
+position = Vector2(7, 35)
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tilemap_secrets/SecretRevealer/AffectedArea"]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_cbwd4")
 
 [node name="ObjectSpawner" type="Node2D" parent="."]
 script = ExtResource("53_0clb6")
@@ -1768,6 +1792,7 @@ texture = ExtResource("64_yk8d7")
 
 [node name="IntroCutscene" parent="." instance=ExtResource("86_d8wwr")]
 
+[connection signal="body_shape_entered" from="Tilemap_secrets/SecretRevealer/AffectedArea" to="Tilemap_secrets/SecretRevealer" method="_on_affected_area_body_shape_entered"]
 [connection signal="MaterialChanged" from="TileCrack" to="Player" method="_on_tile_crack_material_changed"]
 [connection signal="newTileCrack" from="Player" to="TileCrack" method="_on_player_new_tile_crack"]
 [connection signal="playerStoppedDrillingTile" from="Player" to="TileCrack" method="_on_player_player_stopped_drilling_tile"]
