@@ -1,16 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://ddgttu2odky5f"]
+[gd_scene load_steps=7 format=3 uid="uid://ddgttu2odky5f"]
 
 [ext_resource type="Script" path="res://Scripts/UX and UI/final_stats.gd" id="1_bixtf"]
 [ext_resource type="Theme" uid="uid://bfr5y4lo7m1ux" path="res://Resources/Fonts/fontTheme.tres" id="1_ogkgr"]
 [ext_resource type="Texture2D" uid="uid://bi6q51sklyetd" path="res://Art/environment/SpaceBackground/background_space_allLayers.png" id="2_7c53m"]
 [ext_resource type="Texture2D" uid="uid://bpa8olbvx4ufv" path="res://Art/UI/MainMenu/DrillBird_LOGO.png" id="3_86pvv"]
 [ext_resource type="Texture2D" uid="uid://cdgrv0eh6htfa" path="res://Art/cutscenes/intro/intro_landscape11.png" id="5_0q7ff"]
+[ext_resource type="Script" path="res://Scripts/UX and UI/stats_message.gd" id="5_54jkk"]
 
-[node name="Final stats" type="Node2D"]
+[node name="Final stats" type="Node2D" node_paths=PackedStringArray("statsarray")]
 script = ExtResource("1_bixtf")
-typewritePause = 0.1
 finalchoicetext_erase = "credits_reset_save_data_erasedata"
 finalchoicetext_goback = "credits_reset_save_data_goback"
+statsarray = [NodePath("STATS/stats_message"), NodePath("STATS/stats_message2"), NodePath("STATS/stats_message3"), NodePath("STATS/stats_message4"), NodePath("STATS/stats_message_ CONTINUE")]
 
 [node name="bg" type="Sprite2D" parent="."]
 position = Vector2(144, 123)
@@ -33,22 +34,64 @@ theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "[center]Final Stats"
 
-[node name="stats" type="RichTextLabel" parent="STATS"]
-offset_left = 32.0
-offset_top = 104.0
-offset_right = 286.0
-offset_bottom = 238.0
+[node name="stats_message" type="RichTextLabel" parent="STATS"]
+offset_left = 31.0
+offset_top = 103.0
+offset_right = 320.0
+offset_bottom = 124.0
 theme = ExtResource("1_ogkgr")
 theme_override_colors/default_color = Color(0.933333, 0.901961, 0.831373, 1)
 bbcode_enabled = true
-text = "Days taken to hatch: 8
+text = "Days taken to hatch:"
+visible_characters_behavior = 1
+script = ExtResource("5_54jkk")
 
-Time taken: 2 h, 10 min, 5 secs and 44 ms
+[node name="stats_message2" type="RichTextLabel" parent="STATS"]
+offset_left = 30.0
+offset_top = 121.0
+offset_right = 319.0
+offset_bottom = 142.0
+theme = ExtResource("1_ogkgr")
+theme_override_colors/default_color = Color(0.933333, 0.901961, 0.831373, 1)
+bbcode_enabled = true
+text = "Time: 00:00:00"
+visible_characters_behavior = 1
+script = ExtResource("5_54jkk")
 
-Ores collected: 102/123
+[node name="stats_message3" type="RichTextLabel" parent="STATS"]
+offset_left = 30.0
+offset_top = 138.0
+offset_right = 319.0
+offset_bottom = 159.0
+theme = ExtResource("1_ogkgr")
+theme_override_colors/default_color = Color(0.933333, 0.901961, 0.831373, 1)
+bbcode_enabled = true
+text = "Ores collected: 85/150"
+visible_characters_behavior = 1
+script = ExtResource("5_54jkk")
 
+[node name="stats_message4" type="RichTextLabel" parent="STATS"]
+offset_left = 30.0
+offset_top = 158.0
+offset_right = 319.0
+offset_bottom = 179.0
+theme = ExtResource("1_ogkgr")
+theme_override_colors/default_color = Color(0.933333, 0.901961, 0.831373, 1)
+bbcode_enabled = true
+text = "Enemies killed: 120"
+visible_characters_behavior = 1
+script = ExtResource("5_54jkk")
 
-[center][wave][rainbow]Continue"
+[node name="stats_message_ CONTINUE" type="RichTextLabel" parent="STATS"]
+offset_top = 199.0
+offset_right = 319.0
+offset_bottom = 224.0
+theme = ExtResource("1_ogkgr")
+theme_override_colors/default_color = Color(0.933333, 0.901961, 0.831373, 1)
+bbcode_enabled = true
+text = "Continue"
+visible_characters_behavior = 1
+script = ExtResource("5_54jkk")
 
 [node name="Sebs message" type="RichTextLabel" parent="."]
 visible = false

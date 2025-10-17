@@ -20,6 +20,8 @@ var finalChoiceIsToErase:bool=true
 @export var finalchoicetext_erase:String
 @export var finalchoicetext_goback:String
 
+@export var statsarray:Array[stats_shower]
+
 func _ready() -> void:
 	hide()
 	StatsParent.hide()
@@ -27,9 +29,10 @@ func _ready() -> void:
 	choiceMessage.hide()
 	
 	#!!!DEBUG! REMOVE ME!!!
-	HUD.SetState(HUD.menuStates.CREDITS)
-	show()
-	DisplayStats()
+	#lmao did not remove
+	#HUD.SetState(HUD.menuStates.CREDITS)
+	#show()
+	#DisplayStats()
 	
 
 func TranslateMessages():
@@ -51,11 +54,38 @@ func DisplayStats():
 	
 	hidestuff()
 	state=states.info
-	statsMessage.text=ConstructStatsString()
-	statsMessage.visible_characters=0
 	StatsParent.show()
 	await get_tree().create_timer(0.5).timeout
-	TypewriteText(statsMessage)
+	
+	var text_statinfo:String
+	var text_statresult
+	text_statinfo=tr("credits_stats_hatchtime")
+	text_statresult="[color=orange]"+ str(GlobalVariables.currentDay)+"[/color]"+"[p][/p]"
+	
+	statsarray[0].DisplayStat(text_statinfo,text_statresult)
+	await statsarray[0].displayedStat
+	
+	text_statinfo=tr("credits_stats_timetaken")
+	text_statresult=HUD.SpeedrunTimer.GetTimerString()
+
+	statsarray[1].DisplayStat(text_statinfo,text_statresult)
+	await statsarray[1].displayedStat
+
+	text_statinfo=tr("credits_stats_ores")
+	text_statresult=str(GlobalVariables.oresFound)+" / "+str(GlobalVariables.totalOres)
+
+	statsarray[2].DisplayStat(text_statinfo,text_statresult)
+	await statsarray[2].displayedStat
+
+	text_statinfo=tr("credits_stats_kills")
+	text_statresult=str(SteamHandler.count_enemyDeaths)
+		
+	statsarray[3].DisplayStat(text_statinfo,text_statresult)
+	await statsarray[3].displayedStat
+	
+	statsarray[4].DisplayStat("[center][wave][rainbow]"+tr("credits_stats_continue"),"")	
+	
+#	TypewriteText(statsMessage)
 	
 func hidestuff():
 	SebsMessage.hide()
@@ -121,21 +151,13 @@ func TypewriteText(label:RichTextLabel):
 	label.visible_characters=0
 	var skip:bool=false
 	
-	var codetext=""
 	while label.visible_characters<label.text.length()-1:
 		textshown+=1
 		label.visible_characters=textshown
 		if label.text[textshown]=="[": #ensures there's no pausing for hidden bbcode stuff
 			skip=true
-			codetext=""
 			
 		if skip:
-			codetext+=label.text[textshown]
-			print_debug(codetext)
-			if codetext=="[p]":
-				await get_tree().create_timer(1).timeout
-				codetext=""
-			
 			if label.text[textshown]=="]":
 				skip=false
 				
