@@ -22,7 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://bpa8olbvx4ufv" path="res://Art/UI/MainMenu/DrillBird_LOGO.png" id="19_hr1yg"]
 [ext_resource type="Script" path="res://Scripts/UX and UI/main_menu.gd" id="19_qssi7"]
 [ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_debugMenuOption.gd" id="20_hlahx"]
-[ext_resource type="AudioStream" uid="uid://bwynx1ih755ll" path="res://Audio/MUSIC/Drillbird Theme.mp3" id="23_p7qe8"]
+[ext_resource type="AudioStream" uid="uid://bwynx1ih755ll" path="res://Audio/Music/Drillbird Theme.mp3" id="23_p7qe8"]
 [ext_resource type="PackedScene" uid="uid://bldt1ha11vmuu" path="res://Scenes/UI/menu_options.tscn" id="23_sv2nb"]
 [ext_resource type="PackedScene" uid="uid://bgj42edyan2we" path="res://Scenes/UI/menu_pause.tscn" id="24_p58jt"]
 [ext_resource type="Texture2D" uid="uid://cdgrv0eh6htfa" path="res://Art/cutscenes/intro/intro_landscape11.png" id="26_4tsov"]
