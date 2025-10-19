@@ -10,6 +10,7 @@ class_name main_scene_reference_connector
 @onready var camera=$"../Camera2D"
 @onready var introCutscene=$"../IntroCutscene"
 @onready var shop:script_shop=$"../Camera2D/ShopHandler"
+@onready var ref_secretTilemap=$"../TileMap_secrets"
 
 
 func _ready() -> void:
