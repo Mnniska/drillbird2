@@ -4,7 +4,6 @@ class_name tilemap_secrets_manager
 @onready var tilemap:TileMapLayer=$"."
 var removeQueue:Array[Vector2i]
 var checkQueue:Array[Vector2i]
-var amount:int=0
 
 
 # Called when the node enters the scene tree for the first time.
@@ -37,7 +36,6 @@ func TryUnveilTargetPosition(pos:Vector2i):
 		RemoveTargetedTiles()
 		await get_tree().create_timer(0.08).timeout
 		removeQueue=checkQueue.duplicate()
-		print_debug("Check queue size: "+str(checkQueue.size()))
 		checkQueue.clear()
 		pass
 
@@ -45,11 +43,10 @@ func TryUnveilTargetPosition(pos:Vector2i):
 func RemoveTargetedTiles():
 	
 	for pos in removeQueue:
-		tilemap.set_cell (pos,-1,Vector2i(-1,-1),-1)
-		InvestigateNeighbors(pos)
-	amount+=1
-	print_debug("Remove queue size: "+str(removeQueue.size()))
-	print_debug("amount of times checked:" +str(amount))
+		
+		if tilemap.get_cell_tile_data(pos):
+			tilemap.set_cell (pos,-1,Vector2i(-1,-1),-1)
+			InvestigateNeighbors(pos)
 	removeQueue.clear()
 
 func InvestigateNeighbors(pos):
