@@ -1,5 +1,5 @@
 extends Area2D
-
+class_name secret_revealer
 #should be loaded in somehow based on save data, can handle later :) 
 var unveiled:bool=false
 @export var positionToUnveil:Vector2i
@@ -16,10 +16,10 @@ func _process(delta: float) -> void:
 	pass
 
 
-func UnveilTargetTilemap(pos:Vector2i):
+func UnveilTargetTilemap(pos:Vector2i,simulated:bool=false):
 	unveiled=true
 	var tilemap:tilemap_secrets_manager=GlobalVariables.MainSceneReferenceConnector.ref_secretTilemap
-	tilemap.TryUnveilTargetPosition(pos)
+	tilemap.TryUnveilTargetPosition(pos,simulated)
 	
 	
 	

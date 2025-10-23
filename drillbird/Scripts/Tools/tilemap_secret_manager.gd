@@ -6,6 +6,7 @@ var removeQueue:Array[Vector2i]
 var checkQueue:Array[Vector2i]
 var tileDestroyEffectpath="res://Scenes/Effects/generic_destroy_effect.tscn"
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -16,10 +17,36 @@ func _ready() -> void:
 #Game loops through action queue and destroys tiles, adds them to invesigfation queue 
 #game loops thru invest queue, and adds any tiles there to action queue. and so on..
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func Save()->Array[bool]:
+	
+	var revealers:Array[Node]= self.get_children()
+	var isUnveiledList:Array[bool]
+	
+	for revealer in revealers:
+		isUnveiledList.append(revealer.unveiled)
+	
+	
+	return isUnveiledList
+	
 	pass
+
+func Load(revealList:Array[bool]):
+
+	await get_tree().create_timer(0.5).timeout
+	var revealers:Array[Node]= self.get_children()
+	
+	var index=0
+	for isRevealedBool in revealList:
+		if isRevealedBool==true:
+			revealers[index].UnveilTargetTilemap(revealers[index].positionToUnveil,true)
+		index+=1
+
+#		isUnveiledList.append(revealer.unveiled)
+	
+	
+	pass
+
+
 
 func TryUnveilTargetPosition(pos:Vector2i,startup:bool=false):
 	

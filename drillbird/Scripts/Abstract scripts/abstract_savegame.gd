@@ -25,6 +25,7 @@ class_name abstract_savegame
 @export var enemyTypes:Array[int]
 @export var enemyDead:Array[bool]
 @export var flowerSpawnPositions:Array[Vector2i]
+@export var revealedSecretBools:Array[bool]
 
 @export var oreIDs:Array[int]
 @export var oreLocations:Array[Vector2i]

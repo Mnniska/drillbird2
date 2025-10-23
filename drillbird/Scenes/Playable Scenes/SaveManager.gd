@@ -8,6 +8,7 @@ extends Node
 @onready var OriginalSpawnPos=$PlayerSpawnLocations/OriginalSpawnPos
 @onready var introCutscene=$IntroCutscene
 @onready var oreAreas=$TilemapOres/OreRegions
+@onready var secret_tilemap:tilemap_secrets_manager=$TileMap_secrets
 signal signal_GameAboutToBeSaved
 
 @onready var save_file_path = GlobalVariables.save_file_path
@@ -73,6 +74,7 @@ func SaveGame():
 	PlayerData.upgrade_light=GlobalVariables.upgradeLevel_light
 	PlayerData.health=GlobalVariables.playerHealth
 	PlayerData.money=GlobalVariables.playerMoney
+	PlayerData.revealedSecretBools=secret_tilemap.Save()
 	PlayerData.totalEGGsperienceGained=GlobalVariables.totalEGGsperienceGained
 	PlayerData.playerSpawnPosition = GlobalVariables.playerSpawnPos
 	PlayerData.hasSeenIntroCutscene=GlobalVariables.hasSeenIntroCutscene
@@ -192,6 +194,7 @@ func LoadGame():
 	CalculateEnemyDeaths()
 	LoadFlowers()
 	LoadLeftoverOres()
+	secret_tilemap.Load(PlayerData.revealedSecretBools)
 	GlobalVariables.playerSpawnPos=PlayerData.playerSpawnPosition
 	HUD.SpeedrunTimer.SetCurrentTime(PlayerData.timeTaken)
 	
