@@ -26,7 +26,7 @@ func TryUnveilTargetPosition(pos:Vector2i):
 	var targetTile= tilemap.get_cell_tile_data(pos)
 	
 	if targetTile!=null:
-		removeQueue.append(pos)
+	  	removeQueue.append(pos)
 	else:
 		print_debug("Attempted to remove a tile that does not seem to exist!")
 	

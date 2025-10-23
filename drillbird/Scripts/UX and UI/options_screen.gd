@@ -40,7 +40,7 @@ func _ready() -> void:
 	verify_save_directory(save_file_path)
 	GlobalVariables.SetupComplete.connect(readyAfterSetup)
 
-	
+	$OptionScroller.show()
 
 	pass # Replace with function body.
 

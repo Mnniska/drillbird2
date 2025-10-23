@@ -12,6 +12,8 @@ var keyboard_effect_end="[/color][/wave]"
 
 
 func _ready() -> void:
+	#Maybe this should not be here, but it's where we do input shenanigans ;) 
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	pass
 	
 
