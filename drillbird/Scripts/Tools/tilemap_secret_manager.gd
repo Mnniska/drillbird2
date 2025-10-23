@@ -4,7 +4,7 @@ class_name tilemap_secrets_manager
 @onready var tilemap:TileMapLayer=$"."
 var removeQueue:Array[Vector2i]
 var checkQueue:Array[Vector2i]
-
+var tileDestroyEffectpath="res://Scenes/Effects/generic_destroy_effect.tscn"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -21,31 +21,41 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func TryUnveilTargetPosition(pos:Vector2i):
+func TryUnveilTargetPosition(pos:Vector2i,startup:bool=false):
 	
 	var targetTile= tilemap.get_cell_tile_data(pos)
 	
 	if targetTile!=null:
-	  	removeQueue.append(pos)
+		removeQueue.append(pos)
 	else:
 		print_debug("Attempted to remove a tile that does not seem to exist!")
 	
 	while removeQueue.size()>0:
 
 #		InvestigateTile(investigationQueue[0])
-		RemoveTargetedTiles()
-		await get_tree().create_timer(0.08).timeout
+		RemoveTargetedTiles(startup)
+		if !startup:
+			await get_tree().create_timer(0.08).timeout
 		removeQueue=checkQueue.duplicate()
 		checkQueue.clear()
 		pass
 
 
-func RemoveTargetedTiles():
+func RemoveTargetedTiles(startup:bool):
 	
 	for pos in removeQueue:
 		
 		if tilemap.get_cell_tile_data(pos):
 			tilemap.set_cell (pos,-1,Vector2i(-1,-1),-1)
+			
+			if !startup:
+				var object = load(tileDestroyEffectpath)
+				var node = object.instantiate()
+				node.transform.origin = tilemap.map_to_local(pos)
+				add_child(node)
+				#do effect here! :) 
+				pass
+			
 			InvestigateNeighbors(pos)
 	removeQueue.clear()
 

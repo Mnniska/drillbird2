@@ -1,0 +1,51 @@
+[gd_scene load_steps=11 format=3 uid="uid://dkmak26gixxem"]
+
+[ext_resource type="Texture2D" uid="uid://blkrgga5qohse" path="res://Art/effects/tileSecretDestroy/secret_smokepuff1.png" id="1_8onul"]
+[ext_resource type="Texture2D" uid="uid://bpfnoulaw48sh" path="res://Art/effects/tileSecretDestroy/secret_smokepuff2.png" id="2_dpox1"]
+[ext_resource type="Texture2D" uid="uid://bas8yppk002o5" path="res://Art/effects/tileSecretDestroy/secret_smokepuff3.png" id="3_hdn6q"]
+[ext_resource type="Texture2D" uid="uid://clcdry1abdsrr" path="res://Art/effects/tileSecretDestroy/secret_smokepuff4.png" id="4_thawy"]
+[ext_resource type="Texture2D" uid="uid://3alw8auruwbg" path="res://Art/effects/tileSecretDestroy/secret_smokepuff5.png" id="5_u4mtn"]
+[ext_resource type="Texture2D" uid="uid://d3x3v3m5u5ihc" path="res://Art/effects/tileSecretDestroy/secret_smokepuff6.png" id="6_hndvg"]
+[ext_resource type="Script" path="res://Scripts/effects/generic_destroy_effect.gd" id="7_6lh65"]
+[ext_resource type="Texture2D" uid="uid://dtktgck2c06fh" path="res://Art/effects/tileSecretDestroy/secret_smokepuff7.png" id="7_smccw"]
+[ext_resource type="Texture2D" uid="uid://bxtd6rqwtaua6" path="res://Art/effects/tileSecretDestroy/secret_smokepuff8.png" id="8_mp4r4"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pftks"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_8onul")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_dpox1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_hdn6q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_thawy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_u4mtn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_hndvg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_smccw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_mp4r4")
+}],
+"loop": false,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="tileDestroyEffect" type="AnimatedSprite2D"]
+z_index = 2
+sprite_frames = SubResource("SpriteFrames_pftks")
+autoplay = "default"
+frame = 7
+frame_progress = 1.0
+script = ExtResource("7_6lh65")
