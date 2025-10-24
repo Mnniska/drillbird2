@@ -13,7 +13,7 @@ var keyboard_effect_end="[/color][/wave]"
 
 func _ready() -> void:
 	#Maybe this should not be here, but it's where we do input shenanigans ;) 
-	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+
 	pass
 	
 
@@ -64,7 +64,12 @@ func GetSymbolFromString(_str:String,useoutline:bool=false)->String:
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey:
-		usingGamepad=false
+		if usingGamepad:
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			usingGamepad=false
 	
 	if event is InputEventJoypadButton:
-		usingGamepad=true	
+		if !usingGamepad:
+			Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)	
+			usingGamepad=true	
+		
