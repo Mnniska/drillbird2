@@ -17,7 +17,6 @@ func GetCollType(): #MUST HAVE
 	return collType
 
 func _ready() -> void:
-	enemyInfo=enemyInfo.duplicate()
 	
 	if enemyInfo.dead:
 		TurnEnemyOff()

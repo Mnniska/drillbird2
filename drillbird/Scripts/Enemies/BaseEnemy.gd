@@ -31,7 +31,8 @@ func SetGamePaused(pause:bool):
 	gamePaused=pause
 
 func _ready() -> void:
-
+	if enemyInfo.dead:
+		TurnEnemyOff()
 	pass
 	#now handled in Setup
 
@@ -45,18 +46,7 @@ func Setup(info:abstract_enemy): #MUST HAVE
 	enemyInfo.spawnLocation=info.spawnLocation
 	enemyInfo.currentSpawnLocation=info.currentSpawnLocation
 	enemyInfo.dead=info.dead
-	
-	
-	#this was previously in READY
-	if enemyInfo.dead:
-		TurnEnemyOff()
-	
-	#TODO:
-	#Does the counting seem to work?
-	#Do enemies seem to behave OK? Do they save and die correctly lol 
-	#Check the ready functions and ensure there's no dupe stuff
-	#hugs and kisses <3 
-	
+		
 	spawnPositionLocal=position #MUST HAVE
 	GlobalVariables.signal_IsPlayerInMenuChanged.connect(SetGamePaused)
 	

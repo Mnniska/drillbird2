@@ -26,7 +26,6 @@ func SetGamePaused(paused:bool):
 	gamePaused=paused
 
 func _ready() -> void:
-	enemyInfo=enemyInfo.duplicate()
 
 	if enemyInfo.dead:
 		TurnEnemyOff()
