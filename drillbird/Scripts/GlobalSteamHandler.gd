@@ -9,6 +9,7 @@ var AppID="3809940"
 
 @export var stat_ach_pacifist:int=10
 @export var stat_ach_murderer:int=100
+@export var stat_ach_flower_height_in_tiles:float=90
 
 var count_enemyDeaths:int=0
 

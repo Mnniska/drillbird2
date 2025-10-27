@@ -16,6 +16,7 @@ var offset:Vector2=Vector2(0,4)
 @export var SPEED:float=20
 @export var MAXSPEEDMULTIPLIER:float=2
 @export var timeUntilFast:float=5
+@export var heightToGetAchievement:float=100000
 var speedTimeCounter:float=0
 
 var currentSpeed=SPEED
@@ -32,8 +33,11 @@ var flowerGrowCount:float=0
 var isBeingNurtured:bool=false
 @onready var FlowerRootAnim:AnimatedSprite2D=$base
 
+var hasGottenAchievement:bool=false
+
 func _ready() -> void:
 	GlobalVariables.PlayerIsDrillingTileChanged.connect(PLayerDrillingTileChange)
+	heightToGetAchievement=SteamHandler.stat_ach_flower_height_in_tiles
 	
 func PLayerDrillingTileChange(drilling:bool):
 	if !drilling:
@@ -137,8 +141,13 @@ func Move_IDLE(delta:float):
 func Move_UP(delta:float):
 	
 	var distance=flowerBody.global_position.distance_to(global_position)
-	
 	vine.set_size(Vector2(16,distance+offset.y))
+	
+	if !hasGottenAchievement:
+		if distance>heightToGetAchievement*16:
+			hasGottenAchievement=true
+			SteamHandler.TryUnlockAchievement("ach_tallflower")
+
 	
 	speedTimeCounter=min(timeUntilFast,speedTimeCounter+delta)
 	var progress=speedTimeCounter/timeUntilFast
@@ -150,6 +159,8 @@ func Move_UP(delta:float):
 	flowerAttachedSound.SetPitch(pitchP)
 	flowerBody.move_and_collide(Vector2(0,-currentSpeed *delta))
 	UpdateMoveSound()
+	
+	
 
 func UpdateMoveSound():
 	
