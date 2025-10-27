@@ -5,6 +5,11 @@ signal optionsClosed
 @onready var options_header=$Header
 @onready var optionScroller=$OptionScroller
 
+@onready var credits_parent=$"credits parent"
+@onready var credits_script=$"credits parent/Credits"
+
+var showingCredits:bool=false
+
 #created in ready by getting the menu_options thta are children to script
 var EntireMenu:Array[menu_option]
 @export var BaseMenu:Array[menu_option]
@@ -139,7 +144,7 @@ func SetMenuActive(_active:bool):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if !menuActive:
+	if !menuActive or showingCredits:
 		return
 		
 	if Input.is_action_just_pressed("escape") or Input.is_action_just_pressed("escape_light"):
@@ -205,8 +210,17 @@ func PlayMenuSoundBasedOnOption(_option:menu_option):
 	if _option.isAction:
 		SoundManager.PlayMenuSound(SoundManager.menu_sounds.select)
 	
+func CreditsFinished():
+	
+	showingCredits=false
+	credits_parent.hide()
+	
+	pass
 
 func ButtonPressed(_option:menu_option):
+	
+	if showingCredits:
+		return
 	
 	PlayMenuSoundBasedOnOption(_option)
 	
@@ -228,6 +242,14 @@ func ButtonPressed(_option:menu_option):
 		CurrentMenu=_option.options
 		UpdateMenu()
 		
+	if _option.optionName=="Show Credits":
+		showingCredits=true
+		credits_parent.show()
+		
+		credits_script.StartScrolling()
+		credits_script.signal_credits_finished.connect(CreditsFinished)
+		
+		pass
 
 	if _option.optionName=="Toggle Fullscreen":
 		isFullscreen=!isFullscreen

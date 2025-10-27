@@ -25,6 +25,15 @@ var creditsDone:bool=false
 func _ready() -> void:
 	scrollSpeed=-14
 	scrollparent.position.y= creditsStartPos.position.y
+	
+
+func StartScrolling():
+	TranslateCredits()
+	scrollSpeed=-14
+	scrollparent.position.y= creditsStartPos.position.y
+	active=true
+	creditsDone=false
+
 
 func TranslateCredits():
 	credits_text.text=tr("credits_all_of_it_lol")

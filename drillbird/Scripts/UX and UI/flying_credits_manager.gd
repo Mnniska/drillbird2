@@ -38,7 +38,7 @@ func _process(delta: float) -> void:
 		
 func _ready() -> void:
 	
-	credits.TranslateCredits()
+
 	text_growth.text=tr("credits_growth")
 	HUD.SetState(HUD.menuStates.CREDITS)
 	music.finished.connect(music.play)
@@ -52,7 +52,7 @@ func _ready() -> void:
 		SetCloudsVisible(false)
 	else:
 		SetCloudsVisible(true)
-		credits.active=true
+		credits.StartScrolling()
 		credits.signal_credits_finished.connect(CreditsFinished)
 		
 

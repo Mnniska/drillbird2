@@ -61,6 +61,7 @@ menu_day,menu_pause,"Not in video. When pausing, one can see which day it is ",D
 menu_instructions,menu_pause,"Instructions for how to play the game. The stuff inside [] brackets is formatting, can be left as-is. The stuff inside () paranthesis are symbols that appear differently depending on whether player is playing on mouse or keyboard - should also be left as-is.",[color=gray](jump) = jump [p](drill) = Drill blocks[p](inventory) = Drop ores,[color=gray](jump) = Hoppa [p](drill) = Borra block[p](inventory) = Släpp mineraler,[color=gray](jump)=ジャンプ [p](drill)=ブロックを掘る [p](inventory)=鉱石を捨てる,[color=gray](jump)=跳跃 [p](drill)=挖掘方块 [p](inventory)=丢弃矿石,[color=gray](jump)=прыжок [p](drill)=бурить блоки [p](inventory)=сбрасывать руды,[color=gray](jump) = Springen [p](drill) = Blöcke bohren [p](inventory) = Erze fallen lassen,[color=gray](jump) = saut [p](drill)= Forer des blocs [p](inventory) = Lâcher les minerais
 options_timer,,,Toggle timer,Toggle timer,Toggle timer,Toggle timer,Toggle timer,Toggle timer,Toggle timer
 options_language,menu language options,header for the lamguage options,Select Language,Välj Språk,言語を選択,选择语言,Выберите язык,Sprache auswählen,Choisir la langue
+options_credits,,,Credits,Vem gjorde Drill Bird?,クレジット,学分,кредиты,Credits,Crédits
 lang_en,menu language options,,English,English,English,English,English,English,English
 lang_ja,menu language options,,日本語 ,日本語 ,日本語 ,日本語 ,日本語 ,日本語 ,日本語 
 lang_zh,menu language options,,中文,中文,中文,中文,中文,中文,中文

@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://bxacqh1cbwxw5"]
+[gd_scene load_steps=43 format=3 uid="uid://bxacqh1cbwxw5"]
 
 [ext_resource type="Script" path="res://Scripts/UX and UI/GlobalHUDManager.gd" id="1_u1olj"]
 [ext_resource type="Texture2D" uid="uid://cp6xuvmo0rguj" path="res://Art/UI/HUD/UI_BlackBorder.png" id="1_vcacc"]
@@ -27,6 +27,8 @@
 [ext_resource type="PackedScene" uid="uid://bgj42edyan2we" path="res://Scenes/UI/menu_pause.tscn" id="24_p58jt"]
 [ext_resource type="Texture2D" uid="uid://cdgrv0eh6htfa" path="res://Art/cutscenes/intro/intro_landscape11.png" id="26_4tsov"]
 [ext_resource type="Script" path="res://Scripts/Tools/speedrun_timer.gd" id="27_rs6d6"]
+[ext_resource type="Texture2D" uid="uid://bi6q51sklyetd" path="res://Art/environment/SpaceBackground/background_space_allLayers.png" id="28_tc67a"]
+[ext_resource type="PackedScene" uid="uid://l6j5lsi56hrl" path="res://Scenes/UI/credits.tscn" id="29_llwrf"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_ese10"]
 
@@ -150,6 +152,8 @@ _data = {
 "FadeBack": SubResource("Animation_0g03v"),
 "RESET": SubResource("Animation_ygpwv")
 }
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_okkph"]
 
 [node name="HUD" type="CanvasLayer"]
 layer = 10
@@ -410,6 +414,17 @@ grow_horizontal = 0
 grow_vertical = 0
 theme = ExtResource("15_nxi4s")
 bbcode_enabled = true
+
+[node name="credits parent" type="Node2D" parent="."]
+visible = false
+
+[node name="background" type="Sprite2D" parent="credits parent"]
+position = Vector2(158, 100)
+texture = ExtResource("28_tc67a")
+
+[node name="Credits" parent="credits parent" instance=ExtResource("29_llwrf")]
+material = SubResource("CanvasItemMaterial_okkph")
+position = Vector2(168, 0)
 
 [connection signal="NewGame" from="MainMenu" to="." method="_on_main_menu_new_game"]
 [connection signal="press_options" from="MainMenu" to="." method="_on_main_menu_press_options"]

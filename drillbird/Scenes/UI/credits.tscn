@@ -7,7 +7,7 @@
 script = ExtResource("1_3w0v5")
 
 [node name="StartPos" type="Node2D" parent="."]
-position = Vector2(0, 172)
+position = Vector2(-3, 110)
 
 [node name="CenterOfScreen" type="Node2D" parent="."]
 
@@ -16,8 +16,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -158.0
+offset_top = 179.0
 offset_right = 158.0
-offset_bottom = 1616.0
+offset_bottom = 1795.0
 grow_horizontal = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer2"]
