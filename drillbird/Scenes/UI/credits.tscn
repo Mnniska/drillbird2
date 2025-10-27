@@ -1,18 +1,27 @@
-[gd_scene load_steps=5 format=3 uid="uid://l6j5lsi56hrl"]
+[gd_scene load_steps=3 format=3 uid="uid://l6j5lsi56hrl"]
 
 [ext_resource type="Script" path="res://Scripts/UX and UI/credits.gd" id="1_3w0v5"]
 [ext_resource type="Theme" uid="uid://bfr5y4lo7m1ux" path="res://Resources/Fonts/fontTheme.tres" id="2_hgymx"]
-[ext_resource type="Texture2D" uid="uid://bjo3ij85d33yx" path="res://Art/Collectibles/ore_gold.png" id="3_vm07v"]
-[ext_resource type="Texture2D" uid="uid://c1a6277712y7w" path="res://Art/Collectibles/ore_2_blue.png" id="4_odh6m"]
 
 [node name="Credits" type="Node2D"]
 script = ExtResource("1_3w0v5")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-offset_left = -160.0
-offset_top = 122.0
-offset_right = 160.0
-offset_bottom = 2446.0
+[node name="StartPos" type="Node2D" parent="."]
+position = Vector2(0, 172)
+
+[node name="CenterOfScreen" type="Node2D" parent="."]
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -158.0
+offset_right = 158.0
+offset_bottom = 1616.0
+grow_horizontal = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer2"]
+layout_mode = 2
 theme = ExtResource("2_hgymx")
 bbcode_enabled = true
 text = "[center]Thank you for playing Drillbird!
@@ -29,7 +38,7 @@ Design, Code, Art
 [color=green]Andrea Harty[/color]
 Art 
 
-[color=green]Hampus Melin [/color]
+[color=green]Hampus Mellin [/color]
 Sound Design, Music 
 
 [color=green]Isabelle Neuman[/color]
@@ -55,11 +64,31 @@ https://ggbot.itch.io/pixelated-elegance-font
 QuinqueFive by GGBotNet 
 https://www.dafont.com/quinquefive.font 
 
+Equipe 9p by Somepx 
+https://somepx.itch.io/pixel-font-equipe
+
+Unifont-16.0.04 by Unifoundry
+https://unifoundry.com/unifont/index.html 
+
+VonwaonBitmap by Haoyu Qiu 
+https://timothyqiu.itch.io/vonwaon-bitmap 
+
+MaruMonica x12y16px 
+https://hicchicc.github.io/00ff/ 
+
 [color=green]Also I used this one tutorial to set up the sound system:[/color]
 “How I do Sound Effects in Godot” by Aarimous 
 https://www.youtube.com/watch?v=Egf2jgET3nQ&t=242s 
 
-[font_size={32}]~~~ Playtesters ~~~ [/font_size]
+[font_size={32}]~~ Perfect Random ~~
+marketing masters[/font_size]
+
+Anton Albiin
+ 
+Simon Pos
+
+
+[font_size={32}]~~~ Playtesters & Supporters~~~ [/font_size]
 
 Luiza Flôres da Cunha
 Erik Flôres da Cunha
@@ -103,24 +132,10 @@ Lulu Flôres da Cunha for eternal support
 
 
 Bye!
-
 "
 fit_content = true
 scroll_active = false
 shortcut_keys_enabled = false
 
-[node name="CreditsEnd" type="Node2D" parent="RichTextLabel"]
-position = Vector2(160, 1273)
-
-[node name="ore" type="Sprite2D" parent="RichTextLabel"]
-position = Vector2(256, 364)
-texture = ExtResource("3_vm07v")
-
-[node name="ore2" type="Sprite2D" parent="RichTextLabel"]
-position = Vector2(267, 354)
-texture = ExtResource("4_odh6m")
-
-[node name="StartPos" type="Node2D" parent="."]
-position = Vector2(-160, 172)
-
-[node name="CenterOfScreen" type="Node2D" parent="."]
+[node name="Credits end" type="Label" parent="VBoxContainer2"]
+layout_mode = 2

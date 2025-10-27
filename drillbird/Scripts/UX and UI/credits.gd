@@ -1,7 +1,8 @@
 extends Node2D
 signal signal_credits_finished
 
-@onready var text:RichTextLabel=$RichTextLabel
+@onready var scrollparent=$VBoxContainer2
+@onready var credits_text:RichTextLabel=$VBoxContainer2/RichTextLabel
 
 var textShowTimeDefault:float=0.02
 var textShowTime:float=textShowTimeDefault
@@ -23,10 +24,10 @@ var creditsDone:bool=false
 
 func _ready() -> void:
 	scrollSpeed=-14
-	text.position=creditsStartPos.position
+	scrollparent.position.y= creditsStartPos.position.y
 
 func TranslateCredits():
-	text.text=tr("credits_all_of_it_lol")
+	credits_text.text=tr("credits_all_of_it_lol")
 
 
 func _physics_process(delta: float) -> void:
@@ -42,7 +43,7 @@ func _physics_process(delta: float) -> void:
 		scrollSpeed=defaultScrollSpeed
 	
 	
-	text.position.y-=scrollSpeed*delta
+	scrollparent.position.y-=scrollSpeed*delta
 	
 	if !creditsDone:
 		if GetAreCreditsDone():	
@@ -51,4 +52,4 @@ func _physics_process(delta: float) -> void:
 			
 
 func GetAreCreditsDone()->bool:
-	return $RichTextLabel/CreditsEnd.global_position.y<$CenterOfScreen.global_position.y
+	return $"VBoxContainer2/Credits end".global_position.y<$CenterOfScreen.global_position.y

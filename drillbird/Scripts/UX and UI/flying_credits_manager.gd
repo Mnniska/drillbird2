@@ -29,12 +29,6 @@ var cloudsVisibleLerper:float=0
 var isTransitioningToMainAgain:bool=false
 
 func _process(delta: float) -> void:
-
-	if Input.is_action_just_pressed("debug_1"):
-		if TranslationServer.get_locale() == "English":
-			TranslationServer.set_locale("Swedish")
-		else:
-			TranslationServer.set_locale("English")
 			
 
 	if musicVolume!=musicTargetVolume:
@@ -43,8 +37,7 @@ func _process(delta: float) -> void:
 		music.volume_db=vol
 		
 func _ready() -> void:
-	#TODO:Remove
-	TranslationServer.set_locale("Swedish")
+	
 	credits.TranslateCredits()
 	text_growth.text=tr("credits_growth")
 	HUD.SetState(HUD.menuStates.CREDITS)
