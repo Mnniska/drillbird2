@@ -19,6 +19,7 @@ func _ready() -> void:
 	
 	SpikesSpawnSetup()
 	spawnPositionLocal=position
+	
 	pass
 	
 	pass # Replace with function body.
