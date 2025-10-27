@@ -38,7 +38,7 @@ func Load(revealList:Array[bool]):
 	var index=0
 	for isRevealedBool in revealList:
 		if isRevealedBool==true:
-			revealers[index].UnveilTargetTilemap(revealers[index].positionToUnveil,true)
+			revealers[index].UnveilTargetTilemap(true)
 		index+=1
 
 #		isUnveiledList.append(revealer.unveiled)
@@ -47,6 +47,11 @@ func Load(revealList:Array[bool]):
 	pass
 
 
+func TryUnveilAtRelativePosition(globalPosOfRevealer:Vector2i,offset:Vector2i,startup:bool=false):
+	
+	#uses the position of the rfevealer + an offset to reveal
+	TryUnveilTargetPosition(tilemap.local_to_map(tilemap.to_local(globalPosOfRevealer))+offset,startup)
+	pass
 
 func TryUnveilTargetPosition(pos:Vector2i,startup:bool=false):
 	
