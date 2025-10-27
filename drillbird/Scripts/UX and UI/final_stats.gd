@@ -5,7 +5,7 @@ extends Node2D
 @onready var SebsMessage=$"Sebs message"
 @onready var choiceMessage=$choice
 @onready var white=$white_background
-var textIsReady:bool=true
+
 enum states{inactive,info,seb,choice}
 var state:states=states.inactive
 signal textFinishedShowing()
@@ -13,7 +13,13 @@ signal statsFinished(bool)
 @onready var text_header= $STATS/headr
 
 var textshown:int=0
-@export var typewritePause:float=0.04
+
+var typewriteTotalCharacterCount:int=0
+@export var typewriteCharsPerSecond:float=8
+var typewriteTimer:float=0
+var soundTimer:float=0
+var labelToTypewrite
+var isTypeWriting:bool=true
 
 var finalChoiceIsToErase:bool=true
 
@@ -21,6 +27,8 @@ var finalChoiceIsToErase:bool=true
 @export var finalchoicetext_goback:String
 
 @export var statsarray:Array[stats_shower]
+
+@export var DebugShowStats:bool=false
 
 func _ready() -> void:
 	hide()
@@ -30,10 +38,10 @@ func _ready() -> void:
 	
 	#!!!DEBUG! REMOVE ME!!!
 	#lmao did not remove
-	#HUD.SetState(HUD.menuStates.CREDITS)
-	#show()
-	#DisplayStats()
-	
+	if DebugShowStats:
+		HUD.SetState(HUD.menuStates.CREDITS)
+		show()
+		DisplaySebsMessage()
 
 func TranslateMessages():
 	SebsMessage.text=tr("credits_thanks_for_playing")
@@ -102,6 +110,8 @@ func DisplaySebsMessage():
 	StatsParent.hide()
 	SebsMessage.show()
 	TypewriteText(SebsMessage)
+	
+	SteamHandler.TryUnlockAchievement("ach_finish")
 
 func DisplayFinalChoice():
 	hidestuff()
@@ -118,21 +128,30 @@ func _process(delta: float) -> void:
 		DisplaySebsMessage()
 	
 	if Input.is_action_just_pressed("jump"):
-		if !textIsReady:
-			textIsReady=true
-		else:
+		if !isTypeWriting:
 			if state==states.info:
 				DisplayFinalChoice()
 			elif state==states.seb:
 				DisplayStats()
 			elif state==states.choice:
 				statsFinished.emit(finalChoiceIsToErase)
-
 	
 	if state==states.choice:
 		if Input.is_action_just_pressed("left") or Input.is_action_just_pressed("right"):
 			finalChoiceIsToErase=!finalChoiceIsToErase
 			UpdateFinalChoiceText()
+			
+			if finalChoiceIsToErase:
+				SoundManager.PlaySoundAtLocation($bg.global_position,abstract_SoundEffectSetting.SoundEffectEnum.PLAYER_BECOME_HEAVY)
+			else:
+				SoundManager.PlaySoundAtLocation($bg.global_position,abstract_SoundEffectSetting.SoundEffectEnum.PLAYER_WAKEUP)
+
+			
+			
+			
+
+	if isTypeWriting and labelToTypewrite!=null:
+		ContinueTypewrite(delta)
 
 func UpdateFinalChoiceText():
 	
@@ -143,37 +162,38 @@ func UpdateFinalChoiceText():
 	
 	pass
 
-func TypewriteText(label:RichTextLabel):
-	if !textIsReady:
-		return
-	textIsReady=false
-	textshown=0
-	label.visible_characters=0
-	var skip:bool=false
-	
-	while label.visible_characters<label.text.length()-1:
-		textshown+=1
-		label.visible_characters=textshown
-		if label.text[textshown]=="[": #ensures there's no pausing for hidden bbcode stuff
-			skip=true
-			
-		if skip:
-			if label.text[textshown]=="]":
-				skip=false
-				
 
-		if !skip:
-				SoundManager.PlaySoundAtLocation($bg.global_position,abstract_SoundEffectSetting.SoundEffectEnum.TYPEWRITER_CLICK)
-				await get_tree().create_timer(typewritePause).timeout
-			
-			
-		if textIsReady:
-			label.visible_characters=label.text.length()
-			break
-	textIsReady=true
-	textFinishedShowing.emit()
+var typewriteTotalTime:float
+func TypewriteText(label:RichTextLabel):
+	
+	#todo: Change text wiritng to be a percentage instead, let text delay be dictated by character number. 
+	labelToTypewrite=label
+	typewriteTotalTime= labelToTypewrite.get_total_character_count()/typewriteCharsPerSecond
+	isTypeWriting=true
+	typewriteTimer=0
+	
+	
 	
 	pass 
+
+var soundGoal:float=0.01
+func ContinueTypewrite(delta:float):
+	
+	typewriteTimer+=delta
+	soundTimer+=delta
+	var progress=typewriteTimer/typewriteTotalTime
+	
+	labelToTypewrite.visible_ratio=progress
+	
+	
+	if soundTimer>soundGoal:
+		soundTimer=0
+		soundGoal=randf_range(0.02,0.08)
+		SoundManager.PlaySoundAtLocation($bg.global_position,abstract_SoundEffectSetting.SoundEffectEnum.TYPEWRITER_CLICK)
+	
+	if typewriteTimer>=typewriteTotalTime:
+		textFinishedShowing.emit()
+		isTypeWriting=false
 	
 func ConstructStatsString()->String:
 	var text:String
@@ -189,7 +209,7 @@ func ConstructStatsString()->String:
 	
 func CheckFinishAchievements():
 	
-	SteamHandler.TryUnlockAchievement("ach_finish")
+
 	
 	if 	GlobalVariables.currentDay <= SteamHandler.stat_ach_days_fastest:
 		SteamHandler.TryUnlockAchievement("ach_days_fastest")
