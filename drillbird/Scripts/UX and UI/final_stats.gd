@@ -70,6 +70,10 @@ func DisplayStats():
 	text_statinfo=tr("credits_stats_hatchtime")
 	text_statresult="[color=orange]"+ str(GlobalVariables.currentDay)+"[/color]"+"[p][/p]"
 	
+	#unlock achievement for finishing within 7 days
+	if 	GlobalVariables.currentDay <= SteamHandler.stat_ach_days_fastest:
+		SteamHandler.TryUnlockAchievement("ach_days_fastest")
+	
 	statsarray[0].DisplayStat(text_statinfo,text_statresult)
 	await statsarray[0].displayedStat
 	
@@ -82,11 +86,19 @@ func DisplayStats():
 	text_statinfo=tr("credits_stats_ores")
 	text_statresult=str(GlobalVariables.oresFound)+" / "+str(GlobalVariables.totalOres)
 
+	var oresLeft:int= GlobalVariables.totalOres-GlobalVariables.oresFound
+	if oresLeft<=0:
+		SteamHandler.TryUnlockAchievement("ach_all_ores")
+
 	statsarray[2].DisplayStat(text_statinfo,text_statresult)
 	await statsarray[2].displayedStat
 
 	text_statinfo=tr("credits_stats_kills")
 	text_statresult=str(SteamHandler.count_enemyDeaths)
+	var kills=SteamHandler.count_enemyDeaths
+	
+	if SteamHandler.count_enemyDeaths<=SteamHandler.stat_ach_pacifist:
+		SteamHandler.TryUnlockAchievement("ach_pacifist")
 		
 	statsarray[3].DisplayStat(text_statinfo,text_statresult)
 	await statsarray[3].displayedStat
@@ -111,6 +123,7 @@ func DisplaySebsMessage():
 	SebsMessage.show()
 	TypewriteText(SebsMessage)
 	
+	#give achievement here since all game content is over
 	SteamHandler.TryUnlockAchievement("ach_finish")
 
 func DisplayFinalChoice():
@@ -207,17 +220,4 @@ func ConstructStatsString()->String:
 	
 	return text
 	
-func CheckFinishAchievements():
-	
-
-	
-	if 	GlobalVariables.currentDay <= SteamHandler.stat_ach_days_fastest:
-		SteamHandler.TryUnlockAchievement("ach_days_fastest")
-	
-	var oresLeft:int= GlobalVariables.totalOres-GlobalVariables.oresFound
-	if oresLeft<=0:
-		SteamHandler.TryUnlockAchievement("ach_all_ores")
-	
-	if SteamHandler.count_enemyDeaths<=SteamHandler.stat_ach_pacifist:
-		SteamHandler.TryUnlockAchievement("ach_pacifist")
 	

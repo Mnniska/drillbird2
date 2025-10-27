@@ -215,9 +215,6 @@ func SpawnAllEnemies():
 		if node.enemyInfo.type==abstract_enemy.enemyTypes.FALLBLOCK:
 			node.BlockDestroyer=tileDestroyer
 		
-		if enemyInfo.dead==true:
-			print_debug("I found a dead enemy!")
-		
 		node.Setup(enemyInfo)
 		node.transform.origin = spawnPosLocalCoords
 		add_child(node)
