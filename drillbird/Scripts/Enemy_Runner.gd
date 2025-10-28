@@ -23,7 +23,6 @@ func _ready() -> void:
 	
 	spawnPositionLocal=position #MUST HAVE
 	positionLastFrame=position
-	GlobalVariables.signal_IsPlayerInMenuChanged.connect(SetGamePaused)
 
 func SetGamePaused(paused:bool):
 	gamePaused=paused

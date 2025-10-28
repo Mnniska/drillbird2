@@ -78,9 +78,20 @@ func UpdateRootSprites(_progress:float):
 	var amountOfSprites:float=5
 	
 	var chosenSprite=floori(amountOfSprites*_progress)
-	FlowerRootAnim.animation="growing"
-	FlowerRootAnim.frame=chosenSprite
 	
+	if FlowerRootAnim.animation!="growing":
+		FlowerRootAnim.animation="growing"
+		SoundManager.PlaySoundAtLocation(position,abstract_SoundEffectSetting.SoundEffectEnum.FLOWER_SPAWN,1)
+	
+	if FlowerRootAnim.frame!=chosenSprite:
+		FlowerRootAnim.frame=chosenSprite
+		
+		#don't play sound at last frame to avoid duplicate sounds
+		if chosenSprite<5:
+			var pitch=1+chosenSprite*0.2
+			
+			#TODO: change this to a better sound, or change the actual spawn to a better sound
+			SoundManager.PlaySoundAtLocation(position,abstract_SoundEffectSetting.SoundEffectEnum.FLOWER_SPAWN,pitch)
 	
 	pass
 

@@ -72,7 +72,7 @@ func PlaySoundGlobal(type:abstract_SoundEffectSetting.SoundEffectEnum,pitch:floa
 	
 	pass
 
-func PlaySoundAtLocation(location:Vector2,type:abstract_SoundEffectSetting.SoundEffectEnum):
+func PlaySoundAtLocation(location:Vector2,type:abstract_SoundEffectSetting.SoundEffectEnum, pitch:float=-1):
 	
 	var soundEffectSetting:abstract_SoundEffectSetting=SOUND_EFFECTS[0]
 	var typeFound:bool=false
@@ -93,6 +93,9 @@ func PlaySoundAtLocation(location:Vector2,type:abstract_SoundEffectSetting.Sound
 		new_2D_audio.position=location
 		
 		new_2D_audio=SetupCommonSoundSettings(soundEffectSetting ,new_2D_audio)
+		if pitch!=-1:
+			new_2D_audio.pitch_scale=pitch
+		
 		new_2D_audio.max_distance=16*15
 		new_2D_audio.finished.connect(soundEffectSetting.on_audio_finished) 
 		new_2D_audio.finished.connect(new_2D_audio.queue_free)

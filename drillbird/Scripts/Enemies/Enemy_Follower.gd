@@ -30,7 +30,6 @@ func _ready() -> void:
 	if enemyInfo.dead:
 		TurnEnemyOff()
 	
-	GlobalVariables.signal_IsPlayerInMenuChanged.connect(SetGamePaused)
 	spawnPositionLocal=position #MUST HAVE
 	
 func _physics_process(delta: float) -> void:

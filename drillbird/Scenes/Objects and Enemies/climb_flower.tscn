@@ -97,6 +97,7 @@ position = Vector2(0, 16)
 sprite_frames = SubResource("SpriteFrames_16k52")
 animation = &"null"
 autoplay = "null"
+speed_scale = 0.0
 
 [node name="FlowerBaseCollider" type="Area2D" parent="."]
 position = Vector2(0, 16)
