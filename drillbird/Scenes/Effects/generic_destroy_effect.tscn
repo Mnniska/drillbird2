@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dkmak26gixxem"]
+[gd_scene load_steps=12 format=3 uid="uid://dkmak26gixxem"]
 
 [ext_resource type="Texture2D" uid="uid://blkrgga5qohse" path="res://Art/effects/tileSecretDestroy/secret_smokepuff1.png" id="1_8onul"]
 [ext_resource type="Texture2D" uid="uid://bpfnoulaw48sh" path="res://Art/effects/tileSecretDestroy/secret_smokepuff2.png" id="2_dpox1"]
@@ -8,7 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://d3x3v3m5u5ihc" path="res://Art/effects/tileSecretDestroy/secret_smokepuff6.png" id="6_hndvg"]
 [ext_resource type="Script" path="res://Scripts/effects/generic_destroy_effect.gd" id="7_6lh65"]
 [ext_resource type="Texture2D" uid="uid://dtktgck2c06fh" path="res://Art/effects/tileSecretDestroy/secret_smokepuff7.png" id="7_smccw"]
-[ext_resource type="Texture2D" uid="uid://bxtd6rqwtaua6" path="res://Art/effects/tileSecretDestroy/secret_smokepuff8.png" id="8_mp4r4"]
+[ext_resource type="Texture2D" uid="uid://cx7ikvf360cte" path="res://Art/effects/tileSecretDestroy/secret_smokepuff9.png" id="8_xodqr"]
+[ext_resource type="Texture2D" uid="uid://dhrvhcsf7e45a" path="res://Art/effects/empty.png" id="9_nuatg"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_pftks"]
 animations = [{
@@ -35,7 +36,10 @@ animations = [{
 "texture": ExtResource("7_smccw")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_mp4r4")
+"texture": ExtResource("8_xodqr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_nuatg")
 }],
 "loop": false,
 "name": &"default",
@@ -43,9 +47,8 @@ animations = [{
 }]
 
 [node name="tileDestroyEffect" type="AnimatedSprite2D"]
-z_index = 2
 sprite_frames = SubResource("SpriteFrames_pftks")
 autoplay = "default"
-frame = 7
+frame = 8
 frame_progress = 1.0
 script = ExtResource("7_6lh65")
