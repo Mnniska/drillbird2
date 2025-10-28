@@ -91,7 +91,7 @@ func HeartPickedUpByPlayer():
 		var node:text_bubble=textBubblePath.instantiate()
 		add_child(node)
 		node.Setup(abstract_textEffect.effectEnum.WAVE,text_bubble.behaviourEnum.FADE)
-		node.ShowText("How dare you..!")
+		node.ShowText(tr("popup_ghost_bark"))
 		node.position=$warningLocation.position
 	
 	ghostInScene.PlayerPickedUpHeart()
