@@ -650,6 +650,12 @@ func Update_Animations(newanim):
 		
 		if animstate=="run":
 			CreateEffect(effectEnum.RUN_START,facingLeft)
+			
+			#footstep sound when starting to walk
+			if randf()>0.5:
+				SoundManager.PlaySoundAtLocation(global_position,abstract_SoundEffectSetting.SoundEffectEnum.PLAYER_FOOTSTEP_ONE)
+			else:
+				SoundManager.PlaySoundAtLocation(global_position,abstract_SoundEffectSetting.SoundEffectEnum.PLAYER_FOOTSTEP_TWO)
 	
 
 	#TODO: Consider only calling this when relevant
