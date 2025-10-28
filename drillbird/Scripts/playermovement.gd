@@ -100,6 +100,8 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 
+
+
 	if Input.is_action_just_pressed("debug_1"):
 		if GlobalVariables.DebugEnabled:
 		
@@ -157,6 +159,10 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 	Update_Animations(newanim)
+	
+	#used to create a cooldown before the "inventory full" message is shown again, needed since I'm adding a sound to it
+	if inventory_full_cooldown_timer>0:
+		inventory_full_cooldown_timer-=delta
 	
 
 func GetClosestFlower():
@@ -743,6 +749,8 @@ func _on_block_below_checker_body_shape_entered(body_rid: RID, body: Node2D, bod
 func GetCollType():
 	return collType
 
+var inventory_full_cooldown_timer:float=0
+
 func _on_detector_body_entered(body: Node2D) -> void:
 	var collider:abstract_collidable= body.GetCollType()
 	
@@ -767,8 +775,12 @@ func _on_detector_body_entered(body: Node2D) -> void:
 					SoundManager.PlaySoundAtLocation(global_position,abstract_SoundEffectSetting.SoundEffectEnum.PLAYER_BECOME_HEAVY)
 				
 			else:
-				
-				CreateInfoBubble(tr("popup_inventory_full"))
+				if inventory_full_cooldown_timer<=0:				
+					CreateInfoBubble(tr("popup_inventory_full"))
+					inventory_full_cooldown_timer=1.5
+					
+					#Todo: Change sound to something else? Maybe a "nuh uh!" sound
+					SoundManager.PlaySoundAtLocation(position,abstract_SoundEffectSetting.SoundEffectEnum.PLAYER_BECOME_HEAVY)
 
 	if collider.type==collider.types.FLOWER:
 		closeFlowers.append(body.GetParent())
