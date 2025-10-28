@@ -92,7 +92,8 @@ func SaveGame():
 	ResourceSaver.save(PlayerData,save_file_path+save_file_name)
 	print_debug("game saved")
 	
-	Savetext.Activate(GlobalVariables.currentDay)
+	if GlobalVariables.currentDay>1:
+		Savetext.Activate(GlobalVariables.currentDay)
 	
 	pass
 
