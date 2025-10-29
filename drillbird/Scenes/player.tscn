@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3 uid="uid://e3titjk1as46"]
+[gd_scene load_steps=71 format=3 uid="uid://e3titjk1as46"]
 
 [ext_resource type="Script" path="res://Scripts/playermovement.gd" id="1_llgr2"]
 [ext_resource type="Texture2D" uid="uid://dqsglx1jll3rm" path="res://Art/effects/BirdyLightEffect1.png" id="2_65ywu"]
@@ -51,6 +51,7 @@
 [ext_resource type="Texture2D" uid="uid://bevem4o77nqs8" path="res://Art/characters/Drillbird/birdy_dropOres.png" id="31_ouow2"]
 [ext_resource type="Texture2D" uid="uid://5wrxmdf1hats" path="res://Art/characters/Drillbird/birdie_flowerFly.png" id="32_shida"]
 [ext_resource type="Theme" uid="uid://bfr5y4lo7m1ux" path="res://Resources/Fonts/fontTheme.tres" id="38_sekb7"]
+[ext_resource type="Script" path="res://Scripts/effects/drilling_particles_diggable.gd" id="51_e6huc"]
 
 [sub_resource type="Resource" id="Resource_0yo8f"]
 script = ExtResource("2_o5iaf")
@@ -461,7 +462,7 @@ frame_progress = 0.580166
 visible = false
 width = 1.0
 
-[node name="DrillingParticles" type="GPUParticles2D" parent="."]
+[node name="DrillingParticles_solid" type="GPUParticles2D" parent="."]
 z_index = 1
 position = Vector2(18, 0)
 rotation = 4.71239
@@ -471,6 +472,9 @@ process_material = SubResource("ParticleProcessMaterial_8f2xg")
 lifetime = 0.3
 explosiveness = 0.26
 randomness = 1.0
+
+[node name="DrillingParticles_diggable" type="Node2D" parent="DrillingParticles_solid"]
+script = ExtResource("51_e6huc")
 
 [node name="BlockBelowChecker" type="Area2D" parent="."]
 position = Vector2(0, 14)

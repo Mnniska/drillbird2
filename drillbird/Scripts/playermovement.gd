@@ -77,7 +77,8 @@ var closeFlowers:Array[climb_flower]
 @onready var raycast_drill = $RayCast2D
 @onready var debugLine= $DebugRaycastLine
 @onready var oreInventory = HUD.HUD_InventoryManager
-@onready var particles=$DrillingParticles
+@onready var drillSolidParticles=$DrillingParticles_solid
+@onready var drillingNormalParticles=$DrillingParticles_solid/DrillingParticles_diggable
 @onready var healthManager=HUD.HUD_healthManager
 @onready var ObjectSpawner:object_spawner=$"../ObjectSpawner"
 
@@ -534,8 +535,8 @@ func PlayerIsDrilling():
 	debugLine.set_point_position(0,raycast_drill.position)	
 
 	#align particles	
-	particles.position=raycastTarget
-	particles.rotation=deg_to_rad(rotationDegrees)
+	drillSolidParticles.position=raycastTarget
+	drillSolidParticles.rotation=deg_to_rad(rotationDegrees)
 	
 	if raycast_drill.is_colliding(): 
 		#once the game knows it has a valid target, it will not recheck whether it's drilling the same thing every frame.
@@ -640,7 +641,7 @@ func Update_Animations(newanim):
 
 	if playerDrillingSolid:
 		if !player_is_drilling_tile:
-			particles.emitting=false
+			drillSolidParticles.emitting=false
 			playerDrillingSolid=false
 
 	var facingLeft=false
@@ -711,7 +712,7 @@ func _on_tile_crack_material_changed(terrain: abstract_terrain_info) -> void:
 		return
 	
 	if terrain.terrainIdentifier==0: #Equals SOLID
-		particles.emitting=true
+		drillSolidParticles.emitting=true
 		playerDrillingSolid=true		
 
 	pass # Replace with function body.
