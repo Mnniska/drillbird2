@@ -18,7 +18,7 @@ var playerDrillingTile:bool=false
 @onready var tileDestroyEffect=preload("res://Scenes/Effects/tile_destroy_effect.tscn")
 @onready var Parent=$".."
 @onready var ObserverRaycast=$ObserverRaycast
-
+@onready var bitscene=preload("res://Scenes/eggsplosion/egg_part.tscn")
 
 @onready var cracksprite: Sprite2D = $cracksprite
 @export var crack_sprites: Array[Texture]
@@ -217,18 +217,36 @@ func _on_digging_countdown_timeout() -> void:
 	diggingCountdown.stop()
 	tileDrillingActive=false
 
-func SpawnDestroyEffect(position:Vector2i,terrain:abstract_terrain_info):
+func SpawnDestroyEffect(position:Vector2i,terrain:abstract_terrain_info,bits:int=10):
 	
 	#var globalpos:Vector2=Parent.to_l( tilemap.map_to_local(position))
 	
 	var node:AnimatedSprite2D= tileDestroyEffect.instantiate()
 	node.animation_finished.connect(node.queue_free)
 	var pos=to_local(tilemap.map_to_local(position))
-	node.transform.origin=to_global(pos)
+	var globalPos=to_global(pos)
+	node.transform.origin=globalPos
 	node.modulate=terrain.DestroyParticleColor
 	Parent.add_child(node)
 	#node.global_position=globalpos
 	
+	for n in bits:
+		
+		var shell:eggpart = bitscene.instantiate()
+		
+		#spawns the particle under the master node parent
+		Parent.add_child(shell)
+		shell.SetColor(terrain.DestroyParticleColor)
+		shell.global_position=globalPos
+		
+		var x=randf_range(-100,100)
+		var y=randf_range(-50,-150)
+		
+		shell.apply_impulse(Vector2(x,y))
+		shell.rotation_degrees=randf_range(0,360)
+		shell.apply_torque_impulse(randf_range(-x,x))
+		pass
+		
 	
 
 

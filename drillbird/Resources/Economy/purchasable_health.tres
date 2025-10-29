@@ -1,14 +1,13 @@
 [gd_resource type="Resource" script_class="abstract_purchasable" load_steps=11 format=3 uid="uid://dd3l8ir1bmcm5"]
 
-[ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_item_upgrade.gd" id="2_wg2lt"]
-[ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_purchasable.gd" id="3_0yx2m"]
+[ext_resource type="Script" uid="uid://doyq1a7gm2yb2" path="res://Scripts/Abstract scripts/abstract_item_upgrade.gd" id="2_wg2lt"]
+[ext_resource type="Script" uid="uid://w0qofym04h1b" path="res://Scripts/Abstract scripts/abstract_purchasable.gd" id="3_0yx2m"]
 
 [sub_resource type="Resource" id="Resource_3ltva"]
 metadata/__load_path__ = "res://Art/ui/HUD/Health/HUD_Health_full.png"
 
 [sub_resource type="Resource" id="Resource_ldy6v"]
 script = ExtResource("2_wg2lt")
-cost = 0
 power = 2
 
 [sub_resource type="Resource" id="Resource_nookp"]
@@ -43,7 +42,6 @@ power = 8
 
 [resource]
 script = ExtResource("3_0yx2m")
-onlyAButton = false
 type = 2
 icon = SubResource("Resource_3ltva")
 itemNameID = "shop_health_header"

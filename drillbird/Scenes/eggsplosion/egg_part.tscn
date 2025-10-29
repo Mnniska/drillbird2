@@ -1,16 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://rge1xpwlp4hx"]
+[gd_scene load_steps=4 format=3 uid="uid://rge1xpwlp4hx"]
 
-[ext_resource type="Script" path="res://Scenes/eggsplosion/_script_egg_part.gd" id="1_l3y2x"]
+[ext_resource type="Script" uid="uid://dklhwt6iym1ep" path="res://Scenes/eggsplosion/_script_egg_part.gd" id="1_l3y2x"]
 [ext_resource type="Texture2D" uid="uid://b7smufof0osu2" path="res://Art/effects/tileDestroy/destroyparticleTest.png" id="2_3rs8m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wy6ph"]
+size = Vector2(2, 2)
 
 [node name="egg_part" type="RigidBody2D"]
 collision_layer = 0
-collision_mask = 17
 script = ExtResource("1_l3y2x")
 egg_variants = Array[Texture2D]([ExtResource("2_3rs8m")])
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(-1, -3, 1, -3, 3, -1, 3, 1, 1, 3, -1, 3, -3, 1, -3, -1)
+minDespawnTime = 0.5
+maxDespawnTime = 1.0
 
 [node name="eggpart" type="Sprite2D" parent="."]
 texture = ExtResource("2_3rs8m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_wy6ph")

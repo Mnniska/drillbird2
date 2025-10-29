@@ -78,7 +78,6 @@ var closeFlowers:Array[climb_flower]
 @onready var debugLine= $DebugRaycastLine
 @onready var oreInventory = HUD.HUD_InventoryManager
 @onready var drillSolidParticles=$DrillingParticles_solid
-@onready var drillingNormalParticles=$DrillingParticles_solid/DrillingParticles_diggable
 @onready var healthManager=HUD.HUD_healthManager
 @onready var ObjectSpawner:object_spawner=$"../ObjectSpawner"
 
@@ -268,14 +267,6 @@ func DebugGhostMovement(delta:float,currentAnim:String):
 	if Input.is_action_pressed("jump"):
 		speedMult=2.5
 		
-	if Input.is_action_just_pressed("drill"):
-		var scene = load("res://Scenes/Effects/eggsplosion.tscn")
-		var node = scene.instantiate()
-		
-		node.transform.origin=self.position
-		get_parent().add_child(node)
-		
-		#node.position-=Vector2(-200,0)	
 	
 	if Input.is_action_just_pressed("debug_tab"):
 		if DebugTeleportLocations.size()>0:
@@ -536,6 +527,7 @@ func PlayerIsDrilling():
 
 	#align particles	
 	drillSolidParticles.position=raycastTarget
+	
 	drillSolidParticles.rotation=deg_to_rad(rotationDegrees)
 	
 	if raycast_drill.is_colliding(): 
@@ -713,8 +705,9 @@ func _on_tile_crack_material_changed(terrain: abstract_terrain_info) -> void:
 	
 	if terrain.terrainIdentifier==0: #Equals SOLID
 		drillSolidParticles.emitting=true
-		playerDrillingSolid=true		
+		playerDrillingSolid=true
 
+	
 	pass # Replace with function body.
 
 

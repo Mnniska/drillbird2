@@ -1,14 +1,13 @@
 [gd_resource type="Resource" script_class="abstract_purchasable" load_steps=10 format=3 uid="uid://cgdqluba62y80"]
 
-[ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_item_upgrade.gd" id="2_c8a6s"]
-[ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_purchasable.gd" id="3_mne0x"]
+[ext_resource type="Script" uid="uid://doyq1a7gm2yb2" path="res://Scripts/Abstract scripts/abstract_item_upgrade.gd" id="2_c8a6s"]
+[ext_resource type="Script" uid="uid://w0qofym04h1b" path="res://Scripts/Abstract scripts/abstract_purchasable.gd" id="3_mne0x"]
 
 [sub_resource type="Resource" id="Resource_wa6xm"]
 metadata/__load_path__ = "res://Art/ui/Shop/UI_Shop_icon_light.png"
 
 [sub_resource type="Resource" id="Resource_ldy6v"]
 script = ExtResource("2_c8a6s")
-cost = 0
 power = 1
 
 [sub_resource type="Resource" id="Resource_nookp"]
@@ -38,7 +37,6 @@ power = 6
 
 [resource]
 script = ExtResource("3_mne0x")
-onlyAButton = false
 type = 3
 icon = SubResource("Resource_wa6xm")
 itemNameID = "shop_fuel_header"

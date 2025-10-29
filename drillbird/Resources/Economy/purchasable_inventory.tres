@@ -1,14 +1,13 @@
 [gd_resource type="Resource" script_class="abstract_purchasable" load_steps=11 format=3 uid="uid://b26ws3o4u42p3"]
 
-[ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_purchasable.gd" id="1_hrpxn"]
-[ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_item_upgrade.gd" id="2_air0l"]
+[ext_resource type="Script" uid="uid://w0qofym04h1b" path="res://Scripts/Abstract scripts/abstract_purchasable.gd" id="1_hrpxn"]
+[ext_resource type="Script" uid="uid://doyq1a7gm2yb2" path="res://Scripts/Abstract scripts/abstract_item_upgrade.gd" id="2_air0l"]
 
 [sub_resource type="Resource" id="Resource_q8hyr"]
 metadata/__load_path__ = "res://Art/ui/Shop/UI_Shop_icon_inventory.png"
 
 [sub_resource type="Resource" id="Resource_ldy6v"]
 script = ExtResource("2_air0l")
-cost = 0
 power = 8
 
 [sub_resource type="Resource" id="Resource_nookp"]
@@ -43,7 +42,6 @@ power = 120
 
 [resource]
 script = ExtResource("1_hrpxn")
-onlyAButton = false
 type = 1
 icon = SubResource("Resource_q8hyr")
 itemNameID = "shop_inventory_header"

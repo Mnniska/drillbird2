@@ -1,14 +1,13 @@
 [gd_resource type="Resource" script_class="abstract_purchasable" load_steps=12 format=3 uid="uid://deqhaf8e1onhf"]
 
-[ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_item_upgrade.gd" id="2_dkkpi"]
-[ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_purchasable.gd" id="3_8hyme"]
+[ext_resource type="Script" uid="uid://doyq1a7gm2yb2" path="res://Scripts/Abstract scripts/abstract_item_upgrade.gd" id="2_dkkpi"]
+[ext_resource type="Script" uid="uid://w0qofym04h1b" path="res://Scripts/Abstract scripts/abstract_purchasable.gd" id="3_8hyme"]
 
 [sub_resource type="Resource" id="Resource_xkjob"]
 metadata/__load_path__ = "res://Art/ui/Shop/UI_Shop_icon_drill.png"
 
 [sub_resource type="Resource" id="Resource_ldy6v"]
 script = ExtResource("2_dkkpi")
-cost = 0
 power = 2
 
 [sub_resource type="Resource" id="Resource_nookp"]
@@ -48,8 +47,6 @@ power = 16
 
 [resource]
 script = ExtResource("3_8hyme")
-onlyAButton = false
-type = 0
 icon = SubResource("Resource_xkjob")
 itemNameID = "shop_drill_header"
 itemDescriptionID = "shop_drill_desc"

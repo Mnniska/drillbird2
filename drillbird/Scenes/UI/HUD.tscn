@@ -1,8 +1,8 @@
 [gd_scene load_steps=43 format=3 uid="uid://bxacqh1cbwxw5"]
 
-[ext_resource type="Script" path="res://Scripts/UX and UI/GlobalHUDManager.gd" id="1_u1olj"]
+[ext_resource type="Script" uid="uid://cqw1bn227bamc" path="res://Scripts/UX and UI/GlobalHUDManager.gd" id="1_u1olj"]
 [ext_resource type="Texture2D" uid="uid://cp6xuvmo0rguj" path="res://Art/UI/HUD/UI_BlackBorder.png" id="1_vcacc"]
-[ext_resource type="Script" path="res://Scripts/LightManager.gd" id="2_01nkd"]
+[ext_resource type="Script" uid="uid://c4attj05haf4g" path="res://Scripts/LightManager.gd" id="2_01nkd"]
 [ext_resource type="PackedScene" uid="uid://chmegxltn4stt" path="res://Scenes/Playable Scenes/flying_credits.tscn" id="2_lsdg3"]
 [ext_resource type="Texture2D" uid="uid://c2dvodr38hdfp" path="res://Art/UI/HUD/UI_LightBar_dark2.png" id="3_ncwr2"]
 [ext_resource type="PackedScene" uid="uid://d2wv7igie5stg" path="res://Scenes/Playable Scenes/main.tscn" id="3_wspqp"]
@@ -12,21 +12,21 @@
 [ext_resource type="Texture2D" uid="uid://druhh76xwxih5" path="res://Art/UI/HUD/HUD_icon_inventory.png" id="6_cgigq"]
 [ext_resource type="FontFile" uid="uid://c8n7dxyc0uu3i" path="res://Resources/Fonts/m5x7.ttf" id="7_pre4c"]
 [ext_resource type="FontFile" uid="uid://co7jpnljheg23" path="res://Resources/Fonts/testing tinier cyrillic font/Equipe 9p.ttf" id="8_bp3jv"]
-[ext_resource type="Script" path="res://Scripts/HealthUIHandler.gd" id="9_uhcmx"]
+[ext_resource type="Script" uid="uid://c5bn31ro54xo0" path="res://Scripts/HealthUIHandler.gd" id="9_uhcmx"]
 [ext_resource type="Resource" uid="uid://dd3l8ir1bmcm5" path="res://Resources/Economy/purchasable_health.tres" id="10_3kqti"]
-[ext_resource type="Script" path="res://Scripts/inventory_handler.gd" id="11_qie2v"]
+[ext_resource type="Script" uid="uid://dub71npfyj7j3" path="res://Scripts/inventory_handler.gd" id="11_qie2v"]
 [ext_resource type="Resource" uid="uid://b26ws3o4u42p3" path="res://Resources/Economy/purchasable_inventory.tres" id="12_mfl1u"]
 [ext_resource type="Texture2D" uid="uid://b8wmuf0rlke0l" path="res://Art/UI/HUD/bg_xp_holder.png" id="14_a35vt"]
 [ext_resource type="Theme" uid="uid://bfr5y4lo7m1ux" path="res://Resources/Fonts/fontTheme.tres" id="15_nxi4s"]
 [ext_resource type="PackedScene" uid="uid://ccfkycw4won1m" path="res://Scenes/UI/scene_ui_death.tscn" id="18_6hqox"]
 [ext_resource type="Texture2D" uid="uid://bpa8olbvx4ufv" path="res://Art/UI/MainMenu/DrillBird_LOGO.png" id="19_hr1yg"]
-[ext_resource type="Script" path="res://Scripts/UX and UI/main_menu.gd" id="19_qssi7"]
-[ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_debugMenuOption.gd" id="20_hlahx"]
+[ext_resource type="Script" uid="uid://c3j2qqqf4p2dl" path="res://Scripts/UX and UI/main_menu.gd" id="19_qssi7"]
+[ext_resource type="Script" uid="uid://kwgl6ngw7cq2" path="res://Scripts/Abstract scripts/abstract_debugMenuOption.gd" id="20_hlahx"]
 [ext_resource type="AudioStream" uid="uid://bwynx1ih755ll" path="res://Audio/Music/Drillbird Theme.mp3" id="23_p7qe8"]
 [ext_resource type="PackedScene" uid="uid://bldt1ha11vmuu" path="res://Scenes/UI/menu_options.tscn" id="23_sv2nb"]
 [ext_resource type="PackedScene" uid="uid://bgj42edyan2we" path="res://Scenes/UI/menu_pause.tscn" id="24_p58jt"]
 [ext_resource type="Texture2D" uid="uid://cdgrv0eh6htfa" path="res://Art/cutscenes/intro/intro_landscape11.png" id="26_4tsov"]
-[ext_resource type="Script" path="res://Scripts/Tools/speedrun_timer.gd" id="27_rs6d6"]
+[ext_resource type="Script" uid="uid://bl87tjhhsl7nt" path="res://Scripts/Tools/speedrun_timer.gd" id="27_rs6d6"]
 [ext_resource type="Texture2D" uid="uid://bi6q51sklyetd" path="res://Art/environment/SpaceBackground/background_space_allLayers.png" id="28_tc67a"]
 [ext_resource type="PackedScene" uid="uid://l6j5lsi56hrl" path="res://Scenes/UI/credits.tscn" id="29_llwrf"]
 
@@ -77,20 +77,14 @@ hue_variation_max = -0.77
 [sub_resource type="Resource" id="Resource_jrvhg"]
 script = ExtResource("20_hlahx")
 name = "menu_new_game"
-options = Array[ExtResource("20_hlahx")]([])
-isAction = true
 
 [sub_resource type="Resource" id="Resource_q3x01"]
 script = ExtResource("20_hlahx")
 name = "menu_options"
-options = Array[ExtResource("20_hlahx")]([])
-isAction = true
 
 [sub_resource type="Resource" id="Resource_b7xf6"]
 script = ExtResource("20_hlahx")
 name = "menu_quit"
-options = Array[ExtResource("20_hlahx")]([])
-isAction = true
 
 [sub_resource type="Animation" id="Animation_0g03v"]
 resource_name = "FadeBack"
@@ -149,8 +143,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ypq5t"]
 _data = {
-"FadeBack": SubResource("Animation_0g03v"),
-"RESET": SubResource("Animation_ygpwv")
+&"FadeBack": SubResource("Animation_0g03v"),
+&"RESET": SubResource("Animation_ygpwv")
 }
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_okkph"]
@@ -158,7 +152,7 @@ _data = {
 [node name="HUD" type="CanvasLayer"]
 layer = 10
 script = ExtResource("1_u1olj")
-version = "[rainbow]v1.03[/rainbow][p]2025-10-27"
+version = "[rainbow]v1.04[/rainbow][p]2025-10-29"
 scene_credits = ExtResource("2_lsdg3")
 scene_main = ExtResource("3_wspqp")
 
@@ -226,10 +220,10 @@ position = Vector2(13, 3)
 rotation = 1.5708
 emitting = false
 amount = 12
-process_material = SubResource("ParticleProcessMaterial_44yp2")
 lifetime = 0.3
 explosiveness = 0.26
 randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_44yp2")
 
 [node name="Label" type="Label" parent="topUI/LightHandler"]
 offset_left = -27.55
@@ -353,7 +347,7 @@ visible = false
 
 [node name="TransitionToMain" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_ypq5t")
+&"": SubResource("AnimationLibrary_ypq5t")
 }
 
 [node name="white" type="Sprite2D" parent="TransitionToMain"]
