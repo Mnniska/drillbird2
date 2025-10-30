@@ -43,14 +43,18 @@ func _ready() -> void:
 	HUD.SetState(HUD.menuStates.CREDITS)
 	music.finished.connect(music.play)
 	
-	
-	await get_tree().create_timer(1).timeout
-	flyer.initiateJump(1)
+	$Camera2D.CameraInitialLerp()
+	$Credits.hide()
+	await get_tree().create_timer(3).timeout
+	flyer.Activate()
+
+	await get_tree().create_timer(4).timeout
 
 	if debugSkipCredits:
 		valueSpawner.active=true
 		SetCloudsVisible(false)
 	else:
+		$Credits.show()
 		SetCloudsVisible(true)
 		credits.StartScrolling()
 		credits.signal_credits_finished.connect(CreditsFinished)

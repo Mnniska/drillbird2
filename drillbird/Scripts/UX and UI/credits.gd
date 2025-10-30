@@ -16,7 +16,7 @@ var scrollSpeed:float=0
 var scrollAcc:float=0.1
 var maxScrollSpeed:float=80
 
-var active:bool=false
+var scrolling:bool=false
 var creditsDone:bool=false
 
 @onready var creditsStartPos=$StartPos
@@ -31,7 +31,7 @@ func StartScrolling():
 	TranslateCredits()
 	scrollSpeed=-14
 	scrollparent.position.y= creditsStartPos.position.y
-	active=true
+	scrolling=true
 	creditsDone=false
 
 
@@ -43,7 +43,7 @@ func _physics_process(delta: float) -> void:
 	
 
 	
-	if !active:
+	if !scrolling:
 		return
 		
 	if Input.is_action_pressed("drill") or Input.is_action_pressed("interact"):

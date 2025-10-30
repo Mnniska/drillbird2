@@ -1,6 +1,6 @@
-[gd_scene load_steps=118 format=3 uid="uid://uk01ajvakw2b"]
+[gd_scene load_steps=123 format=3 uid="uid://uk01ajvakw2b"]
 
-[ext_resource type="Script" path="res://Scripts/egg_final_form.gd" id="1_fasbe"]
+[ext_resource type="Script" uid="uid://b7nlwll1yu4ii" path="res://Scripts/egg_final_form.gd" id="1_fasbe"]
 [ext_resource type="Texture2D" uid="uid://bbqb5jjiqxbtc" path="res://Art/environment/Home/FinalForm/egg_finalForm.png" id="2_06bq8"]
 [ext_resource type="Texture2D" uid="uid://bi2hexyd84ebw" path="res://Art/environment/Home/egg_biggest.png" id="3_o6wnq"]
 [ext_resource type="Texture2D" uid="uid://d1r1mpddbnskb" path="res://Art/environment/Home/FinalForm/egg_finalform_HEART_idle1.png" id="4_6tmc2"]
@@ -114,6 +114,11 @@
 [ext_resource type="Texture2D" uid="uid://j8iknr1v45us" path="res://Art/cutscenes/hatchingEgg/HatchingCutscene65.png" id="99_3lipe"]
 [ext_resource type="Texture2D" uid="uid://d14c0uwr6v8rg" path="res://Art/cutscenes/hatchingEgg/HatchingCutscene66.png" id="100_fstyp"]
 [ext_resource type="Texture2D" uid="uid://jo1jreqw4cps" path="res://Art/cutscenes/hatchingEgg/HatchingCutscene67.png" id="101_qshkj"]
+[ext_resource type="Texture2D" uid="uid://dayxoomrxfgat" path="res://Art/cutscenes/hatchingEggDrillbird/Drillbird_existentialDread1.png" id="115_01nsm"]
+[ext_resource type="Texture2D" uid="uid://c8a0gkdfu37l" path="res://Art/cutscenes/hatchingEggDrillbird/Drillbird_existentialDread2.png" id="116_f5iyb"]
+[ext_resource type="Texture2D" uid="uid://blulynqv32lxc" path="res://Art/cutscenes/hatchingEggDrillbird/Drillbird_existentialDread3.png" id="117_1hwpx"]
+[ext_resource type="Texture2D" uid="uid://bqgte51b48cbj" path="res://Art/cutscenes/hatchingEggDrillbird/Drillbird_existentialDread4.png" id="118_rcs42"]
+[ext_resource type="Texture2D" uid="uid://c5ahtnsl42rp4" path="res://Art/cutscenes/hatchingEggDrillbird/Drillbird_existentialDread5.png" id="119_xcm1k"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dcmve"]
 animations = [{
@@ -525,7 +530,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("100_fstyp")
 }, {
-"duration": 1.0,
+"duration": 67.0,
 "texture": ExtResource("101_qshkj")
 }],
 "loop": false,
@@ -615,8 +620,23 @@ animations = [{
 "duration": 5.0,
 "texture": ExtResource("46_gc6i0")
 }, {
-"duration": 30.0,
+"duration": 15.0,
 "texture": ExtResource("34_fl78l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("115_01nsm")
+}, {
+"duration": 3.0,
+"texture": ExtResource("116_f5iyb")
+}, {
+"duration": 10.0,
+"texture": ExtResource("117_1hwpx")
+}, {
+"duration": 10.0,
+"texture": ExtResource("118_rcs42")
+}, {
+"duration": 30.0,
+"texture": ExtResource("119_xcm1k")
 }],
 "loop": false,
 "name": &"hatch",
@@ -651,12 +671,12 @@ position = Vector2(-2, -83)
 sprite_frames = SubResource("SpriteFrames_lku8d")
 animation = &"hatch"
 autoplay = "default"
-frame = 66
-frame_progress = 1.0
 
 [node name="Anim_hatching_drillbird" type="AnimatedSprite2D" parent="."]
 z_index = 1
 position = Vector2(-2, -83)
 sprite_frames = SubResource("SpriteFrames_ovqsl")
-animation = &"wait"
+animation = &"hatch"
 autoplay = "default"
+frame = 26
+frame_progress = 1.0

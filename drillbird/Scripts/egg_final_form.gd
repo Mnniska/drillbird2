@@ -9,6 +9,7 @@ var shakeAmount:float=1.8
 @onready var animator=$AnimatedSprite2D
 @onready var hatchAnimation=$Anim_birds_hatching
 @onready var EggOriginalPosition:Vector2=hatchAnimation.position
+@onready var useVibration=GlobalVariables.useVibration
 
 enum finalFormStates{FINAL_INACTIVE,FINAL_HEARTLESS,FINAL_HEART,FINAL_HATCHING}
 var finalFormState:finalFormStates=finalFormStates.FINAL_HEARTLESS
@@ -18,6 +19,7 @@ func _process(delta: float) -> void:
 	
 	if isShaking:
 		hatchAnimation.position=EggOriginalPosition+Vector2(randf_range(-shakeAmount,shakeAmount),0)
+
 
 func GetFinalHeartPosition():
 	return $FinalHeartPosition.global_position
@@ -47,6 +49,7 @@ func SetState(_state:finalFormStates):
 
 func HatchEgg():
 
+	useVibration=GlobalVariables.useVibration
 	$Anim_hatching_drillbird.animation="wait"
 	hatchAnimation.animation="wait"
 	animator.animation="hatch"
@@ -57,16 +60,24 @@ func HatchEgg():
 	SoundManager.PlaySoundGlobal(abstract_SoundEffectSetting.SoundEffectEnum.OUTRO_EGG_HATCH)	
 
 	isShaking=true
+
+	#make controller vibrate while shaking babyyyy
+	if useVibration:
+		Input.start_joy_vibration(GlobalSymbolRegister.currentController,0.8,0.8,1)	
 	await get_tree().create_timer(1).timeout
 	isShaking=false
 	await get_tree().create_timer(0.5).timeout
 	
 	isShaking=true
+	if useVibration:
+		Input.start_joy_vibration(GlobalSymbolRegister.currentController,0.8,0.8,0.5)	
 	await get_tree().create_timer(0.5).timeout
 	isShaking=false
 	await get_tree().create_timer(0.5).timeout
 
 	isShaking=true
+	if useVibration:
+		Input.start_joy_vibration(GlobalSymbolRegister.currentController,0.8,0.8,1.5)	
 	await get_tree().create_timer(1.5).timeout
 	isShaking=false
 	await get_tree().create_timer(2).timeout
@@ -77,6 +88,9 @@ func HatchEgg():
 	$Anim_hatching_drillbird.animation="hatch"
 	$Anim_hatching_drillbird.play()
 	hatchAnimation.animation_finished.connect(HatchCutsceneFinished)
+	
+	if useVibration:
+		Input.start_joy_vibration(GlobalSymbolRegister.currentController,0.8,0.8,1)	
 	await get_tree().create_timer(1).timeout
 	isShaking=false
 	await get_tree().create_timer(1.3).timeout
@@ -88,6 +102,9 @@ func HatchEgg():
 
 	
 func HatchCutsceneFinished():
+	var camera:game_camera=GlobalVariables.MainSceneReferenceConnector.camera
+	camera.StartNewLerp(camera.position+Vector2(0,-200),2,3)
+	await get_tree().create_timer(2).timeout
 	signal_hatching_complete.emit()
 	pass
 

@@ -48,12 +48,22 @@ var hasFullyEvolved:bool=false
 @onready var evolveText=$evolveText
 @export var evolveTextString:String
 
+var isChilling:bool=true
+
 func _ready() -> void:
 	evolveText.text="[center][shake] "+GlobalSymbolRegister.GetStringDecoded(tr("credits_evolve_popup"))
 	evolveText.hide()
+	hide()
 	
+func Activate():
+	isChilling=false
+	initiateJump(1)
+	show()
 
 func _physics_process(delta: float) -> void:
+	
+	if isChilling:
+		return
 	
 	if evolutionPossible and Input.is_action_just_pressed("interact"):
 		GrowUp()
@@ -203,7 +213,7 @@ func _on_animator_animation_finished() -> void:
 
 func initiateJump(_holdtime:float):
 	
-	if state==States.JUMPING or state==States.GROWN:
+	if state==States.JUMPING or state==States.GROWN or isChilling:
 		return
 	
 	SoundManager.PlaySoundAtLocation(global_position,abstract_SoundEffectSetting.SoundEffectEnum.PLAYER_FLAP)

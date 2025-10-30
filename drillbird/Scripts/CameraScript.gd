@@ -11,7 +11,7 @@ var lerpDestinationPos:Vector2
 var isLerping:bool=false
 var lerpTime:float=1
 var timeCounter:float=0
-
+var lerpcurve:int=-5
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -46,12 +46,14 @@ func SetFollowPlayer(follow:bool):
 	else:
 		state=states.WAITING
 
-func StartNewLerp(_destination:Vector2, _time:float):
+func StartNewLerp(_destination:Vector2, _time:float,lerpCurve:int=-1):
+	lerpcurve=lerpCurve
 	state=states.LERPING
 	if _time>0:
 		lerpTime=_time
 	else:
 		self.global_position=_destination
+	
 		state=states.WAITING
 		LerpFinished.emit()
 		return
@@ -67,8 +69,8 @@ func progressLerp(delta:float):
 	
 	timeCounter+=delta
 	var progress:float = timeCounter/lerpTime
-	
-	self.position=lerp(startLerpPos,lerpDestinationPos,progress)
+	var easedProgress=ease(progress,lerpcurve)
+	self.position=lerp(startLerpPos,lerpDestinationPos,easedProgress)
 	if timeCounter>= lerpTime:
 		LerpFinished.emit()
 		state=states.WAITING

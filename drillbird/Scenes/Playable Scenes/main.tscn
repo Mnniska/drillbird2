@@ -1,41 +1,41 @@
 [gd_scene load_steps=173 format=4 uid="uid://d2wv7igie5stg"]
 
 [ext_resource type="TileSet" uid="uid://grpd2pyu7pgk" path="res://Resources/MainTileset.tres" id="1_1imtu"]
-[ext_resource type="Script" path="res://Scenes/Playable Scenes/SaveManager.gd" id="1_iickb"]
+[ext_resource type="Script" uid="uid://c0pdu2cqd60yv" path="res://Scenes/Playable Scenes/SaveManager.gd" id="1_iickb"]
 [ext_resource type="Texture2D" uid="uid://4sud7qd6rgsy" path="res://Art/environment/test_decorations.png" id="2_8xt30"]
 [ext_resource type="PackedScene" uid="uid://0iy1qmgd0p6y" path="res://Scenes/TileCrack.tscn" id="2_c10yv"]
-[ext_resource type="Script" path="res://Scripts/Tools/main_scene_reference_connector.gd" id="2_kx4x1"]
+[ext_resource type="Script" uid="uid://clyksnnqo4e6l" path="res://Scripts/Tools/main_scene_reference_connector.gd" id="2_kx4x1"]
 [ext_resource type="Texture2D" uid="uid://ddevfldd3a4vh" path="res://Art/Objects/spikes_sand.png" id="3_eaqcp"]
-[ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_ore_region.gd" id="3_flbkc"]
-[ext_resource type="Script" path="res://Scripts/DecorationScript.gd" id="3_yj8n7"]
+[ext_resource type="Script" uid="uid://pnk5fvwki8h3" path="res://Scripts/Abstract scripts/abstract_ore_region.gd" id="3_flbkc"]
+[ext_resource type="Script" uid="uid://beulymcx6gsou" path="res://Scripts/DecorationScript.gd" id="3_yj8n7"]
 [ext_resource type="Resource" uid="uid://dr8sc3eaf14j5" path="res://Resources/Economy/ore_region_1.tres" id="4_t4dgp"]
 [ext_resource type="Resource" uid="uid://ctpj8pean13fh" path="res://Resources/Economy/ore_region_2.tres" id="5_a807m"]
-[ext_resource type="Script" path="res://Scenes/Playable Scenes/OreSpawner.gd" id="6_7b07q"]
-[ext_resource type="Script" path="res://Scripts/block_fragile_manager.gd" id="6_7p02m"]
+[ext_resource type="Script" uid="uid://ddqrep1nrk25j" path="res://Scenes/Playable Scenes/OreSpawner.gd" id="6_7b07q"]
+[ext_resource type="Script" uid="uid://dbfd2nhmjxnsr" path="res://Scripts/block_fragile_manager.gd" id="6_7p02m"]
 [ext_resource type="Resource" uid="uid://d35o56m1lfg6p" path="res://Resources/Economy/ore_region_3.tres" id="6_ehj3h"]
 [ext_resource type="Resource" uid="uid://qb85vcxt0k8u" path="res://Resources/Economy/ore_region_4.tres" id="7_10mi7"]
-[ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_ore.gd" id="12_d51cc"]
+[ext_resource type="Script" uid="uid://bmcaxciswx4yo" path="res://Scripts/Abstract scripts/abstract_ore.gd" id="12_d51cc"]
 [ext_resource type="PackedScene" uid="uid://e3titjk1as46" path="res://Scenes/player.tscn" id="12_u5tqu"]
 [ext_resource type="Resource" uid="uid://ban5p7bjd2bj6" path="res://Resources/Economy/ore_region_5.tres" id="12_vb7rx"]
 [ext_resource type="Resource" uid="uid://diuura7tbgl01" path="res://Resources/Economy/ore_1.tres" id="13_6wsyx"]
 [ext_resource type="Resource" uid="uid://bk0jhhovlw4gg" path="res://Resources/Economy/ore_2.tres" id="14_lu42v"]
 [ext_resource type="Resource" uid="uid://d3ua4hhbkylqy" path="res://Resources/Economy/ore_region_6_heart.tres" id="14_ydpjd"]
 [ext_resource type="Resource" uid="uid://bir1i467inivj" path="res://Resources/Economy/ore_3.tres" id="15_a50cc"]
-[ext_resource type="Script" path="res://Scripts/CameraScript.gd" id="15_sox0p"]
+[ext_resource type="Script" uid="uid://lfh2pajw67gs" path="res://Scripts/CameraScript.gd" id="15_sox0p"]
 [ext_resource type="Resource" uid="uid://ch08ejqoocxr4" path="res://Resources/Economy/ore_region_6_tutorial.tres" id="15_xspaj"]
 [ext_resource type="Resource" uid="uid://bcbdo5pvpevgy" path="res://Resources/Economy/ore_4.tres" id="16_qo7l5"]
 [ext_resource type="Resource" uid="uid://k3uc1fryuwfc" path="res://Resources/Economy/ore_5.tres" id="17_ytjr0"]
-[ext_resource type="Script" path="res://Scripts/OreRegionIdentifierScript.gd" id="18_ae1sx"]
+[ext_resource type="Script" uid="uid://cvqw4oiw4fbwd" path="res://Scripts/OreRegionIdentifierScript.gd" id="18_ae1sx"]
 [ext_resource type="Resource" uid="uid://dtee1eo8ydnlr" path="res://Resources/Economy/ore_6.tres" id="19_o4u8a"]
-[ext_resource type="Script" path="res://Scripts/ore_area.gd" id="19_wmybe"]
-[ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_terrain_info.gd" id="20_cqxjh"]
-[ext_resource type="Script" path="res://Scenes/Playable Scenes/ghost_manager.gd" id="21_mqj7b"]
+[ext_resource type="Script" uid="uid://cw1i2vdb02qkl" path="res://Scripts/ore_area.gd" id="19_wmybe"]
+[ext_resource type="Script" uid="uid://bwsdw1libacyi" path="res://Scripts/Abstract scripts/abstract_terrain_info.gd" id="20_cqxjh"]
+[ext_resource type="Script" uid="uid://cg5f1k2sm50v" path="res://Scenes/Playable Scenes/ghost_manager.gd" id="21_mqj7b"]
 [ext_resource type="Resource" uid="uid://biejw6c2k7wry" path="res://Resources/Economy/ore_HEART.tres" id="22_nstd1"]
 [ext_resource type="TileSet" uid="uid://c2gd324da32yx" path="res://Resources/Tileset_Secrets.tres" id="26_hlaaw"]
-[ext_resource type="Script" path="res://Scripts/shop_handler.gd" id="26_mk1t6"]
-[ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_purchasable.gd" id="27_hx1y5"]
-[ext_resource type="Script" path="res://Scripts/Tools/tilemap_secret_manager.gd" id="27_p73d5"]
-[ext_resource type="Script" path="res://Scripts/Tools/secret_unveiler.gd" id="27_rjvsm"]
+[ext_resource type="Script" uid="uid://c2d8xkmgrklnw" path="res://Scripts/shop_handler.gd" id="26_mk1t6"]
+[ext_resource type="Script" uid="uid://w0qofym04h1b" path="res://Scripts/Abstract scripts/abstract_purchasable.gd" id="27_hx1y5"]
+[ext_resource type="Script" uid="uid://dng86n1g54q3q" path="res://Scripts/Tools/tilemap_secret_manager.gd" id="27_p73d5"]
+[ext_resource type="Script" uid="uid://c2wk7fxs4omts" path="res://Scripts/Tools/secret_unveiler.gd" id="27_rjvsm"]
 [ext_resource type="Resource" uid="uid://b26ws3o4u42p3" path="res://Resources/Economy/purchasable_inventory.tres" id="28_iowjc"]
 [ext_resource type="Resource" uid="uid://cgdqluba62y80" path="res://Resources/Economy/purchasable_light.tres" id="29_cp1r6"]
 [ext_resource type="Resource" uid="uid://e48vh7omjgqd" path="res://Resources/purchasable_ContinueButton.tres" id="30_4yogw"]
@@ -45,18 +45,18 @@
 [ext_resource type="PackedScene" uid="uid://3d04qrtunccs" path="res://Scenes/scene_purchasable.tscn" id="33_svcml"]
 [ext_resource type="Texture2D" uid="uid://boulllpt4vy8" path="res://Art/UI/Shop/UI_Shop_button_on_canAfford.png" id="34_jlsrn"]
 [ext_resource type="Texture2D" uid="uid://de2ouaamnu8d0" path="res://Art/UI/Shop/UI_Shop_button_off_unavailable.png" id="34_nmxkn"]
-[ext_resource type="Script" path="res://Scripts/Light.gd" id="35_54gud"]
+[ext_resource type="Script" uid="uid://d0jebw70k3drv" path="res://Scripts/Light.gd" id="35_54gud"]
 [ext_resource type="Texture2D" uid="uid://ct20o1j7iuiva" path="res://Resources/LightTexture.tres" id="36_yw5ht"]
 [ext_resource type="Texture2D" uid="uid://bi6q51sklyetd" path="res://Art/environment/SpaceBackground/background_space_allLayers.png" id="37_6eo6t"]
 [ext_resource type="PackedScene" uid="uid://ckl0ibm5pfs7u" path="res://Scenes/Home.tscn" id="38_pj4ey"]
 [ext_resource type="Texture2D" uid="uid://ck6onelfbqg5y" path="res://Art/UI/Shop/spritesheet_sparkle_A.png" id="42_86qik"]
 [ext_resource type="Theme" uid="uid://bfr5y4lo7m1ux" path="res://Resources/Fonts/fontTheme.tres" id="42_e8s0s"]
-[ext_resource type="Script" path="res://Scripts/UX and UI/script_shop_continue_button_rerouter.gd" id="44_ipqpk"]
-[ext_resource type="Script" path="res://Scenes/Playable Scenes/DebugMenu.gd" id="47_igpia"]
+[ext_resource type="Script" uid="uid://114eyigpn3qg" path="res://Scripts/UX and UI/script_shop_continue_button_rerouter.gd" id="44_ipqpk"]
+[ext_resource type="Script" uid="uid://dh8dcw51mha58" path="res://Scenes/Playable Scenes/DebugMenu.gd" id="47_igpia"]
 [ext_resource type="PackedScene" uid="uid://splm2us27kop" path="res://Scenes/Objects and Enemies/Object_Ore.tscn" id="48_0rfc7"]
-[ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_debugMenuOption.gd" id="48_cl8sw"]
-[ext_resource type="Script" path="res://Scenes/Playable Scenes/day_counter.gd" id="52_hrk5v"]
-[ext_resource type="Script" path="res://Scripts/enemy_spawner.gd" id="53_0clb6"]
+[ext_resource type="Script" uid="uid://kwgl6ngw7cq2" path="res://Scripts/Abstract scripts/abstract_debugMenuOption.gd" id="48_cl8sw"]
+[ext_resource type="Script" uid="uid://dc6fxyeu6qp6d" path="res://Scenes/Playable Scenes/day_counter.gd" id="52_hrk5v"]
+[ext_resource type="Script" uid="uid://o5iartddaiu1" path="res://Scripts/enemy_spawner.gd" id="53_0clb6"]
 [ext_resource type="Texture2D" uid="uid://dsg2tbulwj1dx" path="res://Art/environment/solid_decorations/HangingMoss.png" id="54_lvgwb"]
 [ext_resource type="Texture2D" uid="uid://rxpeq8spvrj3" path="res://Art/environment/solid_decorations/HangingMoss_Corner_L.png" id="55_ufnhf"]
 [ext_resource type="Texture2D" uid="uid://b2lxkpn0gcrv1" path="res://Art/environment/solid_decorations/HangingMoss_Corner_R.png" id="56_vcwqo"]
@@ -64,7 +64,7 @@
 [ext_resource type="Texture2D" uid="uid://t1x3v7jc25rn" path="res://Art/environment/solid_decorations/HangingMoss_standardTile.png" id="57_iyexs"]
 [ext_resource type="Texture2D" uid="uid://cq1l7gy7jnxfj" path="res://Art/environment/solid_decorations/FloorMoss_Corner_R.png" id="58_cbbk0"]
 [ext_resource type="PackedScene" uid="uid://bgtl1cgl35wcl" path="res://Scenes/Objects and Enemies/tutorial_message.tscn" id="59_8sapw"]
-[ext_resource type="Script" path="res://Scripts/WorldScripting.gd" id="59_a6oue"]
+[ext_resource type="Script" uid="uid://wt5lb26lttrj" path="res://Scripts/WorldScripting.gd" id="59_a6oue"]
 [ext_resource type="Texture2D" uid="uid://0k28bowvn2tk" path="res://Art/environment/solid_decorations/FloorMoss_standardTile.png" id="59_pd7yy"]
 [ext_resource type="Texture2D" uid="uid://byk1p0bwh88ok" path="res://Art/environment/solid_decorations/FloorMoss_Corner_L.png" id="60_rcurr"]
 [ext_resource type="Texture2D" uid="uid://ca156olf3dqns" path="res://Art/environment/solid_decorations/Moss_flowers_01.png" id="61_gq5vr"]
@@ -74,7 +74,7 @@
 [ext_resource type="Texture2D" uid="uid://drg5aq6jefcxi" path="res://Art/environment/solid_decorations/Headstone_02.png" id="64_37n2k"]
 [ext_resource type="Texture2D" uid="uid://iccgvjgn8yi0" path="res://Art/environment/solid_decorations/Graveyard_flowers.png" id="64_wyttx"]
 [ext_resource type="Texture2D" uid="uid://gixivpytn5wl" path="res://Art/UI/HUD/UI_LightBar_bulb.png" id="64_yk8d7"]
-[ext_resource type="Script" path="res://Scripts/Tools/player_location_saver.gd" id="65_25d1u"]
+[ext_resource type="Script" uid="uid://c1prdu3y8gwht" path="res://Scripts/Tools/player_location_saver.gd" id="65_25d1u"]
 [ext_resource type="Texture2D" uid="uid://dc24g1nnbb8bg" path="res://Art/environment/solid_decorations/Headstone_03.png" id="65_ffof7"]
 [ext_resource type="Texture2D" uid="uid://cdfdcp4kqa8fb" path="res://Art/environment/UniqueAssets/Masoleum.png" id="65_p1726"]
 [ext_resource type="Texture2D" uid="uid://dcry5x73tpu56" path="res://Art/environment/solid_decorations/Headstone_04.png" id="67_mse0b"]
@@ -213,26 +213,18 @@ gradient = SubResource("Gradient_8jrys")
 [sub_resource type="Resource" id="Resource_enldq"]
 script = ExtResource("48_cl8sw")
 name = "health_refill"
-options = Array[ExtResource("48_cl8sw")]([])
-isAction = true
 
 [sub_resource type="Resource" id="Resource_q0tbu"]
 script = ExtResource("48_cl8sw")
 name = "health_hurt"
-options = Array[ExtResource("48_cl8sw")]([])
-isAction = true
 
 [sub_resource type="Resource" id="Resource_plsyt"]
 script = ExtResource("48_cl8sw")
 name = "health_kill"
-options = Array[ExtResource("48_cl8sw")]([])
-isAction = true
 
 [sub_resource type="Resource" id="Resource_1hwib"]
 script = ExtResource("48_cl8sw")
 name = "health_upgrade"
-options = Array[ExtResource("48_cl8sw")]([])
-isAction = true
 
 [sub_resource type="Resource" id="Resource_dq3mr"]
 script = ExtResource("48_cl8sw")
@@ -243,20 +235,14 @@ isAction = false
 [sub_resource type="Resource" id="Resource_7d6q1"]
 script = ExtResource("48_cl8sw")
 name = "light_refill"
-options = Array[ExtResource("48_cl8sw")]([])
-isAction = true
 
 [sub_resource type="Resource" id="Resource_xepq7"]
 script = ExtResource("48_cl8sw")
 name = "light_deplete"
-options = Array[ExtResource("48_cl8sw")]([])
-isAction = true
 
 [sub_resource type="Resource" id="Resource_phj2b"]
 script = ExtResource("48_cl8sw")
 name = "light_upgrade_add"
-options = Array[ExtResource("48_cl8sw")]([])
-isAction = true
 
 [sub_resource type="Resource" id="Resource_5ornm"]
 script = ExtResource("48_cl8sw")
@@ -267,62 +253,42 @@ isAction = false
 [sub_resource type="Resource" id="Resource_xfofi"]
 script = ExtResource("48_cl8sw")
 name = "inventory_upgrade_add"
-options = Array[ExtResource("48_cl8sw")]([])
-isAction = true
 
 [sub_resource type="Resource" id="Resource_kod01"]
 script = ExtResource("48_cl8sw")
 name = "inventory_upgrade_remove"
-options = Array[ExtResource("48_cl8sw")]([])
-isAction = true
 
 [sub_resource type="Resource" id="Resource_iftq1"]
 script = ExtResource("48_cl8sw")
 name = "spawnOre"
-options = Array[ExtResource("48_cl8sw")]([])
-isAction = true
 
 [sub_resource type="Resource" id="Resource_u7pvn"]
 script = ExtResource("48_cl8sw")
 name = "spawnFinalHeart"
-options = Array[ExtResource("48_cl8sw")]([])
-isAction = true
 
 [sub_resource type="Resource" id="Resource_grrgx"]
 script = ExtResource("48_cl8sw")
 name = "CalculateOreRegion0"
-options = Array[ExtResource("48_cl8sw")]([])
-isAction = true
 
 [sub_resource type="Resource" id="Resource_hsjv2"]
 script = ExtResource("48_cl8sw")
 name = "CalculateOreRegion1"
-options = Array[ExtResource("48_cl8sw")]([])
-isAction = true
 
 [sub_resource type="Resource" id="Resource_bsueh"]
 script = ExtResource("48_cl8sw")
 name = "CalculateOreRegion2"
-options = Array[ExtResource("48_cl8sw")]([])
-isAction = true
 
 [sub_resource type="Resource" id="Resource_nv7g3"]
 script = ExtResource("48_cl8sw")
 name = "CalculateOreRegion3"
-options = Array[ExtResource("48_cl8sw")]([])
-isAction = true
 
 [sub_resource type="Resource" id="Resource_l0bny"]
 script = ExtResource("48_cl8sw")
 name = "CalculateOreRegion4"
-options = Array[ExtResource("48_cl8sw")]([])
-isAction = true
 
 [sub_resource type="Resource" id="Resource_y1r0i"]
 script = ExtResource("48_cl8sw")
 name = "GetAmountOfOres"
-options = Array[ExtResource("48_cl8sw")]([])
-isAction = true
 
 [sub_resource type="Resource" id="Resource_px5dx"]
 script = ExtResource("48_cl8sw")
@@ -339,38 +305,26 @@ isAction = false
 [sub_resource type="Resource" id="Resource_v3nii"]
 script = ExtResource("48_cl8sw")
 name = "drill_upgrade_add"
-options = Array[ExtResource("48_cl8sw")]([])
-isAction = true
 
 [sub_resource type="Resource" id="Resource_co6uo"]
 script = ExtResource("48_cl8sw")
 name = "drill_upgrade_remove"
-options = Array[ExtResource("48_cl8sw")]([])
-isAction = true
 
 [sub_resource type="Resource" id="Resource_7ffnp"]
 script = ExtResource("48_cl8sw")
 name = "save_game"
-options = Array[ExtResource("48_cl8sw")]([])
-isAction = true
 
 [sub_resource type="Resource" id="Resource_321et"]
 script = ExtResource("48_cl8sw")
 name = "reset_save_data"
-options = Array[ExtResource("48_cl8sw")]([])
-isAction = true
 
 [sub_resource type="Resource" id="Resource_sgi1m"]
 script = ExtResource("48_cl8sw")
 name = "reset_save_data_enemies_and_tiles"
-options = Array[ExtResource("48_cl8sw")]([])
-isAction = true
 
 [sub_resource type="Resource" id="Resource_m7lwc"]
 script = ExtResource("48_cl8sw")
 name = "Go_to_credits"
-options = Array[ExtResource("48_cl8sw")]([])
-isAction = true
 
 [sub_resource type="Resource" id="Resource_o5w6h"]
 script = ExtResource("48_cl8sw")
@@ -381,26 +335,18 @@ isAction = false
 [sub_resource type="Resource" id="Resource_p5f3n"]
 script = ExtResource("48_cl8sw")
 name = "togglePlayerHidden"
-options = Array[ExtResource("48_cl8sw")]([])
-isAction = true
 
 [sub_resource type="Resource" id="Resource_jiw5d"]
 script = ExtResource("48_cl8sw")
 name = "toggleMenu"
-options = Array[ExtResource("48_cl8sw")]([])
-isAction = true
 
 [sub_resource type="Resource" id="Resource_gv86s"]
 script = ExtResource("48_cl8sw")
 name = "ToggleHUDHidden"
-options = Array[ExtResource("48_cl8sw")]([])
-isAction = true
 
 [sub_resource type="Resource" id="Resource_un7h5"]
 script = ExtResource("48_cl8sw")
 name = "ToggleDisplayPopups"
-options = Array[ExtResource("48_cl8sw")]([])
-isAction = true
 
 [sub_resource type="Resource" id="Resource_x06hp"]
 script = ExtResource("48_cl8sw")
@@ -411,8 +357,6 @@ isAction = false
 [sub_resource type="Resource" id="Resource_gh5xl"]
 script = ExtResource("48_cl8sw")
 name = "test_achievement"
-options = Array[ExtResource("48_cl8sw")]([])
-isAction = true
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4e7ml"]
 size = Vector2(179, 146)
@@ -836,9 +780,9 @@ material = SubResource("CanvasItemMaterial_vj11c")
 position = Vector2(-4, 64)
 amount = 1
 amount_ratio = 0.7
-process_material = SubResource("ParticleProcessMaterial_faea6")
 texture = ExtResource("42_86qik")
 lifetime = 0.6
+process_material = SubResource("ParticleProcessMaterial_faea6")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Camera2D/ShopHandler"]
 offset_left = -160.0
