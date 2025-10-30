@@ -82,8 +82,17 @@ func UpdateRootSprites(_progress:float):
 	if FlowerRootAnim.animation!="growing":
 		FlowerRootAnim.animation="growing"
 		SoundManager.PlaySoundAtLocation(position,abstract_SoundEffectSetting.SoundEffectEnum.FLOWER_SPAWN,1)
+
 	
 	if FlowerRootAnim.frame!=chosenSprite:
+		
+		
+		
+		if GlobalVariables.useVibration:
+			if FlowerRootAnim.frame < chosenSprite:
+				#Only do vibration if the flower is progressing in its state
+				Input.start_joy_vibration(GlobalSymbolRegister.currentController, 0.5, 0.5, 0.5)
+		
 		FlowerRootAnim.frame=chosenSprite
 		
 		#don't play sound at last frame to avoid duplicate sounds

@@ -230,6 +230,9 @@ func SpawnDestroyEffect(position:Vector2i,terrain:abstract_terrain_info,bits:int
 	Parent.add_child(node)
 	#node.global_position=globalpos
 	
+	if GlobalVariables.useVibration:
+		Input.start_joy_vibration(GlobalSymbolRegister.currentController,1,0.2,0.1)
+	
 	for n in bits:
 		
 		var shell:eggpart = bitscene.instantiate()

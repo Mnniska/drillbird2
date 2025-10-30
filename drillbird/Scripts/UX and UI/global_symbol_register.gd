@@ -6,6 +6,7 @@ var currentLanguage:languages
 
 var usingGamepad:bool=true
 @export var symbols:Array[abstract_symbol_info]
+@export var currentController:int=0
 
 var keyboard_effect_begin="[wave][color=orange]"
 var keyboard_effect_end="[/color][/wave]"
@@ -63,12 +64,17 @@ func GetSymbolFromString(_str:String,useoutline:bool=false)->String:
 	
 
 func _input(event: InputEvent) -> void:
+	
+	if event is InputEventJoypadButton:
+		if currentController!=event.device:
+			currentController=event.device
+	
 	if event is InputEventKey:
 		if usingGamepad:
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 			usingGamepad=false
 	
-	if event is InputEventJoypadButton:
+	if event is InputEventJoypadButton or InputEventJoypadMotion:
 		if !usingGamepad:
 			Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)	
 			usingGamepad=true	

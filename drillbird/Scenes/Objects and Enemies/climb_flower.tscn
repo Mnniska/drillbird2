@@ -1,7 +1,7 @@
 [gd_scene load_steps=20 format=3 uid="uid://b5af7odmny64p"]
 
-[ext_resource type="Script" path="res://Scripts/Enemies/climb_flower.gd" id="1_n4nt3"]
-[ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_collidable.gd" id="2_2xntx"]
+[ext_resource type="Script" uid="uid://cmj5o2nk2lun3" path="res://Scripts/Enemies/climb_flower.gd" id="1_n4nt3"]
+[ext_resource type="Script" uid="uid://bgy5cf01m25xs" path="res://Scripts/Abstract scripts/abstract_collidable.gd" id="2_2xntx"]
 [ext_resource type="Texture2D" uid="uid://3y3k50kpa71j" path="res://Art/Objects/ClimbFlower/flowerRoot5.png" id="3_6ajum"]
 [ext_resource type="Texture2D" uid="uid://djnkxblnlubmn" path="res://Art/Objects/ClimbFlower/climber_flower_neutral.png" id="3_swkf5"]
 [ext_resource type="Texture2D" uid="uid://y18aqypwkuca" path="res://Art/Objects/ClimbFlower/flowerRoot1.png" id="4_y7mwr"]
@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://ci8cej8o5rkkh" path="res://Art/Objects/ClimbFlower/climber_vine.png" id="5_f5f0o"]
 [ext_resource type="Texture2D" uid="uid://bmahcuvdsld41" path="res://Art/Objects/ClimbFlower/flowerRoot3.png" id="6_dt7kr"]
 [ext_resource type="Texture2D" uid="uid://dmo81ddgtresw" path="res://Art/Objects/ClimbFlower/flowerRoot4.png" id="7_71nka"]
-[ext_resource type="Script" path="res://Scripts/flower_collider_script.gd" id="7_x4lji"]
+[ext_resource type="Script" uid="uid://ctkqdckklasxa" path="res://Scripts/flower_collider_script.gd" id="7_x4lji"]
 [ext_resource type="Texture2D" uid="uid://dhrvhcsf7e45a" path="res://Art/effects/empty.png" id="8_abms4"]
 [ext_resource type="PackedScene" uid="uid://csw4ibce4mwsc" path="res://Scenes/sound_looper.tscn" id="8_dtlc8"]
 [ext_resource type="Resource" uid="uid://b8thtdmcn7hom" path="res://Audio/SFX/flower_loop.tres" id="9_62kc6"]
@@ -18,7 +18,6 @@
 [sub_resource type="Resource" id="Resource_eoj21"]
 script = ExtResource("2_2xntx")
 type = 2
-enemyID = -1
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_16k52"]
 animations = [{

@@ -28,6 +28,17 @@ var displayPopups:bool=true
 var totalOres:int=0
 var oresFound:int=0
 
+signal vibrationSettingChanged(value:bool)
+
+#various scripts can subscribe to this changing..maybe this is an OK way to do it?
+var useVibration:bool=true:
+	get:
+		return useVibration
+	set(value):
+		if value!=useVibration:
+			useVibration=value
+			vibrationSettingChanged.emit(useVibration)
+			
 func ResetSaveData():
 	var newData=abstract_savegame.new()
 	ResourceSaver.save(newData,save_file_path+save_file_name)

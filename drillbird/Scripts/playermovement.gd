@@ -46,6 +46,11 @@ var damageTimerCounter:float=0
 @export var damageVelocity:float=100
 @export var invincibilityTime:float=3.5
 var invincibilityCounter:float=0
+@onready var useVibration=GlobalVariables.useVibration
+
+var percentagesWhenToVibrateWhenInvisible:Array[float]=[0.77 ,0.88, 0.99]
+var currentVibrateTarget:int=0
+
 var invincible:bool=false
 
 var droppingOresCounter:float=0
@@ -152,7 +157,16 @@ func _physics_process(delta: float) -> void:
 
 	if invincible:
 		invincibilityCounter+=delta
+		
+		#this bool is re-applied when taking dmg to ensure it is up to date
+		if useVibration:
+			var progress = invincibilityCounter/invincibilityTime
+			if progress > percentagesWhenToVibrateWhenInvisible[currentVibrateTarget]:
+				currentVibrateTarget = min(currentVibrateTarget+1,percentagesWhenToVibrateWhenInvisible.size()-1)
+				Input.start_joy_vibration(GlobalSymbolRegister.currentController,1,0.5,0.08)
+		
 		if invincibilityCounter>invincibilityTime:
+			currentVibrateTarget=0
 			LoseInvincibility()
 	
 
@@ -575,7 +589,11 @@ func DealDamage(amount:int):
 		return false
 	state=States.DAMAGE
 	PlayerStoppedDrillingValidTile()
+	useVibration=GlobalVariables.useVibration
 	SoundManager.PlaySoundAtLocation(global_position,abstract_SoundEffectSetting.SoundEffectEnum.PLAYER_HURT)
+	
+	if GlobalVariables.useVibration:
+		Input.start_joy_vibration(GlobalSymbolRegister.currentController,1,0.8,0.3)
 	
 	#Let go of the flower held
 	if HeldFlower:
@@ -587,10 +605,10 @@ func DealDamage(amount:int):
 	
 	invincible=true
 	invincibilityCounter=0
-	var x = randf_range(0,-0)
-	var y = randf_range(-200,-250)
+	var x = 0
+	var y = -200
 	
-	self.velocity+=(Vector2(x,y))
+	self.velocity = (Vector2(x,y))
 
 	healthManager.TakeDamage(amount)
 	
@@ -767,7 +785,9 @@ func _on_detector_body_entered(body: Node2D) -> void:
 					
 					CreateInfoBubble(tr("popup_heavy"))
 					SoundManager.PlaySoundAtLocation(global_position,abstract_SoundEffectSetting.SoundEffectEnum.PLAYER_BECOME_HEAVY)
-				
+					if useVibration:
+						Input.start_joy_vibration(GlobalSymbolRegister.currentController,0.5,0.5,0.25)
+					
 			else:
 				if inventory_full_cooldown_timer<=0:				
 					CreateInfoBubble(tr("popup_inventory_full"))

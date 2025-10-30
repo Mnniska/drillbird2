@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://c1s1lt0t5napj"]
 
-[ext_resource type="Script" path="res://Scripts/UX and UI/global_symbol_register.gd" id="1_6kmap"]
-[ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_symbol_info.gd" id="2_kpm2m"]
+[ext_resource type="Script" uid="uid://bv0bukyayk8tw" path="res://Scripts/UX and UI/global_symbol_register.gd" id="1_6kmap"]
+[ext_resource type="Script" uid="uid://dn8xgt04mreet" path="res://Scripts/Abstract scripts/abstract_symbol_info.gd" id="2_kpm2m"]
 
 [sub_resource type="Resource" id="Resource_ygeou"]
 script = ExtResource("2_kpm2m")
