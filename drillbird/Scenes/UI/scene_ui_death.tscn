@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://ccfkycw4won1m"]
 
-[ext_resource type="Script" path="res://Scenes/Playable Scenes/ui_death.gd" id="1_5j1vr"]
+[ext_resource type="Script" uid="uid://b74uc28qmx3u6" path="res://Scenes/Playable Scenes/ui_death.gd" id="1_5j1vr"]
 [ext_resource type="Texture2D" uid="uid://bntebnpau35mm" path="res://Art/UI/UI_Death_background.png" id="2_pfoct"]
 [ext_resource type="Theme" uid="uid://bfr5y4lo7m1ux" path="res://Resources/Fonts/fontTheme.tres" id="3_he6vq"]
 [ext_resource type="Texture2D" uid="uid://boulllpt4vy8" path="res://Art/UI/Shop/UI_Shop_button_on_canAfford.png" id="4_w73h0"]
@@ -73,7 +73,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer/button_holder"]
-layout_mode = 2
+layout_mode = 0
 offset_left = -47.0
 offset_top = -1.0
 offset_right = 49.0

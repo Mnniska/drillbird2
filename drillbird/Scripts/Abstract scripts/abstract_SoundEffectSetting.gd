@@ -61,7 +61,8 @@ enum SoundEffectEnum
 	FINAL_EVOLUTION,
 	FINAL_FALL,
 	ORE_LAND_BAG,
-	FLOWER_GROW_JINGLE
+	FLOWER_GROW_JINGLE,
+	SECRET_REVEAL
 }
 
 @export_range(0,10) var limit:int=5
