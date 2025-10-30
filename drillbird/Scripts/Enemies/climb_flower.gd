@@ -82,16 +82,14 @@ func UpdateRootSprites(_progress:float):
 	if FlowerRootAnim.animation!="growing":
 		FlowerRootAnim.animation="growing"
 		SoundManager.PlaySoundAtLocation(position,abstract_SoundEffectSetting.SoundEffectEnum.FLOWER_SPAWN,1)
-
+		if GlobalVariables.useVibration:
+			Input.start_joy_vibration(GlobalSymbolRegister.currentController, 0.5, 0, 0.2)
 	
 	if FlowerRootAnim.frame!=chosenSprite:
-		
-		
-		
 		if GlobalVariables.useVibration:
 			if FlowerRootAnim.frame < chosenSprite:
 				#Only do vibration if the flower is progressing in its state
-				Input.start_joy_vibration(GlobalSymbolRegister.currentController, 0.5, 0.5, 0.5)
+				Input.start_joy_vibration(GlobalSymbolRegister.currentController, 0.5, 0, 0.2)
 		
 		FlowerRootAnim.frame=chosenSprite
 		
