@@ -7,3 +7,4 @@ enum terrainTypes{SOLID,SAND,DIRT}
 @export var terrainIdentifier:int
 @export var terrainHP:int
 @export var DestroyParticleColor:Color
+@export var DestroyIndvidualParticleColor:Color

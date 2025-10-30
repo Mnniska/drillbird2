@@ -17,8 +17,6 @@ func _ready() -> void:
 	sprite.texture=egg_variants[randi_range(0,egg_variants.size()-1)]
 	initialLifetime=randf_range(minDespawnTime,maxDespawnTime)
 	
-	print_debug("initial lifetime: "+str(initialLifetime))
-
 func _process(delta: float) -> void:
 	timer+=delta
 	

@@ -239,7 +239,7 @@ func SpawnDestroyEffect(position:Vector2i,terrain:abstract_terrain_info,bits:int
 		
 		#spawns the particle under the master node parent
 		Parent.add_child(shell)
-		shell.SetColor(terrain.DestroyParticleColor)
+		shell.SetColor(terrain.DestroyIndvidualParticleColor)
 		shell.global_position=globalPos
 		
 		var x=randf_range(-100,100)

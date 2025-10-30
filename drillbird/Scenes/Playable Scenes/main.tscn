@@ -1807,6 +1807,7 @@ position = Vector2(1547, 2599)
 texture = ExtResource("64_3kawd")
 
 [node name="AmbiencePlayers" type="Node2D" parent="WorldScripts"]
+visible = false
 
 [node name="AmbienceNode_surface1" parent="WorldScripts/AmbiencePlayers" instance=ExtResource("57_gxw21")]
 position = Vector2(-1263, -15)
