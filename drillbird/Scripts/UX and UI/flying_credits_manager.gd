@@ -53,6 +53,8 @@ func _ready() -> void:
 	if debugSkipCredits:
 		valueSpawner.active=true
 		SetCloudsVisible(false)
+		flyer.energy=80
+		
 	else:
 		$Credits.show()
 		SetCloudsVisible(true)
@@ -98,6 +100,10 @@ func _on_flying_child_has_evolved_off_screen() -> void:
 	isTransitioningToMainAgain=true
 	var anim:AnimationPlayer=$AnimationPlayer
 	anim.play("fall")
+	
+	#Todo, play some kind of sound here :3
+	#SoundManager.PlaySoundAtLocation($Camera2D.position,abstract_SoundEffectSetting.SoundEffectEnum.INTRO_CUTSCENE_SCENE2)
+	
 	await get_tree().create_timer(7).timeout
 	ShowStats()
 

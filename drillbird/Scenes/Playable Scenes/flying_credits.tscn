@@ -357,6 +357,7 @@ axis_stretch_vertical = 1
 
 [node name="FlyingCredits" type="Node"]
 script = ExtResource("1_xtpho")
+debugSkipCredits = true
 
 [node name="BG_base" type="Sprite2D" parent="."]
 light_mask = 0
@@ -535,7 +536,8 @@ minTimeBeforeSpawn = 0.8
 maxTimeBeforeSpawn = 2.0
 
 [node name="Line2D" type="Line2D" parent="ValueSpawner"]
-position = Vector2(205, -76)
+position = Vector2(205, -78.83475)
+scale = Vector2(1, 0.7165249)
 points = PackedVector2Array(0, 0, 0, 158.64)
 
 [node name="music" type="AudioStreamPlayer2D" parent="."]

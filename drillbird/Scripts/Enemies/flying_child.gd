@@ -167,7 +167,7 @@ func SetCanEvolve(canEvolve:bool,triggerSignal:bool=true):
 		evolveText.show()
 		
 		if position.y>10:
-			velocity.y=-5
+			velocity.y=-10
 		else:
 			velocity.y=0
 
@@ -193,9 +193,11 @@ func GrowUp():
 	animator.animation="growup"
 	animator.play()
 	shake=true
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(1.5).timeout
 	shake=false
 	evolveShine.play()
+	if GlobalVariables.useVibration:
+		Input.start_joy_vibration(GlobalSymbolRegister.currentController,0,0.8,0.5)
 	
 	hasEvolved.emit()
 	await get_tree().create_timer(1.2).timeout
