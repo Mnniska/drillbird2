@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="abstract_SoundEffectSetting" load_steps=3 format=3 uid="uid://djktk0jvn1ypw"]
+
+[ext_resource type="Script" uid="uid://dwatvj6f4edl5" path="res://Scripts/Abstract scripts/abstract_SoundEffectSetting.gd" id="1_hkbq6"]
+[ext_resource type="AudioStream" uid="uid://b3oh6un4lie25" path="res://Audio/SFX/flower_grow_jingle.wav" id="2_hkbq6"]
+
+[resource]
+script = ExtResource("1_hkbq6")
+limit = 2
+type = 48
+sound_effect = ExtResource("2_hkbq6")
+audioBus = 1

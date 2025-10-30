@@ -60,7 +60,8 @@ enum SoundEffectEnum
 	TYPEWRITER_CLICK,
 	FINAL_EVOLUTION,
 	FINAL_FALL,
-	ORE_LAND_BAG
+	ORE_LAND_BAG,
+	FLOWER_GROW_JINGLE
 }
 
 @export_range(0,10) var limit:int=5
