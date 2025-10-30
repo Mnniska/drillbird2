@@ -59,7 +59,8 @@ enum SoundEffectEnum
 	DRILLBIRD_OUTRO_ZINGER,
 	TYPEWRITER_CLICK,
 	FINAL_EVOLUTION,
-	FINAL_FALL
+	FINAL_FALL,
+	ORE_LAND_BAG
 }
 
 @export_range(0,10) var limit:int=5

@@ -1,13 +1,11 @@
 [gd_resource type="Resource" script_class="abstract_SoundEffectSetting" load_steps=3 format=3 uid="uid://cxtwt0066yupo"]
 
-[ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_SoundEffectSetting.gd" id="1_sxjkd"]
+[ext_resource type="Script" uid="uid://dwatvj6f4edl5" path="res://Scripts/Abstract scripts/abstract_SoundEffectSetting.gd" id="1_sxjkd"]
 [ext_resource type="AudioStream" uid="uid://dwwgwbaymbt4b" path="res://Audio/SFX/player_drilling_breakable.wav" id="2_yp87v"]
 
 [resource]
 script = ExtResource("1_sxjkd")
-limit = 5
 type = 13
 sound_effect = ExtResource("2_yp87v")
-volume = -22
-pitch_randomness = 0.0
+volume = -30
 audioBus = 1

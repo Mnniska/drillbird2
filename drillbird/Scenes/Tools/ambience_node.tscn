@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dk8bw20ua5emk"]
 
-[ext_resource type="Script" path="res://Scripts/Tools/ambience_node.gd" id="1_gi0mp"]
+[ext_resource type="Script" uid="uid://bnvn1ceftbljy" path="res://Scripts/Tools/ambience_node.gd" id="1_gi0mp"]
 [ext_resource type="Texture2D" uid="uid://07wffqw8mdx5" path="res://Art/Collectibles/Ore_spawn1.png" id="2_llo44"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jf3fw"]

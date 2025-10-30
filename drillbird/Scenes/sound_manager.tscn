@@ -8,7 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://bfvmlrplmud8y" path="res://Audio/SFX/player_footstep_1.wav" id="6_qyomo"]
 [ext_resource type="AudioStream" uid="uid://b81mjjhsuokha" path="res://Audio/SFX/player_footstep_2.wav" id="7_uj3o7"]
 [ext_resource type="AudioStream" uid="uid://csii68dxxxf8m" path="res://Audio/SFX/block_destroy.wav" id="9_ffqab"]
-[ext_resource type="AudioStream" uid="uid://bkn6d73ogba4u" path="res://Audio/SFX/ore_grabbed.wav" id="10_4crdv"]
+[ext_resource type="Resource" uid="uid://ov0qdl7s2244" path="res://Audio/SFX/ore_grabbed.tres" id="9_xfpd4"]
 [ext_resource type="AudioStream" uid="uid://cak4hbrn2p2y" path="res://Audio/SFX/enemies/PLACEHOLDER_SOUND.wav" id="11_eg3yi"]
 [ext_resource type="AudioStream" uid="uid://dalpro3l37ots" path="res://Audio/SFX/ore_land.wav" id="11_reqvu"]
 [ext_resource type="AudioStream" uid="uid://drsg7tlwye4oa" path="res://Audio/SFX/player_damage.wav" id="13_7ph86"]
@@ -44,6 +44,7 @@
 [ext_resource type="Resource" uid="uid://m3a70hvtw3sl" path="res://Audio/SFX/typewriter_soft_click.tres" id="42_vs0qm"]
 [ext_resource type="Resource" uid="uid://beym076j51n65" path="res://Audio/cutscenes/sound_final_evolution.tres" id="43_oujrd"]
 [ext_resource type="Resource" uid="uid://dlckj7jn0ku0q" path="res://Audio/cutscenes/sound_final_fall.tres" id="44_xfpd4"]
+[ext_resource type="Resource" uid="uid://4tc6ejvrvyei" path="res://Audio/SFX/ore_land_bag.tres" id="45_ovfef"]
 
 [sub_resource type="Resource" id="Resource_0hq0f"]
 script = ExtResource("2_ba8up")
@@ -93,16 +94,8 @@ script = ExtResource("2_ba8up")
 limit = 10
 type = 6
 sound_effect = ExtResource("9_ffqab")
-volume = 5
+volume = -9
 pitch_randomness = 0.3
-audioBus = 1
-
-[sub_resource type="Resource" id="Resource_gpl43"]
-script = ExtResource("2_ba8up")
-type = 7
-sound_effect = ExtResource("10_4crdv")
-volume = -5
-pitch_randomness = 0.1
 audioBus = 1
 
 [sub_resource type="Resource" id="Resource_eecqi"]
@@ -128,6 +121,6 @@ audioBus = 1
 
 [node name="SoundManager" type="Node2D"]
 script = ExtResource("1_kivlo")
-SOUND_EFFECTS = Array[ExtResource("2_ba8up")]([SubResource("Resource_0hq0f"), SubResource("Resource_4wqnx"), SubResource("Resource_560ql"), SubResource("Resource_phbpy"), SubResource("Resource_3bcde"), SubResource("Resource_dy3hh"), SubResource("Resource_avwkg"), SubResource("Resource_gpl43"), SubResource("Resource_eecqi"), SubResource("Resource_i15mf"), SubResource("Resource_efqg6"), ExtResource("14_0ocus"), ExtResource("15_ml3a0"), ExtResource("16_xsp05"), ExtResource("17_bvdjt"), ExtResource("18_r5cpv"), ExtResource("19_chhhc"), ExtResource("20_brk7d"), ExtResource("21_ia80u"), ExtResource("22_kknpr"), ExtResource("23_mwuym"), ExtResource("24_qdclh"), ExtResource("25_7lp3a"), ExtResource("26_mor80"), ExtResource("27_2oioi"), ExtResource("25_7lp3a"), ExtResource("28_1u4a0"), ExtResource("29_pxknn"), ExtResource("30_xy7u3"), ExtResource("31_qnpey"), ExtResource("32_ocexy"), ExtResource("33_x2wn4"), ExtResource("34_l26e5"), ExtResource("35_ftbny"), ExtResource("36_62dhl"), ExtResource("37_oo0o0"), ExtResource("38_xskd2"), ExtResource("39_uhsgl"), ExtResource("40_iw2bw"), ExtResource("41_n64vg"), ExtResource("41_qeq0i"), ExtResource("42_vs0qm"), ExtResource("43_oujrd"), ExtResource("44_xfpd4")])
+SOUND_EFFECTS = Array[ExtResource("2_ba8up")]([SubResource("Resource_0hq0f"), SubResource("Resource_4wqnx"), SubResource("Resource_560ql"), SubResource("Resource_phbpy"), SubResource("Resource_3bcde"), SubResource("Resource_dy3hh"), SubResource("Resource_avwkg"), ExtResource("9_xfpd4"), SubResource("Resource_eecqi"), SubResource("Resource_i15mf"), SubResource("Resource_efqg6"), ExtResource("14_0ocus"), ExtResource("15_ml3a0"), ExtResource("16_xsp05"), ExtResource("17_bvdjt"), ExtResource("18_r5cpv"), ExtResource("19_chhhc"), ExtResource("20_brk7d"), ExtResource("21_ia80u"), ExtResource("22_kknpr"), ExtResource("23_mwuym"), ExtResource("24_qdclh"), ExtResource("25_7lp3a"), ExtResource("26_mor80"), ExtResource("27_2oioi"), ExtResource("25_7lp3a"), ExtResource("28_1u4a0"), ExtResource("29_pxknn"), ExtResource("30_xy7u3"), ExtResource("31_qnpey"), ExtResource("32_ocexy"), ExtResource("33_x2wn4"), ExtResource("34_l26e5"), ExtResource("35_ftbny"), ExtResource("36_62dhl"), ExtResource("37_oo0o0"), ExtResource("38_xskd2"), ExtResource("39_uhsgl"), ExtResource("40_iw2bw"), ExtResource("41_n64vg"), ExtResource("41_qeq0i"), ExtResource("42_vs0qm"), ExtResource("43_oujrd"), ExtResource("44_xfpd4"), ExtResource("45_ovfef")])
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]

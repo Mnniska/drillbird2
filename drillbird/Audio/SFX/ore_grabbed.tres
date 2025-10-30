@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="abstract_SoundEffectSetting" load_steps=3 format=3 uid="uid://ov0qdl7s2244"]
+
+[ext_resource type="Script" uid="uid://dwatvj6f4edl5" path="res://Scripts/Abstract scripts/abstract_SoundEffectSetting.gd" id="1_01811"]
+[ext_resource type="AudioStream" uid="uid://bkn6d73ogba4u" path="res://Audio/SFX/ore_grabbed.wav" id="2_01811"]
+
+[resource]
+script = ExtResource("1_01811")
+limit = 10
+type = 7
+sound_effect = ExtResource("2_01811")
+pitch_randomness = 0.3
+audioBus = 1

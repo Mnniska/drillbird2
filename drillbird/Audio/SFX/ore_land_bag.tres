@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="abstract_SoundEffectSetting" load_steps=3 format=3 uid="uid://4tc6ejvrvyei"]
+
+[ext_resource type="Script" uid="uid://dwatvj6f4edl5" path="res://Scripts/Abstract scripts/abstract_SoundEffectSetting.gd" id="1_iqc5d"]
+[ext_resource type="AudioStream" uid="uid://cvl4h1hexl5cf" path="res://Audio/SFX/ore_land_bag.wav" id="2_iqc5d"]
+
+[resource]
+script = ExtResource("1_iqc5d")
+type = 47
+sound_effect = ExtResource("2_iqc5d")
+audioBus = 1
