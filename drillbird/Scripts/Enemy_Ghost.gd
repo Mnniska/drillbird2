@@ -199,6 +199,10 @@ func Disappear(useAnimation:bool=true):
 		if useAnimation:
 			anim.animation="death"
 			anim.play()
+			
+			#in theory awaits??
+			var tween = get_tree().create_tween()
+			tween.tween_property($GhostMusic, "volume_db", -50, 2)
 			await get_tree().create_timer(2).timeout
 		
 		queue_free()
