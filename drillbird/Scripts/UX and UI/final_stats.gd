@@ -67,7 +67,7 @@ func DisplayStats():
 	
 	var text_statinfo:String
 	var text_statresult
-	text_statinfo=tr("credits_stats_hatchtime")
+	text_statinfo=tr("credits_stats_hatchtime")+" "
 	text_statresult="[color=orange]"+ str(GlobalVariables.currentDay)+"[/color]"+"[p][/p]"
 	
 	#unlock achievement for finishing within 7 days
@@ -77,13 +77,13 @@ func DisplayStats():
 	statsarray[0].DisplayStat(text_statinfo,text_statresult)
 	await statsarray[0].displayedStat
 	
-	text_statinfo=tr("credits_stats_timetaken")
+	text_statinfo=tr("credits_stats_timetaken")+" "
 	text_statresult=HUD.SpeedrunTimer.GetTimerString()
 
 	statsarray[1].DisplayStat(text_statinfo,text_statresult)
 	await statsarray[1].displayedStat
 
-	text_statinfo=tr("credits_stats_ores")
+	text_statinfo=tr("credits_stats_ores")+" "
 	text_statresult=str(GlobalVariables.oresFound)+" / "+str(GlobalVariables.totalOres)
 
 	var oresLeft:int= GlobalVariables.totalOres-GlobalVariables.oresFound
@@ -93,7 +93,7 @@ func DisplayStats():
 	statsarray[2].DisplayStat(text_statinfo,text_statresult)
 	await statsarray[2].displayedStat
 
-	text_statinfo=tr("credits_stats_kills")
+	text_statinfo=tr("credits_stats_kills")+" "
 	text_statresult=str(SteamHandler.count_enemyDeaths)
 	var kills=SteamHandler.count_enemyDeaths
 	

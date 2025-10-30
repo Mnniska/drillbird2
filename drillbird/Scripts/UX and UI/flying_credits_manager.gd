@@ -53,7 +53,7 @@ func _ready() -> void:
 	if debugSkipCredits:
 		valueSpawner.active=true
 		SetCloudsVisible(false)
-		flyer.energy=80
+		flyer.energy=100
 		
 	else:
 		$Credits.show()
@@ -78,6 +78,7 @@ func _on_player_detector_body_shape_entered(body_rid: RID, body: Node2D, body_sh
 
 func _on_flying_child_has_evolved() -> void:
 	valueSpawner.active=false
+	await get_tree().create_timer(3).timeout
 	TriggerFinalZinger()
 
 func MusicRepeat():
@@ -103,7 +104,7 @@ func _on_flying_child_has_evolved_off_screen() -> void:
 	
 	#Todo, play some kind of sound here :3
 	#SoundManager.PlaySoundAtLocation($Camera2D.position,abstract_SoundEffectSetting.SoundEffectEnum.INTRO_CUTSCENE_SCENE2)
-	
+	SoundManager.PlaySoundAtLocation($Camera2D.position,abstract_SoundEffectSetting.SoundEffectEnum.FINAL_FALL)
 	await get_tree().create_timer(7).timeout
 	ShowStats()
 

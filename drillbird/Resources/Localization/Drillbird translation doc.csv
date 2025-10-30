@@ -902,8 +902,8 @@ Prends soin de toi
 "
 credits_stats_header,Credits_stats,https://youtu.be/u7hrqY9PqU8?t=696,[center]Final Stats,[center]Slutresultat,[center]最終結果,[center]最终统计,[center]Итоговая статистика,[center]Endstatistik,[center]Statistiques finales
 credits_stats_hatchtime,Credits_stats,^,Days taken to hatch: ,Antal dagar till kläckning: ,孵化までの日数:,孵化所需天数:,Дней до вылупления:,Anzahl der Tage bis zum Schlüpfen:,Jours avant l’éclosion :
-credits_stats_timetaken,,,Time taken:,Tid:,,,,,
-credits_stats_kills,,,Kills:,,,,,,
+credits_stats_timetaken,,,Time taken:,Tid:,所要時間:,耗时：,Затраченное время:,Benötigte Zeit:,Temps écoulé :
+credits_stats_kills,,,Creature Deaths:,Mord:,死んだ生き物:,击杀数：,Смерти существ:,Tod der Kreaturen:,Morts de créatures :
 credits_stats_ores,Credits_stats,^,Ores given to egg: ,Mineraler som getts till ägget: ,卵にあげた鉱石の数:,给蛋的矿石数:,Руды отдано яйцу:,An das Ei verfütterte Erze:,Minerais offerts à l’œuf :
 credits_stats_continue,Credits_stats,^,Continue,Fortsätt,続ける,继续,Продолжить,Fortfahren,Continuer 
 credits_reset_save_data_erasedata,Credits_choice,https://youtu.be/u7hrqY9PqU8?t=724,"[center]Would you like to reset your save data and begin anew, or return to right before you hatched the egg? [p][/p] [center]  [wave][rainbow]Begin Anew[/rainbow][/wave]     Go back in time","Vill du ta bort din sparfil och börja om ifrån början, eller gå tillbaka till precis innan ägget kläcktes? 
