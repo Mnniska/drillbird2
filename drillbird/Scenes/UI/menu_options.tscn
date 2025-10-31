@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=3 uid="uid://bldt1ha11vmuu"]
 
-[ext_resource type="Script" path="res://Scripts/UX and UI/options_screen.gd" id="1_5gtrn"]
+[ext_resource type="Script" uid="uid://d2cqywibp3jnb" path="res://Scripts/UX and UI/options_screen.gd" id="1_5gtrn"]
 [ext_resource type="Texture2D" uid="uid://cp6xuvmo0rguj" path="res://Art/UI/HUD/UI_BlackBorder.png" id="2_eej8b"]
 [ext_resource type="PackedScene" uid="uid://g8bq4xcafcut" path="res://Scenes/UI/menu_option.tscn" id="2_x5nw2"]
 [ext_resource type="Theme" uid="uid://bfr5y4lo7m1ux" path="res://Resources/Fonts/fontTheme.tres" id="3_208bg"]
@@ -9,7 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://cygmw124vctks" path="res://Audio/Ambience/ambience_surface.mp3" id="6_wrpie"]
 [ext_resource type="FontFile" uid="uid://cfqp6n0vaubbe" path="res://Resources/Fonts/x12y16pxMaruMonica.ttf" id="7_ji3uf"]
 [ext_resource type="FontFile" uid="uid://c8n7dxyc0uu3i" path="res://Resources/Fonts/m5x7.ttf" id="7_rg54n"]
-[ext_resource type="Script" path="res://Scenes/UI/options_scroller.gd" id="7_uviax"]
+[ext_resource type="Script" uid="uid://2ifiqqc82jkh" path="res://Scenes/UI/options_scroller.gd" id="7_uviax"]
 [ext_resource type="FontFile" uid="uid://blllxnysqdqwj" path="res://Resources/Fonts/VonwaonBitmap-16px.ttf" id="8_cof03"]
 [ext_resource type="FontFile" uid="uid://co7jpnljheg23" path="res://Resources/Fonts/testing tinier cyrillic font/Equipe 9p.ttf" id="9_mfdpj"]
 [ext_resource type="Texture2D" uid="uid://bi6q51sklyetd" path="res://Art/environment/SpaceBackground/background_space_allLayers.png" id="13_rh2ws"]
@@ -93,7 +93,7 @@ visible = false
 position = Vector2(0, 8)
 optionName = "Game Options"
 localizationID = "options_game"
-options = [NodePath("../Return2"), NodePath("../toggle ghost"), NodePath("../toggle timer"), NodePath("../save data")]
+options = [NodePath("../Return2"), NodePath("../toggle rumble"), NodePath("../toggle timer"), NodePath("../save data")]
 
 [node name="Language options" parent="." node_paths=PackedStringArray("options") instance=ExtResource("2_x5nw2")]
 visible = false
@@ -178,12 +178,11 @@ localizationID = "lang_de"
 [node name="RichTextLabel" parent="OptionScroller/Lang_de" index="0"]
 theme_override_fonts/normal_font = ExtResource("7_rg54n")
 
-[node name="toggle ghost" parent="." instance=ExtResource("2_x5nw2")]
+[node name="toggle rumble" parent="." instance=ExtResource("2_x5nw2")]
 position = Vector2(0, -33)
-optionName = "Haunted by Ghost"
-localizationID = "options_ghost"
+optionName = "Controller Rumble"
+localizationID = "options_rumble"
 isToggle = true
-sample_sound = ExtResource("6_wrpie")
 soundAudioBus = "Ambience"
 
 [node name="toggle timer" parent="." instance=ExtResource("2_x5nw2")]
