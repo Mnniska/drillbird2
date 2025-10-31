@@ -82,20 +82,24 @@ func DisplayStats():
 
 	statsarray[1].DisplayStat(text_statinfo,text_statresult)
 	await statsarray[1].displayedStat
-
+	
+	if DebugShowStats:	#REMOVE!!!
+		GlobalVariables.oresFound=88
+		
+	var percent:float= float(GlobalVariables.oresFound)/float(GlobalVariables.totalOres)
+	
+	var percentInt:int= int(percent*100)
 	text_statinfo=tr("credits_stats_ores")+" "
-	text_statresult=str(GlobalVariables.oresFound)+" / "+str(GlobalVariables.totalOres)
-
-	var oresLeft:int= GlobalVariables.totalOres-GlobalVariables.oresFound
-	if oresLeft<=0:
-		SteamHandler.TryUnlockAchievement("ach_all_ores")
+	text_statresult=str(percentInt)+" % "
+	
+	if percentInt>=90:
+		SteamHandler.TryUnlockAchievement("ach_all_ores")		
 
 	statsarray[2].DisplayStat(text_statinfo,text_statresult)
 	await statsarray[2].displayedStat
 
 	text_statinfo=tr("credits_stats_kills")+" "
 	text_statresult=str(SteamHandler.count_enemyDeaths)
-	var kills=SteamHandler.count_enemyDeaths
 	
 	if SteamHandler.count_enemyDeaths<=SteamHandler.stat_ach_pacifist:
 		SteamHandler.TryUnlockAchievement("ach_pacifist")
@@ -213,7 +217,10 @@ func ConstructStatsString()->String:
 	text+=tr("credits_stats_hatchtime")
 	text+="[color=orange]"+ str(GlobalVariables.currentDay)+"[/color]"+"[p][/p]"
 	text+=tr("credits_stats_timetaken")+HUD.SpeedrunTimer.GetTimerString()+"[p][/p]"
-	text+=tr("credits_stats_ores")+str(GlobalVariables.oresFound)+" / "+str(GlobalVariables.totalOres)+"[p][/p]"
+	var percent:float=GlobalVariables.oresFound/GlobalVariables.totalOres*100
+	text+=tr("credits_stats_ores")+str(percent)+" % "+"[p][/p]"
+	
+
 		
 	text+="[center][wave][rainbow]"+tr("credits_stats_continue")
 	
