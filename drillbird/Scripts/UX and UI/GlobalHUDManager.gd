@@ -178,7 +178,8 @@ func SetState(_state:menuStates):
 func ResetGame():
 	#Can only be called from MAIN for this to work :)))
 	sceneState=sceneStates.MAIN
-	GlobalVariables.ResetSaveData()
+	#GlobalVariables.ResetSaveData()
+	%InventoryHandler.SellOres()
 	$TransitionToMain.play("FadeBack")
 	await get_tree().create_timer(0.05).timeout
 	var scene = GlobalVariables.MainSceneReferenceConnector.mainScene
