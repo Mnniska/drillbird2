@@ -152,7 +152,7 @@ _data = {
 [node name="HUD" type="CanvasLayer"]
 layer = 10
 script = ExtResource("1_u1olj")
-version = "[rainbow]v1.04[/rainbow][p]2025-10-29"
+version = "[rainbow]v1.06[/rainbow][p]2025-10-31 "
 scene_credits = ExtResource("2_lsdg3")
 scene_main = ExtResource("3_wspqp")
 

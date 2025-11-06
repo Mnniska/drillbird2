@@ -1,11 +1,11 @@
 [gd_scene load_steps=7 format=3 uid="uid://ddgttu2odky5f"]
 
-[ext_resource type="Script" path="res://Scripts/UX and UI/final_stats.gd" id="1_bixtf"]
+[ext_resource type="Script" uid="uid://qlivjp30661j" path="res://Scripts/UX and UI/final_stats.gd" id="1_bixtf"]
 [ext_resource type="Theme" uid="uid://bfr5y4lo7m1ux" path="res://Resources/Fonts/fontTheme.tres" id="1_ogkgr"]
 [ext_resource type="Texture2D" uid="uid://bi6q51sklyetd" path="res://Art/environment/SpaceBackground/background_space_allLayers.png" id="2_7c53m"]
 [ext_resource type="Texture2D" uid="uid://bpa8olbvx4ufv" path="res://Art/UI/MainMenu/DrillBird_LOGO.png" id="3_86pvv"]
 [ext_resource type="Texture2D" uid="uid://cdgrv0eh6htfa" path="res://Art/cutscenes/intro/intro_landscape11.png" id="5_0q7ff"]
-[ext_resource type="Script" path="res://Scripts/UX and UI/stats_message.gd" id="5_54jkk"]
+[ext_resource type="Script" uid="uid://ppv8bhthnmty" path="res://Scripts/UX and UI/stats_message.gd" id="5_54jkk"]
 
 [node name="Final stats" type="Node2D" node_paths=PackedStringArray("statsarray")]
 script = ExtResource("1_bixtf")
@@ -102,15 +102,6 @@ offset_bottom = 224.0
 theme = ExtResource("1_ogkgr")
 theme_override_colors/default_color = Color(0.933333, 0.901961, 0.831373, 1)
 bbcode_enabled = true
-text = "[center]Thank you for playing Drillbird! 
-
-If you enjoyed the game - 
-please tell someone you like about it!
-
-Take care out there
-/Seb
-
-[wave][rainbow]Continue[/rainbow][/wave]"
 
 [node name="choice" type="RichTextLabel" parent="."]
 visible = false

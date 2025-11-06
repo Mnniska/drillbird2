@@ -61,6 +61,10 @@ func SetupLightFunctionality():
 	if PlayerLight==null:
 		push_error("Could not get player light, something is WRONG")
 	
+	#Fixes light not resetting itself when resetting save data	
+	for n in lightBulbArray:
+		n.queue_free()
+	lightBulbArray.clear()
 	
 	time_Countdown=time_TimerLength
 

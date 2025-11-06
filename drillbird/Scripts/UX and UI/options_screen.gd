@@ -77,6 +77,8 @@ func SaveToggleValue(_name:String,_on:bool):
 			PlayerPreferences.fullscreenActive=_on
 		"toggle_timer":
 			PlayerPreferences.timerActive=_on
+		"Controller Rumble":
+			PlayerPreferences.controllerRumbleActive=_on
 
 
 func SaveSliderValue(_name:String,_progress:float):
@@ -122,6 +124,9 @@ func LoadPreferences():
 			"toggle_timer":
 				HUD.SpeedrunTimer.SetTimerEnabled(PlayerPreferences.timerActive)
 				n.option_active=PlayerPreferences.timerActive
+			"Controller Rumble":
+				n.option_active=PlayerPreferences.controllerRumbleActive
+				GlobalVariables.useVibration=PlayerPreferences.controllerRumbleActive
 
 func SetupMenuSignals():
 	for n in EntireMenu:
@@ -264,6 +269,10 @@ func ButtonPressed(_option:menu_option):
 		_option.SetActive(true)
 		GlobalVariables.ghostActive=hauntedByGhost
 
+	if _option.optionName=="Controller Rumble":
+		GlobalVariables.useVibration=!GlobalVariables.useVibration
+		_option.option_active=GlobalVariables.useVibration
+		_option.SetActive(true)
 		
 
 	if _option.optionName=="Reset Save Data":

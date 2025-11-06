@@ -71,11 +71,11 @@ func _input(event: InputEvent) -> void:
 	
 	if event is InputEventKey:
 		if usingGamepad:
-			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			#Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 			usingGamepad=false
 	
 	if event is InputEventJoypadButton or InputEventJoypadMotion:
 		if !usingGamepad:
-			Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)	
+			#Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)	
 			usingGamepad=true	
 		

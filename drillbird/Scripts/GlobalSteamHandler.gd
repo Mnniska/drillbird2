@@ -35,6 +35,7 @@ func _ready() -> void:
 		print("ERROR: Steam isn't running!")
 	else:
 		print("Successfully detected Steam! Your user name is "+Steam.getFriendPersonaName(Steam.getSteamID()))
+		Steam.requestUserStats(Steam.getSteamID())
 	pass
 
 func TryUnlockAchievement(name:String):
@@ -51,8 +52,9 @@ func TryUnlockAchievement(name:String):
 		print_debug("Asked Steam to unlock an achievement which was already unlocked: "+name)
 		return
 	
-	Steam.storeStats()
+	
 	Steam.setAchievement(name)
+	Steam.storeStats()
 	print_debug("Have asked Steam to unlock the achievement: "+name)
 	
 	

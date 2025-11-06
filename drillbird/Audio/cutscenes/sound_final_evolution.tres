@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="abstract_SoundEffectSetting" load_steps=3 format=3 uid="uid://beym076j51n65"]
+
+[ext_resource type="Script" uid="uid://dwatvj6f4edl5" path="res://Scripts/Abstract scripts/abstract_SoundEffectSetting.gd" id="1_bwx7w"]
+[ext_resource type="AudioStream" uid="uid://dilnajo3sneg2" path="res://Audio/cutscenes/sound_final_evolution.wav" id="2_bwx7w"]
+
+[resource]
+script = ExtResource("1_bwx7w")
+limit = 1
+type = 45
+sound_effect = ExtResource("2_bwx7w")
+audioBus = 1

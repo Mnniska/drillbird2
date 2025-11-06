@@ -82,6 +82,10 @@ func _physics_process(delta: float) -> void:
 	
 	velocity.x=move_toward(velocity.x,0,friction)
 	var lol=140
+	
+	if Input.is_key_label_pressed(KEY_0):
+		energy=100
+	
 	if Input.is_action_pressed("left") and global_position.x>-lol:
 		velocity.x-=moveSpeed
 
@@ -187,6 +191,8 @@ func UpdateEnergyBar():
 
 func GrowUp():
 	SetCanEvolve(false,false)
+	var camera=$"../Camera2D"
+	SoundManager.PlaySoundAtLocation(camera.position,abstract_SoundEffectSetting.SoundEffectEnum.FINAL_EVOLUTION)
 	velocity.y=0
 	velocity.x=clampf(velocity.x,-5,5)
 	state=States.GROWN
@@ -196,6 +202,8 @@ func GrowUp():
 	await get_tree().create_timer(1.5).timeout
 	shake=false
 	evolveShine.play()
+	
+	
 	if GlobalVariables.useVibration:
 		Input.start_joy_vibration(GlobalSymbolRegister.currentController,0,0.8,0.5)
 	

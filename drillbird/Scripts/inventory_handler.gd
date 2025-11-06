@@ -26,6 +26,8 @@ var maxWeight:int=10
 var carriedOres:Array[abstract_ore]
 @onready var inventoryNumber=$inventoryNumber
 @export var textPreface="[right]"
+var oreSoundTimer:float=0
+
 
 var oreLerpVisual=preload("res://Scenes/Effects/ore_sell_visualizer.tscn")
 var lerpingOres:Array[ore_sell_visualizer]
@@ -35,7 +37,9 @@ func _ready() -> void:
 	GlobalVariables.upgradeChange_Inventory.connect(upgradeChangeInventory)
 	GlobalVariables.SetupComplete.connect(InitializationCompleteSetup)
 
-
+func _process(delta: float) -> void:
+	if oreSoundTimer>0:
+		oreSoundTimer-=delta
 
 func InitializationCompleteSetup():
 	OreSpawner=GlobalVariables.MainSceneReferenceConnector.ref_oreTilemap
@@ -107,7 +111,13 @@ func AddOreRequest(ore:abstract_ore):
 	
 	carriedOres.append(ore)
 	CreateLerpingOre(ore)
+	
 	SoundManager.PlaySoundGlobal(abstract_SoundEffectSetting.SoundEffectEnum.ORE_GRABBED)
+	
+	#Ensures the bag sound isn't played too often, but still played
+	if oreSoundTimer<=0:
+		oreSoundTimer=0.15
+		SoundManager.PlaySoundGlobal(abstract_SoundEffectSetting.SoundEffectEnum.ORE_LAND_BAG)
 
 	if ore.ID==10:
 		signal_pickedUpHeart.emit()
@@ -137,6 +147,10 @@ func UpdateInventoryText():
 	
 
 func SetupInventorySize():
+
+
+
+
 	maxWeight = inventoryUpgradeTree.items[GlobalVariables.upgradeLevel_inventory].power
 	UpdateInventoryText()
 

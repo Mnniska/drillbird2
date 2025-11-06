@@ -132,7 +132,7 @@ func Update_Active(delta:float):
 func SetHasBlossomed(hasBlossomed:bool,playsound:bool=true):
 	if hasBlossomed:
 		if playsound:
-			SoundManager.PlaySoundAtLocation(global_position,abstract_SoundEffectSetting.SoundEffectEnum.FLOWER_SPAWN)
+			SoundManager.PlaySoundAtLocation(global_position,abstract_SoundEffectSetting.SoundEffectEnum.FLOWER_GROW_JINGLE)
 	
 		if !HasBeenSpawnedViaTilemap:
 			GlobalVariables.playerAction.emit(GlobalVariables.playerActions.SPAWNFLOWER)

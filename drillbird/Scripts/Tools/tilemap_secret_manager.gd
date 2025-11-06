@@ -5,7 +5,7 @@ class_name tilemap_secrets_manager
 var removeQueue:Array[Vector2i]
 var checkQueue:Array[Vector2i]
 var tileDestroyEffectpath="res://Scenes/Effects/generic_destroy_effect.tscn"
-
+var amountOfRemovalsDone:int=0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -72,8 +72,15 @@ func TryUnveilTargetPosition(pos:Vector2i,startup:bool=false):
 		checkQueue.clear()
 		pass
 
+	amountOfRemovalsDone=0
 
 func RemoveTargetedTiles(startup:bool):
+	
+	if !startup:
+		var soundPos=to_global(tilemap.map_to_local(removeQueue[0]))
+		var pitch=1+0.1*amountOfRemovalsDone
+		SoundManager.PlaySoundAtLocation(soundPos,abstract_SoundEffectSetting.SoundEffectEnum.SECRET_REVEAL,pitch)
+		amountOfRemovalsDone+=1
 	
 	for pos in removeQueue:
 		
