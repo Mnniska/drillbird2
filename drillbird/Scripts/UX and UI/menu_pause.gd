@@ -7,6 +7,7 @@ var selectedOption:int=0
 var oldSelection:int=0
 var isHoldingEscape:bool=false
 var hasClickedQuitOnce:bool=false
+var hadClickedUndoOnce:bool=false
 @onready var quitInfoText=$QuitConfirmation
 
 @onready var daycounter:RichTextLabel=$DayCounter
@@ -34,7 +35,9 @@ func ButtonPressed(_option:menu_option):
 	if _option.optionName=="Return":
 		SetActive(false)
 		signal_pause_menu_closed.emit()
-		
+	
+	if _option.optionName=="Undo Day":
+			HUD.ResetGame()
 	
 	if _option.optionName=="Options":
 		SetActive(false)
@@ -99,6 +102,8 @@ func _process(delta: float) -> void:
 	pass
 
 func SetActive(_active:bool):
+	
+
 	
 	text_header.text="[center][font_size={32}]"+tr("menu_paused")+"[/font_size][p]"+"[center]"+tr("menu_day")+str(GlobalVariables.currentDay)
 	text_instructions.text=tr("menu_instructions")

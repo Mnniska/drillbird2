@@ -1,13 +1,13 @@
 [gd_scene load_steps=5 format=3 uid="uid://bgj42edyan2we"]
 
-[ext_resource type="Script" path="res://Scripts/UX and UI/menu_pause.gd" id="1_w7cnh"]
+[ext_resource type="Script" uid="uid://j0n4egi7yl3t" path="res://Scripts/UX and UI/menu_pause.gd" id="1_w7cnh"]
 [ext_resource type="Texture2D" uid="uid://cp6xuvmo0rguj" path="res://Art/UI/HUD/UI_BlackBorder.png" id="2_6r7dd"]
 [ext_resource type="Theme" uid="uid://bfr5y4lo7m1ux" path="res://Resources/Fonts/fontTheme.tres" id="3_44x14"]
 [ext_resource type="PackedScene" uid="uid://g8bq4xcafcut" path="res://Scenes/UI/menu_option.tscn" id="4_vbmoi"]
 
 [node name="PAUSE" type="Node2D" node_paths=PackedStringArray("options")]
 script = ExtResource("1_w7cnh")
-options = [NodePath("Return"), NodePath("Options"), NodePath("Quit Game")]
+options = [NodePath("Return"), NodePath("Options"), NodePath("Undo Day"), NodePath("Quit Game2")]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.396078)
@@ -35,19 +35,18 @@ position = Vector2(159, 120)
 optionName = "Options"
 localizationID = "menu_options"
 
-[node name="Quit Game" parent="." instance=ExtResource("4_vbmoi")]
+[node name="Undo Day" parent="." node_paths=PackedStringArray("extraConfirmzationMessage") instance=ExtResource("4_vbmoi")]
 position = Vector2(159, 145)
+optionName = "Undo Day"
+localizationID = "menu_undo"
+RequireExtraConfirmation = true
+extraConfirmzationMessage = NodePath("../QuitConfirmation")
+extraConfirmationMessageLocalizationID = "menu_undo_confirm"
+
+[node name="Quit Game2" parent="." instance=ExtResource("4_vbmoi")]
+position = Vector2(159, 170)
 optionName = "Quit Game"
 localizationID = "menu_quit"
-
-[node name="QuitConfirmation" type="RichTextLabel" parent="."]
-visible = false
-offset_top = 156.0
-offset_right = 321.0
-offset_bottom = 236.0
-theme = ExtResource("3_44x14")
-bbcode_enabled = true
-text = "[center]Last save was made XXXX minutes ago.[p][center] Are you sure you'd like to quit? "
 
 [node name="DayCounter" type="RichTextLabel" parent="."]
 offset_left = 124.0
@@ -73,3 +72,27 @@ theme_override_constants/line_separation = 2
 bbcode_enabled = true
 text = "[color=gray](jump) = jump [p](drill) = Drill blocks[p](inventory) = Drop ores"
 fit_content = true
+
+[node name="QuitConfirmation" type="RichTextLabel" parent="."]
+visible = false
+z_index = 10
+clip_contents = false
+offset_top = 186.0
+offset_right = 321.0
+offset_bottom = 266.0
+theme = ExtResource("3_44x14")
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.2131863, 0.13807607, 0.029149318, 1)
+theme_override_constants/shadow_outline_size = 3
+theme_override_constants/outline_size = 8
+bbcode_enabled = true
+text = "[center]Last save was made XXXX minutes ago.[p][center] Are you sure you'd like to quit? "
+scroll_active = false
+
+[node name="Sprite2D2" type="Sprite2D" parent="QuitConfirmation"]
+modulate = Color(1, 1, 1, 0.43529412)
+z_index = 9
+z_as_relative = false
+position = Vector2(158, 121)
+scale = Vector2(1.36719, 15.6875)
+texture = ExtResource("2_6r7dd")
