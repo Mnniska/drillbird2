@@ -122,7 +122,7 @@ func LoadPreferences():
 				GlobalVariables.ghostActive= PlayerPreferences.ghostActive 
 				n.option_active=PlayerPreferences.ghostActive
 			"toggle_timer":
-				HUD.SpeedrunTimer.SetTimerEnabled(PlayerPreferences.timerActive)
+				HUD.SpeedrunTimer.SetShowTimer(PlayerPreferences.timerActive)
 				n.option_active=PlayerPreferences.timerActive
 			"Controller Rumble":
 				n.option_active=PlayerPreferences.controllerRumbleActive
@@ -281,7 +281,7 @@ func ButtonPressed(_option:menu_option):
 		
 	if _option.optionName=="toggle_timer":
 		HUD.SpeedrunTimer.ToggleTimerTextEnabled()
-		_option.option_active=HUD.SpeedrunTimer.shouldUpdateTimerText
+		_option.option_active=HUD.SpeedrunTimer.showTimer
 		_option.SetActive(true)
 		
 	if _option.optionName=="lang_sv":

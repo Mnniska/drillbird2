@@ -42,8 +42,8 @@ menu_new_game,menu,see above,New Game,Nytt Spel,ニューゲーム,新游戏,Н�
 menu_options,menu,see above,Options,Inställningar,オプション,设置,Настройки,Optionen,Options
 menu_version,menu,"The current version of the game. Not listed in the demo release, but will say ""version [X]""",Version,Version,バージョン,版本,Версия,Version,Version
 menu_quit,menu,https://youtu.be/u7hrqY9PqU8?t=14,Quit Game,Avsluta,ゲーム終了,退出游戏,Выйти из игры,Spiel beenden,Quitter le jeu
-menu_undo,,,Undo Day,Spola tillbaka dagen,,,,,
-menu_undo_confirm,,,[center]You will go back in time to the start of this day. Are you sure? ,[center]Du kommer att gå tillbaka i tiden tills när du vaknade idag. Är du säker?,,,,,
+menu_undo,,,Undo Day,Spola tillbaka dagen,日をやり直す,重置这一天,Повторить день,Tag neu beginnen,Recommencer la journée
+menu_undo_confirm,,,[center]You will go back in time to the start of this day. Are you sure? ,[center]Du kommer att gå tillbaka i tiden tills när du vaknade idag. Är du säker?,[center]この日の始まりに時間を戻します。本当によろしいですか？,[center]你将回到今天开始的时候。确定要这样做吗？,[center]Вы вернетесь к началу этого дня. Вы уверены?,[center]Du wirst an den Anfang dieses Tages zurückkehren. Bist du sicher?,[center]Vous allez revenir au début de cette journée. Êtes-vous sûr ?
 menu_demo,menu,see above,[center][rainbow]Demo,[center][rainbow]Demo,[center][rainbow]デモ,[center][rainbow]演示版,[center][rainbow]Демо,[center][rainbow]Demo,[center][rainbow]Démo
 options_return,menu_options,see above,Return,Tillbaka,戻る,返回,Назад,Zurück,Retour
 options_fullscreen,menu_options,see above,Toggle Fullscreen,Slå på/av fullskärm,フルスクリーン切替,切换全屏,Переключить полный экран,Vollbildmodus,Mode plein écran

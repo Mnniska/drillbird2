@@ -3,7 +3,7 @@ class_name speedrun_timer
 
 var time:float=0
 @onready var timerText:RichTextLabel=$"timer text"
-var shouldUpdateTimerText:bool=false
+var showTimer:bool=false
 var timePaused:bool=false
 var speedrunFinished:bool=false
 
@@ -16,7 +16,18 @@ func MenuStateChanged(state: HUD.menuStates):
 	#assumption: PLAY is the only state where the timer should be paused. This requires pausing to not give any time benefits..
 	if state==HUD.menuStates.PLAY:
 			timePaused=false
-		
+	
+	match state:
+		HUD.menuStates.MAIN:
+			timerText.hide()
+		HUD.menuStates.CREDITS:
+			pass
+		HUD.menuStates.PLAY:
+			if showTimer:
+				timerText.show()
+			else:
+				timerText.hide()
+			
 	
 	pass
 
@@ -29,7 +40,7 @@ func _physics_process(delta: float) -> void:
 	
 	time+=delta
 	
-	if shouldUpdateTimerText:
+	if showTimer:
 		if timerText!=null:
 			timerText.text="[right]"+GetTimerString(time)
 
@@ -49,6 +60,8 @@ func finishSpeedrun():
 		timerText.text="[color=white][right]"+numbertext
 		await get_tree().create_timer(0.2).timeout
 	
+	await get_tree().create_timer(2).timeout
+	timerText.hide()
 
 func GetTimerString(calcTime:float=time)->String:
 	var temptime=calcTime
@@ -95,15 +108,12 @@ func GetCurrentTime():
 	return time
 
 func ToggleTimerTextEnabled():
-	shouldUpdateTimerText=!shouldUpdateTimerText
-	if shouldUpdateTimerText:
-		timerText.show()
-	else:
-		timerText.hide()
+	SetShowTimer(!showTimer)
 
-func SetTimerEnabled(enabled:bool):
-	shouldUpdateTimerText=enabled
-	if shouldUpdateTimerText:
+
+func SetShowTimer(enabled:bool):
+	showTimer=enabled
+	if showTimer:
 		timerText.show()
 	else:
 		timerText.hide()

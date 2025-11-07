@@ -1,0 +1,427 @@
+[gd_scene load_steps=43 format=3 uid="uid://bxacqh1cbwxw5"]
+
+[ext_resource type="Script" uid="uid://cqw1bn227bamc" path="res://Scripts/UX and UI/GlobalHUDManager.gd" id="1_u1olj"]
+[ext_resource type="Texture2D" uid="uid://cp6xuvmo0rguj" path="res://Art/UI/HUD/UI_BlackBorder.png" id="1_vcacc"]
+[ext_resource type="Script" uid="uid://c4attj05haf4g" path="res://Scripts/LightManager.gd" id="2_01nkd"]
+[ext_resource type="PackedScene" uid="uid://chmegxltn4stt" path="res://Scenes/Playable Scenes/flying_credits.tscn" id="2_lsdg3"]
+[ext_resource type="Texture2D" uid="uid://c2dvodr38hdfp" path="res://Art/UI/HUD/UI_LightBar_dark2.png" id="3_ncwr2"]
+[ext_resource type="PackedScene" uid="uid://d2wv7igie5stg" path="res://Scenes/Playable Scenes/main.tscn" id="3_wspqp"]
+[ext_resource type="Texture2D" uid="uid://5k8n46gs2ghw" path="res://Art/UI/HUD/UI_LightBar_frame2.png" id="4_k2bwc"]
+[ext_resource type="Texture2D" uid="uid://woyu5th1dweb" path="res://Art/UI/HUD/UI_LightBar_light2.png" id="5_5ophj"]
+[ext_resource type="Texture2D" uid="uid://c2fj0vknmdoys" path="res://Art/UI/Shop/money_symbol.png" id="6_3yotd"]
+[ext_resource type="Texture2D" uid="uid://druhh76xwxih5" path="res://Art/UI/HUD/HUD_icon_inventory.png" id="6_cgigq"]
+[ext_resource type="FontFile" uid="uid://c8n7dxyc0uu3i" path="res://Resources/Fonts/m5x7.ttf" id="7_pre4c"]
+[ext_resource type="FontFile" uid="uid://co7jpnljheg23" path="res://Resources/Fonts/testing tinier cyrillic font/Equipe 9p.ttf" id="8_bp3jv"]
+[ext_resource type="Script" uid="uid://c5bn31ro54xo0" path="res://Scripts/HealthUIHandler.gd" id="9_uhcmx"]
+[ext_resource type="Resource" uid="uid://dd3l8ir1bmcm5" path="res://Resources/Economy/purchasable_health.tres" id="10_3kqti"]
+[ext_resource type="Script" uid="uid://dub71npfyj7j3" path="res://Scripts/inventory_handler.gd" id="11_qie2v"]
+[ext_resource type="Resource" uid="uid://b26ws3o4u42p3" path="res://Resources/Economy/purchasable_inventory.tres" id="12_mfl1u"]
+[ext_resource type="Texture2D" uid="uid://b8wmuf0rlke0l" path="res://Art/UI/HUD/bg_xp_holder.png" id="14_a35vt"]
+[ext_resource type="Theme" uid="uid://bfr5y4lo7m1ux" path="res://Resources/Fonts/fontTheme.tres" id="15_nxi4s"]
+[ext_resource type="PackedScene" uid="uid://ccfkycw4won1m" path="res://Scenes/UI/scene_ui_death.tscn" id="18_6hqox"]
+[ext_resource type="Texture2D" uid="uid://bpa8olbvx4ufv" path="res://Art/UI/MainMenu/DrillBird_LOGO.png" id="19_hr1yg"]
+[ext_resource type="Script" uid="uid://c3j2qqqf4p2dl" path="res://Scripts/UX and UI/main_menu.gd" id="19_qssi7"]
+[ext_resource type="Script" uid="uid://kwgl6ngw7cq2" path="res://Scripts/Abstract scripts/abstract_debugMenuOption.gd" id="20_hlahx"]
+[ext_resource type="AudioStream" uid="uid://bwynx1ih755ll" path="res://Audio/Music/Drillbird Theme.mp3" id="23_p7qe8"]
+[ext_resource type="PackedScene" uid="uid://bldt1ha11vmuu" path="res://Scenes/UI/menu_options.tscn" id="23_sv2nb"]
+[ext_resource type="PackedScene" uid="uid://bgj42edyan2we" path="res://Scenes/UI/menu_pause.tscn" id="24_p58jt"]
+[ext_resource type="Texture2D" uid="uid://cdgrv0eh6htfa" path="res://Art/cutscenes/intro/intro_landscape11.png" id="26_4tsov"]
+[ext_resource type="Script" uid="uid://bl87tjhhsl7nt" path="res://Scripts/Tools/speedrun_timer.gd" id="27_rs6d6"]
+[ext_resource type="Texture2D" uid="uid://bi6q51sklyetd" path="res://Art/environment/SpaceBackground/background_space_allLayers.png" id="28_tc67a"]
+[ext_resource type="PackedScene" uid="uid://l6j5lsi56hrl" path="res://Scenes/UI/credits.tscn" id="29_llwrf"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_ese10"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4ug5x"]
+texture = ExtResource("4_k2bwc")
+texture_margin_left = 2.0
+texture_margin_top = 16.0
+texture_margin_right = 2.0
+expand_margin_left = 2.0
+expand_margin_right = 2.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7j3f5"]
+texture = ExtResource("5_5ophj")
+texture_margin_left = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 2.0
+expand_margin_left = 2.0
+expand_margin_right = 2.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[sub_resource type="Curve" id="Curve_tlv4u"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.831395, 0.626374), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_c1j2j"]
+curve = SubResource("Curve_tlv4u")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_44yp2"]
+particle_flag_rotate_y = true
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(3, 1, 1)
+angle_min = -242.3
+angle_max = 207.7
+direction = Vector3(0, -1, 0)
+spread = 46.8
+initial_velocity_max = 52.89
+gravity = Vector3(0, 90, 0)
+scale_curve = SubResource("CurveTexture_c1j2j")
+hue_variation_min = -0.89
+hue_variation_max = -0.77
+
+[sub_resource type="Resource" id="Resource_jrvhg"]
+script = ExtResource("20_hlahx")
+name = "menu_new_game"
+
+[sub_resource type="Resource" id="Resource_q3x01"]
+script = ExtResource("20_hlahx")
+name = "menu_options"
+
+[sub_resource type="Resource" id="Resource_b7xf6"]
+script = ExtResource("20_hlahx")
+name = "menu_quit"
+
+[sub_resource type="Animation" id="Animation_0g03v"]
+resource_name = "FadeBack"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TransitionToMain/white:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TransitionToMain/white:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ygpwv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TransitionToMain/white:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TransitionToMain/white:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ypq5t"]
+_data = {
+&"FadeBack": SubResource("Animation_0g03v"),
+&"RESET": SubResource("Animation_ygpwv")
+}
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_okkph"]
+
+[node name="HUD" type="CanvasLayer"]
+layer = 10
+script = ExtResource("1_u1olj")
+version = "[rainbow]v1.06[/rainbow][p]2025-10-31 "
+scene_credits = ExtResource("2_lsdg3")
+scene_main = ExtResource("3_wspqp")
+
+[node name="topUI" type="Node2D" parent="."]
+z_index = 2
+position = Vector2(160, 8)
+
+[node name="background" type="Sprite2D" parent="topUI"]
+position = Vector2(7.5, -13)
+scale = Vector2(1.35547, 2.625)
+texture = ExtResource("1_vcacc")
+
+[node name="InventoryHandler" type="Node2D" parent="topUI"]
+unique_name_in_owner = true
+z_index = 2
+position = Vector2(135, 0)
+script = ExtResource("11_qie2v")
+inventoryUpgradeTree = ExtResource("12_mfl1u")
+
+[node name="icon" type="Sprite2D" parent="topUI/InventoryHandler"]
+position = Vector2(1, 0)
+texture = ExtResource("6_cgigq")
+
+[node name="oreSpawnOrigin" type="Node2D" parent="topUI/InventoryHandler"]
+position = Vector2(-145, 110)
+
+[node name="inventoryNumber" type="RichTextLabel" parent="topUI/InventoryHandler"]
+offset_left = -85.0
+offset_top = -6.0
+offset_right = -7.0
+offset_bottom = 10.0
+theme_override_colors/default_color = Color(0.827451, 0.717647, 0.556863, 1)
+theme_override_fonts/normal_font = ExtResource("8_bp3jv")
+bbcode_enabled = true
+text = "[right]0/1200 kg"
+text_direction = 1
+
+[node name="LightHandler" type="Node2D" parent="topUI"]
+position = Vector2(3.90244, 1)
+script = ExtResource("2_01nkd")
+time_DrillMultiplier = 3.0
+
+[node name="LightSliderParent" type="Node2D" parent="topUI/LightHandler"]
+
+[node name="lightbar_dark" type="Sprite2D" parent="topUI/LightHandler/LightSliderParent"]
+z_index = 2
+position = Vector2(6, -1)
+texture = ExtResource("3_ncwr2")
+
+[node name="UI_LightSlider" type="HSlider" parent="topUI/LightHandler/LightSliderParent"]
+z_index = 3
+offset_top = -9.0
+offset_right = 12.475
+offset_bottom = 7.0
+mouse_force_pass_scroll_events = false
+theme_override_icons/grabber_disabled = SubResource("ImageTexture_ese10")
+theme_override_styles/slider = SubResource("StyleBoxTexture_4ug5x")
+theme_override_styles/grabber_area = SubResource("StyleBoxTexture_7j3f5")
+value = 100.0
+editable = false
+
+[node name="Particle_DrillLight" type="GPUParticles2D" parent="topUI/LightHandler/LightSliderParent"]
+z_index = 2
+position = Vector2(13, 3)
+rotation = 1.5708
+emitting = false
+amount = 12
+lifetime = 0.3
+explosiveness = 0.26
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_44yp2")
+
+[node name="Label" type="Label" parent="topUI/LightHandler"]
+offset_left = -27.55
+offset_top = 70.0
+offset_right = 12.45
+offset_bottom = 93.0
+
+[node name="CashHolder" type="Node2D" parent="topUI"]
+z_index = 2
+position = Vector2(123, 16)
+
+[node name="cash symbol" type="Sprite2D" parent="topUI/CashHolder"]
+visible = false
+z_index = 2
+position = Vector2(-7, 8)
+texture = ExtResource("6_3yotd")
+
+[node name="cashNumber" type="Label" parent="topUI/CashHolder"]
+z_index = 2
+layout_direction = 2
+offset_left = -21.0
+offset_top = -9.0
+offset_right = 20.0
+offset_bottom = 7.0
+theme_override_fonts/font = ExtResource("7_pre4c")
+text = "0 xp"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="xpBackground" type="Sprite2D" parent="topUI/CashHolder"]
+z_index = -3
+position = Vector2(0, -2)
+texture = ExtResource("14_a35vt")
+
+[node name="HealthUIHandler" type="Node2D" parent="topUI"]
+z_index = 2
+position = Vector2(-149, 0)
+script = ExtResource("9_uhcmx")
+HealthUpgrades = ExtResource("10_3kqti")
+
+[node name="bottomUI" type="Sprite2D" parent="."]
+visible = false
+z_index = 2
+position = Vector2(161.999, 209)
+scale = Vector2(1.32812, 1)
+texture = ExtResource("1_vcacc")
+
+[node name="bottomUI2" type="Sprite2D" parent="bottomUI"]
+visible = false
+z_index = 2
+position = Vector2(-1.12942, 16)
+scale = Vector2(0.997063, 1)
+texture = ExtResource("1_vcacc")
+
+[node name="UI_Death" parent="." instance=ExtResource("18_6hqox")]
+
+[node name="MainMenu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = 8.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("19_qssi7")
+options = Array[ExtResource("20_hlahx")]([SubResource("Resource_jrvhg"), SubResource("Resource_q3x01"), SubResource("Resource_b7xf6")])
+
+[node name="Logo" type="Sprite2D" parent="MainMenu"]
+position = Vector2(0, -47)
+scale = Vector2(0.186497, 0.186497)
+texture = ExtResource("19_hr1yg")
+
+[node name="mainMenuText" type="RichTextLabel" parent="MainMenu"]
+clip_contents = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -46.0
+offset_top = -2.0
+offset_right = 47.0
+offset_bottom = 69.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("15_nxi4s")
+bbcode_enabled = true
+text = "[center]> Continue <
+New Game
+Options"
+scroll_active = false
+
+[node name="Label" type="RichTextLabel" parent="MainMenu"]
+layout_mode = 0
+offset_left = -155.0
+offset_top = 70.0
+offset_right = -72.0
+offset_bottom = 112.0
+theme = ExtResource("15_nxi4s")
+theme_override_colors/default_color = Color(1, 1, 1, 0.807843)
+theme_override_colors/font_selected_color = Color(1, 1, 1, 1)
+bbcode_enabled = true
+text = "this text will be replaced"
+
+[node name="MenuMusic" type="AudioStreamPlayer2D" parent="MainMenu"]
+position = Vector2(-8, -2)
+stream = ExtResource("23_p7qe8")
+max_distance = 10000.0
+bus = &"Music"
+
+[node name="Options" parent="." instance=ExtResource("23_sv2nb")]
+visible = false
+position = Vector2(161, 120)
+
+[node name="PAUSE" parent="." instance=ExtResource("24_p58jt")]
+visible = false
+
+[node name="TransitionToMain" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ypq5t")
+}
+
+[node name="white" type="Sprite2D" parent="TransitionToMain"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+z_index = 10
+position = Vector2(159.5, 116.5)
+scale = Vector2(1.12813, 1.12444)
+texture = ExtResource("26_4tsov")
+
+[node name="How to play" type="Node2D" parent="."]
+visible = false
+
+[node name="Header" type="RichTextLabel" parent="How to play"]
+offset_left = 2.0
+offset_top = 19.0
+offset_right = 323.0
+offset_bottom = 99.0
+theme = ExtResource("15_nxi4s")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[center]Tips and Tricks"
+metadata/_edit_use_anchors_ = true
+
+[node name="hi" type="RichTextLabel" parent="How to play"]
+offset_left = 6.0
+offset_top = 53.0
+offset_right = 319.0
+offset_bottom = 251.0
+theme = ExtResource("15_nxi4s")
+bbcode_enabled = true
+text = "Press (jump) to jump. 
+- While Lightweight, Birdy can fly forever! 
+- When carrying ores, Birdy can fly three times. 
+
+Press (inventory) to drop ores
+- Tip: Pressing DOWN + (inventory) sets ores down gently 
+- Tip: Ores never disappear - they remain where left 
+
+Hold (drill) to drill blocks
+- Hold DOWN or UP + (drill) to drill in different directions
+- Tip: While drilling, Birdy will never walk off a ledge 
+
+Good luck! "
+
+[node name="SpeedrunTimer" type="Node" parent="."]
+script = ExtResource("27_rs6d6")
+
+[node name="timer text" type="RichTextLabel" parent="SpeedrunTimer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -71.0
+offset_top = -16.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("15_nxi4s")
+bbcode_enabled = true
+
+[node name="credits parent" type="Node2D" parent="."]
+visible = false
+
+[node name="background" type="Sprite2D" parent="credits parent"]
+position = Vector2(158, 100)
+texture = ExtResource("28_tc67a")
+
+[node name="Credits" parent="credits parent" instance=ExtResource("29_llwrf")]
+material = SubResource("CanvasItemMaterial_okkph")
+position = Vector2(168, 0)
+
+[connection signal="NewGame" from="MainMenu" to="." method="_on_main_menu_new_game"]
+[connection signal="press_options" from="MainMenu" to="." method="_on_main_menu_press_options"]
+[connection signal="press_quit" from="MainMenu" to="." method="QuitGame"]
+[connection signal="optionsClosed" from="Options" to="." method="_on_options_options_closed"]
+[connection signal="signal_pause_menu_closed" from="PAUSE" to="." method="_on_pause_signal_pause_menu_closed"]

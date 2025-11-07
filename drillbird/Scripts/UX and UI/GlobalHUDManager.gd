@@ -172,6 +172,7 @@ func SetState(_state:menuStates):
 			MainMenu.Deactivate()
 			OptionsMenu.SetMenuActive(false)
 			PauseMenu.SetActive(false)
+			
 
 			
 			
