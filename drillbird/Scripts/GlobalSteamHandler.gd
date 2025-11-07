@@ -3,12 +3,12 @@ extends Node
 var AppID="3809940"
 
 #Achievement numbers that may need tweaking, so I am putting them here so I can find them all in one place
-@export var stat_ach_days_fastest:int=5
+@export var stat_ach_days_fastest:int=7
 
-@export var stat_ach_speed_fastest:float=15*60
+@export var stat_ach_speed_fastest:float=20*60
 
-@export var stat_ach_pacifist:int=10
-@export var stat_ach_murderer:int=100
+@export var stat_ach_pacifist:int=0
+@export var stat_ach_murderer:int=50
 @export var stat_ach_flower_height_in_tiles:float=90
 
 var count_enemyDeaths:int=0

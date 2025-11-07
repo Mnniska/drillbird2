@@ -1,9 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b03mg83w86ybo"]
 
-[ext_resource type="Script" path="res://Scripts/GlobalSteamHandler.gd" id="1_t6xfb"]
+[ext_resource type="Script" uid="uid://c3y4bnb6eiiwk" path="res://Scripts/GlobalSteamHandler.gd" id="1_t6xfb"]
 
 [node name="SceneSteamHandler" type="Node2D"]
 script = ExtResource("1_t6xfb")
-stat_ach_days_fastest = 7
-stat_ach_speed_fastest = 1200.0
-stat_ach_murderer = 50

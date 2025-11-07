@@ -70,12 +70,11 @@ func DisplayStats():
 	text_statinfo=tr("credits_stats_hatchtime")+" "
 	text_statresult="[color=orange]"+ str(GlobalVariables.currentDay)+"[/color]"+"[p][/p]"
 	
-	#unlock achievement for finishing within 7 days
-	if 	GlobalVariables.currentDay <= SteamHandler.stat_ach_days_fastest:
-		SteamHandler.TryUnlockAchievement("ach_days_fastest")
-	
 	statsarray[0].DisplayStat(text_statinfo,text_statresult)
 	await statsarray[0].displayedStat
+		#unlock achievement for finishing within 7 days
+	if 	GlobalVariables.currentDay <= SteamHandler.stat_ach_days_fastest:
+		SteamHandler.TryUnlockAchievement("ach_days_fastest")
 	
 	text_statinfo=tr("credits_stats_timetaken")+" "
 	text_statresult=HUD.SpeedrunTimer.GetTimerString()
@@ -83,8 +82,6 @@ func DisplayStats():
 	statsarray[1].DisplayStat(text_statinfo,text_statresult)
 	await statsarray[1].displayedStat
 	
-	if DebugShowStats:	#REMOVE!!!
-		GlobalVariables.oresFound=88
 		
 	var percent:float= float(GlobalVariables.oresFound)/float(GlobalVariables.totalOres)
 	
@@ -92,20 +89,23 @@ func DisplayStats():
 	text_statinfo=tr("credits_stats_ores")+" "
 	text_statresult=str(percentInt)+" % "
 	
-	if percentInt>=90:
-		SteamHandler.TryUnlockAchievement("ach_all_ores")		
+
 
 	statsarray[2].DisplayStat(text_statinfo,text_statresult)
 	await statsarray[2].displayedStat
+	if percentInt>=90:
+		SteamHandler.TryUnlockAchievement("ach_all_ores")		
+
 
 	text_statinfo=tr("credits_stats_kills")+" "
 	text_statresult=str(SteamHandler.count_enemyDeaths)
 	
-	if SteamHandler.count_enemyDeaths<=SteamHandler.stat_ach_pacifist:
-		SteamHandler.TryUnlockAchievement("ach_pacifist")
+
 		
 	statsarray[3].DisplayStat(text_statinfo,text_statresult)
 	await statsarray[3].displayedStat
+	if SteamHandler.count_enemyDeaths<=SteamHandler.stat_ach_pacifist:
+		SteamHandler.TryUnlockAchievement("ach_pacifist")
 	
 	statsarray[4].DisplayStat("[center][wave][rainbow]"+tr("credits_stats_continue"),"")	
 	
