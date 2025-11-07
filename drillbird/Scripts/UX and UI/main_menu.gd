@@ -56,7 +56,40 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("jump"):
 		PressButton()
 		PlayMenuSound(menu_sounds.select)
+
+	if isShining:
+		UpdateLogoShine(delta)
+	else:
+		nextShineTimer+=delta
+		if nextShineTimer>timeBetweenShines:
+			isShining=true
+			nextShineTimer=0
+			timeBetweenShines=randf_range(2,6)
+
+var timeForShineToPass:float=0.9
+var shineTimer:float=0
+var nextShineTimer:float=0
+@onready var shine = $Logo/shine
+@onready var shineStartPos:Vector2=shine.position
+@onready var shineEndPos=shineStartPos+Vector2(1000,0)	
+var isShining:bool=false
+var timeBetweenShines:float=3
+
+func UpdateLogoShine(delta:float):
+	shineTimer+=delta
+	var progress= ease(shineTimer/timeForShineToPass,-2)
 	
+	
+	shine.position=lerp(shineStartPos,shineEndPos,progress)
+
+	if progress>=1:
+		isShining=false
+		shine.position=shineStartPos
+		shineTimer=0
+	
+	
+	
+
 
 enum menu_sounds{up,down,select,back,toggle_yes,toggle_no}
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://bxacqh1cbwxw5"]
+[gd_scene load_steps=44 format=3 uid="uid://bxacqh1cbwxw5"]
 
 [ext_resource type="Script" uid="uid://cqw1bn227bamc" path="res://Scripts/UX and UI/GlobalHUDManager.gd" id="1_u1olj"]
 [ext_resource type="Texture2D" uid="uid://cp6xuvmo0rguj" path="res://Art/UI/HUD/UI_BlackBorder.png" id="1_vcacc"]
@@ -22,6 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://bpa8olbvx4ufv" path="res://Art/UI/MainMenu/DrillBird_LOGO.png" id="19_hr1yg"]
 [ext_resource type="Script" uid="uid://c3j2qqqf4p2dl" path="res://Scripts/UX and UI/main_menu.gd" id="19_qssi7"]
 [ext_resource type="Script" uid="uid://kwgl6ngw7cq2" path="res://Scripts/Abstract scripts/abstract_debugMenuOption.gd" id="20_hlahx"]
+[ext_resource type="Texture2D" uid="uid://ctjs8l3o2e6oa" path="res://Scenes/UI/white_slider.png" id="22_dlptc"]
 [ext_resource type="AudioStream" uid="uid://bwynx1ih755ll" path="res://Audio/Music/Drillbird Theme.mp3" id="23_p7qe8"]
 [ext_resource type="PackedScene" uid="uid://bldt1ha11vmuu" path="res://Scenes/UI/menu_options.tscn" id="23_sv2nb"]
 [ext_resource type="PackedScene" uid="uid://bgj42edyan2we" path="res://Scenes/UI/menu_pause.tscn" id="24_p58jt"]
@@ -295,9 +296,19 @@ script = ExtResource("19_qssi7")
 options = Array[ExtResource("20_hlahx")]([SubResource("Resource_jrvhg"), SubResource("Resource_q3x01"), SubResource("Resource_b7xf6")])
 
 [node name="Logo" type="Sprite2D" parent="MainMenu"]
+clip_children = 2
 position = Vector2(0, -47)
 scale = Vector2(0.186497, 0.186497)
 texture = ExtResource("19_hr1yg")
+
+[node name="shine" type="TextureRect" parent="MainMenu/Logo"]
+modulate = Color(0.9490196, 0.9764706, 0.54509807, 0.32156864)
+offset_left = -386.0652
+offset_top = 557.6498
+offset_right = 465.21155
+offset_bottom = 884.67255
+rotation = -2.094392
+texture = ExtResource("22_dlptc")
 
 [node name="mainMenuText" type="RichTextLabel" parent="MainMenu"]
 clip_contents = false
