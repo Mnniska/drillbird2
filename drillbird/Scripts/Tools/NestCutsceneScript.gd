@@ -78,4 +78,6 @@ func Play():
 func AnimFinished():
 	hide()
 	CutsceneComplete.emit()
+	await get_tree().create_timer(0.6).timeout
+	SteamHandler.TryUnlockAchievement("ach_tutorial_finish")
 	pass

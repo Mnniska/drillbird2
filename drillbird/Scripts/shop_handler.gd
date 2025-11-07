@@ -12,7 +12,7 @@ signal ShopClosed
 var shopActive:bool=false
 #playerstats 
 var currentSelection:int=0
-
+var hasOneUpgrade:bool=false
 # Called when the node enters the scene tree for the first time.
 
 func _ready():
@@ -65,6 +65,11 @@ func UpdateShop():
 func CheckShopAchievements():
 	
 	var hasAllUpgrades=true
+	
+	if !hasOneUpgrade:
+		hasOneUpgrade=true
+		SteamHandler.TryUnlockAchievement("ach_first_upgrade")
+	
 	for n in UI_purchasables:
 		if !n.isButton():
 			if n.GetIsMaxedOut():

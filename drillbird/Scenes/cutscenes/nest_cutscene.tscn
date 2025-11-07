@@ -1,6 +1,6 @@
 [gd_scene load_steps=31 format=3 uid="uid://dkq7ywpgbbtsf"]
 
-[ext_resource type="Script" path="res://Scripts/Tools/NestCutsceneScript.gd" id="1_bjev6"]
+[ext_resource type="Script" uid="uid://cpafmy38bse3g" path="res://Scripts/Tools/NestCutsceneScript.gd" id="1_bjev6"]
 [ext_resource type="Texture2D" uid="uid://dhrvhcsf7e45a" path="res://Art/effects/empty.png" id="2_13lbe"]
 [ext_resource type="Texture2D" uid="uid://k6178qlihvk1" path="res://Art/cutscenes/layingEgg/nest_growth1.png" id="3_meie0"]
 [ext_resource type="Texture2D" uid="uid://nl0dhg6x2t0q" path="res://Art/cutscenes/layingEgg/nest_growth2.png" id="4_ddibk"]
@@ -149,9 +149,9 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dqgdt"]
 _data = {
-"RESET": SubResource("Animation_cotuc"),
-"play": SubResource("Animation_2e5p2"),
-"wait": SubResource("Animation_4e8yk")
+&"RESET": SubResource("Animation_cotuc"),
+&"play": SubResource("Animation_2e5p2"),
+&"wait": SubResource("Animation_4e8yk")
 }
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rl2a7"]
@@ -307,7 +307,7 @@ script = ExtResource("1_bjev6")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_dqgdt")
+&"": SubResource("AnimationLibrary_dqgdt")
 }
 
 [node name="nest" type="AnimatedSprite2D" parent="."]
