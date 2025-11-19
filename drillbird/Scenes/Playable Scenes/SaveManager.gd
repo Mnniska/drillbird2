@@ -59,7 +59,7 @@ func ResetSaveData(onlyResetEnemiesAndTiles:bool=false):
 	
 
 
-func SaveGame():
+func SaveGame(showgamesavedtext:bool=true):
 	signal_GameAboutToBeSaved.emit()
 	await get_tree().create_timer(0.02).timeout
 	
@@ -92,7 +92,7 @@ func SaveGame():
 	ResourceSaver.save(PlayerData,save_file_path+save_file_name)
 	print_debug("game saved")
 	
-	if GlobalVariables.currentDay>1:
+	if GlobalVariables.currentDay>1 and showgamesavedtext:
 		Savetext.Activate(GlobalVariables.currentDay)
 	
 	pass
