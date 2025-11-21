@@ -15,7 +15,7 @@ var textbubble=preload("res://Scenes/UI/text_bubble.tscn")
 
 @export var updateInterval:float=2
 var updateCounter:float=0
-var activeDistance:float=16*20
+var activeDistance:float=16*15
 
 var setupComplete:bool=false
 
@@ -140,7 +140,13 @@ func CheckIfSleeping(delta:float):
 		
 		var playerpos= GlobalVariables.GetPlayerPosition()
 		
-		if playerpos.distance_to(global_position) > activeDistance or playerpos==Vector2(0,0):
+		
+		#Added in Nov 2025. Checks the Y distance only to raise chances of enemies placed close together not desyncing. 
+		#Since the game is quite vertical this shouldn't affect performance
+		var playerPosY = Vector2(0,playerpos.y)
+		var enemyPosY=Vector2(0,global_position.y)
+		
+		if playerPosY.distance_to(enemyPosY) > activeDistance or playerpos==Vector2(0,0):
 			enemySleep=true
 		else:
 			enemySleep=false

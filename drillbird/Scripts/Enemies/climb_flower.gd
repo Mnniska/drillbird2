@@ -39,6 +39,18 @@ func _ready() -> void:
 	GlobalVariables.PlayerIsDrillingTileChanged.connect(PLayerDrillingTileChange)
 	heightToGetAchievement=SteamHandler.stat_ach_flower_height_in_tiles
 	
+	
+#Only used by fall block atm lol, nothing else can destroy flowers
+func DestroyFlower():
+	if PlayerAttached:
+		pass
+		#todo: detach player?? lol
+	
+	#todo: could play despawn anim I guess?? ehh
+	
+	queue_free()
+	pass
+
 func PLayerDrillingTileChange(drilling:bool):
 	if !drilling:
 		isBeingNurtured=false

@@ -1,8 +1,8 @@
 [gd_scene load_steps=24 format=3 uid="uid://dt2yrd4gyilr7"]
 
-[ext_resource type="Script" path="res://Scripts/Enemies/FallBlock.gd" id="1_2a7bl"]
-[ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_collidable.gd" id="2_5r5oy"]
-[ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_enemy.gd" id="3_ch1ka"]
+[ext_resource type="Script" uid="uid://b2pc8kpq0lmnc" path="res://Scripts/Enemies/FallBlock.gd" id="1_2a7bl"]
+[ext_resource type="Script" uid="uid://bgy5cf01m25xs" path="res://Scripts/Abstract scripts/abstract_collidable.gd" id="2_5r5oy"]
+[ext_resource type="Script" uid="uid://cokuso80w54cc" path="res://Scripts/Abstract scripts/abstract_enemy.gd" id="3_ch1ka"]
 [ext_resource type="Texture2D" uid="uid://btprkjg6l7i8t" path="res://Art/Objects/Fallblock/fallblock_activated.png" id="4_44cdc"]
 [ext_resource type="Texture2D" uid="uid://uq5gd061j3wq" path="res://Art/Objects/Fallblock/fallblock.png" id="4_pky87"]
 [ext_resource type="PackedScene" uid="uid://2lykflhwivex" path="res://Scenes/observer.tscn" id="5_bl8ye"]
@@ -25,7 +25,6 @@ enemyID = 4
 [sub_resource type="Resource" id="Resource_x2tr8"]
 script = ExtResource("3_ch1ka")
 type = 3
-damage = 1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b510l"]
 size = Vector2(14, 16)
@@ -114,7 +113,7 @@ shape = SubResource("RectangleShape2D_b510l")
 [node name="EnemyCollisionChecker" type="Area2D" parent="."]
 position = Vector2(0, 18)
 collision_layer = 0
-collision_mask = 28
+collision_mask = 284
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyCollisionChecker"]
 position = Vector2(0, -2.5)
