@@ -44,7 +44,6 @@ func _physics_process(delta: float) -> void:
 		if timerText!=null:
 			timerText.text="[right]"+GetTimerString(time)
 
-			
 
 #called from the egg hatch cutscene in HOME
 func finishSpeedrun():
@@ -96,13 +95,19 @@ func GetTimerString(calcTime:float=time)->String:
 	if tenths==1:
 		tenths=0
 	
-	return minuteZeros+str(minutes)+":"+secondZeros+str(seconds)+":"+str(tenths*10)
+	return minuteZeros+str(minutes)+":"+secondZeros+str(seconds)
 	
 pass
 
-#used when loading an old game
+#used when loading an old game - called from savedata node in Main
 func SetCurrentTime(_time:float):
+	
+	#If the current day is >1 and time is 00000, the timer should recognize it's not valid and present itself as such
+	
 	time=_time
+	
+	#Since only used when loading a game, this should be fine. if this is not set, the time won't update
+	speedrunFinished=false
 
 func GetCurrentTime():
 	return time
