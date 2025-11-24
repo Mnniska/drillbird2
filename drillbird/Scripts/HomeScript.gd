@@ -173,8 +173,13 @@ func OreFinishedSelling(amount:int):
 
 func HatchEgg():
 	MusicPlayer.shouldPlayMusic=false
-	Player.hide()
 	
+	#save here so that we preseve the stats
+	GlobalVariables.MainSceneReferenceConnector.mainScene.SaveGame(false)
+	await get_tree().create_timer(0.03).timeout
+	#Adding a timer because apparently saving waits 0.2 seconds before doing its thing lol
+	
+	Player.hide()
 	EggHandler.SetEggState(EggHandler.eggStates.FINALCUTSCENE)
 	state=states.FINALCUTSCENE
 	Camera.StartNewLerp(CameraLerpPosition.position, 0.5)

@@ -165,6 +165,7 @@ func UpdateSize(experience:int):
 	
 	if state<ExperienceRequirements.size():
 		
+
 		var xpProgress= ExperienceRequirements[state]-abs(xp)
 		var progress:float= float(xpProgress)/float(ExperienceRequirements[state])
 		var l = lerpf(StateTargetScales[state],1,progress)	
@@ -175,6 +176,8 @@ func UpdateSize(experience:int):
 	
 	if GetIsEggMaxedOut():
 		SetEggState(eggStates.FINALFORM_NO_HEART)
+		#if maxed out - put birdie at the last sleep position
+		$BirdySleepPositions/birdySleep.position.y=sleepPositions[sleepPositions.size()-1].position.y
 		finalFormEgg.TransitionToFinalForm()
 	
 func _process(delta: float) -> void:

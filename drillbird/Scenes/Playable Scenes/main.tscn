@@ -910,7 +910,6 @@ script = ExtResource("47_igpia")
 menu = Array[ExtResource("48_cl8sw")]([SubResource("Resource_dq3mr"), SubResource("Resource_5ornm"), SubResource("Resource_77at3"), SubResource("Resource_v3nii"), SubResource("Resource_co6uo"), SubResource("Resource_o5w6h"), SubResource("Resource_x06hp"), SubResource("Resource_gh5xl")])
 oreToSpawn = ExtResource("48_0rfc7")
 oreTypeToAssignSpawnedOre = ExtResource("17_ytjr0")
-canEnableDebug = false
 finalHeartOre = ExtResource("22_nstd1")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Camera2D/DebugFunctionality"]

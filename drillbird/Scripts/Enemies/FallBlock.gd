@@ -50,6 +50,13 @@ func _physics_process(delta: float) -> void:
 			if victims !=null:
 				for n in victims:
 			
+					#Handles flower murder
+					if n.GetCollType().type==abstract_collidable.types.FLOWER:
+						n.GetParent().DestroyFlower()
+						continue
+						pass
+			
+					#Makes player go above fallblock
 					if n.GetCollType().type==abstract_collidable.types.PLAYER:
 						n.global_position=self.global_position+Vector2(0,-16) #Hack to ensure player isn't stuck underneath block
 					n.DealDamage(enemyInfo.damage)
@@ -131,6 +138,7 @@ func CheckOverlappingCollisions():
 	#raycast.target_position=raycast.position+Vector2(0,16)
 	raycast.force_raycast_update()
 	
+	#The raycast only checks for TILES to determine if it is within squichable range
 	if  raycast.is_colliding():
 		var distance:float=abs(raycast.global_position.y-raycast.get_collision_point().y)
 		#$Label.text=str(distance)

@@ -49,9 +49,9 @@ func ButtonPressed(_option:menu_option):
 			
 			SoundManager.PlayMenuSound(SoundManager.menu_sounds.toggle_no)
 			var end_time = Time.get_unix_time_from_system() #captures the end time in unix time
-			var elapsed_time = (end_time - GlobalVariables.timeLastSaved) / 60 #this calculates the elapsed time in minutes - divisor will need to be adjusted if you want hours, days, etc.
+			var elapsed_time:int = floori((end_time - GlobalVariables.timeLastSaved) / 60) #this calculates the elapsed time in minutes - divisor will need to be adjusted if you want hours, days, etc.
 			
-			quitInfoText.text=tr("options_quit_warning_part1")+str(floor(elapsed_time))+" "+tr("options_quit_warning_part2")
+			quitInfoText.text=tr("options_quit_warning_part1")+str(elapsed_time)+" "+tr("options_quit_warning_part2")
 			
 			quitInfoText.show()
 			hasClickedQuitOnce=true
