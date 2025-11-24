@@ -13,6 +13,7 @@ typewriteCharsPerSecond = 30.0
 finalchoicetext_erase = "credits_reset_save_data_erasedata"
 finalchoicetext_goback = "credits_reset_save_data_goback"
 statsarray = [NodePath("STATS/stats_message"), NodePath("STATS/stats_message2"), NodePath("STATS/stats_message3"), NodePath("STATS/stats_message4"), NodePath("STATS/stats_message_ CONTINUE")]
+DebugShowStats = true
 
 [node name="bg" type="Sprite2D" parent="."]
 position = Vector2(144, 123)

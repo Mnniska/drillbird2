@@ -30,6 +30,9 @@ var finalChoiceIsToErase:bool=true
 
 @export var DebugShowStats:bool=false
 
+var statsPageBusyLol:bool=false
+#added so that players can't skip stats page, which does not use the IsTypeWriting logic. bad code should clean up but I'm in a bit of a rush
+
 func _ready() -> void:
 	hide()
 	StatsParent.hide()
@@ -59,7 +62,7 @@ func FadeFromWhite():
 	white.hide()
 
 func DisplayStats():
-	
+	statsPageBusyLol=true
 	hidestuff()
 	state=states.info
 	StatsParent.show()
@@ -109,7 +112,9 @@ func DisplayStats():
 	
 	statsarray[4].DisplayStat("[center][wave][rainbow]"+tr("credits_stats_continue"),"")	
 	
+	statsPageBusyLol=false
 #	TypewriteText(statsMessage)
+	
 	
 func hidestuff():
 	SebsMessage.hide()
@@ -140,12 +145,10 @@ func DisplayFinalChoice():
 
 func _process(delta: float) -> void:
 	
-	
-	if Input.is_action_just_pressed("debug_tab"):
-		DisplaySebsMessage()
-	
 	if Input.is_action_just_pressed("jump"):
-		if !isTypeWriting:
+		
+		#Display next set of stats 
+		if !isTypeWriting and !statsPageBusyLol:
 			if state==states.info:
 				DisplayFinalChoice()
 			elif state==states.seb:
