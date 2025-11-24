@@ -286,6 +286,8 @@ func EggCutsceneFinished():
 	await get_tree().create_timer(6).timeout
 	WakeUp(true,false)
 	
+	await get_tree().create_timer(0.6).timeout
+	SteamHandler.TryUnlockAchievement("ach_tutorial_finish")
 	pass
 
 func _on_nest_collider_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
