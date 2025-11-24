@@ -15,8 +15,9 @@ func DisplayStat(text_to_show:String,stat:String,displayInstantly:bool=false):
 		return
 	
 	var charactersShown:int=0
-	var totalCharacters=text_to_show.length()
+	
 	textlabel.text=text_to_show
+	var totalCharacters=textlabel.get_parsed_text().length()
 	
 	while charactersShown<totalCharacters:
 		charactersShown+=1
