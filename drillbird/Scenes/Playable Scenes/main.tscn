@@ -1,4 +1,4 @@
-[gd_scene load_steps=181 format=4 uid="uid://d2wv7igie5stg"]
+[gd_scene load_steps=180 format=4 uid="uid://d2wv7igie5stg"]
 
 [ext_resource type="TileSet" uid="uid://grpd2pyu7pgk" path="res://Resources/MainTileset.tres" id="1_1imtu"]
 [ext_resource type="Script" uid="uid://c0pdu2cqd60yv" path="res://Scenes/Playable Scenes/SaveManager.gd" id="1_iickb"]
@@ -14,8 +14,8 @@
 [ext_resource type="Script" uid="uid://dbfd2nhmjxnsr" path="res://Scripts/block_fragile_manager.gd" id="6_7p02m"]
 [ext_resource type="Resource" uid="uid://d35o56m1lfg6p" path="res://Resources/Economy/ore_region_3.tres" id="6_ehj3h"]
 [ext_resource type="Resource" uid="uid://qb85vcxt0k8u" path="res://Resources/Economy/ore_region_4.tres" id="7_10mi7"]
-[ext_resource type="Shader" uid="uid://blcajf5gur6eq" path="res://Scenes/Playable Scenes/line_move.gdshader" id="7_dxa5l"]
-[ext_resource type="Texture2D" uid="uid://14yxxj65ylm" path="res://Art/UI/dotted_line.png" id="8_kjbu8"]
+[ext_resource type="PackedScene" path="res://Art/effects/demo_line.tscn" id="7_dxa5l"]
+[ext_resource type="PackedScene" uid="uid://dsyfi85u2qe66" path="res://Scenes/Objects and Enemies/Object_Sign.tscn" id="8_kjbu8"]
 [ext_resource type="Script" uid="uid://bmcaxciswx4yo" path="res://Scripts/Abstract scripts/abstract_ore.gd" id="12_d51cc"]
 [ext_resource type="PackedScene" uid="uid://e3titjk1as46" path="res://Scenes/player.tscn" id="12_u5tqu"]
 [ext_resource type="Resource" uid="uid://ban5p7bjd2bj6" path="res://Resources/Economy/ore_region_5.tres" id="12_vb7rx"]
@@ -132,9 +132,6 @@ custom_data_layer_0/name = "dir_dependency"
 custom_data_layer_0/type = 6
 sources/1 = SubResource("TileSetAtlasSource_b7p1b")
 sources/2 = SubResource("TileSetAtlasSource_apsei")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7tnqn"]
-shader = ExtResource("7_dxa5l")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xeuju"]
 size = Vector2(647.5, 728)
@@ -463,14 +460,16 @@ tile_set = ExtResource("1_1imtu")
 
 [node name="demo shenanigans" type="Node" parent="."]
 
-[node name="secret block line left" type="Line2D" parent="demo shenanigans"]
-material = SubResource("ShaderMaterial_7tnqn")
+[node name="demo_line_left" parent="demo shenanigans" instance=ExtResource("7_dxa5l")]
 position = Vector2(320, 1104)
-points = PackedVector2Array(16, 0, 16, 16, 32, 16, 32, 32, 64, 32, 64, 48, 48, 48, 48, 64, 16, 64, 16, 32, 0, 32, 0, 10, 0, 0)
-closed = true
-width = 1.0
-texture = ExtResource("8_kjbu8")
-texture_mode = 1
+points = PackedVector2Array(0, 0, 16, 0, 16, 16, 32, 16, 32, 32, 64, 32, 64, 48, 48, 48, 48, 64, 16, 64, 16, 32, 0, 32)
+
+[node name="demo_line_left2" parent="demo shenanigans" instance=ExtResource("7_dxa5l")]
+position = Vector2(688, 864)
+points = PackedVector2Array(0, 0, 32, 0, 32, -16, 64, -16, 64, 96, 0, 96)
+
+[node name="Sign" parent="demo shenanigans" instance=ExtResource("8_kjbu8")]
+position = Vector2(520, 1144)
 
 [node name="TilemapOres" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AADu/+7/AAAAAAAAAAD9/wQAAAACAAEAAADx//7/AAAGAAEAAADw//7/AAAGAAEAAADP/wcAAAAGAAEAAAAnAEAAAAACAAAAAADL/8UAAAAFAAAAAADd//P/AAABAAEAAAAcAP3/AAAAAAAAAAAbAPb/AAAAAAAAAAAYAAYAAAAAAAAAAADh/wgAAAAGAAAAAADp/wUAAAADAAEAAADz/wEAAAABAAAAAAA=")
@@ -926,7 +925,6 @@ script = ExtResource("47_igpia")
 menu = Array[ExtResource("48_cl8sw")]([SubResource("Resource_dq3mr"), SubResource("Resource_5ornm"), SubResource("Resource_77at3"), SubResource("Resource_v3nii"), SubResource("Resource_co6uo"), SubResource("Resource_o5w6h"), SubResource("Resource_x06hp"), SubResource("Resource_gh5xl")])
 oreToSpawn = ExtResource("48_0rfc7")
 oreTypeToAssignSpawnedOre = ExtResource("17_ytjr0")
-canEnableDebug = false
 finalHeartOre = ExtResource("22_nstd1")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Camera2D/DebugFunctionality"]
@@ -1941,6 +1939,13 @@ limit_top = true
 [node name="CollisionShape2D" parent="WorldScripts/CameraLimiter_hub/AffectedArea" index="0"]
 shape = SubResource("RectangleShape2D_1iuvu")
 
+[node name="CameraLimiter_demo" parent="WorldScripts" instance=ExtResource("87_yr03e")]
+position = Vector2(407, 1002)
+limit_bottom = true
+
+[node name="CollisionShape2D" parent="WorldScripts/CameraLimiter_demo/AffectedArea" index="0"]
+shape = SubResource("RectangleShape2D_1iuvu")
+
 [node name="CameraLimiter2" parent="WorldScripts" instance=ExtResource("87_yr03e")]
 visible = false
 position = Vector2(-1376, 2656)
@@ -2031,4 +2036,5 @@ texture = ExtResource("64_yk8d7")
 [editable path="WorldScripts/CameraLimiter"]
 [editable path="WorldScripts/CameraLimiter/PlayerTeleporter"]
 [editable path="WorldScripts/CameraLimiter_hub"]
+[editable path="WorldScripts/CameraLimiter_demo"]
 [editable path="WorldScripts/CameraLimiter2"]

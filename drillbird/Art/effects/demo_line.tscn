@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://wrwav4gb37ic"]
+
+[ext_resource type="Shader" uid="uid://blcajf5gur6eq" path="res://Scenes/Playable Scenes/line_move.gdshader" id="1_60ymk"]
+[ext_resource type="Texture2D" uid="uid://14yxxj65ylm" path="res://Art/UI/dotted_line.png" id="2_u4fmb"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gj4y0"]
+shader = ExtResource("1_60ymk")
+
+[node name="demo_line_left" type="Line2D"]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_gj4y0")
+points = PackedVector2Array(0, 0, 16, 0, 16, 16, 32, 16, 32, 32, 64, 32, 64, 48, 16, 48, 16, 32, 0, 32)
+closed = true
+width = 1.0
+texture = ExtResource("2_u4fmb")
+texture_mode = 1
+round_precision = 1
