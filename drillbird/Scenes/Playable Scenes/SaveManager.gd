@@ -3,13 +3,17 @@ extends Node
 @onready var TileDestroyer=$TileCrack
 @onready var EnemySpawner=$ObjectSpawner
 @onready var Savetext=$"Camera2D/Day counter"
-@onready var OreSpawner=$TilemapOres
+
 @onready var player = $Player
-@onready var OriginalSpawnPos=$PlayerSpawnLocations/OriginalSpawnPos
 @onready var introCutscene=$IntroCutscene
-@onready var oreAreas=$TilemapOres/OreRegions
-@onready var secret_tilemap:tilemap_secrets_manager=$TileMap_secrets
+@onready var worldSpawner=$WorldSpawner
 signal signal_GameAboutToBeSaved
+
+var OreSpawner
+var secret_tilemap:tilemap_secrets_manager
+var OriginalSpawnPos
+var oreAreas
+
 
 @onready var save_file_path = GlobalVariables.save_file_path
 @onready var save_file_name= GlobalVariables.save_file_name
@@ -132,6 +136,8 @@ func SaveEnemies():
 		PlayerData.enemyTypes.append(n.type)
 		PlayerData.enemyDead.append(n.dead)
 		
+		
+		
 	pass
 
 #Currently not connected - but can be used to calc achievements
@@ -164,7 +170,6 @@ func SaveFlowers():
 	pass
 
 func LoadEnemyPositions():
-	#This is currently NOT USED
 	EnemySpawner.LoadEnemySpawns(PlayerData.enemySpawnPositions,PlayerData.enemyTypes,PlayerData.enemyDead,PlayerData.enemyCurrentSpawnPositions)
 
 func LoadFlowers():
@@ -181,10 +186,29 @@ func LoadDestroyedTiles():
 	TileDestroyer.OnLoadDestroyDugTiles(PlayerData.destroyed_tiles)
 	pass
 
+func SetupWorldReferences():
+	
+	OreSpawner=$WorldSpawn/TilemapOres
+	secret_tilemap=$WorldSpawn/TileMap_secrets
+	OriginalSpawnPos=$WorldSpawn/PlayerSpawnLocations/OriginalSpawnPos
+	oreAreas=$WorldSpawn/TilemapOres/OreRegions
+	
+	pass
+
 func LoadGame():
 	ResourceLoader.CACHE_MODE_IGNORE
 	if ResourceLoader.load(save_file_path+save_file_name)!=null:
 		PlayerData=ResourceLoader.load(save_file_path+save_file_name)
+	
+	
+	#TODO: Spawn the world of the current savefile
+	worldSpawner.SpawnWorld(0)
+	SetupWorldReferences()
+	
+	#We have two different signals here cuz the mainsceneref connector gets their references,
+	#and then other scripts who rely on that gets their references from it.
+	GlobalVariables.SignalWorldHasBeenSpawned(0)
+	GlobalVariables.SignalWorldHasBeenSpawned(1)
 	
 	#Sets time last saved upon starting the game
 	PlayerData.timeLastSaved = Time.get_unix_time_from_system() #captures the initial unix time

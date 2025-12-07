@@ -12,8 +12,8 @@ signal MaterialChanged(terrain:abstract_terrain_info)
 var playerDrillingTile:bool=false
 
 @onready var diggingCountdown: Timer =$DiggingCountdown
-@onready var tilemap: TileMapLayer = get_parent().get_node("TilemapEnvironment")
-@onready var OreSpawner=$"../TilemapOres"
+
+
 @onready var DrillSoundPlayer=$DrillSoundPlayer
 @onready var tileDestroyEffect=preload("res://Scenes/Effects/tile_destroy_effect.tscn")
 @onready var Parent=$".."
@@ -22,6 +22,8 @@ var playerDrillingTile:bool=false
 
 @onready var cracksprite: Sprite2D = $cracksprite
 @export var crack_sprites: Array[Texture]
+var tilemap: TileMapLayer
+var OreSpawner
 
 @export var minimumDigTime:float = 0.6
 @export var GameTerrains:Array[abstract_terrain_info]:
@@ -40,8 +42,14 @@ var tileDrillingActive:bool=false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	print_debug(str(GameTerrains.size()))
-	
+	GlobalVariables.WorldHasBeenSpawned.connect(WorldhasBeenSpawned)
 	pass # Replace with function body.
+
+func WorldhasBeenSpawned():
+	tilemap = GlobalVariables.MainSceneReferenceConnector.ref_environmentTilemap
+	OreSpawner=GlobalVariables.MainSceneReferenceConnector.ref_oreTilemap
+	#todo: Set up oretilemap references here :) 
+	pass
 
 func _process(_delta: float) -> void:
 

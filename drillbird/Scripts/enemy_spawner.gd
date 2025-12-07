@@ -4,11 +4,9 @@ class_name object_spawner
 @export var potentialObjectStrings:Array[String]
 @onready var flowerReference=preload("res://Scenes/Objects and Enemies/climb_flower.tscn")
 
-@onready var gameTilemap:TileMapLayer=$"../TilemapEnvironment" 
-
-@onready var oreTilemap:TileMapLayer=$"../TilemapOres"
-
-@onready var OreAreas=$"../TilemapOres/OreRegions"
+var gameTilemap:TileMapLayer 
+var oreTilemap:TileMapLayer
+var OreAreas
 @onready var tileDestroyer=$"../TileCrack"
 @onready var fragileBlockManager:block_fragile_manager=$Block_FragileManager
 
@@ -23,16 +21,22 @@ func _process(delta: float) -> void:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	GlobalVariables.WorldHasBeenSpawned_secondTick.connect(WorldGenerated)
 	GlobalVariables.SetupComplete.connect(GameStart)
 	pass # Replace with function body.
 
 #called from savemanager
 func GameStart():
 	
+
 	GenerateObjectsAndEnemiesFromTilemap()
 	SpawnAllEnemies()
 
 
+func WorldGenerated():
+	gameTilemap=$"../WorldSpawn/TilemapEnvironment" 
+	oreTilemap=$"../WorldSpawn/TilemapOres"
+	OreAreas=$"../WorldSpawn/TilemapOres/OreRegions"
 	pass
 
 func LoadEnemySpawns(spawnpos:Array[Vector2i],enemytype:Array[int],enemyDead:Array[bool],currentSpawnPos:Array[Vector2i]):
@@ -49,6 +53,9 @@ func LoadEnemySpawns(spawnpos:Array[Vector2i],enemytype:Array[int],enemyDead:Arr
 			
 		enemy.type=enemytype[n]
 		enemy.dead=enemyDead[n]
+		
+
+		
 		loadedEnemiesList.append(enemy)
 	
 	pass
@@ -96,6 +103,10 @@ func GenerateObjectsAndEnemiesFromTilemap():
 					#if so - spawns the enemy with the saved data
 					foundmatch=true
 					newEnemy.dead=enemy.dead
+					
+					if enemy.dead:
+						print_debug("found a dead enemy")
+					
 					newEnemy.currentSpawnLocation=enemy.currentSpawnLocation
 			
 			if !foundmatch: #If no save data found, spawn with default values

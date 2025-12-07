@@ -18,6 +18,8 @@ enum typeEnum{DRILL, INVENTORY, HEALTH, LIGHT}
 enum playerStatusEnum {DIG,SLEEP,SHOP,NEWDAY,MENU}
 signal playerStatusChanged
 signal SetupComplete
+signal WorldHasBeenSpawned
+signal WorldHasBeenSpawned_secondTick
 
 var totalEnemies=0
 var deadEnemies=0
@@ -38,7 +40,15 @@ var useVibration:bool=true:
 		if value!=useVibration:
 			useVibration=value
 			vibrationSettingChanged.emit(useVibration)
-			
+
+func SignalWorldHasBeenSpawned(iteration:int=0):
+	
+	if iteration==0:
+		WorldHasBeenSpawned.emit()
+	
+	if iteration==1:
+		WorldHasBeenSpawned_secondTick.emit()
+
 func ResetSaveData():
 	var newData=abstract_savegame.new()
 	ResourceSaver.save(newData,save_file_path+save_file_name)
