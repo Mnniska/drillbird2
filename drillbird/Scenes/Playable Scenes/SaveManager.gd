@@ -24,6 +24,20 @@ var PlayerData=abstract_savegame.new()
 func _ready() -> void:
 	verify_save_directory(save_file_path)
 	LoadGame()
+	
+	#When starting the game, game should check if there's a previous save
+	#This could be saved in a meta savedata file, OR we could have a checkbox
+	#in each savefile to indicate "last used" 
+	#When loading game - if the world being loaded hasn't been played yet,
+	#the game should generate a new savefile..or I could do that at startup instead, and make as many savefiles as there are worlds..?
+	#Dunno, that might be useful in case I wanna pull info from the world data, 
+	#IE playtimes, completion rate, etc? But that data might suit better in a metafile? 
+	#Maybe a fun next step is to create a "select world" interface accessed from the main menu, 
+	#and have that hook up to this? 
+	#You can do this bud! soon you'll get to design whole new worlds :) 
+
+	
+	
 	LoadDestroyedTiles()
 	
 	SetupMiscGameLogicBeforeStart()
@@ -195,14 +209,15 @@ func SetupWorldReferences():
 	
 	pass
 
-func LoadGame():
+func LoadGame(worldToLoad:int=0):
 	ResourceLoader.CACHE_MODE_IGNORE
 	if ResourceLoader.load(save_file_path+save_file_name)!=null:
 		PlayerData=ResourceLoader.load(save_file_path+save_file_name)
 	
 	
+	
 	#TODO: Spawn the world of the current savefile
-	worldSpawner.SpawnWorld(0)
+	worldSpawner.SpawnWorld(worldToLoad)
 	SetupWorldReferences()
 	
 	#We have two different signals here cuz the mainsceneref connector gets their references,

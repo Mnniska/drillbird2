@@ -17,6 +17,8 @@ func SpawnWorld(world:int):
 	var worldToSpawn = load(WorldPaths[world]) #
 	var node = worldToSpawn.instantiate()
 	$"..".add_child(node)
+	$"..".move_child(node,self.get_index()+1)
+	
 	spawnedWorld=node
 	
 
