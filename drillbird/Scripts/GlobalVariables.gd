@@ -29,8 +29,13 @@ var ghostActive:bool=true
 var displayPopups:bool=true
 var totalOres:int=200
 var oresFound:int=0
-
+var currentWorld:int=0:
+	get:
+		return currentWorld
+	set(value):
+		currentWorld=value
 signal vibrationSettingChanged(value:bool)
+
 
 #various scripts can subscribe to this changing..maybe this is an OK way to do it?
 var useVibration:bool=true:
@@ -48,6 +53,7 @@ func SignalWorldHasBeenSpawned(iteration:int=0):
 	
 	if iteration==1:
 		WorldHasBeenSpawned_secondTick.emit()
+
 
 func ResetSaveData():
 	var newData=abstract_savegame.new()

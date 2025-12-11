@@ -229,7 +229,7 @@ isAction = false
 
 [sub_resource type="Resource" id="Resource_gh5xl"]
 script = ExtResource("48_cl8sw")
-name = "test_achievement"
+name = "Cycle World"
 
 [node name="Node" type="Node"]
 script = ExtResource("1_iickb")

@@ -23,7 +23,7 @@ var PlayerData=abstract_savegame.new()
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	verify_save_directory(save_file_path)
-	LoadGame()
+	LoadGame(GlobalVariables.currentWorld)
 	
 	#When starting the game, game should check if there's a previous save
 	#This could be saved in a meta savedata file, OR we could have a checkbox

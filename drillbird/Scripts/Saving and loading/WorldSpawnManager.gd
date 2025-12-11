@@ -2,13 +2,30 @@ extends Node
 class_name world_spawn_manager
 
 @export var WorldPaths:Array[String]
+@export var CurrentWorld:int=0
+
 var spawnedWorld:Node
 
 var tilemap_environment:TileMapLayer
 var tilemap_ores:TileMapLayer
 var tilemap_background:TileMapLayer
 
-func SpawnWorld(world:int):
+
+
+func CycleWorld():
+
+#only while devving, should prolly move this in future :) 
+	CurrentWorld+=1
+	if CurrentWorld>WorldPaths.size()-1:
+		CurrentWorld=0
+	
+	GlobalVariables.currentWorld=CurrentWorld
+	print_debug("Set world to spawn to world "+str(CurrentWorld))
+	
+
+func SpawnWorld(world:int=0):
+	
+	CurrentWorld=world
 	
 	if WorldPaths.size()<world+1:
 		print_debug("Attempted to load a world that does not exist. Returning without spawning")
