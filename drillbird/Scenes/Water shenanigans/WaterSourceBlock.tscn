@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://vepb6l7dw7ly"]
+
+[ext_resource type="Script" uid="uid://b8ll4b0067f0y" path="res://Scenes/Water shenanigans/Water_Source.gd" id="1_moxqo"]
+[ext_resource type="Texture2D" uid="uid://uq5gd061j3wq" path="res://Art/Objects/Fallblock/fallblock.png" id="2_57cep"]
+
+[node name="WaterSourceBlock" type="Node2D"]
+script = ExtResource("1_moxqo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_57cep")
