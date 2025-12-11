@@ -14,7 +14,7 @@
 [ext_resource type="Script" uid="uid://dbfd2nhmjxnsr" path="res://Scripts/block_fragile_manager.gd" id="6_7p02m"]
 [ext_resource type="Resource" uid="uid://d35o56m1lfg6p" path="res://Resources/Economy/ore_region_3.tres" id="6_ehj3h"]
 [ext_resource type="Resource" uid="uid://qb85vcxt0k8u" path="res://Resources/Economy/ore_region_4.tres" id="7_10mi7"]
-[ext_resource type="PackedScene" path="res://Art/effects/demo_line.tscn" id="7_dxa5l"]
+[ext_resource type="PackedScene" uid="uid://wrwav4gb37ic" path="res://Art/effects/demo_line.tscn" id="7_dxa5l"]
 [ext_resource type="PackedScene" uid="uid://dsyfi85u2qe66" path="res://Scenes/Objects and Enemies/Object_Sign.tscn" id="8_kjbu8"]
 [ext_resource type="Script" uid="uid://bmcaxciswx4yo" path="res://Scripts/Abstract scripts/abstract_ore.gd" id="12_d51cc"]
 [ext_resource type="PackedScene" uid="uid://e3titjk1as46" path="res://Scenes/player.tscn" id="12_u5tqu"]
@@ -925,6 +925,7 @@ script = ExtResource("47_igpia")
 menu = Array[ExtResource("48_cl8sw")]([SubResource("Resource_dq3mr"), SubResource("Resource_5ornm"), SubResource("Resource_77at3"), SubResource("Resource_v3nii"), SubResource("Resource_co6uo"), SubResource("Resource_o5w6h"), SubResource("Resource_x06hp"), SubResource("Resource_gh5xl")])
 oreToSpawn = ExtResource("48_0rfc7")
 oreTypeToAssignSpawnedOre = ExtResource("17_ytjr0")
+canEnableDebug = false
 finalHeartOre = ExtResource("22_nstd1")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Camera2D/DebugFunctionality"]
