@@ -1,12 +1,20 @@
 extends Node2D
 class_name water_piece
 
+var mySpawnedWater:water_piece=null
+var mySpawnedWater_splitterOffshoot:water_piece=null
 
+signal GettingDestroyed
+signal FallingWaterSpawned(water_piece)
 
 enum dir{right,left,up,down}
 var myDir:dir=dir.right
 enum waterType{falling,horizontal,splitter}
 var myType:waterType=waterType.falling
+
+@onready var observer=preload("res://Scenes/observer.tscn")
+
+
 var HP:int=1:
 	get:
 		return HP
@@ -22,7 +30,7 @@ var HP:int=1:
 @export var timeBeforeSplitterSendsAdditionalTendril:float=0.5
 var chosenDirectionForSplitter:dir=dir.up #Not implementeddd
 
-signal GettingDestroyed
+
 
 var tilemap:TileMapLayer
 var posInTilemap:Vector2i
@@ -30,6 +38,12 @@ var posInTilemap:Vector2i
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	tilemap=GlobalVariables.MainSceneReferenceConnector.ref_environmentTilemap
+	var obs:observerScript = observer.instantiate()
+				
+	obs.BlockDestroyed.connect(SelfOff)
+	
+	obs.transform.origin=Vector2(0,16)
+	add_child(obs)
 
 func SetupCheck(_type:waterType,_direction:dir,_hp:int=3):
 	HP=_hp
@@ -37,11 +51,17 @@ func SetupCheck(_type:waterType,_direction:dir,_hp:int=3):
 	myDir=_direction
 	posInTilemap= tilemap.local_to_map(tilemap.to_local(global_position))
 
+
 	SetupAnim()
 	
 	
 	await get_tree().create_timer(0.2).timeout
 	
+	CheckWhichWaterToSpawn()
+
+
+
+func CheckWhichWaterToSpawn():
 	match myType:
 		waterType.falling:
 			if(!IsThereBlockInDirection(dir.down)):
@@ -70,7 +90,6 @@ func SetupCheck(_type:waterType,_direction:dir,_hp:int=3):
 		waterType.splitter:
 
 			HandleSplitter()
-				
 
 func SetupAnim():
 	match myType:
@@ -106,21 +125,32 @@ func HandleSplitter():
 		else:
 			SpawnWaterBlock(dirOpposite,waterType.horizontal,2)
 	
-func GetOppositeDir(_dir:dir)->dir:
-	match _dir:
-		dir.up:
-			return dir.down
-		dir.down:
-			return dir.up
-		dir.left:
-			return dir.right
-		dir.right:
-			return dir.left
+
+
+func ChildSpawnedFallWater(WaterThatSpawnedFaller:water_piece):
 	
-	return dir.right
+	match myType:
+		waterType.horizontal:
+			FallingWaterSpawned.emit()
+		waterType.splitter:
+			if WaterThatSpawnedFaller.position.x<self.position.x:
+				pass
+	
+	#TODO: 
+	#Check if child is in direction of splitter's direction
+	#If so - tell the opposite dir child that source has dried up 
+	#Do opposite if opposite is true
+	#Also need to save both childrens references when spawning children using splitters
+	
+	pass
 
 func SpawnWaterBlock(direction:dir,type:waterType,HP:int=3):
 	var node:water_piece=waterScene.instantiate()
+	
+	#This variable is used to subscribe to if the water block dies, and to call it if THIS water block dies
+	mySpawnedWater=node
+	mySpawnedWater.GettingDestroyed.connect(NextOff)
+	mySpawnedWater.SpawningAsFallWater.connect(ChildSpawnedFallWater)
 	
 	var differingPos:Vector2
 	
@@ -133,6 +163,8 @@ func SpawnWaterBlock(direction:dir,type:waterType,HP:int=3):
 		waterType.splitter:
 			differingPos=Vector2(0,16)
 		waterType.falling:
+			FallingWaterSpawned.emit(self)
+			
 			if myType==waterType.falling:
 				differingPos=Vector2(0,16)
 			if myType==waterType.horizontal or myType==waterType.splitter:
@@ -153,10 +185,50 @@ func SpawnWaterBlock(direction:dir,type:waterType,HP:int=3):
 	pass
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+
+func SourceOff():
+	#The block powering this block has been turned off
+	#Wait 0.2 seconds, turn self off, then queue free
+	await get_tree().create_timer(0.1).timeout
+	SelfOff()
+	
 	pass
 
+func NextOff():
+	#The next water source has been turned off
+	#Do a raycast to see what is next, then spawn a new water piece as correct type
+	
+	#todo: probably not the best call, need to investigate :) 
+	CheckWhichWaterToSpawn()
+	
+	pass
+
+func SelfOff():
+	#This piece becomes crushed or turned off by floor disappearing. 
+	#Destroy self
+	
+	if mySpawnedWater!=null:
+		mySpawnedWater.SourceOff()
+	
+	GettingDestroyed.emit()
+	queue_free()
+	
+	pass
+	
+	
+func GetOppositeDir(_dir:dir)->dir:
+	match _dir:
+		dir.up:
+			return dir.down
+		dir.down:
+			return dir.up
+		dir.left:
+			return dir.right
+		dir.right:
+			return dir.left
+	
+	return dir.right
+	
 func IsThereBlockInDirection(direction:dir,checkBelow:bool=false)->bool:
 	#Uses a raycast to check if there's a block in the given direction
 	#Could also set up a reference to the tilemap and ask it if there's anything there - maybe that's a bit more efficient? 
@@ -181,22 +253,3 @@ func IsThereBlockInDirection(direction:dir,checkBelow:bool=false)->bool:
 		return true
 	
 	return false
-	
-
-func SourceOff():
-	#The block powering this block has been turned off
-	#Wait 0.2 seconds, turn self off, then queue free
-	
-	pass
-
-func NextOff():
-	#The next water source has been turned off
-	#Do a raycast to see what is next, then spawn a new water piece as correct type
-	
-	pass
-
-func SelfOff():
-	#This piece becomes crushed or turned off by floor disappearing. 
-	#Destroy self
-	
-	pass
