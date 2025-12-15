@@ -22,7 +22,6 @@ var HP:int=1:
 		return HP
 	set(value):
 		HP=value
-		debugtext.text=str(HP)
 
 
 @onready var debugtext=$"debug A"
@@ -51,11 +50,27 @@ func SetupCheck(_type:waterType,_direction:dir,_hp:int=3):
 	HP=_hp
 	myType=_type
 	myDir=_direction
+	
+	
+	var text
+	match myDir:
+		dir.left:
+			text="left"
+		dir.right:
+			text="right"
+		dir.down:
+			text="down"
+		dir.up:
+			text="up"
+	
+	debugtext.text=text
+	
 	posInTilemap= tilemap.local_to_map(tilemap.to_local(global_position))
 
 
 	SetupAnim()
-	
+	if _type==waterType.falling:
+		FallingWaterSpawned.emit(self)
 	
 	await get_tree().create_timer(0.2).timeout
 	
@@ -128,16 +143,40 @@ func HandleSplitter():
 		else:
 			SpawnWaterBlock(dirOpposite,waterType.falling,HP,true)
 	
-
+func DespawnWaterChild(killoffshoot:bool):
+	if killoffshoot:
+		if mySpawnedWater_splitterOffshoot!=null:
+			mySpawnedWater_splitterOffshoot.SourceOff(false)
+			mySpawnedWater_splitterOffshoot=null	
+	else:
+		if mySpawnedWater!=null:
+			mySpawnedWater.SourceOff(false)
+			mySpawnedWater=null
 
 func ChildSpawnedFallWater(WaterThatSpawnedFaller:water_piece):
 	
 	match myType:
 		waterType.horizontal:
-			FallingWaterSpawned.emit()
+			FallingWaterSpawned.emit(self)
 		waterType.splitter:
-			if WaterThatSpawnedFaller.position.x<self.position.x:
-				pass
+			
+			if WaterThatSpawnedFaller.global_position.x > global_position.x:
+				if myDir==dir.right:
+					DespawnWaterChild(true)
+					#water is to the right, and mydir is to the right 
+				elif myDir==dir.left:
+					DespawnWaterChild(false)
+			else:
+				if myDir==dir.right:
+					DespawnWaterChild(false)
+					#water is to the right, and mydir is to the right 
+				elif myDir==dir.left:
+					DespawnWaterChild(true)
+			
+
+				
+	
+	#Is the water that spawned in the splitters direction?
 	
 	#TODO: 
 	#Check if child is in direction of splitter's direction
@@ -151,9 +190,19 @@ func SpawnWaterBlock(directionRelativeToParent:dir,childType:waterType,HP:int=3,
 	var node:water_piece=waterScene.instantiate()
 	
 	#This variable is used to subscribe to if the water block dies, and to call it if THIS water block dies
-	mySpawnedWater=node
-	mySpawnedWater.GettingDestroyed.connect(NextOff)
-	mySpawnedWater.FallingWaterSpawned.connect(ChildSpawnedFallWater)
+	
+	
+	#assumes direction only inverses at splitter nodes
+	#Saved so that splitter can destroy the offshoot that does not spawn a faller
+	if inverseDir:
+		mySpawnedWater_splitterOffshoot=node
+		mySpawnedWater_splitterOffshoot.GettingDestroyed.connect(NextOff)
+		mySpawnedWater_splitterOffshoot.FallingWaterSpawned.connect(ChildSpawnedFallWater)
+	else:
+		mySpawnedWater=node
+	
+		mySpawnedWater.GettingDestroyed.connect(NextOff)
+		mySpawnedWater.FallingWaterSpawned.connect(ChildSpawnedFallWater)
 	
 	var differingPos:Vector2
 	
@@ -191,11 +240,11 @@ func SpawnWaterBlock(directionRelativeToParent:dir,childType:waterType,HP:int=3,
 
 
 
-func SourceOff():
+func SourceOff(ShouldDoCallout:bool=true):
 	#The block powering this block has been turned off
 	#Wait 0.2 seconds, turn self off, then queue free
 	await get_tree().create_timer(0.1).timeout
-	SelfOff()
+	SelfOff(ShouldDoCallout)
 	
 	pass
 
@@ -208,14 +257,19 @@ func NextOff():
 	
 	pass
 
-func SelfOff():
+func SelfOff(ShouldDoCallout:bool=true):
 	#This piece becomes crushed or turned off by floor disappearing. 
 	#Destroy self
 	
 	if mySpawnedWater!=null:
 		mySpawnedWater.SourceOff()
 	
-	GettingDestroyed.emit()
+	if mySpawnedWater_splitterOffshoot!=null:
+		mySpawnedWater_splitterOffshoot.SourceOff()
+	
+	if ShouldDoCallout:
+		GettingDestroyed.emit()
+	
 	queue_free()
 	
 	pass

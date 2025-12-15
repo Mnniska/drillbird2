@@ -18,8 +18,13 @@ func _process(delta: float) -> void:
 	if Input.is_physical_key_pressed(KEY_0) and cooldown<=0:
 		cooldown=2
 		SpawnWater()
-	pass
+	
+	if Input.is_physical_key_pressed(KEY_9):
+		DeleteWater()
 
+func DeleteWater():
+	for child in get_children():
+		child.queue_free()
 
 func SpawnWater():
 	var water:water_piece = waterpath.instantiate()

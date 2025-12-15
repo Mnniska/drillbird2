@@ -44,17 +44,16 @@ animations = [{
 
 [node name="WaterPiece" type="Node2D"]
 script = ExtResource("1_kcr7a")
-timeBeforeSplitterSendsAdditionalTendril = 0.1
+timeBeforeSplitterSendsAdditionalTendril = 0.25
 
 [node name="Water anim" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_otuh3")
 animation = &"split"
 
 [node name="debug A" type="Label" parent="."]
-visible = false
 offset_left = -3.0
 offset_top = -4.0
 offset_right = 37.0
 offset_bottom = 19.0
 theme = ExtResource("6_gh7w5")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
