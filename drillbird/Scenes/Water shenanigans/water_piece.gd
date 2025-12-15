@@ -68,9 +68,9 @@ func CheckWhichWaterToSpawn():
 		waterType.falling:
 			if(!IsThereBlockInDirection(dir.down)):
 				if IsThereBlockInDirection(dir.down,true):
-					SpawnWaterBlock(myDir,waterType.splitter)
+					SpawnWaterBlock(dir.down,waterType.splitter)
 				else:
-					SpawnWaterBlock(myDir,waterType.falling)
+					SpawnWaterBlock(dir.down,waterType.falling)
 		waterType.horizontal:
 			
 			if IsThereBlockInDirection(myDir):
@@ -123,9 +123,10 @@ func HandleSplitter():
 	
 	if !IsThereBlockInDirection(dirOpposite):
 		if IsThereBlockInDirection(dirOpposite,true):
-			SpawnWaterBlock(dirOpposite,waterType.falling)
+			#Reverses direction of water block since it's changed dir
+			SpawnWaterBlock(dirOpposite,waterType.horizontal,waterSpreadLength-1,true)
 		else:
-			SpawnWaterBlock(dirOpposite,waterType.horizontal,waterSpreadLength-1)
+			SpawnWaterBlock(dirOpposite,waterType.falling,HP,true)
 	
 
 
@@ -146,7 +147,7 @@ func ChildSpawnedFallWater(WaterThatSpawnedFaller:water_piece):
 	
 	pass
 
-func SpawnWaterBlock(direction:dir,type:waterType,HP:int=3):
+func SpawnWaterBlock(directionRelativeToParent:dir,childType:waterType,HP:int=3,inverseDir:bool=false):
 	var node:water_piece=waterScene.instantiate()
 	
 	#This variable is used to subscribe to if the water block dies, and to call it if THIS water block dies
@@ -156,30 +157,32 @@ func SpawnWaterBlock(direction:dir,type:waterType,HP:int=3):
 	
 	var differingPos:Vector2
 	
-	match type:
-		waterType.horizontal:
-			if myDir==dir.right:
-				differingPos=Vector2(16,0)
-			if myDir==dir.left:
-				differingPos=Vector2(-16,0)
-		waterType.splitter:
+	match directionRelativeToParent:
+		dir.right:
+			differingPos=Vector2(16,0)
+		dir.left:
+			differingPos=Vector2(-16,0)
+		dir.up:
+			pass
+			#This should never happen lol 
+		dir.down:
 			differingPos=Vector2(0,16)
-		waterType.falling:
-			FallingWaterSpawned.emit(self)
-			
-			if myType==waterType.falling:
-				differingPos=Vector2(0,16)
-			if myType==waterType.horizontal or myType==waterType.splitter:
-				if myDir==dir.right:
-					differingPos=Vector2(16,0)
-				if myDir==dir.left:
-					differingPos=Vector2(-16,0)
+	
+	#handle this in child instead? Or..hmm
+	#If I handle it here, gotta account for splitter interrupting itself. 
+	#fuck it lets handle it in child
+			#FallingWaterSpawned.emit(self)
 			
 
 	
 	get_parent().add_child(node)
 	node.position=self.position+differingPos
-	node.SetupCheck(type,direction,HP)
+	
+	var _dir=myDir
+	if inverseDir:
+		_dir=!dir
+	
+	node.SetupCheck(childType,_dir,HP)
 
 
 #	node.position=global_position+GlobalVariables.get

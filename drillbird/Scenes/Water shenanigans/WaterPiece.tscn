@@ -44,6 +44,7 @@ animations = [{
 
 [node name="WaterPiece" type="Node2D"]
 script = ExtResource("1_kcr7a")
+timeBeforeSplitterSendsAdditionalTendril = 0.1
 
 [node name="Water anim" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_otuh3")
