@@ -12,6 +12,8 @@ var myDir:dir=dir.right
 enum waterType{falling,horizontal,splitter}
 var myType:waterType=waterType.falling
 
+
+@export var waterSpreadLength:int=2
 @onready var observer=preload("res://Scenes/observer.tscn")
 
 
@@ -108,7 +110,7 @@ func HandleSplitter():
 	
 	if !IsThereBlockInDirection(myDir):
 		if IsThereBlockInDirection(myDir,true):
-			SpawnWaterBlock(myDir,waterType.horizontal,3)
+			SpawnWaterBlock(myDir,waterType.horizontal,waterSpreadLength)
 		else:
 			SpawnWaterBlock(myDir,waterType.falling)
 	
@@ -123,7 +125,7 @@ func HandleSplitter():
 		if IsThereBlockInDirection(dirOpposite,true):
 			SpawnWaterBlock(dirOpposite,waterType.falling)
 		else:
-			SpawnWaterBlock(dirOpposite,waterType.horizontal,2)
+			SpawnWaterBlock(dirOpposite,waterType.horizontal,waterSpreadLength-1)
 	
 
 
@@ -150,7 +152,7 @@ func SpawnWaterBlock(direction:dir,type:waterType,HP:int=3):
 	#This variable is used to subscribe to if the water block dies, and to call it if THIS water block dies
 	mySpawnedWater=node
 	mySpawnedWater.GettingDestroyed.connect(NextOff)
-	mySpawnedWater.SpawningAsFallWater.connect(ChildSpawnedFallWater)
+	mySpawnedWater.FallingWaterSpawned.connect(ChildSpawnedFallWater)
 	
 	var differingPos:Vector2
 	
