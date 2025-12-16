@@ -11,7 +11,7 @@ enum dir{right,left,up,down}
 var myDir:dir=dir.right
 enum waterType{falling,horizontal,splitter}
 var myType:waterType=waterType.falling
-
+var isFirstFallerTile:bool=false
 var isWaitingToSpreadAdditionalTendril:bool=false
 
 @export var waterSpreadLength:int=2
@@ -47,11 +47,11 @@ func _ready() -> void:
 	obs.transform.origin=Vector2(0,16)
 	add_child(obs)
 
-func SetupCheck(_type:waterType,_direction:dir,_hp:int=3):
+func SetupCheck(_type:waterType,_direction:dir,_hp:int=3,firstFaller:bool=false):
 	HP=_hp
 	myType=_type
 	myDir=_direction
-	
+	isFirstFallerTile=firstFaller
 	
 	var text
 	match myDir:
@@ -70,7 +70,7 @@ func SetupCheck(_type:waterType,_direction:dir,_hp:int=3):
 
 
 	SetupAnim()
-	if _type==waterType.falling:
+	if myType==waterType.falling:
 		FallingWaterSpawned.emit(self)
 	
 	await get_tree().create_timer(0.2).timeout
@@ -112,25 +112,35 @@ func CheckWhichWaterToSpawn():
 func SetupAnim():
 	match myType:
 		waterType.falling:
-			sprite.animation="falling"
+			
+			if isFirstFallerTile:
+				sprite.animation="down_side"
+			else:
+				sprite.animation="falling"
+			
 		waterType.splitter:
 			sprite.animation="split"
 		waterType.horizontal:
-			if myDir==dir.right:
-				sprite.animation="hori_right"
-			if myDir==dir.left:
-				sprite.animation="hori_left"
-	pass
+			sprite.animation="hori_right"
+
+	if myDir==dir.right:
+		sprite.scale=Vector2(1,1)
+
+	if myDir==dir.left:
+		sprite.scale=Vector2(-1,1)
+
 
 func HandleSplitter():
-	
+
+	isWaitingToSpreadAdditionalTendril=true
+		
 	if !IsThereBlockInDirection(myDir):
 		if IsThereBlockInDirection(myDir,true):
 			SpawnWaterBlock(myDir,waterType.horizontal,waterSpreadLength)
 		else:
 			SpawnWaterBlock(myDir,waterType.falling)
 	
-	isWaitingToSpreadAdditionalTendril=true
+
 	await get_tree().create_timer(timeBeforeSplitterSendsAdditionalTendril).timeout
 	#The isWaitingToSpreadAdditionalTendril bool is set if a FALLING water piece is spawned further down in the chain - meaning this additional tendril is not needed
 	if !isWaitingToSpreadAdditionalTendril:
@@ -241,7 +251,11 @@ func SpawnWaterBlock(directionRelativeToParent:dir,childType:waterType,HP:int=3,
 	if inverseDir:
 		_dir=!dir
 	
-	node.SetupCheck(childType,_dir,HP)
+	var isFirstFaller:bool=false
+	if myType!=waterType.falling and childType==waterType.falling:
+		isFirstFaller=true
+	
+	node.SetupCheck(childType,_dir,HP,isFirstFaller)
 
 
 #	node.position=global_position+GlobalVariables.get
