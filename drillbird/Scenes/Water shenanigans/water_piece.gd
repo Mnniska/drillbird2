@@ -12,6 +12,7 @@ var myDir:dir=dir.right
 enum waterType{falling,horizontal,splitter}
 var myType:waterType=waterType.falling
 
+var isWaitingToSpreadAdditionalTendril:bool=false
 
 @export var waterSpreadLength:int=2
 @onready var observer=preload("res://Scenes/observer.tscn")
@@ -129,8 +130,13 @@ func HandleSplitter():
 		else:
 			SpawnWaterBlock(myDir,waterType.falling)
 	
+	isWaitingToSpreadAdditionalTendril=true
 	await get_tree().create_timer(timeBeforeSplitterSendsAdditionalTendril).timeout
-	#Bug: If something happens during timer, it should be interrupted
+	#The isWaitingToSpreadAdditionalTendril bool is set if a FALLING water piece is spawned further down in the chain - meaning this additional tendril is not needed
+	if !isWaitingToSpreadAdditionalTendril:
+		return
+	
+	isWaitingToSpreadAdditionalTendril=false
 	
 	var dirOpposite=GetOppositeDir(myDir)
 
@@ -159,6 +165,10 @@ func ChildSpawnedFallWater(WaterThatSpawnedFaller:water_piece):
 		waterType.horizontal:
 			FallingWaterSpawned.emit(self)
 		waterType.splitter:
+			
+			#Used in Handle splitter function to not send more tendrils out
+			isWaitingToSpreadAdditionalTendril=false
+			
 			
 			if WaterThatSpawnedFaller.global_position.x > global_position.x:
 				if myDir==dir.right:
