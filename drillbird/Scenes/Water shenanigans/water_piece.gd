@@ -72,6 +72,9 @@ func SetupCheck(_type:waterType,_direction:dir,_hp:int=3,firstFaller:bool=false)
 	SetupAnim()
 	if myType==waterType.falling:
 		FallingWaterSpawned.emit(self)
+	#Bug: if a splitter is spawned right after a splitter, the parent splitter wont recognize it does not need to do another tendril
+	#Simply set the bool?	
+
 	
 	await get_tree().create_timer(0.2).timeout
 	
@@ -83,7 +86,7 @@ func CheckWhichWaterToSpawn():
 	match myType:
 		waterType.falling:
 			if(!IsThereBlockInDirection(dir.down)):
-				if IsThereBlockInDirection(dir.down,true):
+				if IsThereBlockInDirection(dir.down,Vector2i(0,1)):
 					SpawnWaterBlock(dir.down,waterType.splitter)
 				else:
 					SpawnWaterBlock(dir.down,waterType.falling)
@@ -96,14 +99,18 @@ func CheckWhichWaterToSpawn():
 			else:
 				#Is there a block under the block I wanna go to? 
 				#If so, spawn a horizontal water blok with -1 HP
-				if IsThereBlockInDirection(myDir,true):
+				if IsThereBlockInDirection(myDir,Vector2i(0,1)):
 					
 					#if water can extend longer, spawn block with 1 less HP
 					if HP>0:
 						SpawnWaterBlock(myDir,waterType.horizontal,HP-1)
 				else:
 					if HP>0:
-						SpawnWaterBlock(myDir,waterType.falling)
+						#Is there a block UNDER the faller block? If so, spawn a splitter instead
+						if IsThereBlockInDirection(myDir,Vector2i(0,2)):
+							SpawnWaterBlock(myDir,waterType.splitter)
+						else:
+							SpawnWaterBlock(myDir,waterType.falling)
 			
 		waterType.splitter:
 
@@ -119,7 +126,10 @@ func SetupAnim():
 				sprite.animation="falling"
 			
 		waterType.splitter:
-			sprite.animation="split"
+			if isFirstFallerTile:
+				sprite.animation="split_side"
+			else:
+				sprite.animation="split"
 		waterType.horizontal:
 			sprite.animation="hori_right"
 
@@ -135,11 +145,13 @@ func HandleSplitter():
 	isWaitingToSpreadAdditionalTendril=true
 		
 	if !IsThereBlockInDirection(myDir):
-		if IsThereBlockInDirection(myDir,true):
+		if IsThereBlockInDirection(myDir,Vector2i(0,1)):
 			SpawnWaterBlock(myDir,waterType.horizontal,waterSpreadLength)
 		else:
-			SpawnWaterBlock(myDir,waterType.falling)
-	
+			if IsThereBlockInDirection(myDir,Vector2i(0,2)):
+				SpawnWaterBlock(myDir,waterType.splitter)
+			else:
+				SpawnWaterBlock(myDir,waterType.falling)
 
 	await get_tree().create_timer(timeBeforeSplitterSendsAdditionalTendril).timeout
 	#The isWaitingToSpreadAdditionalTendril bool is set if a FALLING water piece is spawned further down in the chain - meaning this additional tendril is not needed
@@ -153,11 +165,14 @@ func HandleSplitter():
 	#todo: If the splitter notices that one of the horizontal blocks has spawned a faller, it should abort the other path immediately
 	
 	if !IsThereBlockInDirection(dirOpposite):
-		if IsThereBlockInDirection(dirOpposite,true):
+		if IsThereBlockInDirection(dirOpposite,Vector2i(0,1)):
 			#Reverses direction of water block since it's changed dir
 			SpawnWaterBlock(dirOpposite,waterType.horizontal,waterSpreadLength-1,true)
 		else:
-			SpawnWaterBlock(dirOpposite,waterType.falling,HP,true)
+			if IsThereBlockInDirection(dirOpposite,Vector2i(0,2)):
+				SpawnWaterBlock(dirOpposite,waterType.splitter,HP,true)
+			else:
+				SpawnWaterBlock(dirOpposite,waterType.falling,HP,true)
 	
 func DespawnWaterChild(killoffshoot:bool):
 	if killoffshoot:
@@ -237,6 +252,17 @@ func SpawnWaterBlock(directionRelativeToParent:dir,childType:waterType,HP:int=3,
 		dir.down:
 			differingPos=Vector2(0,16)
 	
+	
+	var isFirstFaller:bool=false
+	if myType!=waterType.falling:
+		if childType==waterType.falling or childType==waterType.splitter:
+			isFirstFaller=true
+		
+	#Position first fallers one step down, skipping a step
+	#this is not gonna be corrct but lets test it
+	if isFirstFaller:
+		differingPos+=Vector2(0,16)
+	
 	#handle this in child instead? Or..hmm
 	#If I handle it here, gotta account for splitter interrupting itself. 
 	#fuck it lets handle it in child
@@ -251,9 +277,7 @@ func SpawnWaterBlock(directionRelativeToParent:dir,childType:waterType,HP:int=3,
 	if inverseDir:
 		_dir=!dir
 	
-	var isFirstFaller:bool=false
-	if myType!=waterType.falling and childType==waterType.falling:
-		isFirstFaller=true
+
 	
 	node.SetupCheck(childType,_dir,HP,isFirstFaller)
 
@@ -312,7 +336,7 @@ func GetOppositeDir(_dir:dir)->dir:
 	
 	return dir.right
 	
-func IsThereBlockInDirection(direction:dir,checkBelow:bool=false)->bool:
+func IsThereBlockInDirection(direction:dir,offset:Vector2i=Vector2i(0,0))->bool:
 	#Uses a raycast to check if there's a block in the given direction
 	#Could also set up a reference to the tilemap and ask it if there's anything there - maybe that's a bit more efficient? 
 	#Let's do raycast for now and see how it does :thumbup: 
@@ -328,8 +352,8 @@ func IsThereBlockInDirection(direction:dir,checkBelow:bool=false)->bool:
 		dir.up:
 			adder=Vector2i(1,-1)
 	
-	if checkBelow:
-		adder+=Vector2i(0,1)
+
+	adder+=offset
 	
 	if tilemap.get_cell_tile_data(posInTilemap+adder):
 		#Does not account for fall blocks atm, whateveaaaa
