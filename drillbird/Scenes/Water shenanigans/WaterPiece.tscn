@@ -60,6 +60,7 @@ sprite_frames = SubResource("SpriteFrames_otuh3")
 animation = &"split_side"
 
 [node name="debug A" type="Label" parent="."]
+visible = false
 offset_left = -3.0
 offset_top = -4.0
 offset_right = 37.0
