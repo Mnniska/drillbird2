@@ -72,8 +72,7 @@ func SetupCheck(_type:waterType,_direction:dir,_hp:int=3,firstFaller:bool=false)
 	SetupAnim()
 	if myType==waterType.falling:
 		FallingWaterSpawned.emit(self)
-	#Bug: if a splitter is spawned right after a splitter, the parent splitter wont recognize it does not need to do another tendril
-	#Simply set the bool?	
+
 
 	
 	await get_tree().create_timer(0.2).timeout
@@ -150,6 +149,7 @@ func HandleSplitter():
 		else:
 			if IsThereBlockInDirection(myDir,Vector2i(0,2)):
 				SpawnWaterBlock(myDir,waterType.splitter)
+				ChildSpawnedFallWater(mySpawnedWater)
 			else:
 				SpawnWaterBlock(myDir,waterType.falling)
 
@@ -171,6 +171,10 @@ func HandleSplitter():
 		else:
 			if IsThereBlockInDirection(dirOpposite,Vector2i(0,2)):
 				SpawnWaterBlock(dirOpposite,waterType.splitter,HP,true)
+				
+				#We call this here instead of in the child to avoid all splitters having to call this, 
+				#creating a chain up the entire water stream
+				ChildSpawnedFallWater(mySpawnedWater_splitterOffshoot)
 			else:
 				SpawnWaterBlock(dirOpposite,waterType.falling,HP,true)
 	
@@ -221,7 +225,7 @@ func ChildSpawnedFallWater(WaterThatSpawnedFaller:water_piece):
 	
 	pass
 
-func SpawnWaterBlock(directionRelativeToParent:dir,childType:waterType,HP:int=3,inverseDir:bool=false):
+func SpawnWaterBlock(positionRelativeToparent:dir,childType:waterType,HP:int=3,inverseDir:bool=false):
 	var node:water_piece=waterScene.instantiate()
 	
 	#This variable is used to subscribe to if the water block dies, and to call it if THIS water block dies
@@ -241,7 +245,7 @@ func SpawnWaterBlock(directionRelativeToParent:dir,childType:waterType,HP:int=3,
 	
 	var differingPos:Vector2
 	
-	match directionRelativeToParent:
+	match positionRelativeToparent:
 		dir.right:
 			differingPos=Vector2(16,0)
 		dir.left:
@@ -263,22 +267,22 @@ func SpawnWaterBlock(directionRelativeToParent:dir,childType:waterType,HP:int=3,
 	if isFirstFaller:
 		differingPos+=Vector2(0,16)
 	
-	#handle this in child instead? Or..hmm
-	#If I handle it here, gotta account for splitter interrupting itself. 
-	#fuck it lets handle it in child
-			#FallingWaterSpawned.emit(self)
+
 			
 
 	
 	get_parent().add_child(node)
-	node.position=self.position+differingPos
-	
-	var _dir=myDir
-	if inverseDir:
-		_dir=!dir
-	
+	node.position=self.position+differingPos	
 
+	#This is what causes issues - there's a "direction relative to parent"
+	#Which is used to POSITION the child, but then therte's the 
+	#water's inherit direction which is currently the same value. 
+	#Atm the direction is set the same as "myDir" but it's a bit confusing 
+	#let's differentiate the values	
 	
+	var _dir:dir=myDir
+	if inverseDir:
+		_dir=GetOppositeDir(_dir)
 	node.SetupCheck(childType,_dir,HP,isFirstFaller)
 
 
