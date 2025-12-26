@@ -161,7 +161,8 @@ func HandleSplitter():
 					SpawnWaterBlock(myDir,waterType.falling)
 		else:
 			#todo: account for other tendril getting fulfilled
-			SpawnObserver(myDir)
+			if myObserver_original==null:
+				SpawnObserver(myDir)
 
 	await get_tree().create_timer(timeBeforeSplitterSendsAdditionalTendril).timeout
 	#The isWaitingToSpreadAdditionalTendril bool is set if a FALLING water piece is spawned further down in the chain - meaning this additional tendril is not needed
@@ -186,7 +187,8 @@ func HandleSplitter():
 				else:
 					SpawnWaterBlock(dirOpposite,waterType.falling,HP,true)
 		else:
-			SpawnObserver(dirOpposite,true)
+			if myObserver_offshoot==null:
+				SpawnObserver(dirOpposite,true)
 var timesDespawnedWaterChild:int=0
 func DespawnWaterChild(killoffshoot:bool):
 	timesDespawnedWaterChild+=1
@@ -235,8 +237,6 @@ func ObserverTriggered():
 
 func SpawnObserver(positionRelativeToWater:dir,isOffshoot:bool=false):
 	
-	#Debug!! 
-	return
 	
 	var obs:observerScript = observer.instantiate()
 	obs.BlockDestroyed.connect(ObserverTriggered)
