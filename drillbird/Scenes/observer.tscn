@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://2lykflhwivex"]
+[gd_scene load_steps=4 format=3 uid="uid://2lykflhwivex"]
 
-[ext_resource type="Script" path="res://Scripts/ObserverScript.gd" id="1_kov7j"]
+[ext_resource type="Script" uid="uid://domp5g6at7mwx" path="res://Scripts/ObserverScript.gd" id="1_kov7j"]
+[ext_resource type="Texture2D" uid="uid://dqsglx1jll3rm" path="res://Art/effects/BirdyLightEffect1.png" id="2_ig8ob"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_h2ev3"]
 radius = 5.0
@@ -11,4 +12,11 @@ collision_mask = 0
 script = ExtResource("1_kov7j")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 10
 shape = SubResource("CircleShape2D_h2ev3")
+debug_color = Color(0.5405545, 0.534435, 0.5318063, 0.41960785)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+z_index = 10
+texture = ExtResource("2_ig8ob")

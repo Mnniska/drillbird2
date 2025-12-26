@@ -280,3 +280,4 @@ func CheckObservers(location:Vector2i):
 	for obj in objects_collide:
 		ObserverRaycast.remove_exception( obj )
 		obj.ObservedBlockDestroyed()
+		#Maybe delete the observer? Or do we need it more? 

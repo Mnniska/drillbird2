@@ -3,9 +3,11 @@ class_name water_piece
 
 var mySpawnedWater:water_piece=null
 var mySpawnedWater_splitterOffshoot:water_piece=null
+var myObserver_original:observerScript #These bad bois are used by horizontal and splitter water to listen to if terrain breaks. I am saving them as variables because the splitter needs to unsubscribe to an observer once an offshoot spawns falling water
+var myObserver_offshoot:observerScript
 
-signal GettingDestroyed
-signal FallingWaterSpawned(water_piece)
+signal GettingDestroyed(water_piece)
+signal FirstFallerSpawned(water_piece)
 
 enum dir{right,left,up,down}
 var myDir:dir=dir.right
@@ -40,18 +42,22 @@ var posInTilemap:Vector2i
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	tilemap=GlobalVariables.MainSceneReferenceConnector.ref_environmentTilemap
-	var obs:observerScript = observer.instantiate()
-				
-	obs.BlockDestroyed.connect(SelfOff)
 	
-	obs.transform.origin=Vector2(0,16)
-	add_child(obs)
 
 func SetupCheck(_type:waterType,_direction:dir,_hp:int=3,firstFaller:bool=false):
 	HP=_hp
 	myType=_type
 	myDir=_direction
 	isFirstFallerTile=firstFaller
+	
+	if firstFaller:
+		FirstFallerSpawned.emit(self)
+	
+	if myType!=waterType.falling:
+		var obs:observerScript = observer.instantiate()
+		obs.BlockDestroyed.connect(SelfOff)
+		obs.transform.origin=Vector2(0,16)
+		add_child(obs)
 	
 	var text
 	match myDir:
@@ -70,8 +76,6 @@ func SetupCheck(_type:waterType,_direction:dir,_hp:int=3,firstFaller:bool=false)
 
 
 	SetupAnim()
-	if myType==waterType.falling:
-		FallingWaterSpawned.emit(self)
 
 
 	
@@ -92,8 +96,8 @@ func CheckWhichWaterToSpawn():
 		waterType.horizontal:
 			
 			if IsThereBlockInDirection(myDir):
-				if HP<1:
-					pass
+				if HP>0:
+					SpawnObserver(myDir)
 					#There's a wall, so water should splash against it
 			else:
 				#Is there a block under the block I wanna go to? 
@@ -142,16 +146,22 @@ func SetupAnim():
 func HandleSplitter():
 
 	isWaitingToSpreadAdditionalTendril=true
+	
+	#If it hasn't already spawned a water in waters dir, spawn one
+	if mySpawnedWater==null:
 		
-	if !IsThereBlockInDirection(myDir):
-		if IsThereBlockInDirection(myDir,Vector2i(0,1)):
-			SpawnWaterBlock(myDir,waterType.horizontal,waterSpreadLength)
-		else:
-			if IsThereBlockInDirection(myDir,Vector2i(0,2)):
-				SpawnWaterBlock(myDir,waterType.splitter)
-				ChildSpawnedFallWater(mySpawnedWater)
+		if !IsThereBlockInDirection(myDir):
+			if IsThereBlockInDirection(myDir,Vector2i(0,1)):
+				SpawnWaterBlock(myDir,waterType.horizontal,waterSpreadLength)
 			else:
-				SpawnWaterBlock(myDir,waterType.falling)
+				if IsThereBlockInDirection(myDir,Vector2i(0,2)):
+					SpawnWaterBlock(myDir,waterType.splitter)
+					
+				else:
+					SpawnWaterBlock(myDir,waterType.falling)
+		else:
+			#todo: account for other tendril getting fulfilled
+			SpawnObserver(myDir)
 
 	await get_tree().create_timer(timeBeforeSplitterSendsAdditionalTendril).timeout
 	#The isWaitingToSpreadAdditionalTendril bool is set if a FALLING water piece is spawned further down in the chain - meaning this additional tendril is not needed
@@ -164,66 +174,94 @@ func HandleSplitter():
 
 	#todo: If the splitter notices that one of the horizontal blocks has spawned a faller, it should abort the other path immediately
 	
-	if !IsThereBlockInDirection(dirOpposite):
-		if IsThereBlockInDirection(dirOpposite,Vector2i(0,1)):
-			#Reverses direction of water block since it's changed dir
-			SpawnWaterBlock(dirOpposite,waterType.horizontal,waterSpreadLength-1,true)
-		else:
-			if IsThereBlockInDirection(dirOpposite,Vector2i(0,2)):
-				SpawnWaterBlock(dirOpposite,waterType.splitter,HP,true)
-				
-				#We call this here instead of in the child to avoid all splitters having to call this, 
-				#creating a chain up the entire water stream
-				ChildSpawnedFallWater(mySpawnedWater_splitterOffshoot)
+	if mySpawnedWater_splitterOffshoot==null:
+		if !IsThereBlockInDirection(dirOpposite):
+			if IsThereBlockInDirection(dirOpposite,Vector2i(0,1)):
+				#Reverses direction of water block since it's changed dir
+				SpawnWaterBlock(dirOpposite,waterType.horizontal,waterSpreadLength-1,true)
 			else:
-				SpawnWaterBlock(dirOpposite,waterType.falling,HP,true)
-	
+				if IsThereBlockInDirection(dirOpposite,Vector2i(0,2)):
+					SpawnWaterBlock(dirOpposite,waterType.splitter,HP,true)
+					
+				else:
+					SpawnWaterBlock(dirOpposite,waterType.falling,HP,true)
+		else:
+			SpawnObserver(dirOpposite,true)
+var timesDespawnedWaterChild:int=0
 func DespawnWaterChild(killoffshoot:bool):
+	timesDespawnedWaterChild+=1
+	
+	debugtext.text=str(timesDespawnedWaterChild)
+	
 	if killoffshoot:
 		if mySpawnedWater_splitterOffshoot!=null:
 			mySpawnedWater_splitterOffshoot.SourceOff(false)
 			mySpawnedWater_splitterOffshoot=null	
+		if myObserver_offshoot!=null:
+			myObserver_offshoot.BlockDestroyed.disconnect(ObserverTriggered)
+			myObserver_offshoot.queue_free()
 	else:
 		if mySpawnedWater!=null:
 			mySpawnedWater.SourceOff(false)
 			mySpawnedWater=null
+		if myObserver_original!=null:
+			myObserver_original.BlockDestroyed.disconnect(ObserverTriggered)
+			myObserver_original.queue_free()
 
 func ChildSpawnedFallWater(WaterThatSpawnedFaller:water_piece):
 	
 	match myType:
 		waterType.horizontal:
-			FallingWaterSpawned.emit(self)
+			FirstFallerSpawned.emit(self)
 		waterType.splitter:
 			
 			#Used in Handle splitter function to not send more tendrils out
 			isWaitingToSpreadAdditionalTendril=false
 			
-			
-			if WaterThatSpawnedFaller.global_position.x > global_position.x:
-				if myDir==dir.right:
-					DespawnWaterChild(true)
-					#water is to the right, and mydir is to the right 
-				elif myDir==dir.left:
-					DespawnWaterChild(false)
+			#Direction can only be left/right
+			#if dir of splitter matches child, it means that the offshoot should be killed
+			if myDir==WaterThatSpawnedFaller.myDir:
+				DespawnWaterChild(true)
 			else:
-				if myDir==dir.right:
-					DespawnWaterChild(false)
-					#water is to the right, and mydir is to the right 
-				elif myDir==dir.left:
-					DespawnWaterChild(true)
+				DespawnWaterChild(false)
 			
 
-				
+			
+
+func ObserverTriggered():
 	
-	#Is the water that spawned in the splitters direction?
-	
-	#TODO: 
-	#Check if child is in direction of splitter's direction
-	#If so - tell the opposite dir child that source has dried up 
-	#Do opposite if opposite is true
-	#Also need to save both childrens references when spawning children using splitters
-	
+	CheckWhichWaterToSpawn()
 	pass
+
+func SpawnObserver(positionRelativeToWater:dir,isOffshoot:bool=false):
+	
+	#Debug!! 
+	return
+	
+	var obs:observerScript = observer.instantiate()
+	obs.BlockDestroyed.connect(ObserverTriggered)
+	
+	
+
+	
+	var offset:Vector2=Vector2(16,0)
+	match positionRelativeToWater:
+		dir.up:
+			offset=Vector2(0,-16)
+		dir.down:
+			offset=Vector2(0,16)
+		dir.left:
+			offset=Vector2(-16,0)
+	
+	obs.transform.origin=offset
+	add_child(obs)
+	
+		#For some reason, destroying observers does not seem to work
+	#Next focus sesh, let's investigate why that is 
+	if isOffshoot:
+		myObserver_offshoot=obs
+	else:
+		myObserver_original=obs
 
 func SpawnWaterBlock(positionRelativeToparent:dir,childType:waterType,HP:int=3,inverseDir:bool=false):
 	var node:water_piece=waterScene.instantiate()
@@ -235,13 +273,12 @@ func SpawnWaterBlock(positionRelativeToparent:dir,childType:waterType,HP:int=3,i
 	#Saved so that splitter can destroy the offshoot that does not spawn a faller
 	if inverseDir:
 		mySpawnedWater_splitterOffshoot=node
-		mySpawnedWater_splitterOffshoot.GettingDestroyed.connect(NextOff)
-		mySpawnedWater_splitterOffshoot.FallingWaterSpawned.connect(ChildSpawnedFallWater)
 	else:
 		mySpawnedWater=node
-	
-		mySpawnedWater.GettingDestroyed.connect(NextOff)
-		mySpawnedWater.FallingWaterSpawned.connect(ChildSpawnedFallWater)
+		
+	node.GettingDestroyed.connect(NextOff)
+	node.FirstFallerSpawned.connect(ChildSpawnedFallWater)
+		#Will having multiple connections fuck some of these up for the splitter?
 	
 	var differingPos:Vector2
 	
@@ -256,6 +293,8 @@ func SpawnWaterBlock(positionRelativeToparent:dir,childType:waterType,HP:int=3,i
 		dir.down:
 			differingPos=Vector2(0,16)
 	
+	if myType!=waterType.horizontal:
+		pass
 	
 	var isFirstFaller:bool=false
 	if myType!=waterType.falling:
@@ -263,7 +302,6 @@ func SpawnWaterBlock(positionRelativeToparent:dir,childType:waterType,HP:int=3,i
 			isFirstFaller=true
 		
 	#Position first fallers one step down, skipping a step
-	#this is not gonna be corrct but lets test it
 	if isFirstFaller:
 		differingPos+=Vector2(0,16)
 	
@@ -300,12 +338,20 @@ func SourceOff(ShouldDoCallout:bool=true):
 	
 	pass
 
-func NextOff():
+func NextOff(waterBeingDestroyed:water_piece):
 	#The next water source has been turned off
 	#Do a raycast to see what is next, then spawn a new water piece as correct type
 	
+	if myType==waterType.splitter:
+		if waterBeingDestroyed==mySpawnedWater:
+			mySpawnedWater=null
+		if waterBeingDestroyed==mySpawnedWater_splitterOffshoot:
+			mySpawnedWater_splitterOffshoot=null
+	
 	#todo: probably not the best call, need to investigate :) 
 	CheckWhichWaterToSpawn()
+	
+
 	
 	pass
 
@@ -320,7 +366,7 @@ func SelfOff(ShouldDoCallout:bool=true):
 		mySpawnedWater_splitterOffshoot.SourceOff()
 	
 	if ShouldDoCallout:
-		GettingDestroyed.emit()
+		GettingDestroyed.emit(self)
 	
 	queue_free()
 	
