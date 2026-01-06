@@ -73,9 +73,11 @@ func _input(event: InputEvent) -> void:
 		if usingGamepad:
 			#Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 			usingGamepad=false
+			print_debug("Gamepad: FALSE")
 	
-	if event is InputEventJoypadButton or InputEventJoypadMotion:
+	if event is InputEventJoypadButton:
 		if !usingGamepad:
 			#Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)	
 			usingGamepad=true	
+			print_debug("Gamepad: TRUE")
 		
