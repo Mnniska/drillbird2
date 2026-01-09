@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bet7x8r105vvu"]
+
+[ext_resource type="Script" uid="uid://dj1s02o0xylyw" path="res://Scripts/Level Generation/level_generator.gd" id="1_1y3nv"]
+
+[node name="LevelGenerator" type="Node2D"]
+script = ExtResource("1_1y3nv")
+
+[node name="Environment" type="TileMapLayer" parent="."]
