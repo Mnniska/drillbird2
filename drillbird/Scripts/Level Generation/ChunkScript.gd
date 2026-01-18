@@ -14,23 +14,30 @@ func _ready() -> void:
 func SaveChunk():
 	
 	var tile:tileinfo=tileinfo.new()
+	
+	var iterator:int=0
 	for pos in tilemap.get_used_cells():
 		
+
 		var tiledata =tilemap.get_cell_tile_data(pos)
-		tile.pos=pos		
-		tile.terrain=tiledata.terrain
+
+		chunkdata.positions.append(pos)
+		chunkdata.terrains.append(tiledata.terrain)
+		
 		if tiledata.has_custom_data("enemy_typ"):
-			tile.enemyType=tiledata.get_custom_data("enemy_typ")
+			chunkdata.enemyTypes.append(tiledata.get_custom_data("enemy_typ"))
+		else:
+			chunkdata.enemyTypes.append(-1)
+
 		if tiledata.has_custom_data("object_type"):
-			tile.objectType=tiledata.get_custom_data("object_type")
-		allTiles.append(tile)
+			chunkdata.objectTypes.append(tiledata.get_custom_data("object_type"))
+		else:
+			chunkdata.objectTypes.append(-1)	
+		
+		iterator+=1
 	
-	
-	chunkdata.chunk=allTiles
-	
-	var res:abstract_chunk = chunkdata.duplicate()
-	
-	res = chunkdata.duplicate()
+	var res:abstract_chunk
+	res=chunkdata.duplicate(true)
 	
 	#need a way to read existing file system so that it generates a unique name when saving?
 	var name:String="chunk_depth"+str(res.depth)
