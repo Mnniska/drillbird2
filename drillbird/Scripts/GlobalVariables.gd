@@ -30,7 +30,7 @@ var ghostActive:bool=true
 var displayPopups:bool=true
 var totalOres:int=200
 var oresFound:int=0
-var currentWorld:int=0:
+var currentWorld:int=1:
 	get:
 		return currentWorld
 	set(value):
