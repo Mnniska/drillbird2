@@ -223,7 +223,7 @@ func SpawnAllEnemies():
 		var spawnPosLocalCoords=gameTilemap.map_to_local(enemyInfo.currentSpawnLocation)
 		
 
-		if node.enemyInfo.type==abstract_enemy.enemyTypes.FALLBLOCK:
+		if node.enemyInfo.type==abstract_enemy.enemyTypes.FALLBLOCK or node.enemyInfo.type==abstract_enemy.enemyTypes.SWORDFISH:
 			node.BlockDestroyer=tileDestroyer
 		
 		node.Setup(enemyInfo)

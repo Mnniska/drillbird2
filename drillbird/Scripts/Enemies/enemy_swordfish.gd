@@ -2,14 +2,16 @@ extends Base_Enemy
 class_name enemy_swordfish
 
 const SPEED = 40.0
-const ATTACK_SPEED=65.0
+const ATTACK_SPEED=85
 const JUMP_VELOCITY = -400.0
+const DAZED_TIME=1.5
 
 enum States{WALK,WAIT,DETECT, ATTACK, DAZED}
 var state:States=States.WALK
 var direction:float=1
 
-@export var timeInWait:float=1
+@export var reactionTime:float=1.2
+@export var timeInWait:float=0.4
 @export var timeBeforeTurning:float=0.2
 var turningCounter:float=0
 var waitCounter=0
@@ -19,6 +21,9 @@ var speed:Vector2=Vector2(0,0)
 @onready var detectionArea=$DetectionArea
 @onready var attackCollisionArea=$ChargeAttackCollider
 @onready var lineOfSightRaycast=$LineOfSightRaycast
+
+#This variable is assigned via the EnemySpawn script when this bad boi is spawned
+var BlockDestroyer:crack_script
 
 func _ready() -> void:
 	GlobalVariables.TileDestroyed.connect(TileWasDestroyed)
@@ -146,13 +151,17 @@ func SpotPlayer():
 		
 		state=States.DETECT
 		anim.animation="detect"
-		await get_tree().create_timer(1).timeout
+		await get_tree().create_timer(reactionTime).timeout
 		state=States.ATTACK
 
 func HitWithAttack(body:Node2D):
 	
 	body.get_path()
 	if body.name=="TilemapEnvironment":
+		
+		if BlockDestroyer!=null:
+			BlockDestroyer.DestroyTileWithGlobalPosition(Vector2(self.global_position.x+16*direction,global_position.y),true)
+		
 		pass
 		#Destroy the tile lol
 	else:
@@ -166,7 +175,7 @@ func HitWithAttack(body:Node2D):
 	state=States.DAZED
 	anim.animation="dazed"
 	velocity.x=0
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(DAZED_TIME).timeout
 	
 	if !CheckIfPlayerIsInDetectionZone():
 		state=States.WALK

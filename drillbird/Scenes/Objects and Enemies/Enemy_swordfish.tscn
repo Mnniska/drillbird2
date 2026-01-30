@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bqnhr2gw84lkg"]
+[gd_scene load_steps=28 format=3 uid="uid://bqnhr2gw84lkg"]
 
 [ext_resource type="Script" uid="uid://dystmcy8khcbi" path="res://Scripts/Enemies/enemy_swordfish.gd" id="1_h5jr6"]
 [ext_resource type="Script" uid="uid://bgy5cf01m25xs" path="res://Scripts/Abstract scripts/abstract_collidable.gd" id="2_50f8v"]
@@ -8,12 +8,17 @@
 [ext_resource type="Texture2D" uid="uid://k54ajvodjahr" path="res://Art/characters/swordfish/swordfish_walk1.png" id="5_woexa"]
 [ext_resource type="Texture2D" uid="uid://i7djyj23d5h7" path="res://Art/characters/swordfish/swordfish_walk2.png" id="6_43ep8"]
 [ext_resource type="Texture2D" uid="uid://7edmyhkmcivj" path="res://Art/characters/swordfish/swordfish_rest.png" id="6_esbpj"]
-[ext_resource type="Texture2D" uid="uid://clcmxqa6m85ff" path="res://Art/characters/swordfish/swordfish_detect.png" id="6_wx2ax"]
+[ext_resource type="Texture2D" uid="uid://cucq1kwk3kanu" path="res://Art/characters/swordfish/swordfish_detect1.png" id="7_p6gtc"]
 [ext_resource type="Texture2D" uid="uid://dgxt04daknbu5" path="res://Art/characters/swordfish/swordfish_walk3.png" id="7_wx2ax"]
 [ext_resource type="Texture2D" uid="uid://ln533704ne4r" path="res://Art/characters/swordfish/swordfish_walk4.png" id="8_esbpj"]
+[ext_resource type="Texture2D" uid="uid://dhsf20rp0ml1j" path="res://Art/characters/swordfish/swordfish_detect2.png" id="8_lalb7"]
+[ext_resource type="Texture2D" uid="uid://uu5jg0mtax6a" path="res://Art/characters/swordfish/swordfish_detect3.png" id="9_50f8v"]
 [ext_resource type="Texture2D" uid="uid://drccc27boudtc" path="res://Art/characters/swordfish/swordfish_run1.png" id="9_sqrq7"]
 [ext_resource type="Texture2D" uid="uid://dvqmed2ngkv1w" path="res://Art/characters/swordfish/swordfish_run2.png" id="10_b41l3"]
+[ext_resource type="Texture2D" uid="uid://dgwly1jbmtlkk" path="res://Art/characters/swordfish/swordfish_detect4.png" id="10_uo4qy"]
+[ext_resource type="Texture2D" uid="uid://cyh5ghgifgtg0" path="res://Art/characters/swordfish/swordfish_detect5.png" id="11_f2lt6"]
 [ext_resource type="Texture2D" uid="uid://bm3gnskecd0hr" path="res://Art/characters/swordfish/swordfish_run3.png" id="11_rnba1"]
+[ext_resource type="Texture2D" uid="uid://b8dd14xvxhco3" path="res://Art/characters/swordfish/swordfish_detect6.png" id="12_n0u81"]
 [ext_resource type="Texture2D" uid="uid://bqoomhxwqgt3n" path="res://Art/characters/swordfish/swordfish_run4.png" id="12_p6gtc"]
 
 [sub_resource type="Resource" id="Resource_woexa"]
@@ -41,7 +46,10 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 5.0,
+"duration": 1.0,
+"texture": ExtResource("5_43ep8")
+}, {
+"duration": 2.0,
 "texture": ExtResource("4_h5jr6")
 }, {
 "duration": 10.0,
@@ -60,12 +68,27 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
+"duration": 2.0,
+"texture": ExtResource("7_p6gtc")
+}, {
 "duration": 1.0,
-"texture": ExtResource("6_wx2ax")
+"texture": ExtResource("8_lalb7")
+}, {
+"duration": 2.0,
+"texture": ExtResource("9_50f8v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_uo4qy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_f2lt6")
+}, {
+"duration": 10.0,
+"texture": ExtResource("12_n0u81")
 }],
 "loop": true,
 "name": &"detect",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -125,16 +148,13 @@ size = Vector2(12, 7)
 size = Vector2(56, 6)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wx2ax"]
-size = Vector2(5, 5)
+size = Vector2(2.75, 5)
 
 [node name="Enemy_Swordfish" type="CharacterBody2D"]
 collision_layer = 8
 script = ExtResource("1_h5jr6")
-timeInWait = null
-timeBeforeTurning = null
 collType = SubResource("Resource_woexa")
 enemyInfo = SubResource("Resource_43ep8")
-updateInterval = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -2)
@@ -143,8 +163,9 @@ shape = SubResource("RectangleShape2D_khmiv")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -3)
 sprite_frames = SubResource("SpriteFrames_n0y4t")
-animation = &"dazed"
+animation = &"detect"
 autoplay = "run"
+frame_progress = 0.8636118
 
 [node name="EnemyCollisionChecker" type="Area2D" parent="."]
 collision_layer = 0
@@ -156,6 +177,7 @@ shape = SubResource("RectangleShape2D_33533")
 debug_color = Color(0.896068, 0.26513, 0.45405, 0.42)
 
 [node name="Label" type="Label" parent="."]
+visible = false
 offset_right = 40.0
 offset_bottom = 23.0
 
@@ -176,7 +198,7 @@ collision_layer = 0
 collision_mask = 25
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ChargeAttackCollider"]
-position = Vector2(7.5, -1)
+position = Vector2(5, -1)
 shape = SubResource("RectangleShape2D_wx2ax")
 
 [node name="LineOfSightRaycast" type="RayCast2D" parent="."]
