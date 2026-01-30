@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://djqskg5qbe1ha"
-path="res://.godot/imported/LevelEditorPlacables.png-733c8e209ddc962a1e627408551df12e.ctex"
+uid="uid://k54ajvodjahr"
+path="res://.godot/imported/swordfish_walk1.png-534af549e85b6c135040763a8165a460.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/LevelEditorPlacables.png"
-dest_files=["res://.godot/imported/LevelEditorPlacables.png-733c8e209ddc962a1e627408551df12e.ctex"]
+source_file="res://Art/characters/swordfish/swordfish_walk1.png"
+dest_files=["res://.godot/imported/swordfish_walk1.png-534af549e85b6c135040763a8165a460.ctex"]
 
 [params]
 

@@ -1,0 +1,189 @@
+[gd_scene load_steps=23 format=3 uid="uid://bqnhr2gw84lkg"]
+
+[ext_resource type="Script" uid="uid://dystmcy8khcbi" path="res://Scripts/Enemies/enemy_swordfish.gd" id="1_h5jr6"]
+[ext_resource type="Script" uid="uid://bgy5cf01m25xs" path="res://Scripts/Abstract scripts/abstract_collidable.gd" id="2_50f8v"]
+[ext_resource type="Script" uid="uid://cokuso80w54cc" path="res://Scripts/Abstract scripts/abstract_enemy.gd" id="3_uo4qy"]
+[ext_resource type="Texture2D" uid="uid://ct2tsc1g72pae" path="res://Art/characters/swordfish/swordfish_fall.png" id="4_h5jr6"]
+[ext_resource type="Texture2D" uid="uid://c2fveko1ahsbb" path="res://Art/characters/swordfish/swordfish_collide.png" id="5_43ep8"]
+[ext_resource type="Texture2D" uid="uid://k54ajvodjahr" path="res://Art/characters/swordfish/swordfish_walk1.png" id="5_woexa"]
+[ext_resource type="Texture2D" uid="uid://i7djyj23d5h7" path="res://Art/characters/swordfish/swordfish_walk2.png" id="6_43ep8"]
+[ext_resource type="Texture2D" uid="uid://7edmyhkmcivj" path="res://Art/characters/swordfish/swordfish_rest.png" id="6_esbpj"]
+[ext_resource type="Texture2D" uid="uid://clcmxqa6m85ff" path="res://Art/characters/swordfish/swordfish_detect.png" id="6_wx2ax"]
+[ext_resource type="Texture2D" uid="uid://dgxt04daknbu5" path="res://Art/characters/swordfish/swordfish_walk3.png" id="7_wx2ax"]
+[ext_resource type="Texture2D" uid="uid://ln533704ne4r" path="res://Art/characters/swordfish/swordfish_walk4.png" id="8_esbpj"]
+[ext_resource type="Texture2D" uid="uid://drccc27boudtc" path="res://Art/characters/swordfish/swordfish_run1.png" id="9_sqrq7"]
+[ext_resource type="Texture2D" uid="uid://dvqmed2ngkv1w" path="res://Art/characters/swordfish/swordfish_run2.png" id="10_b41l3"]
+[ext_resource type="Texture2D" uid="uid://bm3gnskecd0hr" path="res://Art/characters/swordfish/swordfish_run3.png" id="11_rnba1"]
+[ext_resource type="Texture2D" uid="uid://bqoomhxwqgt3n" path="res://Art/characters/swordfish/swordfish_run4.png" id="12_p6gtc"]
+
+[sub_resource type="Resource" id="Resource_woexa"]
+script = ExtResource("2_50f8v")
+type = 1
+enemyID = 6
+metadata/_custom_type_script = "uid://bgy5cf01m25xs"
+
+[sub_resource type="Resource" id="Resource_43ep8"]
+script = ExtResource("3_uo4qy")
+type = 5
+metadata/_custom_type_script = "uid://cokuso80w54cc"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_khmiv"]
+size = Vector2(10, 12)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n0y4t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_43ep8")
+}],
+"loop": true,
+"name": &"collide",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 5.0,
+"texture": ExtResource("4_h5jr6")
+}, {
+"duration": 10.0,
+"texture": ExtResource("6_esbpj")
+}],
+"loop": true,
+"name": &"dazed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_h5jr6")
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_wx2ax")
+}],
+"loop": true,
+"name": &"detect",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_h5jr6")
+}],
+"loop": true,
+"name": &"fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_woexa")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_woexa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_43ep8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_wx2ax")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_esbpj")
+}],
+"loop": true,
+"name": &"run",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_sqrq7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_b41l3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_rnba1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_p6gtc")
+}],
+"loop": true,
+"name": &"sprint",
+"speed": 15.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_33533"]
+size = Vector2(12, 7)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_43ep8"]
+size = Vector2(56, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wx2ax"]
+size = Vector2(5, 5)
+
+[node name="Enemy_Swordfish" type="CharacterBody2D"]
+collision_layer = 8
+script = ExtResource("1_h5jr6")
+timeInWait = null
+timeBeforeTurning = null
+collType = SubResource("Resource_woexa")
+enemyInfo = SubResource("Resource_43ep8")
+updateInterval = null
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_khmiv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -3)
+sprite_frames = SubResource("SpriteFrames_n0y4t")
+animation = &"dazed"
+autoplay = "run"
+
+[node name="EnemyCollisionChecker" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyCollisionChecker"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_33533")
+debug_color = Color(0.896068, 0.26513, 0.45405, 0.42)
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="DetectionArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+position = Vector2(28, 0)
+shape = SubResource("RectangleShape2D_43ep8")
+debug_color = Color(0.91646, 0.2268039, 0.45691037, 0.41960785)
+
+[node name="ChargeAttackCollider" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 25
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ChargeAttackCollider"]
+position = Vector2(7.5, -1)
+shape = SubResource("RectangleShape2D_wx2ax")
+
+[node name="LineOfSightRaycast" type="RayCast2D" parent="."]
+target_position = Vector2(56, 0)
+collision_mask = 17
+
+[connection signal="body_shape_entered" from="EnemyCollisionChecker" to="." method="_on_enemy_collision_checker_body_shape_entered"]
+[connection signal="body_shape_exited" from="EnemyCollisionChecker" to="." method="_on_enemy_collision_checker_body_shape_exited"]
+[connection signal="body_shape_entered" from="DetectionArea" to="." method="_on_detection_area_body_shape_entered"]
+[connection signal="body_shape_entered" from="ChargeAttackCollider" to="." method="_on_charge_attack_collider_body_shape_entered"]

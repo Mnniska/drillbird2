@@ -3,7 +3,7 @@ signal playerAction()
 signal PlayerIsDrillingTileChanged(answer:bool)
 signal signal_IsPlayerInMenuChanged(inMenu:bool)
 signal TileDestroyed
-@export var DebugEnabled:bool=false
+@export var DebugEnabled:bool=true
 
 var save_file_path = "user://save/"
 var save_file_name="DrillbirdPlayerSave.tres"
