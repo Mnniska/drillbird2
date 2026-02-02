@@ -2,9 +2,9 @@ extends Base_Enemy
 class_name enemy_swordfish
 
 const SPEED = 40.0
-const ATTACK_SPEED=85
+const ATTACK_SPEED=120
 const JUMP_VELOCITY = -400.0
-const DAZED_TIME=1.5
+const DAZED_TIME=2
 
 enum States{WALK,WAIT,DETECT, ATTACK, DAZED}
 var state:States=States.WALK
@@ -176,6 +176,8 @@ func HitWithAttack(body:Node2D):
 	anim.animation="dazed"
 	velocity.x=0
 	await get_tree().create_timer(DAZED_TIME).timeout
+	
+	direction=direction*-1
 	
 	if !CheckIfPlayerIsInDetectionZone():
 		state=States.WALK

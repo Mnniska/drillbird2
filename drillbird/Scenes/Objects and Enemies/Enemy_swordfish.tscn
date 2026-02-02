@@ -1,19 +1,25 @@
-[gd_scene load_steps=27 format=3 uid="uid://bqnhr2gw84lkg"]
+[gd_scene load_steps=33 format=3 uid="uid://bqnhr2gw84lkg"]
 
 [ext_resource type="Script" uid="uid://dystmcy8khcbi" path="res://Scripts/Enemies/enemy_swordfish.gd" id="1_h5jr6"]
 [ext_resource type="Script" uid="uid://bgy5cf01m25xs" path="res://Scripts/Abstract scripts/abstract_collidable.gd" id="2_50f8v"]
 [ext_resource type="Script" uid="uid://cokuso80w54cc" path="res://Scripts/Abstract scripts/abstract_enemy.gd" id="3_uo4qy"]
 [ext_resource type="Texture2D" uid="uid://ct2tsc1g72pae" path="res://Art/characters/swordfish/swordfish_fall.png" id="4_h5jr6"]
 [ext_resource type="Texture2D" uid="uid://c2fveko1ahsbb" path="res://Art/characters/swordfish/swordfish_collide.png" id="5_43ep8"]
+[ext_resource type="Texture2D" uid="uid://gfejca7tyce7" path="res://Art/characters/swordfish/swordfish_collide1.png" id="5_n0u81"]
 [ext_resource type="Texture2D" uid="uid://k54ajvodjahr" path="res://Art/characters/swordfish/swordfish_walk1.png" id="5_woexa"]
 [ext_resource type="Texture2D" uid="uid://i7djyj23d5h7" path="res://Art/characters/swordfish/swordfish_walk2.png" id="6_43ep8"]
-[ext_resource type="Texture2D" uid="uid://7edmyhkmcivj" path="res://Art/characters/swordfish/swordfish_rest.png" id="6_esbpj"]
+[ext_resource type="Texture2D" uid="uid://c5p6tf6jn66tk" path="res://Art/characters/swordfish/swordfish_collide2.png" id="6_txxw4"]
+[ext_resource type="Texture2D" uid="uid://dyop755ey0rvy" path="res://Art/characters/swordfish/swordfish_collide3.png" id="7_7u3bd"]
 [ext_resource type="Texture2D" uid="uid://cucq1kwk3kanu" path="res://Art/characters/swordfish/swordfish_detect1.png" id="7_p6gtc"]
 [ext_resource type="Texture2D" uid="uid://dgxt04daknbu5" path="res://Art/characters/swordfish/swordfish_walk3.png" id="7_wx2ax"]
+[ext_resource type="Texture2D" uid="uid://djvndtpgxrbdx" path="res://Art/characters/swordfish/swordfish_collide4.png" id="8_8mbnx"]
 [ext_resource type="Texture2D" uid="uid://ln533704ne4r" path="res://Art/characters/swordfish/swordfish_walk4.png" id="8_esbpj"]
 [ext_resource type="Texture2D" uid="uid://dhsf20rp0ml1j" path="res://Art/characters/swordfish/swordfish_detect2.png" id="8_lalb7"]
 [ext_resource type="Texture2D" uid="uid://uu5jg0mtax6a" path="res://Art/characters/swordfish/swordfish_detect3.png" id="9_50f8v"]
+[ext_resource type="Texture2D" uid="uid://bvh8rlryji5so" path="res://Art/characters/swordfish/swordfish_collide5.png" id="9_80323"]
+[ext_resource type="Texture2D" uid="uid://cb3ys2dhqcb6t" path="res://Art/characters/swordfish/swordfish_collide6.png" id="10_m6kvb"]
 [ext_resource type="Texture2D" uid="uid://dgwly1jbmtlkk" path="res://Art/characters/swordfish/swordfish_detect4.png" id="10_uo4qy"]
+[ext_resource type="Texture2D" uid="uid://bsw6v1vnd0qwp" path="res://Art/characters/swordfish/swordfish_collide7.png" id="11_07jce"]
 [ext_resource type="Texture2D" uid="uid://cyh5ghgifgtg0" path="res://Art/characters/swordfish/swordfish_detect5.png" id="11_f2lt6"]
 [ext_resource type="Texture2D" uid="uid://b8dd14xvxhco3" path="res://Art/characters/swordfish/swordfish_detect6.png" id="12_n0u81"]
 [ext_resource type="Texture2D" uid="uid://qfaih4ym46h4" path="res://Art/characters/swordfish/swordfish_fly1.png" id="17_rnba1"]
@@ -34,6 +40,15 @@ metadata/_custom_type_script = "uid://cokuso80w54cc"
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_khmiv"]
 size = Vector2(10, 12)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_33533"]
+size = Vector2(12, 7)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_43ep8"]
+size = Vector2(56, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wx2ax"]
+size = Vector2(2.75, 5)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_n0y4t"]
 animations = [{
 "frames": [{
@@ -46,13 +61,25 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("5_43ep8")
+"texture": ExtResource("5_n0u81")
 }, {
 "duration": 2.0,
-"texture": ExtResource("4_h5jr6")
+"texture": ExtResource("6_txxw4")
 }, {
-"duration": 10.0,
-"texture": ExtResource("6_esbpj")
+"duration": 1.0,
+"texture": ExtResource("7_7u3bd")
+}, {
+"duration": 3.0,
+"texture": ExtResource("8_8mbnx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_80323")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_m6kvb")
+}, {
+"duration": 3.0,
+"texture": ExtResource("11_07jce")
 }],
 "loop": true,
 "name": &"dazed",
@@ -137,15 +164,6 @@ animations = [{
 "speed": 15.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_33533"]
-size = Vector2(12, 7)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_43ep8"]
-size = Vector2(56, 6)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wx2ax"]
-size = Vector2(2.75, 5)
-
 [node name="Enemy_Swordfish" type="CharacterBody2D"]
 collision_layer = 8
 script = ExtResource("1_h5jr6")
@@ -155,13 +173,6 @@ enemyInfo = SubResource("Resource_43ep8")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_khmiv")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -3)
-sprite_frames = SubResource("SpriteFrames_n0y4t")
-animation = &"sprint"
-autoplay = "run"
-frame_progress = 0.23853683
 
 [node name="EnemyCollisionChecker" type="Area2D" parent="."]
 collision_layer = 0
@@ -200,6 +211,13 @@ shape = SubResource("RectangleShape2D_wx2ax")
 [node name="LineOfSightRaycast" type="RayCast2D" parent="."]
 target_position = Vector2(56, 0)
 collision_mask = 17
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -3)
+sprite_frames = SubResource("SpriteFrames_n0y4t")
+animation = &"dazed"
+autoplay = "run"
+frame_progress = 0.29488558
 
 [connection signal="body_shape_entered" from="EnemyCollisionChecker" to="." method="_on_enemy_collision_checker_body_shape_entered"]
 [connection signal="body_shape_exited" from="EnemyCollisionChecker" to="." method="_on_enemy_collision_checker_body_shape_exited"]
