@@ -183,10 +183,11 @@ collType = SubResource("Resource_woexa")
 enemyInfo = SubResource("Resource_43ep8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -2)
+position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_khmiv")
 
 [node name="EnemyCollisionChecker" type="Area2D" parent="."]
+position = Vector2(0, 3)
 collision_layer = 0
 collision_mask = 16
 
@@ -201,8 +202,10 @@ offset_right = 40.0
 offset_bottom = 23.0
 
 [node name="Node2D" type="Node2D" parent="."]
+position = Vector2(0, 3)
 
 [node name="DetectionArea" type="Area2D" parent="."]
+position = Vector2(0, 3)
 collision_layer = 0
 collision_mask = 16
 monitorable = false
@@ -213,6 +216,7 @@ shape = SubResource("RectangleShape2D_43ep8")
 debug_color = Color(0.91646, 0.2268039, 0.45691037, 0.41960785)
 
 [node name="ChargeAttackCollider" type="Area2D" parent="."]
+position = Vector2(0, 3)
 collision_layer = 0
 collision_mask = 25
 
@@ -221,11 +225,11 @@ position = Vector2(5, -1)
 shape = SubResource("RectangleShape2D_wx2ax")
 
 [node name="LineOfSightRaycast" type="RayCast2D" parent="."]
+position = Vector2(0, 3)
 target_position = Vector2(56, 0)
 collision_mask = 17
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -3)
 sprite_frames = SubResource("SpriteFrames_n0y4t")
 animation = &"fall"
 autoplay = "run"

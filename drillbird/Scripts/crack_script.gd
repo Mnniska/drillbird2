@@ -169,16 +169,18 @@ func OnLoadDestroyDugTiles(tiles:Array[Vector2i]):
 	
 	pass
 
-func DestroyTileWithGlobalPosition(global_pos:Vector2,playEffect:bool):
+func DestroyTileWithGlobalPosition(global_pos:Vector2,playEffect:bool,allowSolidDestruction:bool=false):
 	var tilemapPos= tilemap.local_to_map(tilemap.to_local(global_pos))
-	return DestroyTile(tilemapPos,playEffect)
+	return DestroyTile(tilemapPos,playEffect,allowSolidDestruction)
 	
 	pass
 
-func DestroyTile(position_in_grid:Vector2i,playEffect:bool):
+func DestroyTile(position_in_grid:Vector2i,playEffect:bool,allowSolidDestruction:bool=false):
 	
 	var t =tilemap.get_cell_tile_data(position_in_grid)
-	if t==null or t.terrain==0:
+	if t==null:
+		return false
+	if t.terrain==0 and !allowSolidDestruction:
 		return false
 	
 	if playEffect:

@@ -197,7 +197,20 @@ func CheckIfPlayerIsInDetectionZone():
 				return true
 	
 	return false
+
+func TurnEnemyOff(hideInstantly:bool=true):
+	if hideInstantly:
+		hide()
+	enemyCollider.set_deferred("disabled",true)
+	enemyCollCheck.set_deferred("disabled",true)
+	enemyCollCheck.set_deferred("monitoring",false)
 	
+	attackCollisionArea.set_deferred("disabled",true)
+	attackCollisionArea.set_deferred("monitoring",false)
+	
+	#yo couldn't we just destroy the enemy here? It's weird that we're just hiding it imo
+	
+	velocity=Vector2(0,0)	
 
 func _on_enemy_collision_checker_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
 	if body==$".":
