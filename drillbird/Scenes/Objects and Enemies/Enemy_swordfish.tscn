@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://bqnhr2gw84lkg"]
+[gd_scene load_steps=36 format=3 uid="uid://bqnhr2gw84lkg"]
 
 [ext_resource type="Script" uid="uid://dystmcy8khcbi" path="res://Scripts/Enemies/enemy_swordfish.gd" id="1_h5jr6"]
 [ext_resource type="Script" uid="uid://bgy5cf01m25xs" path="res://Scripts/Abstract scripts/abstract_collidable.gd" id="2_50f8v"]
@@ -24,7 +24,10 @@
 [ext_resource type="Texture2D" uid="uid://b8dd14xvxhco3" path="res://Art/characters/swordfish/swordfish_detect6.png" id="12_n0u81"]
 [ext_resource type="Texture2D" uid="uid://qfaih4ym46h4" path="res://Art/characters/swordfish/swordfish_fly1.png" id="17_rnba1"]
 [ext_resource type="Texture2D" uid="uid://dxxvms6crjn6e" path="res://Art/characters/swordfish/swordfish_fly2.png" id="18_p6gtc"]
+[ext_resource type="Texture2D" uid="uid://divkrvajaawth" path="res://Art/characters/swordfish/swordfish_fall1.png" id="19_8mbnx"]
 [ext_resource type="Texture2D" uid="uid://dx6u6iyycamr1" path="res://Art/characters/swordfish/swordfish_fly3.png" id="19_lalb7"]
+[ext_resource type="Texture2D" uid="uid://8bjddgxt7b6n" path="res://Art/characters/swordfish/swordfish_fall2.png" id="20_80323"]
+[ext_resource type="Texture2D" uid="uid://jibw85usksq8" path="res://Art/characters/swordfish/swordfish_fall3.png" id="21_m6kvb"]
 
 [sub_resource type="Resource" id="Resource_woexa"]
 script = ExtResource("2_50f8v")
@@ -118,11 +121,20 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_h5jr6")
+"texture": ExtResource("19_8mbnx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_80323")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_m6kvb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_80323")
 }],
 "loop": true,
 "name": &"fall",
-"speed": 5.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -215,9 +227,9 @@ collision_mask = 17
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -3)
 sprite_frames = SubResource("SpriteFrames_n0y4t")
-animation = &"dazed"
+animation = &"fall"
 autoplay = "run"
-frame_progress = 0.29488558
+frame_progress = 0.024707794
 
 [connection signal="body_shape_entered" from="EnemyCollisionChecker" to="." method="_on_enemy_collision_checker_body_shape_entered"]
 [connection signal="body_shape_exited" from="EnemyCollisionChecker" to="." method="_on_enemy_collision_checker_body_shape_exited"]

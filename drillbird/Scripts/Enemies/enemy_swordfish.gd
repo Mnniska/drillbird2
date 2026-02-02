@@ -117,6 +117,7 @@ func _physics_process(delta: float) -> void:
 	
 	if isFalling:
 		animToPlay="fall"
+		velocity.x=velocity.x*0.95
 	
 	
 	positionLastFrame=position
