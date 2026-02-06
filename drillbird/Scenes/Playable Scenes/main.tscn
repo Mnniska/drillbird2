@@ -239,7 +239,7 @@ script = ExtResource("2_kx4x1")
 
 [node name="WorldSpawner" type="Node" parent="."]
 script = ExtResource("3_6iiac")
-WorldPaths = Array[String](["res://Scenes/Worlds/world_0.tscn", "res://Scenes/Worlds/world_1.tscn"])
+WorldPaths = Array[String](["res://Scenes/Worlds/world_0.tscn", "res://Scenes/Worlds/world_1.tscn", "res://Scenes/Worlds/world_TryingMultipleNests.tscn"])
 
 [node name="ObjectSpawner" type="Node2D" parent="."]
 script = ExtResource("53_0clb6")

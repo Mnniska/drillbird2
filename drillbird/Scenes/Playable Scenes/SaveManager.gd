@@ -23,7 +23,8 @@ var PlayerData=abstract_savegame.new()
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	verify_save_directory(save_file_path)
-	LoadGame(GlobalVariables.currentWorld)
+	LoadGame(-1)
+	#Todo: load based on current savefile
 	
 	#When starting the game, game should check if there's a previous save
 	#This could be saved in a meta savedata file, OR we could have a checkbox
@@ -209,7 +210,7 @@ func SetupWorldReferences():
 	
 	pass
 
-func LoadGame(worldToLoad:int=0):
+func LoadGame(worldToLoad:int=-1):
 	ResourceLoader.CACHE_MODE_IGNORE
 	if ResourceLoader.load(save_file_path+save_file_name)!=null:
 		PlayerData=ResourceLoader.load(save_file_path+save_file_name)
@@ -217,6 +218,8 @@ func LoadGame(worldToLoad:int=0):
 	
 	
 	#TODO: Spawn the world of the current savefile
+	if worldToLoad==-1:
+		worldToLoad=worldSpawner.CurrentWorld
 	worldSpawner.SpawnWorld(worldToLoad)
 	SetupWorldReferences()
 	

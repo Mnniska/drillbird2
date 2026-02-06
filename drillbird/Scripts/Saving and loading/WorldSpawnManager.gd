@@ -2,7 +2,8 @@ extends Node
 class_name world_spawn_manager
 
 @export var WorldPaths:Array[String]
-@export var CurrentWorld:int=0
+@export var CurrentWorld:int=2
+
 
 var spawnedWorld:Node
 
