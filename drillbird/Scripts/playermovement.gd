@@ -331,6 +331,13 @@ func GetUp():
 		isgettingup=false
 	pass
 
+func RechargeCrystalActivated():
+	jumpsMade=0
+	for index in jump_crystals.size():
+		jump_crystals[index].show()
+		if index+1>maxJumps-jumpsMade:
+			jump_crystals[index].hide()
+
 func RegularMovement(delta:float,currentAnim:String):
 	var newanim=currentAnim
 	
@@ -799,7 +806,8 @@ func _on_detector_body_entered(body: Node2D) -> void:
 	if collider.type==collider.types.FLOWER:
 		closeFlowers.append(body.GetParent())
 
-				
+
+
 func CreateInfoBubble(text:String):
 	if !GlobalVariables.displayPopups:
 		return
