@@ -332,11 +332,9 @@ func GetUp():
 	pass
 
 func RechargeCrystalActivated():
-	jumpsMade=0
+	jumpsMade=1
 	for index in jump_crystals.size():
 		jump_crystals[index].show()
-		if index+1>maxJumps-jumpsMade:
-			jump_crystals[index].hide()
 
 func RegularMovement(delta:float,currentAnim:String):
 	var newanim=currentAnim
@@ -391,11 +389,13 @@ func RegularMovement(delta:float,currentAnim:String):
 			justJumped=true
 			
 			if heavy:
+
 				for index in jump_crystals.size():
 					jump_crystals[index].show()
 					if index+1>maxJumps-jumpsMade:
 						jump_crystals[index].hide()
-				jumpsMade+=1
+				jumpsMade+=1				
+				
 			else:
 				SetLightEffectActive(true)
 				for n in jump_crystals:
