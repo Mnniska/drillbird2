@@ -22,13 +22,28 @@ var speed:Vector2=Vector2(0,0)
 @onready var attackCollisionArea=$ChargeAttackCollider
 @onready var lineOfSightRaycast=$LineOfSightRaycast
 
+@onready var tileBelowRaycast=$LedgeChecker/TileBelowRaycast
+
+
 #This variable is assigned via the EnemySpawn script when this bad boi is spawned
 var BlockDestroyer:crack_script
 
 func _ready() -> void:
 	GlobalVariables.TileDestroyed.connect(TileWasDestroyed)
 	
+func DebugShowMessage(text:String):
 	
+	var textBubbleInstance=textbubble.instantiate()
+	textBubbleInstance.Setup(abstract_textEffect.effectEnum.STILL,text_bubble.behaviourEnum.FADE)
+	textBubbleInstance.MoveUp=true
+	textBubbleInstance.UseTypewriteEffect=false
+
+	get_parent().add_child(textBubbleInstance)
+	textBubbleInstance.global_position=global_position+Vector2(0,-16)
+	
+	textBubbleInstance.ShowText(text)
+	
+	pass
 	
 	
 func TileWasDestroyed():
@@ -132,6 +147,7 @@ func UpdateAnimations(_anim:String):
 		detectionArea.scale.x=direction
 		attackCollisionArea.scale.x=direction
 		lineOfSightRaycast.scale.x=direction
+		$LedgeChecker.scale.x=direction
 		
 	pass
 
@@ -238,5 +254,19 @@ func _on_charge_attack_collider_body_shape_entered(body_rid: RID, body: Node2D, 
 	
 	HitWithAttack(body)
 
+	
+	pass # Replace with function body.
+
+
+
+func _on_ledge_checker_body_exited(body: Node2D) -> void:
+
+	if !tileBelowRaycast.get_collider():
+	
+		if state==States.WALK:
+			direction=direction*-1
+			state=States.WAIT
+			velocity.x=0
+	
 	
 	pass # Replace with function body.

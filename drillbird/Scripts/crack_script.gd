@@ -192,8 +192,8 @@ func DestroyTile(position_in_grid:Vector2i,playEffect:bool,allowSolidDestruction
 	
 	var cells:Array[Vector2i]
 	cells.append(position_in_grid)
-	tilemap.set_cells_terrain_connect(cells, 0, 0,false)
-	tilemap.set_cell (position_in_grid,-1,Vector2i(-1,-1),-1)
+	#tilemap.set_cells_terrain_connect(cells, 0, 0,false)
+	#tilemap.set_cell (position_in_grid,-1,Vector2i(-1,-1),-1)
 	tilemap.set_cells_terrain_connect(cells, 0, -1,false)
 	TileDestroyed.emit(position_in_grid,tilemap)
 
