@@ -41,7 +41,7 @@ type = 5
 metadata/_custom_type_script = "uid://cokuso80w54cc"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_khmiv"]
-size = Vector2(10, 12)
+size = Vector2(8, 12)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_33533"]
 size = Vector2(12, 7)
@@ -69,6 +69,9 @@ animations = [{
 "duration": 2.0,
 "texture": ExtResource("6_txxw4")
 }, {
+"duration": 0.1,
+"texture": ExtResource("6_txxw4")
+}, {
 "duration": 1.0,
 "texture": ExtResource("7_7u3bd")
 }, {
@@ -84,7 +87,7 @@ animations = [{
 "duration": 3.0,
 "texture": ExtResource("11_07jce")
 }],
-"loop": true,
+"loop": false,
 "name": &"dazed",
 "speed": 5.0
 }, {
@@ -234,9 +237,8 @@ collision_mask = 17
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_n0y4t")
-animation = &"fall"
+animation = &"dazed"
 autoplay = "run"
-frame_progress = 0.024707794
 
 [node name="LedgeChecker" type="Area2D" parent="."]
 collision_layer = 0

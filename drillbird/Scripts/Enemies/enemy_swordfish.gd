@@ -4,7 +4,9 @@ class_name enemy_swordfish
 const SPEED = 40.0
 const ATTACK_SPEED=120
 const JUMP_VELOCITY = -400.0
-const DAZED_TIME=2
+const DAZED_TIME=2.1
+var dazedCounter:float=0
+const DAZED_TIME_WHILE_FALLING:float=0.35
 
 enum States{WALK,WAIT,DETECT, ATTACK, DAZED}
 var state:States=States.WALK
@@ -17,13 +19,13 @@ var turningCounter:float=0
 var waitCounter=0
 var speed:Vector2=Vector2(0,0)
 
-
 @onready var detectionArea=$DetectionArea
 @onready var attackCollisionArea=$ChargeAttackCollider
 @onready var lineOfSightRaycast=$LineOfSightRaycast
 
 @onready var tileBelowRaycast=$LedgeChecker/TileBelowRaycast
 
+var levitatingAfterHit:bool=false
 
 #This variable is assigned via the EnemySpawn script when this bad boi is spawned
 var BlockDestroyer:crack_script
@@ -47,6 +49,10 @@ func DebugShowMessage(text:String):
 	
 	
 func TileWasDestroyed():
+	#This signal is here because when the player destroys a tile and is in the swordfishes vision range, I want the swordfish to spot the player
+	#However, since the player has already entered their detection zone, they'll miss the player. 
+	#So whenever player destroys a tile, I check if the tile is nearby the swordfish and run a detection test
+	
 	if enemyInfo.dead or gamePaused or enemySleep or state==States.DETECT or state==States.ATTACK or state==States.DAZED:
 		return
 	
@@ -74,7 +80,7 @@ func _physics_process(delta: float) -> void:
 	if enemySleep:
 		return	
 
-	if not is_on_floor() and state!=States.ATTACK:
+	if not is_on_floor() and state!=States.ATTACK and !levitatingAfterHit:
 		velocity += get_gravity() * delta * 0.3
 
 
@@ -116,10 +122,32 @@ func _physics_process(delta: float) -> void:
 		animToPlay="sprint"
 		velocity.x=direction*ATTACK_SPEED
 		
-		#here I should prolly do a raycast..check if there's anything in frooont of the enemy? 
-		#Could also have a regular collider right in front of the enemy, so we wait for a collision there?
-		#Can regular colliders collide with tiles? I'm pretty sure they can
+
+	if state==States.DAZED:
 		
+		if GetIsFalling():
+			
+			#only let the counter go to a treshhold, then wait for fish to land b4 continuing
+			if dazedCounter<DAZED_TIME_WHILE_FALLING:
+				dazedCounter+=delta
+			
+			if anim.frame>2:
+				anim.frame=2
+				anim.speed_scale=0
+		else:
+			dazedCounter+=delta
+			anim.speed_scale=1
+				
+
+		#Fish has finished resting after being dazed	
+		if dazedCounter>=DAZED_TIME:
+			dazedCounter=0
+			direction=direction*-1
+	
+			if !CheckIfPlayerIsInDetectionZone():
+				state=States.WALK
+				animToPlay="run"
+
 
 	#Done at the end of upate, used in the next loop
 	
@@ -131,7 +159,11 @@ func _physics_process(delta: float) -> void:
 		isFalling=false
 	
 	if isFalling:
-		animToPlay="fall"
+		
+		#todo: have fall anim be different if falling while in dazed state versus falling normally (will fish ever fall normally..? Yeah if the tile below it is destroyed
+		#todo: When in dazed state, pause daze counter while falling
+		if state!=States.DAZED:
+			animToPlay="fall"
 		velocity.x=velocity.x*0.95
 	
 	
@@ -192,13 +224,16 @@ func HitWithAttack(body:Node2D):
 	state=States.DAZED
 	anim.animation="dazed"
 	velocity.x=0
-	await get_tree().create_timer(DAZED_TIME).timeout
+	dazedCounter=0
 	
-	direction=direction*-1
+	levitatingAfterHit=true
+	await get_tree().create_timer(0.2).timeout
+	levitatingAfterHit=false
 	
-	if !CheckIfPlayerIsInDetectionZone():
-		state=States.WALK
-	pass
+	#What remains is for the counter to run out, and then enter normal walk
+	#However, since the fish can fall while dazed, we can't do a hard counter - we wanna pause the fish while falling
+	#So the rest of dazed is handled in the physics update
+	
 
 func CheckIfPlayerIsInDetectionZone():
 	
