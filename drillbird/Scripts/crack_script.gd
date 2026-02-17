@@ -41,7 +41,6 @@ var tileDrillingActive:bool=false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	print_debug(str(GameTerrains.size()))
 	GlobalVariables.WorldHasBeenSpawned.connect(WorldhasBeenSpawned)
 	pass # Replace with function body.
 
@@ -180,6 +179,8 @@ func DestroyTile(position_in_grid:Vector2i,playEffect:bool,allowSolidDestruction
 	var t =tilemap.get_cell_tile_data(position_in_grid)
 	if t==null:
 		return false
+		
+		#terrain 0 = solid block
 	if t.terrain==0 and !allowSolidDestruction:
 		return false
 	

@@ -209,10 +209,8 @@ func HitWithAttack(body:Node2D):
 	if body.name=="TilemapEnvironment":
 		
 		if BlockDestroyer!=null:
-			BlockDestroyer.DestroyTileWithGlobalPosition(Vector2(self.global_position.x+16*direction,global_position.y),true)
+			BlockDestroyer.DestroyTileWithGlobalPosition(Vector2(self.global_position.x+16*direction,global_position.y),true,true)
 		
-		pass
-		#Destroy the tile lol
 	else:
 		var colltype:abstract_collidable
 		colltype=body.GetCollType()
