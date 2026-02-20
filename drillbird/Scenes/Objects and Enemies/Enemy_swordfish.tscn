@@ -47,7 +47,7 @@ size = Vector2(8, 12)
 size = Vector2(12, 7)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_43ep8"]
-size = Vector2(56, 6)
+size = Vector2(80, 6)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wx2ax"]
 size = Vector2(2.75, 5)
@@ -217,7 +217,7 @@ collision_mask = 16
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
-position = Vector2(28, 0)
+position = Vector2(40, 0)
 shape = SubResource("RectangleShape2D_43ep8")
 debug_color = Color(0.91646, 0.2268039, 0.45691037, 0.41960785)
 
@@ -232,7 +232,7 @@ shape = SubResource("RectangleShape2D_wx2ax")
 
 [node name="LineOfSightRaycast" type="RayCast2D" parent="."]
 position = Vector2(0, 3)
-target_position = Vector2(56, 0)
+target_position = Vector2(79, 0)
 collision_mask = 17
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
