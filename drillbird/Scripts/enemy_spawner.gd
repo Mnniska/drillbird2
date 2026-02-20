@@ -134,25 +134,34 @@ func GenerateObjectsAndEnemiesFromTilemap():
 				flower.SetHasBlossomed(true)
 		
 	#Does the tile have an ore? If so, place it in the OreTilemap!
-		if tile.get_custom_data("oreblock_terrain")>0: #is ore if greater than zero
+		if tile.get_custom_data("oreblock_terrain")>0: #is ore if greater then -1
 			
 			#Here, we wanna create an ORE SPRITE that matches the current ore region
 			var oreRegion:int=GetRelevantOreRegion(tileLoc)
 			oreTilemap.set_cell(tileLoc,0,Vector2i(oreRegion,randi_range(0,2)),0) #Sets cell to be one of the ores. The random is to select between the variants
-			#todo paint tile with relevant ore
+			
 			
 			#Set cell to use correct sprite
-			var terrainSourceIDs:Array[int]=[3,5,2,4,9] #This is the source ID derived from the oreder of tile atlases in the tilemap settings
+			var terrainSourceIDs:Array[int]=[3,2,5,4,9] 
+			#This is the source ID derived from the oreder of tile atlases in the tilemap settings
+			#The order in the TilemapEnvironments tilemap versus the order in the sprites is different, that's why we need to do this translation here
+			
 
+		
 			var tileTerrain=tile.get_custom_data("oreblock_terrain")
+			
+			#This changes solid blocks from having terrain identifier 10 to the correct identifier
+			#The reason it does not have the correct identifier from the start, is that solid tiles have "0" as their terrain identifier - and unfortinutely 
+			#that means all solid tiles and empty tiles gain oreblocks. So this is a hack to circumvent that 
+
+			if tileTerrain==10:
+				tileTerrain=0
+			
 			var sourceID=terrainSourceIDs[tileTerrain]
 			
 			
 			gameTilemap.set_cell(tileLoc,sourceID,Vector2i(0,0),0)
 			
-			
-			#TilesToUpdate.append(tileLoc)
-			var cells:Array[Vector2i]
 			
 			var newtile=abstract_tile_info.new()
 			newtile.loc=tileLoc
@@ -166,22 +175,30 @@ func GenerateObjectsAndEnemiesFromTilemap():
 			pass
 		index+=1
 
+
+
+#This is what is making solid blocks turn into fragile blocks at the moment (2026-02-20). 
+#Since the terrain is set to 5, it assumes it should just use 5, which is fragile blocks.. 
+#The solution could be to check if the terrain is 5, and in that case set the value differently
+
 	#All of this is done to ensure the tiles connect beautifully 
 	var terrains:Array[abstract_tileCollection]
 
-	for n in tilesToUpdateTerrainOn:
-		
+	for indvidualtile in tilesToUpdateTerrainOn:
+
+			
 		#Check if terrain is new - if so, create a new entry in "terrains" and add the tile there
 		var terrainExists:bool=false
 		for tilesetCollection in terrains:
-			if tilesetCollection.terrain==n.terrainIdentifier:
+			if tilesetCollection.terrain==indvidualtile.terrainIdentifier:
+				#The terrain collection isn't used again, I think??
 				terrainExists=true
-				tilesetCollection.tiles.append(n)
+				tilesetCollection.tiles.append(indvidualtile)
 		
 		if !terrainExists:
 			var terr:abstract_tileCollection=abstract_tileCollection.new()
-			terr.terrain=n.terrainIdentifier	
-			terr.tiles.append(n)
+			terr.terrain=indvidualtile.terrainIdentifier	
+			terr.tiles.append(indvidualtile)
 			terrains.append(terr)
 		pass
 	
@@ -195,17 +212,13 @@ func GenerateObjectsAndEnemiesFromTilemap():
 	fragileBlockManager.GenerateObservers(gameTilemap,tileDestroyer)
 	
 	return enemiesToSpawnList
-	
-	
-	pass
 
 
 	
 func GetRelevantOreRegion(tilePos:Vector2i):
 	
 	return OreAreas.GetRegionIdentifierFromLocation(tilePos,gameTilemap)	
-	
-	pass
+
 
 	
 
@@ -213,7 +226,6 @@ func SpawnAllEnemies():
 
 	#Spawns all enemies in the EnemiesToSpawn list. This list is loaded from savefile or setup during first play
 
-	var index=0
 	for enemyInfo in enemiesToSpawnList:
 		
 		var enemy = load(potentialEnemyStrings[enemyInfo.type]) #
@@ -229,7 +241,6 @@ func SpawnAllEnemies():
 		node.Setup(enemyInfo)
 		node.transform.origin = spawnPosLocalCoords
 		add_child(node)
-		index+=1
 			
 	pass
 
@@ -257,7 +268,6 @@ func GetEnemyUpdate():
 		enemiesToSpawnList[index].currentSpawnLocation=currentPos
 		index+=1
 	return enemiesToSpawnList
-	pass
 
 func CreateNewFlowerFromGlobalPos(globalPos:Vector2,blossomed:bool=false,playSound:bool=true):
 	
@@ -279,7 +289,6 @@ func RemoveTile(pos:Vector2i):
 
 
 func MoveTileToNewPos(oldpos:Vector2,newpos:Vector2):
-	var tile_map_layer = 0 
 	var tile_map_cell_position = oldpos 
 	var tile_data = gameTilemap.get_cell_tile_data(tile_map_cell_position)
 	if tile_data: 
