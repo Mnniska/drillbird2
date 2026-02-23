@@ -333,6 +333,7 @@ func GetUp():
 
 func RechargeCrystalActivated():
 	jumpsMade=1
+	velocity.y=AIRJUMP_VELOCITY*1.2
 	for index in jump_crystals.size():
 		jump_crystals[index].show()
 
