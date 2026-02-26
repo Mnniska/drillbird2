@@ -60,6 +60,12 @@ hit_from_inside = true
 [node name="Observer" parent="." instance=ExtResource("8_csbx4")]
 position = Vector2(0, 17)
 
+[node name="Ghost path" type="Line2D" parent="."]
+position = Vector2(0, -53)
+points = PackedVector2Array(46, 18, 0, -3, -44, 15, -70, 53, -52, 111, 0, 130, 50, 105, 69, 56)
+closed = true
+width = 2.0
+
 [connection signal="body_shape_entered" from="Collider" to="." method="_on_collider_body_shape_entered"]
 [connection signal="body_shape_exited" from="Collider" to="." method="_on_collider_body_shape_exited"]
 [connection signal="BlockDestroyed" from="Observer" to="." method="_on_observer_block_destroyed"]

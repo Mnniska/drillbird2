@@ -1,7 +1,7 @@
 extends enemy_spikes
 
-
-
+@onready var loadedGhast=preload("res://Scenes/Objects and Enemies/enemy_ghast.tscn")
+@onready var ghostPath:Line2D=$"Ghost path"
 func GetCollType():
 	return collType
 
@@ -13,8 +13,9 @@ func _ready() -> void:
 	
 	SpikesSpawnSetup()
 	spawnPositionLocal=position
-	pass
 	
+	SpawnGhast()
+		
 	pass # Replace with function body.
 
 func SpikesSpawnSetup():
@@ -26,6 +27,8 @@ func SpikesSpawnSetup():
 			var spikePos=col.local_to_map( col.to_local( raycast.global_position) )
 			var affectedTile= col.get_cell_tile_data(spikePos)
 			var terrain = affectedTile.terrain
+			#Todo: Make terrain sprite match terrain spawned on
+			
 			
 #			$Sprite2D.texture=spriteVariations[min(spriteVariations.size()-1,terrain) ] 
 			
@@ -34,6 +37,15 @@ func SpikesSpawnSetup():
 			TurnEnemyOff()
 	else:
 		TurnEnemyOff()
+
+func SpawnGhast():
+	var ghastInstance:ghast = loadedGhast.instantiate()
+	add_child(ghastInstance)
+	
+	await get_tree().create_timer(0.1).timeout
+	
+	ghastInstance.SetupGhast(ghostPath)
+	ghastInstance.ReturnToLine()
 
 func TurnEnemyOff():
 	hide()
