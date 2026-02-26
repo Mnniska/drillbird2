@@ -7,10 +7,10 @@ var lineToFollow:Line2D=null
 
 enum States{IDLE,FOLLOWINGLINE,PERSUIT,ARRIVED,DESPAWNING}
 var state:States=States.IDLE
-var TargetLocation:Vector2
+var TargetLocationGlobal:Vector2
 var targetPoint:int=0
 @export var idleSpeed:float=50
-@onready var targetDebug=$targetDebug
+@onready var targetDebug:Node2D=$targetDebug
 
 func _physics_process(delta: float) -> void:
 
@@ -23,9 +23,10 @@ func _physics_process(delta: float) -> void:
 		States.FOLLOWINGLINE:
 			
 			
-
-			targetDebug.global_position=TargetLocation
-			var directionVector=global_position-TargetLocation
+			$Label.text=str(to_global(lineToFollow.get_point_position(0)))
+			targetDebug.global_position=(TargetLocationGlobal)
+			#targetDebug.global_position=Vector2(0,0)		
+			var directionVector=global_position-TargetLocationGlobal
 			var normalizedDirectionVector=directionVector.normalized()
 			
 			
@@ -36,13 +37,14 @@ func _physics_process(delta: float) -> void:
 			move_and_slide()
 			
 
-			if self.global_position.distance_to(TargetLocation)<10:
+			if self.global_position.distance_to(TargetLocationGlobal)<10:
 				targetPoint+=1
 				if targetPoint>lineToFollow.get_point_count():
 					targetPoint=0
 				
-
-				TargetLocation=to_global(lineToFollow.get_point_position(targetPoint))
+				
+				var newpos = to_global(lineToFollow.get_point_position(targetPoint))
+				TargetLocationGlobal=newpos
 				#get next point to follow
 				
 				pass
@@ -85,7 +87,7 @@ func ReturnToLine():
 			targetPoint=n
 			chosenPoint=loc
 	
-	TargetLocation=chosenPoint
+	TargetLocationGlobal=chosenPoint
 	#get the closest point in the line to return to
 	
 	state=States.FOLLOWINGLINE
