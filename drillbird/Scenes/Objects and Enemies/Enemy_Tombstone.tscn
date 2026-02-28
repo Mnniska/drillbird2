@@ -61,8 +61,8 @@ hit_from_inside = true
 position = Vector2(0, 17)
 
 [node name="Ghost path" type="Line2D" parent="."]
-position = Vector2(0, -53)
-points = PackedVector2Array(46, 18, 0, -3, -44, 15, -70, 53, -52, 111, 0, 130, 50, 105, 69, 56)
+visible = false
+points = PackedVector2Array(43, -44, 0, -69, -54, -40, -71, 1, -54, 51, 0, 73, 40, 56, 67, 2)
 closed = true
 width = 2.0
 

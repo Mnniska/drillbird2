@@ -4,6 +4,7 @@ class_name ghast
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 var lineToFollow:Line2D=null
+var tombstone:Node2D=null
 
 enum States{IDLE,FOLLOWINGLINE,PERSUIT,ARRIVED,DESPAWNING}
 var state:States=States.IDLE
@@ -23,7 +24,8 @@ func _physics_process(delta: float) -> void:
 		States.FOLLOWINGLINE:
 			
 			
-			$Label.text=str(to_global(lineToFollow.get_point_position(0)))
+			$Label.text=str(lineToFollow.get_point_position(0))
+			
 			targetDebug.global_position=(TargetLocationGlobal)
 			#targetDebug.global_position=Vector2(0,0)		
 			var directionVector=global_position-TargetLocationGlobal
@@ -39,11 +41,11 @@ func _physics_process(delta: float) -> void:
 
 			if self.global_position.distance_to(TargetLocationGlobal)<10:
 				targetPoint+=1
-				if targetPoint>lineToFollow.get_point_count():
+				if targetPoint>lineToFollow.get_point_count()-1:
 					targetPoint=0
 				
 				
-				var newpos = to_global(lineToFollow.get_point_position(targetPoint))
+				var newpos = tombstone.global_position+lineToFollow.get_point_position(targetPoint)
 				TargetLocationGlobal=newpos
 				#get next point to follow
 				
@@ -52,8 +54,10 @@ func _physics_process(delta: float) -> void:
 
 
 
-func SetupGhast(line:Line2D):
+func SetupGhast(line:Line2D , _tombstone:Node2D):
 	lineToFollow=line
+
+	tombstone=_tombstone
 	
 
 func TombstoneDestroyed():

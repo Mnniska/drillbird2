@@ -44,7 +44,7 @@ func SpawnGhast():
 	
 	await get_tree().create_timer(0.1).timeout
 	
-	ghastInstance.SetupGhast(ghostPath)
+	ghastInstance.SetupGhast(ghostPath,self)
 	ghastInstance.ReturnToLine()
 
 func TurnEnemyOff():

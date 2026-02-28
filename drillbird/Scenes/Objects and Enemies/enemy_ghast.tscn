@@ -58,11 +58,14 @@ debug_color = Color(0.61751765, 0.52141714, 0.35282716, 0.41960785)
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_bjs6x")
 animation = &"idle"
+autoplay = "idle"
 frame_progress = 0.13164917
 
 [node name="targetDebug" type="Sprite2D" parent="."]
+visible = false
 texture = ExtResource("8_mxf3a")
 
 [node name="Label" type="Label" parent="."]
+visible = false
 offset_right = 40.0
 offset_bottom = 23.0
