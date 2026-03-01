@@ -19,7 +19,7 @@ enemyID = 6
 metadata/_custom_type_script = "uid://bgy5cf01m25xs"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y8cxp"]
-size = Vector2(16, 6)
+size = Vector2(16, 17)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4hyg0"]
 size = Vector2(10, 7)
@@ -32,7 +32,7 @@ enemyInfo = SubResource("Resource_f1yn1")
 collType = SubResource("Resource_fjvxw")
 
 [node name="SpikeAffectedCollider" type="CollisionShape2D" parent="."]
-position = Vector2(0, 7)
+position = Vector2(0, 1.5)
 shape = SubResource("RectangleShape2D_y8cxp")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -62,7 +62,7 @@ position = Vector2(0, 17)
 
 [node name="Ghost path" type="Line2D" parent="."]
 visible = false
-points = PackedVector2Array(43, -44, 0, -69, -54, -40, -71, 1, -54, 51, 0, 73, 40, 56, 67, 2)
+points = PackedVector2Array(45, -46, 0, -69, -54, -40, -71, 1, -54, 51, 0, 73, 40, 56, 67, 2)
 closed = true
 width = 2.0
 

@@ -1,13 +1,26 @@
-[gd_scene load_steps=12 format=3 uid="uid://bx3a6lqm5kk1v"]
+[gd_scene load_steps=17 format=3 uid="uid://bx3a6lqm5kk1v"]
 
 [ext_resource type="Script" uid="uid://bq53lvnacnudb" path="res://Scripts/Enemies/script_enemy_ghast.gd" id="1_o5qkd"]
 [ext_resource type="Texture2D" uid="uid://bvhkfx1xweinv" path="res://Art/characters/Tombstone and ghast/smolghost_idle1.png" id="1_sqg4y"]
+[ext_resource type="Script" uid="uid://bgy5cf01m25xs" path="res://Scripts/Abstract scripts/abstract_collidable.gd" id="2_5jf44"]
 [ext_resource type="Texture2D" uid="uid://b3lx2mgk1jwxq" path="res://Art/characters/Tombstone and ghast/smolghost_idle2.png" id="2_o5qkd"]
+[ext_resource type="Script" uid="uid://cokuso80w54cc" path="res://Scripts/Abstract scripts/abstract_enemy.gd" id="2_rjd4f"]
 [ext_resource type="Texture2D" uid="uid://bect6g7ha1ux1" path="res://Art/characters/Tombstone and ghast/smolghost_idle3.png" id="3_mxf3a"]
 [ext_resource type="Texture2D" uid="uid://m5f1b153y0tn" path="res://Art/characters/Tombstone and ghast/smolghost_idle4.png" id="4_rjd4f"]
 [ext_resource type="Texture2D" uid="uid://84v3fqeuygro" path="res://Art/characters/Tombstone and ghast/smolghost_idle5.png" id="5_5jf44"]
 [ext_resource type="Texture2D" uid="uid://65ru5dhe11nn" path="res://Art/characters/Tombstone and ghast/smolghost_idle6.png" id="6_qk7if"]
 [ext_resource type="Texture2D" uid="uid://ca5dxikvy2caa" path="res://Art/UI/exclamation_mark/UI_exclamationMarkJump1.png" id="8_mxf3a"]
+
+[sub_resource type="Resource" id="Resource_qk7if"]
+script = ExtResource("2_5jf44")
+type = 1
+enemyID = 7
+metadata/_custom_type_script = "uid://bgy5cf01m25xs"
+
+[sub_resource type="Resource" id="Resource_5jf44"]
+script = ExtResource("2_rjd4f")
+type = 7
+metadata/_custom_type_script = "uid://cokuso80w54cc"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v1yg6"]
 radius = 7.071068
@@ -41,17 +54,25 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_mxf3a"]
+radius = 7.071068
+
 [node name="Ghast" type="CharacterBody2D"]
 collision_layer = 0
-collision_mask = 16
+collision_mask = 0
 script = ExtResource("1_o5qkd")
+collType = SubResource("Resource_qk7if")
+enemyInfo = SubResource("Resource_5jf44")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_v1yg6")
 
 [node name="detection radius" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detection radius"]
+visible = false
 shape = SubResource("CircleShape2D_kuoiw")
 debug_color = Color(0.61751765, 0.52141714, 0.35282716, 0.41960785)
 
@@ -66,6 +87,16 @@ visible = false
 texture = ExtResource("8_mxf3a")
 
 [node name="Label" type="Label" parent="."]
-visible = false
 offset_right = 40.0
 offset_bottom = 23.0
+
+[node name="Collider_EnemyHitbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collider_EnemyHitbox"]
+shape = SubResource("CircleShape2D_mxf3a")
+debug_color = Color(0.9370531, 0.1832102, 0.4424696, 0.41960785)
+
+[connection signal="body_entered" from="detection radius" to="." method="_on_detection_radius_body_entered"]
+[connection signal="body_entered" from="Collider_EnemyHitbox" to="." method="_on_collider_enemy_hitbox_body_entered"]
