@@ -4,9 +4,10 @@ class_name ghast
 @export var collType:abstract_collidable #MUST HAVE
 @export var enemyInfo:abstract_enemy #MUST HAVE
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
-const PERSUIT_SPEED=50
+const LINE_SPEED = PERSUIT_SPEED*0.8
+const PERSUIT_SPEED=85
+const ACCELERATION=3
+const FRICTION=3
 
 const PERSUIT_LENGTH = 16*10
 
@@ -19,16 +20,15 @@ var TargetLocationGlobal:Vector2
 var targetPoint:int=0
 var targetBody:Node2D=null
 
-@export var idleSpeed:float=50
 @onready var targetDebug:Node2D=$targetDebug
 
 func _physics_process(delta: float) -> void:
 
-	
 
 	match state:
 		States.IDLE:
-			
+			ApplyFriction()
+			move_and_slide()
 			pass
 		States.FOLLOWINGLINE:
 			
@@ -37,18 +37,17 @@ func _physics_process(delta: float) -> void:
 			targetDebug.global_position=(TargetLocationGlobal)
 			#targetDebug.global_position=Vector2(0,0)		
 			
-			var movementVector:Vector2=idleSpeed*GetMovementVector(TargetLocationGlobal)
+			var movementVector:Vector2=GetMovementVector(TargetLocationGlobal)
 			
-			velocity.x=movementVector.x*-1
-			velocity.y=movementVector.y*-1
+			ApplyAcceleration(movementVector,LINE_SPEED)
+			
 			move_and_slide()
 			
-
+			#If close to target line point, choose next point as target
 			if self.global_position.distance_to(TargetLocationGlobal)<10:
 				targetPoint+=1
 				if targetPoint>lineToFollow.get_point_count()-1:
 					targetPoint=0
-				
 				
 				var newpos = tombstone.global_position+lineToFollow.get_point_position(targetPoint)
 				TargetLocationGlobal=newpos
@@ -57,15 +56,21 @@ func _physics_process(delta: float) -> void:
 				pass
 		States.PERSUIT:
 			
-			var movement = PERSUIT_SPEED*GetMovementVector(targetBody.global_position)
-			velocity.x=movement.x*-1
-			velocity.y=movement.y*-1
+			var movement = GetMovementVector(targetBody.global_position)
+			ApplyAcceleration(movement,PERSUIT_SPEED)
 			move_and_slide()
 			
 			if global_position.distance_to(tombstone.global_position)>PERSUIT_LENGTH:
 				AbortChaseDueToDistance()
 
 			pass
+
+func ApplyAcceleration(movementVector:Vector2,speed:float):
+	velocity = velocity.move_toward(speed*movementVector,ACCELERATION)
+	
+	
+func ApplyFriction():
+	velocity = velocity.move_toward(Vector2.ZERO,FRICTION)
 
 func AbortChaseDueToDistance():
 	state=States.IDLE
@@ -79,7 +84,7 @@ func GetMovementVector(_targetPosGlobal:Vector2):
 	
 	var directionVector=global_position - _targetPosGlobal
 	var normalizedDirectionVector=directionVector.normalized()
-	return normalizedDirectionVector
+	return normalizedDirectionVector*-1
 
 func SetupGhast(line:Line2D , _tombstone:Node2D):
 	lineToFollow=line
