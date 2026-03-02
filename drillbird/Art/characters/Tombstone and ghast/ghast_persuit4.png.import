@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bect6g7ha1ux1"
-path="res://.godot/imported/smolghost_idle3.png-427d25c8331e953b2275b7cbdebf848f.ctex"
+uid="uid://cp3k0sfg6a5l2"
+path="res://.godot/imported/ghast_persuit4.png-b0f34704bd13a2a5fe082cb42a53bca8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/characters/Tombstone and ghast/smolghost_idle3.png"
-dest_files=["res://.godot/imported/smolghost_idle3.png-427d25c8331e953b2275b7cbdebf848f.ctex"]
+source_file="res://Art/characters/Tombstone and ghast/ghast_persuit4.png"
+dest_files=["res://.godot/imported/ghast_persuit4.png-b0f34704bd13a2a5fe082cb42a53bca8.ctex"]
 
 [params]
 

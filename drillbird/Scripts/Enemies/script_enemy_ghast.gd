@@ -14,21 +14,25 @@ const PERSUIT_LENGTH = 16*10
 var lineToFollow:Line2D=null
 var tombstone:Node2D=null
 
-enum States{IDLE,FOLLOWINGLINE,PERSUIT,ARRIVED,DESPAWNING}
+enum States{IDLE,FOLLOWINGLINE,PERSUIT,ARRIVED,DESPAWNING,SPOTTINGSOMETHING}
 var state:States=States.IDLE
 var TargetLocationGlobal:Vector2
 var targetPoint:int=0
 var targetBody:Node2D=null
 
 @onready var targetDebug:Node2D=$targetDebug
+@onready var sprite=$sprite
 
 func _physics_process(delta: float) -> void:
 
 
 	match state:
+		
+		
 		States.IDLE:
 			ApplyFriction()
 			move_and_slide()
+			HandleAnimations("idle")
 			pass
 		States.FOLLOWINGLINE:
 			
@@ -42,6 +46,7 @@ func _physics_process(delta: float) -> void:
 			ApplyAcceleration(movementVector,LINE_SPEED)
 			
 			move_and_slide()
+			HandleAnimations("idle")
 			
 			#If close to target line point, choose next point as target
 			if self.global_position.distance_to(TargetLocationGlobal)<10:
@@ -59,11 +64,16 @@ func _physics_process(delta: float) -> void:
 			var movement = GetMovementVector(targetBody.global_position)
 			ApplyAcceleration(movement,PERSUIT_SPEED)
 			move_and_slide()
+			HandleAnimations("persuit")
 			
 			if global_position.distance_to(tombstone.global_position)>PERSUIT_LENGTH:
 				AbortChaseDueToDistance()
 
 			pass
+		States.SPOTTINGSOMETHING:
+			HandleAnimations("detect")
+			ApplyFriction()
+			move_and_slide()
 
 func ApplyAcceleration(movementVector:Vector2,speed:float):
 	velocity = velocity.move_toward(speed*movementVector,ACCELERATION)
@@ -110,7 +120,10 @@ func NewTarget(body:Node2D):
 	
 	if global_position.distance_to(tombstone.global_position)>=PERSUIT_LENGTH:
 		return
-		
+	
+	state=States.SPOTTINGSOMETHING
+	await get_tree().create_timer(1).timeout
+	
 	targetBody=body
 	state=States.PERSUIT
 	$Label.text="chasing"
@@ -137,9 +150,19 @@ func ReturnToLine():
 	state=States.FOLLOWINGLINE
 	pass
 
+func HandleAnimations(_anim:String):
+	if sprite.animation!=_anim:
+		sprite.play(_anim)
+	
+	if velocity.x<0:
+		sprite.scale.x=-1
+	else:
+		sprite.scale.x=1
+	
+	pass
 
 func _on_detection_radius_body_entered(body: Node2D) -> void:
-	if state!=States.ARRIVED:
+	if state!=States.PERSUIT and state!=States.SPOTTINGSOMETHING:
 		
 		NewTarget(body)
 	else:
