@@ -6,7 +6,7 @@ class_name ghast
 
 const LINE_SPEED = PERSUIT_SPEED*0.8
 const PERSUIT_SPEED=85
-const ACCELERATION=3
+const ACCELERATION=2
 const FRICTION=3
 
 const PERSUIT_LENGTH = 16*10
@@ -160,6 +160,12 @@ func HandleAnimations(_anim:String):
 		sprite.scale.x=1
 	
 	pass
+
+func Despawn():
+	sprite.play("despawn")
+	state=States.DESPAWNING
+	await sprite.animation_finished
+	queue_free()
 
 func _on_detection_radius_body_entered(body: Node2D) -> void:
 	if state!=States.PERSUIT and state!=States.SPOTTINGSOMETHING:

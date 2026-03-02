@@ -52,6 +52,38 @@ animations = [{
 "texture": ExtResource("6_cpi00")
 }, {
 "duration": 1.0,
+"texture": ExtResource("5_oob50")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_cpi00")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_oob50")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_cpi00")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_oob50")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_cpi00")
+}],
+"loop": false,
+"name": &"despawn",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_hurfh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_oob50")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_cpi00")
+}, {
+"duration": 1.0,
 "texture": ExtResource("7_7oyuw")
 }, {
 "duration": 1.0,
@@ -132,7 +164,7 @@ debug_color = Color(0.61751765, 0.52141714, 0.35282716, 0.41960785)
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_bjs6x")
-animation = &"detect"
+animation = &"despawn"
 autoplay = "idle"
 
 [node name="targetDebug" type="Sprite2D" parent="."]

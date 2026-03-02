@@ -1,5 +1,6 @@
 extends enemy_spikes
 
+var spawnedGhast:ghast=null
 @onready var loadedGhast=preload("res://Scenes/Objects and Enemies/enemy_ghast.tscn")
 @onready var ghostPath:Line2D=$"Ghost path"
 func GetCollType():
@@ -46,14 +47,21 @@ func SpawnGhast():
 	
 	ghastInstance.SetupGhast(ghostPath,self)
 	ghastInstance.ReturnToLine()
+	spawnedGhast=ghastInstance
 
 func TurnEnemyOff():
-	hide()
+	$Sprite2D.hide()
+	$Sprite_front.hide()
+	#should prolly do a proper destroy anim as well but w/e for now
+
 	$".".set_deferred("disabled",true)
 	$SpikeAffectedCollider.set_deferred("disabled",true)
 	$Collider.set_deferred("disabled",true)
 	$Collider.set_deferred("monitoring",false)
 	enemyInfo.dead=true	
+	
+	if spawnedGhast!=null:
+		spawnedGhast.Despawn()
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
