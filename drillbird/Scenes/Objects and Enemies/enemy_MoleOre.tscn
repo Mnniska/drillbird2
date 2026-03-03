@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://4ea053k7e4d0"]
+[gd_scene load_steps=7 format=3 uid="uid://4ea053k7e4d0"]
 
 [ext_resource type="Script" uid="uid://ogag6wxgn0y5" path="res://Scripts/Enemies/enemy_mole_ore.gd" id="1_lxrrl"]
+[ext_resource type="Resource" uid="uid://dtee1eo8ydnlr" path="res://Resources/Economy/ore_6.tres" id="2_4j1tk"]
 [ext_resource type="Texture2D" uid="uid://b11br0tugyx10" path="res://Art/Collectibles/ore_6.png" id="2_7li0a"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lxrrl"]
@@ -20,10 +21,11 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_1bo6n"]
 radius = 28.0
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="Enemy_mole_ore" type="CharacterBody2D"]
 collision_layer = 4096
 collision_mask = 4096
 script = ExtResource("1_lxrrl")
+oreToSpawn = ExtResource("2_4j1tk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_lxrrl")

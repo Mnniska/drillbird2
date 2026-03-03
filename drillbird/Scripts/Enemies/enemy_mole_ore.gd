@@ -1,7 +1,10 @@
 extends CharacterBody2D
 
+#Todo: Make it spawn ore depending on depth? Or just use it for specific region?
+@export var oreToSpawn:abstract_ore
+
 @onready var spawnedCollider= preload("res://Scenes/Objects and Enemies/mole_ore_collider.tscn")
-const SPEED = 5
+const SPEED = 3
 const DISTANCE_TO_FEEL_SAFE = 16*3
 const DISTANCE_BEFORE_SPAWNING_NEW_COLLIDER:float=16*6
 
@@ -15,6 +18,7 @@ var colliders:Array[Node2D]
 var colliderPositions:Array[Vector2i]
 var positionOfLastColliderSpawn:Vector2
 var tilemap:TileMapLayer
+var vibrate:bool=false
 
 func _ready() -> void:
 	
@@ -28,9 +32,10 @@ func _physics_process(delta: float) -> void:
 	match state:
 		States.IDLE:
 			velocity=Vector2(0,0)
+			vibrate=false
 			pass
 		States.ESCAPING:
-			
+			vibrate=true
 			if bodyToEscapeFrom==null:
 				print_debug("no body to escape from")
 				state=States.IDLE
@@ -39,15 +44,21 @@ func _physics_process(delta: float) -> void:
 			var movementV=GetMovementVector(bodyToEscapeFrom.global_position)
 			velocity+=movementV*SPEED
 			
+			var p = randf_range(-10,10)
+			var y =randf_range(-10,10)
+			velocity+=Vector2(p,y)
+			
 			if global_position.distance_to(bodyToEscapeFrom.global_position)>=DISTANCE_TO_FEEL_SAFE:
 				state=States.IDLE
 			
 			if global_position.distance_to(positionOfLastColliderSpawn)>DISTANCE_BEFORE_SPAWNING_NEW_COLLIDER:
 				CreateCollidersOnEmptySpaces(GlobalVariables.MainSceneReferenceConnector.ref_environmentTilemap)
 			
-			pass
+			
 
-
+	if vibrate:
+		var d=0.5
+		$sprite.position=Vector2(randf_range(-d,d),randf_range(-d,d))
 	move_and_slide()
 
 
@@ -57,8 +68,24 @@ func PlayerDestroyedTile(tilemapCoord:Vector2i,tilemap:TileMapLayer):
 	if distance<DISTANCE_BEFORE_SPAWNING_NEW_COLLIDER:
 		pass
 		
+		if tilemap.local_to_map(tilemap.to_local(global_position)) == tilemapCoord:
+			#the block lil fucker is standing on has been destroyed
+			RestingBlockDestroyed()
+		
 		SpawnIndvidualCollider(tilemapCoord)
 	
+	pass
+
+func RestingBlockDestroyed():
+	
+	#TODO:
+	#spawn a mole maybe??
+	#Spawn an appropiate ore
+	#destroy this bad boi
+	
+	var spawner:ore_manager = GlobalVariables.MainSceneReferenceConnector.ref_oreTilemap
+	spawner.SpawnOreAtLocation(global_position,oreToSpawn,Vector2(0,-100),true)
+	queue_free()
 	pass
 
 func SpawnIndvidualCollider(tilemapPos):
