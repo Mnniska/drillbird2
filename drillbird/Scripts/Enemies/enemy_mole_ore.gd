@@ -56,6 +56,7 @@ func PlayerDestroyedTile(tilemapCoord:Vector2i,tilemap:TileMapLayer):
 	var distance=tilemap.to_global(tilemap.map_to_local(tilemapCoord)).distance_to(global_position)
 	if distance<DISTANCE_BEFORE_SPAWNING_NEW_COLLIDER:
 		pass
+		
 		SpawnIndvidualCollider(tilemapCoord)
 	
 	pass
