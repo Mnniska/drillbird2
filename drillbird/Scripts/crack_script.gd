@@ -203,7 +203,7 @@ func DestroyTile(position_in_grid:Vector2i,playEffect:bool,allowSolidDestruction
 
 	destroyed_tiles.append(position_in_grid)
 	CheckObservers(position_in_grid)
-	GlobalVariables.TileDestroyed.emit()
+	GlobalVariables.TileDestroyed.emit(position_in_grid,tilemap)
 	return true
 
 func _on_player_player_stopped_drilling_tile() -> void:

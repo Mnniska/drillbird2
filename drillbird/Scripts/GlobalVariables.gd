@@ -2,7 +2,7 @@ extends Node
 signal playerAction()
 signal PlayerIsDrillingTileChanged(answer:bool)
 signal signal_IsPlayerInMenuChanged(inMenu:bool)
-signal TileDestroyed
+signal TileDestroyed(pos:Vector2i,tilemap:TileMapLayer)
 @export var DebugEnabled:bool=true
 
 var save_file_path = "user://save/"
