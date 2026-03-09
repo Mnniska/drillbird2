@@ -1,8 +1,8 @@
 [gd_scene load_steps=18 format=3 uid="uid://dtl6pfqyw8jki"]
 
-[ext_resource type="Script" path="res://Scripts/Enemy_Runner.gd" id="1_wxjay"]
-[ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_collidable.gd" id="2_3jenn"]
-[ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_enemy.gd" id="3_egito"]
+[ext_resource type="Script" uid="uid://cmuunggce2054" path="res://Scripts/Enemy_Runner.gd" id="1_wxjay"]
+[ext_resource type="Script" uid="uid://bgy5cf01m25xs" path="res://Scripts/Abstract scripts/abstract_collidable.gd" id="2_3jenn"]
+[ext_resource type="Script" uid="uid://cokuso80w54cc" path="res://Scripts/Abstract scripts/abstract_enemy.gd" id="3_egito"]
 [ext_resource type="Texture2D" uid="uid://bu56d8b0ujw2e" path="res://Art/characters/mullvad/walker_death1.png" id="4_h6r27"]
 [ext_resource type="Texture2D" uid="uid://8u8wcx31n81q" path="res://Art/characters/mullvad/walker_death2.png" id="5_f1770"]
 [ext_resource type="Texture2D" uid="uid://5p4kf2oomjkc" path="res://Art/characters/mullvad/walker_death3.png" id="6_8qkqg"]
@@ -20,8 +20,6 @@ enemyID = 0
 
 [sub_resource type="Resource" id="Resource_xknje"]
 script = ExtResource("3_egito")
-type = 0
-damage = 1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_khmiv"]
 size = Vector2(12, 14)

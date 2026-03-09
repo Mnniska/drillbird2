@@ -4,12 +4,14 @@ class_name ghast
 @export var collType:abstract_collidable #MUST HAVE
 @export var enemyInfo:abstract_enemy #MUST HAVE
 
-const LINE_SPEED = PERSUIT_SPEED*0.8
-const PERSUIT_SPEED=85
+@export var timeToWaitBeforePersuing=0.6
+
+const LINE_SPEED = PERSUIT_SPEED*0.75
+const PERSUIT_SPEED=95
 const ACCELERATION=2
 const FRICTION=3
 
-const PERSUIT_LENGTH = 16*10
+const PERSUIT_LENGTH = 16*8
 
 var lineToFollow:Line2D=null
 var tombstone:Node2D=null
@@ -122,7 +124,7 @@ func NewTarget(body:Node2D):
 		return
 	
 	state=States.SPOTTINGSOMETHING
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(timeToWaitBeforePersuing).timeout
 	
 	targetBody=body
 	state=States.PERSUIT

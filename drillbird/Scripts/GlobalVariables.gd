@@ -35,6 +35,9 @@ var currentWorld:int=1:
 		return currentWorld
 	set(value):
 		currentWorld=value
+
+@export var CursedMode:bool=true #TODO: set this depending on if cursed mode is active
+
 signal vibrationSettingChanged(value:bool)
 
 

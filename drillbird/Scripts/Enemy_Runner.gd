@@ -1,6 +1,8 @@
 extends Base_Enemy
 
 const SPEED = 40.0
+const SPEED_CURSED = 60
+var mySpeed=SPEED
 const JUMP_VELOCITY = -400.0
 var direction:float=1
 @export var timeInWait=1
@@ -23,6 +25,13 @@ func _ready() -> void:
 	
 	spawnPositionLocal=position #MUST HAVE
 	positionLastFrame=position
+	mySpeed=GetSpeed()
+
+func GetSpeed()->int:
+	if GlobalVariables.CursedMode:
+		return SPEED_CURSED
+	else:
+		return SPEED
 
 func SetGamePaused(paused:bool):
 	gamePaused=paused
@@ -76,10 +85,10 @@ func _physics_process(delta: float) -> void:
 	if state==States.WALK:
 		
 		if direction:
-			velocity.x = direction * SPEED
+			velocity.x = direction * mySpeed
 			anim="run"
 		else:
-			velocity.x = move_toward(velocity.x, 0, SPEED)
+			velocity.x = move_toward(velocity.x, 0, mySpeed)
 			anim="idle"
 	
 	# Add the gravity.
