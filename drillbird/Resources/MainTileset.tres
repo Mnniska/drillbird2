@@ -2863,6 +2863,21 @@ texture = ExtResource("8_0u0a2")
 3:0/0/custom_data_3 = 4
 4:0/0 = 0
 4:0/0/custom_data_3 = 10
+0:1/0 = 0
+0:1/0/custom_data_1 = 8
+0:1/0/custom_data_3 = 1
+1:1/0 = 0
+1:1/0/custom_data_1 = 8
+1:1/0/custom_data_3 = 2
+2:1/0 = 0
+2:1/0/custom_data_1 = 8
+2:1/0/custom_data_3 = 3
+3:1/0 = 0
+3:1/0/custom_data_1 = 8
+3:1/0/custom_data_3 = 4
+4:1/0 = 0
+4:1/0/custom_data_1 = 8
+4:1/0/custom_data_3 = 10
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5alhb"]
 texture = ExtResource("9_stlog")

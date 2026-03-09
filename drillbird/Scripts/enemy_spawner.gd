@@ -69,6 +69,18 @@ func LoadFlowers(flowerSpawnPositions: Array[Vector2i]):
 		CreateNewFlowerFromGlobalPos(spawnpos,true,false)
 			
 
+func GetSourceIDFromTerrain(terrainInt:int)->int:
+	
+	if terrainInt==10: #Solid blocks have this weird terrain ID because their actual position is 0, which is the default value making things break
+		terrainInt=0
+
+	#This is the source ID derived from the oreder of tile atlases in the tilemap settings
+	#The order in the TilemapEnvironments tilemap versus the order in the sprites is different, that's why we need to do this translation here
+
+	
+	var terrainSourceIDs:Array[int]=[3,2,5,4,9] 
+	return terrainSourceIDs[terrainInt]
+
 func GenerateObjectsAndEnemiesFromTilemap():
 	
 	#commented out in enemy load refactor March 2025
@@ -114,7 +126,12 @@ func GenerateObjectsAndEnemiesFromTilemap():
 				newEnemy.currentSpawnLocation=newEnemy.spawnLocation
 			
 			enemiesToSpawnList.append(newEnemy)
-			RemoveTile(tileLoc)
+			
+			var valueToReplaceWithTile=-1
+			if newEnemy.type==7:
+				valueToReplaceWithTile=tile.get_custom_data("oreblock_terrain")
+				
+			RemoveTile(tileLoc,valueToReplaceWithTile)
 		
 		#Is there an object that should be spawned via the tilemap?
 		var type=tile.get_custom_data("object_type")
@@ -134,17 +151,15 @@ func GenerateObjectsAndEnemiesFromTilemap():
 				flower.SetHasBlossomed(true)
 		
 	#Does the tile have an ore? If so, place it in the OreTilemap!
-		if tile.get_custom_data("oreblock_terrain")>0: #is ore if greater then -1
-			
+	#This is only used when using the tilemap_editorores tilesheet - used for faster LD flow :) 
+	
+		if tile.get_custom_data("oreblock_terrain")>0 and tile.get_custom_data("enemy_type")==0: #is ore if greater then -1
+				
 			#Here, we wanna create an ORE SPRITE that matches the current ore region
 			var oreRegion:int=GetRelevantOreRegion(tileLoc)
 			oreTilemap.set_cell(tileLoc,0,Vector2i(oreRegion,randi_range(0,2)),0) #Sets cell to be one of the ores. The random is to select between the variants
 			
 			
-			#Set cell to use correct sprite
-			var terrainSourceIDs:Array[int]=[3,2,5,4,9] 
-			#This is the source ID derived from the oreder of tile atlases in the tilemap settings
-			#The order in the TilemapEnvironments tilemap versus the order in the sprites is different, that's why we need to do this translation here
 			
 
 		
@@ -153,11 +168,8 @@ func GenerateObjectsAndEnemiesFromTilemap():
 			#This changes solid blocks from having terrain identifier 10 to the correct identifier
 			#The reason it does not have the correct identifier from the start, is that solid tiles have "0" as their terrain identifier - and unfortinutely 
 			#that means all solid tiles and empty tiles gain oreblocks. So this is a hack to circumvent that 
-
-			if tileTerrain==10:
-				tileTerrain=0
 			
-			var sourceID=terrainSourceIDs[tileTerrain]
+			var sourceID=GetSourceIDFromTerrain(tileTerrain)
 			
 			
 			gameTilemap.set_cell(tileLoc,sourceID,Vector2i(0,0),0)
@@ -177,9 +189,7 @@ func GenerateObjectsAndEnemiesFromTilemap():
 
 
 
-#This is what is making solid blocks turn into fragile blocks at the moment (2026-02-20). 
-#Since the terrain is set to 5, it assumes it should just use 5, which is fragile blocks.. 
-#The solution could be to check if the terrain is 5, and in that case set the value differently
+
 
 	#All of this is done to ensure the tiles connect beautifully 
 	var terrains:Array[abstract_tileCollection]
@@ -283,10 +293,13 @@ func CreateNewFlowerFromGlobalPos(globalPos:Vector2,blossomed:bool=false,playSou
 	return node
 	
 
-func RemoveTile(pos:Vector2i):
-	gameTilemap.set_cell(pos,-1,Vector2i(-1,-1),0)
+func RemoveTile(pos:Vector2i,replaceEmptySpaceWithThisTerrain:int=-1):
 	
-
+	if replaceEmptySpaceWithThisTerrain==-1:
+		gameTilemap.set_cell(pos,-1,Vector2i(-1,-1),0)
+	else:
+		#Oh god do I need to connect the cells? 
+		gameTilemap.set_cell(pos,GetSourceIDFromTerrain(replaceEmptySpaceWithThisTerrain),Vector2i(0,0),0)
 
 func MoveTileToNewPos(oldpos:Vector2,newpos:Vector2):
 	var tile_map_cell_position = oldpos 

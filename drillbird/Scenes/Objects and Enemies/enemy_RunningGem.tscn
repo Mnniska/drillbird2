@@ -1,0 +1,72 @@
+[gd_scene load_steps=12 format=3 uid="uid://4ea053k7e4d0"]
+
+[ext_resource type="Script" uid="uid://ogag6wxgn0y5" path="res://Scripts/Enemies/enemy_mole_ore.gd" id="1_lxrrl"]
+[ext_resource type="Resource" uid="uid://dtee1eo8ydnlr" path="res://Resources/Economy/ore_6.tres" id="2_4j1tk"]
+[ext_resource type="Script" uid="uid://bgy5cf01m25xs" path="res://Scripts/Abstract scripts/abstract_collidable.gd" id="2_jvrxm"]
+[ext_resource type="Texture2D" uid="uid://c3eon4ta5ytpj" path="res://Art/characters/WalkingGem/WalkingGem_v2_idle.png" id="3_4j1tk"]
+[ext_resource type="Script" uid="uid://cokuso80w54cc" path="res://Scripts/Abstract scripts/abstract_enemy.gd" id="3_xg40v"]
+[ext_resource type="Texture2D" uid="uid://c7esilvvr48hf" path="res://Art/characters/WalkingGem/WalkingGem_v2_walk.png" id="4_wcs4h"]
+
+[sub_resource type="Resource" id="Resource_vulfi"]
+script = ExtResource("2_jvrxm")
+type = 1
+enemyID = 8
+metadata/_custom_type_script = "uid://bgy5cf01m25xs"
+
+[sub_resource type="Resource" id="Resource_lvi2v"]
+script = ExtResource("3_xg40v")
+type = 8
+damage = 0
+metadata/_custom_type_script = "uid://cokuso80w54cc"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lxrrl"]
+radius = 7.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wcs4h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_4j1tk")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_wcs4h")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1bo6n"]
+radius = 28.0
+
+[node name="Enemy_WalkingGem" type="CharacterBody2D"]
+collision_layer = 4096
+collision_mask = 4096
+script = ExtResource("1_lxrrl")
+oreToSpawn = ExtResource("2_4j1tk")
+collType = SubResource("Resource_vulfi")
+enemyInfo = SubResource("Resource_lvi2v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_lxrrl")
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_wcs4h")
+animation = &"idle"
+frame_progress = 0.088823855
+
+[node name="Detection area" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detection area"]
+shape = SubResource("CircleShape2D_1bo6n")
+
+[node name="eyeball" type="Sprite2D" parent="."]
+
+[connection signal="body_shape_entered" from="Detection area" to="." method="_on_detection_area_body_shape_entered"]

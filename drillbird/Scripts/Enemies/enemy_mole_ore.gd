@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends Base_Enemy
 
 #Todo: Make it spawn ore depending on depth? Or just use it for specific region?
 @export var oreToSpawn:abstract_ore
@@ -9,33 +9,61 @@ const DISTANCE_TO_FEEL_SAFE = 16*3
 const DISTANCE_BEFORE_SPAWNING_NEW_COLLIDER:float=16*6
 
 @onready var detectionArea=$"Detection area"
+@onready var sprite=$sprite
 
 var bodyToEscapeFrom:Node2D=null
 enum States{IDLE,ESCAPING,DYING}
 var state:States=States.IDLE
 
-var colliders:Array[Node2D]
+var collidersForEmptySpaces:Array[Node2D]
 var colliderPositions:Array[Vector2i]
 var positionOfLastColliderSpawn:Vector2
 var tilemap:TileMapLayer
 var vibrate:bool=false
 
 func _ready() -> void:
-	
-	await GlobalVariables.SetupComplete
-	tilemap=GlobalVariables.MainSceneReferenceConnector.ref_environmentTilemap
-	CreateCollidersOnEmptySpaces(tilemap)
 	GlobalVariables.TileDestroyed.connect(PlayerDestroyedTile)
+
+
+	await GlobalVariables.SetupComplete
+	CreateCollidersOnEmptySpaces(GetTilemap())
+
+func GetTilemap()->TileMapLayer:
+	if tilemap:
+		return tilemap
+	else:
+		tilemap=GlobalVariables.MainSceneReferenceConnector.ref_environmentTilemap
+		return tilemap
+
+func Setup(info:abstract_enemy): #MUST HAVE
+	#This happens AFTER the enemy has spawned, so i just need to make sure this check has happened b4 enemy spawns
+	enemyInfo=enemyInfo.duplicate()
+	enemyInfo.spawnLocation=info.spawnLocation
+	enemyInfo.currentSpawnLocation=info.currentSpawnLocation
+	enemyInfo.dead=info.dead
+		
+	spawnPositionLocal=position #MUST HAVE
+	GlobalVariables.signal_IsPlayerInMenuChanged.connect(SetGamePaused)
+	
+
+	
+	setupComplete=true
+	
+	
+
 
 func _physics_process(delta: float) -> void:
 	
+	var anim:String=sprite.animation
 	match state:
 		States.IDLE:
 			velocity=Vector2(0,0)
 			vibrate=false
+			anim="idle"
 			pass
 		States.ESCAPING:
 			vibrate=true
+			anim="walk"
 			if bodyToEscapeFrom==null:
 				print_debug("no body to escape from")
 				state=States.IDLE
@@ -52,7 +80,7 @@ func _physics_process(delta: float) -> void:
 				state=States.IDLE
 			
 			if global_position.distance_to(positionOfLastColliderSpawn)>DISTANCE_BEFORE_SPAWNING_NEW_COLLIDER:
-				CreateCollidersOnEmptySpaces(GlobalVariables.MainSceneReferenceConnector.ref_environmentTilemap)
+				CreateCollidersOnEmptySpaces(GetTilemap())
 			
 			
 
@@ -60,15 +88,20 @@ func _physics_process(delta: float) -> void:
 		var d=0.5
 		$sprite.position=Vector2(randf_range(-d,d),randf_range(-d,d))
 	move_and_slide()
+	HandleVisuals(anim)
 
+func HandleVisuals(_animToPlay:String):
+	if sprite.animation!=_animToPlay:
+		sprite.play(_animToPlay)
+		
 
-func PlayerDestroyedTile(tilemapCoord:Vector2i,tilemap:TileMapLayer):
+func PlayerDestroyedTile(tilemapCoord:Vector2i,_tilemap:TileMapLayer):
 	
-	var distance=tilemap.to_global(tilemap.map_to_local(tilemapCoord)).distance_to(global_position)
+	var distance=_tilemap.to_global(_tilemap.map_to_local(tilemapCoord)).distance_to(global_position)
 	if distance<DISTANCE_BEFORE_SPAWNING_NEW_COLLIDER:
 		pass
 		
-		if tilemap.local_to_map(tilemap.to_local(global_position)) == tilemapCoord:
+		if _tilemap.local_to_map(_tilemap.to_local(global_position)) == tilemapCoord:
 			#the block lil fucker is standing on has been destroyed
 			RestingBlockDestroyed()
 		
@@ -85,6 +118,9 @@ func RestingBlockDestroyed():
 	
 	var spawner:ore_manager = GlobalVariables.MainSceneReferenceConnector.ref_oreTilemap
 	spawner.SpawnOreAtLocation(global_position,oreToSpawn,Vector2(0,-100),true)
+	
+	for n in collidersForEmptySpaces:
+		n.queue_free()
 	queue_free()
 	pass
 
@@ -93,15 +129,15 @@ func SpawnIndvidualCollider(tilemapPos):
 	if !colliderPositions.has(tilemapPos):
 		var coll:Node2D = spawnedCollider.instantiate()
 		get_parent().add_child(coll)
-		coll.global_position=tilemap.to_global(tilemap.map_to_local(tilemapPos))
-		colliders.append(coll)
+		coll.global_position=GetTilemap().to_global(GetTilemap().map_to_local(tilemapPos))
+		collidersForEmptySpaces.append(coll)
 		colliderPositions.append(tilemapPos)
 	
 
-func CreateCollidersOnEmptySpaces(tilemap:TileMapLayer):
+func CreateCollidersOnEmptySpaces(_tilemap:TileMapLayer):
 	
-	var localPositionInTilemap=tilemap.to_local(global_position)
-	var positionInTilemap=tilemap.local_to_map(localPositionInTilemap)
+	var localPositionInTilemap=_tilemap.to_local(global_position)
+	var positionInTilemap=_tilemap.local_to_map(localPositionInTilemap)
 	
 	var widthToCheck:int=12
 	
@@ -109,7 +145,7 @@ func CreateCollidersOnEmptySpaces(tilemap:TileMapLayer):
 		for y in widthToCheck:
 			var posToCheck=positionInTilemap+Vector2i(x - widthToCheck/2,y-widthToCheck/2)
 			
-			if tilemap.get_cell_tile_data(posToCheck) == null:
+			if _tilemap.get_cell_tile_data(posToCheck) == null:
 				SpawnIndvidualCollider(posToCheck)
 				
 			pass
