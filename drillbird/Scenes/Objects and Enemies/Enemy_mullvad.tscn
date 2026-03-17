@@ -27,6 +27,14 @@ size = Vector2(12, 14)
 [sub_resource type="SpriteFrames" id="SpriteFrames_of4cw"]
 animations = [{
 "frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_h6r27")
+}],
+"loop": true,
+"name": &"corpse",
+"speed": 5.0
+}, {
+"frames": [{
 "duration": 3.0,
 "texture": ExtResource("4_h6r27")
 }, {
@@ -92,7 +100,7 @@ shape = SubResource("RectangleShape2D_khmiv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_of4cw")
-animation = &"fall"
+animation = &"corpse"
 autoplay = "run"
 
 [node name="EnemyCollisionChecker" type="Area2D" parent="."]

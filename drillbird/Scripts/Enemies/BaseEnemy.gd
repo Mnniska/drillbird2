@@ -12,6 +12,7 @@ var enemySleep:bool=true
 @onready var positionLastFrame:Vector2=position
 var isFalling:bool=false
 var textbubble=preload("res://Scenes/UI/text_bubble.tscn")
+var corpseRefernse=preload("res://Scenes/Objects and Enemies/corpse_scene.tscn")
 
 @export var updateInterval:float=2
 var updateCounter:float=0
@@ -84,6 +85,8 @@ func Kill(showEffects:bool=true,soundToPlay:abstract_SoundEffectSetting.SoundEff
 	enemyInfo.dead=true
 	TurnEnemyOff(false)
 
+	#This is probably a good pplace to implement the corpse logic
+	
 	if showEffects:
 		if soundToPlay!=-1:
 			SoundManager.PlaySoundAtLocation(global_position,soundToPlay)
@@ -92,6 +95,9 @@ func Kill(showEffects:bool=true,soundToPlay:abstract_SoundEffectSetting.SoundEff
 		await get_tree().create_timer(timeToDie).timeout
 	
 	hide()
+	
+	TurnIntoCorpse()
+
 	
 	if showEffects:
 		var textBubbleInstance=textbubble.instantiate()
@@ -107,6 +113,16 @@ func Kill(showEffects:bool=true,soundToPlay:abstract_SoundEffectSetting.SoundEff
 		textBubbleInstance.ShowText("+"+str(xp))
 	
 	#Spawn XP!
+func TurnIntoCorpse():
+	#spawn corpse here 
+	var corpseInstance:CharacterBody2D=corpseRefernse.instantiate()
+	corpseInstance.transform.origin=global_position+Vector2(0,-8)
+	get_parent().add_child(corpseInstance)
+	
+	corpseInstance.velocity.y=-16
+	
+	
+	pass
 
 func get_current_animation_length(animated_sprite: AnimatedSprite2D = anim) -> float:
 
@@ -170,7 +186,6 @@ func _physics_process(delta: float) -> void:
 	
 	isFalling = GetIsFalling()
 	positionLastFrame=position #must be called before move_and_slide but after functions that need it
-
 	move_and_slide()
 	UpdateAnimations("idle")
 

@@ -41,7 +41,7 @@ type = 5
 metadata/_custom_type_script = "uid://cokuso80w54cc"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_khmiv"]
-size = Vector2(8, 12)
+size = Vector2(8, 11)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_33533"]
 size = Vector2(12, 7)
@@ -189,7 +189,7 @@ collType = SubResource("Resource_woexa")
 enemyInfo = SubResource("Resource_43ep8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 1)
+position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_khmiv")
 
 [node name="EnemyCollisionChecker" type="Area2D" parent="."]

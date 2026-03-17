@@ -12,7 +12,7 @@ var timeBeforeTurning=0.2
 
 @onready var collider=$EnemyCollisionChecker
 
-enum States{WALK,WAIT}
+enum States{WALK,WAIT,CORPSE}
 var state:States=States.WALK
 
 func GetCollType(): #MUST HAVE
@@ -45,7 +45,6 @@ func DealDamage(value:int): #MUST HAVE
 		Kill(true,abstract_SoundEffectSetting.SoundEffectEnum.ENEMY_WALKER_DEATH)
 
 
-
 func TurnEnemyOff(hideInstantly:bool=true):
 	if hideInstantly:
 		hide()
@@ -72,15 +71,19 @@ func _on_enemy_collision_checker_body_shape_entered(body_rid: RID, body: Node2D,
 
 func _physics_process(delta: float) -> void:
 	
-	if enemyInfo.dead or gamePaused:
+	if gamePaused:
 		return
 		
+	if enemyInfo.dead and !enemyInfo.isCorpse:
+		return
+	
 	CheckIfSleeping(delta)
 	if enemySleep:
 		return
 	var anim="idle"
 
-	
+	if state==States.CORPSE:
+		anim="corpse"
 
 	if state==States.WALK:
 		
