@@ -94,7 +94,6 @@ func Kill(showEffects:bool=true,soundToPlay:abstract_SoundEffectSetting.SoundEff
 		var timeToDie:float=get_current_animation_length()		
 		await get_tree().create_timer(timeToDie).timeout
 	
-	hide()
 	
 	TurnIntoCorpse()
 
@@ -111,6 +110,8 @@ func Kill(showEffects:bool=true,soundToPlay:abstract_SoundEffectSetting.SoundEff
 		var xp:int=GlobalVariables.AddXPFromKill(enemyInfo)
 		
 		textBubbleInstance.ShowText("+"+str(xp))
+		
+		queue_free()
 	
 	#Spawn XP!
 func TurnIntoCorpse():

@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://ctl37txorkki8" path="res://Art/characters/corpse/corpse_falling3.png" id="4_vgfsx"]
 [ext_resource type="Texture2D" uid="uid://c38pgpqbmv3j4" path="res://Art/characters/corpse/corpse_land1.png" id="5_3idqe"]
 [ext_resource type="Texture2D" uid="uid://brkp5rtbka740" path="res://Art/characters/corpse/corpse_land2.png" id="6_mop0q"]
-[ext_resource type="Texture2D" uid="uid://cihvu8sy2o2pg" path="res://Art/characters/corpse/corpse_land3.png" id="7_0sp47"]
+[ext_resource type="Texture2D" uid="uid://ch3kxy4ma0rt3" path="res://Art/characters/corpse/corpse_idle.png" id="7_55naq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6lonp"]
 size = Vector2(11, 6)
@@ -35,7 +35,7 @@ animations = [{
 "texture": ExtResource("6_mop0q")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_0sp47")
+"texture": ExtResource("7_55naq")
 }],
 "loop": false,
 "name": &"idle",

@@ -39,6 +39,8 @@ func WorldGenerated():
 	OreAreas=$"../WorldSpawn/TilemapOres/OreRegions"
 	pass
 
+#Called from save game script in top node in Main
+#Spawns all of the enemies based on given data from save system
 func LoadEnemySpawns(spawnpos:Array[Vector2i],enemytype:Array[int],enemyDead:Array[bool],currentSpawnPos:Array[Vector2i]):
 	
 	loadedEnemiesList.clear()
@@ -238,6 +240,10 @@ func SpawnAllEnemies():
 
 	for enemyInfo in enemiesToSpawnList:
 		
+		if enemyInfo.dead: #simply don't spawn the enemy
+			spawnedEnemies.append(null)	#add a null value so that the order is still correct hehe
+			continue
+		
 		var enemy = load(potentialEnemyStrings[enemyInfo.type]) #
 		var node = enemy.instantiate()
 		spawnedEnemies.append(node)	
@@ -271,11 +277,17 @@ func GetFlowerUpdate()->Array[Vector2i]:
 func GetEnemyUpdate():
 	
 	var index=0
+	
+	#Called when saving. 
+	#Goes through the spawnedEnemies list created during play and updates each entry, adding new position + whether the enemy is dead
 	for n in spawnedEnemies:
 		
-		enemiesToSpawnList[index].dead=n.enemyInfo.dead
-		var currentPos:Vector2i=gameTilemap.local_to_map(gameTilemap.to_local(n.position)) #get enemy pos and convert it to map coords
-		enemiesToSpawnList[index].currentSpawnLocation=currentPos
+		if n==null: #test to just delete enemies when they die lol, to save some memory
+			enemiesToSpawnList[index].dead=true
+		else:
+	#		enemiesToSpawnList[index].dead=n.enemyInfo.dead
+			var currentPos:Vector2i=gameTilemap.local_to_map(gameTilemap.to_local(n.position)) #get enemy pos and convert it to map coords
+			enemiesToSpawnList[index].currentSpawnLocation=currentPos
 		index+=1
 	return enemiesToSpawnList
 
