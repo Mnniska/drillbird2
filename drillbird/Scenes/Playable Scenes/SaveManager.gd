@@ -71,6 +71,7 @@ func ResetSaveData(onlyResetEnemiesAndTiles:bool=false):
 		PlayerData.enemyTypes.clear()
 		PlayerData.enemySpawnPositions.clear()
 		PlayerData.destroyed_tiles.clear()
+		PlayerData.enemySpawnedFromCorpse.clear()
 	else:
 		PlayerData=null
 		PlayerData=abstract_savegame.new()
@@ -147,6 +148,7 @@ func SaveEnemies():
 	PlayerData.enemyCurrentSpawnPositions.clear()
 	PlayerData.enemyTypes.clear()
 	PlayerData.enemyDead.clear()
+	PlayerData.enemySpawnedFromCorpse.clear()
 
 	for n:abstract_enemy in EnemySpawner.GetEnemyUpdate():
 		
@@ -154,8 +156,9 @@ func SaveEnemies():
 		PlayerData.enemyCurrentSpawnPositions.append(n.currentSpawnLocation)
 		PlayerData.enemyTypes.append(n.type)
 		PlayerData.enemyDead.append(n.dead)
+		PlayerData.enemySpawnedFromCorpse.append(n.spawnedFromCorpse)
 		
-		if n.type==n.enemyTypes.TOMBSTONE:
+		if n.spawnedFromCorpse:
 			print_debug("tombstone saved yo")
 		
 		
@@ -191,8 +194,8 @@ func SaveFlowers():
 	
 	pass
 
-func LoadEnemyPositions():
-	EnemySpawner.LoadEnemySpawns(PlayerData.enemySpawnPositions,PlayerData.enemyTypes,PlayerData.enemyDead,PlayerData.enemyCurrentSpawnPositions)
+func LoadEnemies():
+	EnemySpawner.LoadEnemySpawns(PlayerData.enemySpawnPositions,PlayerData.enemyTypes,PlayerData.enemyDead,PlayerData.enemyCurrentSpawnPositions,PlayerData.enemySpawnedFromCorpse)
 
 func LoadFlowers():
 	EnemySpawner.LoadFlowers(PlayerData.flowerSpawnPositions)
@@ -240,7 +243,7 @@ func LoadGame(worldToLoad:int=-1):
 	GlobalVariables.timeLastSaved=PlayerData.timeLastSaved
 	
 	SetGlobalVariablesToLoadedGame()
-	LoadEnemyPositions()
+	LoadEnemies()
 	CalculateEnemyDeaths()
 	LoadFlowers()
 	LoadLeftoverOres()

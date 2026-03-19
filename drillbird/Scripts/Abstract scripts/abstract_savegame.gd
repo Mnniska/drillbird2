@@ -24,6 +24,7 @@ class_name abstract_savegame
 @export var enemySpawnPositions:Array[Vector2i] #This should be called origin spawn positons - but keeping it as is for savefile compatibility reasons
 @export var enemyTypes:Array[int]
 @export var enemyDead:Array[bool]
+@export var enemySpawnedFromCorpse:Array[bool]
 @export var flowerSpawnPositions:Array[Vector2i]
 @export var revealedSecretBools:Array[bool]
 

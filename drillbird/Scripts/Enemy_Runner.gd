@@ -74,7 +74,7 @@ func _physics_process(delta: float) -> void:
 	if gamePaused:
 		return
 		
-	if enemyInfo.dead and !enemyInfo.isCorpse:
+	if enemyInfo.dead:
 		return
 	
 	CheckIfSleeping(delta)

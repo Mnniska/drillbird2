@@ -78,6 +78,7 @@ func Setup(info:abstract_enemy):
 	enemyInfo.spawnLocation=info.spawnLocation
 	enemyInfo.dead=info.dead
 	enemyInfo.type=info.type
+	enemyInfo.spawnedFromCorpse=info.spawnedFromCorpse
 	spawnPositionLocal=position
 
 func DealDamage(amount:int):

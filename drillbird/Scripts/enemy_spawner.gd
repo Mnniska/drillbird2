@@ -42,21 +42,25 @@ func WorldGenerated():
 
 #Called from save game script in top node in Main when starting game
 #Spawns all of the enemies based on given data from save system
-func LoadEnemySpawns(spawnpos:Array[Vector2i],enemytype:Array[int],enemyDead:Array[bool],currentSpawnPos:Array[Vector2i]):
+func LoadEnemySpawns(spawnpos:Array[Vector2i],enemytype:Array[int],enemyDead:Array[bool],currentSpawnPos:Array[Vector2i],spawnedFromCorpse:Array[bool]):
 	
 	loadedEnemiesList.clear()
 	for n in spawnpos.size():
 		var enemy= abstract_enemy.new()
 		enemy.spawnLocation=spawnpos[n]
 		
-		if currentSpawnPos.size()>n:
+		if currentSpawnPos.size()>n: #if there's value in currentspawnpos it means it should be updated?
 			enemy.currentSpawnLocation=currentSpawnPos[n]
 		else:
 			enemy.currentSpawnLocation=spawnpos[n]
 			
 		enemy.type=enemytype[n]
-		enemy.dead=enemyDead[n]
 		
+		enemy.dead=enemyDead[n]
+		enemy.spawnedFromCorpse=spawnedFromCorpse[n]
+		
+		if enemy.spawnedFromCorpse:
+			print_debug("yo spawned from corpse lol")
 
 		
 		loadedEnemiesList.append(enemy)
@@ -103,6 +107,10 @@ func GenerateObjectsAndEnemiesFromTilemap():
 		var tile:TileData = gameTilemap.get_cell_tile_data(tileLoc)
 		
 		
+	#This script relies on each enemy having a reference in the tilemap - it checks the tilemaps enemy reference to see if it has
+	#A matching location with any existing enemies. if so - it does not spawn the tilemap enemy, instead spawning it wherever it has moved
+	#If a new enemy has been added to the tilemap after saving - it'll be a new entry so no match will be found - the enemy will be added using the default positions
+	#However - loaded enemies which does not have a tile simply won't be included I reckon
 
 		#Is it an enemy? If so, add it to the list of enemies to spawn
 		#Enemies are spawned in the SpawnAllEnemies function
@@ -112,7 +120,10 @@ func GenerateObjectsAndEnemiesFromTilemap():
 			newEnemy.spawnLocation=tileLoc
 			var foundmatch:bool=false
 			
+			#Tries to find a match 
 			for enemy in loadedEnemiesList: #is there a better way do this this then to loop through ALL of the enmies for each enemy spawned? lol
+				
+
 				if enemy.spawnLocation==newEnemy.spawnLocation: 
 					#Check whether there is a saved enemy with the same spawn pos as the tilemap
 					#if so - spawns the enemy with the saved data
@@ -132,6 +143,9 @@ func GenerateObjectsAndEnemiesFromTilemap():
 				valueToReplaceWithTile=tile.get_custom_data("oreblock_terrain")
 				
 			RemoveTile(tileLoc,valueToReplaceWithTile)
+		
+
+
 		
 		#Is there an object that should be spawned via the tilemap?
 		var type=tile.get_custom_data("object_type")
@@ -236,6 +250,13 @@ func SpawnAllEnemies():
 
 	#Spawns all enemies in the EnemiesToSpawn list. This list is loaded from savefile or setup during first play
 
+	#Some items can be spawned without a tilemap reference and saved, then put into loadedenemieslist
+	#For these we use this for loop, adding the enemies to the list b4 going thru it
+	for enemy in loadedEnemiesList:
+		if enemy.spawnedFromCorpse:
+			print_debug("tombstone spawning..")
+			enemiesToSpawnList.append(enemy)
+
 	for enemyInfo in enemiesToSpawnList:
 		
 		if enemyInfo.type==enemyInfo.enemyTypes.TOMBSTONE:
@@ -243,21 +264,20 @@ func SpawnAllEnemies():
 		
 		if enemyInfo.dead: #simply don't spawn the enemy
 			spawnedEnemies.append(null)	#add a null value so that the order is still correct hehe
-			continue
-		
-		var enemy = load(potentialEnemyStrings[enemyInfo.type]) #
-		var node = enemy.instantiate()
-		spawnedEnemies.append(node)	
+		else:
+			var enemy = load(potentialEnemyStrings[enemyInfo.type]) #
+			var node = enemy.instantiate()
+			spawnedEnemies.append(node)	
 
-		var spawnPosLocalCoords=gameTilemap.map_to_local(enemyInfo.currentSpawnLocation)
-		
+			var spawnPosLocalCoords=gameTilemap.map_to_local(enemyInfo.currentSpawnLocation)
+			
 
-		if node.enemyInfo.type==abstract_enemy.enemyTypes.FALLBLOCK or node.enemyInfo.type==abstract_enemy.enemyTypes.SWORDFISH:
-			node.BlockDestroyer=tileDestroyer
-		
-		node.Setup(enemyInfo)
-		node.transform.origin = spawnPosLocalCoords
-		add_child(node)
+			if node.enemyInfo.type==abstract_enemy.enemyTypes.FALLBLOCK or node.enemyInfo.type==abstract_enemy.enemyTypes.SWORDFISH:
+				node.BlockDestroyer=tileDestroyer
+			
+			node.Setup(enemyInfo)
+			node.transform.origin = spawnPosLocalCoords
+			add_child(node)
 			
 	pass
 
@@ -292,6 +312,8 @@ func GetEnemyUpdate():
 		
 			enemiesToSpawnList[index].currentSpawnLocation=currentPos
 		index+=1
+		
+	#the problem is that the tombstone isn't added to this list I think
 	return enemiesToSpawnList
 
 func CreateNewFlowerFromGlobalPos(globalPos:Vector2,blossomed:bool=false,playSound:bool=true):
@@ -324,9 +346,9 @@ func TurnCorpsesIntoTombstones():
 		var tombstoneInfo:abstract_enemy=abstract_enemy.new()
 		tombstoneInfo.damage=1
 		tombstoneInfo.dead=false
-		tombstoneInfo.isCorpse=false
-		tombstoneInfo.spawnLocation=spawnpos
+		tombstoneInfo.spawnLocation=posInTilemapCoords
 		tombstoneInfo.type=tombstoneInfo.enemyTypes.TOMBSTONE
+		tombstoneInfo.spawnedFromCorpse=true
 		
 
 		tombstoneInstance.Setup(tombstoneInfo)

@@ -6,5 +6,5 @@ enum enemyTypes{MOLE,SPIKE,FOLLOWER,FALLBLOCK,UPSIDEDOWN,SWORDFISH,TOMBSTONE,GHA
 var spawnLocation:Vector2i
 var currentSpawnLocation:Vector2i
 var dead:bool=false
-var isCorpse:bool=false
+var spawnedFromCorpse:bool=false
 @export var damage:int=1
