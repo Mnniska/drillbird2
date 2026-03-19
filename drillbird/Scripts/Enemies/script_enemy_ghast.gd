@@ -14,7 +14,7 @@ const FRICTION=3
 const PERSUIT_LENGTH = 16*8
 
 var lineToFollow:Line2D=null
-var tombstone:Node2D=null
+var parentTombstone:Node2D=null
 
 enum States{IDLE,FOLLOWINGLINE,PERSUIT,ARRIVED,DESPAWNING,SPOTTINGSOMETHING}
 var state:States=States.IDLE
@@ -56,7 +56,7 @@ func _physics_process(delta: float) -> void:
 				if targetPoint>lineToFollow.get_point_count()-1:
 					targetPoint=0
 				
-				var newpos = tombstone.global_position+lineToFollow.get_point_position(targetPoint)
+				var newpos = parentTombstone.global_position+lineToFollow.get_point_position(targetPoint)
 				TargetLocationGlobal=newpos
 				#get next point to follow
 				
@@ -68,7 +68,7 @@ func _physics_process(delta: float) -> void:
 			move_and_slide()
 			HandleAnimations("persuit")
 			
-			if global_position.distance_to(tombstone.global_position)>PERSUIT_LENGTH:
+			if global_position.distance_to(parentTombstone.global_position)>PERSUIT_LENGTH:
 				AbortChaseDueToDistance()
 
 			pass
@@ -101,7 +101,7 @@ func GetMovementVector(_targetPosGlobal:Vector2):
 func SetupGhast(line:Line2D , _tombstone:Node2D):
 	lineToFollow=line
 
-	tombstone=_tombstone
+	parentTombstone=_tombstone
 	
 
 func TombstoneDestroyed():
@@ -120,7 +120,7 @@ func LostTarget():
 
 func NewTarget(body:Node2D):
 	
-	if global_position.distance_to(tombstone.global_position)>=PERSUIT_LENGTH:
+	if global_position.distance_to(parentTombstone.global_position)>=PERSUIT_LENGTH:
 		return
 	
 	state=States.SPOTTINGSOMETHING
@@ -138,7 +138,7 @@ func ReturnToLine():
 	var distance=1000000
 	var chosenPoint:Vector2=Vector2(0,0)
 	for n in lineToFollow.get_point_count():
-		var loc = tombstone.global_position+lineToFollow.get_point_position(n) 
+		var loc = parentTombstone.global_position+lineToFollow.get_point_position(n) 
 		
 		var dist = loc.distance_to(self.global_position)
 		if dist<distance:

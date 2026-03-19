@@ -1,4 +1,5 @@
 extends enemy_spikes
+class_name tombstone
 
 var spawnedGhast:ghast=null
 @onready var loadedGhast=preload("res://Scenes/Objects and Enemies/enemy_ghast.tscn")

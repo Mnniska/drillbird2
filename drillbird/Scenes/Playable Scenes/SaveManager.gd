@@ -102,11 +102,15 @@ func SaveGame(showgamesavedtext:bool=true):
 	PlayerData.currentDay=GlobalVariables.currentDay
 	PlayerData.eggState=GlobalVariables.eggState
 	SaveEnvironment()
+
+	#need to turn corpses into tombstones b4 saving enemies so tombstones are included in the save
+	EnemySpawner.TurnCorpsesIntoTombstones()
 	SaveEnemies()
+	
 	SaveFlowers()
 	SaveLeftoverOres()
 
-	
+	#called whenever saving for now - this is only done when passing time so shoooould be fine?
 	
 	ResourceSaver.save(PlayerData,save_file_path+save_file_name)
 	print_debug("game saved")
@@ -150,6 +154,9 @@ func SaveEnemies():
 		PlayerData.enemyCurrentSpawnPositions.append(n.currentSpawnLocation)
 		PlayerData.enemyTypes.append(n.type)
 		PlayerData.enemyDead.append(n.dead)
+		
+		if n.type==n.enemyTypes.TOMBSTONE:
+			print_debug("tombstone saved yo")
 		
 		
 		

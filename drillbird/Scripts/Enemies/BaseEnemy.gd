@@ -118,10 +118,8 @@ func TurnIntoCorpse():
 	#spawn corpse here 
 	var corpseInstance:CharacterBody2D=corpseRefernse.instantiate()
 	corpseInstance.transform.origin=global_position+Vector2(0,-8)
-	get_parent().add_child(corpseInstance)
-	
-	corpseInstance.velocity.y=-16
-	
+	var parent:object_spawner=get_parent()
+	parent.AddCorpse(corpseInstance)
 	
 	pass
 

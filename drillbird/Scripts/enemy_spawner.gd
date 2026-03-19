@@ -9,7 +9,8 @@ var oreTilemap:TileMapLayer
 var OreAreas
 @onready var tileDestroyer=$"../TileCrack"
 @onready var fragileBlockManager:block_fragile_manager=$Block_FragileManager
-
+@onready var corpseHolder=$"corpseholder"
+@onready var tombstoneReference=preload("res://Scenes/Objects and Enemies/Enemy_Tombstone.tscn")
 
 var spawnedEnemies:Array[Node2D]
 
@@ -39,7 +40,7 @@ func WorldGenerated():
 	OreAreas=$"../WorldSpawn/TilemapOres/OreRegions"
 	pass
 
-#Called from save game script in top node in Main
+#Called from save game script in top node in Main when starting game
 #Spawns all of the enemies based on given data from save system
 func LoadEnemySpawns(spawnpos:Array[Vector2i],enemytype:Array[int],enemyDead:Array[bool],currentSpawnPos:Array[Vector2i]):
 	
@@ -117,9 +118,6 @@ func GenerateObjectsAndEnemiesFromTilemap():
 					#if so - spawns the enemy with the saved data
 					foundmatch=true
 					newEnemy.dead=enemy.dead
-					
-					if enemy.dead:
-						print_debug("found a dead enemy")
 					
 					newEnemy.currentSpawnLocation=enemy.currentSpawnLocation
 			
@@ -240,6 +238,9 @@ func SpawnAllEnemies():
 
 	for enemyInfo in enemiesToSpawnList:
 		
+		if enemyInfo.type==enemyInfo.enemyTypes.TOMBSTONE:
+			print_debug("spawning new tombstone..")
+		
 		if enemyInfo.dead: #simply don't spawn the enemy
 			spawnedEnemies.append(null)	#add a null value so that the order is still correct hehe
 			continue
@@ -287,6 +288,8 @@ func GetEnemyUpdate():
 		else:
 	#		enemiesToSpawnList[index].dead=n.enemyInfo.dead
 			var currentPos:Vector2i=gameTilemap.local_to_map(gameTilemap.to_local(n.position)) #get enemy pos and convert it to map coords
+				
+		
 			enemiesToSpawnList[index].currentSpawnLocation=currentPos
 		index+=1
 	return enemiesToSpawnList
@@ -303,7 +306,45 @@ func CreateNewFlowerFromGlobalPos(globalPos:Vector2,blossomed:bool=false,playSou
 	node.SetHasBlossomed(blossomed,playSound)
 	
 	return node
+
+#Should be called when a day passes, which is also done when saving
+func TurnCorpsesIntoTombstones():
 	
+	for corpse:Node2D in corpseHolder.get_children():
+		
+		#translate the corpse position to center of tile so tombstone spawns in center
+		var posInLocalTilemap = gameTilemap.to_local(corpse.global_position)
+		var posInTilemapCoords=gameTilemap.local_to_map(posInLocalTilemap)
+		var spawnpos=gameTilemap.map_to_local(posInTilemapCoords)
+		
+		var tombstoneInstance:tombstone=tombstoneReference.instantiate()
+		tombstoneInstance.transform.origin=spawnpos
+		add_child(tombstoneInstance)
+		
+		var tombstoneInfo:abstract_enemy=abstract_enemy.new()
+		tombstoneInfo.damage=1
+		tombstoneInfo.dead=false
+		tombstoneInfo.isCorpse=false
+		tombstoneInfo.spawnLocation=spawnpos
+		tombstoneInfo.type=tombstoneInfo.enemyTypes.TOMBSTONE
+		
+
+		tombstoneInstance.Setup(tombstoneInfo)
+
+		spawnedEnemies.append(tombstoneInstance)
+		enemiesToSpawnList.append(tombstoneInstance.enemyInfo)
+		corpse.queue_free()
+
+		#then handle all the exceptions that creates lol
+		
+		#Can I add to the spawnedenemies list after the fact? I THINK this should be fine lol, let's check the flow after implementing
+		#In theory when saving it should create new entries in the enemylist when saving if there's new ones
+	
+
+func AddCorpse(corpseInstance):
+	corpseHolder.add_child(corpseInstance)
+	
+	#can't add tombstone here cuz corpse might move, but it's nice we have them gathered under one parent :) 
 
 func RemoveTile(pos:Vector2i,replaceEmptySpaceWithThisTerrain:int=-1):
 	

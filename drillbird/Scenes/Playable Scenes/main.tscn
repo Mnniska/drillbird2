@@ -250,6 +250,8 @@ potentialObjectStrings = Array[String](["res://Scenes/Objects and Enemies/Torch_
 rotation = 0.000508512
 script = ExtResource("6_7p02m")
 
+[node name="corpseholder" type="Node2D" parent="ObjectSpawner"]
+
 [node name="Home" parent="." instance=ExtResource("38_pj4ey")]
 
 [node name="TileCrack" parent="." instance=ExtResource("2_c10yv")]
