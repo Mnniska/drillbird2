@@ -6,12 +6,13 @@ class_name ghast
 
 @export var timeToWaitBeforePersuing=0.6
 
-const LINE_SPEED = PERSUIT_SPEED*0.75
-const PERSUIT_SPEED=95
+@onready var LINE_SPEED = PERSUIT_SPEED*0.75
+@export var PERSUIT_SPEED=50
+
 const ACCELERATION=2
 const FRICTION=3
 
-const PERSUIT_LENGTH = 16*8
+@export var PERSUIT_LENGTH = 16*6
 
 var lineToFollow:Line2D=null
 var parentTombstone:Node2D=null

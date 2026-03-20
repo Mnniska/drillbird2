@@ -37,7 +37,7 @@ metadata/_custom_type_script = "uid://cokuso80w54cc"
 radius = 7.071068
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kuoiw"]
-radius = 30.0
+radius = 22.022715
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bjs6x"]
 animations = [{
@@ -149,6 +149,7 @@ collision_mask = 0
 script = ExtResource("1_o5qkd")
 collType = SubResource("Resource_qk7if")
 enemyInfo = SubResource("Resource_5jf44")
+PERSUIT_LENGTH = 128
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_v1yg6")
@@ -158,7 +159,6 @@ collision_layer = 0
 collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detection radius"]
-visible = false
 shape = SubResource("CircleShape2D_kuoiw")
 debug_color = Color(0.61751765, 0.52141714, 0.35282716, 0.41960785)
 
