@@ -1,0 +1,188 @@
+[gd_scene load_steps=28 format=3 uid="uid://bx3a6lqm5kk1v"]
+
+[ext_resource type="Script" uid="uid://bq53lvnacnudb" path="res://Scripts/Enemies/script_enemy_ghast.gd" id="1_o5qkd"]
+[ext_resource type="Script" uid="uid://bgy5cf01m25xs" path="res://Scripts/Abstract scripts/abstract_collidable.gd" id="2_5jf44"]
+[ext_resource type="Script" uid="uid://cokuso80w54cc" path="res://Scripts/Abstract scripts/abstract_enemy.gd" id="2_rjd4f"]
+[ext_resource type="Texture2D" uid="uid://ecmcmfxsyxas" path="res://Art/characters/Tombstone and ghast/ghast_detect1.png" id="4_hurfh"]
+[ext_resource type="Texture2D" uid="uid://bdldy84lv5ye1" path="res://Art/characters/Tombstone and ghast/ghast_detect2.png" id="5_oob50"]
+[ext_resource type="Texture2D" uid="uid://xh55n1gx1xi5" path="res://Art/characters/Tombstone and ghast/ghast_detect3.png" id="6_cpi00"]
+[ext_resource type="Texture2D" uid="uid://s6rihxmgawu8" path="res://Art/characters/Tombstone and ghast/ghast_detect4.png" id="7_7oyuw"]
+[ext_resource type="Texture2D" uid="uid://jlf457ltqdvj" path="res://Art/characters/Tombstone and ghast/ghast_detect5.png" id="8_dahys"]
+[ext_resource type="Texture2D" uid="uid://ca5dxikvy2caa" path="res://Art/UI/exclamation_mark/UI_exclamationMarkJump1.png" id="8_mxf3a"]
+[ext_resource type="Texture2D" uid="uid://bicbaslxws5j3" path="res://Art/characters/Tombstone and ghast/ghast_idle1.png" id="9_iwi83"]
+[ext_resource type="Texture2D" uid="uid://b26nccnydf51l" path="res://Art/characters/Tombstone and ghast/ghast_idle2.png" id="10_m8fks"]
+[ext_resource type="Texture2D" uid="uid://b2yk8hlufd84r" path="res://Art/characters/Tombstone and ghast/ghast_idle3.png" id="11_swer0"]
+[ext_resource type="Texture2D" uid="uid://bw6sc7p6xe8qt" path="res://Art/characters/Tombstone and ghast/ghast_idle4.png" id="12_5n6a0"]
+[ext_resource type="Texture2D" uid="uid://yyq0mmakdcqm" path="res://Art/characters/Tombstone and ghast/ghast_idle5.png" id="13_ogpdw"]
+[ext_resource type="Texture2D" uid="uid://c45t5eecufy2d" path="res://Art/characters/Tombstone and ghast/ghast_idle6.png" id="14_o1xfg"]
+[ext_resource type="Texture2D" uid="uid://dkmg8b518bl8r" path="res://Art/characters/Tombstone and ghast/ghast_persuit1.png" id="15_c37py"]
+[ext_resource type="Texture2D" uid="uid://dlq3414sebp1v" path="res://Art/characters/Tombstone and ghast/ghast_persuit2.png" id="16_gl6si"]
+[ext_resource type="Texture2D" uid="uid://b71sfb0735vct" path="res://Art/characters/Tombstone and ghast/ghast_persuit3.png" id="17_kck5i"]
+[ext_resource type="Texture2D" uid="uid://cp3k0sfg6a5l2" path="res://Art/characters/Tombstone and ghast/ghast_persuit4.png" id="18_x08ar"]
+[ext_resource type="Texture2D" uid="uid://dntrnp52cxpww" path="res://Art/characters/Tombstone and ghast/ghast_persuit5.png" id="19_1ihac"]
+[ext_resource type="Texture2D" uid="uid://cfviyv0vuxdsl" path="res://Art/characters/Tombstone and ghast/ghast_persuit6.png" id="20_kobok"]
+
+[sub_resource type="Resource" id="Resource_qk7if"]
+script = ExtResource("2_5jf44")
+type = 1
+enemyID = 7
+metadata/_custom_type_script = "uid://bgy5cf01m25xs"
+
+[sub_resource type="Resource" id="Resource_5jf44"]
+script = ExtResource("2_rjd4f")
+type = 7
+metadata/_custom_type_script = "uid://cokuso80w54cc"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v1yg6"]
+radius = 7.071068
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kuoiw"]
+radius = 30.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bjs6x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_hurfh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_oob50")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_cpi00")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_oob50")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_cpi00")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_oob50")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_cpi00")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_oob50")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_cpi00")
+}],
+"loop": false,
+"name": &"despawn",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_hurfh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_oob50")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_cpi00")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_7oyuw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_dahys")
+}],
+"loop": false,
+"name": &"detect",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_iwi83")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_m8fks")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_swer0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_5n6a0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_ogpdw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_o1xfg")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_c37py")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_gl6si")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_kck5i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_x08ar")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_1ihac")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_kobok")
+}],
+"loop": true,
+"name": &"persuit",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mxf3a"]
+radius = 7.071068
+
+[node name="Ghast" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_o5qkd")
+collType = SubResource("Resource_qk7if")
+enemyInfo = SubResource("Resource_5jf44")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_v1yg6")
+
+[node name="detection radius" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detection radius"]
+visible = false
+shape = SubResource("CircleShape2D_kuoiw")
+debug_color = Color(0.61751765, 0.52141714, 0.35282716, 0.41960785)
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_bjs6x")
+animation = &"despawn"
+autoplay = "idle"
+
+[node name="targetDebug" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("8_mxf3a")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Collider_EnemyHitbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collider_EnemyHitbox"]
+shape = SubResource("CircleShape2D_mxf3a")
+debug_color = Color(0.9370531, 0.1832102, 0.4424696, 0.41960785)
+
+[connection signal="body_entered" from="detection radius" to="." method="_on_detection_radius_body_entered"]
+[connection signal="body_entered" from="Collider_EnemyHitbox" to="." method="_on_collider_enemy_hitbox_body_entered"]

@@ -3,13 +3,17 @@ extends Node
 @onready var TileDestroyer=$TileCrack
 @onready var EnemySpawner=$ObjectSpawner
 @onready var Savetext=$"Camera2D/Day counter"
-@onready var OreSpawner=$TilemapOres
+
 @onready var player = $Player
-@onready var OriginalSpawnPos=$PlayerSpawnLocations/OriginalSpawnPos
 @onready var introCutscene=$IntroCutscene
-@onready var oreAreas=$TilemapOres/OreRegions
-@onready var secret_tilemap:tilemap_secrets_manager=$TileMap_secrets
+@onready var worldSpawner=$WorldSpawner
 signal signal_GameAboutToBeSaved
+
+var OreSpawner
+var secret_tilemap:tilemap_secrets_manager
+var OriginalSpawnPos
+var oreAreas
+
 
 @onready var save_file_path = GlobalVariables.save_file_path
 @onready var save_file_name= GlobalVariables.save_file_name
@@ -19,7 +23,22 @@ var PlayerData=abstract_savegame.new()
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	verify_save_directory(save_file_path)
-	LoadGame()
+	LoadGame(-1)
+	#Todo: load based on current savefile
+	
+	#When starting the game, game should check if there's a previous save
+	#This could be saved in a meta savedata file, OR we could have a checkbox
+	#in each savefile to indicate "last used" 
+	#When loading game - if the world being loaded hasn't been played yet,
+	#the game should generate a new savefile..or I could do that at startup instead, and make as many savefiles as there are worlds..?
+	#Dunno, that might be useful in case I wanna pull info from the world data, 
+	#IE playtimes, completion rate, etc? But that data might suit better in a metafile? 
+	#Maybe a fun next step is to create a "select world" interface accessed from the main menu, 
+	#and have that hook up to this? 
+	#You can do this bud! soon you'll get to design whole new worlds :) 
+
+	
+	
 	LoadDestroyedTiles()
 	
 	SetupMiscGameLogicBeforeStart()
@@ -52,6 +71,7 @@ func ResetSaveData(onlyResetEnemiesAndTiles:bool=false):
 		PlayerData.enemyTypes.clear()
 		PlayerData.enemySpawnPositions.clear()
 		PlayerData.destroyed_tiles.clear()
+		PlayerData.enemySpawnedFromCorpse.clear()
 	else:
 		PlayerData=null
 		PlayerData=abstract_savegame.new()
@@ -83,11 +103,15 @@ func SaveGame(showgamesavedtext:bool=true):
 	PlayerData.currentDay=GlobalVariables.currentDay
 	PlayerData.eggState=GlobalVariables.eggState
 	SaveEnvironment()
+
+	#need to turn corpses into tombstones b4 saving enemies so tombstones are included in the save
+	EnemySpawner.TurnCorpsesIntoTombstones()
 	SaveEnemies()
+	
 	SaveFlowers()
 	SaveLeftoverOres()
 
-	
+	#called whenever saving for now - this is only done when passing time so shoooould be fine?
 	
 	ResourceSaver.save(PlayerData,save_file_path+save_file_name)
 	print_debug("game saved")
@@ -124,6 +148,7 @@ func SaveEnemies():
 	PlayerData.enemyCurrentSpawnPositions.clear()
 	PlayerData.enemyTypes.clear()
 	PlayerData.enemyDead.clear()
+	PlayerData.enemySpawnedFromCorpse.clear()
 
 	for n:abstract_enemy in EnemySpawner.GetEnemyUpdate():
 		
@@ -131,6 +156,12 @@ func SaveEnemies():
 		PlayerData.enemyCurrentSpawnPositions.append(n.currentSpawnLocation)
 		PlayerData.enemyTypes.append(n.type)
 		PlayerData.enemyDead.append(n.dead)
+		PlayerData.enemySpawnedFromCorpse.append(n.spawnedFromCorpse)
+		
+		if n.spawnedFromCorpse:
+			print_debug("tombstone saved yo")
+		
+		
 		
 	pass
 
@@ -163,9 +194,8 @@ func SaveFlowers():
 	
 	pass
 
-func LoadEnemyPositions():
-	#This is currently NOT USED
-	EnemySpawner.LoadEnemySpawns(PlayerData.enemySpawnPositions,PlayerData.enemyTypes,PlayerData.enemyDead,PlayerData.enemyCurrentSpawnPositions)
+func LoadEnemies():
+	EnemySpawner.LoadEnemySpawns(PlayerData.enemySpawnPositions,PlayerData.enemyTypes,PlayerData.enemyDead,PlayerData.enemyCurrentSpawnPositions,PlayerData.enemySpawnedFromCorpse)
 
 func LoadFlowers():
 	EnemySpawner.LoadFlowers(PlayerData.flowerSpawnPositions)
@@ -181,17 +211,39 @@ func LoadDestroyedTiles():
 	TileDestroyer.OnLoadDestroyDugTiles(PlayerData.destroyed_tiles)
 	pass
 
-func LoadGame():
+func SetupWorldReferences():
+	
+	OreSpawner=$WorldSpawn/TilemapOres
+	secret_tilemap=$WorldSpawn/TileMap_secrets
+	OriginalSpawnPos=$WorldSpawn/PlayerSpawnLocations/OriginalSpawnPos
+	oreAreas=$WorldSpawn/TilemapOres/OreRegions
+	
+	pass
+
+func LoadGame(worldToLoad:int=-1):
 	ResourceLoader.CACHE_MODE_IGNORE
 	if ResourceLoader.load(save_file_path+save_file_name)!=null:
 		PlayerData=ResourceLoader.load(save_file_path+save_file_name)
+	
+	
+	
+	#TODO: Spawn the world of the current savefile
+	if worldToLoad==-1:
+		worldToLoad=worldSpawner.CurrentWorld
+	worldSpawner.SpawnWorld(worldToLoad)
+	SetupWorldReferences()
+	
+	#We have two different signals here cuz the mainsceneref connector gets their references,
+	#and then other scripts who rely on that gets their references from it.
+	GlobalVariables.SignalWorldHasBeenSpawned(0)
+	GlobalVariables.SignalWorldHasBeenSpawned(1)
 	
 	#Sets time last saved upon starting the game
 	PlayerData.timeLastSaved = Time.get_unix_time_from_system() #captures the initial unix time
 	GlobalVariables.timeLastSaved=PlayerData.timeLastSaved
 	
 	SetGlobalVariablesToLoadedGame()
-	LoadEnemyPositions()
+	LoadEnemies()
 	CalculateEnemyDeaths()
 	LoadFlowers()
 	LoadLeftoverOres()

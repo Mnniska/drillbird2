@@ -2,7 +2,8 @@ extends Node
 signal playerAction()
 signal PlayerIsDrillingTileChanged(answer:bool)
 signal signal_IsPlayerInMenuChanged(inMenu:bool)
-@export var DebugEnabled:bool=false
+signal TileDestroyed(pos:Vector2i,tilemap:TileMapLayer)
+@export var DebugEnabled:bool=true
 
 var save_file_path = "user://save/"
 var save_file_name="DrillbirdPlayerSave.tres"
@@ -18,6 +19,8 @@ enum typeEnum{DRILL, INVENTORY, HEALTH, LIGHT}
 enum playerStatusEnum {DIG,SLEEP,SHOP,NEWDAY,MENU}
 signal playerStatusChanged
 signal SetupComplete
+signal WorldHasBeenSpawned
+signal WorldHasBeenSpawned_secondTick
 
 var totalEnemies=0
 var deadEnemies=0
@@ -27,8 +30,16 @@ var ghostActive:bool=true
 var displayPopups:bool=true
 var totalOres:int=200
 var oresFound:int=0
+var currentWorld:int=1:
+	get:
+		return currentWorld
+	set(value):
+		currentWorld=value
+
+@export var CursedMode:bool=true #TODO: set this depending on if cursed mode is active
 
 signal vibrationSettingChanged(value:bool)
+
 
 #various scripts can subscribe to this changing..maybe this is an OK way to do it?
 var useVibration:bool=true:
@@ -38,7 +49,16 @@ var useVibration:bool=true:
 		if value!=useVibration:
 			useVibration=value
 			vibrationSettingChanged.emit(useVibration)
-			
+
+func SignalWorldHasBeenSpawned(iteration:int=0):
+	
+	if iteration==0:
+		WorldHasBeenSpawned.emit()
+	
+	if iteration==1:
+		WorldHasBeenSpawned_secondTick.emit()
+
+
 func ResetSaveData():
 	var newData=abstract_savegame.new()
 	ResourceSaver.save(newData,save_file_path+save_file_name)

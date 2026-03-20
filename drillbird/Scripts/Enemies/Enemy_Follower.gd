@@ -155,7 +155,6 @@ func _on_enemy_collision_checker_body_shape_entered(body_rid: RID, body: Node2D,
 		return
 	
 	body.DealDamage(enemyInfo.damage)
-	pass # Replace with function body.
 
 
 

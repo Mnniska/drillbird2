@@ -81,9 +81,3 @@ func GetRegionIdentifierFromLocation(tilemapPos:Vector2i,tilemap:TileMapLayer):
 
 	
 	return num
-
-
-func _on_checker_area_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
-	print_debug("found this fucken area, it has terrain identifier "+str(area.terrainIdentifier))
-	
-	pass # Replace with function body.

@@ -12,8 +12,8 @@ signal MaterialChanged(terrain:abstract_terrain_info)
 var playerDrillingTile:bool=false
 
 @onready var diggingCountdown: Timer =$DiggingCountdown
-@onready var tilemap: TileMapLayer = get_parent().get_node("TilemapEnvironment")
-@onready var OreSpawner=$"../TilemapOres"
+
+
 @onready var DrillSoundPlayer=$DrillSoundPlayer
 @onready var tileDestroyEffect=preload("res://Scenes/Effects/tile_destroy_effect.tscn")
 @onready var Parent=$".."
@@ -22,6 +22,8 @@ var playerDrillingTile:bool=false
 
 @onready var cracksprite: Sprite2D = $cracksprite
 @export var crack_sprites: Array[Texture]
+var tilemap: TileMapLayer
+var OreSpawner
 
 @export var minimumDigTime:float = 0.6
 @export var GameTerrains:Array[abstract_terrain_info]:
@@ -39,9 +41,14 @@ var tileDrillingActive:bool=false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	print_debug(str(GameTerrains.size()))
-	
+	GlobalVariables.WorldHasBeenSpawned.connect(WorldhasBeenSpawned)
 	pass # Replace with function body.
+
+func WorldhasBeenSpawned():
+	tilemap = GlobalVariables.MainSceneReferenceConnector.ref_environmentTilemap
+	OreSpawner=GlobalVariables.MainSceneReferenceConnector.ref_oreTilemap
+	#todo: Set up oretilemap references here :) 
+	pass
 
 func _process(_delta: float) -> void:
 
@@ -161,16 +168,20 @@ func OnLoadDestroyDugTiles(tiles:Array[Vector2i]):
 	
 	pass
 
-func DestroyTileWithGlobalPosition(global_pos:Vector2,playEffect:bool):
+func DestroyTileWithGlobalPosition(global_pos:Vector2,playEffect:bool,allowSolidDestruction:bool=false):
 	var tilemapPos= tilemap.local_to_map(tilemap.to_local(global_pos))
-	return DestroyTile(tilemapPos,playEffect)
+	return DestroyTile(tilemapPos,playEffect,allowSolidDestruction)
 	
 	pass
 
-func DestroyTile(position_in_grid:Vector2i,playEffect:bool):
+func DestroyTile(position_in_grid:Vector2i,playEffect:bool,allowSolidDestruction:bool=false):
 	
 	var t =tilemap.get_cell_tile_data(position_in_grid)
-	if t==null or t.terrain==0:
+	if t==null:
+		return false
+		
+		#terrain 0 = solid block
+	if t.terrain==0 and !allowSolidDestruction:
 		return false
 	
 	if playEffect:
@@ -182,8 +193,8 @@ func DestroyTile(position_in_grid:Vector2i,playEffect:bool):
 	
 	var cells:Array[Vector2i]
 	cells.append(position_in_grid)
-	tilemap.set_cells_terrain_connect(cells, 0, 0,false)
-	tilemap.set_cell (position_in_grid,-1,Vector2i(-1,-1),-1)
+	#tilemap.set_cells_terrain_connect(cells, 0, 0,false)
+	#tilemap.set_cell (position_in_grid,-1,Vector2i(-1,-1),-1)
 	tilemap.set_cells_terrain_connect(cells, 0, -1,false)
 	TileDestroyed.emit(position_in_grid,tilemap)
 
@@ -192,6 +203,7 @@ func DestroyTile(position_in_grid:Vector2i,playEffect:bool):
 
 	destroyed_tiles.append(position_in_grid)
 	CheckObservers(position_in_grid)
+	GlobalVariables.TileDestroyed.emit(position_in_grid,tilemap)
 	return true
 
 func _on_player_player_stopped_drilling_tile() -> void:
@@ -271,3 +283,4 @@ func CheckObservers(location:Vector2i):
 	for obj in objects_collide:
 		ObserverRaycast.remove_exception( obj )
 		obj.ObservedBlockDestroyed()
+		#Maybe delete the observer? Or do we need it more? 

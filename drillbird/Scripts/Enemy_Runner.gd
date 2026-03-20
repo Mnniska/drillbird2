@@ -1,6 +1,8 @@
 extends Base_Enemy
 
 const SPEED = 40.0
+const SPEED_CURSED = 60
+var mySpeed=SPEED
 const JUMP_VELOCITY = -400.0
 var direction:float=1
 @export var timeInWait=1
@@ -10,7 +12,7 @@ var timeBeforeTurning=0.2
 
 @onready var collider=$EnemyCollisionChecker
 
-enum States{WALK,WAIT}
+enum States{WALK,WAIT,CORPSE}
 var state:States=States.WALK
 
 func GetCollType(): #MUST HAVE
@@ -23,6 +25,13 @@ func _ready() -> void:
 	
 	spawnPositionLocal=position #MUST HAVE
 	positionLastFrame=position
+	mySpeed=GetSpeed()
+
+func GetSpeed()->int:
+	if GlobalVariables.CursedMode:
+		return SPEED_CURSED
+	else:
+		return SPEED
 
 func SetGamePaused(paused:bool):
 	gamePaused=paused
@@ -34,7 +43,6 @@ func GetLocalSpawnPosition(): #MUST HAVE
 func DealDamage(value:int): #MUST HAVE
 	if value>0:
 		Kill(true,abstract_SoundEffectSetting.SoundEffectEnum.ENEMY_WALKER_DEATH)
-
 
 
 func TurnEnemyOff(hideInstantly:bool=true):
@@ -63,23 +71,27 @@ func _on_enemy_collision_checker_body_shape_entered(body_rid: RID, body: Node2D,
 
 func _physics_process(delta: float) -> void:
 	
-	if enemyInfo.dead or gamePaused:
+	if gamePaused:
 		return
 		
+	if enemyInfo.dead:
+		return
+	
 	CheckIfSleeping(delta)
 	if enemySleep:
 		return
 	var anim="idle"
 
-	
+	if state==States.CORPSE:
+		anim="corpse"
 
 	if state==States.WALK:
 		
 		if direction:
-			velocity.x = direction * SPEED
+			velocity.x = direction * mySpeed
 			anim="run"
 		else:
-			velocity.x = move_toward(velocity.x, 0, SPEED)
+			velocity.x = move_toward(velocity.x, 0, mySpeed)
 			anim="idle"
 	
 	# Add the gravity.

@@ -1,0 +1,56 @@
+[gd_scene load_steps=10 format=3 uid="uid://biod8soole26"]
+
+[ext_resource type="Script" uid="uid://4540treojg75" path="res://Scripts/Enemies/corpse.gd" id="1_55naq"]
+[ext_resource type="Texture2D" uid="uid://beb7b1sg6foth" path="res://Art/characters/corpse/corpse_falling1.png" id="2_imw8c"]
+[ext_resource type="Texture2D" uid="uid://cnt8krdbes3sp" path="res://Art/characters/corpse/corpse_falling2.png" id="3_gmtsd"]
+[ext_resource type="Texture2D" uid="uid://ctl37txorkki8" path="res://Art/characters/corpse/corpse_falling3.png" id="4_vgfsx"]
+[ext_resource type="Texture2D" uid="uid://c38pgpqbmv3j4" path="res://Art/characters/corpse/corpse_land1.png" id="5_3idqe"]
+[ext_resource type="Texture2D" uid="uid://brkp5rtbka740" path="res://Art/characters/corpse/corpse_land2.png" id="6_mop0q"]
+[ext_resource type="Texture2D" uid="uid://ch3kxy4ma0rt3" path="res://Art/characters/corpse/corpse_idle.png" id="7_55naq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6lonp"]
+size = Vector2(11, 6)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_webwr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_imw8c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_gmtsd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_vgfsx")
+}],
+"loop": true,
+"name": &"falling",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_3idqe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_mop0q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_55naq")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 8.0
+}]
+
+[node name="Corpse" type="CharacterBody2D"]
+collision_layer = 0
+script = ExtResource("1_55naq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 5)
+shape = SubResource("RectangleShape2D_6lonp")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_webwr")
+animation = &"idle"
+autoplay = "falling"

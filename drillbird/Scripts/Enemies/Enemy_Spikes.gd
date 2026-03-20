@@ -1,4 +1,5 @@
 extends Node2D
+class_name enemy_spikes
 @export var enemyInfo:abstract_enemy
 @export var collType:abstract_collidable #MUST HAVE
 @onready var raycast=$RayCast2D

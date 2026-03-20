@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="abstract_chunk" load_steps=2 format=3 uid="uid://sioq2lmscj7x"]
+
+[ext_resource type="Script" uid="uid://bfovrpr8tywdx" path="res://Scripts/Level Generation/abstract_chunk.gd" id="1_1paps"]
+
+[resource]
+script = ExtResource("1_1paps")
+depth = 2
+metadata/_custom_type_script = "uid://bfovrpr8tywdx"

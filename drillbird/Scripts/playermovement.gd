@@ -331,6 +331,12 @@ func GetUp():
 		isgettingup=false
 	pass
 
+func RechargeCrystalActivated():
+	jumpsMade=1
+	velocity.y=AIRJUMP_VELOCITY*1.2
+	for index in jump_crystals.size():
+		jump_crystals[index].show()
+
 func RegularMovement(delta:float,currentAnim:String):
 	var newanim=currentAnim
 	
@@ -384,11 +390,13 @@ func RegularMovement(delta:float,currentAnim:String):
 			justJumped=true
 			
 			if heavy:
+
 				for index in jump_crystals.size():
 					jump_crystals[index].show()
 					if index+1>maxJumps-jumpsMade:
 						jump_crystals[index].hide()
-				jumpsMade+=1
+				jumpsMade+=1				
+				
 			else:
 				SetLightEffectActive(true)
 				for n in jump_crystals:
@@ -799,7 +807,8 @@ func _on_detector_body_entered(body: Node2D) -> void:
 	if collider.type==collider.types.FLOWER:
 		closeFlowers.append(body.GetParent())
 
-				
+
+
 func CreateInfoBubble(text:String):
 	if !GlobalVariables.displayPopups:
 		return

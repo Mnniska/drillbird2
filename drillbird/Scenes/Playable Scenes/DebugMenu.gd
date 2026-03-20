@@ -203,6 +203,10 @@ func ExecuteAction(action:String):
 		"reset_save_data_enemies_and_tiles":
 			$"../..".ResetSaveData(true)
 		
+		"Cycle World":
+			GlobalVariables.MainSceneReferenceConnector.ref_WorldSpawner.CycleWorld()
+			HUD.ResetGame()
+		
 		"toggleMenu":
 			mainMenuShowing=!mainMenuShowing
 			var mainmenu=HUD.MainMenu

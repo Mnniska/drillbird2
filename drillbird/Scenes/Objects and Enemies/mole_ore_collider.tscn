@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://choji6tstajch"]
+
+[ext_resource type="Texture2D" uid="uid://bycbssep4fd52" path="res://Art/UI/MainMenu/checkbox_off.png" id="1_qq74q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gd1tq"]
+size = Vector2(16, 16)
+
+[node name="MoleOreCollider" type="StaticBody2D"]
+collision_layer = 4096
+collision_mask = 4096
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_gd1tq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.4627451)
+texture = ExtResource("1_qq74q")

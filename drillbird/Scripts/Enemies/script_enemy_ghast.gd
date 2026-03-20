@@ -1,0 +1,190 @@
+extends CharacterBody2D
+class_name ghast
+
+@export var collType:abstract_collidable #MUST HAVE
+@export var enemyInfo:abstract_enemy #MUST HAVE
+
+@export var timeToWaitBeforePersuing=0.6
+
+const LINE_SPEED = PERSUIT_SPEED*0.75
+const PERSUIT_SPEED=95
+const ACCELERATION=2
+const FRICTION=3
+
+const PERSUIT_LENGTH = 16*8
+
+var lineToFollow:Line2D=null
+var parentTombstone:Node2D=null
+
+enum States{IDLE,FOLLOWINGLINE,PERSUIT,ARRIVED,DESPAWNING,SPOTTINGSOMETHING}
+var state:States=States.IDLE
+var TargetLocationGlobal:Vector2
+var targetPoint:int=0
+var targetBody:Node2D=null
+
+@onready var targetDebug:Node2D=$targetDebug
+@onready var sprite=$sprite
+
+func _physics_process(delta: float) -> void:
+
+
+	match state:
+		
+		
+		States.IDLE:
+			ApplyFriction()
+			move_and_slide()
+			HandleAnimations("idle")
+			pass
+		States.FOLLOWINGLINE:
+			
+			
+			
+			targetDebug.global_position=(TargetLocationGlobal)
+			#targetDebug.global_position=Vector2(0,0)		
+			
+			var movementVector:Vector2=GetMovementVector(TargetLocationGlobal)
+			
+			ApplyAcceleration(movementVector,LINE_SPEED)
+			
+			move_and_slide()
+			HandleAnimations("idle")
+			
+			#If close to target line point, choose next point as target
+			if self.global_position.distance_to(TargetLocationGlobal)<10:
+				targetPoint+=1
+				if targetPoint>lineToFollow.get_point_count()-1:
+					targetPoint=0
+				
+				var newpos = parentTombstone.global_position+lineToFollow.get_point_position(targetPoint)
+				TargetLocationGlobal=newpos
+				#get next point to follow
+				
+				pass
+		States.PERSUIT:
+			
+			var movement = GetMovementVector(targetBody.global_position)
+			ApplyAcceleration(movement,PERSUIT_SPEED)
+			move_and_slide()
+			HandleAnimations("persuit")
+			
+			if global_position.distance_to(parentTombstone.global_position)>PERSUIT_LENGTH:
+				AbortChaseDueToDistance()
+
+			pass
+		States.SPOTTINGSOMETHING:
+			HandleAnimations("detect")
+			ApplyFriction()
+			move_and_slide()
+
+func ApplyAcceleration(movementVector:Vector2,speed:float):
+	velocity = velocity.move_toward(speed*movementVector,ACCELERATION)
+	
+	
+func ApplyFriction():
+	velocity = velocity.move_toward(Vector2.ZERO,FRICTION)
+
+func AbortChaseDueToDistance():
+	state=States.IDLE
+	$Label.text="aborted"
+	await get_tree().create_timer(0.6).timeout
+	$Label.text="returning"
+	ReturnToLine()
+
+func GetMovementVector(_targetPosGlobal:Vector2):
+	
+	
+	var directionVector=global_position - _targetPosGlobal
+	var normalizedDirectionVector=directionVector.normalized()
+	return normalizedDirectionVector*-1
+
+func SetupGhast(line:Line2D , _tombstone:Node2D):
+	lineToFollow=line
+
+	parentTombstone=_tombstone
+	
+
+func TombstoneDestroyed():
+	state=States.DESPAWNING
+	#TODO: Despawn anim for X amount of time :) 
+	self.queue_free()
+	
+
+
+func DetectedPlayer():
+	pass
+
+func LostTarget():
+	
+	pass
+
+func NewTarget(body:Node2D):
+	
+	if global_position.distance_to(parentTombstone.global_position)>=PERSUIT_LENGTH:
+		return
+	
+	state=States.SPOTTINGSOMETHING
+	await get_tree().create_timer(timeToWaitBeforePersuing).timeout
+	
+	targetBody=body
+	state=States.PERSUIT
+	$Label.text="chasing"
+	
+	
+	pass
+
+func ReturnToLine():
+	
+	var distance=1000000
+	var chosenPoint:Vector2=Vector2(0,0)
+	for n in lineToFollow.get_point_count():
+		var loc = parentTombstone.global_position+lineToFollow.get_point_position(n) 
+		
+		var dist = loc.distance_to(self.global_position)
+		if dist<distance:
+			distance=dist
+			targetPoint=n
+			chosenPoint=loc
+	
+	TargetLocationGlobal=chosenPoint
+	#get the closest point in the line to return to
+	
+	state=States.FOLLOWINGLINE
+	pass
+
+func HandleAnimations(_anim:String):
+	if sprite.animation!=_anim:
+		sprite.play(_anim)
+	
+	if velocity.x<0:
+		sprite.scale.x=-1
+	else:
+		sprite.scale.x=1
+	
+	pass
+
+func Despawn():
+	sprite.play("despawn")
+	state=States.DESPAWNING
+	await sprite.animation_finished
+	queue_free()
+
+func _on_detection_radius_body_entered(body: Node2D) -> void:
+	if state!=States.PERSUIT and state!=States.SPOTTINGSOMETHING:
+		
+		NewTarget(body)
+	else:
+		pass
+		#check if the new body is higher prio then the old one, if so persue that one
+	
+	
+	pass # Replace with function body.
+
+
+func _on_collider_enemy_hitbox_body_entered(body: Node2D) -> void:
+	if body==$".":
+		return
+	
+	body.DealDamage(enemyInfo.damage)
+	
+	pass # Replace with function body.
