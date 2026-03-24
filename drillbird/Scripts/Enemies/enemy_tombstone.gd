@@ -13,14 +13,16 @@ func _ready() -> void:
 
 	await get_tree().create_timer(0.1).timeout #TODO: Figure out a way to do this that isn't timing dependent - need to wait for tilemaplayers to generate	
 	
-	SpikesSpawnSetup()
-	spawnPositionLocal=position
 	
-	SpawnGhast()
-		
-	pass # Replace with function body.
+	if !enemyInfo.dead:
+		if SpikesSpawnSetup():		
+			SpawnGhast()
+
+	spawnPositionLocal=position		
+
 
 func SpikesSpawnSetup():
+	#returns true if spike successfully spawns - tombstones spawning in thin air won't spawn
 	raycast.force_raycast_update()
 	if raycast.is_colliding():
 		var col =raycast.get_collider()
@@ -37,8 +39,10 @@ func SpikesSpawnSetup():
 			return true
 		else:
 			TurnEnemyOff()
+			return false
 	else:
 		TurnEnemyOff()
+		return false
 
 func SpawnGhast():
 	var ghastInstance:ghast = loadedGhast.instantiate()

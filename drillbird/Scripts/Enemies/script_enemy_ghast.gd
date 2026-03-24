@@ -77,6 +77,9 @@ func _physics_process(delta: float) -> void:
 			HandleAnimations("detect")
 			ApplyFriction()
 			move_and_slide()
+		States.DESPAWNING:
+			ApplyFriction()
+			move_and_slide()
 
 func ApplyAcceleration(movementVector:Vector2,speed:float):
 	velocity = velocity.move_toward(speed*movementVector,ACCELERATION)
@@ -165,13 +168,14 @@ func HandleAnimations(_anim:String):
 	pass
 
 func Despawn():
+	state=States.DESPAWNING
 	sprite.play("despawn")
 	state=States.DESPAWNING
 	await sprite.animation_finished
 	queue_free()
 
 func _on_detection_radius_body_entered(body: Node2D) -> void:
-	if state!=States.PERSUIT and state!=States.SPOTTINGSOMETHING:
+	if state!=States.PERSUIT and state!=States.SPOTTINGSOMETHING and state!=States.DESPAWNING:
 		
 		NewTarget(body)
 	else:
