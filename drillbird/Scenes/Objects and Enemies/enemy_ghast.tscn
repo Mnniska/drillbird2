@@ -1,9 +1,10 @@
-[gd_scene load_steps=28 format=3 uid="uid://bx3a6lqm5kk1v"]
+[gd_scene load_steps=34 format=3 uid="uid://bx3a6lqm5kk1v"]
 
 [ext_resource type="Script" uid="uid://bq53lvnacnudb" path="res://Scripts/Enemies/script_enemy_ghast.gd" id="1_o5qkd"]
 [ext_resource type="Script" uid="uid://bgy5cf01m25xs" path="res://Scripts/Abstract scripts/abstract_collidable.gd" id="2_5jf44"]
 [ext_resource type="Script" uid="uid://cokuso80w54cc" path="res://Scripts/Abstract scripts/abstract_enemy.gd" id="2_rjd4f"]
 [ext_resource type="Texture2D" uid="uid://ecmcmfxsyxas" path="res://Art/characters/Tombstone and ghast/ghast_detect1.png" id="4_hurfh"]
+[ext_resource type="Texture2D" uid="uid://c1mmkcxc0sn3w" path="res://Art/characters/Tombstone and ghast/ghast_trail.png" id="4_oob50"]
 [ext_resource type="Texture2D" uid="uid://bdldy84lv5ye1" path="res://Art/characters/Tombstone and ghast/ghast_detect2.png" id="5_oob50"]
 [ext_resource type="Texture2D" uid="uid://xh55n1gx1xi5" path="res://Art/characters/Tombstone and ghast/ghast_detect3.png" id="6_cpi00"]
 [ext_resource type="Texture2D" uid="uid://s6rihxmgawu8" path="res://Art/characters/Tombstone and ghast/ghast_detect4.png" id="7_7oyuw"]
@@ -32,6 +33,34 @@ metadata/_custom_type_script = "uid://bgy5cf01m25xs"
 script = ExtResource("2_rjd4f")
 type = 7
 metadata/_custom_type_script = "uid://cokuso80w54cc"
+
+[sub_resource type="Curve" id="Curve_cpi00"]
+_data = [Vector2(0, 1), 0.0, 0.051804163, 0, 0, Vector2(0.51776654, 1), 0.0, 0.0, 0, 0, Vector2(0.99153984, 0.004032254), -2.8243704, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_7oyuw"]
+curve = SubResource("Curve_cpi00")
+
+[sub_resource type="Curve" id="Curve_oob50"]
+_limits = [0.0, 1.5, 0.0, 1.0]
+_data = [Vector2(0, 1.1189516), 0.0, 0.0, 0, 0, Vector2(0.5583757, 0.63306445), 0.0, 0.0, 0, 0, Vector2(1, 0.62499994), 0.048633903, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_cpi00"]
+curve = SubResource("Curve_oob50")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_m8fks"]
+particle_flag_disable_z = true
+angle_min = -44.99999
+angle_max = 45.00001
+angular_velocity_min = -5.000016
+angular_velocity_max = 4.999984
+radial_velocity_min = -2.2351742e-05
+radial_velocity_max = -2.2351742e-05
+gravity = Vector3(0, 0, 0)
+scale_min = 0.5
+scale_curve = SubResource("CurveTexture_cpi00")
+alpha_curve = SubResource("CurveTexture_7oyuw")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v1yg6"]
 radius = 7.071068
@@ -150,6 +179,14 @@ script = ExtResource("1_o5qkd")
 collType = SubResource("Resource_qk7if")
 enemyInfo = SubResource("Resource_5jf44")
 PERSUIT_LENGTH = 80
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 6
+texture = ExtResource("4_oob50")
+lifetime = 0.7
+randomness = 0.4
+draw_order = 2
+process_material = SubResource("ParticleProcessMaterial_m8fks")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_v1yg6")
