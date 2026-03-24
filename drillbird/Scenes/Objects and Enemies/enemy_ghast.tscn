@@ -149,7 +149,7 @@ collision_mask = 0
 script = ExtResource("1_o5qkd")
 collType = SubResource("Resource_qk7if")
 enemyInfo = SubResource("Resource_5jf44")
-PERSUIT_LENGTH = 128
+PERSUIT_LENGTH = 80
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_v1yg6")
