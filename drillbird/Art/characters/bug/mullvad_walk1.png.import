@@ -2,22 +2,24 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b12ap8dxrp8ns"
-path="res://.godot/imported/mullvad_walk3.png-cf26bbccf9a014363b1ea871372c4d04.ctex"
+uid="uid://beoxc4h8wrylv"
+path="res://.godot/imported/mullvad_walk1.png-7c091515fe3af497bd4244b8b20dbe09.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/characters/mullvad/mullvad_walk3.png"
-dest_files=["res://.godot/imported/mullvad_walk3.png-cf26bbccf9a014363b1ea871372c4d04.ctex"]
+source_file="res://Art/characters/bug/mullvad_walk1.png"
+dest_files=["res://.godot/imported/mullvad_walk1.png-7c091515fe3af497bd4244b8b20dbe09.ctex"]
 
 [params]
 
 compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
+compress/uastc_level=0
+compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
@@ -25,6 +27,10 @@ mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
+process/channel_remap/red=0
+process/channel_remap/green=1
+process/channel_remap/blue=2
+process/channel_remap/alpha=3
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

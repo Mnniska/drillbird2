@@ -1,7 +1,6 @@
 extends Base_Enemy
 
 const SPEED = 40.0
-const SPEED_CURSED = 60
 var mySpeed=SPEED
 const JUMP_VELOCITY = -400.0
 var direction:float=1
@@ -28,10 +27,8 @@ func _ready() -> void:
 	mySpeed=GetSpeed()
 
 func GetSpeed()->int:
-	if GlobalVariables.CursedMode:
-		return SPEED_CURSED
-	else:
-		return SPEED
+
+	return SPEED
 
 func SetGamePaused(paused:bool):
 	gamePaused=paused

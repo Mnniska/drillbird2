@@ -2,22 +2,24 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://yqt6jvqhj56i"
-path="res://.godot/imported/walker_walk4.png-8b0ddcac82e75cb90e60f85bd2d63998.ctex"
+uid="uid://dbktv5cyf7all"
+path="res://.godot/imported/mole_walking2.png-e12eba4c4fe78ec90e3904e1c6f05086.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/characters/mullvad/walker_walk4.png"
-dest_files=["res://.godot/imported/walker_walk4.png-8b0ddcac82e75cb90e60f85bd2d63998.ctex"]
+source_file="res://Art/characters/Mole/mole_walking2.png"
+dest_files=["res://.godot/imported/mole_walking2.png-e12eba4c4fe78ec90e3904e1c6f05086.ctex"]
 
 [params]
 
 compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
+compress/uastc_level=0
+compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
@@ -25,6 +27,10 @@ mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
+process/channel_remap/red=0
+process/channel_remap/green=1
+process/channel_remap/blue=2
+process/channel_remap/alpha=3
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false
