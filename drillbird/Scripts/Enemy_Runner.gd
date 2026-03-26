@@ -1,21 +1,30 @@
 extends Base_Enemy
+class_name Enemy_Mole
 
-const SPEED = 40.0
+const SPEED = 3000
 var mySpeed=SPEED
 const JUMP_VELOCITY = -400.0
 var direction:float=1
 @export var timeInWait=1
 var waitCounter=0
 var turningCounter=0
-var timeBeforeTurning=0.2
+var timeBeforeTurning=0.08
 
 @onready var collider=$EnemyCollisionChecker
+@onready var diggingRaycast=$DiggingRaycast
+var TileDestroyer:crack_script=null
 
-enum States{WALK,WAIT,CORPSE}
+enum States{WALK,WAIT,CORPSE,DETECT,DIG,DIGFALL,RECOVERING}
 var state:States=States.WALK
 
 func GetCollType(): #MUST HAVE
 	return collType
+
+func GetTileDestroyer()->crack_script:
+	if TileDestroyer==null:
+		TileDestroyer=GlobalVariables.MainSceneReferenceConnector.ref_tileDestroyer
+	
+	return TileDestroyer
 
 func _ready() -> void:
 	
@@ -77,19 +86,38 @@ func _physics_process(delta: float) -> void:
 	CheckIfSleeping(delta)
 	if enemySleep:
 		return
-	var anim="idle"
+	var _anim=anim.animation
 
-	if state==States.CORPSE:
-		anim="corpse"
-
-	if state==States.WALK:
+	match state:
 		
-		if direction:
-			velocity.x = direction * mySpeed
-			anim="run"
-		else:
-			velocity.x = move_toward(velocity.x, 0, mySpeed)
-			anim="idle"
+		States.CORPSE:
+			_anim="corpse"
+	
+		States.DETECT:
+			velocity.x=0
+			#todo: lerp X towards nearest tile center
+			
+			pass
+			
+		States.WALK:
+			velocity.x=SPEED*delta*direction*-1
+		
+			pass
+		States.DIG:
+			_anim="digging"
+			
+			pass
+		States.DIGFALL:
+			_anim="digfall"
+			
+			if !GetIsFalling():
+					RecoverAfterFall()
+
+			
+			pass
+		States.RECOVERING:
+			pass
+	
 	
 	# Add the gravity.
 	if not is_on_floor():
@@ -103,18 +131,23 @@ func _physics_process(delta: float) -> void:
 		if !isFalling:
 			SoundManager.PlaySoundAtLocation(global_position,abstract_SoundEffectSetting.SoundEffectEnum.ENEMY_GENERIC_FALL)
 		isFalling=true
-		anim="fall"
+		
+		if state==States.DIGFALL:	
+			_anim="digfall"
+		else:
+			_anim="fall"
+		
+		
+		
 	else:
 		isFalling=false
 
-	UpdateAnimations(anim)
 
 
 	if state==States.WALK:
-		
-
+		_anim="run"
 		var speed = abs(positionLastFrame-position)
-		if speed.x<=0.1 and !isFalling:
+		if speed.x<=0.2 and !isFalling:
 			turningCounter+=delta
 			if turningCounter>=timeBeforeTurning:
 				turningCounter=0
@@ -123,17 +156,90 @@ func _physics_process(delta: float) -> void:
 		elif turningCounter>0:
 			turningCounter=0
 	
-		positionLastFrame=position
+
+	positionLastFrame=position
 	
 
 	if state==States.WAIT:
+		_anim="idle"
 		waitCounter+=delta
 		if waitCounter>timeInWait:
 			waitCounter=0
 			state=States.WALK
 
+	UpdateAnimations(_anim)
+
+func RecoverAfterFall():
+	state=States.RECOVERING
+	anim.animation="recover"
+	anim.play()
+	var animLength:float=get_current_animation_length()		
+	await get_tree().create_timer(animLength).timeout
+	
+	state=States.WALK
+	
+
 func UpdateAnimations(_anim:String):
+	if anim.animation!=_anim:
+		anim.animation=_anim
 
+	anim.flip_h=direction > 0
+	
 
-	anim.animation=_anim
-	anim.flip_h=direction <0
+func DetectPlayer():
+	state=States.DETECT
+	
+	
+	anim.animation="detect"
+	anim.play()
+	var detectAnimLength:float=get_current_animation_length()		
+	await get_tree().create_timer(detectAnimLength).timeout
+	
+	anim.animation="digging"
+	
+	anim.play("digging")
+	state=States.DIG
+	AttemptToDigTile()
+
+func AttemptToDigTile():
+	
+	var digSuccessfull:bool=false
+	
+	if diggingRaycast.is_colliding():
+	
+		var tileset:TileMapLayer = diggingRaycast.get_collider()
+		
+		if tileset:
+			var pos = diggingRaycast.get_collision_point()
+			var tilesetPos=tileset.to_local(tileset.local_to_map(pos))
+
+			var tiledata:TileData= tileset.get_cell_tile_data(tilesetPos)
+			
+			#if tile isn't solid..
+			if tiledata.terrain!=0:
+				await get_tree().create_timer(1).timeout
+				GetTileDestroyer().DestroyTileWithGlobalPosition(pos,true,false)
+				digSuccessfull=true
+				
+				await get_tree().create_timer(0.1).timeout
+				
+				#adding timer here so that the mole can start falling before entering DIGFALL
+				state=States.DIGFALL
+
+				
+				
+				
+				#todo: Show crack progression on tile
+	if !digSuccessfull:
+		#tile digging was not successful
+		await get_tree().create_timer(1).timeout
+
+		state=States.WAIT
+		
+		
+
+func _on_player_detection_zone_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
+	if state==States.WALK or state==States.WAIT:
+		DetectPlayer()
+	
+	pass # Replace with function body.

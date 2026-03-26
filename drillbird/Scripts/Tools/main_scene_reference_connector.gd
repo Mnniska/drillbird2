@@ -11,6 +11,7 @@ class_name main_scene_reference_connector
 @onready var introCutscene=$"../IntroCutscene"
 @onready var shop:script_shop=$"../Camera2D/ShopHandler"
 @onready var ref_WorldSpawner=$"../WorldSpawner"
+@onready var ref_tileDestroyer=$"../TileCrack"
 var ref_secretTilemap
 var ref_oreTilemap
 var ref_environmentTilemap

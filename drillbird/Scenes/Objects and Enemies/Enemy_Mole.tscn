@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b842x1mmyi2i8"]
+[gd_scene load_steps=33 format=3 uid="uid://b842x1mmyi2i8"]
 
 [ext_resource type="Script" uid="uid://cmuunggce2054" path="res://Scripts/Enemy_Runner.gd" id="1_cm028"]
 [ext_resource type="Script" uid="uid://bgy5cf01m25xs" path="res://Scripts/Abstract scripts/abstract_collidable.gd" id="2_xen7b"]
@@ -7,12 +7,25 @@
 [ext_resource type="Texture2D" uid="uid://8u8wcx31n81q" path="res://Art/characters/bug/walker_death2.png" id="5_vkhyx"]
 [ext_resource type="Texture2D" uid="uid://5p4kf2oomjkc" path="res://Art/characters/bug/walker_death3.png" id="6_g4dga"]
 [ext_resource type="Texture2D" uid="uid://dhrvhcsf7e45a" path="res://Art/effects/empty.png" id="7_m1al2"]
+[ext_resource type="Texture2D" uid="uid://dbu6rie4cfjlr" path="res://Art/characters/Mole/mole_detect1.png" id="8_rv3ho"]
 [ext_resource type="Texture2D" uid="uid://cqvg631all6rj" path="res://Art/characters/Mole/mole_falling1.png" id="8_xen7b"]
 [ext_resource type="Texture2D" uid="uid://b37pwto76x612" path="res://Art/characters/Mole/mole_falling2.png" id="9_ejuxj"]
+[ext_resource type="Texture2D" uid="uid://dgaqpxcv54v4g" path="res://Art/characters/Mole/mole_detect2.png" id="9_s04qi"]
+[ext_resource type="Texture2D" uid="uid://cj0ogd4cjf4ut" path="res://Art/characters/Mole/mole_detect3.png" id="10_c7mci"]
 [ext_resource type="Texture2D" uid="uid://bpf44px75kj4p" path="res://Art/characters/Mole/mole_walking1.png" id="10_iwebn"]
+[ext_resource type="Texture2D" uid="uid://sp87gklxt5s4" path="res://Art/characters/Mole/mole_detect4.png" id="11_4uqbi"]
 [ext_resource type="Texture2D" uid="uid://dbktv5cyf7all" path="res://Art/characters/Mole/mole_walking2.png" id="11_vkhyx"]
 [ext_resource type="Texture2D" uid="uid://dk63mg8r5cja5" path="res://Art/characters/Mole/mole_walking3.png" id="12_g4dga"]
+[ext_resource type="Texture2D" uid="uid://tuwdtabr4yge" path="res://Art/characters/Mole/mole_digging1.png" id="12_j0440"]
 [ext_resource type="Texture2D" uid="uid://dwwjoan2ynlpq" path="res://Art/characters/Mole/mole_walking4.png" id="13_m1al2"]
+[ext_resource type="Texture2D" uid="uid://ds56oejnlgbaa" path="res://Art/characters/Mole/mole_digging2.png" id="13_sbst8"]
+[ext_resource type="Texture2D" uid="uid://bdj4stirfp8of" path="res://Art/characters/Mole/mole_digging3.png" id="14_0rhph"]
+[ext_resource type="Texture2D" uid="uid://na00ouumbelr" path="res://Art/characters/Mole/mole_digging4.png" id="15_3g37d"]
+[ext_resource type="Texture2D" uid="uid://dfs3fj37al6jx" path="res://Art/characters/Mole/mole_digging5.png" id="16_a7yph"]
+[ext_resource type="Texture2D" uid="uid://5nybnoi4nce" path="res://Art/characters/Mole/mole_digging6.png" id="17_iq8vd"]
+[ext_resource type="Texture2D" uid="uid://dphcd2eod3arm" path="res://Art/characters/Mole/mole_digging7.png" id="18_3xmsb"]
+[ext_resource type="Texture2D" uid="uid://b7v5y8k5pf3d0" path="res://Art/characters/Mole/mole_digging8.png" id="19_xjjjq"]
+[ext_resource type="Texture2D" uid="uid://odsea6q7gbiw" path="res://Art/characters/Mole/mole_digging9.png" id="20_p4347"]
 
 [sub_resource type="Resource" id="Resource_pbycp"]
 script = ExtResource("2_xen7b")
@@ -47,6 +60,66 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("8_rv3ho")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_s04qi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_c7mci")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_4uqbi")
+}],
+"loop": false,
+"name": &"detect",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_xen7b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ejuxj")
+}],
+"loop": true,
+"name": &"digfall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_j0440")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_sbst8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_0rhph")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_3g37d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_a7yph")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_iq8vd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_3xmsb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_xjjjq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_p4347")
+}],
+"loop": true,
+"name": &"digging",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("8_xen7b")
 }, {
 "duration": 1.0,
@@ -63,6 +136,23 @@ animations = [{
 "loop": true,
 "name": &"idle",
 "speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_rv3ho")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_s04qi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_c7mci")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_4uqbi")
+}],
+"loop": false,
+"name": &"recover",
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -85,6 +175,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_33533"]
 size = Vector2(11, 7)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xen7b"]
+size = Vector2(6, 24)
+
 [node name="Enemy_Mole" type="CharacterBody2D"]
 collision_layer = 8
 script = ExtResource("1_cm028")
@@ -97,9 +190,8 @@ shape = SubResource("RectangleShape2D_khmiv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_of4cw")
-animation = &"idle"
+animation = &"death"
 autoplay = "run"
-frame_progress = 0.0003293501
 
 [node name="EnemyCollisionChecker" type="Area2D" parent="."]
 collision_layer = 0
@@ -114,5 +206,19 @@ debug_color = Color(0.896068, 0.26513, 0.45405, 0.42)
 offset_right = 40.0
 offset_bottom = 23.0
 
+[node name="PlayerDetectionZone" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetectionZone"]
+position = Vector2(0, 25)
+shape = SubResource("RectangleShape2D_xen7b")
+
+[node name="DiggingRaycast" type="RayCast2D" parent="."]
+position = Vector2(0, 11)
+target_position = Vector2(0, 2)
+hit_from_inside = true
+
 [connection signal="body_shape_entered" from="EnemyCollisionChecker" to="." method="_on_enemy_collision_checker_body_shape_entered"]
 [connection signal="body_shape_exited" from="EnemyCollisionChecker" to="." method="_on_enemy_collision_checker_body_shape_exited"]
+[connection signal="body_shape_entered" from="PlayerDetectionZone" to="." method="_on_player_detection_zone_body_shape_entered"]
