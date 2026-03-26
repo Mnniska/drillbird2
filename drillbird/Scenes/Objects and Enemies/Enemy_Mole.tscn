@@ -1,14 +1,20 @@
-[gd_scene load_steps=33 format=3 uid="uid://b842x1mmyi2i8"]
+[gd_scene load_steps=41 format=3 uid="uid://b842x1mmyi2i8"]
 
 [ext_resource type="Script" uid="uid://cmuunggce2054" path="res://Scripts/Enemy_Runner.gd" id="1_cm028"]
 [ext_resource type="Script" uid="uid://bgy5cf01m25xs" path="res://Scripts/Abstract scripts/abstract_collidable.gd" id="2_xen7b"]
 [ext_resource type="Script" uid="uid://cokuso80w54cc" path="res://Scripts/Abstract scripts/abstract_enemy.gd" id="3_ejuxj"]
+[ext_resource type="Texture2D" uid="uid://dpxguydkcqyoi" path="res://Art/characters/Mole/mole_land_dazed1.png" id="4_a7yph"]
 [ext_resource type="Texture2D" uid="uid://bu56d8b0ujw2e" path="res://Art/characters/bug/walker_death1.png" id="4_iwebn"]
+[ext_resource type="Texture2D" uid="uid://ba4mfg6y705ng" path="res://Art/characters/Mole/mole_land_dazed2.png" id="5_iq8vd"]
 [ext_resource type="Texture2D" uid="uid://8u8wcx31n81q" path="res://Art/characters/bug/walker_death2.png" id="5_vkhyx"]
+[ext_resource type="Texture2D" uid="uid://dopwq8j71c6vt" path="res://Art/characters/Mole/mole_land_dazed3.png" id="6_3xmsb"]
 [ext_resource type="Texture2D" uid="uid://5p4kf2oomjkc" path="res://Art/characters/bug/walker_death3.png" id="6_g4dga"]
 [ext_resource type="Texture2D" uid="uid://dhrvhcsf7e45a" path="res://Art/effects/empty.png" id="7_m1al2"]
+[ext_resource type="Texture2D" uid="uid://drkyoeihqrm5f" path="res://Art/characters/Mole/mole_land_dazed4.png" id="7_xjjjq"]
+[ext_resource type="Texture2D" uid="uid://by8urweiq8hjq" path="res://Art/characters/Mole/mole_land_dazed5.png" id="8_p4347"]
 [ext_resource type="Texture2D" uid="uid://dbu6rie4cfjlr" path="res://Art/characters/Mole/mole_detect1.png" id="8_rv3ho"]
 [ext_resource type="Texture2D" uid="uid://cqvg631all6rj" path="res://Art/characters/Mole/mole_falling1.png" id="8_xen7b"]
+[ext_resource type="Texture2D" uid="uid://8fsjqspfy3yh" path="res://Art/characters/Mole/mole_land_dazed6.png" id="9_5sggn"]
 [ext_resource type="Texture2D" uid="uid://b37pwto76x612" path="res://Art/characters/Mole/mole_falling2.png" id="9_ejuxj"]
 [ext_resource type="Texture2D" uid="uid://dgaqpxcv54v4g" path="res://Art/characters/Mole/mole_detect2.png" id="9_s04qi"]
 [ext_resource type="Texture2D" uid="uid://cj0ogd4cjf4ut" path="res://Art/characters/Mole/mole_detect3.png" id="10_c7mci"]
@@ -24,6 +30,8 @@
 [ext_resource type="Texture2D" uid="uid://dfs3fj37al6jx" path="res://Art/characters/Mole/mole_digging5.png" id="16_a7yph"]
 [ext_resource type="Texture2D" uid="uid://5nybnoi4nce" path="res://Art/characters/Mole/mole_digging6.png" id="17_iq8vd"]
 [ext_resource type="Texture2D" uid="uid://dphcd2eod3arm" path="res://Art/characters/Mole/mole_digging7.png" id="18_3xmsb"]
+[ext_resource type="Texture2D" uid="uid://c8ebe2cjgrmlh" path="res://Art/characters/Mole/mole_digfall1.png" id="18_b7bf4"]
+[ext_resource type="Texture2D" uid="uid://cbwp3ybb0n1fd" path="res://Art/characters/Mole/mole_digfall2.png" id="19_ut32d"]
 [ext_resource type="Texture2D" uid="uid://b7v5y8k5pf3d0" path="res://Art/characters/Mole/mole_digging8.png" id="19_xjjjq"]
 [ext_resource type="Texture2D" uid="uid://odsea6q7gbiw" path="res://Art/characters/Mole/mole_digging9.png" id="20_p4347"]
 
@@ -41,6 +49,29 @@ size = Vector2(12, 14)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_of4cw"]
 animations = [{
+"frames": [{
+"duration": 2.0,
+"texture": ExtResource("4_a7yph")
+}, {
+"duration": 3.0,
+"texture": ExtResource("5_iq8vd")
+}, {
+"duration": 2.0,
+"texture": ExtResource("6_3xmsb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_xjjjq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_p4347")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_5sggn")
+}],
+"loop": false,
+"name": &"dazed",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 3.0,
 "texture": ExtResource("4_iwebn")
@@ -77,14 +108,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("8_xen7b")
+"texture": ExtResource("18_b7bf4")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_ejuxj")
+"texture": ExtResource("19_ut32d")
 }],
 "loop": true,
 "name": &"digfall",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -139,20 +170,17 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("8_rv3ho")
+"texture": ExtResource("7_xjjjq")
 }, {
-"duration": 1.0,
-"texture": ExtResource("9_s04qi")
+"duration": 4.0,
+"texture": ExtResource("8_p4347")
 }, {
-"duration": 1.0,
-"texture": ExtResource("10_c7mci")
-}, {
-"duration": 1.0,
-"texture": ExtResource("11_4uqbi")
+"duration": 4.0,
+"texture": ExtResource("9_5sggn")
 }],
 "loop": false,
 "name": &"recover",
-"speed": 8.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -190,7 +218,7 @@ shape = SubResource("RectangleShape2D_khmiv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_of4cw")
-animation = &"death"
+animation = &"dazed"
 autoplay = "run"
 
 [node name="EnemyCollisionChecker" type="Area2D" parent="."]

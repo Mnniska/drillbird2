@@ -13,8 +13,10 @@ var timeBeforeTurning=0.08
 @onready var collider=$EnemyCollisionChecker
 @onready var diggingRaycast=$DiggingRaycast
 var TileDestroyer:crack_script=null
+@export var timeStunned:float=1
+var stunTimer:float=0
 
-enum States{WALK,WAIT,CORPSE,DETECT,DIG,DIGFALL,RECOVERING}
+enum States{WALK,WAIT,CORPSE,DETECT,DIG,STUNNED}
 var state:States=States.WALK
 
 func GetCollType(): #MUST HAVE
@@ -107,17 +109,16 @@ func _physics_process(delta: float) -> void:
 			_anim="digging"
 			
 			pass
-		States.DIGFALL:
-			_anim="digfall"
+		States.STUNNED:
 			
-			if !GetIsFalling():
-					RecoverAfterFall()
-
-			
-			pass
-		States.RECOVERING:
-			pass
-	
+			if GetIsFalling():
+				stunTimer=0
+			else:
+				stunTimer+=delta
+				if stunTimer>timeStunned:
+					ExitDazed()
+					#todo: transition
+				_anim="dazed"
 	
 	# Add the gravity.
 	if not is_on_floor():
@@ -132,7 +133,7 @@ func _physics_process(delta: float) -> void:
 			SoundManager.PlaySoundAtLocation(global_position,abstract_SoundEffectSetting.SoundEffectEnum.ENEMY_GENERIC_FALL)
 		isFalling=true
 		
-		if state==States.DIGFALL:	
+		if state==States.STUNNED:	
 			_anim="digfall"
 		else:
 			_anim="fall"
@@ -169,19 +170,16 @@ func _physics_process(delta: float) -> void:
 
 	UpdateAnimations(_anim)
 
-func RecoverAfterFall():
-	state=States.RECOVERING
-	anim.animation="recover"
-	anim.play()
-	var animLength:float=get_current_animation_length()		
-	await get_tree().create_timer(animLength).timeout
-	
+func ExitDazed():
+	anim.play("recover")
+	var length=get_current_animation_length()
+	await get_tree().create_timer(length).timeout
 	state=States.WALK
-	
 
 func UpdateAnimations(_anim:String):
 	if anim.animation!=_anim:
 		anim.animation=_anim
+		anim.play(_anim)
 
 	anim.flip_h=direction > 0
 	
@@ -221,10 +219,8 @@ func AttemptToDigTile():
 				GetTileDestroyer().DestroyTileWithGlobalPosition(pos,true,false)
 				digSuccessfull=true
 				
-				await get_tree().create_timer(0.1).timeout
-				
 				#adding timer here so that the mole can start falling before entering DIGFALL
-				state=States.DIGFALL
+				state=States.STUNNED
 
 				
 				
@@ -236,7 +232,7 @@ func AttemptToDigTile():
 
 		state=States.WAIT
 		
-		
+
 
 func _on_player_detection_zone_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
 	if state==States.WALK or state==States.WAIT:
