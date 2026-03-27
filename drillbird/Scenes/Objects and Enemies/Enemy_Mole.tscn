@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://b842x1mmyi2i8"]
+[gd_scene load_steps=47 format=3 uid="uid://b842x1mmyi2i8"]
 
 [ext_resource type="Script" uid="uid://cmuunggce2054" path="res://Scripts/Enemy_Runner.gd" id="1_cm028"]
 [ext_resource type="Script" uid="uid://bgy5cf01m25xs" path="res://Scripts/Abstract scripts/abstract_collidable.gd" id="2_xen7b"]
@@ -34,6 +34,11 @@
 [ext_resource type="Texture2D" uid="uid://cbwp3ybb0n1fd" path="res://Art/characters/Mole/mole_digfall2.png" id="19_ut32d"]
 [ext_resource type="Texture2D" uid="uid://b7v5y8k5pf3d0" path="res://Art/characters/Mole/mole_digging8.png" id="19_xjjjq"]
 [ext_resource type="Texture2D" uid="uid://odsea6q7gbiw" path="res://Art/characters/Mole/mole_digging9.png" id="20_p4347"]
+[ext_resource type="Texture2D" uid="uid://cw1o82vk05uwm" path="res://Art/effects/crack1.png" id="35_5sggn"]
+[ext_resource type="Texture2D" uid="uid://cokne62lu57vb" path="res://Art/effects/crack2.png" id="36_b7bf4"]
+[ext_resource type="Texture2D" uid="uid://dg6uc1lqfrisv" path="res://Art/effects/crack3.png" id="37_ut32d"]
+[ext_resource type="Texture2D" uid="uid://81lximwfajib" path="res://Art/effects/crack4.png" id="38_0w6n3"]
+[ext_resource type="Texture2D" uid="uid://bakl11g2ufv8n" path="res://Art/effects/CharacterEffects/runStartPuf_empty.png" id="39_23xhx"]
 
 [sub_resource type="Resource" id="Resource_pbycp"]
 script = ExtResource("2_xen7b")
@@ -206,6 +211,34 @@ size = Vector2(11, 7)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xen7b"]
 size = Vector2(6, 24)
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_inx5r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("35_5sggn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_b7bf4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_ut32d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_0w6n3")
+}],
+"loop": true,
+"name": &"cracking",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("39_23xhx")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
 [node name="Enemy_Mole" type="CharacterBody2D"]
 collision_layer = 8
 script = ExtResource("1_cm028")
@@ -246,6 +279,11 @@ shape = SubResource("RectangleShape2D_xen7b")
 position = Vector2(0, 11)
 target_position = Vector2(0, 2)
 hit_from_inside = true
+
+[node name="crack" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_inx5r")
+animation = &"idle"
+autoplay = "idle"
 
 [connection signal="body_shape_entered" from="EnemyCollisionChecker" to="." method="_on_enemy_collision_checker_body_shape_entered"]
 [connection signal="body_shape_exited" from="EnemyCollisionChecker" to="." method="_on_enemy_collision_checker_body_shape_exited"]

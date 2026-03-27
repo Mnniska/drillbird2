@@ -12,6 +12,7 @@ var timeBeforeTurning=0.08
 
 @onready var collider=$EnemyCollisionChecker
 @onready var diggingRaycast=$DiggingRaycast
+@onready var crackAnim=$crack
 var TileDestroyer:crack_script=null
 @export var timeStunned:float=1
 var stunTimer:float=0
@@ -190,16 +191,16 @@ func DetectPlayer():
 	
 	anim.animation="detect"
 	anim.play()
-	var detectAnimLength:float=get_current_animation_length()		
+	var detectAnimLength:float=get_current_animation_length() 
+	
+
+	
 	await get_tree().create_timer(detectAnimLength).timeout
 	
 	anim.animation="digging"
 	
 	anim.play("digging")
 	state=States.DIG
-	AttemptToDigTile()
-
-func AttemptToDigTile():
 	
 	var digSuccessfull:bool=false
 	
@@ -213,11 +214,25 @@ func AttemptToDigTile():
 
 			var tiledata:TileData= tileset.get_cell_tile_data(tilesetPos)
 			
+			var crackPos=to_local(tileset.map_to_local(tilesetPos))
+			
 			#if tile isn't solid..
 			if tiledata.terrain!=0:
-				await get_tree().create_timer(1).timeout
+				
+				crackAnim.play("cracking")
+				crackAnim.position=crackPos
+				
+				var timeToDig=1 #todo change thus number depending on tile hardness
+			
+				var animSpeed=1
+				crackAnim.speed_scale=animSpeed
+				$Label.text=str(animSpeed)
+
+				await get_tree().create_timer(timeToDig).timeout
 				GetTileDestroyer().DestroyTileWithGlobalPosition(pos,true,false)
 				digSuccessfull=true
+				
+				crackAnim.play("idle")
 				
 				#adding timer here so that the mole can start falling before entering DIGFALL
 				state=States.STUNNED
