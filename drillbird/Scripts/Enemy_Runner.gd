@@ -14,10 +14,10 @@ var timeBeforeTurning=0.08
 @onready var diggingRaycast=$DiggingRaycast
 @onready var crackAnim=$crack
 var TileDestroyer:crack_script=null
-@export var timeStunned:float=1
+@export var timeStunned:float=3
 var stunTimer:float=0
 
-enum States{WALK,WAIT,CORPSE,DETECT,DIG,STUNNED}
+enum States{WALK,WAIT,CORPSE,DETECT,DIG,FALLING,DAZED}
 var state:States=States.WALK
 
 func GetCollType(): #MUST HAVE
@@ -110,16 +110,18 @@ func _physics_process(delta: float) -> void:
 			_anim="digging"
 			
 			pass
-		States.STUNNED:
-			
+		States.FALLING:
+			_anim="dazed"
 			if GetIsFalling():
 				stunTimer=0
 			else:
 				stunTimer+=delta
 				if stunTimer>timeStunned:
+					stunTimer=0
 					ExitDazed()
+					_anim="recover"
 					#todo: transition
-				_anim="dazed"
+		
 	
 	# Add the gravity.
 	if not is_on_floor():
@@ -129,20 +131,7 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
-	if GetIsFalling():
-		if !isFalling:
-			SoundManager.PlaySoundAtLocation(global_position,abstract_SoundEffectSetting.SoundEffectEnum.ENEMY_GENERIC_FALL)
-		isFalling=true
-		
-		if state==States.STUNNED:	
-			_anim="digfall"
-		else:
-			_anim="fall"
-		
-		
-		
-	else:
-		isFalling=false
+
 
 
 
@@ -158,6 +147,17 @@ func _physics_process(delta: float) -> void:
 		elif turningCounter>0:
 			turningCounter=0
 	
+	if GetIsFalling():
+		if !isFalling:
+			SoundManager.PlaySoundAtLocation(global_position,abstract_SoundEffectSetting.SoundEffectEnum.ENEMY_GENERIC_FALL)
+		isFalling=true
+		
+		if state==States.FALLING:
+			_anim="digfall"
+		else:
+			_anim="fall"
+	else:
+		isFalling=false
 
 	positionLastFrame=position
 	
@@ -172,6 +172,7 @@ func _physics_process(delta: float) -> void:
 	UpdateAnimations(_anim)
 
 func ExitDazed():
+	state=States.DAZED
 	anim.play("recover")
 	var length=get_current_animation_length()
 	await get_tree().create_timer(length).timeout
@@ -215,6 +216,8 @@ func DetectPlayer():
 			var tiledata:TileData= tileset.get_cell_tile_data(tilesetPos)
 			
 			var crackPos=to_local(tileset.map_to_local(tilesetPos))
+			var globalPos=to_global(crackPos)
+			global_position.x=globalPos.x
 			
 			#if tile isn't solid..
 			if tiledata.terrain!=0:
@@ -226,7 +229,6 @@ func DetectPlayer():
 			
 				var animSpeed=1
 				crackAnim.speed_scale=animSpeed
-				$Label.text=str(animSpeed)
 
 				await get_tree().create_timer(timeToDig).timeout
 				GetTileDestroyer().DestroyTileWithGlobalPosition(pos,true,false)
@@ -234,15 +236,11 @@ func DetectPlayer():
 				
 				crackAnim.play("idle")
 				
-				#adding timer here so that the mole can start falling before entering DIGFALL
-				state=States.STUNNED
+				state=States.FALLING
 
-				
-				
-				
-				#todo: Show crack progression on tile
 	if !digSuccessfull:
 		#tile digging was not successful
+		#todo: transition to walking?
 		await get_tree().create_timer(1).timeout
 
 		state=States.WAIT
@@ -250,7 +248,7 @@ func DetectPlayer():
 
 
 func _on_player_detection_zone_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
-	if state==States.WALK or state==States.WAIT:
+	if state==States.WALK or state==States.WAIT and !GetIsFalling():
 		DetectPlayer()
 	
 	pass # Replace with function body.

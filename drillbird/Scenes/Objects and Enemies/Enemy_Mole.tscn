@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://b842x1mmyi2i8"]
+[gd_scene load_steps=46 format=3 uid="uid://b842x1mmyi2i8"]
 
 [ext_resource type="Script" uid="uid://cmuunggce2054" path="res://Scripts/Enemy_Runner.gd" id="1_cm028"]
 [ext_resource type="Script" uid="uid://bgy5cf01m25xs" path="res://Scripts/Abstract scripts/abstract_collidable.gd" id="2_xen7b"]
@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://bu56d8b0ujw2e" path="res://Art/characters/bug/walker_death1.png" id="4_iwebn"]
 [ext_resource type="Texture2D" uid="uid://ba4mfg6y705ng" path="res://Art/characters/Mole/mole_land_dazed2.png" id="5_iq8vd"]
 [ext_resource type="Texture2D" uid="uid://8u8wcx31n81q" path="res://Art/characters/bug/walker_death2.png" id="5_vkhyx"]
-[ext_resource type="Texture2D" uid="uid://dopwq8j71c6vt" path="res://Art/characters/Mole/mole_land_dazed3.png" id="6_3xmsb"]
 [ext_resource type="Texture2D" uid="uid://5p4kf2oomjkc" path="res://Art/characters/bug/walker_death3.png" id="6_g4dga"]
 [ext_resource type="Texture2D" uid="uid://dhrvhcsf7e45a" path="res://Art/effects/empty.png" id="7_m1al2"]
 [ext_resource type="Texture2D" uid="uid://drkyoeihqrm5f" path="res://Art/characters/Mole/mole_land_dazed4.png" id="7_xjjjq"]
@@ -61,21 +60,12 @@ animations = [{
 "duration": 3.0,
 "texture": ExtResource("5_iq8vd")
 }, {
-"duration": 2.0,
-"texture": ExtResource("6_3xmsb")
-}, {
 "duration": 1.0,
 "texture": ExtResource("7_xjjjq")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_p4347")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_5sggn")
 }],
 "loop": false,
 "name": &"dazed",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 3.0,
@@ -242,6 +232,7 @@ animations = [{
 [node name="Enemy_Mole" type="CharacterBody2D"]
 collision_layer = 8
 script = ExtResource("1_cm028")
+timeStunned = 1.5
 collType = SubResource("Resource_pbycp")
 enemyInfo = SubResource("Resource_xknje")
 
@@ -251,8 +242,10 @@ shape = SubResource("RectangleShape2D_khmiv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_of4cw")
-animation = &"dazed"
+animation = &"recover"
 autoplay = "run"
+frame = 2
+frame_progress = 1.0
 
 [node name="EnemyCollisionChecker" type="Area2D" parent="."]
 collision_layer = 0
