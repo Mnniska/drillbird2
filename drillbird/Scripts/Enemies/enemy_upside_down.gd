@@ -26,7 +26,7 @@ func _physics_process(delta: float) -> void:
 
 	var anim="run"
 
-	move_and_slide()
+
 
 	if state==States.WALK:
 		anim="run"
@@ -63,9 +63,11 @@ func _physics_process(delta: float) -> void:
 	
 	if isFalling:
 		anim="fall"
+		velocity.x=0
 	
-	
+
 	positionLastFrame=position
+	move_and_slide()
 	UpdateAnimations(anim)
 
 func DealDamage(value:int): #MUST HAVE

@@ -129,7 +129,7 @@ func _physics_process(delta: float) -> void:
 	
 
 
-	move_and_slide()
+
 
 
 
@@ -154,8 +154,10 @@ func _physics_process(delta: float) -> void:
 		
 		if state==States.FALLING:
 			_anim="digfall"
+			
 		else:
 			_anim="fall"
+			velocity.x=0
 	else:
 		isFalling=false
 
@@ -169,6 +171,7 @@ func _physics_process(delta: float) -> void:
 			waitCounter=0
 			state=States.WALK
 
+	move_and_slide()
 	UpdateAnimations(_anim)
 
 func ExitDazed():

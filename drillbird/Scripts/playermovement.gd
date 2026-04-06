@@ -44,7 +44,7 @@ var heavy:bool=false
 var damageTimerCounter:float=0
 @export var damageStunTime:float=0.6
 @export var damageVelocity:float=100
-@export var invincibilityTime:float=3.5
+@export var invincibilityTime:float=3
 var invincibilityCounter:float=0
 @onready var useVibration=GlobalVariables.useVibration
 
@@ -593,8 +593,16 @@ func PlayerStoppedDrillingValidTile():
 	SetLightEffectActive(false)
 	
 func DealDamage(amount:int):
-	if state==States.DAMAGE or state==States.DEAD or invincible:
+	if state==States.DAMAGE or state==States.DEAD:
 		return false
+		
+	if invincible:
+		var x = 0
+		var y = -100
+		self.velocity = (Vector2(x,y))
+		#bounce when hitting spike..prolly need a
+		return false
+		
 	state=States.DAMAGE
 	PlayerStoppedDrillingValidTile()
 	useVibration=GlobalVariables.useVibration

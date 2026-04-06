@@ -1,8 +1,8 @@
 [gd_scene load_steps=27 format=3 uid="uid://bs8pjls7fpul1"]
 
-[ext_resource type="Script" path="res://Scripts/Enemies/enemy_upside_down.gd" id="1_crbyl"]
-[ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_collidable.gd" id="2_xl2cx"]
-[ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_enemy.gd" id="3_414ji"]
+[ext_resource type="Script" uid="uid://c64b6s5mdvt6g" path="res://Scripts/Enemies/enemy_upside_down.gd" id="1_crbyl"]
+[ext_resource type="Script" uid="uid://bgy5cf01m25xs" path="res://Scripts/Abstract scripts/abstract_collidable.gd" id="2_xl2cx"]
+[ext_resource type="Script" uid="uid://cokuso80w54cc" path="res://Scripts/Abstract scripts/abstract_enemy.gd" id="3_414ji"]
 [ext_resource type="Texture2D" uid="uid://na7je55cnl6h" path="res://Art/characters/UpsideDown/cloud_death1.png" id="4_57u7e"]
 [ext_resource type="Texture2D" uid="uid://b2k1r74i35nbh" path="res://Art/characters/UpsideDown/cloud_death2.png" id="5_yagkb"]
 [ext_resource type="Texture2D" uid="uid://bgc511ngc1xcc" path="res://Art/characters/UpsideDown/cloud_death3.png" id="6_2unbn"]
@@ -30,7 +30,6 @@ enemyID = 4
 [sub_resource type="Resource" id="Resource_amv6c"]
 script = ExtResource("3_414ji")
 type = 4
-damage = 1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_khmiv"]
 size = Vector2(10, 12)
