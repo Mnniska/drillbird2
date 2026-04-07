@@ -409,7 +409,11 @@ func RegularMovement(delta:float,currentAnim:String):
 		
 		velocity += get_gravity() * delta
 		if velocity.y<=0:
-			newanim= "jump"
+
+			if invincible:
+				newanim="jump_hurt"
+			else:
+				newanim= "jump"
 		if velocity.y > 0:
 			if Input.is_action_pressed("down"):
 				newanim= "fall_drilldown"

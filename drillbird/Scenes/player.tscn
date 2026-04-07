@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3 uid="uid://e3titjk1as46"]
+[gd_scene load_steps=71 format=3 uid="uid://e3titjk1as46"]
 
 [ext_resource type="Script" uid="uid://dgpttuofehi6x" path="res://Scripts/playermovement.gd" id="1_llgr2"]
 [ext_resource type="Texture2D" uid="uid://dqsglx1jll3rm" path="res://Art/effects/BirdyLightEffect1.png" id="2_65ywu"]
@@ -51,6 +51,7 @@
 [ext_resource type="Texture2D" uid="uid://bevem4o77nqs8" path="res://Art/characters/Drillbird/birdy_dropOres.png" id="31_ouow2"]
 [ext_resource type="Texture2D" uid="uid://5wrxmdf1hats" path="res://Art/characters/Drillbird/birdie_flowerFly.png" id="32_shida"]
 [ext_resource type="Theme" uid="uid://bfr5y4lo7m1ux" path="res://Resources/Fonts/fontTheme.tres" id="38_sekb7"]
+[ext_resource type="Texture2D" uid="uid://bd5m5ms4ce8w0" path="res://Art/characters/Drillbird/jump_spikebounce.png" id="42_57lvd"]
 
 [sub_resource type="Resource" id="Resource_0yo8f"]
 script = ExtResource("2_o5iaf")
@@ -305,6 +306,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("42_57lvd")
+}],
+"loop": true,
+"name": &"jump_hurt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("11_tqmmp")
 }, {
 "duration": 1.0,
@@ -426,10 +435,8 @@ process_material = SubResource("ParticleProcessMaterial_s5mli")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 2
 sprite_frames = SubResource("SpriteFrames_3vbtj")
-animation = &"run"
+animation = &"idle"
 autoplay = "idle"
-frame = 4
-frame_progress = 0.259652
 
 [node name="jumpCrystal1" type="AnimatedSprite2D" parent="AnimatedSprite2D"]
 position = Vector2(-4, 10)
