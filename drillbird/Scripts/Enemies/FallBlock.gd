@@ -59,15 +59,21 @@ func _physics_process(delta: float) -> void:
 					#Makes player go above fallblock
 					if n.GetCollType().type==abstract_collidable.types.PLAYER:
 						n.global_position=self.global_position+Vector2(0,-16) #Hack to ensure player isn't stuck underneath block
+						
 					n.DealDamage(enemyInfo.damage)
-					
+					#Tombstone - I don't want other enemies to be able to destroy it. So implementing a deal damage to tombstone is prolly not the way
 
 					if n.GetCollType().type==abstract_collidable.types.ENEMY:
 						
-
-							
+					
+						
 						var info:abstract_enemy
 						info = n.enemyInfo
+						
+						if info.type==info.enemyTypes.TOMBSTONE:
+							n.CrushByFallblock()
+							#Do a special murder of tombstone, since tombstones do not care about regular dmg - they can only be destroyed by fall blocks or by destroying blocks underneath
+							
 						
 							#trigger steam achievement if fallblock kills something living ;) 
 						if info.type != abstract_enemy.enemyTypes.FALLBLOCK and info.type!=abstract_enemy.enemyTypes.SPIKE:

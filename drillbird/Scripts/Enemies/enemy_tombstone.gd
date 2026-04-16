@@ -86,7 +86,11 @@ func Setup(info:abstract_enemy):
 	spawnPositionLocal=position
 
 func DealDamage(amount:int):
+	#Tombstone cannot be hurt by normal means
 	return
+
+func CrushByFallblock():
+	TurnEnemyOff()	
 	
 
 func GetLocalSpawnPosition():

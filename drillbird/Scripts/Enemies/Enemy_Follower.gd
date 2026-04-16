@@ -79,7 +79,10 @@ func IdleBehaviour():
 func AlertBehaviour():
 	var anim
 
-	
+	if chosenActor==null:
+		SoundManager.PlaySoundAtLocation(global_position,abstract_SoundEffectSetting.SoundEffectEnum.ENEMY_FOLLOWER_LOSEDETECT)
+		state=States.IDLE
+		return "alert"
 	var velocityVector:float = chosenActorXCoordinateLastFrame-chosenActor.global_position.x
 	
 
