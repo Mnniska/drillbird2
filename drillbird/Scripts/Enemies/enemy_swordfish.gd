@@ -164,7 +164,7 @@ func _physics_process(delta: float) -> void:
 		#todo: When in dazed state, pause daze counter while falling
 		if state!=States.DAZED:
 			animToPlay="fall"
-		velocity.x=velocity.x*0.95
+		velocity.x=0
 	
 	
 	positionLastFrame=position
