@@ -1,12 +1,25 @@
-[gd_scene load_steps=10 format=3 uid="uid://biod8soole26"]
+[gd_scene load_steps=14 format=3 uid="uid://biod8soole26"]
 
 [ext_resource type="Script" uid="uid://4540treojg75" path="res://Scripts/Enemies/corpse.gd" id="1_55naq"]
+[ext_resource type="Script" uid="uid://bgy5cf01m25xs" path="res://Scripts/Abstract scripts/abstract_collidable.gd" id="2_gmtsd"]
 [ext_resource type="Texture2D" uid="uid://beb7b1sg6foth" path="res://Art/characters/corpse/corpse_falling1.png" id="2_imw8c"]
 [ext_resource type="Texture2D" uid="uid://cnt8krdbes3sp" path="res://Art/characters/corpse/corpse_falling2.png" id="3_gmtsd"]
+[ext_resource type="Script" uid="uid://cokuso80w54cc" path="res://Scripts/Abstract scripts/abstract_enemy.gd" id="3_vgfsx"]
 [ext_resource type="Texture2D" uid="uid://ctl37txorkki8" path="res://Art/characters/corpse/corpse_falling3.png" id="4_vgfsx"]
 [ext_resource type="Texture2D" uid="uid://c38pgpqbmv3j4" path="res://Art/characters/corpse/corpse_land1.png" id="5_3idqe"]
 [ext_resource type="Texture2D" uid="uid://brkp5rtbka740" path="res://Art/characters/corpse/corpse_land2.png" id="6_mop0q"]
 [ext_resource type="Texture2D" uid="uid://ch3kxy4ma0rt3" path="res://Art/characters/corpse/corpse_idle.png" id="7_55naq"]
+
+[sub_resource type="Resource" id="Resource_vgfsx"]
+script = ExtResource("2_gmtsd")
+type = 1
+enemyID = 8
+metadata/_custom_type_script = "uid://bgy5cf01m25xs"
+
+[sub_resource type="Resource" id="Resource_3idqe"]
+script = ExtResource("3_vgfsx")
+type = 10
+metadata/_custom_type_script = "uid://cokuso80w54cc"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6lonp"]
 size = Vector2(11, 6)
@@ -43,14 +56,17 @@ animations = [{
 }]
 
 [node name="Corpse" type="CharacterBody2D"]
-collision_layer = 0
+collision_layer = 8192
 script = ExtResource("1_55naq")
+collType = SubResource("Resource_vgfsx")
+enemyInfo = SubResource("Resource_3idqe")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 5)
 shape = SubResource("RectangleShape2D_6lonp")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1
 sprite_frames = SubResource("SpriteFrames_webwr")
 animation = &"idle"
 autoplay = "falling"

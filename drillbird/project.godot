@@ -168,6 +168,7 @@ locale/translations=PackedStringArray("res://Resources/Localization/Drillbird tr
 2d_physics/layer_11="Lightsource"
 2d_physics/layer_12="ghost"
 2d_physics/layer_13="MoleOre"
+2d_physics/layer_14="Corpse"
 
 [physics]
 

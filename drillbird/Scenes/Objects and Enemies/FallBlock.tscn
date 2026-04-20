@@ -113,7 +113,7 @@ shape = SubResource("RectangleShape2D_b510l")
 [node name="EnemyCollisionChecker" type="Area2D" parent="."]
 position = Vector2(0, 18)
 collision_layer = 0
-collision_mask = 284
+collision_mask = 8476
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyCollisionChecker"]
 position = Vector2(0, -2.5)

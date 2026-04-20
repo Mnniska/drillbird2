@@ -3,6 +3,8 @@ extends CharacterBody2D
 var positionLastFrame
 var isFalling:bool=true
 @onready var animator=$AnimatedSprite2D
+@export var collType:abstract_collidable
+@export var enemyInfo:abstract_enemy
 
 func _ready() -> void:
 	positionLastFrame=position
@@ -32,3 +34,15 @@ func GetIsFalling():
 	var speed = abs(positionLastFrame-position)
 	
 	return speed.y>0.1
+
+func DealDamage(amount:int=1):
+	if amount>0:
+		DestroySelf()
+#Should only be called from tombstone script 
+	
+func DestroySelf():
+	queue_free()
+	pass
+
+func GetCollType():
+	return collType
