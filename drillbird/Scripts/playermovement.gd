@@ -337,6 +337,13 @@ func RechargeCrystalActivated():
 	for index in jump_crystals.size():
 		jump_crystals[index].show()
 
+func RefillJumpCrystals():
+	if heavy:
+		#called from RegularMovement when jumping as well as when bouncing on spikes
+		jumpsMade=1
+		for index in jump_crystals.size():
+			jump_crystals[index].show()
+
 func RegularMovement(delta:float,currentAnim:String):
 	var newanim=currentAnim
 	
@@ -353,6 +360,9 @@ func RegularMovement(delta:float,currentAnim:String):
 			SoundManager.PlaySoundAtLocation(self.global_position,abstract_SoundEffectSetting.SoundEffectEnum.PLAYER_DROP_ORE)
 			
 	
+
+
+		
 	# Check for jump input and add velocity.
 	if Input.is_action_just_pressed("jump"):  
 	
@@ -363,11 +373,7 @@ func RegularMovement(delta:float,currentAnim:String):
 				state=States.FLOWER
 				
 				#Reset player jumps so they can jump again
-				if heavy:
-					jumpsMade=1
-					for index in jump_crystals.size():
-						jump_crystals[index].show()
-				
+				RefillJumpCrystals()
 				
 				HeldFlower.SetPlayerAttached(true)
 				PlayerStoppedDrillingValidTile()
@@ -604,6 +610,8 @@ func DealDamage(amount:int):
 		var x = 0
 		var y = -100
 		self.velocity = (Vector2(x,y))
+		#refill crystals
+		RefillJumpCrystals()
 		#bounce when hitting spike..prolly need a
 		return false
 		
