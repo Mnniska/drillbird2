@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=4 uid="uid://boh3yjorqn4xa"]
+[gd_scene load_steps=75 format=4 uid="uid://boh3yjorqn4xa"]
 
 [ext_resource type="TileSet" uid="uid://grpd2pyu7pgk" path="res://Resources/MainTileset.tres" id="1_4c1b3"]
 [ext_resource type="Script" uid="uid://ddqrep1nrk25j" path="res://Scenes/Playable Scenes/OreSpawner.gd" id="2_mjto2"]
@@ -18,6 +18,7 @@
 [ext_resource type="Resource" uid="uid://k3uc1fryuwfc" path="res://Resources/Economy/ore_5.tres" id="16_amtt6"]
 [ext_resource type="Resource" uid="uid://dtee1eo8ydnlr" path="res://Resources/Economy/ore_6.tres" id="17_kiayt"]
 [ext_resource type="Resource" uid="uid://biejw6c2k7wry" path="res://Resources/Economy/ore_HEART.tres" id="18_7alhe"]
+[ext_resource type="Resource" uid="uid://dgw0dbxymu88d" path="res://Resources/Economy/ore_7_tombstone.tres" id="19_4p3ut"]
 [ext_resource type="Script" uid="uid://cvqw4oiw4fbwd" path="res://Scripts/OreRegionIdentifierScript.gd" id="19_o5x6c"]
 [ext_resource type="Script" uid="uid://cw1i2vdb02qkl" path="res://Scripts/ore_area.gd" id="20_4q3aj"]
 [ext_resource type="TileSet" uid="uid://c2gd324da32yx" path="res://Resources/Tileset_Secrets.tres" id="21_ktad8"]
@@ -155,7 +156,7 @@ tile_map_data = PackedByteArray("AADu/+7/AAAAAAAAAADx//7/AAAGAAEAAADw//7/AAAGAAE
 tile_set = ExtResource("1_4c1b3")
 script = ExtResource("2_mjto2")
 oreRegions = Array[ExtResource("3_kqsbu")]([ExtResource("4_a7g1c"), ExtResource("5_116rv"), ExtResource("6_i6y5g"), ExtResource("7_vgx01"), ExtResource("8_ex40c"), ExtResource("9_7fw44"), ExtResource("10_1phw1")])
-oreList = Array[ExtResource("11_amln7")]([ExtResource("12_d5m4n"), ExtResource("13_ltu22"), ExtResource("14_tf4n7"), ExtResource("15_18uxr"), ExtResource("16_amtt6"), ExtResource("17_kiayt"), ExtResource("18_7alhe")])
+oreList = Array[ExtResource("11_amln7")]([ExtResource("12_d5m4n"), ExtResource("13_ltu22"), ExtResource("14_tf4n7"), ExtResource("15_18uxr"), ExtResource("16_amtt6"), ExtResource("17_kiayt"), ExtResource("18_7alhe"), ExtResource("19_4p3ut")])
 
 [node name="OreRegions" type="Node2D" parent="TilemapOres"]
 visible = false

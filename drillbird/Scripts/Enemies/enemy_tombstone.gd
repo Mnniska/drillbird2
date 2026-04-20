@@ -4,6 +4,10 @@ class_name tombstone
 var spawnedGhast:ghast=null
 @onready var loadedGhast=preload("res://Scenes/Objects and Enemies/enemy_ghast.tscn")
 @onready var ghostPath:Line2D=$"Ghost path"
+
+var oreSpawner:ore_manager
+@export var oreToSpawn:abstract_ore
+
 func GetCollType():
 	return collType
 
@@ -68,6 +72,9 @@ func TurnEnemyOff():
 	if spawnedGhast!=null:
 		spawnedGhast.Despawn()
 	
+	if oreSpawner:
+		oreSpawner.SpawnOreAtLocation(self.global_position,oreToSpawn,Vector2(0,-100),false,false)
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
@@ -84,6 +91,11 @@ func Setup(info:abstract_enemy):
 	enemyInfo.type=info.type
 	enemyInfo.spawnedFromCorpse=info.spawnedFromCorpse
 	spawnPositionLocal=position
+	
+	if GlobalVariables.MainSceneReferenceConnector.ref_oreTilemap==null:
+		print_debug("Could not get ore tilemap for tombstone!")
+	else:
+		oreSpawner=GlobalVariables.MainSceneReferenceConnector.ref_oreTilemap
 
 func DealDamage(amount:int):
 	#Tombstone cannot be hurt by normal means
@@ -99,8 +111,9 @@ func GetLocalSpawnPosition():
 func _on_collider_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
 	if body==$".":
 		return
-	
-	body.DealDamage(enemyInfo.damage)
+
+	#Removed damage to test nice tombstones
+	#body.DealDamage(enemyInfo.damage)
 	
 	pass # Replace with function body.
 

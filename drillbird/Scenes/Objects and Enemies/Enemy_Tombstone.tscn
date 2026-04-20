@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://be64k05qgrrwf"]
+[gd_scene load_steps=12 format=3 uid="uid://be64k05qgrrwf"]
 
 [ext_resource type="Script" uid="uid://di1m5bij23orx" path="res://Scripts/Enemies/enemy_tombstone.gd" id="1_h0uaq"]
 [ext_resource type="Script" uid="uid://cokuso80w54cc" path="res://Scripts/Abstract scripts/abstract_enemy.gd" id="2_2bc15"]
 [ext_resource type="Texture2D" uid="uid://c3jur2w2lq52b" path="res://Art/characters/Tombstone and ghast/ghast_tombstone.png" id="2_e0vw0"]
+[ext_resource type="Resource" uid="uid://dgw0dbxymu88d" path="res://Resources/Economy/ore_7_tombstone.tres" id="2_fjvxw"]
 [ext_resource type="Texture2D" uid="uid://cf7dyqj4onpbr" path="res://Art/characters/Tombstone and ghast/ghast_tombstone_terrain_dirt1.png" id="3_02la1"]
 [ext_resource type="Script" uid="uid://bgy5cf01m25xs" path="res://Scripts/Abstract scripts/abstract_collidable.gd" id="3_yxl0y"]
 [ext_resource type="PackedScene" uid="uid://2lykflhwivex" path="res://Scenes/observer.tscn" id="8_csbx4"]
@@ -28,6 +29,7 @@ size = Vector2(10, 7)
 collision_layer = 10
 collision_mask = 0
 script = ExtResource("1_h0uaq")
+oreToSpawn = ExtResource("2_fjvxw")
 enemyInfo = SubResource("Resource_f1yn1")
 collType = SubResource("Resource_fjvxw")
 

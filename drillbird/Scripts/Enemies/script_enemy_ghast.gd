@@ -92,8 +92,10 @@ func AbortChaseDueToDistance():
 	state=States.IDLE
 	$Label.text="aborted"
 	await get_tree().create_timer(0.6).timeout
-	$Label.text="returning"
-	ReturnToLine()
+	
+	if state!=States.DESPAWNING:
+		$Label.text="returning"
+		ReturnToLine()
 
 func GetMovementVector(_targetPosGlobal:Vector2):
 	
@@ -130,6 +132,9 @@ func NewTarget(body:Node2D):
 	state=States.SPOTTINGSOMETHING
 	await get_tree().create_timer(timeToWaitBeforePersuing).timeout
 	
+	if state==States.DESPAWNING:
+		return #if ghost is being despawned since timer started, don't chase
+		
 	targetBody=body
 	state=States.PERSUIT
 	$Label.text="chasing"

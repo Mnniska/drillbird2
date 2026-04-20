@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="abstract_ore" load_steps=3 format=3 uid="uid://dgw0dbxymu88d"]
+
+[ext_resource type="Script" uid="uid://bmcaxciswx4yo" path="res://Scripts/Abstract scripts/abstract_ore.gd" id="1_vpi1f"]
+[ext_resource type="Texture2D" uid="uid://blq3gp6hww7hl" path="res://Art/Collectibles/ore_tombstone.png" id="2_tj5e8"]
+
+[resource]
+script = ExtResource("1_vpi1f")
+ID = 6
+value = 5
+weight = 1
+texture = ExtResource("2_tj5e8")
+name = "TombstoneGem"
