@@ -7,6 +7,10 @@ var spawnedGhast:ghast=null
 
 var oreSpawner:ore_manager
 @export var oreToSpawn:abstract_ore
+@onready var tombstoneSpikes=$Sprite_spikes
+
+@export var terrainSprites:Array[CompressedTexture2D]
+
 
 func GetCollType():
 	return collType
@@ -19,13 +23,13 @@ func _ready() -> void:
 	
 	
 	if !enemyInfo.dead:
-		if SpikesSpawnSetup():		
+		if TombstoneSpawnSetup():		
 			SpawnGhast()
 
 	spawnPositionLocal=position		
 
 
-func SpikesSpawnSetup():
+func TombstoneSpawnSetup():
 	#returns true if spike successfully spawns - tombstones spawning in thin air won't spawn
 	raycast.force_raycast_update()
 	if raycast.is_colliding():
@@ -39,6 +43,7 @@ func SpikesSpawnSetup():
 			
 			
 #			$Sprite2D.texture=spriteVariations[min(spriteVariations.size()-1,terrain) ] 
+			
 			
 			return true
 		else:
@@ -58,7 +63,7 @@ func SpawnGhast():
 	ghastInstance.ReturnToLine()
 	spawnedGhast=ghastInstance
 
-func TurnEnemyOff():
+func TurnEnemyOff(spawnOre:bool=false):
 	$Sprite2D.hide()
 	$Sprite_front.hide()
 	#should prolly do a proper destroy anim as well but w/e for now
@@ -72,9 +77,14 @@ func TurnEnemyOff():
 	if spawnedGhast!=null:
 		spawnedGhast.Despawn()
 	
-	if oreSpawner:
-		oreSpawner.SpawnOreAtLocation(self.global_position,oreToSpawn,Vector2(0,-100),false,false)
+	if spawnOre:
+		if oreSpawner:
+			oreSpawner.SpawnOreAtLocation(self.global_position,oreToSpawn,Vector2(0,-100),false,false)
 	
+	if spawnedGhast!=null:
+		await get_tree().create_timer(5).timeout
+		
+	queue_free()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
@@ -85,7 +95,7 @@ func CheckOverlappingCollisions(): #MUST HAVE
 			n.DealDamage(enemyInfo.damage)
 	pass
 
-func Setup(info:abstract_enemy):
+func Setup(info:abstract_enemy,_hasSpikes:bool=false):
 	enemyInfo.spawnLocation=info.spawnLocation
 	enemyInfo.dead=info.dead
 	enemyInfo.type=info.type
@@ -102,7 +112,7 @@ func DealDamage(amount:int):
 	return
 
 func CrushByFallblock():
-	TurnEnemyOff()	
+	TurnEnemyOff(false)	
 	
 
 func GetLocalSpawnPosition():
@@ -111,14 +121,10 @@ func GetLocalSpawnPosition():
 func _on_collider_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
 	if body==$".":
 		return
-
-	#Removed damage to test nice tombstones
-	#body.DealDamage(enemyInfo.damage)
-	
-	pass # Replace with function body.
+	#tonbstone does not deal damage, keeping function in case I change my mind ;) 
 
 
 func _on_observer_block_destroyed() -> void:
-	TurnEnemyOff()
+	TurnEnemyOff(true)
 	
 	pass # Replace with function body.

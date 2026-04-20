@@ -20,7 +20,7 @@ enemyID = 6
 metadata/_custom_type_script = "uid://bgy5cf01m25xs"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y8cxp"]
-size = Vector2(16, 17)
+size = Vector2(14, 5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4hyg0"]
 size = Vector2(10, 7)
@@ -30,11 +30,12 @@ collision_layer = 10
 collision_mask = 0
 script = ExtResource("1_h0uaq")
 oreToSpawn = ExtResource("2_fjvxw")
+terrainSprites = Array[Sprite2D]([null])
 enemyInfo = SubResource("Resource_f1yn1")
 collType = SubResource("Resource_fjvxw")
 
 [node name="SpikeAffectedCollider" type="CollisionShape2D" parent="."]
-position = Vector2(0, 1.5)
+position = Vector2(0, 6.5)
 shape = SubResource("RectangleShape2D_y8cxp")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

@@ -313,7 +313,6 @@ func GetEnemyUpdate():
 			enemiesToSpawnList[index].currentSpawnLocation=currentPos
 		index+=1
 		
-	#the problem is that the tombstone isn't added to this list I think
 	return enemiesToSpawnList
 
 func CreateNewFlowerFromGlobalPos(globalPos:Vector2,blossomed:bool=false,playSound:bool=true):
@@ -349,9 +348,23 @@ func TurnCorpsesIntoTombstones():
 		tombstoneInfo.spawnLocation=posInTilemapCoords
 		tombstoneInfo.type=tombstoneInfo.enemyTypes.TOMBSTONE
 		tombstoneInfo.spawnedFromCorpse=true
-		
 
-		tombstoneInstance.Setup(tombstoneInfo)
+
+		#this tile is the one UNDERNEATH the tombstone, so it does not make sense to check for spikes here
+		#also, spikes are enemies, so it does not make sense to check the tilemap for them lol
+		
+		
+		#
+		##check if tombstone should spawn with spikes
+		#var tileItSpawnsOnto:TileData=gameTilemap.get_cell_tile_data(posInTilemapCoords)
+		#var tombstoneHasSpikes:bool=false
+		#if tileItSpawnsOnto.get_custom_data("enemy_type")==2:
+			#tombstoneHasSpikes=true
+
+
+		tombstoneInstance.Setup(tombstoneInfo,false)
+
+		#TODO: Saving needs to handle whether tombstones have spikes or not lol
 
 		spawnedEnemies.append(tombstoneInstance)
 		enemiesToSpawnList.append(tombstoneInstance.enemyInfo)
