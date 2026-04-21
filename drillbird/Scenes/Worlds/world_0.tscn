@@ -1421,7 +1421,6 @@ position = Vector2(-341, -32)
 shape = SubResource("CircleShape2D_mstut")
 
 [node name="CameraLimiter" parent="WorldScripts" instance=ExtResource("56_h3y7k")]
-visible = false
 position = Vector2(-1154, 361)
 limit_top = true
 limit_bottom = true
