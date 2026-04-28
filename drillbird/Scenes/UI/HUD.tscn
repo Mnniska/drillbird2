@@ -319,9 +319,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -46.0
-offset_top = -2.0
+offset_top = 9.0
 offset_right = 47.0
-offset_bottom = 69.0
+offset_bottom = 80.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("15_nxi4s")
@@ -342,6 +342,21 @@ theme_override_colors/default_color = Color(1, 1, 1, 0.807843)
 theme_override_colors/font_selected_color = Color(1, 1, 1, 1)
 bbcode_enabled = true
 text = "this text will be replaced"
+
+[node name="Label2" type="RichTextLabel" parent="MainMenu"]
+layout_mode = 0
+offset_left = -36.0
+offset_top = -16.0
+offset_right = 47.0
+offset_bottom = 26.0
+rotation = 0.022721231
+theme = ExtResource("15_nxi4s")
+theme_override_colors/default_color = Color(0.08627451, 0.09411765, 0.24705882, 1)
+theme_override_colors/font_selected_color = Color(0.4, 0.45882353, 0.7137255, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 8
+bbcode_enabled = true
+text = "[shake]CURSED MODE"
 
 [node name="MenuMusic" type="AudioStreamPlayer2D" parent="MainMenu"]
 position = Vector2(-8, -2)
