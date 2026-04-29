@@ -241,7 +241,9 @@ func GenerateObjectsAndEnemiesFromTilemap():
 	
 func GetRelevantOreRegion(tilePos:Vector2i):
 	
-	return OreAreas.GetRegionIdentifierFromLocation(tilePos,gameTilemap)	
+	var region=OreAreas.GetRegionIdentifierFromLocation(tilePos,gameTilemap)
+	
+	return region
 
 
 	
