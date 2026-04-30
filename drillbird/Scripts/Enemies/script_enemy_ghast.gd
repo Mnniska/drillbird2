@@ -6,8 +6,10 @@ class_name ghast
 
 @export var timeToWaitBeforePersuing=0.6
 
-@onready var LINE_SPEED = PERSUIT_SPEED*0.75
 @export var PERSUIT_SPEED=50
+@onready var LINE_SPEED = PERSUIT_SPEED*0.5
+@onready var RETURN_SPEED=PERSUIT_SPEED*0.3
+var isReturning:bool=false
 
 const ACCELERATION=2
 const FRICTION=3
@@ -17,7 +19,7 @@ const FRICTION=3
 var lineToFollow:Line2D=null
 var parentTombstone:Node2D=null
 
-enum States{IDLE,FOLLOWINGLINE,PERSUIT,ARRIVED,DESPAWNING,SPOTTINGSOMETHING}
+enum States{IDLE,FOLLOWINGLINE,PERSUIT,ARRIVED,DESPAWNING,SPOTTINGSOMETHING,RETURNING}
 var state:States=States.IDLE
 var TargetLocationGlobal:Vector2
 var targetPoint:int=0
@@ -46,7 +48,10 @@ func _physics_process(delta: float) -> void:
 			
 			var movementVector:Vector2=GetMovementVector(TargetLocationGlobal)
 			
-			ApplyAcceleration(movementVector,LINE_SPEED)
+			if isReturning:
+				ApplyAcceleration(movementVector,RETURN_SPEED)
+			else:
+				ApplyAcceleration(movementVector,LINE_SPEED)
 			
 			move_and_slide()
 			HandleAnimations("idle")
@@ -60,6 +65,7 @@ func _physics_process(delta: float) -> void:
 				var newpos = parentTombstone.global_position+lineToFollow.get_point_position(targetPoint)
 				TargetLocationGlobal=newpos
 				#get next point to follow
+				isReturning=false
 				
 				pass
 		States.PERSUIT:
@@ -144,6 +150,10 @@ func NewTarget(body:Node2D):
 
 func ReturnToLine():
 	
+	
+	state=States.FOLLOWINGLINE
+	isReturning=true
+	
 	var distance=1000000
 	var chosenPoint:Vector2=Vector2(0,0)
 	for n in lineToFollow.get_point_count():
@@ -156,10 +166,6 @@ func ReturnToLine():
 			chosenPoint=loc
 	
 	TargetLocationGlobal=chosenPoint
-	#get the closest point in the line to return to
-	
-	state=States.FOLLOWINGLINE
-	pass
 
 func HandleAnimations(_anim:String):
 	if sprite.animation!=_anim:
