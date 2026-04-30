@@ -244,7 +244,7 @@ WorldPaths = Array[String](["res://Scenes/Worlds/world_0.tscn", "res://Scenes/Wo
 [node name="ObjectSpawner" type="Node2D" parent="."]
 script = ExtResource("53_0clb6")
 potentialEnemyStrings = Array[String](["res://Scenes/Objects and Enemies/Enemy_Bug.tscn", "res://Scenes/Objects and Enemies/Enemy_Spikes.tscn", "res://Scenes/Objects and Enemies/Enemy_Follower.tscn", "res://Scenes/Objects and Enemies/FallBlock.tscn", "res://Scenes/Objects and Enemies/Enemy_UpsideDown2.tscn", "res://Scenes/Objects and Enemies/Enemy_swordfish.tscn", "res://Scenes/Objects and Enemies/Enemy_Tombstone.tscn", "res://Scenes/Objects and Enemies/enemy_RunningGem.tscn", "res://Scenes/Objects and Enemies/Enemy_Mole.tscn"])
-potentialObjectStrings = Array[String](["res://Scenes/Objects and Enemies/Torch_scene.tscn", "res://Scenes/Objects and Enemies/climb_flower.tscn"])
+potentialObjectStrings = Array[String](["res://Scenes/Objects and Enemies/Torch_scene.tscn", "res://Scenes/Objects and Enemies/climb_flower.tscn", "res://Scenes/Effects/jump_recharge_crystal.tscn"])
 
 [node name="Block_FragileManager" type="Node2D" parent="ObjectSpawner"]
 rotation = 0.000508512
