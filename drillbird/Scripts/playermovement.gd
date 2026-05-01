@@ -97,11 +97,29 @@ func _ready() -> void:
 	debugLine.points.clear()
 	debugLine.add_point(raycast_drill.position)
 	debugLine.add_point((raycast_drill.target_position))
-	collider_airborne.disabled=true
-	collider_grounded.disabled=false
+	UpdateCollisions(collisionstates.grounded)
 	
 	GlobalVariables.PlayerController=self
-		
+
+var collstate:collisionstates=collisionstates.debug
+enum collisionstates{grounded,flying,falling,debug}
+
+func UpdateCollisions(_state:collisionstates):
+	
+	if collstate==_state:
+		return
+	collstate=_state
+	
+	match _state:
+		collisionstates.grounded:
+			collider_airborne.disabled=true
+			collider_grounded.disabled=false
+		collisionstates.flying:
+			collider_airborne.disabled=false
+			collider_grounded.disabled=true
+		collisionstates.falling:
+			collider_airborne.disabled=false
+			collider_grounded.disabled=true
 
 func _physics_process(delta: float) -> void:
 
@@ -260,13 +278,12 @@ func SetDebugMoveActive(active:bool):
 		#If mode is not active yet, perform first time setup
 		if state!=States.DEBUG_GHOST:
 			state=States.DEBUG_GHOST
-			collider_airborne.disabled=true
-			collider_grounded.disabled=true
+			UpdateCollisions(collisionstates.debug)
 			
 			$GhostModeInfo.show()
 	else:
 		if state==States.DEBUG_GHOST:
-			collider_airborne.disabled=false
+			UpdateCollisions(collisionstates.grounded)
 			$GhostModeInfo.hide()
 			state=States.IDLE
 
@@ -410,17 +427,18 @@ func RegularMovement(delta:float,currentAnim:String):
 	
 	# Add the gravity to player and update anims depending on velocity
 	if not is_on_floor():
-		collider_airborne.disabled=false
-		collider_grounded.disabled=true
+
 		
 		velocity += get_gravity() * delta
 		if velocity.y<=0:
-
+			UpdateCollisions(collisionstates.flying)
 			if invincible:
 				newanim="jump_hurt"
 			else:
 				newanim= "jump"
 		if velocity.y > 0:
+			UpdateCollisions(collisionstates.falling)
+			
 			if Input.is_action_pressed("down"):
 				newanim= "fall_drilldown"
 			else:
@@ -440,8 +458,12 @@ func RegularMovement(delta:float,currentAnim:String):
 		airborne=true
 		
 	#change collisions based on where player is
-	collider_airborne.disabled=is_on_floor()
-	collider_grounded.disabled=!is_on_floor()
+	
+	if is_on_floor():
+		UpdateCollisions(collisionstates.grounded)
+	else:
+		UpdateCollisions(collisionstates.flying)
+	
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.

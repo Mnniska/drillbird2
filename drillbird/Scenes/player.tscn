@@ -58,10 +58,10 @@ script = ExtResource("2_o5iaf")
 type = 3
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pdge5"]
-size = Vector2(10, 8)
+size = Vector2(14, 8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wmago"]
-size = Vector2(8, 8)
+size = Vector2(4, 10)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tv87d"]
 animations = [{
@@ -393,12 +393,12 @@ collType = SubResource("Resource_0yo8f")
 jump_crystals = [NodePath("AnimatedSprite2D/jumpCrystal1"), NodePath("AnimatedSprite2D/jumpCrystal2"), NodePath("AnimatedSprite2D/jumpCrystal3")]
 
 [node name="Collider_grounded" type="CollisionShape2D" parent="."]
-position = Vector2(0, 4)
+position = Vector2(-1, 4)
 shape = SubResource("RectangleShape2D_pdge5")
 debug_color = Color(0.564706, 0.556863, 0, 0.552941)
 
 [node name="Collider_airborne" type="CollisionShape2D" parent="."]
-position = Vector2(0, 4)
+position = Vector2(0, 3)
 shape = SubResource("RectangleShape2D_wmago")
 debug_color = Color(0.979594, 0.14234, 0, 0.42)
 
