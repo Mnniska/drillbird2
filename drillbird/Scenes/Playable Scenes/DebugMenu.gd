@@ -32,9 +32,23 @@ func SelectionLogic():
 	
 	pass
 # Called every frame. 'delta' is the elapsed time since the previous frame.
+
+var cooldownCounter:float=0
+var count:int=0
 func _process(delta: float) -> void:
 	
+
+	if Input.is_key_pressed(KEY_5) and cooldownCounter<=0:
+		var p=GlobalVariables.PlayerController
+		var spawner=GlobalVariables.MainSceneReferenceConnector.ref_objectSpawner
+		spawner.CreateTile(p.global_position+Vector2(16,0),spawner.tileTypes.sand)
+		count+=1
+		cooldownCounter=0.3
 	
+
+	cooldownCounter-=delta
+	
+			
 	if !debugAvailable:
 		
 		if Input.is_action_just_pressed("debug_tab") and canEnableDebug:
@@ -93,6 +107,8 @@ func _process(delta: float) -> void:
 	if shouldUpdate:
 		GenerateMenu()
 	pass
+
+
 
 func SelectMenuItem():
 	

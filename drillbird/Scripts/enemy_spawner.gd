@@ -74,7 +74,20 @@ func LoadFlowers(flowerSpawnPositions: Array[Vector2i]):
 		
 		var spawnpos = to_global(gameTilemap.map_to_local(pos))
 		CreateNewFlowerFromGlobalPos(spawnpos,true,false)
-			
+
+enum tileTypes{dirt2,dirt1,sand,dirt3,solid}
+
+func CreateTile(globalPos:Vector2i,_terrain:tileTypes):
+	var localPos=gameTilemap.local_to_map(gameTilemap.to_local(globalPos))
+	
+	var positions:Array[Vector2i]
+	positions.append(localPos)
+	var terrainTranslated=GetSourceIDFromTerrain(_terrain)
+
+	gameTilemap.set_cells_terrain_connect(positions, 0, terrainTranslated,false)
+
+	
+	pass
 
 func GetSourceIDFromTerrain(terrainInt:int)->int:
 	
