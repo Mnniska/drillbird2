@@ -5,11 +5,12 @@ class_name climb_flower
 @onready var flowerAnim:AnimatedSprite2D=$FlowerBody/FlowerAnim
 @onready var flowerBody:RigidBody2D=$FlowerBody
 @onready var raycast:RayCast2D=$canFlowerRaycast
-
+@onready var particles:CPUParticles2D=$FlowerBody/flowerParticles
 
 @onready var flowerAttachedSound:sound_looper=$SoundLooper
 var positionLastFrame:Vector2
-
+var particle_stop_timer:float=0.4
+var particle_stop_counter:float=0
 
 var size:float=4
 var offset:Vector2=Vector2(0,4)
@@ -188,18 +189,34 @@ func Move_UP(delta:float):
 	var pitchP=lerpf(minpitch,maxpitch,progress)
 	flowerAttachedSound.SetPitch(pitchP)
 	flowerBody.move_and_collide(Vector2(0,-currentSpeed *delta))
-	UpdateMoveSound()
+	UpdateMoveSound(delta)
 	
 	
 
-func UpdateMoveSound():
+func SetParticlesActive(active:bool):
+	if particles.emitting !=active:
+		#if there is a change 
+
+		particles.emitting=active	
+				
+		if !active:
+			pass
+#			particles.restart(false)
+
+func UpdateMoveSound(delta:float):
 	
 	var moveSinceLastFrame=positionLastFrame.y- flowerBody.position.y
 	if moveSinceLastFrame>0.05:
 		
 		flowerAttachedSound.Play()
+		particle_stop_counter=0
 	else:
 		flowerAttachedSound.Stop()
+		particle_stop_counter+=delta
+		if particle_stop_counter>particle_stop_timer:
+			SetParticlesActive(false)
+			particle_stop_counter=0
+
 
 	
 	positionLastFrame=flowerBody.position
@@ -232,3 +249,4 @@ func GetFlowerPosition():
 
 func SetPlayerAttached(attached:bool):
 	PlayerAttached=attached
+	SetParticlesActive(attached)

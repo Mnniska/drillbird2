@@ -128,8 +128,20 @@ script = ExtResource("7_x4lji")
 shape = SubResource("CircleShape2D_25xxp")
 
 [node name="FlowerAnim" type="AnimatedSprite2D" parent="FlowerBody"]
+z_index = 1
 sprite_frames = SubResource("SpriteFrames_6ryxp")
 animation = &"idle"
+
+[node name="flowerParticles" type="CPUParticles2D" parent="FlowerBody"]
+emitting = false
+amount = 3000
+lifetime = 45.0
+fract_delta = false
+emission_shape = 1
+emission_sphere_radius = 4.0
+gravity = Vector2(0, 0.2)
+damping_max = 0.1
+color = Color(0.41005996, 0.81511027, 0.31615287, 1)
 
 [node name="SoundLooper" parent="." instance=ExtResource("8_dtlc8")]
 soundEffect = ExtResource("9_62kc6")
