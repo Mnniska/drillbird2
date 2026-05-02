@@ -85,8 +85,7 @@ func CreateTile(globalPos:Vector2i,_terrain:tileTypes):
 	var terrainTranslated=GetSourceIDFromTerrain(_terrain)
 
 	gameTilemap.set_cell(localPos,terrainTranslated,Vector2i(0,0),0)
-
-#	gameTilemap.set_cells_terrain_connect(positions, 0, terrainTranslated,false)
+	#gameTilemap.set_cells_terrain_connect(positions, 0, terrainTranslated,false)
 
 	
 	pass
