@@ -75,7 +75,7 @@ func LoadFlowers(flowerSpawnPositions: Array[Vector2i]):
 		var spawnpos = to_global(gameTilemap.map_to_local(pos))
 		CreateNewFlowerFromGlobalPos(spawnpos,true,false)
 
-enum tileTypes{dirt2,dirt1,sand,dirt3,solid}
+enum tileTypes{solid,dirt1,sand,dirt2,dirt3,respawning}
 
 func CreateTile(globalPos:Vector2i,_terrain:tileTypes):
 	var localPos=gameTilemap.local_to_map(gameTilemap.to_local(globalPos))
@@ -84,7 +84,9 @@ func CreateTile(globalPos:Vector2i,_terrain:tileTypes):
 	positions.append(localPos)
 	var terrainTranslated=GetSourceIDFromTerrain(_terrain)
 
-	gameTilemap.set_cells_terrain_connect(positions, 0, terrainTranslated,false)
+	gameTilemap.set_cell(localPos,terrainTranslated,Vector2i(0,0),0)
+
+#	gameTilemap.set_cells_terrain_connect(positions, 0, terrainTranslated,false)
 
 	
 	pass
@@ -98,7 +100,7 @@ func GetSourceIDFromTerrain(terrainInt:int)->int:
 	#The order in the TilemapEnvironments tilemap versus the order in the sprites is different, that's why we need to do this translation here
 
 	
-	var terrainSourceIDs:Array[int]=[3,2,5,4,9] 
+	var terrainSourceIDs:Array[int]=[3,2,5,4,9,10] 
 	return terrainSourceIDs[terrainInt]
 
 func GenerateObjectsAndEnemiesFromTilemap():
@@ -176,6 +178,10 @@ func GenerateObjectsAndEnemiesFromTilemap():
 			if type==2:
 				var flower:climb_flower = node
 				flower.SetHasBlossomed(true)
+			
+			if type==4:
+				var respawnBlock:respawning_block=node
+				respawnBlock.Setup(tileDestroyer,gameTilemap,self)
 		
 	#Does the tile have an ore? If so, place it in the OreTilemap!
 	#This is only used when using the tilemap_editorores tilesheet - used for faster LD flow :) 

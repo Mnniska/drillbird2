@@ -1,6 +1,7 @@
 extends Node2D
 class_name respawning_block
 
+var tileCreator:object_spawner
 var tileDestroyer:crack_script
 var tilemap:TileMapLayer
 var tileToTarget:Vector2i
@@ -18,8 +19,9 @@ var respawnCounter:float=0
 var blockExists:bool=true
 var blockInfo:TileData
 
-func Setup(_tile_destroyer:crack_script, _tilemap:TileMapLayer):
+func Setup(_tile_destroyer:crack_script, _tilemap:TileMapLayer,_tile_creator:object_spawner):
 	
+	tileCreator=_tile_creator
 	tilemap=_tilemap
 	tileDestroyer=_tile_destroyer
 	
@@ -28,11 +30,13 @@ func Setup(_tile_destroyer:crack_script, _tilemap:TileMapLayer):
 	blockInfo=_tilemap.get_cell_tile_data(tileToTarget)	
 	Observer.BlockDestroyed.connect(BlockDestroyed)
 	
+	RespawnTile()
 	pass
+
+
 
 func BlockDestroyed():
 	if tilemap:
-		tileDestroyer.DestroyTile(tileToTarget,true,false)
 		blockExists=false
 		
 		if showDebug: print_debug("block destroyed")
@@ -48,8 +52,14 @@ func _process(delta: float) -> void:
 	respawnCounter+=delta
 	if respawnCounter>timeToRespawn:
 		respawnCounter=0
-		blockExists=true
 		
-		tilemap.set_cell(tileToTarget,0,blockInfo.texture_origin)
-		if showDebug: print_debug("block respawned lol")
+		RespawnTile()
+
 	
+
+func RespawnTile():
+	if tileCreator:
+		tileCreator.CreateTile(self.global_position,tileCreator.tileTypes.respawning)
+		if showDebug: print_debug("block respawned lol")
+		blockExists=true
+	pass

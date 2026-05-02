@@ -1,11 +1,18 @@
-[gd_scene load_steps=79 format=3 uid="uid://d2wv7igie5stg"]
+[gd_scene load_steps=86 format=3 uid="uid://d2wv7igie5stg"]
 
 [ext_resource type="Script" uid="uid://c0pdu2cqd60yv" path="res://Scenes/Playable Scenes/SaveManager.gd" id="1_iickb"]
 [ext_resource type="PackedScene" uid="uid://0iy1qmgd0p6y" path="res://Scenes/TileCrack.tscn" id="2_c10yv"]
 [ext_resource type="Script" uid="uid://clyksnnqo4e6l" path="res://Scripts/Tools/main_scene_reference_connector.gd" id="2_kx4x1"]
 [ext_resource type="Script" uid="uid://mfq3el6owqgc" path="res://Scripts/Saving and loading/WorldSpawnManager.gd" id="3_6iiac"]
 [ext_resource type="Script" uid="uid://dbfd2nhmjxnsr" path="res://Scripts/block_fragile_manager.gd" id="6_7p02m"]
+[ext_resource type="Resource" uid="uid://cq6ru2d4e7bgd" path="res://Resources/terrainInfo_dirt_1.tres" id="9_s1ncd"]
+[ext_resource type="Resource" uid="uid://bm6bqv8tss1g4" path="res://Resources/terrainInfo_dirt_2.tres" id="10_bdbqj"]
+[ext_resource type="Resource" uid="uid://cjif6ylwd1rdw" path="res://Resources/terrainInfo_sand.tres" id="11_72eas"]
+[ext_resource type="Resource" uid="uid://b1vx03cr2okgm" path="res://Resources/terrainInfo_solid.tres" id="12_otmvl"]
 [ext_resource type="PackedScene" uid="uid://e3titjk1as46" path="res://Scenes/player.tscn" id="12_u5tqu"]
+[ext_resource type="Resource" uid="uid://csxmptmtlvu0t" path="res://Resources/terrainInfo_fragile.tres" id="13_ihr0r"]
+[ext_resource type="Resource" uid="uid://dad8p2cs7p05r" path="res://Resources/terrainInfo_dirt_3.tres" id="14_7cj76"]
+[ext_resource type="Resource" uid="uid://dpxss5lu7rykw" path="res://Resources/terrainInfo_respawn_tile.tres" id="15_026ak"]
 [ext_resource type="Script" uid="uid://lfh2pajw67gs" path="res://Scripts/CameraScript.gd" id="15_sox0p"]
 [ext_resource type="Resource" uid="uid://k3uc1fryuwfc" path="res://Resources/Economy/ore_5.tres" id="17_ytjr0"]
 [ext_resource type="Script" uid="uid://bwsdw1libacyi" path="res://Scripts/Abstract scripts/abstract_terrain_info.gd" id="20_cqxjh"]
@@ -257,7 +264,7 @@ script = ExtResource("6_7p02m")
 [node name="TileCrack" parent="." instance=ExtResource("2_c10yv")]
 z_index = 2
 position = Vector2(83, -543)
-GameTerrains = Array[ExtResource("20_cqxjh")]([])
+GameTerrains = Array[ExtResource("20_cqxjh")]([ExtResource("9_s1ncd"), ExtResource("10_bdbqj"), ExtResource("11_72eas"), ExtResource("12_otmvl"), ExtResource("13_ihr0r"), ExtResource("14_7cj76"), ExtResource("15_026ak")])
 
 [node name="GhostManager" type="Node2D" parent="."]
 position = Vector2(-962, 2487)

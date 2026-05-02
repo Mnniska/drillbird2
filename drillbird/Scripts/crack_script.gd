@@ -29,7 +29,7 @@ var OreSpawner
 @export var GameTerrains:Array[abstract_terrain_info]:
 
 	get: return GameTerrains
-	set(value): 
+	set(value):  #Where is it set?? 
 		if value.size()>0:
 			GameTerrains=value
 	
