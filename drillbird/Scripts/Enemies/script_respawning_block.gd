@@ -7,7 +7,7 @@ var tilemap:TileMapLayer
 var tileToTarget:Vector2i
 
 
-
+@onready var animator:AnimatedSprite2D=$AnimatedSprite2D
 @onready var Observer=$Observer
 
 @export var timeToRespawn:float
@@ -18,6 +18,8 @@ var tileToTarget:Vector2i
 var respawnCounter:float=0
 var blockExists:bool=true
 var blockInfo:TileData
+
+var playerCollidersInArea:int=0
 
 func Setup(_tile_destroyer:crack_script, _tilemap:TileMapLayer,_tile_creator:object_spawner):
 	
@@ -33,14 +35,18 @@ func Setup(_tile_destroyer:crack_script, _tilemap:TileMapLayer,_tile_creator:obj
 	RespawnTile()
 	pass
 
-
+func UpdateAnim(anim:String):
+	if animator.animation!=anim:
+		animator.play(anim)
 
 func BlockDestroyed():
 	if tilemap:
 		blockExists=false
 		
 		if showDebug: print_debug("block destroyed")
-		
+		UpdateAnim("destroy")
+		await get_tree().create_timer(0.2).timeout
+		UpdateAnim("idle")
 		
 	
 	pass
@@ -49,12 +55,17 @@ func _process(delta: float) -> void:
 	if blockExists:
 		return
 	
-	respawnCounter+=delta
+	if playerCollidersInArea>0:
+		respawnCounter=0
+	else:
+		respawnCounter+=delta
+		
 	if respawnCounter>timeToRespawn:
 		respawnCounter=0
-		
+		UpdateAnim("respawn")
+		await get_tree().create_timer(0.2).timeout
 		RespawnTile()
-
+		
 	
 
 func RespawnTile():
@@ -63,3 +74,13 @@ func RespawnTile():
 		if showDebug: print_debug("block respawned lol")
 		blockExists=true
 	pass
+
+
+func _on_player_checker_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
+	playerCollidersInArea+=1
+	pass # Replace with function body.
+
+
+func _on_player_checker_body_shape_exited(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
+	playerCollidersInArea-=1
+	pass # Replace with function body.

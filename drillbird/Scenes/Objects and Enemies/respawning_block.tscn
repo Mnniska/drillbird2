@@ -1,26 +1,102 @@
-[gd_scene load_steps=6 format=3 uid="uid://c0rla14g1favj"]
+[gd_scene load_steps=19 format=3 uid="uid://c0rla14g1favj"]
 
 [ext_resource type="Script" uid="uid://2bebq7jvodh1" path="res://Scripts/Enemies/script_respawning_block.gd" id="1_xday0"]
 [ext_resource type="PackedScene" uid="uid://2lykflhwivex" path="res://Scenes/observer.tscn" id="2_m8df6"]
-[ext_resource type="Texture2D" uid="uid://1rmh550r7gjp" path="res://Art/UI/Shop/UI_Shop_IconHolder_on.png" id="3_cik1d"]
+[ext_resource type="Texture2D" uid="uid://bjntwvofb0trg" path="res://Art/Objects/respawn tile/respawn_tile_destroy1.png" id="4_db8lw"]
 [ext_resource type="Theme" uid="uid://bfr5y4lo7m1ux" path="res://Resources/Fonts/fontTheme.tres" id="4_h2cdx"]
+[ext_resource type="Texture2D" uid="uid://cyxccaphwhdo0" path="res://Art/Objects/respawn tile/respawn_tile_destroy2.png" id="5_6yces"]
+[ext_resource type="Texture2D" uid="uid://ebwcsf1r7wdr" path="res://Art/Objects/respawn tile/respawn_tile_idle1.png" id="6_gn3hh"]
+[ext_resource type="Texture2D" uid="uid://qwwoq1yojm" path="res://Art/Objects/respawn tile/respawn_tile_idle2.png" id="7_r7ojw"]
+[ext_resource type="Texture2D" uid="uid://c4ew4phtt87ol" path="res://Art/Objects/respawn tile/respawn_tile_idle3.png" id="8_xy8vt"]
+[ext_resource type="Texture2D" uid="uid://dhrvhcsf7e45a" path="res://Art/effects/empty.png" id="9_6yces"]
+[ext_resource type="Texture2D" uid="uid://omyrqys1j5lt" path="res://Art/Objects/respawn tile/respawn_tile_respawn1.png" id="9_7cdyc"]
+[ext_resource type="Texture2D" uid="uid://cgoqbh80lwelx" path="res://Art/Objects/respawn tile/respawn_tile_respawn2.png" id="10_cyh0j"]
+[ext_resource type="Texture2D" uid="uid://c36c46x1jhue3" path="res://Art/Objects/respawn tile/respawn_tile_respawn3.png" id="11_eq04k"]
+[ext_resource type="Texture2D" uid="uid://dep3nbavlw3ws" path="res://Art/Objects/respawn tile/respawn_tile_respawn4.png" id="12_mmjas"]
+[ext_resource type="Texture2D" uid="uid://2iee2mnnvg3t" path="res://Art/Objects/respawn tile/respawn_tile_respawn5.png" id="13_y4m8r"]
+[ext_resource type="Texture2D" uid="uid://cmaa3qhouwgy4" path="res://Art/Objects/respawn tile/respawn_tile_respawn6.png" id="14_mrn04"]
+[ext_resource type="Texture2D" uid="uid://bgy1vxkqr7l4n" path="res://Art/Objects/respawn tile/respawn_tile_respawn7.png" id="15_eseri"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xday0"]
+size = Vector2(12, 12)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w2aud"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_db8lw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_6yces")
+}],
+"loop": false,
+"name": &"destroy",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_gn3hh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_r7ojw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_xy8vt")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_6yces")
+}],
+"loop": false,
+"name": &"inactive",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_7cdyc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_cyh0j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_eq04k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_mmjas")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_y4m8r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_mrn04")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_eseri")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_6yces")
+}],
+"loop": false,
+"name": &"respawn",
+"speed": 8.0
+}]
 
 [node name="RespawningBlock" type="Node2D"]
 script = ExtResource("1_xday0")
 timeToRespawn = 1.2
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="playerChecker" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="playerChecker"]
 shape = SubResource("RectangleShape2D_xday0")
 
 [node name="Observer" parent="." instance=ExtResource("2_m8df6")]
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0.30588236)
-texture = ExtResource("3_cik1d")
 
 [node name="Label" type="Label" parent="."]
 offset_left = -9.0
@@ -28,3 +104,11 @@ offset_top = 11.0
 offset_right = 31.0
 offset_bottom = 34.0
 theme = ExtResource("4_h2cdx")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_w2aud")
+animation = &"respawn"
+autoplay = "inactive"
+
+[connection signal="body_shape_entered" from="playerChecker" to="." method="_on_player_checker_body_shape_entered"]
+[connection signal="body_shape_exited" from="playerChecker" to="." method="_on_player_checker_body_shape_exited"]

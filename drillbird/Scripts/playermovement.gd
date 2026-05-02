@@ -120,6 +120,9 @@ func UpdateCollisions(_state:collisionstates):
 		collisionstates.falling:
 			collider_airborne.disabled=false
 			collider_grounded.disabled=true
+		collisionstates.debug:
+			collider_airborne.disabled=true
+			collider_grounded.disabled=true
 
 func _physics_process(delta: float) -> void:
 
