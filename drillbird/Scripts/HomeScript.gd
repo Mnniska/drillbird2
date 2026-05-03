@@ -42,6 +42,14 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 
 	UpdateButtons()
+	
+	if fallingAsleep:
+		if Input.is_action_just_pressed("interact"):
+			fallingAsleep=false
+			animSleep.animation="asleep"
+			EnterShop()
+
+	
 	pass
 
 func CheckState():
@@ -210,6 +218,7 @@ func _on_interact_button_end_day_button_progress_changed(progress: bool) -> void
 	
 	pass # Replace with function body.
 
+var fallingAsleep:bool=false
 func GoToBed():
 	MusicPlayer.SetState(hub_music_player.musicStates.DREAM)
 
@@ -225,8 +234,17 @@ func GoToBed():
 	
 	#move camera
 	Camera.StartNewLerp(CameraLerpPosition.position, 0.5)
+	fallingAsleep=true
+	await get_tree().create_timer(3.5).timeout
 	
-	$cutsceneTimer.start()
+	#Player can also skip the timer by pressing something, so we check if they've done that via this bool
+	if fallingAsleep: EnterShop()
+
+
+func EnterShop():
+	Shop.SetActive(true)
+	ReplendishStats()
+	pass
 
 func WakeUp(saveGame:bool,progressDay:bool=true):
 	
@@ -329,10 +347,7 @@ func _on_birdy_sleep_animation_finished() -> void:
 	pass # Replace with function body.
 
 
-func _on_cutscene_timer_timeout() -> void:
-	Shop.SetActive(true)
-	ReplendishStats()
-	pass # Replace with function body.
+
 
 
 func _on_shop_handler_shop_closed() -> void:
