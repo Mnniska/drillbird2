@@ -229,7 +229,7 @@ func DetectPlayer():
 			if tiledata.terrain!=0:
 				
 				crackAnim.play("cracking")
-				crackAnim.position=crackPos
+				crackAnim.global_position=globalPos
 				
 				var timeToDig=1 #todo change thus number depending on tile hardness
 			
