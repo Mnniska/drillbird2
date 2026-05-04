@@ -4,7 +4,7 @@ class_name ghost_manager
 var ghostRef
 var ghostInScene:ghost
 var ghostSpawned:bool=false
-@onready var player= $"../Player"
+var player
 @onready var HeartRightfulPlace=$HeartsRightfulPlaceArea
 #ghost spawning variables
 @export var minTimeBeforeGhostSpawns:float=0.2
@@ -20,7 +20,8 @@ var heartInEgg:bool=false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$"..".signal_GameAboutToBeSaved.connect(GameAboutToBeSaved)
+	
+	GlobalVariables.MainSceneReferenceConnector.mainScene.signal_GameAboutToBeSaved.connect(GameAboutToBeSaved)
 	GlobalVariables.playerLightStatusChange.connect(playerLightStatusChanged)
 	ghostRef=preload("res://Scenes/Objects and Enemies/ghost.tscn")
 	GlobalVariables.SetupComplete.connect(Setup)
@@ -36,6 +37,9 @@ func GameAboutToBeSaved():
 	pass
 
 func Setup():
+	
+	player=GlobalVariables.PlayerController
+
 	var inventory:inventory_handler=HUD.HUD_InventoryManager
 	inventory.signal_pickedUpHeart.connect(HeartPickedUpByPlayer)
 	

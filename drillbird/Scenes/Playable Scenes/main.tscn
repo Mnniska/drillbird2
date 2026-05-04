@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=3 uid="uid://d2wv7igie5stg"]
+[gd_scene load_steps=82 format=3 uid="uid://d2wv7igie5stg"]
 
 [ext_resource type="Script" uid="uid://c0pdu2cqd60yv" path="res://Scenes/Playable Scenes/SaveManager.gd" id="1_iickb"]
 [ext_resource type="PackedScene" uid="uid://0iy1qmgd0p6y" path="res://Scenes/TileCrack.tscn" id="2_c10yv"]
@@ -16,7 +16,6 @@
 [ext_resource type="Script" uid="uid://lfh2pajw67gs" path="res://Scripts/CameraScript.gd" id="15_sox0p"]
 [ext_resource type="Resource" uid="uid://k3uc1fryuwfc" path="res://Resources/Economy/ore_5.tres" id="17_ytjr0"]
 [ext_resource type="Script" uid="uid://bwsdw1libacyi" path="res://Scripts/Abstract scripts/abstract_terrain_info.gd" id="20_cqxjh"]
-[ext_resource type="Script" uid="uid://cg5f1k2sm50v" path="res://Scenes/Playable Scenes/ghost_manager.gd" id="21_mqj7b"]
 [ext_resource type="Resource" uid="uid://biejw6c2k7wry" path="res://Resources/Economy/ore_HEART.tres" id="22_nstd1"]
 [ext_resource type="Script" uid="uid://c2d8xkmgrklnw" path="res://Scripts/shop_handler.gd" id="26_mk1t6"]
 [ext_resource type="Script" uid="uid://w0qofym04h1b" path="res://Scripts/Abstract scripts/abstract_purchasable.gd" id="27_hx1y5"]
@@ -41,15 +40,6 @@
 [ext_resource type="Script" uid="uid://dc6fxyeu6qp6d" path="res://Scenes/Playable Scenes/day_counter.gd" id="52_hrk5v"]
 [ext_resource type="Script" uid="uid://o5iartddaiu1" path="res://Scripts/enemy_spawner.gd" id="53_0clb6"]
 [ext_resource type="PackedScene" uid="uid://beb5rv0u4ftaa" path="res://Scenes/cutscenes/intro_cutscene.tscn" id="86_d8wwr"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_88d1h"]
-size = Vector2(18, 17)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_r8h0k"]
-size = Vector2(609, 220)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xqd1y"]
-size = Vector2(609, 220)
 
 [sub_resource type="Gradient" id="Gradient_ekb11"]
 offsets = PackedFloat32Array(0, 0.536432)
@@ -265,37 +255,6 @@ script = ExtResource("6_7p02m")
 z_index = 2
 position = Vector2(83, -543)
 GameTerrains = Array[ExtResource("20_cqxjh")]([ExtResource("9_s1ncd"), ExtResource("10_bdbqj"), ExtResource("11_72eas"), ExtResource("12_otmvl"), ExtResource("13_ihr0r"), ExtResource("14_7cj76"), ExtResource("15_026ak")])
-
-[node name="GhostManager" type="Node2D" parent="."]
-position = Vector2(-962, 2487)
-script = ExtResource("21_mqj7b")
-heartOreReference = ExtResource("22_nstd1")
-
-[node name="HeartsRightfulPlaceArea" type="Area2D" parent="GhostManager"]
-position = Vector2(122, 671)
-collision_layer = 0
-collision_mask = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GhostManager/HeartsRightfulPlaceArea"]
-position = Vector2(0, 2.5)
-shape = SubResource("RectangleShape2D_88d1h")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="GhostManager/HeartsRightfulPlaceArea"]
-visible = false
-position = Vector2(873.5, -3221)
-shape = SubResource("RectangleShape2D_r8h0k")
-
-[node name="warningLocation" type="Node2D" parent="GhostManager"]
-position = Vector2(121, 645)
-
-[node name="GhostAcceptanceArea" type="Area2D" parent="GhostManager"]
-visible = false
-collision_layer = 0
-collision_mask = 16
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="GhostManager/GhostAcceptanceArea"]
-position = Vector2(995.5, -2550)
-shape = SubResource("RectangleShape2D_xqd1y")
 
 [node name="Player" parent="." instance=ExtResource("12_u5tqu")]
 position = Vector2(1159, 814)

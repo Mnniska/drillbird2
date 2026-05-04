@@ -1,4 +1,4 @@
-[gd_scene load_steps=101 format=4 uid="uid://bccoqdt4pl042"]
+[gd_scene load_steps=105 format=4 uid="uid://bccoqdt4pl042"]
 
 [ext_resource type="TileSet" uid="uid://grpd2pyu7pgk" path="res://Resources/MainTileset.tres" id="1_ewpql"]
 [ext_resource type="Script" uid="uid://ddqrep1nrk25j" path="res://Scenes/Playable Scenes/OreSpawner.gd" id="2_4fr2f"]
@@ -62,6 +62,7 @@
 [ext_resource type="PackedScene" uid="uid://vepb6l7dw7ly" path="res://Scenes/Water shenanigans/WaterSourceBlock.tscn" id="60_4fr2f"]
 [ext_resource type="PackedScene" uid="uid://pavkdcthm8ws" path="res://Scenes/cutscenes/Demon_deal.tscn" id="61_7p4f3"]
 [ext_resource type="PackedScene" uid="uid://dsyfi85u2qe66" path="res://Scenes/Objects and Enemies/Object_Sign.tscn" id="62_8lf0q"]
+[ext_resource type="Script" uid="uid://cg5f1k2sm50v" path="res://Scenes/Playable Scenes/ghost_manager.gd" id="63_vhuqd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xeuju"]
 size = Vector2(647.5, 728)
@@ -171,6 +172,15 @@ size = Vector2(73, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8lf0q"]
 size = Vector2(982.75, 182)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8ohpj"]
+size = Vector2(18, 17)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l20pv"]
+size = Vector2(609, 220)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6gcm5"]
+size = Vector2(609, 220)
 
 [node name="WorldSpawn" type="Node"]
 
@@ -1420,7 +1430,7 @@ shape = SubResource("RectangleShape2D_lpygi")
 [node name="TutorialTorch" parent="WorldScripts" instance=ExtResource("55_lcofy")]
 visible = false
 position = Vector2(-838, 120)
-range = 2695
+range = 200
 
 [node name="CollisionShape2D" parent="WorldScripts/TutorialTorch/Area2D" index="0"]
 position = Vector2(-341, -32)
@@ -1521,6 +1531,37 @@ limit_bottom = true
 
 [node name="CollisionShape2D" parent="Demon cave/CameraLimiter/AffectedArea" index="0"]
 shape = SubResource("RectangleShape2D_8lf0q")
+
+[node name="GhostManager" type="Node2D" parent="."]
+position = Vector2(-962, 2487)
+script = ExtResource("63_vhuqd")
+heartOreReference = ExtResource("18_krviu")
+
+[node name="HeartsRightfulPlaceArea" type="Area2D" parent="GhostManager"]
+position = Vector2(122, 671)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GhostManager/HeartsRightfulPlaceArea"]
+position = Vector2(0, 2.5)
+shape = SubResource("RectangleShape2D_8ohpj")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="GhostManager/HeartsRightfulPlaceArea"]
+visible = false
+position = Vector2(873.5, -3221)
+shape = SubResource("RectangleShape2D_l20pv")
+
+[node name="warningLocation" type="Node2D" parent="GhostManager"]
+position = Vector2(121, 645)
+
+[node name="GhostAcceptanceArea" type="Area2D" parent="GhostManager"]
+visible = false
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="GhostManager/GhostAcceptanceArea"]
+position = Vector2(995.5, -2550)
+shape = SubResource("RectangleShape2D_6gcm5")
 
 [connection signal="body_shape_entered" from="TileMap_secrets/tutorial" to="TileMap_secrets/tutorial" method="_on_body_shape_entered"]
 [connection signal="body_shape_entered" from="TileMap_secrets/Secret_unveiler_test2" to="TileMap_secrets/Secret_unveiler_test2" method="_on_body_shape_entered"]
