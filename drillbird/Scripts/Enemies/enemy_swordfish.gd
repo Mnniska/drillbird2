@@ -212,8 +212,6 @@ func HitWithAttack(body:Node2D):
 			BlockDestroyer.DestroyTileWithGlobalPosition(Vector2(self.global_position.x+16*direction,global_position.y),true,true)
 		
 	else:
-		var colltype:abstract_collidable
-		colltype=body.GetCollType()
 		
 		body.DealDamage(enemyInfo.damage)
 		
@@ -261,14 +259,14 @@ func TurnEnemyOff(hideInstantly:bool=true):
 	
 	velocity=Vector2(0,0)	
 
-func _on_enemy_collision_checker_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
+func _on_enemy_collision_checker_body_shape_entered(_body_rid: RID, body: Node2D, _body_shape_index: int, _local_shape_index: int) -> void:
 	if body==$".":
 		return
 	
 	body.DealDamage(enemyInfo.damage)
 
 
-func _on_detection_area_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
+func _on_detection_area_body_shape_entered(_body_rid: RID, body: Node2D, _body_shape_index: int, _local_shape_index: int) -> void:
 	if body==$".":
 		return
 	
@@ -278,7 +276,7 @@ func _on_detection_area_body_shape_entered(body_rid: RID, body: Node2D, body_sha
 	pass # Replace with function body.
 
 
-func _on_charge_attack_collider_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
+func _on_charge_attack_collider_body_shape_entered(_body_rid: RID, body: Node2D, _body_shape_index: int, _local_shape_index: int) -> void:
 	if body==$".":
 		return
 		
@@ -292,7 +290,7 @@ func _on_charge_attack_collider_body_shape_entered(body_rid: RID, body: Node2D, 
 
 
 
-func _on_ledge_checker_body_exited(body: Node2D) -> void:
+func _on_ledge_checker_body_exited(_body: Node2D) -> void:
 
 	if !tileBelowRaycast.get_collider():
 	

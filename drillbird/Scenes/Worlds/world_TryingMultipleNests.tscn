@@ -792,7 +792,7 @@ shape = SubResource("RectangleShape2D_lpygi")
 [node name="TutorialTorch" parent="WorldScripts" instance=ExtResource("55_sum6w")]
 visible = false
 position = Vector2(-838, 120)
-range = 2695
+range = 200
 
 [node name="CollisionShape2D" parent="WorldScripts/TutorialTorch/Area2D" index="0"]
 position = Vector2(-341, -32)

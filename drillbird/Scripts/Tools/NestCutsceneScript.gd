@@ -51,7 +51,7 @@ func CameraPanToSky():
 func CameraPanBack():
 	pass
 
-func TransitionToCutscene(playerpos:Vector2,transitionTime:float):
+func TransitionToCutscene(playerpos:Vector2,_transitionTime:float):
 	
 	lerpStartPos=playerpos
 	fakePlayer.global_position=lerpStartPos

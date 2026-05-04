@@ -36,11 +36,11 @@ func AmbienceFinishedPlaying():
 	
 func GetAudioStream():
 	var amount=float(AmbiencesToPlay.size())
-	var seed = randf()
+	var _seed = randf()
 	var counter:float=0
 	for ambience in AmbiencesToPlay:
 		counter+=1/amount
-		if counter>seed:
+		if counter>_seed:
 			return ambience
 	
 	#failsafe	
@@ -58,7 +58,7 @@ func SetAmbienceActive(_active):
 
 
 #Tools for sensing whether player is in the area or not. I've added delays to circumvent area2Ds incorrectly registering extra exits/entrances
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	
 	
 	if player==null or HUD.sceneState==HUD.sceneStates.CREDITS:

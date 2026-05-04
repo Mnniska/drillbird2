@@ -121,10 +121,13 @@ func UpdateMenuOpacity(delta:float):
 		fadeValue=fadeCounter/timeToFade
 		UpdateMenuFade(fadeValue)
 
-func SetMenuMusicActive(active:bool=true):
+func SetMenuMusicActive(_active:bool=true):
 	
 	var music:AudioStreamPlayer2D = $MenuMusic
-	
+	if _active!=active:
+		active=_active
+	else:
+		return
 	if active:
 		if !music.playing:
 			music.volume_db=0
@@ -189,10 +192,10 @@ func PressButton():
 			press_quit.emit()
 	
 
-func SetShouldBeVisible(visible:bool):
-	shouldBeVisible=visible
+func SetShouldBeVisible(_visible:bool):
+	shouldBeVisible=_visible
 	
-	if visible:
+	if _visible:
 		menuText.show()
 		active=true
 	

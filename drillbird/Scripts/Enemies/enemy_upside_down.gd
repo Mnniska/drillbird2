@@ -24,12 +24,12 @@ func _physics_process(delta: float) -> void:
 		velocity += -get_gravity() * delta * 0.3
 
 
-	var anim="run"
+	var _anim="run"
 
 
 
 	if state==States.WALK:
-		anim="run"
+		_anim="run"
 		
 		velocity.x = direction * SPEED
 		
@@ -46,7 +46,7 @@ func _physics_process(delta: float) -> void:
 
 
 	if state==States.WAIT:
-		anim="idle"
+		_anim="idle"
 		waitCounter+=delta
 		if waitCounter>timeInWait:
 			waitCounter=0
@@ -62,13 +62,13 @@ func _physics_process(delta: float) -> void:
 		isFalling=false
 	
 	if isFalling:
-		anim="fall"
+		_anim="fall"
 		velocity.x=0
 	
 
 	positionLastFrame=position
 	move_and_slide()
-	UpdateAnimations(anim)
+	UpdateAnimations(_anim)
 
 func DealDamage(value:int): #MUST HAVE
 	if value>0:

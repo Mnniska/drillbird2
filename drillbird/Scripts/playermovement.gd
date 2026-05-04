@@ -88,8 +88,8 @@ var closeFlowers:Array[climb_flower]
 
 func _ready() -> void:
 	
-	if $"../PlayerSpawnLocations"!=null:
-		for child:Node2D in $"../PlayerSpawnLocations".get_children():
+	if $"../WorldSpawn/PlayerSpawnLocations"!=null:
+		for child:Node2D in $"../WorldSpawn/PlayerSpawnLocations".get_children():
 			DebugTeleportLocations.append(child.global_position)
 		currentTeleportationIndex=0
 	

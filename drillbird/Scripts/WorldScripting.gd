@@ -10,9 +10,6 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
 
 func PlayerAction(action:GlobalVariables.playerActions):
 
@@ -31,19 +28,19 @@ func PlayerAction(action:GlobalVariables.playerActions):
 	pass
 
 
-func _on_player_checker_drill_tutorial_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
+func _on_player_checker_drill_tutorial_body_shape_entered() -> void:
 	$Tutorial_drill.PassedTest()
 	
 	pass # Replace with function body.
 
 
-func _on_player_checker_jump_tutorial_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
+func _on_player_checker_jump_tutorial_body_shape_entered() -> void:
 	$Tutorial_jump.PassedTest()
 	$Tutorial_drill.BeginTimerWhenEntered=true
 	
 	pass # Replace with function body.
 
 @onready var flowerTutorial=$Tutorial_Flower
-func _on_player_checker_flower_tutorial_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
+func _on_player_checker_flower_tutorial_body_shape_entered() -> void:
 	flowerTutorial.tutorialActive=true
 	pass # Replace with function body.

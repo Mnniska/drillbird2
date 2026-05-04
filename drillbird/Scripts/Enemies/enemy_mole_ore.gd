@@ -52,18 +52,18 @@ func Setup(info:abstract_enemy): #MUST HAVE
 	
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	
-	var anim:String=sprite.animation
+	var _anim:String=sprite.animation
 	match state:
 		States.IDLE:
 			velocity=Vector2(0,0)
 			vibrate=false
-			anim="idle"
+			_anim="idle"
 			pass
 		States.ESCAPING:
 			vibrate=true
-			anim="walk"
+			_anim="walk"
 			if bodyToEscapeFrom==null:
 				print_debug("no body to escape from")
 				state=States.IDLE
@@ -88,7 +88,7 @@ func _physics_process(delta: float) -> void:
 		var d=0.5
 		$sprite.position=Vector2(randf_range(-d,d),randf_range(-d,d))
 	move_and_slide()
-	HandleVisuals(anim)
+	HandleVisuals(_anim)
 
 func HandleVisuals(_animToPlay:String):
 	if sprite.animation!=_animToPlay:
@@ -163,7 +163,7 @@ func GetMovementVector(_targetPosGlobal:Vector2):
 	var normalizedDirectionVector=directionVector.normalized()
 	return normalizedDirectionVector
 
-func _on_detection_area_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
+func _on_detection_area_body_shape_entered(_body_rid: RID, body: Node2D, _body_shape_index: int, _local_shape_index: int) -> void:
 	if state==States.IDLE:
 		state=States.ESCAPING
 		bodyToEscapeFrom=body

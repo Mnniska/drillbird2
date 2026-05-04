@@ -32,16 +32,12 @@ func _ready() -> void:
 	
 	pass # Replace with function body.
 
-func PassedTestBodyEntered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
+func PassedTestBodyEntered() -> void:
 	PassedTest()
 	
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	
-	
-	pass
+
 
 func PassedTest():
 	if !passedTest:
@@ -86,14 +82,14 @@ func CheckCollisions():
 
 
 
-func _on_area_2d_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
+func _on_area_2d_body_shape_entered() -> void:
 	if tutorialActive:
 		PlayerEnteredArea()
 	
 	pass # Replace with function body.
 
 
-func _on_area_2d_body_shape_exited(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
+func _on_area_2d_body_shape_exited() -> void:
 	if pauseTimerWhenNotInArea:
 		timer.paused=true
 	pass # Replace with function body.

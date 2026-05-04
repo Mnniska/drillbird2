@@ -60,7 +60,7 @@ func OreFinishedSelling(amount:int):
 		oresSoldThisRound=0
 	
 	
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if !xpFollowPlayer:
 		return
 	

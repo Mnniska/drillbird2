@@ -10,10 +10,6 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	
-	pass
 
 
 func Activate(day:int):
@@ -22,7 +18,7 @@ func Activate(day:int):
 	
 	txt.self_modulate=Color(1,1,1,1)
 
-	var length= await DisplayText(0)
+	await DisplayText(0)
 	
 	var txtday:String=str(day)
 	

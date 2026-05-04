@@ -38,24 +38,24 @@ func _ready() -> void:
 		Steam.requestUserStats(Steam.getSteamID())
 	pass
 
-func TryUnlockAchievement(name:String):
+func TryUnlockAchievement(_name:String):
 	if !Steam.isSteamRunning():
-		print_debug("Cannot unlock achievement "+name+" since I cannot connect to Steam!")
+		print_debug("Cannot unlock achievement "+_name+" since I cannot connect to Steam!")
 		return
 	
-	var status= Steam.getAchievement(name)
+	var status= Steam.getAchievement(_name)
 	if status.size()<=0:
-		print_debug("Steam didn't find the given achievement, it seems: "+name)
+		print_debug("Steam didn't find the given achievement, it seems: "+_name)
 		return
 		
 	if status["achieved"]:
-		print_debug("Asked Steam to unlock an achievement which was already unlocked: "+name)
+		print_debug("Asked Steam to unlock an achievement which was already unlocked: "+_name)
 		return
 	
 	
-	Steam.setAchievement(name)
+	Steam.setAchievement(_name)
 	Steam.storeStats()
-	print_debug("Have asked Steam to unlock the achievement: "+name)
+	print_debug("Have asked Steam to unlock the achievement: "+_name)
 	
 	
 	pass

@@ -87,26 +87,26 @@ func _process(delta: float) -> void:
 
 	if player!=null:
 		var playerpos=player.global_position
-		var posx=playerpos.x
-		var posy=playerpos.y
+		var _posx=playerpos.x
+		var _posy=playerpos.y
 		if playerpos.x<boundingBoxBegin.x:
-			posx=boundingBoxBegin.x
+			_posx=boundingBoxBegin.x
 		if playerpos.x>boundingBoxEnd.x:
-			posx=boundingBoxEnd.x
+			_posx=boundingBoxEnd.x
 			
 		if playerpos.y>boundingBoxEnd.y:
-			posy=boundingBoxEnd.y
+			_posy=boundingBoxEnd.y
 		if playerpos.y<boundingBoxBegin.y:
-			posy=boundingBoxBegin.y
+			_posy=boundingBoxBegin.y
 			
 		#audioplayer.global_position=Vector2(posx,posy)
 
 
-func _on_affected_area_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
+func _on_affected_area_body_shape_entered() -> void:
 	detectingPlayer=true
 	pass # Replace with function body.
 
 
-func _on_affected_area_body_shape_exited(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
+func _on_affected_area_body_shape_exited() -> void:
 	detectingPlayer=false
 	pass # Replace with function body.

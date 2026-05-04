@@ -54,7 +54,7 @@ func CooldownAnimation():
 		if timeKeeper>cooldownTime:
 			cooldown=false
 	
-func DealDamage(amount:int):
+func DealDamage(_amount:int):
 	queue_free()
 	# TODO: Add sick destroy effect
 	pass
@@ -88,7 +88,7 @@ func _on_animation_animation_finished() -> void:
 	pass # Replace with function body.
 
 
-func _on_body_entered(body: Node) -> void:
+func _on_body_entered(_body: Node) -> void:
 	SoundManager.PlaySoundAtLocation(global_position,abstract_SoundEffectSetting.SoundEffectEnum.ORE_LAND)
 	
 	pass # Replace with function body.

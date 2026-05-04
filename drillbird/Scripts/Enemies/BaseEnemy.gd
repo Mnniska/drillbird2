@@ -197,7 +197,7 @@ func CheckOverlappingCollisions(): #MUST HAVE
 			n.DealDamage(enemyInfo.damage)
 	pass
 
-func _on_enemy_collision_checker_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
+func _on_enemy_collision_checker_body_shape_entered(_body_rid: RID, body: Node2D, _body_shape_index: int, _local_shape_index: int) -> void:
 	if body==$".":
 		return
 	
