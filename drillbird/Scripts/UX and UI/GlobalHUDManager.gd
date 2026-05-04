@@ -61,8 +61,12 @@ func _ready() -> void:
 
 func SetupComplete():
 	
-	var hasSaveGame= !GlobalVariables.currentDay==1 #lmao
-	StartMainMenu(hasSaveGame)
+	var isOnDayOne= GlobalVariables.currentDay==1 #lmao
+	
+	if GlobalVariables.isInCursedMode and isOnDayOne:
+		introCutsceneFinished()
+	else:	
+		StartMainMenu(!isOnDayOne)
 
 
 func StartMainMenu(hasSaveGame:bool):
@@ -180,7 +184,7 @@ func ResetGame():
 	#Can only be called from MAIN for this to work :)))
 	sceneState=sceneStates.MAIN
 	#GlobalVariables.ResetSaveData()
-	%InventoryHandler.SellOres()
+	%InventoryHandler.SellOres() #is this really correct? 
 	$TransitionToMain.play("FadeBack")
 	await get_tree().create_timer(0.05).timeout
 	var scene = GlobalVariables.MainSceneReferenceConnector.mainScene
@@ -221,6 +225,8 @@ func _on_main_menu_new_game() -> void:
 		#plays the intro cutscene 
 		var introCutscene=GlobalVariables.MainSceneReferenceConnector.introCutscene
 		
+	
+		
 		if !introCutscene.GetIsPlaying():
 			MainMenu.SetShouldBeVisible(false)
 			await get_tree().create_timer(2).timeout
@@ -230,7 +236,7 @@ func _on_main_menu_new_game() -> void:
 		
 		#this is when you press "continue" instead of "new game" 
 		SetState(menuStates.PLAY)
-		
+
 
 func introCutsceneFinished():
 	SetState(menuStates.PLAY)

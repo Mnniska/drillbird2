@@ -1,0 +1,133 @@
+[gd_scene load_steps=13 format=3 uid="uid://pavkdcthm8ws"]
+
+[ext_resource type="Texture2D" uid="uid://c70bauf5rw6pt" path="res://Art/cutscenes/demons_deal/demon_chilling.png" id="1_eqpmf"]
+[ext_resource type="Script" uid="uid://d45ns0beee5y" path="res://Scenes/cutscenes/demon_deal.gd" id="1_k42kg"]
+[ext_resource type="Texture2D" uid="uid://hj8hotfteydg" path="res://Art/cutscenes/demons_deal/demon_deco.png" id="2_jrp17"]
+[ext_resource type="Script" uid="uid://k3dtn10lqd2y" path="res://Scripts/UX and UI/button_hold.gd" id="3_geugr"]
+[ext_resource type="Texture2D" uid="uid://bpp3u6kqc1pyv" path="res://Art/UI/UI_bubble_end_left.png" id="4_k42kg"]
+[ext_resource type="Theme" uid="uid://bfr5y4lo7m1ux" path="res://Resources/Fonts/fontTheme.tres" id="5_2ms83"]
+[ext_resource type="Texture2D" uid="uid://t0np5v56anao" path="res://Art/UI/square.png" id="6_irdy8"]
+[ext_resource type="Texture2D" uid="uid://2xidorn8blnd" path="res://Art/UI/UI_bubble_iconHolder.png" id="7_fhtd8"]
+[ext_resource type="Texture2D" uid="uid://bvtd87mo25snw" path="res://Art/UI/UI_rest_arrow_dark.png" id="8_27w7g"]
+[ext_resource type="Texture2D" uid="uid://1hy32yargekh" path="res://Art/UI/UI_rest_arrow_light.png" id="9_7muv3"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jrp17"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_eqpmf")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k42kg"]
+
+[node name="Demon" type="Node2D"]
+script = ExtResource("1_k42kg")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = -2
+sprite_frames = SubResource("SpriteFrames_jrp17")
+animation = &"idle"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_jrp17")
+
+[node name="InteractButton_acceptDeal" type="Node2D" parent="."]
+z_index = 2
+position = Vector2(11, -33)
+script = ExtResource("3_geugr")
+textID_hold = "holdbtn_hold"
+textID_toDoX = "holdbtn_to_reincarnate"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="InteractButton_acceptDeal"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -137.5
+offset_top = -10.0
+offset_right = 137.5
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="bg_left" type="TextureRect" parent="InteractButton_acceptDeal/HBoxContainer"]
+self_modulate = Color(1, 1, 1, 0.678431)
+layout_mode = 2
+texture = ExtResource("4_k42kg")
+stretch_mode = 3
+
+[node name="text_hold" type="Label" parent="InteractButton_acceptDeal/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("5_2ms83")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Håll inne"
+horizontal_alignment = 2
+
+[node name="bg_text_hold" type="TextureRect" parent="InteractButton_acceptDeal/HBoxContainer/text_hold"]
+self_modulate = Color(1, 1, 1, 0.678431)
+z_index = -1
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_irdy8")
+
+[node name="iconHolder" type="TextureRect" parent="InteractButton_acceptDeal/HBoxContainer"]
+self_modulate = Color(1, 1, 1, 0.678431)
+layout_mode = 2
+texture = ExtResource("7_fhtd8")
+
+[node name="icon" type="Sprite2D" parent="InteractButton_acceptDeal/HBoxContainer/iconHolder"]
+clip_children = 2
+position = Vector2(9, 10)
+texture = ExtResource("8_27w7g")
+
+[node name="active" type="Sprite2D" parent="InteractButton_acceptDeal/HBoxContainer/iconHolder/icon"]
+position = Vector2(0, 14)
+texture = ExtResource("9_7muv3")
+
+[node name="text_toEndDay" type="Label" parent="InteractButton_acceptDeal/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("5_2ms83")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "för att reinkarneras"
+horizontal_alignment = 2
+
+[node name="bg_text_hold" type="TextureRect" parent="InteractButton_acceptDeal/HBoxContainer/text_toEndDay"]
+self_modulate = Color(1, 1, 1, 0.678431)
+z_index = -1
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_irdy8")
+
+[node name="bg_right" type="TextureRect" parent="InteractButton_acceptDeal/HBoxContainer"]
+self_modulate = Color(1, 1, 1, 0.678431)
+layout_mode = 2
+texture = ExtResource("4_k42kg")
+stretch_mode = 3
+flip_h = true
+
+[node name="dealAcceptanceArea" type="Area2D" parent="."]
+position = Vector2(7, 70)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="dealAcceptanceArea"]
+shape = SubResource("RectangleShape2D_k42kg")
+
+[connection signal="body_shape_entered" from="dealAcceptanceArea" to="." method="_on_deal_acceptance_area_body_shape_entered"]
+[connection signal="body_shape_exited" from="dealAcceptanceArea" to="." method="_on_deal_acceptance_area_body_shape_exited"]

@@ -1,4 +1,5 @@
 extends Node
+class_name save_manager
 
 @onready var TileDestroyer=$TileCrack
 @onready var EnemySpawner=$ObjectSpawner
@@ -23,7 +24,7 @@ var PlayerData=abstract_savegame.new()
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	verify_save_directory(save_file_path)
-	LoadGame(-1)
+	LoadGame(PlayerData.worldToSpawn)
 	#Todo: load based on current savefile
 	
 	#When starting the game, game should check if there's a previous save
@@ -76,7 +77,17 @@ func ResetSaveData(onlyResetEnemiesAndTiles:bool=false):
 		PlayerData=null
 		PlayerData=abstract_savegame.new()
 	ResourceSaver.save(PlayerData,save_file_path+save_file_name)
+
+func ChangeToCursedMode():
+	PlayerData=null
+	PlayerData=abstract_savegame.new()
 	
+	#This is the only place where these valuables are set. 
+	PlayerData.worldToSpawn=2
+	PlayerData.isInCursedMode=true
+	GlobalVariables.isInCursedMode=true
+	
+	ResourceSaver.save(PlayerData,save_file_path+save_file_name)
 
 
 func SaveGame(showgamesavedtext:bool=true):
@@ -226,12 +237,12 @@ func LoadGame(worldToLoad:int=-1):
 		PlayerData=ResourceLoader.load(save_file_path+save_file_name)
 	
 	
-	
-	#TODO: Spawn the world of the current savefile
-	if worldToLoad==-1:
-		worldToLoad=worldSpawner.CurrentWorld
-	worldSpawner.SpawnWorld(worldToLoad)
+	GlobalVariables.isInCursedMode=PlayerData.isInCursedMode
+
+
+	worldSpawner.SpawnWorld(PlayerData.worldToSpawn)
 	SetupWorldReferences()
+	
 	
 	#We have two different signals here cuz the mainsceneref connector gets their references,
 	#and then other scripts who rely on that gets their references from it.

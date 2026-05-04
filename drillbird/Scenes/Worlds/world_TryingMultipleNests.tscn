@@ -850,7 +850,7 @@ position = Vector2(-194, 95)
 [node name="PlayerSpawnLocations" type="Node2D" parent="."]
 
 [node name="OriginalSpawnPos" type="Sprite2D" parent="PlayerSpawnLocations"]
-position = Vector2(-926, 1404)
+position = Vector2(-922, 1049)
 texture = ExtResource("58_b5rgw")
 
 [node name="PlayerLocationSaver" type="Area2D" parent="PlayerSpawnLocations" node_paths=PackedStringArray("Spawnpos")]
