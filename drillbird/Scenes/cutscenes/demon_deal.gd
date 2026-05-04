@@ -38,6 +38,6 @@ func LoadIntoCursedMode():
 	
 	var savehandler:save_manager=GlobalVariables.MainSceneReferenceConnector.mainScene
 	savehandler.ChangeToCursedMode()
-	HUD.ResetGame()
+	HUD.ResetGameToCursedMode()
 	
 	pass

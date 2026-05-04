@@ -64,7 +64,14 @@ func SetupComplete():
 	var isOnDayOne= GlobalVariables.currentDay==1 #lmao
 	
 	if GlobalVariables.isInCursedMode and isOnDayOne:
-		introCutsceneFinished()
+		SetState(menuStates.MAIN)
+		
+		GlobalVariables.hasSeenIntroCutscene=true
+		$TransitionToMain.play("FadeBack")
+		
+		await get_tree().create_timer(0.05).timeout
+		SetState(menuStates.PLAY)
+		
 	else:	
 		StartMainMenu(!isOnDayOne)
 
@@ -192,6 +199,19 @@ func ResetGame():
 	GlobalVariables.InitialSetup=true
 	await GlobalVariables.SetupComplete
 	SetState(menuStates.MAIN)
+
+func ResetGameToCursedMode():
+	#Can only be called from MAIN for this to work :)))
+	sceneState=sceneStates.MAIN
+	#GlobalVariables.ResetSaveData()
+	%InventoryHandler.SellOres() #is this really correct? 
+	$TransitionToMain.play("FadeBack")
+	await get_tree().create_timer(0.05).timeout
+	var scene = GlobalVariables.MainSceneReferenceConnector.mainScene
+	scene.get_tree().change_scene_to_packed(scene_main)
+	GlobalVariables.InitialSetup=true
+	await GlobalVariables.SetupComplete
+
 
 func SetSceneState(state:sceneStates,debug:bool=false,resetSaveData:bool=true):
 	

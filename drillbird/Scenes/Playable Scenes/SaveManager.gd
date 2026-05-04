@@ -58,8 +58,6 @@ func _init() -> void:
 	pass
 	
 
-func _process(delta: float) -> void:
-	pass
 
 func verify_save_directory(path:String):
 	DirAccess.make_dir_absolute(path)
