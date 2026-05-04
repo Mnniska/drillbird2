@@ -197,7 +197,7 @@ func DetectPlayer():
 	anim.play()
 	var detectAnimLength:float=get_current_animation_length() 
 	
-
+	global_position.x=GlobalVariables.PlayerController.global_position.x
 	
 	await get_tree().create_timer(detectAnimLength).timeout
 	
@@ -207,9 +207,12 @@ func DetectPlayer():
 	state=States.DIG
 	
 	var digSuccessfull:bool=false
+	diggingRaycast.force_raycast_update()
 	
 	if diggingRaycast.is_colliding():
-	
+		
+
+		
 		var tileset:TileMapLayer = diggingRaycast.get_collider()
 		
 		if tileset:
@@ -247,11 +250,8 @@ func DetectPlayer():
 		await get_tree().create_timer(1).timeout
 
 		state=States.WAIT
-		
 
-
-func _on_player_detection_zone_body_shape_entered() -> void:
+func _on_player_detection_zone_body_shape_entered(_body_rid: RID, _body: Node2D, _body_shape_index: int, _local_shape_index: int) -> void:
 	if state==States.WALK or state==States.WAIT and !GetIsFalling():
 		DetectPlayer()
-	
 	pass # Replace with function body.

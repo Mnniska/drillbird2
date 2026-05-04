@@ -199,7 +199,7 @@ animations = [{
 size = Vector2(11, 7)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xen7b"]
-size = Vector2(6, 38)
+size = Vector2(4, 38)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_inx5r"]
 animations = [{
