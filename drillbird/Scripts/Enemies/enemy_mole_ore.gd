@@ -4,12 +4,14 @@ extends Base_Enemy
 @export var oreToSpawn:abstract_ore
 
 @onready var spawnedCollider= preload("res://Scenes/Objects and Enemies/mole_ore_collider.tscn")
-const SPEED = 3
+const SPEED = 5
 const DISTANCE_TO_FEEL_SAFE = 16*3
 const DISTANCE_BEFORE_SPAWNING_NEW_COLLIDER:float=16*6
 
 @onready var detectionArea=$"Detection area"
 @onready var sprite=$sprite
+@onready var bodysprite=$body
+@onready var eyesprite=$eyeball
 
 var bodyToEscapeFrom:Node2D=null
 enum States{IDLE,ESCAPING,DYING}
@@ -21,12 +23,17 @@ var positionOfLastColliderSpawn:Vector2
 var tilemap:TileMapLayer
 var vibrate:bool=false
 
+var detectAnimTime:float=0.5
+var detectAnimCounter:float=0
+
 func _ready() -> void:
 	GlobalVariables.TileDestroyed.connect(PlayerDestroyedTile)
 
 
 	await GlobalVariables.SetupComplete
 	CreateCollidersOnEmptySpaces(GetTilemap())
+	
+
 
 func GetTilemap()->TileMapLayer:
 	if tilemap:
@@ -63,7 +70,14 @@ func _physics_process(_delta: float) -> void:
 			pass
 		States.ESCAPING:
 			vibrate=true
-			_anim="walk"
+			
+			if positionLastFrame.distance_to(position)>0.1:
+				_anim="walk"
+			else:
+				_anim="walk_still"
+
+
+				
 			if bodyToEscapeFrom==null:
 				print_debug("no body to escape from")
 				state=States.IDLE
@@ -72,8 +86,8 @@ func _physics_process(_delta: float) -> void:
 			var movementV=GetMovementVector(bodyToEscapeFrom.global_position)
 			velocity+=movementV*SPEED
 			
-			var p = randf_range(-10,10)
-			var y =randf_range(-10,10)
+			var p = randf_range(-5,5)
+			var y =randf_range(-5,5)
 			velocity+=Vector2(p,y)
 			
 			if global_position.distance_to(bodyToEscapeFrom.global_position)>=DISTANCE_TO_FEEL_SAFE:
@@ -86,14 +100,46 @@ func _physics_process(_delta: float) -> void:
 
 	if vibrate:
 		var d=0.5
-		$sprite.position=Vector2(randf_range(-d,d),randf_range(-d,d))
-	move_and_slide()
+		#$sprite.position=Vector2(randf_range(-d,d),randf_range(-d,d))
+	
 	HandleVisuals(_anim)
+
+	
+	positionLastFrame=position #must be called before move_and_slide but after functions that need it
+		
+	move_and_slide()
+	
+	
 
 func HandleVisuals(_animToPlay:String):
 	if sprite.animation!=_animToPlay:
 		sprite.play(_animToPlay)
+	
 		
+		if sprite.animation=="walk" or sprite.animation=="walk_still":
+			bodysprite.show()
+			eyesprite.show()
+		else:
+			bodysprite.hide()
+			eyesprite.hide()
+	
+	if _animToPlay=="walk" or _animToPlay=="walk_still":
+		AdjustBodyEyePosition()
+		
+		
+
+func AdjustBodyEyePosition():
+	var maximumBodyMovement:float=2
+	var maximumEyeMovement:float=0.5
+	
+	var vector=(bodyToEscapeFrom.global_position-global_position).normalized()
+	#should return a vector with length 1
+	
+	bodysprite.position=Vector2(maximumBodyMovement*vector.x*-1,maximumBodyMovement*vector.y*-1)
+	eyesprite.position=Vector2(maximumEyeMovement*vector.x,maximumEyeMovement*vector.y)
+	
+	
+	
 
 func PlayerDestroyedTile(tilemapCoord:Vector2i,_tilemap:TileMapLayer):
 	
@@ -167,5 +213,6 @@ func _on_detection_area_body_shape_entered(_body_rid: RID, body: Node2D, _body_s
 	if state==States.IDLE:
 		state=States.ESCAPING
 		bodyToEscapeFrom=body
+		detectAnimCounter=detectAnimTime
 	
 	pass # Replace with function body.

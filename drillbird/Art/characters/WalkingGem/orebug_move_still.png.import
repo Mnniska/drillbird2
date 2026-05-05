@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://deimuwxkjtiy5"
-path="res://.godot/imported/WalkingGem_walk1.png-3c10b2dc5ccd26ba902353b09d27573d.ctex"
+uid="uid://8g2gbviw4akj"
+path="res://.godot/imported/orebug_move_still.png-7daadfa8ca6d0684404d051a0766777b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/characters/WalkingGem/WalkingGem_walk1.png"
-dest_files=["res://.godot/imported/WalkingGem_walk1.png-3c10b2dc5ccd26ba902353b09d27573d.ctex"]
+source_file="res://Art/characters/WalkingGem/orebug_move_still.png"
+dest_files=["res://.godot/imported/orebug_move_still.png-7daadfa8ca6d0684404d051a0766777b.ctex"]
 
 [params]
 
