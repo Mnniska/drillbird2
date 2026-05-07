@@ -102,11 +102,14 @@ func _process(delta: float) -> void:
 		#audioplayer.global_position=Vector2(posx,posy)
 
 
-func _on_affected_area_body_shape_entered() -> void:
+
+
+
+func _on_affected_area_body_shape_entered(_body_rid: RID, _body: Node2D, _body_shape_index: int, _local_shape_index: int) -> void:
 	detectingPlayer=true
 	pass # Replace with function body.
 
 
-func _on_affected_area_body_shape_exited() -> void:
+func _on_affected_area_body_shape_exited(_body_rid: RID, _body: Node2D, _body_shape_index: int, _local_shape_index: int) -> void:
 	detectingPlayer=false
 	pass # Replace with function body.
