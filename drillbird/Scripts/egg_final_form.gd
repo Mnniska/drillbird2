@@ -6,10 +6,13 @@ var isActive:bool=false
 var isShaking:bool=false
 var shakeAmount:float=1.8
 
-@onready var animator=$AnimatedSprite2D
+@onready var animator_normal=$AnimatedSprite2D
+@onready var animator_cursed=$AnimatedSprite2D_cursed
 @onready var hatchAnimation=$Anim_birds_hatching
 @onready var EggOriginalPosition:Vector2=hatchAnimation.position
 @onready var useVibration=GlobalVariables.useVibration
+
+
 
 enum finalFormStates{FINAL_INACTIVE,FINAL_HEARTLESS,FINAL_HEART,FINAL_HATCHING}
 var finalFormState:finalFormStates=finalFormStates.FINAL_HEARTLESS
@@ -20,6 +23,21 @@ func _process(delta: float) -> void:
 	if isShaking:
 		hatchAnimation.position=EggOriginalPosition+Vector2(randf_range(-shakeAmount,shakeAmount),0)
 
+func _ready() -> void:
+	
+	await GlobalVariables.SetupComplete
+	if GlobalVariables.isInCursedMode:
+		animator_normal.hide()
+		animator_cursed.show()
+	else:
+		animator_normal.show()
+		animator_cursed.hide()
+
+func GetAnimator()->AnimatedSprite2D:
+	if GlobalVariables.isInCursedMode:
+		return animator_cursed
+	else:
+		return animator_normal
 
 func GetFinalHeartPosition():
 	return $FinalHeartPosition.global_position
@@ -33,11 +51,11 @@ func SetState(_state:finalFormStates):
 			pass
 		finalFormStates.FINAL_HEARTLESS:
 			show()
-			animator.animation="final_form_idle"
+			GetAnimator().animation="final_form_idle"
 
 			pass
 		finalFormStates.FINAL_HEART:
-			animator.animation="final_form_with_heart_idle"
+			GetAnimator().animation="final_form_with_heart_idle"
 
 			show()
 			pass
@@ -52,7 +70,7 @@ func HatchEgg():
 	useVibration=GlobalVariables.useVibration
 	$Anim_hatching_drillbird.animation="wait"
 	hatchAnimation.animation="wait"
-	animator.animation="hatch"
+	GetAnimator().animation="hatch"
 
 	isShaking=false
 	await get_tree().create_timer(2).timeout
@@ -111,17 +129,17 @@ func HatchCutsceneFinished():
 func TransitionToFinalForm():
 
 	isShaking=true
-	animator.animation="go_to_final_form"
-	animator.play()
+	GetAnimator().animation="go_to_final_form"
+	GetAnimator().play()
 	await get_tree().create_timer(2).timeout
 	isShaking=false
 	await get_tree().create_timer(2).timeout
-	animator.animation="final_form_idle"
+	GetAnimator().animation="final_form_idle"
 	
 	pass
 
 func RecieveHeartCutscene():
 	finalFormState=finalFormStates.FINAL_HEART
-	animator.animation="final_form_with_heart_idle"
-	animator.play()
+	GetAnimator().animation="final_form_with_heart_idle"
+	GetAnimator().play()
 	pass

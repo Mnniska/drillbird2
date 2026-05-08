@@ -18,6 +18,10 @@ var eggState=eggStates.NOTHING
 @onready var nest_front=$nest_front
 @onready var nest_back=$nest_back
 
+@export var eggSprites_normal:Array[Texture]
+@export var eggSprites_cursed:Array[Texture]
+@export var eggSpritesToChangeTextureOn:Array[Sprite2D]
+
 var shakeTimer:float=0
 var originalPos:Vector2=self.position
 var shaking:bool=false
@@ -51,7 +55,22 @@ func Setup():
 	#TODO: Egg state should initially be EMPTY and change to growing after the egg spawning cutscene
 	if eggState==eggStates.GROWING:
 		UpdateSizeBasedOnSaveData()
+		
+	SetupEggTexture()
 
+func SetupEggTexture():
+	var count:int=0
+	
+		
+	for egg in eggSpritesToChangeTextureOn:
+		if GlobalVariables.isInCursedMode:
+			egg.texture=eggSprites_cursed[count]
+		else:
+			egg.texture=eggSprites_normal[count]
+		
+		count+=1
+	
+	
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	GlobalVariables.SetupComplete.connect(Setup)	
