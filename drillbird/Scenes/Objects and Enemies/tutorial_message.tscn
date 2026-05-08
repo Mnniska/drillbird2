@@ -1,10 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://bgtl1cgl35wcl"]
+[gd_scene load_steps=5 format=3 uid="uid://bgtl1cgl35wcl"]
 
-[ext_resource type="Script" path="res://Scripts/UX and UI/tutorial_message.gd" id="1_3mu5m"]
+[ext_resource type="Script" uid="uid://cccij282gqpux" path="res://Scripts/UX and UI/tutorial_message.gd" id="1_3mu5m"]
 [ext_resource type="PackedScene" uid="uid://cyshcvv6qcxud" path="res://Scenes/UI/text_bubble.tscn" id="2_c768j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wuomc"]
 size = Vector2(148, 145)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k5hti"]
 
 [node name="TutorialMessage" type="Node2D"]
 script = ExtResource("1_3mu5m")
@@ -24,6 +26,14 @@ position = Vector2(0, 21)
 [node name="Label" type="Label" parent="."]
 offset_right = 40.0
 offset_bottom = 23.0
+
+[node name="pass test collider" type="Area2D" parent="."]
+position = Vector2(-25, -37)
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pass test collider"]
+shape = SubResource("RectangleShape2D_k5hti")
 
 [connection signal="body_shape_entered" from="Area2D" to="." method="_on_area_2d_body_shape_entered"]
 [connection signal="body_shape_exited" from="Area2D" to="." method="_on_area_2d_body_shape_exited"]

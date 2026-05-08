@@ -282,6 +282,7 @@ texture = SubResource("GradientTexture2D_ywsei")
 
 [node name="ShopHandler" type="Node2D" parent="Camera2D" node_paths=PackedStringArray("UI_purchasables")]
 visible = false
+z_index = 6
 scale = Vector2(2, 2)
 script = ExtResource("26_mk1t6")
 UI_purchasables = [NodePath("VBoxContainer/Purchasable1"), NodePath("VBoxContainer/Purchasable2"), NodePath("VBoxContainer/Purchasable3"), NodePath("VBoxContainer/Purchasable4"), NodePath("VBoxContainer/Button_continue")]
@@ -289,6 +290,7 @@ abstract_purchasables = Array[ExtResource("27_hx1y5")]([ExtResource("28_iowjc"),
 
 [node name="ShopBackground" type="Sprite2D" parent="Camera2D/ShopHandler"]
 z_index = -3
+z_as_relative = false
 position = Vector2(0, 9)
 scale = Vector2(1.25, 1)
 texture = ExtResource("30_okg02")
@@ -366,7 +368,7 @@ scale = Vector2(5.21875, 970)
 texture = SubResource("GradientTexture1D_ea32y")
 
 [node name="DebugFunctionality" type="Node2D" parent="Camera2D"]
-z_index = 2
+z_index = 6
 scale = Vector2(2, 2)
 script = ExtResource("47_igpia")
 menu = Array[ExtResource("48_cl8sw")]([SubResource("Resource_dq3mr"), SubResource("Resource_5ornm"), SubResource("Resource_77at3"), SubResource("Resource_v3nii"), SubResource("Resource_co6uo"), SubResource("Resource_o5w6h"), SubResource("Resource_x06hp"), SubResource("Resource_gh5xl")])
@@ -408,7 +410,7 @@ minLight = 0.25
 
 [node name="light_full" type="PointLight2D" parent="PlayerDarkness"]
 blend_mode = 2
-range_z_max = 10
+range_z_max = 5
 texture = ExtResource("36_yw5ht")
 
 [node name="IntroCutscene" parent="." instance=ExtResource("86_d8wwr")]

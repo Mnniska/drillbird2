@@ -10,7 +10,8 @@ var textShown:bool=false
 var passedTest:bool=false
 
 
-@export var collisionShapeThatPassesTest:Area2D
+@onready var collisionShapeThatPassesTest:Area2D=$"pass test collider"
+@export var passTestViaCollider:bool=false
 @export var BeginTimerWhenEntered:bool=true:
 	get: return BeginTimerWhenEntered
 	set(value): 
@@ -27,12 +28,15 @@ func _ready() -> void:
 	$Timer.wait_time=timeBeforeMessageShows
 	textBubble.Setup(abstract_textEffect.effectEnum.STILL,text_bubble.behaviourEnum.STAY)
 	
-	if collisionShapeThatPassesTest:
+	if collisionShapeThatPassesTest and passTestViaCollider:
 		collisionShapeThatPassesTest.body_shape_entered.connect(PassedTestBodyEntered)
+	
+	if !passTestViaCollider:
+		collisionShapeThatPassesTest.queue_free()
 	
 	pass # Replace with function body.
 
-func PassedTestBodyEntered() -> void:
+func PassedTestBodyEntered(_body_rid:RID,_body:Node2D,_body_shape_index:int,_local_shape_index:int) -> void:
 	PassedTest()
 	
 
@@ -82,14 +86,14 @@ func CheckCollisions():
 
 
 
-func _on_area_2d_body_shape_entered() -> void:
+func _on_area_2d_body_shape_entered(_body_rid:RID,_body:Node2D,_body_shape_index:int,_local_shape_index:int) -> void:
 	if tutorialActive:
 		PlayerEnteredArea()
 	
 	pass # Replace with function body.
 
 
-func _on_area_2d_body_shape_exited() -> void:
+func _on_area_2d_body_shape_exited(_body_rid:RID,_body:Node2D,_body_shape_index:int,_local_shape_index:int) -> void:
 	if pauseTimerWhenNotInArea:
 		timer.paused=true
 	pass # Replace with function body.

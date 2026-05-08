@@ -242,6 +242,7 @@ func GoToBed():
 
 
 func EnterShop():
+	fallingAsleep=false
 	Shop.SetActive(true)
 	ReplendishStats()
 	pass
