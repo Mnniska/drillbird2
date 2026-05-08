@@ -1,7 +1,7 @@
 [gd_scene load_steps=20 format=3 uid="uid://4ea053k7e4d0"]
 
 [ext_resource type="Script" uid="uid://ogag6wxgn0y5" path="res://Scripts/Enemies/enemy_mole_ore.gd" id="1_lxrrl"]
-[ext_resource type="Resource" uid="uid://dtee1eo8ydnlr" path="res://Resources/Economy/ore_6.tres" id="2_4j1tk"]
+[ext_resource type="Resource" uid="uid://bsqq3gk506g23" path="res://Resources/Economy/ore_8_gembug.tres" id="2_esx0y"]
 [ext_resource type="Script" uid="uid://bgy5cf01m25xs" path="res://Scripts/Abstract scripts/abstract_collidable.gd" id="2_jvrxm"]
 [ext_resource type="Script" uid="uid://cokuso80w54cc" path="res://Scripts/Abstract scripts/abstract_enemy.gd" id="3_xg40v"]
 [ext_resource type="Texture2D" uid="uid://cpor0xcmil2fv" path="res://Art/characters/WalkingGem/orebug_detect1.png" id="5_djpnf"]
@@ -84,7 +84,7 @@ animations = [{
 collision_layer = 4096
 collision_mask = 4096
 script = ExtResource("1_lxrrl")
-oreToSpawn = ExtResource("2_4j1tk")
+oreToSpawn = ExtResource("2_esx0y")
 collType = SubResource("Resource_vulfi")
 enemyInfo = SubResource("Resource_lvi2v")
 

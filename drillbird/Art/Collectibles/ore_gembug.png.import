@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b7yxja4qntm66"
-path="res://.godot/imported/tileset_ores.png-7259b4f75a085a30b6882cfe67220355.ctex"
+uid="uid://c2gbkkabp54v"
+path="res://.godot/imported/ore_gembug.png-2f62b057125b99a39521fe8026c1ef39.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/environment/tileset_ores.png"
-dest_files=["res://.godot/imported/tileset_ores.png-7259b4f75a085a30b6882cfe67220355.ctex"]
+source_file="res://Art/Collectibles/ore_gembug.png"
+dest_files=["res://.godot/imported/ore_gembug.png-2f62b057125b99a39521fe8026c1ef39.ctex"]
 
 [params]
 
