@@ -57,5 +57,9 @@ func ShowUI():
 func TranslateStrings():
 	header.text=tr("menu_dead_header")
 	info1.text=tr("menu_dead_ores_dropped")
-	info2.text=tr("menu_dead_respawn")
+	
+	if GlobalVariables.eggState==0:
+		info2.text=tr("menu_dead_cave")
+	else:
+		info2.text=tr("menu_dead_respawn")
 	awaken_text.text=tr("shop_awaken")

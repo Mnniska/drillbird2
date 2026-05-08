@@ -20,9 +20,14 @@ func _physics_process(delta: float) -> void:
 	if enemySleep:
 		return	
 
+	dontGoToSleep=false
+
 	if not is_on_floor():
 		velocity += -get_gravity() * delta * 0.3
+		
 
+	if !is_on_ceiling():
+		dontGoToSleep=true
 
 	var _anim="run"
 
@@ -63,6 +68,7 @@ func _physics_process(delta: float) -> void:
 	
 	if isFalling:
 		_anim="fall"
+		
 		velocity.x=0
 	
 

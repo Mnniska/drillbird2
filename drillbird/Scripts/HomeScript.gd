@@ -261,7 +261,12 @@ func WakeUp(saveGame:bool,progressDay:bool=true):
 	
 	
 	Camera.SetFollowPlayer(true)
-	Player.position=$PlayerWakeupPos.position
+	
+	var spawnpoint=$PlayerWakeupPos.position
+	if GlobalVariables.eggState==0:
+		spawnpoint=GlobalVariables.MainSceneReferenceConnector.ref_respawnPointCave.position
+	
+	Player.position=spawnpoint
 	Player.show()
 	animSleep.hide()
 	GlobalVariables.playerStatus=GlobalVariables.playerStatusEnum.DIG

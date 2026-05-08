@@ -1243,12 +1243,11 @@ shape = SubResource("RectangleShape2D_ynr8i")
 [node name="TextBubble" parent="WorldScripts/Tutorial_Flower" index="1"]
 position = Vector2(1, 6)
 
-[node name="Tutorial_LongDrill" parent="WorldScripts" node_paths=PackedStringArray("collisionShapeThatPassesTest") instance=ExtResource("46_uijce")]
+[node name="Tutorial_LongDrill" parent="WorldScripts" instance=ExtResource("46_uijce")]
 position = Vector2(-399, 65)
 timeBeforeMessageShows = 5.0
 textToShow = "tut_long_drill"
 pauseTimerWhenNotInArea = false
-collisionShapeThatPassesTest = NodePath("PlayerChecker_LongDrillTutorial")
 
 [node name="CollisionShape2D" parent="WorldScripts/Tutorial_LongDrill/Area2D" index="0"]
 position = Vector2(-3, -9)
@@ -1266,12 +1265,11 @@ collision_mask = 16
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WorldScripts/Tutorial_LongDrill/PlayerChecker_LongDrillTutorial"]
 shape = SubResource("RectangleShape2D_kgagq")
 
-[node name="Tutorial_LedgeUp" parent="WorldScripts" node_paths=PackedStringArray("collisionShapeThatPassesTest") instance=ExtResource("46_uijce")]
+[node name="Tutorial_LedgeUp" parent="WorldScripts" instance=ExtResource("46_uijce")]
 position = Vector2(-278, 34)
 timeBeforeMessageShows = 6.0
 textToShow = "tut_ledge_drill"
 pauseTimerWhenNotInArea = false
-collisionShapeThatPassesTest = NodePath("PlayerChecker_LongDrillTutorial2")
 
 [node name="CollisionShape2D" parent="WorldScripts/Tutorial_LedgeUp/Area2D" index="0"]
 position = Vector2(-3, -9)
@@ -1466,6 +1464,9 @@ limit_top = true
 
 [node name="CollisionShape2D" parent="WorldScripts/CameraLimiter2/AffectedArea" index="0"]
 shape = SubResource("RectangleShape2D_y375v")
+
+[node name="Respawn_caveOfResurrection" type="Node2D" parent="WorldScripts"]
+position = Vector2(-616, 520)
 
 [node name="PlayerSpawnLocations" type="Node2D" parent="."]
 

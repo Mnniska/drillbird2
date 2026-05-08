@@ -14,6 +14,8 @@ var isFalling:bool=false
 var textbubble=preload("res://Scenes/UI/text_bubble.tscn")
 var corpseRefernse=preload("res://Scenes/Objects and Enemies/corpse_scene.tscn")
 
+var dontGoToSleep:bool=false
+
 @export var updateInterval:float=2
 var updateCounter:float=0
 var activeDistance:float=16*15
@@ -161,7 +163,7 @@ func CheckIfSleeping(delta:float):
 		var playerPosY = Vector2(0,playerpos.y)
 		var enemyPosY=Vector2(0,global_position.y)
 		
-		if playerPosY.distance_to(enemyPosY) > activeDistance or playerpos==Vector2(0,0):
+		if playerPosY.distance_to(enemyPosY) > activeDistance or playerpos==Vector2(0,0) and !dontGoToSleep:
 			enemySleep=true
 		else:
 			enemySleep=false

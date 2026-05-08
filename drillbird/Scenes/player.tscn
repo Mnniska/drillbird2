@@ -58,10 +58,10 @@ script = ExtResource("2_o5iaf")
 type = 3
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pdge5"]
-size = Vector2(14, 8)
+size = Vector2(12, 8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wmago"]
-size = Vector2(4, 10)
+size = Vector2(7, 6)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tv87d"]
 animations = [{
@@ -398,7 +398,7 @@ shape = SubResource("RectangleShape2D_pdge5")
 debug_color = Color(0.564706, 0.556863, 0, 0.552941)
 
 [node name="Collider_airborne" type="CollisionShape2D" parent="."]
-position = Vector2(0, 3)
+position = Vector2(-0.5, 5)
 shape = SubResource("RectangleShape2D_wmago")
 debug_color = Color(0.979594, 0.14234, 0, 0.42)
 
