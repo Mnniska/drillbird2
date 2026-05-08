@@ -1,10 +1,10 @@
 [gd_scene load_steps=27 format=3 uid="uid://dxns6yintyghj"]
 
-[ext_resource type="Script" path="res://Scripts/Enemies/Enemy_Follower.gd" id="1_8e42x"]
-[ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_collidable.gd" id="2_7cq53"]
+[ext_resource type="Script" uid="uid://b7o1f1adublh4" path="res://Scripts/Enemies/Enemy_Follower.gd" id="1_8e42x"]
+[ext_resource type="Script" uid="uid://bgy5cf01m25xs" path="res://Scripts/Abstract scripts/abstract_collidable.gd" id="2_7cq53"]
 [ext_resource type="Texture2D" uid="uid://dkbi35i3knyaa" path="res://Art/characters/Follower/Follower_alert.png" id="2_rj7wu"]
 [ext_resource type="Texture2D" uid="uid://cuamnv0bqwgix" path="res://Art/characters/Follower/Follower_idle.png" id="3_8ugdf"]
-[ext_resource type="Script" path="res://Scripts/Abstract scripts/abstract_enemy.gd" id="3_h4x6s"]
+[ext_resource type="Script" uid="uid://cokuso80w54cc" path="res://Scripts/Abstract scripts/abstract_enemy.gd" id="3_h4x6s"]
 [ext_resource type="Texture2D" uid="uid://cuw8sbkqd18i4" path="res://Art/characters/Follower/Follower_run1.png" id="4_k3mto"]
 [ext_resource type="Texture2D" uid="uid://dc3ugrpko31mt" path="res://Art/characters/Follower/Follower_run2.png" id="5_8ofnh"]
 [ext_resource type="Texture2D" uid="uid://dfhri3js5nruu" path="res://Art/characters/Follower/follower_death1.png" id="5_tkdfy"]
@@ -29,7 +29,6 @@ enemyID = 3
 [sub_resource type="Resource" id="Resource_b115a"]
 script = ExtResource("3_h4x6s")
 type = 2
-damage = 1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_khmiv"]
 size = Vector2(12, 10)
