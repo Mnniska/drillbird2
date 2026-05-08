@@ -272,6 +272,7 @@ position_smoothing_speed = 8.0
 script = ExtResource("15_sox0p")
 
 [node name="Darkness" type="PointLight2D" parent="Camera2D"]
+z_index = 4
 position = Vector2(16.5, -78.5)
 scale = Vector2(5.576, 3.428)
 blend_mode = 2
@@ -407,7 +408,7 @@ minLight = 0.25
 
 [node name="light_full" type="PointLight2D" parent="PlayerDarkness"]
 blend_mode = 2
-range_z_max = 0
+range_z_max = 10
 texture = ExtResource("36_yw5ht")
 
 [node name="IntroCutscene" parent="." instance=ExtResource("86_d8wwr")]

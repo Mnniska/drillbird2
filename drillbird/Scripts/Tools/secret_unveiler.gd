@@ -21,7 +21,9 @@ func UnveilTargetTilemap(simulated:bool=false):
 	
 	pass
 
-func _on_body_shape_entered() -> void:
+
+
+func _on_body_shape_entered(_bodyRid:RID,_body:Node2D,_body_shape_index:int,_localshape:int) -> void:
 	
 	if !unveiled:
 		UnveilTargetTilemap()

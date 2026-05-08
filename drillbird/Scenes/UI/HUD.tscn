@@ -158,7 +158,7 @@ scene_credits = ExtResource("2_lsdg3")
 scene_main = ExtResource("3_wspqp")
 
 [node name="topUI" type="Node2D" parent="."]
-z_index = 2
+z_index = 5
 position = Vector2(160, 8)
 
 [node name="background" type="Sprite2D" parent="topUI"]
