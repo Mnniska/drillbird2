@@ -9,7 +9,7 @@ signal signal_PlayerDrilling(drilling:bool)
 
 var animstate=""
 enum Directions {LEFT, RIGHT, UP, DOWN}
-enum States {IDLE, DRILLING, AIR, DEAD, DAMAGE, DEBUG_GHOST,PAUSE,FLOWER,DROPPINGORES,DAZED}
+enum States {IDLE, DRILLING, AIR, DEAD, DAMAGE, DEBUG_GHOST,PAUSE,FLOWER,DROPPINGORES,DAZED,SINGING}
 var state = States.IDLE
 @export var collType:abstract_collidable
 
@@ -54,6 +54,8 @@ var currentVibrateTarget:int=0
 var invincible:bool=false
 
 var droppingOresCounter:float=0
+var singingCounter:float=0
+@export var singingTimeWhenAirborne:float=0.5
 
 #IM DRILLING!! 
 var playerIsDrilling:bool=false
@@ -161,7 +163,7 @@ func _physics_process(delta: float) -> void:
 	
 
 	
-	if !state==States.DAMAGE and !state==States.DEAD and !state==States.FLOWER and !state==States.DROPPINGORES and !state==States.DAZED:
+	if !state==States.DAMAGE and !state==States.DEAD and !state==States.FLOWER and !state==States.DROPPINGORES and !state==States.DAZED and !state==States.SINGING:
 		newanim=RegularMovement(delta,newanim)
 	elif state==States.DAMAGE:
 		newanim=TakeDamageMovement(delta,newanim)
@@ -173,6 +175,8 @@ func _physics_process(delta: float) -> void:
 		newanim=FlowerMovement(delta,newanim)
 	elif state==States.DROPPINGORES:
 		newanim=DroppingOresMovement(delta,newanim)
+	elif state==States.SINGING:
+		newanim=SingingMovement(delta,newanim)
 	elif state==States.DAZED:
 		newanim=DazedMovement(delta,newanim)
 
@@ -198,7 +202,6 @@ func _physics_process(delta: float) -> void:
 	#used to create a cooldown before the "inventory full" message is shown again, needed since I'm adding a sound to it
 	if inventory_full_cooldown_timer>0:
 		inventory_full_cooldown_timer-=delta
-	
 
 func GetClosestFlower():
 	for n in closeFlowers:
@@ -225,7 +228,21 @@ func DroppingOresMovement(delta:float,currentAnim:String):
 		state=States.IDLE
 		
 	return "drop_ores"
+
+func SingingMovement(delta:float,currentAnim:String):
 	
+	velocity.y=0
+	velocity.x=velocity.x*0.9
+	
+	singingCounter+=delta
+	if singingCounter>singingTimeWhenAirborne:
+		singingCounter=0
+		state=States.IDLE
+	
+	if is_on_floor():
+		return "sing_stand"
+	else:
+		return "sing_fly"
 
 func FlowerMovement(delta:float,currentAnim:String):
 	
@@ -366,6 +383,12 @@ func RefillJumpCrystals():
 
 func RegularMovement(delta:float,currentAnim:String):
 	var newanim=currentAnim
+	
+	if Input.is_action_just_pressed("sing"):
+		state=States.SINGING
+		SoundManager.PlaySoundAtLocation(global_position,abstract_SoundEffectSetting.SoundEffectEnum.PLAYER_WAKEUP)
+		if GlobalVariables:
+			GlobalVariables.playerSang.emit()
 	
 	if Input.is_action_just_pressed("interact"):
 		
