@@ -1,0 +1,98 @@
+[gd_scene load_steps=7 format=3 uid="uid://dgb113k7sw22l"]
+
+[ext_resource type="Script" uid="uid://c0ne4jdn445mi" path="res://Scripts/cutscenes/dialogue_script.gd" id="1_q0cyu"]
+[ext_resource type="Texture2D" uid="uid://c5ajqgewmkuxk" path="res://Art/UI/speechbubble.png" id="2_a7b2o"]
+[ext_resource type="Theme" uid="uid://bfr5y4lo7m1ux" path="res://Resources/Fonts/fontTheme.tres" id="3_s0e8w"]
+[ext_resource type="Texture2D" uid="uid://crworbxeyan2m" path="res://Art/UI/sign_bg_arrowt.png" id="4_s0e8w"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m30m7"]
+texture = ExtResource("2_a7b2o")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s0e8w"]
+size = Vector2(168, 53)
+
+[node name="Dialogue" type="Node2D"]
+z_index = 6
+script = ExtResource("1_q0cyu")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+light_mask = 0
+visibility_layer = 4
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -149.0
+offset_top = -259.0
+offset_right = 150.0
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 8
+alignment = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer"]
+light_mask = 0
+visibility_layer = 4
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_styles/panel = SubResource("StyleBoxTexture_m30m7")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/PanelContainer"]
+light_mask = 0
+visibility_layer = 4
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="text" type="RichTextLabel" parent="VBoxContainer/PanelContainer/MarginContainer"]
+light_mask = 0
+visibility_layer = 4
+custom_minimum_size = Vector2(260, 0)
+layout_mode = 2
+size_flags_vertical = 8
+theme = ExtResource("3_s0e8w")
+theme_override_colors/default_color = Color(0.19374472, 0.060779914, 0.22031766, 1)
+bbcode_enabled = true
+text = "elease [/wave]to experience the rest
+
+You can continue exploring the upper parts for as long as you like. 
+[center]You've reached the border of Drillbirds demo!
+
+Please check out the [wave]full release [/wave]to experience the rest
+
+You can continue exploring the upper parts for as long as you like. 
+"
+fit_content = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+light_mask = 0
+visibility_layer = 4
+z_index = -2
+offset_left = -21.0
+offset_top = -25.0
+offset_right = 21.0
+offset_bottom = -9.0
+texture = ExtResource("4_s0e8w")
+stretch_mode = 5
+
+[node name="playerCollider" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="playerCollider"]
+position = Vector2(-1, -16.5)
+shape = SubResource("RectangleShape2D_s0e8w")
+
+[connection signal="body_entered" from="playerCollider" to="." method="_on_player_collider_body_entered"]

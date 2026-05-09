@@ -1,5 +1,6 @@
 [gd_scene load_steps=105 format=4 uid="uid://bccoqdt4pl042"]
 
+[ext_resource type="PackedScene" uid="uid://dgb113k7sw22l" path="res://Scenes/cutscenes/DialogueScene.tscn" id="1_8ohpj"]
 [ext_resource type="TileSet" uid="uid://grpd2pyu7pgk" path="res://Resources/MainTileset.tres" id="1_ewpql"]
 [ext_resource type="Script" uid="uid://ddqrep1nrk25j" path="res://Scenes/Playable Scenes/OreSpawner.gd" id="2_4fr2f"]
 [ext_resource type="Script" uid="uid://pnk5fvwki8h3" path="res://Scripts/Abstract scripts/abstract_ore_region.gd" id="3_7p4f3"]
@@ -61,7 +62,6 @@
 [ext_resource type="Script" uid="uid://c1prdu3y8gwht" path="res://Scripts/Tools/player_location_saver.gd" id="59_m4a0a"]
 [ext_resource type="PackedScene" uid="uid://vepb6l7dw7ly" path="res://Scenes/Water shenanigans/WaterSourceBlock.tscn" id="60_4fr2f"]
 [ext_resource type="PackedScene" uid="uid://pavkdcthm8ws" path="res://Scenes/cutscenes/Demon_deal.tscn" id="61_7p4f3"]
-[ext_resource type="PackedScene" uid="uid://dsyfi85u2qe66" path="res://Scenes/Objects and Enemies/Object_Sign.tscn" id="62_8lf0q"]
 [ext_resource type="Script" uid="uid://cg5f1k2sm50v" path="res://Scenes/Playable Scenes/ghost_manager.gd" id="63_vhuqd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xeuju"]
@@ -183,6 +183,19 @@ size = Vector2(609, 220)
 size = Vector2(609, 220)
 
 [node name="WorldSpawn" type="Node"]
+
+[node name="Dialogue" parent="." instance=ExtResource("1_8ohpj")]
+position = Vector2(982, -125)
+linesToPlay = Array[String](["demondeal_1", "demondeal_2", "demondeal_3", "demondeal_4", "demondeal_5", "demondeal_6", "demondeal_7", "demondeal_8", "demondeal_9", "demondeal_10", "demondeal_11"])
+
+[node name="TextureRect" parent="Dialogue" index="1"]
+offset_left = 11.0
+offset_top = -24.0
+offset_right = 53.0
+offset_bottom = -8.0
+
+[node name="playerCollider" parent="Dialogue" index="2"]
+position = Vector2(0, 34)
 
 [node name="Tilemap_Background" type="TileMapLayer" parent="."]
 light_mask = 0
@@ -1520,10 +1533,6 @@ position = Vector2(13, 56)
 collision_layer = 0
 collision_mask = 16
 
-[node name="Sign" parent="Demon cave" instance=ExtResource("62_8lf0q")]
-position = Vector2(-70, -7)
-stringToShowID = "demon_info"
-
 [node name="CameraLimiter" parent="Demon cave" instance=ExtResource("56_h3y7k")]
 visible = false
 position = Vector2(0, -66)
@@ -1583,6 +1592,7 @@ shape = SubResource("RectangleShape2D_6gcm5")
 [connection signal="body_shape_entered" from="PlayerSpawnLocations/PlayerLocationSaver" to="PlayerSpawnLocations/PlayerLocationSaver" method="_on_body_shape_entered"]
 [connection signal="buttonPressed" from="Demon cave/Demon/InteractButton_acceptDeal" to="Demon cave/Demon" method="_on_interact_button_accept_deal_button_pressed"]
 
+[editable path="Dialogue"]
 [editable path="WorldScripts/Tutorial_DropOres"]
 [editable path="WorldScripts/Tutorial_Flower"]
 [editable path="WorldScripts/Tutorial_LongDrill"]
