@@ -1,9 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://dgb113k7sw22l"]
+[gd_scene load_steps=10 format=3 uid="uid://dgb113k7sw22l"]
 
 [ext_resource type="Script" uid="uid://c0ne4jdn445mi" path="res://Scripts/cutscenes/dialogue_script.gd" id="1_q0cyu"]
 [ext_resource type="Texture2D" uid="uid://c5ajqgewmkuxk" path="res://Art/UI/speechbubble.png" id="2_a7b2o"]
 [ext_resource type="Theme" uid="uid://bfr5y4lo7m1ux" path="res://Resources/Fonts/fontTheme.tres" id="3_s0e8w"]
 [ext_resource type="Texture2D" uid="uid://crworbxeyan2m" path="res://Art/UI/sign_bg_arrowt.png" id="4_s0e8w"]
+[ext_resource type="Texture2D" uid="uid://shw5k6xi8jrf" path="res://Art/UI/UI_bubble_iconHolder_leftSide.png" id="5_nccay"]
+[ext_resource type="Texture2D" uid="uid://2xidorn8blnd" path="res://Art/UI/UI_bubble_iconHolder.png" id="6_t7p41"]
+[ext_resource type="Texture2D" uid="uid://bpp3u6kqc1pyv" path="res://Art/UI/UI_bubble_end_left.png" id="7_8pch8"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m30m7"]
 texture = ExtResource("2_a7b2o")
@@ -94,5 +97,51 @@ collision_mask = 16
 [node name="CollisionShape2D" type="CollisionShape2D" parent="playerCollider"]
 position = Vector2(-1, -16.5)
 shape = SubResource("RectangleShape2D_s0e8w")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_left = 76.0
+offset_top = -47.0
+offset_right = 180.0
+offset_bottom = -7.0
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="bg_left" type="TextureRect" parent="HBoxContainer"]
+self_modulate = Color(1, 1, 1, 0.678431)
+z_index = 6
+layout_mode = 2
+texture = ExtResource("5_nccay")
+stretch_mode = 3
+
+[node name="iconHolder" type="TextureRect" parent="HBoxContainer"]
+self_modulate = Color(1, 1, 1, 0.678431)
+z_index = 6
+layout_mode = 2
+texture = ExtResource("6_t7p41")
+stretch_mode = 3
+
+[node name="text_icon" type="RichTextLabel" parent="HBoxContainer/iconHolder"]
+z_index = 7
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 12.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_s0e8w")
+bbcode_enabled = true
+text = "[outline_size={2}](O)"
+
+[node name="bg_right" type="TextureRect" parent="HBoxContainer"]
+self_modulate = Color(1, 1, 1, 0.678431)
+z_index = 6
+layout_mode = 2
+texture = ExtResource("7_8pch8")
+stretch_mode = 3
+flip_h = true
 
 [connection signal="body_entered" from="playerCollider" to="." method="_on_player_collider_body_entered"]

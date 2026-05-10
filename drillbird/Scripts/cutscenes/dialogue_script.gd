@@ -5,6 +5,8 @@ signal dialogueFinished
 @onready var dialogueContainter=$VBoxContainer
 @onready var text:RichTextLabel=$VBoxContainer/PanelContainer/MarginContainer/text
 @export var linesToPlay:Array[String]
+
+@onready var continueSymbolText:RichTextLabel=$HBoxContainer/iconHolder/text_icon
 #could also make a dialogue script and have an array of those if we want same dialogue script to alter betweeen diff dialogues
 
 var dialogueHasPlayed:bool=false
@@ -25,7 +27,7 @@ func StartDialogue():
 
 func ContinueDialogue():
 	text.text=tr(linesToPlay[currentLineIndex])
-	
+	continueSymbolText.text="[center]"+GlobalSymbolRegister.GetStringDecoded("(sing)",true)
 	await GlobalVariables.playerSang
 	
 	if currentLineIndex<linesToPlay.size()-1:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://c1s1lt0t5napj"]
+[gd_scene load_steps=8 format=3 uid="uid://c1s1lt0t5napj"]
 
 [ext_resource type="Script" uid="uid://bv0bukyayk8tw" path="res://Scripts/UX and UI/global_symbol_register.gd" id="1_6kmap"]
 [ext_resource type="Script" uid="uid://dn8xgt04mreet" path="res://Scripts/Abstract scripts/abstract_symbol_info.gd" id="2_kpm2m"]
@@ -27,6 +27,13 @@ code = "()"
 img_path_gamepad = ""
 img_path_keyboard = ""
 
+[sub_resource type="Resource" id="Resource_0v3nw"]
+script = ExtResource("2_kpm2m")
+code = "(sing)"
+img_path_gamepad = "res://Art/UI/buttonSymbol_right.png"
+img_path_keyboard = "sing"
+metadata/_custom_type_script = "uid://dn8xgt04mreet"
+
 [node name="SymbolRegister" type="Node"]
 script = ExtResource("1_6kmap")
-symbols = Array[ExtResource("2_kpm2m")]([SubResource("Resource_ygeou"), SubResource("Resource_qn514"), SubResource("Resource_yco71"), SubResource("Resource_nkwi6")])
+symbols = Array[ExtResource("2_kpm2m")]([SubResource("Resource_ygeou"), SubResource("Resource_qn514"), SubResource("Resource_yco71"), SubResource("Resource_nkwi6"), SubResource("Resource_0v3nw")])
