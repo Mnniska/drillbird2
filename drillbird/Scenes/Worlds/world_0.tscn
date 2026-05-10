@@ -197,6 +197,9 @@ offset_bottom = -8.0
 [node name="playerCollider" parent="Dialogue" index="2"]
 position = Vector2(0, 34)
 
+[node name="CollisionShape2D" parent="Dialogue/playerCollider" index="0"]
+position = Vector2(23, -16.5)
+
 [node name="Tilemap_Background" type="TileMapLayer" parent="."]
 light_mask = 0
 visibility_layer = 4

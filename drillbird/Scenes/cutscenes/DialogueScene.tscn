@@ -15,7 +15,7 @@ axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s0e8w"]
-size = Vector2(168, 53)
+size = Vector2(120, 53)
 
 [node name="Dialogue" type="Node2D"]
 z_index = 6
