@@ -101,7 +101,7 @@ position = Vector2(0, 26)
 optionName = "Language options"
 localizationID = "options_language"
 isAction = false
-options = [NodePath("../OptionScroller/Langmenu_Return"), NodePath("../OptionScroller/Lang_english"), NodePath("../OptionScroller/Lang_Japanese"), NodePath("../OptionScroller/Lang_Chinese"), NodePath("../OptionScroller/Lang_Russian"), NodePath("../OptionScroller/Lang_Sve"), NodePath("../OptionScroller/Lang_French"), NodePath("../OptionScroller/Lang_de")]
+options = [NodePath("../OptionScroller/Langmenu_Return"), NodePath("../OptionScroller/Lang_english"), NodePath("../OptionScroller/Lang_Japanese"), NodePath("../OptionScroller/Lang_Chinese"), NodePath("../OptionScroller/Lang_Russian"), NodePath("../OptionScroller/Lang_Sve"), NodePath("../OptionScroller/Lang_French"), NodePath("../OptionScroller/Lang_de"), NodePath("../OptionScroller/Lang_es")]
 
 [node name="Credits" parent="." instance=ExtResource("2_x5nw2")]
 visible = false
@@ -110,7 +110,6 @@ optionName = "Show Credits"
 localizationID = "options_credits"
 
 [node name="OptionScroller" type="Node2D" parent="."]
-visible = false
 position = Vector2(0, -35)
 script = ExtResource("7_uviax")
 distance = 14
@@ -176,6 +175,14 @@ optionName = "lang_de"
 localizationID = "lang_de"
 
 [node name="RichTextLabel" parent="OptionScroller/Lang_de" index="0"]
+theme_override_fonts/normal_font = ExtResource("7_rg54n")
+
+[node name="Lang_es" parent="OptionScroller" instance=ExtResource("2_x5nw2")]
+position = Vector2(0, 146)
+optionName = "lang_es"
+localizationID = "lang_es"
+
+[node name="RichTextLabel" parent="OptionScroller/Lang_es" index="0"]
 theme_override_fonts/normal_font = ExtResource("7_rg54n")
 
 [node name="toggle rumble" parent="." instance=ExtResource("2_x5nw2")]
@@ -254,3 +261,4 @@ position = Vector2(168, 131)
 [editable path="OptionScroller/Lang_Sve"]
 [editable path="OptionScroller/Lang_French"]
 [editable path="OptionScroller/Lang_de"]
+[editable path="OptionScroller/Lang_es"]

@@ -305,6 +305,9 @@ func ButtonPressed(_option:menu_option):
 	if _option.optionName=="lang_de":
 		SetLanguage("de")
 		pass
+	if _option.optionName=="lang_es":
+		SetLanguage("es")
+		pass
 
 func SetLanguage(lang:String):
 	TranslationServer.set_locale(lang)

@@ -14,6 +14,13 @@ var timeCounter:float=0
 var lerpcurve:int=-5
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	
+	await GlobalVariables.SetupComplete
+	if GlobalVariables.isInCursedMode:
+		self.limit_top=-500
+	else:
+		self.limit_top=-450
+	
 	pass # Replace with function body.
 
 
