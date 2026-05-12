@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://tgrku1xx68j5"
-path="res://.godot/imported/corpse_falling1.png-4987586df6f90c052d4bfabda9065e85.ctex"
+uid="uid://bo7k4xikeq406"
+path="res://.godot/imported/corpse_appear1.png-9d515b457ede8d9b45d5386f9cf93f67.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/characters/corpse/corpse_falling1.png"
-dest_files=["res://.godot/imported/corpse_falling1.png-4987586df6f90c052d4bfabda9065e85.ctex"]
+source_file="res://Art/characters/corpse/corpse_appear1.png"
+dest_files=["res://.godot/imported/corpse_appear1.png-9d515b457ede8d9b45d5386f9cf93f67.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://tgrku1xx68j5"
-path="res://.godot/imported/corpse_falling1.png-4987586df6f90c052d4bfabda9065e85.ctex"
+uid="uid://m31quupp78r3"
+path="res://.godot/imported/corpse_midair_apex.png-f22d01cf717d0cd48313d1ede0bb2d3a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/characters/corpse/corpse_falling1.png"
-dest_files=["res://.godot/imported/corpse_falling1.png-4987586df6f90c052d4bfabda9065e85.ctex"]
+source_file="res://Art/characters/corpse/corpse_midair_apex.png"
+dest_files=["res://.godot/imported/corpse_midair_apex.png-f22d01cf717d0cd48313d1ede0bb2d3a.ctex"]
 
 [params]
 

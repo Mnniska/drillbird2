@@ -6,20 +6,23 @@ var isFalling:bool=true
 @export var collType:abstract_collidable
 @export var enemyInfo:abstract_enemy
 
+var hasLanded:bool=false
+
+enum fallEnum{up,neutral,down}
+var fallState:fallEnum
+
 func _ready() -> void:
 	positionLastFrame=position
 
 func _physics_process(delta: float) -> void:
-	
+	var anim="idle"
 		# Add the gravity.
-	if not is_on_floor():
+	if is_on_floor():
+		anim="land"
+	else:
 		velocity += get_gravity() * delta*0.5
-
-
-	var anim="falling"
-	isFalling = GetIsFalling()
-	if !isFalling:
-		anim="idle"
+		anim=GetIsFalling()
+	
 		
 	positionLastFrame=position #must be called before move_and_slide but after functions that need it
 	UpdateAnimations(anim)
@@ -29,11 +32,18 @@ func UpdateAnimations(anim:String):
 	if anim!=animator.animation:
 		animator.play(anim)
 
-func GetIsFalling():
+func GetIsFalling()->String:
 	#Make sure to update PositionLastFrame AFTER this
 	var speed = abs(positionLastFrame-position)
 	
-	return speed.y>0.1
+	if speed.y>0.1:
+		return "fall_down"
+	
+	if speed.y<-0.1:
+		return "fall_up"
+	
+	return "fall_neutral"
+
 
 func DealDamage(amount:int=1):
 	if amount>0:
