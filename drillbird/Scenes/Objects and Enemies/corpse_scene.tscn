@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://biod8soole26"]
+[gd_scene load_steps=16 format=3 uid="uid://biod8soole26"]
 
 [ext_resource type="Script" uid="uid://4540treojg75" path="res://Scripts/Enemies/corpse.gd" id="1_55naq"]
 [ext_resource type="Script" uid="uid://bgy5cf01m25xs" path="res://Scripts/Abstract scripts/abstract_collidable.gd" id="2_gmtsd"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://bo7k4xikeq406" path="res://Art/characters/corpse/corpse_appear1.png" id="4_mop0q"]
 [ext_resource type="Texture2D" uid="uid://cdsi77tnl2xab" path="res://Art/characters/corpse/corpse_appear2.png" id="5_0sp47"]
 [ext_resource type="Texture2D" uid="uid://bjf604qsfcpfq" path="res://Art/characters/corpse/corpse_land1.png" id="5_3idqe"]
-[ext_resource type="Texture2D" uid="uid://bmwce4oantcmd" path="res://Art/characters/corpse/corpse_appear3.png" id="6_6lonp"]
 [ext_resource type="Texture2D" uid="uid://1cs5lpwiasmg" path="res://Art/characters/corpse/corpse_land2.png" id="6_mop0q"]
 [ext_resource type="Texture2D" uid="uid://m31quupp78r3" path="res://Art/characters/corpse/corpse_midair_apex.png" id="7_webwr"]
 [ext_resource type="Texture2D" uid="uid://6fto1v4ptni7" path="res://Art/characters/corpse/corpse_midair_falling.png" id="8_slm1u"]
@@ -35,13 +34,10 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("5_0sp47")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_6lonp")
 }],
-"loop": true,
+"loop": false,
 "name": &"appear",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -85,13 +81,14 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("10_ygsc2")
 }],
-"loop": true,
+"loop": false,
 "name": &"land",
 "speed": 5.0
 }]
 
 [node name="Corpse" type="CharacterBody2D"]
 collision_layer = 8192
+collision_mask = 16385
 script = ExtResource("1_55naq")
 collType = SubResource("Resource_vgfsx")
 enemyInfo = SubResource("Resource_3idqe")
@@ -103,4 +100,6 @@ shape = SubResource("RectangleShape2D_6lonp")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 2
 sprite_frames = SubResource("SpriteFrames_webwr")
-animation = &"idle"
+animation = &"appear"
+frame = 1
+frame_progress = 1.0

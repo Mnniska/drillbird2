@@ -119,7 +119,18 @@ func Kill(showEffects:bool=true,soundToPlay:abstract_SoundEffectSetting.SoundEff
 func TurnIntoCorpse():
 	#spawn corpse here 
 	var corpseInstance:CharacterBody2D=corpseRefernse.instantiate()
-	corpseInstance.transform.origin=global_position+Vector2(0,-8)
+	
+	var tilemap:TileMapLayer
+	if GlobalVariables.MainSceneReferenceConnector.ref_environmentTilemap:
+		tilemap= GlobalVariables.MainSceneReferenceConnector.ref_environmentTilemap
+	
+	var pos=global_position
+	
+	if tilemap:
+		#align the position to tilemap coordinates 
+		pos=tilemap.local_to_map(tilemap.to_local(global_position))
+		pos=tilemap.to_global(tilemap.map_to_local(pos))
+	corpseInstance.transform.origin=pos+Vector2(0,-8)
 	var parent:object_spawner=get_parent()
 	parent.AddCorpse(corpseInstance)
 	

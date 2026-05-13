@@ -8,20 +8,36 @@ var isFalling:bool=true
 
 var hasLanded:bool=false
 
-enum fallEnum{up,neutral,down}
-var fallState:fallEnum
+enum States{IDLE,FALLING,SPAWNING}
+var state:States=States.SPAWNING
 
 func _ready() -> void:
 	positionLastFrame=position
+	await get_tree().create_timer(0.1).timeout
+	self.velocity.y=-60
+	state=States.FALLING
 
 func _physics_process(delta: float) -> void:
+	
 	var anim="idle"
+	
+	match state:
+		States.SPAWNING:
+			anim="appear"
+			pass
+		States.FALLING:
+			if is_on_floor():
+				anim="land"
+			else:
+				velocity += get_gravity() * delta*0.5
+				anim=GetIsFalling()
+				pass
+		States.IDLE:
+			pass
+	
+
 		# Add the gravity.
-	if is_on_floor():
-		anim="land"
-	else:
-		velocity += get_gravity() * delta*0.5
-		anim=GetIsFalling()
+
 	
 		
 	positionLastFrame=position #must be called before move_and_slide but after functions that need it
