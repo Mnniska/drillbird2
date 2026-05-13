@@ -10,6 +10,7 @@ var isInCursedMode:bool=false
 var save_file_path = "user://save/"
 var save_file_name="DrillbirdPlayerSave.tres"
 
+
 var MainSceneReferenceConnector:main_scene_reference_connector
 var CreditsSceneReferenceConnector:credits_scene_reference_connector
 var playerSpawnPos:Vector2
@@ -64,6 +65,7 @@ func SignalWorldHasBeenSpawned(iteration:int=0):
 func ResetSaveData():
 	var newData=abstract_savegame.new()
 	ResourceSaver.save(newData,save_file_path+save_file_name)
+	
 	pass
 
 func SetupPlayerReference(ctrl:CharacterBody2D):

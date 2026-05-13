@@ -15,6 +15,8 @@ var currentSelection:int=0
 var hasOneUpgrade:bool=false
 # Called when the node enters the scene tree for the first time.
 
+var itemsPurchasedThisSession:String
+
 func _ready():
 	GlobalVariables.playerMoneyChange.connect(PlayerMoneyChanged)
 	GlobalVariables.SetupComplete.connect(InitializationComplete)
@@ -98,7 +100,23 @@ func AttemptPurchaseSelectedItem():
 			SoundManager.PlaySoundGlobal(abstract_SoundEffectSetting.SoundEffectEnum.HOME_MENU_PURCHASE_YES)
 			CheckShopAchievements()
 			#Tell UI to update itself
-		
+			
+			
+			#Write the purchased item to the debug log
+			var shopitem=UI_purchasables[currentSelection]
+			var txt:String=""
+			match shopitem.purchasable.type:
+				GlobalVariables.typeEnum.DRILL:
+					txt="Bought Drill lvl "+str(shopitem.GetCurrentUpgrade())
+				GlobalVariables.typeEnum.INVENTORY:
+					txt="Bought Inventory lvl "+str(shopitem.GetCurrentUpgrade())
+				GlobalVariables.typeEnum.HEALTH:
+					txt="Bought Health lvl "+str(shopitem.GetCurrentUpgrade())
+				GlobalVariables.typeEnum.LIGHT:
+					txt="Bought Light lvl "+str(shopitem.GetCurrentUpgrade())
+
+			GlobalVariables.MainSceneReferenceConnector.mainScene.WriteToDebugLog(txt)
+
 	else:
 		SoundManager.PlaySoundGlobal(abstract_SoundEffectSetting.SoundEffectEnum.HOME_MENU_PURCHASE_NO)
 
@@ -133,11 +151,17 @@ func _process(delta: float) -> void:
 		PressCurrentItem()
 		
 	pass
+
+func SaveShopResultsToDebugLog():
 	
+	pass
+
 func PressCurrentItem():
 	
 	if UI_purchasables[currentSelection].isButton():
+		SaveShopResultsToDebugLog()
 		SetActive(false)
+		
 	else:
 		AttemptPurchaseSelectedItem()
 	

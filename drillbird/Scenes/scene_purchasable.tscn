@@ -1,7 +1,7 @@
 [gd_scene load_steps=39 format=3 uid="uid://3d04qrtunccs"]
 
 [ext_resource type="Theme" uid="uid://bvlpbiblgm4kr" path="res://Art/UI/Shop/themes/theme_shop_inactive.tres" id="1_3a5gg"]
-[ext_resource type="Script" path="res://Scripts/Purchasable.gd" id="1_gej8r"]
+[ext_resource type="Script" uid="uid://dtc6pdi6vpybg" path="res://Scripts/Purchasable.gd" id="1_gej8r"]
 [ext_resource type="StyleBox" uid="uid://b1cgag3b3iq7x" path="res://Art/UI/Shop/theme_stylebox_shop_inactive.tres" id="2_gk6ia"]
 [ext_resource type="Texture2D" uid="uid://d20lbc17xts0c" path="res://Art/UI/Shop/UI_Shop_IconHolder_off.png" id="4_2yrwy"]
 [ext_resource type="Theme" uid="uid://11oiho5yvyjc" path="res://Art/UI/Shop/themes/theme_shop_active.tres" id="4_b405a"]
@@ -253,7 +253,6 @@ size_flags_horizontal = 4
 [node name="knob_start_setter" type="Control" parent="HBoxContainer/Margin/VBoxContainer/HBoxContainer/knob_start_pos_mover"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(1, 1)
-layout_mode = 2
 anchors_preset = 0
 offset_left = 1.0
 offset_top = 9.0
@@ -268,8 +267,8 @@ layout_mode = 2
 size_flags_vertical = 0
 theme = ExtResource("11_hei2b")
 theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_constants/table_h_separation = 8
 theme_override_constants/line_separation = -4
+theme_override_constants/table_h_separation = 8
 text = "I am a description"
 fit_content = true
 scroll_active = false

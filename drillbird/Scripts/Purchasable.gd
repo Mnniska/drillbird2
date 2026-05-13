@@ -1,4 +1,5 @@
 extends Control
+class_name shop_button
 
 @export var background_theme_on:Theme
 @export var background_theme_off:Theme

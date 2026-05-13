@@ -21,8 +21,33 @@ var oreAreas
 
 var PlayerData=abstract_savegame.new()
 
+func WriteToDebugLog(textToWrite:String):
+	var playerlog_file_name="DrillBirdPlayerLog.tres"
+	var playerlog_file_path="user://save/"
+	
+	var file = FileAccess.open(playerlog_file_path+playerlog_file_name, FileAccess.WRITE)
+	
+	file = FileAccess.open(playerlog_file_path+playerlog_file_name, FileAccess.READ)
+	var content:String=""
+	if file.get_as_text():
+		content = file.get_as_text()
+
+	file = FileAccess.open(playerlog_file_path+playerlog_file_name, FileAccess.WRITE)
+	file.store_string(content+"\n"+textToWrite)
+	file.close()
+	
+func ClearDebugLog():
+	var playerlog_file_name="DrillBirdPlayerLog.tres"
+	var playerlog_file_path="user://save/"
+	var file = FileAccess.open(playerlog_file_path+playerlog_file_name, FileAccess.WRITE)
+	file.store_string("")
+	file.close()
+
+	
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	
 	verify_save_directory(save_file_path)
 	LoadGame(PlayerData.worldToSpawn)
 	#Todo: load based on current savefile
@@ -129,6 +154,11 @@ func SaveGame(showgamesavedtext:bool=true):
 		Savetext.Activate(GlobalVariables.currentDay)
 	
 	pass
+	
+	WriteToDebugLog("Day "+str(GlobalVariables.currentDay)+" results: ")
+	
+	
+	
 
 func SaveLeftoverOres():
 	var a = OreSpawner.GetLeftoverOres()
