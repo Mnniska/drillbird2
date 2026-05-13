@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://4ea053k7e4d0"]
+[gd_scene load_steps=26 format=3 uid="uid://4ea053k7e4d0"]
 
 [ext_resource type="Script" uid="uid://ogag6wxgn0y5" path="res://Scripts/Enemies/enemy_mole_ore.gd" id="1_lxrrl"]
 [ext_resource type="Resource" uid="uid://bsqq3gk506g23" path="res://Resources/Economy/ore_8_gembug.tres" id="2_esx0y"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://8g2gbviw4akj" path="res://Art/characters/WalkingGem/orebug_move_still.png" id="12_esx0y"]
 [ext_resource type="Texture2D" uid="uid://bju5usiyibau1" path="res://Art/characters/WalkingGem/orebug_walk_body.png" id="12_uaqdy"]
 [ext_resource type="Texture2D" uid="uid://n358d6p58gl3" path="res://Art/characters/WalkingGem/orebug_eyeball.png" id="13_brsnl"]
+[ext_resource type="Texture2D" uid="uid://bq5jlqj1k670" path="res://Art/characters/WalkingGem/sweatdrop.png" id="15_u2ywa"]
 
 [sub_resource type="Resource" id="Resource_vulfi"]
 script = ExtResource("2_jvrxm")
@@ -80,6 +81,33 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Curve" id="Curve_8f6ss"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.21979435, 0), 0.0, 0.0, 0, 0, Vector2(0.25192803, 0.99700874), 0.0, 0.0, 0, 0, Vector2(0.8946015, 0.9790612), 0.0, 0.0, 0, 0, Vector2(0.9897172, 0.024850488), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="CurveTexture" id="CurveTexture_u10jr"]
+curve = SubResource("Curve_8f6ss")
+
+[sub_resource type="Gradient" id="Gradient_6fuec"]
+colors = PackedColorArray(0.08637593, 0.68951446, 0.72785205, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_uaqdy"]
+gradient = SubResource("Gradient_6fuec")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_brsnl"]
+particle_flag_disable_z = true
+angle_min = -19.99999
+angle_max = 20.000011
+direction = Vector3(0, -1, 0)
+spread = 49.01
+initial_velocity_min = 38.7
+initial_velocity_max = 40.45
+angular_velocity_min = -3.730016
+angular_velocity_max = -1.6093254e-05
+gravity = Vector3(0, 98, 0)
+color_ramp = SubResource("GradientTexture1D_uaqdy")
+alpha_curve = SubResource("CurveTexture_u10jr")
+
 [node name="Enemy_WalkingGem" type="CharacterBody2D"]
 collision_layer = 4096
 collision_mask = 4096
@@ -110,5 +138,10 @@ texture = ExtResource("12_uaqdy")
 [node name="eyeball" type="Sprite2D" parent="."]
 visible = false
 texture = ExtResource("13_brsnl")
+
+[node name="sweatParticles" type="GPUParticles2D" parent="."]
+emitting = false
+texture = ExtResource("15_u2ywa")
+process_material = SubResource("ParticleProcessMaterial_brsnl")
 
 [connection signal="body_shape_entered" from="Detection area" to="." method="_on_detection_area_body_shape_entered"]

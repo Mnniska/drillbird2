@@ -6,15 +6,18 @@ extends Base_Enemy
 @onready var spawnedCollider= preload("res://Scenes/Objects and Enemies/mole_ore_collider.tscn")
 const SPEED = 5
 const DISTANCE_TO_FEEL_SAFE = 16*3
-const DISTANCE_BEFORE_SPAWNING_NEW_COLLIDER:float=16*6
+const DISTANCE_BEFORE_SPAWNING_NEW_COLLIDER:float=16*5
 
 @onready var detectionArea=$"Detection area"
 @onready var sprite=$sprite
 @onready var bodysprite=$body
 @onready var eyesprite=$eyeball
+@onready var sweatParticles:GPUParticles2D=$sweatParticles
 
 var bodyToEscapeFrom:Node2D=null
 enum States{IDLE,ESCAPING,DYING}
+var desperate:bool=false
+var desperateEscapeCounter:float=0
 var state:States=States.IDLE
 
 var collidersForEmptySpaces:Array[Node2D]
@@ -32,7 +35,7 @@ func _ready() -> void:
 
 	await GlobalVariables.SetupComplete
 	CreateCollidersOnEmptySpaces(GetTilemap())
-	
+	sweatParticles.emitting=false
 
 
 func GetTilemap()->TileMapLayer:
@@ -71,7 +74,7 @@ func _physics_process(_delta: float) -> void:
 		States.ESCAPING:
 			vibrate=true
 			
-			if positionLastFrame.distance_to(position)>0.1:
+			if positionLastFrame.distance_to(position)>0.2:
 				_anim="walk"
 			else:
 				_anim="walk_still"
@@ -86,11 +89,26 @@ func _physics_process(_delta: float) -> void:
 			var movementV=GetMovementVector(bodyToEscapeFrom.global_position)
 			velocity+=movementV*SPEED
 			
-			var p = randf_range(-5,5)
-			var y =randf_range(-5,5)
+			var randomness=5
+			if desperate:
+				randomness=15
+			
+			var p = randf_range(-randomness,randomness)
+			var y =randf_range(-randomness,randomness)
+			
+			
 			velocity+=Vector2(p,y)
 			
-			if global_position.distance_to(bodyToEscapeFrom.global_position)>=DISTANCE_TO_FEEL_SAFE:
+			var distanceToPlayer=global_position.distance_to(bodyToEscapeFrom.global_position)
+			
+			if distanceToPlayer<25:
+				desperate=true
+				sweatParticles.emitting=true
+			else:
+				desperate=false
+				sweatParticles.emitting=false
+			
+			if distanceToPlayer>=DISTANCE_TO_FEEL_SAFE:
 				state=States.IDLE
 			
 			if global_position.distance_to(positionOfLastColliderSpawn)>DISTANCE_BEFORE_SPAWNING_NEW_COLLIDER:
