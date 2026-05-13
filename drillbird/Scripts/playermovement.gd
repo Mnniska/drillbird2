@@ -650,7 +650,7 @@ func PlayerStoppedDrillingValidTile():
 	FlowerTimer.stop()
 	SetLightEffectActive(false)
 	
-func DealDamage(amount:int):
+func DealDamage(amount:int,_spawnCorpse:bool=false):
 	if state==States.DAMAGE or state==States.DEAD:
 		return false
 		

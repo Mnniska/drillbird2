@@ -11,7 +11,6 @@ var state:states=states.fallprep
 var timeBeforeFallCounter:float=0
 
 var playImpactEffect:bool=false
-
 var fallOrigin:Vector2
 var distanceFallen:float=0
 @export var blocksFallenBeforeBreaking:float=1.5
@@ -83,10 +82,16 @@ func _physics_process(delta: float) -> void:
 							n.TurnEnemyOff()
 						#custom murder
 					
-			else:
-				move_and_slide()
-				
-			if  is_on_floor():
+			velocity.y += get_gravity().y * delta
+			
+			positionLastFrame=global_position
+
+			move_and_slide()
+			
+			var deltamove=global_position-positionLastFrame
+
+			
+			if  deltamove.y==0: #block finishes fall
 				state=states.idle
 				animToPlay="idle"
 				if playImpactEffect:
@@ -106,8 +111,7 @@ func _physics_process(delta: float) -> void:
 								
 
 
-			else:
-				velocity.y += get_gravity().y * delta
+			
 
 	UpdateAnimations(animToPlay)
 
@@ -171,5 +175,17 @@ func _on_observer_block_destroyed() -> void:
 func _on_enemy_collision_checker_body_shape_entered(_body_rid: RID, body: Node2D, _body_shape_index: int, _local_shape_index: int) -> void:
 	if body==$"." or state!=states.fall:
 		return
+	
+	pass # Replace with function body.
+
+
+func _on_player_pusher_body_shape_entered(_body_rid: RID, body: Node2D, _body_shape_index: int, _local_shape_index: int) -> void:
+	
+	var diff = body.global_position-global_position
+	
+	if diff.x>0:
+		body.position.x+=3
+	else:
+		body.position.x-=3
 	
 	pass # Replace with function body.

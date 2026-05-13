@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dt2yrd4gyilr7"]
+[gd_scene load_steps=25 format=3 uid="uid://dt2yrd4gyilr7"]
 
 [ext_resource type="Script" uid="uid://b2pc8kpq0lmnc" path="res://Scripts/Enemies/FallBlock.gd" id="1_2a7bl"]
 [ext_resource type="Script" uid="uid://bgy5cf01m25xs" path="res://Scripts/Abstract scripts/abstract_collidable.gd" id="2_5r5oy"]
@@ -97,6 +97,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qsnx3"]
+size = Vector2(14, 2)
+
 [node name="FallBlock" type="CharacterBody2D"]
 collision_layer = 129
 collision_priority = 2.0
@@ -154,5 +157,14 @@ sprite_frames = SubResource("SpriteFrames_sb6h4")
 animation = &"idle"
 autoplay = "idle"
 
+[node name="PlayerPusher" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerPusher"]
+position = Vector2(0, 6)
+shape = SubResource("RectangleShape2D_qsnx3")
+
 [connection signal="body_shape_entered" from="EnemyCollisionChecker" to="." method="_on_enemy_collision_checker_body_shape_entered"]
 [connection signal="BlockDestroyed" from="Observer" to="." method="_on_observer_block_destroyed"]
+[connection signal="body_shape_entered" from="PlayerPusher" to="." method="_on_player_pusher_body_shape_entered"]
