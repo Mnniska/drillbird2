@@ -66,10 +66,9 @@ func GetIsFalling():
 		
 	
 	
-func DealDamage(value:int): #MUST HAVE
+func DealDamage(value:int,spawnCorpse:bool=true): #MUST HAVE
 	if value>0:
-		Kill()
-		#TODO: Fancy kill animation
+		Kill(true,-1,spawnCorpse)
 
 func TurnEnemyOff(hideInstantly:bool=true):
 	if hideInstantly:
@@ -80,7 +79,7 @@ func TurnEnemyOff(hideInstantly:bool=true):
 	velocity=Vector2(0,0)
 	
 	
-func Kill(showEffects:bool=true,soundToPlay:abstract_SoundEffectSetting.SoundEffectEnum=-1):
+func Kill(showEffects:bool=true,soundToPlay:abstract_SoundEffectSetting.SoundEffectEnum=-1,spawnCorse:bool=true):
 	
 	if enemyInfo.dead or !setupComplete:
 		return
@@ -96,8 +95,8 @@ func Kill(showEffects:bool=true,soundToPlay:abstract_SoundEffectSetting.SoundEff
 		var timeToDie:float=get_current_animation_length()		
 		await get_tree().create_timer(timeToDie).timeout
 	
-	
-	TurnIntoCorpse()
+	if spawnCorse:
+		TurnIntoCorpse()
 
 	
 	if showEffects:
@@ -107,13 +106,13 @@ func Kill(showEffects:bool=true,soundToPlay:abstract_SoundEffectSetting.SoundEff
 		textBubbleInstance.UseTypewriteEffect=true
 
 		get_parent().add_child(textBubbleInstance)
-		textBubbleInstance.global_position=global_position+Vector2(0,-16)
+		textBubbleInstance.global_position=global_position+Vector2(0,-25)
 		
 		var xp:int=GlobalVariables.AddXPFromKill(enemyInfo)
 		
 		textBubbleInstance.ShowText("+"+str(xp))
 		
-		queue_free()
+	queue_free()
 	
 	#Spawn XP!
 func TurnIntoCorpse():

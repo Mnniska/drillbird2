@@ -76,9 +76,9 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	UpdateAnimations(_anim)
 
-func DealDamage(value:int): #MUST HAVE
+func DealDamage(value:int,spawnCorpse:bool=true): #MUST HAVE
 	if value>0:
-		Kill(true,abstract_SoundEffectSetting.SoundEffectEnum.ENEMY_CLOUD_DEATH)
+		Kill(true,abstract_SoundEffectSetting.SoundEffectEnum.ENEMY_CLOUD_DEATH,spawnCorpse)
 		#TODO: Fancy kill animation
 
 func UpdateAnimations(_anim:String):

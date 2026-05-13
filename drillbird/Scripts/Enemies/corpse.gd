@@ -61,7 +61,7 @@ func GetIsFalling()->String:
 	return "fall_neutral"
 
 
-func DealDamage(amount:int=1):
+func DealDamage(amount:int=1,spawnCorpse:bool=true):
 	if amount>0:
 		DestroySelf()
 #Should only be called from tombstone script 

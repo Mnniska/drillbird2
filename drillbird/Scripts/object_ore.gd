@@ -54,7 +54,7 @@ func CooldownAnimation():
 		if timeKeeper>cooldownTime:
 			cooldown=false
 	
-func DealDamage(_amount:int):
+func DealDamage(_amount:int,spawnCorpse:bool=false):
 	queue_free()
 	# TODO: Add sick destroy effect
 	pass

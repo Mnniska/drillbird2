@@ -66,7 +66,7 @@ func Setup(info:abstract_enemy):
 	enemyInfo.type=info.type
 	spawnPositionLocal=position
 
-func DealDamage(amount:int):
+func DealDamage(amount:int,spawnCorpse:bool=false):
 	return
 	
 

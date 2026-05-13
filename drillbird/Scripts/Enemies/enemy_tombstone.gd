@@ -107,7 +107,7 @@ func Setup(info:abstract_enemy,_hasSpikes:bool=false):
 	else:
 		oreSpawner=GlobalVariables.MainSceneReferenceConnector.ref_oreTilemap
 
-func DealDamage(amount:int):
+func DealDamage(amount:int,spawnCorpse:bool=false):
 	#Tombstone cannot be hurt by normal means
 	return
 

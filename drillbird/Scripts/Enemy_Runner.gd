@@ -49,9 +49,9 @@ func GetLocalSpawnPosition(): #MUST HAVE
 	return spawnPositionLocal
 	
 
-func DealDamage(value:int): #MUST HAVE
+func DealDamage(value:int,spawnCorpse:bool=true): #MUST HAVE
 	if value>0:
-		Kill(true,abstract_SoundEffectSetting.SoundEffectEnum.ENEMY_WALKER_DEATH)
+		Kill(true,abstract_SoundEffectSetting.SoundEffectEnum.ENEMY_WALKER_DEATH,spawnCorpse)
 
 
 func TurnEnemyOff(hideInstantly:bool=true):

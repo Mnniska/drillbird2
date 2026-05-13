@@ -60,7 +60,7 @@ func _physics_process(delta: float) -> void:
 					if n.GetCollType().type==abstract_collidable.types.PLAYER:
 						n.global_position=self.global_position+Vector2(0,-16) #Hack to ensure player isn't stuck underneath block
 						
-					n.DealDamage(enemyInfo.damage)
+					n.DealDamage(enemyInfo.damage,false)
 					#Tombstone - I don't want other enemies to be able to destroy it. So implementing a deal damage to tombstone is prolly not the way
 
 					if n.GetCollType().type==abstract_collidable.types.ENEMY:
