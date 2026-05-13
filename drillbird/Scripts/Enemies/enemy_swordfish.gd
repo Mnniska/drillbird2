@@ -25,6 +25,8 @@ var speed:Vector2=Vector2(0,0)
 
 @onready var tileBelowRaycast=$LedgeChecker/TileBelowRaycast
 
+var hasCheckedIfPlayerIsinFrontAfterDazed:bool=false
+
 var levitatingAfterHit:bool=false
 
 #This variable is assigned via the EnemySpawn script when this bad boi is spawned
@@ -131,18 +133,24 @@ func _physics_process(delta: float) -> void:
 			if dazedCounter<DAZED_TIME_WHILE_FALLING:
 				dazedCounter+=delta
 			
-			if anim.frame>2:
+			if anim.frame==2: 
 				anim.frame=2
 				anim.speed_scale=0
 		else:
 			dazedCounter+=delta
 			anim.speed_scale=1
-				
+			
+			if anim.frame==5 and !hasCheckedIfPlayerIsinFrontAfterDazed:
+				CheckIfPlayerIsInDetectionZone(true)
+				hasCheckedIfPlayerIsinFrontAfterDazed=true
+				#check if player is in front
+		
 
 		#Fish has finished resting after being dazed	
 		if dazedCounter>=DAZED_TIME:
 			dazedCounter=0
 			direction=direction*-1
+			UpdateAnimations(animToPlay)
 	
 			if !CheckIfPlayerIsInDetectionZone():
 				state=States.WALK
@@ -183,7 +191,11 @@ func UpdateAnimations(_anim:String):
 		
 	pass
 
-func SpotPlayer():
+func SpotPlayer(canTriggerWhileDazed:bool=false):
+	
+	if !canTriggerWhileDazed and state==States.DAZED:
+		return
+	
 	if state!=States.ATTACK and state!=States.DETECT:
 		
 
@@ -219,6 +231,7 @@ func HitWithAttack(body:Node2D):
 	
 	state=States.DAZED
 	anim.animation="dazed"
+	hasCheckedIfPlayerIsinFrontAfterDazed=false
 	velocity.x=0
 	dazedCounter=0
 	
@@ -231,7 +244,7 @@ func HitWithAttack(body:Node2D):
 	#So the rest of dazed is handled in the physics update
 	
 
-func CheckIfPlayerIsInDetectionZone():
+func CheckIfPlayerIsInDetectionZone(canTriggerWhileDazed:bool=false):
 	
 	var collisions:Array[Node2D]= detectionArea.get_overlapping_bodies()
 	
@@ -240,7 +253,7 @@ func CheckIfPlayerIsInDetectionZone():
 		for n in collisions:
 			colltype=n.GetCollType()
 			if colltype.type==colltype.types.PLAYER:
-				SpotPlayer()
+				SpotPlayer(canTriggerWhileDazed)
 				return true
 	
 	return false
