@@ -1,0 +1,63 @@
+[gd_scene load_steps=11 format=3 uid="uid://jyjdyb81qdfe"]
+
+[ext_resource type="Script" uid="uid://b6kabfe51hcxe" path="res://Scripts/cutscenes/script_reincarnation_cutscene.gd" id="1_nq7hg"]
+[ext_resource type="Texture2D" uid="uid://cxv0romo5ab6g" path="res://Art/cutscenes/demons_deal/demondeal_chilling.png" id="2_go0gl"]
+[ext_resource type="Texture2D" uid="uid://vi80jrugiprj" path="res://Art/cutscenes/demons_deal/demondeal_hold.png" id="3_378jb"]
+[ext_resource type="Texture2D" uid="uid://c32f3yv3slrjs" path="res://Art/cutscenes/demons_deal/demondeal_grab.png" id="4_likn4"]
+[ext_resource type="Texture2D" uid="uid://b85q4k8fjwd3a" path="res://Art/cutscenes/demons_deal/demondeal_burning1.png" id="5_go0gl"]
+[ext_resource type="Texture2D" uid="uid://detsj7jvtrbt4" path="res://Art/cutscenes/demons_deal/demondeal_burning2.png" id="6_dvgcw"]
+[ext_resource type="Texture2D" uid="uid://hh7wk85h1xst" path="res://Art/cutscenes/demons_deal/demondeal_burning3.png" id="7_pmfbf"]
+[ext_resource type="Texture2D" uid="uid://c2w5k45fdyo2t" path="res://Art/cutscenes/demons_deal/demondeal_burning4.png" id="8_vxfqb"]
+[ext_resource type="Texture2D" uid="uid://dc3au4jc7k4hg" path="res://Art/cutscenes/demons_deal/demondeal_burning5.png" id="9_7ritc"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1o7nw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_go0gl")
+}, {
+"duration": 3.0,
+"texture": ExtResource("4_likn4")
+}, {
+"duration": 10.0,
+"texture": ExtResource("3_378jb")
+}, {
+"duration": 4.0,
+"texture": ExtResource("5_go0gl")
+}, {
+"duration": 4.0,
+"texture": ExtResource("6_dvgcw")
+}, {
+"duration": 4.0,
+"texture": ExtResource("7_pmfbf")
+}, {
+"duration": 4.0,
+"texture": ExtResource("8_vxfqb")
+}, {
+"duration": 10.0,
+"texture": ExtResource("9_7ritc")
+}],
+"loop": false,
+"name": &"demon_murder",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_go0gl")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="ReincarnationCutscene" type="Node2D"]
+z_index = -2
+script = ExtResource("1_nq7hg")
+
+[node name="animation" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 1)
+sprite_frames = SubResource("SpriteFrames_1o7nw")
+animation = &"demon_murder"
+autoplay = "idle"
+
+[node name="CameraLerpDestination" type="Node2D" parent="."]

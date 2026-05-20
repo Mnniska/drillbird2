@@ -1,7 +1,8 @@
 extends Node2D
 @onready var button:button_hold=$InteractButton_acceptDeal
-
+@export var demonCutscene:demon_reincarnation_cutscene
 var bodiesInAcceptanceArea:int=0
+@onready var demonSprite=$AnimatedSprite2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -30,9 +31,19 @@ func _on_deal_acceptance_area_body_shape_exited(body_rid: RID, body: Node2D, bod
 func _on_interact_button_accept_deal_button_pressed() -> void:
 	button.SetActive(false)
 	
-	LoadIntoCursedMode()
+	if demonCutscene:
+		demonSprite.hide()
+		demonCutscene.PlayCutscene()
+	
+		demonCutscene.connect("cutscene_finished",CutsceneFinished)
+	
 	
 	pass # Replace with function body.
+
+func CutsceneFinished():
+	LoadIntoCursedMode()
+
+	pass
 
 func LoadIntoCursedMode():
 	
