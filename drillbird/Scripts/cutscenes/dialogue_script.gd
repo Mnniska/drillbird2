@@ -1,12 +1,14 @@
 extends Node2D
 
 signal dialogueFinished
+signal aboutToPlay
 
 @onready var dialogueContainter=$VBoxContainer
 @onready var text:RichTextLabel=$VBoxContainer/PanelContainer/MarginContainer/text
 @export var linesToPlay:Array[String]
 
 @onready var continueSymbolText:RichTextLabel=$HBoxContainer/iconHolder/text_icon
+
 #could also make a dialogue script and have an array of those if we want same dialogue script to alter betweeen diff dialogues
 
 var dialogueHasPlayed:bool=false
@@ -17,6 +19,7 @@ func _ready() -> void:
 	hide()
 
 func StartDialogue():
+	aboutToPlay.emit()
 	dialogueHasPlayed=true
 	currentLineIndex=0
 	show()

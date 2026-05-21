@@ -114,6 +114,8 @@ var playerHealth:int=2 #This should be loaded in depending on current upgrade lv
 
 var currentDay:int=1
 
+@export var daysBeforeDemonKillsEgg:int=15
+
 
 #LIGHT
 signal playerLightStatusChange
