@@ -1,6 +1,6 @@
 extends Base_Enemy
 
-enum States{WALK,WAIT,FALL}
+enum States{WALK,WAIT,FALL,SLEEPING}
 var state:States=States.WALK
 var direction:float=1
 const SPEED = 40.0
@@ -10,8 +10,42 @@ const SPEED = 40.0
 var turningCounter:float=0
 var waitCounter=0
 var speed:Vector2=Vector2(0,0)
+var cuteSleeper:bool=false
+var goingToSleep:bool=false
+var sleeping:bool=false
+@export var showdebuglabel:bool
+@onready var debuglabel=$Label
+
+
+func _ready() -> void:
+	
+	await GlobalVariables.SetupComplete
+	GlobalVariables.playerStatusChanged.connect(PlayerStatusChanged)
+	
+	if showdebuglabel:
+		debuglabel.show()
+	else:
+		debuglabel.hide()
+
+func PlayerStatusChanged():
+	
+	#TODO: Make this work lol
+	if GlobalVariables.playerStatus==GlobalVariables.playerStatusEnum.SLEEP:
+		GoToSleep()
+
+	if GlobalVariables.playerStatus==GlobalVariables.playerStatusEnum.NEWDAY:
+		WakeUp()	
+	
+	pass
 
 func _physics_process(delta: float) -> void:
+	
+	if showdebuglabel:
+		if Input.is_action_just_pressed("sing"):
+			if sleeping:
+				WakeUp()
+			else:	
+				GoToSleep()
 	
 	if enemyInfo.dead or gamePaused:
 		return
@@ -29,11 +63,12 @@ func _physics_process(delta: float) -> void:
 	if !is_on_ceiling():
 		dontGoToSleep=true
 
-	var _anim="run"
+	var _anim=anim.animation
 
 
 
 	if state==States.WALK:
+		if showdebuglabel: debuglabel.text="walking"
 		_anim="run"
 		
 		velocity.x = direction * SPEED
@@ -51,11 +86,19 @@ func _physics_process(delta: float) -> void:
 
 
 	if state==States.WAIT:
+		if showdebuglabel: debuglabel.text="wait"
 		_anim="idle"
 		waitCounter+=delta
 		if waitCounter>timeInWait:
 			waitCounter=0
 			state=States.WALK
+			
+	if state==States.SLEEPING:
+		if showdebuglabel: debuglabel.text="sleeping"
+		
+		velocity.x=0
+		if sleeping:	
+			_anim=UpdateSleepAnim()
 
 	#Done at the end of upate, used in the next loop
 	
@@ -67,10 +110,12 @@ func _physics_process(delta: float) -> void:
 		isFalling=false
 	
 	if isFalling:
+		debuglabel="falling"
 		_anim="fall"
 		
 		velocity.x=0
 	
+
 
 	positionLastFrame=position
 	move_and_slide()
@@ -81,11 +126,53 @@ func DealDamage(value:int,spawnCorpse:bool=true): #MUST HAVE
 		Kill(true,abstract_SoundEffectSetting.SoundEffectEnum.ENEMY_CLOUD_DEATH,spawnCorpse)
 		#TODO: Fancy kill animation
 
+func GoToSleep():
+	state=States.SLEEPING
+	goingToSleep=true
+
+	var waitTime = randf()
+	
+	await get_tree().create_timer(waitTime).timeout
+
+	var rand=(randf())
+	if rand>0.8:
+		cuteSleeper=true
+		
+	
+	anim.play("goingtosleep")
+	await anim.animation_finished
+	
+	waitTime = randf()*0.5
+	
+	await get_tree().create_timer(waitTime).timeout
+	
+	#we can set goingtosleep to false to ignore the timer if cloud wakes up fast
+	if goingToSleep:
+		goingToSleep=false
+		sleeping=true
+
+
+func UpdateSleepAnim():
+	var an:String
+	if cuteSleeper:
+		an="sleeping_cute"
+	else:
+		an="sleeping"
+		
+	return an
+
+func WakeUp():
+	state=States.WAIT
+	waitCounter=0
+	sleeping=false
+	goingToSleep=false
+
+
 func UpdateAnimations(_anim:String):
 
-
-	
-	anim.animation=_anim
-	anim.flip_h=direction <0
+	if _anim != anim.animation: 
+		anim.animation=_anim
+		anim.play(_anim)
+		anim.flip_h=direction <0
 
 	pass

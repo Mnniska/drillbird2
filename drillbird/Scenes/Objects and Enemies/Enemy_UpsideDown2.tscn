@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bs8pjls7fpul1"]
+[gd_scene load_steps=39 format=3 uid="uid://bs8pjls7fpul1"]
 
 [ext_resource type="Script" uid="uid://c64b6s5mdvt6g" path="res://Scripts/Enemies/enemy_upside_down.gd" id="1_crbyl"]
 [ext_resource type="Script" uid="uid://bgy5cf01m25xs" path="res://Scripts/Abstract scripts/abstract_collidable.gd" id="2_xl2cx"]
@@ -19,8 +19,20 @@
 [ext_resource type="Texture2D" uid="uid://brn02lqkjiklm" path="res://Art/characters/UpsideDown/cloud_falling3.png" id="17_g38d0"]
 [ext_resource type="Texture2D" uid="uid://dqifo5ee1wxcn" path="res://Art/characters/UpsideDown/cloud_walk1.png" id="18_qkse0"]
 [ext_resource type="Texture2D" uid="uid://3xtpmf2hsw0s" path="res://Art/characters/UpsideDown/cloud_walk2.png" id="19_hwxg7"]
+[ext_resource type="Texture2D" uid="uid://y112unx0i40b" path="res://Art/characters/UpsideDown/cloud_goingToSleep2.png" id="19_kpnnk"]
+[ext_resource type="Texture2D" uid="uid://cboeogdo3h3lj" path="res://Art/characters/UpsideDown/cloud_goingToSleep3.png" id="20_0ped5"]
 [ext_resource type="Texture2D" uid="uid://b5mt7tsjl2ykt" path="res://Art/characters/UpsideDown/cloud_walk3.png" id="20_jb1ua"]
+[ext_resource type="Texture2D" uid="uid://bbkmvfpv56ta6" path="res://Art/characters/UpsideDown/cloud_goingToSleep4.png" id="21_6q4p1"]
 [ext_resource type="Texture2D" uid="uid://tqqt8rqune2e" path="res://Art/characters/UpsideDown/cloud_walk4.png" id="21_52o6c"]
+[ext_resource type="Texture2D" uid="uid://cad50frhgt6oc" path="res://Art/characters/UpsideDown/cloud_goingToSleep5.png" id="22_kd7pv"]
+[ext_resource type="Texture2D" uid="uid://bw4o5nuovr08k" path="res://Art/characters/UpsideDown/cloud_goingToSleep6.png" id="23_q53do"]
+[ext_resource type="Texture2D" uid="uid://pjk4sfaxfs4c" path="res://Art/characters/UpsideDown/cloud_goingToSleep7.png" id="24_qijyq"]
+[ext_resource type="Texture2D" uid="uid://bmtp5sbf0gq84" path="res://Art/characters/UpsideDown/cloud_goingToSleep8.png" id="25_x0xlx"]
+[ext_resource type="Texture2D" uid="uid://cjovyr32t2ndm" path="res://Art/characters/UpsideDown/cloud_goingToSleep9.png" id="26_ywa3i"]
+[ext_resource type="Texture2D" uid="uid://btm30de08lacv" path="res://Art/characters/UpsideDown/cloud_sleeping1.png" id="31_2xwpi"]
+[ext_resource type="Texture2D" uid="uid://bgfwfydddyin0" path="res://Art/characters/UpsideDown/cloud_sleeping2.png" id="32_ch75e"]
+[ext_resource type="Texture2D" uid="uid://25ce8mehdasx" path="res://Art/characters/UpsideDown/cloud_sleeping_cute1.png" id="33_u3flu"]
+[ext_resource type="Texture2D" uid="uid://deulw0xstka2m" path="res://Art/characters/UpsideDown/cloud_sleeping_cute2.png" id="34_udb6n"]
 
 [sub_resource type="Resource" id="Resource_6qlpo"]
 script = ExtResource("2_xl2cx")
@@ -90,6 +102,35 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("19_kpnnk")
+}, {
+"duration": 5.0,
+"texture": ExtResource("20_0ped5")
+}, {
+"duration": 3.0,
+"texture": ExtResource("21_6q4p1")
+}, {
+"duration": 5.0,
+"texture": ExtResource("22_kd7pv")
+}, {
+"duration": 3.0,
+"texture": ExtResource("23_q53do")
+}, {
+"duration": 5.0,
+"texture": ExtResource("24_qijyq")
+}, {
+"duration": 5.0,
+"texture": ExtResource("25_x0xlx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_ywa3i")
+}],
+"loop": false,
+"name": &"goingtosleep",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("18_qkse0")
 }],
 "loop": true,
@@ -112,6 +153,28 @@ animations = [{
 "loop": true,
 "name": &"run",
 "speed": 8.0
+}, {
+"frames": [{
+"duration": 6.0,
+"texture": ExtResource("31_2xwpi")
+}, {
+"duration": 6.0,
+"texture": ExtResource("32_ch75e")
+}],
+"loop": true,
+"name": &"sleeping",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 8.0,
+"texture": ExtResource("33_u3flu")
+}, {
+"duration": 3.0,
+"texture": ExtResource("34_udb6n")
+}],
+"loop": true,
+"name": &"sleeping_cute",
+"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_33533"]
@@ -129,7 +192,7 @@ shape = SubResource("RectangleShape2D_khmiv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_of4cw")
-animation = &"run"
+animation = &"sleeping"
 autoplay = "run"
 
 [node name="EnemyCollisionChecker" type="Area2D" parent="."]
