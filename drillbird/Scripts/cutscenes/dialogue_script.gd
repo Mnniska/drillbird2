@@ -15,6 +15,8 @@ var dialogueHasPlayed:bool=false
 
 var currentLineIndex:int=0
 
+@export var onlyPlayOnce:bool=true
+
 func _ready() -> void:
 	hide()
 
@@ -29,7 +31,7 @@ func StartDialogue():
 
 
 func ContinueDialogue():
-	text.text=tr(linesToPlay[currentLineIndex])
+	text.text=tr(linesToPlay[currentLineIndex]) %str(GlobalVariables.daysBeforeDemonKillsEgg- GlobalVariables.currentDay)
 	continueSymbolText.text="[center]"+GlobalSymbolRegister.GetStringDecoded("(sing)",true)
 	await GlobalVariables.playerSang
 	
@@ -44,7 +46,7 @@ func ContinueDialogue():
 
 func _on_player_collider_body_entered(body: Node2D) -> void:
 	
-	if !dialogueHasPlayed:
+	if !dialogueHasPlayed or !onlyPlayOnce:
 		StartDialogue()
 	
 	pass # Replace with function body.

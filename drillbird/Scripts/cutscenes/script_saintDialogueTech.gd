@@ -21,11 +21,34 @@ func _ready() -> void:
 
 func UpdateDialogue():
 	
+	var dialogueToPlay:Array[String]
+	
 	if GlobalVariables.currentDay <= GlobalVariables.daysBeforeDemonKillsEgg:
 		
-		dialoguePlayer.linesToPlay=dialogueWhenInTime
-	
+		if !hasGreetedPlayer:
+		
+			dialogueToPlay=dialogueWhenInTime
+			hasGreetedPlayer=true
+
+		else:
+			dialogueToPlay.append(greetingLineAfterFirstIntroduction)
+			#enum eggStates{NOTHING,GROWING,FINALFORM_NO_HEART,FINALFORM_HEART,FINALCUTSCENE}
+
+		#If egg is ready 
+		if GlobalVariables.eggState==2:
+			
+			for line in dialogueWhenEggReady:
+				dialogueToPlay.append(line)
+		 
+		#if egg is not ready
+		if GlobalVariables.eggState==1:
+			for line in dialogueWhenEggNotReady:
+				dialogueToPlay.append(line)
+		
+			#todo: Deal with if player has gotten the ordinary heart into the egg lol
+		
 	else:
-		dialoguePlayer.linesToPlay=dialogueWhenTooLate
+		dialogueToPlay=dialogueWhenTooLate
 	
+	dialoguePlayer.linesToPlay=dialogueToPlay
 	pass
