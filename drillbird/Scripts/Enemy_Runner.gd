@@ -9,6 +9,8 @@ var direction:float=1
 var waitCounter=0
 var turningCounter=0
 var timeBeforeTurning=0.08
+var positionWhenStartingFall:Vector2
+var hasLanded:bool=true
 
 @onready var collider=$EnemyCollisionChecker
 @onready var diggingRaycast=$DiggingRaycast
@@ -114,13 +116,25 @@ func _physics_process(delta: float) -> void:
 			_anim="dazed"
 			if GetIsFalling():
 				stunTimer=0
+				hasLanded=false
 			else:
-				stunTimer+=delta
-				if stunTimer>timeStunned:
-					stunTimer=0
-					ExitDazed()
-					_anim="recover"
-					#todo: transition
+				var skipUpdate:bool=false
+				
+				if !hasLanded:
+					hasLanded=true
+					if positionWhenStartingFall.distance_to(self.position) <22:
+						#short fall
+						DigTile()
+						skipUpdate=true
+						
+				
+				if !skipUpdate:
+					stunTimer+=delta
+					if stunTimer>timeStunned:
+						stunTimer=0
+						ExitDazed()
+						_anim="recover"
+						#todo: transition
 		
 	
 	# Add the gravity.
@@ -201,8 +215,11 @@ func DetectPlayer():
 	
 	await get_tree().create_timer(detectAnimLength).timeout
 	
-	anim.animation="digging"
+
+	DigTile()
 	
+func DigTile():
+	anim.animation="digging"
 	anim.play("digging")
 	state=States.DIG
 	
@@ -210,8 +227,6 @@ func DetectPlayer():
 	diggingRaycast.force_raycast_update()
 	
 	if diggingRaycast.is_colliding():
-		
-
 		
 		var tileset:TileMapLayer = diggingRaycast.get_collider()
 		
@@ -239,6 +254,8 @@ func DetectPlayer():
 				await get_tree().create_timer(timeToDig).timeout
 				GetTileDestroyer().DestroyTileWithGlobalPosition(pos,true,false)
 				digSuccessfull=true
+				positionWhenStartingFall=position
+				
 				
 				crackAnim.play("idle")
 				
