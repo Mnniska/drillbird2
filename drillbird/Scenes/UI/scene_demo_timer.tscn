@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://bdh10w40cqy7d"]
+
+[ext_resource type="Script" uid="uid://3d7dgwwmapen" path="res://Scripts/demo_timer.gd" id="1_3lkvg"]
+[ext_resource type="Theme" uid="uid://bfr5y4lo7m1ux" path="res://Resources/Fonts/fontTheme.tres" id="2_1mgh6"]
+
+[node name="demo timer" type="Node2D"]
+script = ExtResource("1_3lkvg")
+timeBeforeReset = 60.0
+
+[node name="warning" type="RichTextLabel" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 196.0
+offset_right = 321.0
+offset_bottom = 223.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_1mgh6")
+bbcode_enabled = true
+text = "[center]HI HELÖLÖO WERE RESETTING"
