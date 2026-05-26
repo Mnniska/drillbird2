@@ -1,11 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://bdh10w40cqy7d"]
 
-[ext_resource type="Script" uid="uid://3d7dgwwmapen" path="res://Scripts/demo_timer.gd" id="1_3lkvg"]
+[ext_resource type="Script" uid="uid://bjv1mv6w1hgka" path="res://Scripts/UX and UI/demo_timer.gd" id="1_3lkvg"]
 [ext_resource type="Theme" uid="uid://bfr5y4lo7m1ux" path="res://Resources/Fonts/fontTheme.tres" id="2_1mgh6"]
 
 [node name="demo timer" type="Node2D"]
 script = ExtResource("1_3lkvg")
-timeBeforeReset = 60.0
+timeBeforeReset = 10.0
 
 [node name="warning" type="RichTextLabel" parent="."]
 anchors_preset = 7

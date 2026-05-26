@@ -30,7 +30,7 @@
 [ext_resource type="Script" uid="uid://bl87tjhhsl7nt" path="res://Scripts/Tools/speedrun_timer.gd" id="27_rs6d6"]
 [ext_resource type="Texture2D" uid="uid://bi6q51sklyetd" path="res://Art/environment/SpaceBackground/background_space_allLayers.png" id="28_tc67a"]
 [ext_resource type="PackedScene" uid="uid://l6j5lsi56hrl" path="res://Scenes/UI/credits.tscn" id="29_llwrf"]
-[ext_resource type="PackedScene" path="res://Scenes/UI/scene_demo_timer.tscn" id="31_cg6gh"]
+[ext_resource type="PackedScene" uid="uid://bdh10w40cqy7d" path="res://Scenes/UI/scene_demo_timer.tscn" id="31_cg6gh"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_ese10"]
 
@@ -448,7 +448,7 @@ material = SubResource("CanvasItemMaterial_okkph")
 position = Vector2(168, 0)
 
 [node name="demo timer" parent="." instance=ExtResource("31_cg6gh")]
-script = null
+timeBeforeReset = 40.0
 
 [connection signal="NewGame" from="MainMenu" to="." method="_on_main_menu_new_game"]
 [connection signal="press_options" from="MainMenu" to="." method="_on_main_menu_press_options"]
