@@ -4,7 +4,7 @@ class_name abstract_savegame
 #At startup, load the values from this resource into GlobalVariables
 #When saving, modify this resource and save it to disk
 
-@export var worldToSpawn:int=0
+@export var worldToSpawn:int=2
 @export var isInCursedMode:bool=false
 
 #Key variables needed to save game
