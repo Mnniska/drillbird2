@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="abstract_SoundEffectSetting" load_steps=3 format=3 uid="uid://ksimpd22rb5k"]
+
+[ext_resource type="Script" uid="uid://dwatvj6f4edl5" path="res://Scripts/Abstract scripts/abstract_SoundEffectSetting.gd" id="1_mhnw5"]
+[ext_resource type="AudioStream" uid="uid://0sla5guri657" path="res://Audio/SFX/enemies/swordfish/swordfish_charge.wav" id="2_y216i"]
+
+[resource]
+script = ExtResource("1_mhnw5")
+type = 51
+sound_effect = ExtResource("2_y216i")
+volume = 5
+pitch_randomness = 0.1
+audioBus = 1

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="abstract_SoundEffectSetting" load_steps=3 format=3 uid="uid://x00kbt4gd7mu"]
+
+[ext_resource type="Script" uid="uid://dwatvj6f4edl5" path="res://Scripts/Abstract scripts/abstract_SoundEffectSetting.gd" id="1_60nvr"]
+[ext_resource type="AudioStream" uid="uid://bxralfsmsjmhw" path="res://Audio/SFX/enemies/swordfish/swordfish_getUp.wav" id="2_60nvr"]
+
+[resource]
+script = ExtResource("1_60nvr")
+type = 54
+sound_effect = ExtResource("2_60nvr")
+volume = 5
+pitch_randomness = 0.1
+audioBus = 1

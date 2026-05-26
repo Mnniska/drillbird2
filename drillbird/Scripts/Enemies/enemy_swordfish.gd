@@ -24,7 +24,7 @@ var speed:Vector2=Vector2(0,0)
 @onready var lineOfSightRaycast=$LineOfSightRaycast
 
 @onready var tileBelowRaycast=$LedgeChecker/TileBelowRaycast
-
+var hasMadeGetUpSound:bool=false
 var hasCheckedIfPlayerIsinFrontAfterDazed:bool=false
 
 var levitatingAfterHit:bool=false
@@ -137,6 +137,9 @@ func _physics_process(delta: float) -> void:
 				anim.frame=2
 				anim.speed_scale=0
 		else:
+			
+
+				
 			dazedCounter+=delta
 			anim.speed_scale=1
 			
@@ -144,6 +147,10 @@ func _physics_process(delta: float) -> void:
 				CheckIfPlayerIsInDetectionZone(true)
 				hasCheckedIfPlayerIsinFrontAfterDazed=true
 				#check if player is in front
+				
+			if anim.frame==5 and !hasMadeGetUpSound and state!=States.DETECT:
+				SoundManager.PlaySoundAtLocation(global_position,abstract_SoundEffectSetting.SoundEffectEnum.SWORDFISH_GETUP)
+				hasMadeGetUpSound=true
 		
 
 		#Fish has finished resting after being dazed	
@@ -151,6 +158,7 @@ func _physics_process(delta: float) -> void:
 			dazedCounter=0
 			direction=direction*-1
 			UpdateAnimations(animToPlay)
+
 	
 			if !CheckIfPlayerIsInDetectionZone():
 				state=States.WALK
@@ -210,12 +218,21 @@ func SpotPlayer(canTriggerWhileDazed:bool=false):
 			if collider.name=="TilemapEnvironment":
 				return
 		
+		SoundManager.PlaySoundAtLocation(global_position,abstract_SoundEffectSetting.SoundEffectEnum.SWORDFISH_DETECT)
+
+		
 		state=States.DETECT
 		anim.animation="detect"
-		await get_tree().create_timer(reactionTime).timeout
+		await get_tree().create_timer(reactionTime/2).timeout
+		SoundManager.PlaySoundAtLocation(global_position,abstract_SoundEffectSetting.SoundEffectEnum.SWORDFISH_CHARGE)
+		await get_tree().create_timer(reactionTime/2).timeout
 		state=States.ATTACK
 
+
 func HitWithAttack(body:Node2D):
+	
+	SoundManager.PlaySoundAtLocation(global_position,abstract_SoundEffectSetting.SoundEffectEnum.SWORDFISH_SMASH)
+
 	
 	body.get_path()
 	if body.name=="TilemapEnvironment":
@@ -228,7 +245,7 @@ func HitWithAttack(body:Node2D):
 		body.DealDamage(enemyInfo.damage)
 		
 	
-	
+	hasMadeGetUpSound=false
 	state=States.DAZED
 	anim.animation="dazed"
 	hasCheckedIfPlayerIsinFrontAfterDazed=false

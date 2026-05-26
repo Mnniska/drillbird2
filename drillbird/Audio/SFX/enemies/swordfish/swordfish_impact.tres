@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="abstract_SoundEffectSetting" load_steps=3 format=3 uid="uid://chr0s4jt1y1g6"]
+
+[ext_resource type="Script" uid="uid://dwatvj6f4edl5" path="res://Scripts/Abstract scripts/abstract_SoundEffectSetting.gd" id="1_j2nv6"]
+[ext_resource type="AudioStream" uid="uid://n2w6n1v2wm6s" path="res://Audio/SFX/enemies/swordfish/swordfish_impact.wav" id="2_j2nv6"]
+
+[resource]
+script = ExtResource("1_j2nv6")
+type = 53
+sound_effect = ExtResource("2_j2nv6")
+volume = 5
+pitch_randomness = 0.1
+audioBus = 1
