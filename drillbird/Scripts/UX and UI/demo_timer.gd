@@ -6,6 +6,7 @@ var currentTime:float=0
 @export var timeBeforeReset:float=15
 @onready var hud=$".."
 @onready var warning:RichTextLabel=$warning
+@export var active:bool=false
 
 var shouldCount:bool=false
 
@@ -27,6 +28,10 @@ func menuChanged(state:HUD.menuStates):
 	pass
 
 func _process(delta: float) -> void:
+	
+	if !active:
+		return
+	
 	if !shouldCount:
 		currentTime=0
 		warning.hide()
