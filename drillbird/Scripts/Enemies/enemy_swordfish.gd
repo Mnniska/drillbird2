@@ -22,7 +22,7 @@ var speed:Vector2=Vector2(0,0)
 @onready var detectionArea=$DetectionArea
 @onready var attackCollisionArea=$ChargeAttackCollider
 @onready var lineOfSightRaycast=$LineOfSightRaycast
-
+@onready var soundlooper=$SoundLooper
 @onready var tileBelowRaycast=$LedgeChecker/TileBelowRaycast
 var hasMadeGetUpSound:bool=false
 var hasCheckedIfPlayerIsinFrontAfterDazed:bool=false
@@ -68,6 +68,15 @@ func TileWasDestroyed():
 		pass
 	
 	pass
+
+func SetFlyingSoundActive(active:bool):
+	
+	if active:
+		soundlooper.Play()
+	else:
+		soundlooper.Stop()
+	
+
 
 func _physics_process(delta: float) -> void:
 	
@@ -123,6 +132,8 @@ func _physics_process(delta: float) -> void:
 	if state==States.ATTACK:
 		animToPlay="sprint"
 		velocity.x=direction*ATTACK_SPEED
+		SetFlyingSoundActive(true)
+		
 		
 
 	if state==States.DAZED:
@@ -244,7 +255,7 @@ func HitWithAttack(body:Node2D):
 		
 		body.DealDamage(enemyInfo.damage)
 		
-	
+	SetFlyingSoundActive(false)
 	hasMadeGetUpSound=false
 	state=States.DAZED
 	anim.animation="dazed"

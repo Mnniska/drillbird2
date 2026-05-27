@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="abstract_SoundEffectSetting" load_steps=3 format=3 uid="uid://cnoq6cg6jnamp"]
+
+[ext_resource type="Script" uid="uid://dwatvj6f4edl5" path="res://Scripts/Abstract scripts/abstract_SoundEffectSetting.gd" id="1_ss87w"]
+[ext_resource type="AudioStream" uid="uid://2jxvss77uypl" path="res://Audio/SFX/enemies/swordfish/swordfish_flying.wav" id="2_ss87w"]
+
+[resource]
+script = ExtResource("1_ss87w")
+type = 52
+sound_effect = ExtResource("2_ss87w")
+volume = 3
+pitch_randomness = 0.1
+audioBus = 1

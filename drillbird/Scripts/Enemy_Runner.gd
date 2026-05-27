@@ -100,7 +100,6 @@ func _physics_process(delta: float) -> void:
 	
 		States.DETECT:
 			velocity.x=0
-			#todo: lerp X towards nearest tile center
 			
 			pass
 			
@@ -126,7 +125,9 @@ func _physics_process(delta: float) -> void:
 						#short fall
 						DigTile()
 						skipUpdate=true
-						
+					else:
+						SoundManager.PlaySoundAtLocation(global_position,abstract_SoundEffectSetting.SoundEffectEnum.MOLE_LAND)
+
 				
 				if !skipUpdate:
 					stunTimer+=delta
@@ -190,6 +191,8 @@ func _physics_process(delta: float) -> void:
 
 func ExitDazed():
 	state=States.DAZED
+	SoundManager.PlaySoundAtLocation(global_position,abstract_SoundEffectSetting.SoundEffectEnum.MOLE_GETUP)
+
 	anim.play("recover")
 	var length=get_current_animation_length()
 	await get_tree().create_timer(length).timeout
@@ -206,7 +209,8 @@ func UpdateAnimations(_anim:String):
 func DetectPlayer():
 	state=States.DETECT
 	
-	
+	SoundManager.PlaySoundAtLocation(global_position,abstract_SoundEffectSetting.SoundEffectEnum.MOLE_DETECT)
+
 	anim.animation="detect"
 	anim.play()
 	var detectAnimLength:float=get_current_animation_length() 
@@ -222,6 +226,8 @@ func DigTile():
 	anim.animation="digging"
 	anim.play("digging")
 	state=States.DIG
+	SoundManager.PlaySoundAtLocation(global_position,abstract_SoundEffectSetting.SoundEffectEnum.MOLE_DIG)
+
 	
 	var digSuccessfull:bool=false
 	diggingRaycast.force_raycast_update()

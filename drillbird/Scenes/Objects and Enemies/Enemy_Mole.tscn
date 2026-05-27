@@ -244,8 +244,6 @@ shape = SubResource("RectangleShape2D_khmiv")
 sprite_frames = SubResource("SpriteFrames_of4cw")
 animation = &"recover"
 autoplay = "run"
-frame = 2
-frame_progress = 1.0
 
 [node name="EnemyCollisionChecker" type="Area2D" parent="."]
 collision_layer = 0
