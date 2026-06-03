@@ -5,7 +5,7 @@ class_name Base_Enemy
 @export var enemyInfo:abstract_enemy #MUST HAVE
 var spawnPositionLocal:Vector2
 @onready var enemyCollider=$CollisionShape2D
-@onready var enemyCollCheck=$EnemyCollisionChecker
+@onready var enemyCollCheck:Area2D=$EnemyCollisionChecker
 @onready var anim:AnimatedSprite2D=$AnimatedSprite2D
 var gamePaused:bool=true
 var enemySleep:bool=true

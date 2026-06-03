@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bq54e07l6op7s"]
+[gd_scene load_steps=12 format=3 uid="uid://bq54e07l6op7s"]
 
 [ext_resource type="Script" uid="uid://doupey2mmhtuq" path="res://Scripts/Enemies/Enemy_Spikes.gd" id="1_7x1o5"]
 [ext_resource type="Script" uid="uid://cokuso80w54cc" path="res://Scripts/Abstract scripts/abstract_enemy.gd" id="2_2jfye"]
@@ -18,23 +18,14 @@ script = ExtResource("3_mx8gu")
 type = 1
 enemyID = 1
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_y8cxp"]
-size = Vector2(16, 6)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4hyg0"]
 size = Vector2(10, 6)
 
-[node name="Spikes" type="CharacterBody2D"]
-collision_layer = 16394
-collision_mask = 0
+[node name="Spikes" type="Node2D"]
 script = ExtResource("1_7x1o5")
 enemyInfo = SubResource("Resource_6nq8s")
 collType = SubResource("Resource_5mg7v")
 spriteVariations = Array[CompressedTexture2D]([ExtResource("4_w182k"), ExtResource("2_v5q25"), ExtResource("6_375ry"), ExtResource("6_375ry"), ExtResource("7_r6yq0"), ExtResource("2_v5q25")])
-
-[node name="SpikeAffectedCollider" type="CollisionShape2D" parent="."]
-position = Vector2(0, 7)
-shape = SubResource("RectangleShape2D_y8cxp")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 1
@@ -59,5 +50,4 @@ hit_from_inside = true
 position = Vector2(0, 17)
 
 [connection signal="body_shape_entered" from="Collider" to="." method="_on_collider_body_shape_entered"]
-[connection signal="body_shape_exited" from="Collider" to="." method="_on_collider_body_shape_exited"]
 [connection signal="BlockDestroyed" from="Observer" to="." method="_on_observer_block_destroyed"]

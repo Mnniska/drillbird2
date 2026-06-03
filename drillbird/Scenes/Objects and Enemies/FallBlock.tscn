@@ -101,6 +101,7 @@ animations = [{
 size = Vector2(14, 2)
 
 [node name="FallBlock" type="CharacterBody2D"]
+z_index = 1
 collision_layer = 129
 collision_priority = 2.0
 slide_on_ceiling = false

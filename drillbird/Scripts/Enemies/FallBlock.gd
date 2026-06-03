@@ -155,6 +155,7 @@ func CheckOverlappingCollisions():
 
 		#$Sprite2D.global_position=
 		if distance<10:
+			
 			for n in enemyCollCheck.get_overlapping_bodies():
 				if n!=self:
 					victims.append(n)
