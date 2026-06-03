@@ -1,197 +1,197 @@
 [gd_scene load_steps=189 format=3 uid="uid://1codt4oivfrh"]
 
-[ext_resource type="Texture2D" uid="uid://buyfe2l1kagf7" path="res://Audio/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest1.png" id="1_33wsr"]
 [ext_resource type="Script" uid="uid://bdp4ofq34bcvf" path="res://Scripts/cutscenes/cutscene_demonhatch.gd" id="1_xrmd2"]
-[ext_resource type="Texture2D" uid="uid://xvqkhrf0uqfk" path="res://Audio/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest2.png" id="2_81c15"]
-[ext_resource type="Texture2D" uid="uid://drwmk1fisn3u0" path="res://Audio/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest3.png" id="3_6k41b"]
-[ext_resource type="Texture2D" uid="uid://cclwj6i0bvldf" path="res://Audio/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest4.png" id="4_8hewv"]
-[ext_resource type="Texture2D" uid="uid://c0msp75vysl2" path="res://Audio/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest5.png" id="5_m7ot6"]
-[ext_resource type="Texture2D" uid="uid://d12pat80ikdar" path="res://Audio/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest6.png" id="6_a22wd"]
-[ext_resource type="Texture2D" uid="uid://ur4xxdnscq0v" path="res://Audio/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest7.png" id="7_yq5xk"]
-[ext_resource type="Texture2D" uid="uid://dtduosxt0xjbr" path="res://Audio/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest8.png" id="8_4ipmm"]
-[ext_resource type="Texture2D" uid="uid://dcp2pywng3yj3" path="res://Audio/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest9.png" id="9_cuto8"]
-[ext_resource type="Texture2D" uid="uid://c5fxbcihtse6k" path="res://Audio/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest10.png" id="10_rvbh1"]
-[ext_resource type="Texture2D" uid="uid://458wks3fsg3a" path="res://Audio/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest11.png" id="11_belxl"]
-[ext_resource type="Texture2D" uid="uid://bh6xmr6haw5g4" path="res://Audio/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest12.png" id="12_hmpvv"]
-[ext_resource type="Texture2D" uid="uid://i385ko7await" path="res://Audio/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest13.png" id="13_1ed2n"]
-[ext_resource type="Texture2D" uid="uid://ca3x40fnhifg2" path="res://Audio/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest14.png" id="14_bd457"]
-[ext_resource type="Texture2D" uid="uid://cbd4x7fikk6j1" path="res://Audio/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest15.png" id="15_nf0a0"]
-[ext_resource type="Texture2D" uid="uid://bf4nk5wyo1sh5" path="res://Audio/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest16.png" id="16_h0ufj"]
-[ext_resource type="Texture2D" uid="uid://dpgry0yo3w4dj" path="res://Audio/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest17.png" id="17_hjp3n"]
-[ext_resource type="Texture2D" uid="uid://cji46thikxavy" path="res://Audio/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest18.png" id="18_4bgja"]
-[ext_resource type="Texture2D" uid="uid://cimmuyryb51dk" path="res://Audio/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest19.png" id="19_k7q0j"]
-[ext_resource type="Texture2D" uid="uid://bxhqor5ai1y07" path="res://Audio/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest20.png" id="20_uru1p"]
-[ext_resource type="Texture2D" uid="uid://bqxc17l3mtywm" path="res://Audio/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest21.png" id="21_4xf68"]
-[ext_resource type="Texture2D" uid="uid://c6m2yvm0258ds" path="res://Audio/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest22.png" id="22_w8rhf"]
-[ext_resource type="Texture2D" uid="uid://cb5msicbfdwfb" path="res://Audio/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest23.png" id="23_1ac0l"]
-[ext_resource type="Texture2D" uid="uid://du6fyq6dkswvb" path="res://Audio/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest24.png" id="24_1y3c3"]
-[ext_resource type="Texture2D" uid="uid://c4t8135l3h4nb" path="res://Audio/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest25.png" id="25_go2xn"]
-[ext_resource type="Texture2D" uid="uid://du8h1l8cmvwa" path="res://Audio/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest26.png" id="26_2ekty"]
-[ext_resource type="Texture2D" uid="uid://sjq0o7eqo17g" path="res://Audio/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest27.png" id="27_gygqo"]
-[ext_resource type="Texture2D" uid="uid://d1f0ncplkg7ww" path="res://Audio/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest28.png" id="28_vrhd8"]
-[ext_resource type="Texture2D" uid="uid://lip7tld1xl2p" path="res://Audio/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest29.png" id="29_ppcva"]
-[ext_resource type="Texture2D" uid="uid://dxmgd3xcwrfju" path="res://Audio/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest30.png" id="30_n8jag"]
-[ext_resource type="Texture2D" uid="uid://d37o1u3tahd5e" path="res://Audio/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest31.png" id="31_pom4j"]
-[ext_resource type="Texture2D" uid="uid://bf3ar60wtk56q" path="res://Audio/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest32.png" id="32_jbg5u"]
-[ext_resource type="Texture2D" uid="uid://d34qw8643shqb" path="res://Audio/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest33.png" id="33_80f5w"]
-[ext_resource type="Texture2D" uid="uid://ct7x5hblrs40b" path="res://Audio/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest34.png" id="34_4a754"]
-[ext_resource type="Texture2D" uid="uid://d308rlr3n2w6r" path="res://Audio/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest35.png" id="35_qh0r2"]
-[ext_resource type="Texture2D" uid="uid://dobm3lfks7bg7" path="res://Audio/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest36.png" id="36_i4ya5"]
-[ext_resource type="Texture2D" uid="uid://bgiwmnbusd47o" path="res://Audio/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest37.png" id="37_558y5"]
-[ext_resource type="Texture2D" uid="uid://d2jwxy03hcjej" path="res://Audio/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest38.png" id="38_jq4o1"]
-[ext_resource type="Texture2D" uid="uid://c8bcuc10ul7l2" path="res://Audio/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest39.png" id="39_u6n5r"]
-[ext_resource type="Texture2D" uid="uid://ph3k0f6ianl0" path="res://Audio/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest40.png" id="40_mi1ka"]
-[ext_resource type="Texture2D" uid="uid://b6vgwufqw3f88" path="res://Audio/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest41.png" id="41_75lhr"]
-[ext_resource type="Texture2D" uid="uid://gtd58tv881cl" path="res://Audio/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest42.png" id="42_066tv"]
-[ext_resource type="Texture2D" uid="uid://dj0wnbng11ov6" path="res://Audio/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest43.png" id="43_q6kl8"]
-[ext_resource type="Texture2D" uid="uid://c4sdwo6owge8e" path="res://Audio/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest44.png" id="44_cfnq3"]
-[ext_resource type="Texture2D" uid="uid://dgqkp63btshbb" path="res://Audio/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest45.png" id="45_cj4sx"]
-[ext_resource type="Texture2D" uid="uid://lcb16uo1mei4" path="res://Audio/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest46.png" id="46_42nhv"]
-[ext_resource type="Texture2D" uid="uid://s06x0bvpn3jp" path="res://Audio/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest47.png" id="47_vlcti"]
-[ext_resource type="Texture2D" uid="uid://k88yf4wa3fm8" path="res://Audio/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest48.png" id="48_4ilxm"]
-[ext_resource type="Texture2D" uid="uid://c13xysudpjin8" path="res://Audio/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest49.png" id="49_ohct6"]
-[ext_resource type="Texture2D" uid="uid://6per7kgqgi8a" path="res://Audio/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest50.png" id="50_8co6c"]
-[ext_resource type="Texture2D" uid="uid://bbg2plxmhbix" path="res://Audio/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest51.png" id="51_qs8x5"]
-[ext_resource type="Texture2D" uid="uid://c7hnrul40y6eh" path="res://Audio/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest52.png" id="52_ubgo0"]
-[ext_resource type="Texture2D" uid="uid://cgnib2c4o08or" path="res://Audio/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest53.png" id="53_tkklk"]
-[ext_resource type="Texture2D" uid="uid://cgv72xaqavesp" path="res://Audio/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest54.png" id="54_egqxx"]
-[ext_resource type="Texture2D" uid="uid://bspecert37ypi" path="res://Audio/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest55.png" id="55_ora1t"]
-[ext_resource type="Texture2D" uid="uid://c5tppnb6miulf" path="res://Audio/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest56.png" id="56_k7k6i"]
-[ext_resource type="Texture2D" uid="uid://dx1bhm00n0beq" path="res://Audio/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest57.png" id="57_opg1u"]
-[ext_resource type="Texture2D" uid="uid://bh5scoor80odo" path="res://Audio/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest58.png" id="58_tgwn8"]
-[ext_resource type="Texture2D" uid="uid://whp86p0kt1pe" path="res://Audio/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest59.png" id="59_lo0cl"]
-[ext_resource type="Texture2D" uid="uid://bjmjr3hrxdpj6" path="res://Audio/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest60.png" id="60_grbhq"]
-[ext_resource type="Texture2D" uid="uid://c34ym3kxg7hdi" path="res://Audio/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest61.png" id="61_xdm6u"]
-[ext_resource type="Texture2D" uid="uid://ce5ox4ebmquxv" path="res://Audio/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest62.png" id="62_0x3ok"]
-[ext_resource type="Texture2D" uid="uid://cl7cptqjcsslt" path="res://Audio/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest63.png" id="63_mc7jr"]
-[ext_resource type="Texture2D" uid="uid://bnkxu1n6lhav6" path="res://Audio/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest64.png" id="64_b6trx"]
-[ext_resource type="Texture2D" uid="uid://n3cc3hfia3k8" path="res://Audio/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest65.png" id="65_13rnr"]
-[ext_resource type="Texture2D" uid="uid://bimxb2gh6yjh4" path="res://Audio/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest66.png" id="66_yg6fe"]
-[ext_resource type="Texture2D" uid="uid://5aepb3kr5ehw" path="res://Audio/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest67.png" id="67_xrbxp"]
+[ext_resource type="Texture2D" uid="uid://xvqkhrf0uqfk" path="res://Art/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest2.png" id="2_81c15"]
+[ext_resource type="Texture2D" uid="uid://drwmk1fisn3u0" path="res://Art/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest3.png" id="3_6k41b"]
+[ext_resource type="Texture2D" uid="uid://cclwj6i0bvldf" path="res://Art/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest4.png" id="4_8hewv"]
+[ext_resource type="Texture2D" uid="uid://c0msp75vysl2" path="res://Art/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest5.png" id="5_m7ot6"]
+[ext_resource type="Texture2D" uid="uid://d12pat80ikdar" path="res://Art/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest6.png" id="6_a22wd"]
+[ext_resource type="Texture2D" uid="uid://ur4xxdnscq0v" path="res://Art/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest7.png" id="7_yq5xk"]
+[ext_resource type="Texture2D" uid="uid://dtduosxt0xjbr" path="res://Art/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest8.png" id="8_4ipmm"]
+[ext_resource type="Texture2D" uid="uid://dcp2pywng3yj3" path="res://Art/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest9.png" id="9_cuto8"]
+[ext_resource type="Texture2D" uid="uid://c5fxbcihtse6k" path="res://Art/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest10.png" id="10_rvbh1"]
+[ext_resource type="Texture2D" uid="uid://458wks3fsg3a" path="res://Art/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest11.png" id="11_belxl"]
+[ext_resource type="Texture2D" uid="uid://bh6xmr6haw5g4" path="res://Art/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest12.png" id="12_hmpvv"]
+[ext_resource type="Texture2D" uid="uid://i385ko7await" path="res://Art/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest13.png" id="13_1ed2n"]
+[ext_resource type="Texture2D" uid="uid://ca3x40fnhifg2" path="res://Art/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest14.png" id="14_bd457"]
+[ext_resource type="Texture2D" uid="uid://cbd4x7fikk6j1" path="res://Art/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest15.png" id="15_nf0a0"]
+[ext_resource type="Texture2D" uid="uid://bf4nk5wyo1sh5" path="res://Art/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest16.png" id="16_h0ufj"]
+[ext_resource type="Texture2D" uid="uid://dpgry0yo3w4dj" path="res://Art/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest17.png" id="17_hjp3n"]
+[ext_resource type="Texture2D" uid="uid://cji46thikxavy" path="res://Art/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest18.png" id="18_4bgja"]
+[ext_resource type="Texture2D" uid="uid://cimmuyryb51dk" path="res://Art/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest19.png" id="19_k7q0j"]
+[ext_resource type="Texture2D" uid="uid://bxhqor5ai1y07" path="res://Art/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest20.png" id="20_uru1p"]
+[ext_resource type="Texture2D" uid="uid://bqxc17l3mtywm" path="res://Art/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest21.png" id="21_4xf68"]
+[ext_resource type="Texture2D" uid="uid://c6m2yvm0258ds" path="res://Art/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest22.png" id="22_w8rhf"]
+[ext_resource type="Texture2D" uid="uid://cb5msicbfdwfb" path="res://Art/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest23.png" id="23_1ac0l"]
+[ext_resource type="Texture2D" uid="uid://du6fyq6dkswvb" path="res://Art/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest24.png" id="24_1y3c3"]
+[ext_resource type="Texture2D" uid="uid://c4t8135l3h4nb" path="res://Art/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest25.png" id="25_go2xn"]
+[ext_resource type="Texture2D" uid="uid://du8h1l8cmvwa" path="res://Art/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest26.png" id="26_2ekty"]
+[ext_resource type="Texture2D" uid="uid://sjq0o7eqo17g" path="res://Art/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest27.png" id="27_gygqo"]
+[ext_resource type="Texture2D" uid="uid://d1f0ncplkg7ww" path="res://Art/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest28.png" id="28_vrhd8"]
+[ext_resource type="Texture2D" uid="uid://lip7tld1xl2p" path="res://Art/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest29.png" id="29_ppcva"]
+[ext_resource type="Texture2D" uid="uid://dxmgd3xcwrfju" path="res://Art/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest30.png" id="30_n8jag"]
+[ext_resource type="Texture2D" uid="uid://d37o1u3tahd5e" path="res://Art/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest31.png" id="31_pom4j"]
+[ext_resource type="Texture2D" uid="uid://bf3ar60wtk56q" path="res://Art/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest32.png" id="32_jbg5u"]
+[ext_resource type="Texture2D" uid="uid://d34qw8643shqb" path="res://Art/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest33.png" id="33_80f5w"]
+[ext_resource type="Texture2D" uid="uid://ct7x5hblrs40b" path="res://Art/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest34.png" id="34_4a754"]
+[ext_resource type="Texture2D" uid="uid://d308rlr3n2w6r" path="res://Art/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest35.png" id="35_qh0r2"]
+[ext_resource type="Texture2D" uid="uid://dobm3lfks7bg7" path="res://Art/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest36.png" id="36_i4ya5"]
+[ext_resource type="Texture2D" uid="uid://bgiwmnbusd47o" path="res://Art/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest37.png" id="37_558y5"]
+[ext_resource type="Texture2D" uid="uid://d2jwxy03hcjej" path="res://Art/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest38.png" id="38_jq4o1"]
+[ext_resource type="Texture2D" uid="uid://c8bcuc10ul7l2" path="res://Art/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest39.png" id="39_u6n5r"]
+[ext_resource type="Texture2D" uid="uid://ph3k0f6ianl0" path="res://Art/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest40.png" id="40_mi1ka"]
+[ext_resource type="Texture2D" uid="uid://b6vgwufqw3f88" path="res://Art/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest41.png" id="41_75lhr"]
+[ext_resource type="Texture2D" uid="uid://gtd58tv881cl" path="res://Art/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest42.png" id="42_066tv"]
+[ext_resource type="Texture2D" uid="uid://dj0wnbng11ov6" path="res://Art/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest43.png" id="43_q6kl8"]
+[ext_resource type="Texture2D" uid="uid://c4sdwo6owge8e" path="res://Art/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest44.png" id="44_cfnq3"]
+[ext_resource type="Texture2D" uid="uid://dgqkp63btshbb" path="res://Art/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest45.png" id="45_cj4sx"]
+[ext_resource type="Texture2D" uid="uid://lcb16uo1mei4" path="res://Art/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest46.png" id="46_42nhv"]
+[ext_resource type="Texture2D" uid="uid://s06x0bvpn3jp" path="res://Art/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest47.png" id="47_vlcti"]
+[ext_resource type="Texture2D" uid="uid://k88yf4wa3fm8" path="res://Art/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest48.png" id="48_4ilxm"]
+[ext_resource type="Texture2D" uid="uid://c13xysudpjin8" path="res://Art/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest49.png" id="49_ohct6"]
+[ext_resource type="Texture2D" uid="uid://6per7kgqgi8a" path="res://Art/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest50.png" id="50_8co6c"]
+[ext_resource type="Texture2D" uid="uid://bbg2plxmhbix" path="res://Art/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest51.png" id="51_qs8x5"]
+[ext_resource type="Texture2D" uid="uid://c7hnrul40y6eh" path="res://Art/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest52.png" id="52_ubgo0"]
+[ext_resource type="Texture2D" uid="uid://cgnib2c4o08or" path="res://Art/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest53.png" id="53_tkklk"]
+[ext_resource type="Texture2D" uid="uid://cgv72xaqavesp" path="res://Art/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest54.png" id="54_egqxx"]
+[ext_resource type="Texture2D" uid="uid://bspecert37ypi" path="res://Art/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest55.png" id="55_ora1t"]
+[ext_resource type="Texture2D" uid="uid://c5tppnb6miulf" path="res://Art/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest56.png" id="56_k7k6i"]
+[ext_resource type="Texture2D" uid="uid://dx1bhm00n0beq" path="res://Art/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest57.png" id="57_opg1u"]
+[ext_resource type="Texture2D" uid="uid://bh5scoor80odo" path="res://Art/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest58.png" id="58_tgwn8"]
+[ext_resource type="Texture2D" uid="uid://whp86p0kt1pe" path="res://Art/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest59.png" id="59_lo0cl"]
+[ext_resource type="Texture2D" uid="uid://bjmjr3hrxdpj6" path="res://Art/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest60.png" id="60_grbhq"]
+[ext_resource type="Texture2D" uid="uid://c34ym3kxg7hdi" path="res://Art/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest61.png" id="61_xdm6u"]
+[ext_resource type="Texture2D" uid="uid://ce5ox4ebmquxv" path="res://Art/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest62.png" id="62_0x3ok"]
+[ext_resource type="Texture2D" uid="uid://cl7cptqjcsslt" path="res://Art/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest63.png" id="63_mc7jr"]
+[ext_resource type="Texture2D" uid="uid://bnkxu1n6lhav6" path="res://Art/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest64.png" id="64_b6trx"]
+[ext_resource type="Texture2D" uid="uid://n3cc3hfia3k8" path="res://Art/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest65.png" id="65_13rnr"]
+[ext_resource type="Texture2D" uid="uid://bimxb2gh6yjh4" path="res://Art/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest66.png" id="66_yg6fe"]
+[ext_resource type="Texture2D" uid="uid://5aepb3kr5ehw" path="res://Art/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest67.png" id="67_xrbxp"]
 [ext_resource type="Texture2D" uid="uid://dhrvhcsf7e45a" path="res://Art/effects/empty.png" id="68_4d1ra"]
-[ext_resource type="Texture2D" uid="uid://ban0sc52najxs" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch1.png" id="69_xrmd2"]
-[ext_resource type="Texture2D" uid="uid://cxka0xf38ocjq" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch2.png" id="70_ctktd"]
-[ext_resource type="Texture2D" uid="uid://c7krd4hvpdwwr" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch3.png" id="71_tkiyx"]
-[ext_resource type="Texture2D" uid="uid://cbahpmgwxwfob" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch4.png" id="72_5us0a"]
-[ext_resource type="Texture2D" uid="uid://djfjubiat185b" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch5.png" id="73_ykdu6"]
-[ext_resource type="Texture2D" uid="uid://b37w5gc58ws2e" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch6.png" id="74_yrd1m"]
-[ext_resource type="Texture2D" uid="uid://c4x4ete3kp1ov" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch7.png" id="75_8pnew"]
-[ext_resource type="Texture2D" uid="uid://btudsc47j3edc" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch8.png" id="76_a6uhe"]
-[ext_resource type="Texture2D" uid="uid://bui25qm6i5oac" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch9.png" id="77_k5arc"]
-[ext_resource type="Texture2D" uid="uid://ccckrfgm0hqss" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch10.png" id="78_hhce0"]
-[ext_resource type="Texture2D" uid="uid://c0rjdg7a0yikp" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch11.png" id="79_xguxh"]
-[ext_resource type="Texture2D" uid="uid://k10d3ju0xna0" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch12.png" id="80_bgfbn"]
-[ext_resource type="Texture2D" uid="uid://85h8nc4mn4kv" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch13.png" id="81_sact8"]
-[ext_resource type="Texture2D" uid="uid://b1rsc8k356esc" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch14.png" id="82_ipmva"]
-[ext_resource type="Texture2D" uid="uid://dtroyxdkjx8gy" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch15.png" id="83_5puo7"]
-[ext_resource type="Texture2D" uid="uid://bnjdmos4juir" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch16.png" id="84_g74rs"]
-[ext_resource type="Texture2D" uid="uid://s2anbceod3c8" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch17.png" id="85_rwujw"]
-[ext_resource type="Texture2D" uid="uid://bsn364a7djc5b" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch18.png" id="86_cei4o"]
-[ext_resource type="Texture2D" uid="uid://dmgsfq2npedr6" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch19.png" id="87_fk3i5"]
-[ext_resource type="Texture2D" uid="uid://cr02kjl77g3ox" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch20.png" id="88_pc5p3"]
-[ext_resource type="Texture2D" uid="uid://bilvdsiff2x3e" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch21.png" id="89_ab3d5"]
-[ext_resource type="Texture2D" uid="uid://bfe731l7tlhc" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch22.png" id="90_havp0"]
-[ext_resource type="Texture2D" uid="uid://dtyefh2y3cb0u" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch23.png" id="91_3gur5"]
-[ext_resource type="Texture2D" uid="uid://cjpymhp1biv72" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch24.png" id="92_jvflt"]
-[ext_resource type="Texture2D" uid="uid://duklgllvdaypm" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch25.png" id="93_iuegr"]
-[ext_resource type="Texture2D" uid="uid://c15uqxp4qfwqp" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch26.png" id="94_vva1v"]
-[ext_resource type="Texture2D" uid="uid://cussksg5v1fs1" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch27.png" id="95_nt2mb"]
-[ext_resource type="Texture2D" uid="uid://c6nsrmqaqk2l6" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch28.png" id="96_xosjs"]
-[ext_resource type="Texture2D" uid="uid://dbco0i1bxjser" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch29.png" id="97_mh7gm"]
-[ext_resource type="Texture2D" uid="uid://bne4jxdffuxys" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch30.png" id="98_tm1hh"]
-[ext_resource type="Texture2D" uid="uid://ch1dhnin3fin" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch31.png" id="99_j33pp"]
-[ext_resource type="Texture2D" uid="uid://dued4w53gqi76" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch32.png" id="100_wnfnt"]
-[ext_resource type="Texture2D" uid="uid://bjpwvv0ccjwee" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch33.png" id="101_lkcac"]
-[ext_resource type="Texture2D" uid="uid://dmwqwr5pcyqt7" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch34.png" id="102_5came"]
-[ext_resource type="Texture2D" uid="uid://cpnwl1yo4umrk" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch35.png" id="103_h8uwl"]
-[ext_resource type="Texture2D" uid="uid://b685ql747r8df" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch36.png" id="104_sj4qx"]
-[ext_resource type="Texture2D" uid="uid://ivlmsh0jd767" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch37.png" id="105_a1b1l"]
-[ext_resource type="Texture2D" uid="uid://noed4kl3hfnh" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch38.png" id="106_q0h7l"]
-[ext_resource type="Texture2D" uid="uid://dr078njj3xrx6" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch39.png" id="107_vyrrm"]
-[ext_resource type="Texture2D" uid="uid://dy47ppbb8fkvo" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch40.png" id="108_2ht2k"]
-[ext_resource type="Texture2D" uid="uid://dc5hr8frvawqi" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch41.png" id="109_mwuh4"]
-[ext_resource type="Texture2D" uid="uid://bgefpm7feo12s" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch42.png" id="110_1oaya"]
-[ext_resource type="Texture2D" uid="uid://du2e38k741sgj" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch43.png" id="111_itj3o"]
-[ext_resource type="Texture2D" uid="uid://c1d58hhplok6a" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch44.png" id="112_0iecb"]
-[ext_resource type="Texture2D" uid="uid://3burfpw1l6pp" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch45.png" id="113_6exjc"]
-[ext_resource type="Texture2D" uid="uid://88kyrvuvexrc" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch46.png" id="114_vi7la"]
-[ext_resource type="Texture2D" uid="uid://cu6gmo53ovwjc" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch47.png" id="115_b5ahf"]
-[ext_resource type="Texture2D" uid="uid://5q6sa6u2g7he" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch48.png" id="116_3ntai"]
-[ext_resource type="Texture2D" uid="uid://c57ehmlbscvmq" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch49.png" id="117_lcvjs"]
-[ext_resource type="Texture2D" uid="uid://ba8f26pmecpyq" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch50.png" id="118_ibqy5"]
-[ext_resource type="Texture2D" uid="uid://doopdk6m8hhsp" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch51.png" id="119_5e3dw"]
-[ext_resource type="Texture2D" uid="uid://hy7nfhj3vi0r" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch52.png" id="120_s128y"]
-[ext_resource type="Texture2D" uid="uid://dphsmamtgppf5" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch53.png" id="121_coayf"]
-[ext_resource type="Texture2D" uid="uid://der8chi0b15ye" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch54.png" id="122_5wyod"]
-[ext_resource type="Texture2D" uid="uid://cm8sdukbyevg7" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch55.png" id="123_lxmol"]
-[ext_resource type="Texture2D" uid="uid://cowtk75p6y8jp" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch56.png" id="124_6qkdo"]
-[ext_resource type="Texture2D" uid="uid://t08bd327a6l" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch57.png" id="125_t0dbu"]
-[ext_resource type="Texture2D" uid="uid://0f6ajfi5jyb0" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch58.png" id="126_fd3vb"]
-[ext_resource type="Texture2D" uid="uid://b5ur8knpotma2" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch59.png" id="127_5macw"]
-[ext_resource type="Texture2D" uid="uid://bl3h8lcs6afpo" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch60.png" id="128_f3ync"]
-[ext_resource type="Texture2D" uid="uid://dee56jjtrry5y" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch61.png" id="129_tebx4"]
-[ext_resource type="Texture2D" uid="uid://d2gykody25q6h" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch62.png" id="130_4hquj"]
-[ext_resource type="Texture2D" uid="uid://dxh3sl0btx31t" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch63.png" id="131_058rw"]
-[ext_resource type="Texture2D" uid="uid://fgiieukfwyqc" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch64.png" id="132_hb3ra"]
-[ext_resource type="Texture2D" uid="uid://bdbmhvrs0h5e" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch65.png" id="133_xevfw"]
-[ext_resource type="Texture2D" uid="uid://b7nte6qje6rlr" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch66.png" id="134_ydwdd"]
-[ext_resource type="Texture2D" uid="uid://bur6is0gg51ii" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch67.png" id="135_vyx68"]
-[ext_resource type="Texture2D" uid="uid://bto5cbhi45qo3" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch68.png" id="136_unj6s"]
-[ext_resource type="Texture2D" uid="uid://c4mawt22qilwu" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch69.png" id="137_bghps"]
-[ext_resource type="Texture2D" uid="uid://cgr05k7253unn" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch70.png" id="138_2fy4w"]
-[ext_resource type="Texture2D" uid="uid://bkqp7plerwcyp" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch71.png" id="139_pq2hj"]
-[ext_resource type="Texture2D" uid="uid://ddca1ajtk3tdd" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch72.png" id="140_2olu1"]
-[ext_resource type="Texture2D" uid="uid://u7iunkylg4q0" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch73.png" id="141_g05ul"]
-[ext_resource type="Texture2D" uid="uid://f6wj7dk40oy0" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch74.png" id="142_kogf7"]
-[ext_resource type="Texture2D" uid="uid://bmrwgu8ne5s3q" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch75.png" id="143_264mn"]
-[ext_resource type="Texture2D" uid="uid://bfohmbylmy1a6" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch76.png" id="144_iwcjy"]
-[ext_resource type="Texture2D" uid="uid://bhq1wukt7bg6x" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch77.png" id="145_yo0ub"]
-[ext_resource type="Texture2D" uid="uid://cjpxlyfw7xxs0" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch78.png" id="146_igir7"]
-[ext_resource type="Texture2D" uid="uid://da45p1i86r4ks" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch79.png" id="147_2eygi"]
-[ext_resource type="Texture2D" uid="uid://bt6tbove4ymrw" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch80.png" id="148_r8bdg"]
-[ext_resource type="Texture2D" uid="uid://cf8hc7sev27tc" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch81.png" id="149_y1iwn"]
-[ext_resource type="Texture2D" uid="uid://deovqi1vf7mpd" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch82.png" id="150_6ag2h"]
-[ext_resource type="Texture2D" uid="uid://duw7jp8yb3c4w" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch83.png" id="151_0r8xp"]
-[ext_resource type="Texture2D" uid="uid://bdbj7758j8gs" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch84.png" id="152_7li2k"]
-[ext_resource type="Texture2D" uid="uid://df56opr2jnkdy" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch85.png" id="153_iggo5"]
-[ext_resource type="Texture2D" uid="uid://blci814b2l4pt" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch86.png" id="154_bkpac"]
-[ext_resource type="Texture2D" uid="uid://b2oivilt26ilu" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch87.png" id="155_bhdj4"]
-[ext_resource type="Texture2D" uid="uid://d0ymkavuk4pe6" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch88.png" id="156_wdh46"]
-[ext_resource type="Texture2D" uid="uid://cthqvvdqdk47o" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch89.png" id="157_l01jw"]
-[ext_resource type="Texture2D" uid="uid://bb3w0cyoomshl" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch90.png" id="158_mkpg0"]
-[ext_resource type="Texture2D" uid="uid://bg5s44ylfbfdx" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch91.png" id="159_e34wn"]
-[ext_resource type="Texture2D" uid="uid://5027ggjjajdh" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch92.png" id="160_kiuwf"]
-[ext_resource type="Texture2D" uid="uid://d24ihhg7aeo4k" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch93.png" id="161_j1uyl"]
-[ext_resource type="Texture2D" uid="uid://bbyqf6vks05w6" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch94.png" id="162_k4uf2"]
-[ext_resource type="Texture2D" uid="uid://bwrtevql36xuv" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch95.png" id="163_k6cr1"]
-[ext_resource type="Texture2D" uid="uid://bnxku6mk482r6" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch96.png" id="164_sn11m"]
-[ext_resource type="Texture2D" uid="uid://brm7c4d58sfhp" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch97.png" id="165_pvsbe"]
-[ext_resource type="Texture2D" uid="uid://qq7oltk188sd" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch98.png" id="166_uhnmk"]
-[ext_resource type="Texture2D" uid="uid://c1x1ntsojx7xh" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch99.png" id="167_hj6pl"]
-[ext_resource type="Texture2D" uid="uid://csdtke211byyi" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch100.png" id="168_48ery"]
-[ext_resource type="Texture2D" uid="uid://cw3ah614gh3d3" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch101.png" id="169_ysyas"]
-[ext_resource type="Texture2D" uid="uid://bq7s6ktkwy1yg" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch102.png" id="170_w7eh5"]
-[ext_resource type="Texture2D" uid="uid://bltmyyubvitol" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch103.png" id="171_j7bi5"]
-[ext_resource type="Texture2D" uid="uid://shkgby0e2wbq" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch104.png" id="172_5o8vk"]
-[ext_resource type="Texture2D" uid="uid://c6do8814jbqwl" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch105.png" id="173_hn4hq"]
-[ext_resource type="Texture2D" uid="uid://bx2iu4qnd127l" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch106.png" id="174_tlqww"]
-[ext_resource type="Texture2D" uid="uid://dveexch6658ls" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch107.png" id="175_kussm"]
-[ext_resource type="Texture2D" uid="uid://0nprukl87h1f" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch108.png" id="176_g5adr"]
-[ext_resource type="Texture2D" uid="uid://btm7tn0hp4vcw" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch109.png" id="177_aloij"]
-[ext_resource type="Texture2D" uid="uid://ca8i4ma346x32" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch110.png" id="178_w88rd"]
-[ext_resource type="Texture2D" uid="uid://17jifk840f7y" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch111.png" id="179_3gaic"]
-[ext_resource type="Texture2D" uid="uid://cdoee4n2fyd5s" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch112.png" id="180_v2paf"]
-[ext_resource type="Texture2D" uid="uid://b4yorhiguoe06" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch113.png" id="181_a28q4"]
-[ext_resource type="Texture2D" uid="uid://b4xxh2cj3xy71" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch114.png" id="182_pvlit"]
-[ext_resource type="Texture2D" uid="uid://c3sv8rsdddmjc" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch115.png" id="183_ohb8y"]
-[ext_resource type="Texture2D" uid="uid://vhk676hne8rn" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch116.png" id="184_arbqp"]
-[ext_resource type="Texture2D" uid="uid://1dxxlnirj3tt" path="res://Audio/cutscenes/demonhatch/demonhatch_characters/demonhatch117.png" id="185_mi2x2"]
+[ext_resource type="Texture2D" uid="uid://cxka0xf38ocjq" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch2.png" id="70_ctktd"]
+[ext_resource type="Texture2D" uid="uid://buyfe2l1kagf7" path="res://Art/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest1.png" id="70_tkiyx"]
+[ext_resource type="Texture2D" uid="uid://c7krd4hvpdwwr" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch3.png" id="71_tkiyx"]
+[ext_resource type="Texture2D" uid="uid://cbahpmgwxwfob" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch4.png" id="72_5us0a"]
+[ext_resource type="Texture2D" uid="uid://djfjubiat185b" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch5.png" id="73_ykdu6"]
+[ext_resource type="Texture2D" uid="uid://b37w5gc58ws2e" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch6.png" id="74_yrd1m"]
+[ext_resource type="Texture2D" uid="uid://c4x4ete3kp1ov" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch7.png" id="75_8pnew"]
+[ext_resource type="Texture2D" uid="uid://btudsc47j3edc" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch8.png" id="76_a6uhe"]
+[ext_resource type="Texture2D" uid="uid://bui25qm6i5oac" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch9.png" id="77_k5arc"]
+[ext_resource type="Texture2D" uid="uid://ccckrfgm0hqss" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch10.png" id="78_hhce0"]
+[ext_resource type="Texture2D" uid="uid://c0rjdg7a0yikp" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch11.png" id="79_xguxh"]
+[ext_resource type="Texture2D" uid="uid://k10d3ju0xna0" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch12.png" id="80_bgfbn"]
+[ext_resource type="Texture2D" uid="uid://85h8nc4mn4kv" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch13.png" id="81_sact8"]
+[ext_resource type="Texture2D" uid="uid://b1rsc8k356esc" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch14.png" id="82_ipmva"]
+[ext_resource type="Texture2D" uid="uid://dtroyxdkjx8gy" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch15.png" id="83_5puo7"]
+[ext_resource type="Texture2D" uid="uid://bnjdmos4juir" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch16.png" id="84_g74rs"]
+[ext_resource type="Texture2D" uid="uid://s2anbceod3c8" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch17.png" id="85_rwujw"]
+[ext_resource type="Texture2D" uid="uid://bsn364a7djc5b" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch18.png" id="86_cei4o"]
+[ext_resource type="Texture2D" uid="uid://dmgsfq2npedr6" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch19.png" id="87_fk3i5"]
+[ext_resource type="Texture2D" uid="uid://cr02kjl77g3ox" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch20.png" id="88_pc5p3"]
+[ext_resource type="Texture2D" uid="uid://bilvdsiff2x3e" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch21.png" id="89_ab3d5"]
+[ext_resource type="Texture2D" uid="uid://bfe731l7tlhc" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch22.png" id="90_havp0"]
+[ext_resource type="Texture2D" uid="uid://dtyefh2y3cb0u" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch23.png" id="91_3gur5"]
+[ext_resource type="Texture2D" uid="uid://cjpymhp1biv72" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch24.png" id="92_jvflt"]
+[ext_resource type="Texture2D" uid="uid://duklgllvdaypm" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch25.png" id="93_iuegr"]
+[ext_resource type="Texture2D" uid="uid://c15uqxp4qfwqp" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch26.png" id="94_vva1v"]
+[ext_resource type="Texture2D" uid="uid://cussksg5v1fs1" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch27.png" id="95_nt2mb"]
+[ext_resource type="Texture2D" uid="uid://c6nsrmqaqk2l6" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch28.png" id="96_xosjs"]
+[ext_resource type="Texture2D" uid="uid://dbco0i1bxjser" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch29.png" id="97_mh7gm"]
+[ext_resource type="Texture2D" uid="uid://bne4jxdffuxys" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch30.png" id="98_tm1hh"]
+[ext_resource type="Texture2D" uid="uid://ch1dhnin3fin" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch31.png" id="99_j33pp"]
+[ext_resource type="Texture2D" uid="uid://dued4w53gqi76" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch32.png" id="100_wnfnt"]
+[ext_resource type="Texture2D" uid="uid://bjpwvv0ccjwee" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch33.png" id="101_lkcac"]
+[ext_resource type="Texture2D" uid="uid://dmwqwr5pcyqt7" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch34.png" id="102_5came"]
+[ext_resource type="Texture2D" uid="uid://cpnwl1yo4umrk" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch35.png" id="103_h8uwl"]
+[ext_resource type="Texture2D" uid="uid://b685ql747r8df" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch36.png" id="104_sj4qx"]
+[ext_resource type="Texture2D" uid="uid://ivlmsh0jd767" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch37.png" id="105_a1b1l"]
+[ext_resource type="Texture2D" uid="uid://noed4kl3hfnh" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch38.png" id="106_q0h7l"]
+[ext_resource type="Texture2D" uid="uid://dr078njj3xrx6" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch39.png" id="107_vyrrm"]
+[ext_resource type="Texture2D" uid="uid://dy47ppbb8fkvo" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch40.png" id="108_2ht2k"]
+[ext_resource type="Texture2D" uid="uid://dc5hr8frvawqi" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch41.png" id="109_mwuh4"]
+[ext_resource type="Texture2D" uid="uid://bgefpm7feo12s" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch42.png" id="110_1oaya"]
+[ext_resource type="Texture2D" uid="uid://du2e38k741sgj" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch43.png" id="111_itj3o"]
+[ext_resource type="Texture2D" uid="uid://c1d58hhplok6a" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch44.png" id="112_0iecb"]
+[ext_resource type="Texture2D" uid="uid://3burfpw1l6pp" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch45.png" id="113_6exjc"]
+[ext_resource type="Texture2D" uid="uid://88kyrvuvexrc" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch46.png" id="114_vi7la"]
+[ext_resource type="Texture2D" uid="uid://cu6gmo53ovwjc" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch47.png" id="115_b5ahf"]
+[ext_resource type="Texture2D" uid="uid://5q6sa6u2g7he" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch48.png" id="116_3ntai"]
+[ext_resource type="Texture2D" uid="uid://c57ehmlbscvmq" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch49.png" id="117_lcvjs"]
+[ext_resource type="Texture2D" uid="uid://ba8f26pmecpyq" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch50.png" id="118_ibqy5"]
+[ext_resource type="Texture2D" uid="uid://doopdk6m8hhsp" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch51.png" id="119_5e3dw"]
+[ext_resource type="Texture2D" uid="uid://hy7nfhj3vi0r" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch52.png" id="120_s128y"]
+[ext_resource type="Texture2D" uid="uid://dphsmamtgppf5" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch53.png" id="121_coayf"]
+[ext_resource type="Texture2D" uid="uid://der8chi0b15ye" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch54.png" id="122_5wyod"]
+[ext_resource type="Texture2D" uid="uid://cm8sdukbyevg7" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch55.png" id="123_lxmol"]
+[ext_resource type="Texture2D" uid="uid://cowtk75p6y8jp" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch56.png" id="124_6qkdo"]
+[ext_resource type="Texture2D" uid="uid://t08bd327a6l" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch57.png" id="125_t0dbu"]
+[ext_resource type="Texture2D" uid="uid://0f6ajfi5jyb0" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch58.png" id="126_fd3vb"]
+[ext_resource type="Texture2D" uid="uid://b5ur8knpotma2" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch59.png" id="127_5macw"]
+[ext_resource type="Texture2D" uid="uid://bl3h8lcs6afpo" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch60.png" id="128_f3ync"]
+[ext_resource type="Texture2D" uid="uid://dee56jjtrry5y" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch61.png" id="129_tebx4"]
+[ext_resource type="Texture2D" uid="uid://d2gykody25q6h" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch62.png" id="130_4hquj"]
+[ext_resource type="Texture2D" uid="uid://dxh3sl0btx31t" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch63.png" id="131_058rw"]
+[ext_resource type="Texture2D" uid="uid://fgiieukfwyqc" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch64.png" id="132_hb3ra"]
+[ext_resource type="Texture2D" uid="uid://bdbmhvrs0h5e" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch65.png" id="133_xevfw"]
+[ext_resource type="Texture2D" uid="uid://b7nte6qje6rlr" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch66.png" id="134_ydwdd"]
+[ext_resource type="Texture2D" uid="uid://bur6is0gg51ii" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch67.png" id="135_vyx68"]
+[ext_resource type="Texture2D" uid="uid://bto5cbhi45qo3" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch68.png" id="136_unj6s"]
+[ext_resource type="Texture2D" uid="uid://c4mawt22qilwu" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch69.png" id="137_bghps"]
+[ext_resource type="Texture2D" uid="uid://cgr05k7253unn" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch70.png" id="138_2fy4w"]
+[ext_resource type="Texture2D" uid="uid://bkqp7plerwcyp" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch71.png" id="139_pq2hj"]
+[ext_resource type="Texture2D" uid="uid://ddca1ajtk3tdd" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch72.png" id="140_2olu1"]
+[ext_resource type="Texture2D" uid="uid://u7iunkylg4q0" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch73.png" id="141_g05ul"]
+[ext_resource type="Texture2D" uid="uid://f6wj7dk40oy0" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch74.png" id="142_kogf7"]
+[ext_resource type="Texture2D" uid="uid://bmrwgu8ne5s3q" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch75.png" id="143_264mn"]
+[ext_resource type="Texture2D" uid="uid://bfohmbylmy1a6" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch76.png" id="144_iwcjy"]
+[ext_resource type="Texture2D" uid="uid://bhq1wukt7bg6x" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch77.png" id="145_yo0ub"]
+[ext_resource type="Texture2D" uid="uid://cjpxlyfw7xxs0" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch78.png" id="146_igir7"]
+[ext_resource type="Texture2D" uid="uid://da45p1i86r4ks" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch79.png" id="147_2eygi"]
+[ext_resource type="Texture2D" uid="uid://bt6tbove4ymrw" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch80.png" id="148_r8bdg"]
+[ext_resource type="Texture2D" uid="uid://cf8hc7sev27tc" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch81.png" id="149_y1iwn"]
+[ext_resource type="Texture2D" uid="uid://deovqi1vf7mpd" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch82.png" id="150_6ag2h"]
+[ext_resource type="Texture2D" uid="uid://duw7jp8yb3c4w" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch83.png" id="151_0r8xp"]
+[ext_resource type="Texture2D" uid="uid://bdbj7758j8gs" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch84.png" id="152_7li2k"]
+[ext_resource type="Texture2D" uid="uid://df56opr2jnkdy" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch85.png" id="153_iggo5"]
+[ext_resource type="Texture2D" uid="uid://blci814b2l4pt" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch86.png" id="154_bkpac"]
+[ext_resource type="Texture2D" uid="uid://b2oivilt26ilu" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch87.png" id="155_bhdj4"]
+[ext_resource type="Texture2D" uid="uid://d0ymkavuk4pe6" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch88.png" id="156_wdh46"]
+[ext_resource type="Texture2D" uid="uid://cthqvvdqdk47o" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch89.png" id="157_l01jw"]
+[ext_resource type="Texture2D" uid="uid://bb3w0cyoomshl" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch90.png" id="158_mkpg0"]
+[ext_resource type="Texture2D" uid="uid://bg5s44ylfbfdx" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch91.png" id="159_e34wn"]
+[ext_resource type="Texture2D" uid="uid://5027ggjjajdh" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch92.png" id="160_kiuwf"]
+[ext_resource type="Texture2D" uid="uid://d24ihhg7aeo4k" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch93.png" id="161_j1uyl"]
+[ext_resource type="Texture2D" uid="uid://bbyqf6vks05w6" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch94.png" id="162_k4uf2"]
+[ext_resource type="Texture2D" uid="uid://bwrtevql36xuv" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch95.png" id="163_k6cr1"]
+[ext_resource type="Texture2D" uid="uid://bnxku6mk482r6" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch96.png" id="164_sn11m"]
+[ext_resource type="Texture2D" uid="uid://brm7c4d58sfhp" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch97.png" id="165_pvsbe"]
+[ext_resource type="Texture2D" uid="uid://qq7oltk188sd" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch98.png" id="166_uhnmk"]
+[ext_resource type="Texture2D" uid="uid://c1x1ntsojx7xh" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch99.png" id="167_hj6pl"]
+[ext_resource type="Texture2D" uid="uid://csdtke211byyi" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch100.png" id="168_48ery"]
+[ext_resource type="Texture2D" uid="uid://cw3ah614gh3d3" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch101.png" id="169_ysyas"]
+[ext_resource type="Texture2D" uid="uid://bq7s6ktkwy1yg" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch102.png" id="170_w7eh5"]
+[ext_resource type="Texture2D" uid="uid://bltmyyubvitol" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch103.png" id="171_j7bi5"]
+[ext_resource type="Texture2D" uid="uid://shkgby0e2wbq" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch104.png" id="172_5o8vk"]
+[ext_resource type="Texture2D" uid="uid://c6do8814jbqwl" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch105.png" id="173_hn4hq"]
+[ext_resource type="Texture2D" uid="uid://bx2iu4qnd127l" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch106.png" id="174_tlqww"]
+[ext_resource type="Texture2D" uid="uid://dveexch6658ls" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch107.png" id="175_kussm"]
+[ext_resource type="Texture2D" uid="uid://0nprukl87h1f" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch108.png" id="176_g5adr"]
+[ext_resource type="Texture2D" uid="uid://btm7tn0hp4vcw" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch109.png" id="177_aloij"]
+[ext_resource type="Texture2D" uid="uid://ca8i4ma346x32" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch110.png" id="178_w88rd"]
+[ext_resource type="Texture2D" uid="uid://17jifk840f7y" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch111.png" id="179_3gaic"]
+[ext_resource type="Texture2D" uid="uid://cdoee4n2fyd5s" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch112.png" id="180_v2paf"]
+[ext_resource type="Texture2D" uid="uid://b4yorhiguoe06" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch113.png" id="181_a28q4"]
+[ext_resource type="Texture2D" uid="uid://b4xxh2cj3xy71" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch114.png" id="182_pvlit"]
+[ext_resource type="Texture2D" uid="uid://c3sv8rsdddmjc" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch115.png" id="183_ohb8y"]
+[ext_resource type="Texture2D" uid="uid://vhk676hne8rn" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch116.png" id="184_arbqp"]
+[ext_resource type="Texture2D" uid="uid://1dxxlnirj3tt" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch117.png" id="185_mi2x2"]
+[ext_resource type="Texture2D" uid="uid://ban0sc52najxs" path="res://Art/cutscenes/demonhatch/demonhatch_characters/demonhatch1.png" id="188_tkiyx"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rqs4q"]
 animations = [{
 "frames": [{
 "duration": 3.0,
-"texture": ExtResource("1_33wsr")
+"texture": ExtResource("70_tkiyx")
 }, {
 "duration": 3.0,
 "texture": ExtResource("2_81c15")
@@ -208,19 +208,19 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("6_a22wd")
 }, {
-"duration": 4.0,
+"duration": 1.0,
 "texture": ExtResource("7_yq5xk")
 }, {
-"duration": 4.0,
+"duration": 1.0,
 "texture": ExtResource("8_4ipmm")
 }, {
-"duration": 4.0,
+"duration": 1.0,
 "texture": ExtResource("9_cuto8")
 }, {
-"duration": 4.0,
+"duration": 1.0,
 "texture": ExtResource("10_rvbh1")
 }, {
-"duration": 4.0,
+"duration": 1.0,
 "texture": ExtResource("11_belxl")
 }, {
 "duration": 1.0,
@@ -391,7 +391,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("67_xrbxp")
 }],
-"loop": true,
+"loop": false,
 "name": &"crack",
 "speed": 10.0
 }, {
@@ -402,18 +402,29 @@ animations = [{
 "loop": true,
 "name": &"idle",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("70_tkiyx")
+}],
+"loop": true,
+"name": &"waiting",
+"speed": 5.0
 }]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_g1ll0"]
 animations = [{
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("68_4d1ra")
+}],
 "loop": false,
 "name": &"default",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("69_xrmd2")
+"texture": ExtResource("188_tkiyx")
 }, {
 "duration": 1.0,
 "texture": ExtResource("70_ctktd")
@@ -766,6 +777,14 @@ animations = [{
 "loop": false,
 "name": &"hatch",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("188_tkiyx")
+}],
+"loop": true,
+"name": &"waiting",
+"speed": 5.0
 }]
 
 [node name="EndingCutscenes_CursedMode" type="Node2D"]
@@ -777,4 +796,6 @@ animation = &"crack"
 autoplay = "idle"
 
 [node name="Demonchild" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -2)
 sprite_frames = SubResource("SpriteFrames_g1ll0")
+autoplay = "default"

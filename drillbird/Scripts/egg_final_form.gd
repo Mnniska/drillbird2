@@ -3,14 +3,22 @@ class_name egg_final_form
 signal signal_hatching_complete
 
 var isActive:bool=false
-var isShaking:bool=false
+var isShaking:bool=false:
+	get: return isShaking
+	set(value):
+		isShaking=value 
+		cursedModePlayer.isShaking=value
+
 var shakeAmount:float=1.8
 
 @onready var animator_normal=$AnimatedSprite2D
 @onready var animator_cursed=$AnimatedSprite2D_cursed
 @onready var hatchAnimation=$Anim_birds_hatching
 @onready var EggOriginalPosition:Vector2=hatchAnimation.position
+
 @onready var useVibration=GlobalVariables.useVibration
+
+@onready var cursedModePlayer:cutscene_cursed_mode_hatch=$EndingCutscenes_CursedMode
 
 enum endings{NORMAL,CURSED_BAD,CURSED_TRUE}
 
@@ -22,6 +30,7 @@ func _process(delta: float) -> void:
 	
 	if isShaking:
 		hatchAnimation.position=EggOriginalPosition+Vector2(randf_range(-shakeAmount,shakeAmount),0)
+	
 
 func _ready() -> void:
 	
@@ -63,6 +72,7 @@ func SetState(_state:finalFormStates):
 			
 			if GlobalVariables.isInCursedMode:
 				HatchEgg(endings.CURSED_BAD)
+				#TODO: Implement true ending
 			else:
 				HatchEgg(endings.NORMAL)
 			show()
@@ -72,8 +82,15 @@ func SetState(_state:finalFormStates):
 func HatchEgg(ending:endings=endings.NORMAL):
 
 	useVibration=GlobalVariables.useVibration
-	$Anim_hatching_drillbird.animation="wait"
-	hatchAnimation.animation="wait"
+
+	
+	if ending==endings.NORMAL:
+		$Anim_hatching_drillbird.animation="wait"
+		hatchAnimation.animation="wait"
+	else:
+		cursedModePlayer.PrepareHatching()
+		#makes anim play idle sprites, waiting for hatch vibrations to finish
+
 	GetAnimator().animation="hatch"
 
 	isShaking=false
@@ -84,38 +101,54 @@ func HatchEgg(ending:endings=endings.NORMAL):
 	isShaking=true
 
 	#make controller vibrate while shaking babyyyy
-	if useVibration:
-		Input.start_joy_vibration(GlobalSymbolRegister.currentController,0.8,0.8,1)	
+	if useVibration:Input.start_joy_vibration(GlobalSymbolRegister.currentController,0.8,0.8,1)	
+	
 	await get_tree().create_timer(1).timeout
 	isShaking=false
+	
 	await get_tree().create_timer(0.5).timeout
 	
 	isShaking=true
-	if useVibration:
-		Input.start_joy_vibration(GlobalSymbolRegister.currentController,0.8,0.8,0.5)	
+	if useVibration:Input.start_joy_vibration(GlobalSymbolRegister.currentController,0.8,0.8,0.5)	
+	
 	await get_tree().create_timer(0.5).timeout
 	isShaking=false
+	
 	await get_tree().create_timer(0.5).timeout
 
 	isShaking=true
-	if useVibration:
-		Input.start_joy_vibration(GlobalSymbolRegister.currentController,0.8,0.8,1.5)	
+	if useVibration:Input.start_joy_vibration(GlobalSymbolRegister.currentController,0.8,0.8,1.5)	
+	
 	await get_tree().create_timer(1.5).timeout
 	isShaking=false
+	
 	await get_tree().create_timer(2).timeout
 
 	isShaking=true
-	hatchAnimation.animation="hatch"
-	hatchAnimation.play()
-	$Anim_hatching_drillbird.animation="hatch"
-	$Anim_hatching_drillbird.play()
-	hatchAnimation.animation_finished.connect(HatchCutsceneFinished)
 	
-	if useVibration:
-		Input.start_joy_vibration(GlobalSymbolRegister.currentController,0.8,0.8,1)	
+	if ending==endings.NORMAL:
+		hatchAnimation.animation="hatch"
+		hatchAnimation.play()
+		$Anim_hatching_drillbird.animation="hatch"
+		$Anim_hatching_drillbird.play()
+		hatchAnimation.animation_finished.connect(HatchCutsceneFinished)
+		
+	if ending==endings.CURSED_BAD:
+		cursedModePlayer.PlayBadEnding()
+		cursedModePlayer.FinishedCutscene.connect(HatchCutsceneFinished)
+		
+	if ending==endings.CURSED_TRUE:
+		pass
+		#TODO: Add true ending lol
+	
+	if useVibration:Input.start_joy_vibration(GlobalSymbolRegister.currentController,0.8,0.8,1)	
+	
 	await get_tree().create_timer(1).timeout
+	
 	isShaking=false
+	
 	await get_tree().create_timer(1.3).timeout
+	
 	HUD.SpeedrunTimer.finishSpeedrun()
 	
 	#handled here because the timer stops here

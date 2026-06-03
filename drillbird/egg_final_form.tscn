@@ -496,7 +496,7 @@ animations = [{
 "texture": ExtResource("34_fl78l")
 }],
 "loop": true,
-"name": &"Drillbird",
+"name": &"Drillbird_not_used",
 "speed": 5.0
 }, {
 "frames": [{
@@ -851,7 +851,7 @@ z_index = 1
 material = SubResource("ShaderMaterial_4l23s")
 position = Vector2(-2, -40)
 sprite_frames = SubResource("SpriteFrames_q5a4i")
-animation = &"hatch"
+animation = &"final_form_idle"
 autoplay = "final_form_with_heart_idle"
 
 [node name="FinalHeartPosition" type="Node2D" parent="."]
@@ -869,6 +869,6 @@ z_index = 1
 position = Vector2(-2, -83)
 sprite_frames = SubResource("SpriteFrames_ovqsl")
 autoplay = "default"
-frame_progress = 0.66529006
+frame_progress = 0.600367
 
 [editable path="EndingCutscenes_CursedMode"]
