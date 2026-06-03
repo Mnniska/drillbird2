@@ -219,7 +219,9 @@ func _on_interact_button_end_day_button_progress_changed(progress: bool) -> void
 	pass # Replace with function body.
 
 var fallingAsleep:bool=false
+
 func GoToBed():
+	GlobalVariables.birdyIsSleeping.emit(true)
 	MusicPlayer.SetState(hub_music_player.musicStates.DREAM)
 
 	GlobalVariables.playerStatus=GlobalVariables.playerStatusEnum.SHOP
@@ -248,6 +250,9 @@ func EnterShop():
 	pass
 
 func WakeUp(saveGame:bool,progressDay:bool=true):
+	
+	GlobalVariables.birdyIsSleeping.emit(false)
+
 	
 	if saveGame:
 		$"..".SaveGame()

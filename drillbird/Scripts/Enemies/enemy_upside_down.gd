@@ -19,23 +19,20 @@ var sleeping:bool=false
 
 func _ready() -> void:
 	
-	await GlobalVariables.SetupComplete
-	GlobalVariables.playerStatusChanged.connect(PlayerStatusChanged)
+	GlobalVariables.birdyIsSleeping.connect(BirdySleep)
 	
 	if showdebuglabel:
 		debuglabel.show()
 	else:
 		debuglabel.hide()
 
-func PlayerStatusChanged():
-	
-	#TODO: Make this work lol
-	if GlobalVariables.playerStatus==GlobalVariables.playerStatusEnum.SLEEP:
+func BirdySleep(_sleeping:bool):
+	if _sleeping and !sleeping:
 		GoToSleep()
-
-	if GlobalVariables.playerStatus==GlobalVariables.playerStatusEnum.NEWDAY:
+	elif sleeping:
 		WakeUp()	
-	
+
+
 	pass
 
 func _physics_process(delta: float) -> void:

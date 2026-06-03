@@ -41,6 +41,11 @@ func TombstoneSpawnSetup():
 			var terrain = affectedTile.terrain
 			#Todo: Make terrain sprite match terrain spawned on
 			
+			if terrainSprites.size()>=terrain:
+				$Sprite_front.texture=terrainSprites[terrain]
+			
+			#solid, sand, dirt, dirt2, dirt3, fragile
+			
 			
 #			$Sprite2D.texture=spriteVariations[min(spriteVariations.size()-1,terrain) ] 
 			
