@@ -12,7 +12,7 @@ var shakeAmount:float=1.8
 @onready var EggOriginalPosition:Vector2=hatchAnimation.position
 @onready var useVibration=GlobalVariables.useVibration
 
-
+enum endings{NORMAL,CURSED_BAD,CURSED_TRUE}
 
 enum finalFormStates{FINAL_INACTIVE,FINAL_HEARTLESS,FINAL_HEART,FINAL_HATCHING}
 var finalFormState:finalFormStates=finalFormStates.FINAL_HEARTLESS
@@ -60,12 +60,16 @@ func SetState(_state:finalFormStates):
 			show()
 			pass
 		finalFormStates.FINAL_HATCHING:
-			HatchEgg()
+			
+			if GlobalVariables.isInCursedMode:
+				HatchEgg(endings.CURSED_BAD)
+			else:
+				HatchEgg(endings.NORMAL)
 			show()
 
 			
 
-func HatchEgg():
+func HatchEgg(ending:endings=endings.NORMAL):
 
 	useVibration=GlobalVariables.useVibration
 	$Anim_hatching_drillbird.animation="wait"

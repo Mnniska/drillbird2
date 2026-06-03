@@ -1,7 +1,8 @@
-[gd_scene load_steps=157 format=3 uid="uid://uk01ajvakw2b"]
+[gd_scene load_steps=158 format=3 uid="uid://uk01ajvakw2b"]
 
 [ext_resource type="Script" uid="uid://b7nlwll1yu4ii" path="res://Scripts/egg_final_form.gd" id="1_fasbe"]
 [ext_resource type="Texture2D" uid="uid://bbqb5jjiqxbtc" path="res://Art/environment/Home/FinalForm/egg_finalForm.png" id="2_06bq8"]
+[ext_resource type="PackedScene" uid="uid://1codt4oivfrh" path="res://Scenes/cutscenes/cutscene_demonhatch.tscn" id="2_rwe1h"]
 [ext_resource type="Texture2D" uid="uid://bi2hexyd84ebw" path="res://Art/environment/Home/egg_biggest.png" id="3_o6wnq"]
 [ext_resource type="Texture2D" uid="uid://d1r1mpddbnskb" path="res://Art/environment/Home/FinalForm/egg_finalform_HEART_idle1.png" id="4_6tmc2"]
 [ext_resource type="Texture2D" uid="uid://btrum4xti3i41" path="res://Art/environment/Home/FinalForm/egg_finalForm_transition2.png" id="4_6wm3r"]
@@ -832,11 +833,17 @@ animations = [{
 [node name="Egg_FinalForm" type="Node2D"]
 script = ExtResource("1_fasbe")
 
+[node name="EndingCutscenes_CursedMode" parent="." instance=ExtResource("2_rwe1h")]
+position = Vector2(-2, -83)
+
+[node name="Demonchild" parent="EndingCutscenes_CursedMode" index="1"]
+animation = &"hatch"
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 1
 position = Vector2(-2, -40)
 sprite_frames = SubResource("SpriteFrames_dcmve")
-animation = &"go_to_final_form"
+animation = &"hatch"
 autoplay = "final_form_with_heart_idle"
 
 [node name="AnimatedSprite2D_cursed" type="AnimatedSprite2D" parent="."]
@@ -844,7 +851,7 @@ z_index = 1
 material = SubResource("ShaderMaterial_4l23s")
 position = Vector2(-2, -40)
 sprite_frames = SubResource("SpriteFrames_q5a4i")
-animation = &"final_form_with_heart_idle"
+animation = &"hatch"
 autoplay = "final_form_with_heart_idle"
 
 [node name="FinalHeartPosition" type="Node2D" parent="."]
@@ -855,14 +862,13 @@ position = Vector2(-1, -40)
 z_index = 1
 position = Vector2(-2, -83)
 sprite_frames = SubResource("SpriteFrames_lku8d")
-animation = &"hatch"
 autoplay = "default"
 
 [node name="Anim_hatching_drillbird" type="AnimatedSprite2D" parent="."]
 z_index = 1
 position = Vector2(-2, -83)
 sprite_frames = SubResource("SpriteFrames_ovqsl")
-animation = &"hatch"
 autoplay = "default"
-frame = 26
-frame_progress = 1.0
+frame_progress = 0.66529006
+
+[editable path="EndingCutscenes_CursedMode"]
