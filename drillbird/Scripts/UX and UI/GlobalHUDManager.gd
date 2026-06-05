@@ -63,7 +63,7 @@ func SetupComplete():
 	
 	var isOnDayOne= GlobalVariables.currentDay==1 #lmao
 	
-	if GlobalVariables.isInCursedMode and isOnDayOne:
+	if GlobalVariables.CursedMode and isOnDayOne:
 		SetState(menuStates.MAIN)
 		
 		GlobalVariables.hasSeenIntroCutscene=true

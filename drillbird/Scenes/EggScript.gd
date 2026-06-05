@@ -7,6 +7,7 @@ signal FinalHeartPlaced
 
 enum eggStates{NOTHING,GROWING,FINALFORM_NO_HEART,FINALFORM_HEART,FINALCUTSCENE}
 var eggState=eggStates.NOTHING
+@onready var gooAnimHandler:goo_egg_animator=$"Goo anims"
 
 #How much experience does each state require to go to next? 
 @export var ExperienceRequirements:Array[int]
@@ -63,7 +64,7 @@ func SetupEggTexture():
 	
 		
 	for egg in eggSpritesToChangeTextureOn:
-		if GlobalVariables.isInCursedMode:
+		if GlobalVariables.CursedMode:
 			egg.texture=eggSprites_cursed[count]
 		else:
 			egg.texture=eggSprites_normal[count]
@@ -107,10 +108,13 @@ func SetEggState(_state:eggStates):
 		eggStates.FINALFORM_NO_HEART:
 			hideEggs()
 			finalFormEgg.SetState(finalFormEgg.finalFormStates.FINAL_HEARTLESS)
+			gooAnimHandler.SetGooState(gooAnimHandler.gooStates.waitingForHeart)
 			pass
 		eggStates.FINALFORM_HEART:
 			hideEggs()
 			finalFormEgg.SetState(finalFormEgg.finalFormStates.FINAL_HEART)
+			gooAnimHandler.SetGooState(gooAnimHandler.gooStates.big)
+
 			pass
 		eggStates.FINALCUTSCENE:
 			#THIS WILL likely never be saved, so won't be used. but who knows :) 

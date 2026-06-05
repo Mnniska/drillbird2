@@ -35,7 +35,7 @@ func _process(delta: float) -> void:
 func _ready() -> void:
 	
 	await GlobalVariables.SetupComplete
-	if GlobalVariables.isInCursedMode:
+	if GlobalVariables.CursedMode:
 		animator_normal.hide()
 		animator_cursed.show()
 	else:
@@ -43,7 +43,7 @@ func _ready() -> void:
 		animator_cursed.hide()
 
 func GetAnimator()->AnimatedSprite2D:
-	if GlobalVariables.isInCursedMode:
+	if GlobalVariables.CursedMode:
 		return animator_cursed
 	else:
 		return animator_normal

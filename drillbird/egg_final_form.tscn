@@ -1,4 +1,4 @@
-[gd_scene load_steps=158 format=3 uid="uid://uk01ajvakw2b"]
+[gd_scene load_steps=159 format=3 uid="uid://uk01ajvakw2b"]
 
 [ext_resource type="Script" uid="uid://b7nlwll1yu4ii" path="res://Scripts/egg_final_form.gd" id="1_fasbe"]
 [ext_resource type="Texture2D" uid="uid://bbqb5jjiqxbtc" path="res://Art/environment/Home/FinalForm/egg_finalForm.png" id="2_06bq8"]
@@ -39,6 +39,7 @@
 [ext_resource type="Texture2D" uid="uid://uk1i7q0jwd3x" path="res://Art/cutscenes/hatchingEggDrillbird/DrillbirdShock1.png" id="35_d5pf1"]
 [ext_resource type="Texture2D" uid="uid://rrk057kao42r" path="res://Art/environment/Home/eggs_cursed/egg_biggest_cursed.png" id="35_m04cg"]
 [ext_resource type="Texture2D" uid="uid://b5urvleaajiw1" path="res://Art/environment/Home/FinalForm/finalFormAnim_cursed/egg_finalFormAnnim_cursed21.png" id="36_4lsam"]
+[ext_resource type="Texture2D" uid="uid://dmmt4d6omuo00" path="res://Art/environment/Home/eggs_cursed/egg_finalForm_cursed.png" id="36_m04cg"]
 [ext_resource type="Texture2D" uid="uid://da2gjdw6642rl" path="res://Art/cutscenes/hatchingEgg/HatchingCutscene2.png" id="36_p704y"]
 [ext_resource type="Texture2D" uid="uid://cpg0xrrkmf1pg" path="res://Art/cutscenes/hatchingEggDrillbird/DrillbirdShock2.png" id="36_wdkq4"]
 [ext_resource type="Texture2D" uid="uid://qs362ye8ln2f" path="res://Art/cutscenes/hatchingEgg/HatchingCutscene3.png" id="37_0bnoe"]
@@ -311,7 +312,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("36_4lsam")
+"texture": ExtResource("36_m04cg")
 }],
 "loop": true,
 "name": &"final_form_idle",
@@ -412,6 +413,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("36_4lsam")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_m04cg")
 }],
 "loop": false,
 "name": &"go_to_final_form",

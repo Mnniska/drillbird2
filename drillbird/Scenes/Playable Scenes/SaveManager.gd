@@ -235,7 +235,7 @@ func LoadGame(worldToLoad:int=-1):
 		PlayerData=ResourceLoader.load(save_file_path+save_file_name)
 	
 	
-	GlobalVariables.isInCursedMode=PlayerData.isInCursedMode
+	GlobalVariables.CursedMode=PlayerData.isInCursedMode
 
 
 	worldSpawner.SpawnWorld(PlayerData.worldToSpawn)

@@ -16,7 +16,7 @@ var lerpcurve:int=-5
 func _ready() -> void:
 	
 	await GlobalVariables.SetupComplete
-	if GlobalVariables.isInCursedMode:
+	if GlobalVariables.CursedMode:
 		self.limit_top=-500
 	else:
 		self.limit_top=-450
