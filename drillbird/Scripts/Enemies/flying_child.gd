@@ -6,7 +6,7 @@ signal hasEvolvedOffScreen
 signal canEvolveUpdate(yes:bool)
 
 @onready var animator=$Animator
-@onready var slider:HSlider = %UI_LightSlider
+@onready var slider:HSlider
 
 @export var gravity:float=2
 @export var speedAtWhichFallingAnimTriggers:float=50
@@ -55,7 +55,8 @@ func _ready() -> void:
 	evolveText.hide()
 	hide()
 	
-func Activate():
+func Activate(lightSlider:HSlider):
+	slider=lightSlider
 	isChilling=false
 	initiateJump(1)
 	show()

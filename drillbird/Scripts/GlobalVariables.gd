@@ -8,7 +8,6 @@ signal playerSang
 signal birdyIsSleeping(bool)
 
 @export var DebugEnabled:bool=true
-var isInCursedMode:bool=false
 
 var save_file_path = "user://save/"
 var save_file_name="DrillbirdPlayerSave.tres"

@@ -1,7 +1,10 @@
 extends Node
 class_name flying_credits_manager 
 
-@onready var flyer:flying_child=$FlyingChild
+var childDemonRef=preload("res://Scenes/Objects and Enemies/flying_DEMON_child.tscn")
+var childRef=preload("res://Scenes/Objects and Enemies/flying_child.tscn")
+
+var flyer:flying_child
 @onready var credits=$Credits
 @onready var valueSpawner=$ValueSpawner
 
@@ -35,10 +38,20 @@ func _process(delta: float) -> void:
 		musicVolume= lerpf(musicVolume,musicTargetVolume,delta)
 		var vol=lerpf(musicMinVolume,musicMaxVolume,musicVolume)
 		music.volume_db=vol
-		
+
+func SetEnergyMeterVisible(visible:bool,instant:bool=true):
+	
+	var energynmeter=$energyMeter
+	
+	if visible:energynmeter.show()
+	else: energynmeter.hide()
+	
+	
+	pass
+
 func _ready() -> void:
 	
-
+	SetEnergyMeterVisible(false)
 	text_growth.text=tr("credits_growth")
 	HUD.SetState(HUD.menuStates.CREDITS)
 	music.finished.connect(music.play)
@@ -46,7 +59,19 @@ func _ready() -> void:
 	$Camera2D.CameraInitialLerp()
 	$Credits.hide()
 	await get_tree().create_timer(3).timeout
-	flyer.Activate()
+	
+	var path=childRef
+	if GlobalVariables.CursedMode:
+		path=childDemonRef
+	
+	flyer=path.instantiate()
+	flyer.transform.origin=$ChildSpawnPos.position
+	add_child(flyer)
+	flyer.Activate(%UI_LightSlider)
+	
+	flyer.hasEvolved.connect(_on_flying_child_has_evolved)
+	flyer.hasEvolvedOffScreen.connect(_on_flying_child_has_evolved_off_screen)
+	flyer.canEvolveUpdate.connect(_on_flying_child_can_evolve_update)
 
 	await get_tree().create_timer(4).timeout
 
@@ -62,9 +87,12 @@ func _ready() -> void:
 		credits.signal_credits_finished.connect(CreditsFinished)
 		
 
+
+
 func CreditsFinished():
 	valueSpawner.active=true
 	SetCloudsVisible(false)
+	SetEnergyMeterVisible(true)
 
 func SetCloudsVisible(visible:bool):
 	backgroundClouds.showParallax=visible
