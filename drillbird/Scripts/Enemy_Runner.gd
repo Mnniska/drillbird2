@@ -237,11 +237,10 @@ func DigTile():
 		var tileset:TileMapLayer = diggingRaycast.get_collider()
 		
 		if tileset:
-			var pos = diggingRaycast.get_collision_point()
+			var pos = diggingRaycast.get_collision_point()+Vector2(0,4)
 			var tilesetPos=tileset.to_local(tileset.local_to_map(pos))
 
 			var tiledata:TileData= tileset.get_cell_tile_data(tilesetPos)
-			
 			var crackPos=to_local(tileset.map_to_local(tilesetPos))
 			var globalPos=to_global(crackPos)
 			global_position.x=globalPos.x
