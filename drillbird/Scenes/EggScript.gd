@@ -172,7 +172,7 @@ func UpdateSize(experience:int):
 			break
 			
 		index+=1
-		#index will become 3 if player has the biggest upgrade
+		#index will become 3 if player has the biggest upgrade. 
 		pass
 	
 	state=index
@@ -181,6 +181,12 @@ func UpdateSize(experience:int):
 	for n in Eggs:
 		if y==state:
 			Eggs[y].show()
+			
+			#show goo if in big egg state
+			if y>=3:
+				gooAnimHandler.SetGooState(gooAnimHandler.gooStates.big)
+
+			
 		else:
 			Eggs[y].hide()
 		y+=1
@@ -194,6 +200,9 @@ func UpdateSize(experience:int):
 		var l = lerpf(StateTargetScales[state],1,progress)	
 		Eggs[state].scale= Vector2(l,l)
 		
+		#testing making goo anim scale, let's see if it looks dumb
+		$"Goo anims".scale=Vector2(l,l)
+		
 		var test=lerp(sleepPositions[state].position.y,sleepPositions[state+1].position.y,progress)
 		$BirdySleepPositions/birdySleep.position.y=test
 	
@@ -202,7 +211,8 @@ func UpdateSize(experience:int):
 		#if maxed out - put birdie at the last sleep position
 		$BirdySleepPositions/birdySleep.position.y=sleepPositions[sleepPositions.size()-1].position.y
 		finalFormEgg.TransitionToFinalForm()
-	
+
+
 func _process(delta: float) -> void:
 
 	if shaking:

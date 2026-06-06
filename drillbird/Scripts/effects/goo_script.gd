@@ -42,6 +42,8 @@ func SetGooState(state:gooStates):
 			animator.play("goo")
 		
 		gooStates.waitingForHeart:
+			animator.stop()
+			await get_tree().create_timer(4).timeout
 			animator.play("heartgoo")
 	
 		gooStates.no:
