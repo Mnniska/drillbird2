@@ -70,7 +70,7 @@ func SetState(_state:finalFormStates):
 			pass
 		finalFormStates.FINAL_HATCHING:
 			
-			if GlobalVariables.isInCursedMode:
+			if GlobalVariables.CursedMode:
 				HatchEgg(endings.CURSED_BAD)
 				#TODO: Implement true ending
 			else:

@@ -22,6 +22,7 @@ var eggState=eggStates.NOTHING
 @export var eggSprites_normal:Array[Texture]
 @export var eggSprites_cursed:Array[Texture]
 @export var eggSpritesToChangeTextureOn:Array[Sprite2D]
+@onready var floorGabbagoo=$"../floor gabbagoo"
 
 var shakeTimer:float=0
 var originalPos:Vector2=self.position
@@ -144,7 +145,7 @@ func SetBirdyVisible(visible:bool):
 	
 func UpdateSizeBasedOnSaveData():
 	
-	UpdateSize(GlobalVariables.totalEGGsperienceGained)
+	UpdateSize(GlobalVariables.totalEGGsperienceGained,true)
 	
 	
 
@@ -155,11 +156,25 @@ func GetIsEggMaxedOut():
 	
 	return xp>0
 
-func UpdateSize(experience:int):
+func GetProgressTowardsHatching()->float:
+	var currentXP=GlobalVariables.totalEGGsperienceGained
+	var xpRequired:int=0
+	for n in ExperienceRequirements:
+		xpRequired+=n
+	
+	if currentXP>xpRequired:
+		currentXP=xpRequired
+	
+	return float(currentXP)/float(xpRequired)
+
+func UpdateSize(experience:int,calledAtStartup:bool=false):
+
+#if called from startup, the floor goo will instantly update
 
 	if eggState!=eggStates.GROWING:
 		shakeTimer+=0.4
 		shaking=true
+		floorGabbagoo.UpdateGooProgress(GetProgressTowardsHatching(),calledAtStartup)
 		return
 	
 	oldXP=experience
@@ -212,6 +227,7 @@ func UpdateSize(experience:int):
 		$BirdySleepPositions/birdySleep.position.y=sleepPositions[sleepPositions.size()-1].position.y
 		finalFormEgg.TransitionToFinalForm()
 
+	floorGabbagoo.UpdateGooProgress(GetProgressTowardsHatching(),calledAtStartup)
 
 func _process(delta: float) -> void:
 
