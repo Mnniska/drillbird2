@@ -194,7 +194,7 @@ func ExitDazed():
 	SoundManager.PlaySoundAtLocation(global_position,abstract_SoundEffectSetting.SoundEffectEnum.MOLE_GETUP)
 
 	anim.play("recover")
-	var length=get_current_animation_length()
+	var length=GetCurrentAnimationLength()
 	await get_tree().create_timer(length).timeout
 	state=States.WALK
 
@@ -213,7 +213,7 @@ func DetectPlayer():
 
 	anim.animation="detect"
 	anim.play()
-	var detectAnimLength:float=get_current_animation_length() 
+	var detectAnimLength:float=GetCurrentAnimationLength() 
 	
 	global_position.x=GlobalVariables.PlayerController.global_position.x
 	

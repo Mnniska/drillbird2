@@ -92,7 +92,9 @@ func Kill(showEffects:bool=true,soundToPlay:abstract_SoundEffectSetting.SoundEff
 		if soundToPlay!=-1:
 			SoundManager.PlaySoundAtLocation(global_position,soundToPlay)
 		anim.animation="death"
-		var timeToDie:float=get_current_animation_length()		
+		anim.play()
+		anim.speed_scale=1
+		var timeToDie:float=GetCurrentAnimationLength()
 		await get_tree().create_timer(timeToDie).timeout
 	
 	if spawnCorse:
@@ -135,7 +137,7 @@ func TurnIntoCorpse():
 	
 	pass
 
-func get_current_animation_length(animated_sprite: AnimatedSprite2D = anim) -> float:
+func GetCurrentAnimationLength(animated_sprite: AnimatedSprite2D = anim) -> float:
 
 	var current_animation_name = animated_sprite.animation
 
