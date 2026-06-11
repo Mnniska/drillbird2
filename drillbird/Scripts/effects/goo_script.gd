@@ -43,7 +43,7 @@ func SetGooState(state:gooStates):
 		
 		gooStates.waitingForHeart:
 			animator.stop()
-			await get_tree().create_timer(4).timeout
+			await get_tree().create_timer(3).timeout #hand crafted timer to fit egg crack anim
 			animator.play("heartgoo")
 	
 		gooStates.no:

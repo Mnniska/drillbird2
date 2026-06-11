@@ -1,4 +1,4 @@
-[gd_scene load_steps=159 format=3 uid="uid://uk01ajvakw2b"]
+[gd_scene load_steps=165 format=3 uid="uid://uk01ajvakw2b"]
 
 [ext_resource type="Script" uid="uid://b7nlwll1yu4ii" path="res://Scripts/egg_final_form.gd" id="1_fasbe"]
 [ext_resource type="Texture2D" uid="uid://bbqb5jjiqxbtc" path="res://Art/environment/Home/FinalForm/egg_finalForm.png" id="2_06bq8"]
@@ -112,11 +112,17 @@
 [ext_resource type="Texture2D" uid="uid://f06o641ma3wi" path="res://Art/environment/Home/FinalForm/finalFormAnim_cursed/egg_finalFormAnnim_cursed20.png" id="65_h6pi6"]
 [ext_resource type="Texture2D" uid="uid://dr6g6a0fdqsbl" path="res://Art/cutscenes/hatchingEgg/HatchingCutscene31.png" id="65_psw0f"]
 [ext_resource type="Texture2D" uid="uid://b35f8vesf5mf5" path="res://Art/cutscenes/hatchingEgg/HatchingCutscene32.png" id="66_jbf4g"]
+[ext_resource type="Texture2D" uid="uid://coe68f8hjca2r" path="res://Art/environment/Home/FinalForm/finalFormAnim_cursed/egg_finalFormAnnim_cursed22.png" id="67_fs668"]
 [ext_resource type="Texture2D" uid="uid://cku6dos53rxm1" path="res://Art/cutscenes/hatchingEgg/HatchingCutscene33.png" id="67_u1u0c"]
 [ext_resource type="Texture2D" uid="uid://cmndtqku7xusj" path="res://Art/cutscenes/hatchingEgg/HatchingCutscene34.png" id="68_rogii"]
+[ext_resource type="Texture2D" uid="uid://csqjiivut4vju" path="res://Art/environment/Home/FinalForm/finalFormAnim_cursed/egg_finalFormAnnim_cursed23.png" id="68_wbqyg"]
 [ext_resource type="Texture2D" uid="uid://cba2cet58di2f" path="res://Art/cutscenes/hatchingEgg/HatchingCutscene35.png" id="69_84nw7"]
+[ext_resource type="Texture2D" uid="uid://bgpfnrnnvg7wq" path="res://Art/environment/Home/FinalForm/finalFormAnim_cursed/egg_finalFormAnnim_cursed24.png" id="69_htmov"]
+[ext_resource type="Texture2D" uid="uid://bn7tkb7ro8pl5" path="res://Art/environment/Home/FinalForm/finalFormAnim_cursed/egg_finalFormAnnim_cursed25.png" id="70_81sbb"]
 [ext_resource type="Texture2D" uid="uid://d3whw0qu6bcws" path="res://Art/cutscenes/hatchingEgg/HatchingCutscene36.png" id="70_m3ov1"]
 [ext_resource type="Texture2D" uid="uid://63nntf6dftbl" path="res://Art/cutscenes/hatchingEgg/HatchingCutscene37.png" id="71_1ih3s"]
+[ext_resource type="Texture2D" uid="uid://deusgxklf0lk3" path="res://Art/environment/Home/FinalForm/finalFormAnim_cursed/egg_finalFormAnnim_cursed26.png" id="71_ua40c"]
+[ext_resource type="Texture2D" uid="uid://mqqx15km01tu" path="res://Art/environment/Home/FinalForm/finalFormAnim_cursed/egg_finalFormAnnim_cursed27.png" id="72_le62n"]
 [ext_resource type="Texture2D" uid="uid://y00ar05rtuea" path="res://Art/cutscenes/hatchingEgg/HatchingCutscene38.png" id="72_mu57d"]
 [ext_resource type="Texture2D" uid="uid://d1swpdv01y40y" path="res://Art/cutscenes/hatchingEgg/HatchingCutscene39.png" id="73_6vkm0"]
 [ext_resource type="Texture2D" uid="uid://smungy4qyrjh" path="res://Art/cutscenes/hatchingEgg/HatchingCutscene40.png" id="74_1vs83"]
@@ -416,6 +422,24 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("36_m04cg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("67_fs668")
+}, {
+"duration": 1.0,
+"texture": ExtResource("68_wbqyg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("69_htmov")
+}, {
+"duration": 1.0,
+"texture": ExtResource("70_81sbb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("71_ua40c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("72_le62n")
 }],
 "loop": false,
 "name": &"go_to_final_form",
@@ -855,7 +879,7 @@ z_index = 1
 material = SubResource("ShaderMaterial_4l23s")
 position = Vector2(-2, -40)
 sprite_frames = SubResource("SpriteFrames_q5a4i")
-animation = &"final_form_idle"
+animation = &"go_to_final_form"
 autoplay = "final_form_with_heart_idle"
 
 [node name="FinalHeartPosition" type="Node2D" parent="."]
