@@ -1,24 +1,25 @@
-[gd_scene load_steps=46 format=3 uid="uid://b842x1mmyi2i8"]
+[gd_scene load_steps=47 format=3 uid="uid://b842x1mmyi2i8"]
 
 [ext_resource type="Script" uid="uid://cmuunggce2054" path="res://Scripts/Enemy_Runner.gd" id="1_cm028"]
 [ext_resource type="Script" uid="uid://bgy5cf01m25xs" path="res://Scripts/Abstract scripts/abstract_collidable.gd" id="2_xen7b"]
 [ext_resource type="Script" uid="uid://cokuso80w54cc" path="res://Scripts/Abstract scripts/abstract_enemy.gd" id="3_ejuxj"]
 [ext_resource type="Texture2D" uid="uid://dpxguydkcqyoi" path="res://Art/characters/Mole/mole_land_dazed1.png" id="4_a7yph"]
-[ext_resource type="Texture2D" uid="uid://bu56d8b0ujw2e" path="res://Art/characters/bug/walker_death1.png" id="4_iwebn"]
 [ext_resource type="Texture2D" uid="uid://ba4mfg6y705ng" path="res://Art/characters/Mole/mole_land_dazed2.png" id="5_iq8vd"]
-[ext_resource type="Texture2D" uid="uid://8u8wcx31n81q" path="res://Art/characters/bug/walker_death2.png" id="5_vkhyx"]
-[ext_resource type="Texture2D" uid="uid://5p4kf2oomjkc" path="res://Art/characters/bug/walker_death3.png" id="6_g4dga"]
-[ext_resource type="Texture2D" uid="uid://dhrvhcsf7e45a" path="res://Art/effects/empty.png" id="7_m1al2"]
+[ext_resource type="Texture2D" uid="uid://d0o5e06666c0n" path="res://Art/characters/Mole/mole_die1.png" id="7_5sggn"]
 [ext_resource type="Texture2D" uid="uid://drkyoeihqrm5f" path="res://Art/characters/Mole/mole_land_dazed4.png" id="7_xjjjq"]
+[ext_resource type="Texture2D" uid="uid://dv316cm0ev6ce" path="res://Art/characters/Mole/mole_die2.png" id="8_b7bf4"]
 [ext_resource type="Texture2D" uid="uid://by8urweiq8hjq" path="res://Art/characters/Mole/mole_land_dazed5.png" id="8_p4347"]
 [ext_resource type="Texture2D" uid="uid://dbu6rie4cfjlr" path="res://Art/characters/Mole/mole_detect1.png" id="8_rv3ho"]
 [ext_resource type="Texture2D" uid="uid://cqvg631all6rj" path="res://Art/characters/Mole/mole_falling1.png" id="8_xen7b"]
 [ext_resource type="Texture2D" uid="uid://8fsjqspfy3yh" path="res://Art/characters/Mole/mole_land_dazed6.png" id="9_5sggn"]
 [ext_resource type="Texture2D" uid="uid://b37pwto76x612" path="res://Art/characters/Mole/mole_falling2.png" id="9_ejuxj"]
 [ext_resource type="Texture2D" uid="uid://dgaqpxcv54v4g" path="res://Art/characters/Mole/mole_detect2.png" id="9_s04qi"]
+[ext_resource type="Texture2D" uid="uid://ol8fr5tnq5ln" path="res://Art/characters/Mole/mole_die3.png" id="9_ut32d"]
+[ext_resource type="Texture2D" uid="uid://ba0qmovy0r83f" path="res://Art/characters/Mole/mole_die4.png" id="10_0w6n3"]
 [ext_resource type="Texture2D" uid="uid://cj0ogd4cjf4ut" path="res://Art/characters/Mole/mole_detect3.png" id="10_c7mci"]
 [ext_resource type="Texture2D" uid="uid://bpf44px75kj4p" path="res://Art/characters/Mole/mole_walking1.png" id="10_iwebn"]
 [ext_resource type="Texture2D" uid="uid://sp87gklxt5s4" path="res://Art/characters/Mole/mole_detect4.png" id="11_4uqbi"]
+[ext_resource type="Texture2D" uid="uid://dntpjhhkxvett" path="res://Art/characters/Mole/mole_die5.png" id="11_23xhx"]
 [ext_resource type="Texture2D" uid="uid://dbktv5cyf7all" path="res://Art/characters/Mole/mole_walking2.png" id="11_vkhyx"]
 [ext_resource type="Texture2D" uid="uid://dk63mg8r5cja5" path="res://Art/characters/Mole/mole_walking3.png" id="12_g4dga"]
 [ext_resource type="Texture2D" uid="uid://tuwdtabr4yge" path="res://Art/characters/Mole/mole_digging1.png" id="12_j0440"]
@@ -69,16 +70,19 @@ animations = [{
 }, {
 "frames": [{
 "duration": 3.0,
-"texture": ExtResource("4_iwebn")
-}, {
-"duration": 3.0,
-"texture": ExtResource("5_vkhyx")
-}, {
-"duration": 3.0,
-"texture": ExtResource("6_g4dga")
+"texture": ExtResource("7_5sggn")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_m1al2")
+"texture": ExtResource("8_b7bf4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ut32d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_0w6n3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_23xhx")
 }],
 "loop": false,
 "name": &"death",
@@ -242,7 +246,7 @@ shape = SubResource("RectangleShape2D_khmiv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_of4cw")
-animation = &"recover"
+animation = &"death"
 autoplay = "run"
 
 [node name="EnemyCollisionChecker" type="Area2D" parent="."]
