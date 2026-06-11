@@ -32,6 +32,11 @@ func _process(delta: float) -> void:
 
 func UpdateGooProgress(progressToHatching:float,setGooSpriteInstantly:bool=false):
 	
+	if !GlobalVariables.CursedMode:
+		hide()
+	else:
+		show()
+	
 	var _valueToSet=roundi((gooSprites.size()-1)*progressToHatching)
 	
 	waitingForPlayerToLeave=true

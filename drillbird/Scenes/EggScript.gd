@@ -104,6 +104,9 @@ func SetEggState(_state:eggStates):
 			pass
 		eggStates.GROWING:
 			show()
+			
+			if GlobalVariables.CursedMode:floorGabbagoo.show()
+			
 			finalFormEgg.SetState(finalFormEgg.finalFormStates.FINAL_INACTIVE)
 			pass
 		eggStates.FINALFORM_NO_HEART:
@@ -135,6 +138,7 @@ func TransitionToFinalFormWithHeart():
 func hideEggs():
 	for egg in Eggs:
 		egg.hide()
+		floorGabbagoo.hide()
 
 func SetBirdyVisible(visible:bool):
 	if visible:

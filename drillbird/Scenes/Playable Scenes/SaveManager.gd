@@ -83,7 +83,7 @@ func ChangeToCursedMode():
 	#This is the only place where these valuables are set. 
 	PlayerData.worldToSpawn=2
 	PlayerData.isInCursedMode=true
-	GlobalVariables.isInCursedMode=true
+	GlobalVariables.CursedMode=true
 	
 	ResourceSaver.save(PlayerData,save_file_path+save_file_name)
 
