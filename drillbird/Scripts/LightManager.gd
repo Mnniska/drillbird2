@@ -57,6 +57,8 @@ func RequestRefillHealthWithLight():
 	
 
 func SetupLightFunctionality():
+	outOfLight=false
+	
 	PlayerLight=GlobalVariables.MainSceneReferenceConnector.playerDarkness
 	if PlayerLight==null:
 		push_error("Could not get player light, something is WRONG")
@@ -81,6 +83,8 @@ func SetupLightFunctionality():
 	UpdateLightbulbLocations()
 	if GlobalVariables.upgradeLevel_light==0:
 		darknessClose=true
+	else:
+		darknessClose=false
 	UpdatePlayerLightStatus()
 
 	#First Setup stuff - might move to its own function

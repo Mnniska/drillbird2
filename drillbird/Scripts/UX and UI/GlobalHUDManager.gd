@@ -199,6 +199,8 @@ func ResetGame():
 	GlobalVariables.InitialSetup=true
 	await GlobalVariables.SetupComplete
 	SetState(menuStates.MAIN)
+	GlobalVariables.GameIsBeingReset.emit()
+	
 
 func ResetGameToCursedMode():
 	#Can only be called from MAIN for this to work :)))

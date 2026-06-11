@@ -25,6 +25,7 @@ func _ready() -> void:
 	GlobalVariables.playerLightStatusChange.connect(playerLightStatusChanged)
 	ghostRef=preload("res://Scenes/Objects and Enemies/ghost.tscn")
 	GlobalVariables.SetupComplete.connect(Setup)
+	GlobalVariables.GameIsBeingReset.connect(GameAboutToBeSaved)
 
 func GameAboutToBeSaved():
 	#This is a fix for a bug where if the player saves while the ghost is carrying an ore 

@@ -50,7 +50,7 @@ func DebugShowMessage(text:String):
 	pass
 	
 	
-func TileWasDestroyed():
+func TileWasDestroyed(pos:Vector2i,tilemap:TileMapLayer):
 	#This signal is here because when the player destroys a tile and is in the swordfishes vision range, I want the swordfish to spot the player
 	#However, since the player has already entered their detection zone, they'll miss the player. 
 	#So whenever player destroys a tile, I check if the tile is nearby the swordfish and run a detection test

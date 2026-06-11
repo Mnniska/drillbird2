@@ -4,6 +4,7 @@ signal PlayerIsDrillingTileChanged(answer:bool)
 signal signal_IsPlayerInMenuChanged(inMenu:bool)
 signal TileDestroyed(pos:Vector2i,tilemap:TileMapLayer)
 signal playerSang
+signal GameIsBeingReset
 
 signal birdyIsSleeping(bool)
 
