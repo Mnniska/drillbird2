@@ -69,17 +69,14 @@ func SetState(_state:finalFormStates):
 			show()
 			pass
 		finalFormStates.FINAL_HATCHING:
-			
-			if GlobalVariables.CursedMode:
-				HatchEgg(endings.CURSED_BAD)
-				#TODO: Implement true ending
-			else:
-				HatchEgg(endings.NORMAL)
+			HatchEgg()
 			show()
 
 			
 
-func HatchEgg(ending:endings=endings.NORMAL):
+func HatchEgg():
+
+	var ending:GlobalVariables.endings=GlobalVariables.GetCurrentEnding()
 
 	useVibration=GlobalVariables.useVibration
 
@@ -138,7 +135,9 @@ func HatchEgg(ending:endings=endings.NORMAL):
 		cursedModePlayer.FinishedCutscene.connect(HatchCutsceneFinished)
 		
 	if ending==endings.CURSED_TRUE:
-		pass
+		cursedModePlayer.PlayGoodEnding()
+		cursedModePlayer.FinishedCutscene.connect(HatchCutsceneFinished)
+		
 		#TODO: Add true ending lol
 	
 	if useVibration:Input.start_joy_vibration(GlobalSymbolRegister.currentController,0.8,0.8,1)	

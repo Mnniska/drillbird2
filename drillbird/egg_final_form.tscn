@@ -1,4 +1,4 @@
-[gd_scene load_steps=165 format=3 uid="uid://uk01ajvakw2b"]
+[gd_scene load_steps=166 format=3 uid="uid://uk01ajvakw2b"]
 
 [ext_resource type="Script" uid="uid://b7nlwll1yu4ii" path="res://Scripts/egg_final_form.gd" id="1_fasbe"]
 [ext_resource type="Texture2D" uid="uid://bbqb5jjiqxbtc" path="res://Art/environment/Home/FinalForm/egg_finalForm.png" id="2_06bq8"]
@@ -858,14 +858,13 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fs668"]
+
 [node name="Egg_FinalForm" type="Node2D"]
 script = ExtResource("1_fasbe")
 
 [node name="EndingCutscenes_CursedMode" parent="." instance=ExtResource("2_rwe1h")]
 position = Vector2(-2, -83)
-
-[node name="Demonchild" parent="EndingCutscenes_CursedMode" index="1"]
-animation = &"hatch"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 1
@@ -898,5 +897,10 @@ position = Vector2(-2, -83)
 sprite_frames = SubResource("SpriteFrames_ovqsl")
 autoplay = "default"
 frame_progress = 0.600367
+
+[node name="Area2D" type="Area2D" parent="Anim_hatching_drillbird"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Anim_hatching_drillbird/Area2D"]
+shape = SubResource("RectangleShape2D_fs668")
 
 [editable path="EndingCutscenes_CursedMode"]

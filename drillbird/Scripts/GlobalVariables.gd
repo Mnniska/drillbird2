@@ -45,6 +45,21 @@ var currentWorld:int=1:
 
 signal vibrationSettingChanged(value:bool)
 
+enum endings{normal,cursed_bad,cursed_true}
+
+func GetCurrentEnding()->endings:
+	
+	if !CursedMode:
+		return endings.normal
+	else:
+		if GlobalVariables.currentDay <= GlobalVariables.daysBeforeDemonKillsEgg:
+			return endings.cursed_true
+		else:
+			return endings.cursed_bad
+	
+	pass
+	
+	
 
 #various scripts can subscribe to this changing..maybe this is an OK way to do it?
 var useVibration:bool=true:
