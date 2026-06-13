@@ -138,7 +138,6 @@ func TransitionToFinalFormWithHeart():
 func hideEggs():
 	for egg in Eggs:
 		egg.hide()
-		floorGabbagoo.hide()
 
 func SetBirdyVisible(visible:bool):
 	if visible:
