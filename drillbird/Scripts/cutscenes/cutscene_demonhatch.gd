@@ -31,9 +31,9 @@ func PrepareHatching():
 
 func PlayGoodEnding():
 	anim_egg.play("crack")
-	anim_BadEnding.stop()
+
 	await get_tree().create_timer(2.4).timeout
-	
+	anim_BadEnding.play("default")	
 	anim_TrueEnding.play("hatch")
 	await anim_TrueEnding.animation_finished
 	await get_tree().create_timer(2).timeout

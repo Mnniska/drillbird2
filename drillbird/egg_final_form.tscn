@@ -866,6 +866,9 @@ script = ExtResource("1_fasbe")
 [node name="EndingCutscenes_CursedMode" parent="." instance=ExtResource("2_rwe1h")]
 position = Vector2(-2, -83)
 
+[node name="Demonchild" parent="EndingCutscenes_CursedMode" index="1"]
+animation = &"hatch"
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 1
 position = Vector2(-2, -40)
