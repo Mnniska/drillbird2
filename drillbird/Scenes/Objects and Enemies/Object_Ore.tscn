@@ -1,6 +1,6 @@
-[gd_scene load_steps=18 format=3 uid="uid://splm2us27kop"]
+[gd_scene load_steps=37 format=3 uid="uid://splm2us27kop"]
 
-[ext_resource type="Script" path="res://Scripts/object_ore.gd" id="1_nfnfk"]
+[ext_resource type="Script" uid="uid://bphsgqehx7lcn" path="res://Scripts/object_ore.gd" id="1_nfnfk"]
 [ext_resource type="Resource" uid="uid://ns6ggxikg7cb" path="res://Resources/collidable_ore.tres" id="2_ncxvb"]
 [ext_resource type="Texture2D" uid="uid://cm6brf3xofttr" path="res://Art/Collectibles/Ore_idle1.png" id="3_my8hc"]
 [ext_resource type="Texture2D" uid="uid://blbf04fbcty8k" path="res://Art/Collectibles/Ore_idle2.png" id="4_5wg1l"]
@@ -15,6 +15,24 @@
 [ext_resource type="Texture2D" uid="uid://ba2i5n1rb82gf" path="res://Art/Collectibles/Ore_spawn9.png" id="13_0yk14"]
 [ext_resource type="Texture2D" uid="uid://beujfy2hpmdxi" path="res://Art/Collectibles/Ore_spawn10.png" id="14_6cji8"]
 [ext_resource type="Texture2D" uid="uid://bjo3ij85d33yx" path="res://Art/Collectibles/ore_gold.png" id="15_g344r"]
+[ext_resource type="Texture2D" uid="uid://duk4pkt06ntmc" path="res://Art/effects/oreSparkle/oreSparkle1.png" id="16_jx63j"]
+[ext_resource type="Texture2D" uid="uid://dq8cesj7o6p3f" path="res://Art/effects/oreSparkle/oreSparkle2.png" id="17_avrbf"]
+[ext_resource type="Texture2D" uid="uid://mqjdg6qtfhvp" path="res://Art/effects/oreSparkle/oreSparkle3.png" id="18_o1gt2"]
+[ext_resource type="Texture2D" uid="uid://3mp4lno1wbh" path="res://Art/effects/oreSparkle/oreSparkle4.png" id="19_np0ff"]
+[ext_resource type="Texture2D" uid="uid://cg76yugmolgm3" path="res://Art/effects/oreSparkle/oreSparkle5.png" id="20_ko32j"]
+[ext_resource type="Texture2D" uid="uid://dfft3k1p1yu6t" path="res://Art/effects/oreSparkle/oreSparkle6.png" id="21_pg3aa"]
+[ext_resource type="Texture2D" uid="uid://b6q44wkgdfxbl" path="res://Art/effects/oreSparkle/oreSparkle7.png" id="22_ouoyk"]
+[ext_resource type="Texture2D" uid="uid://cjokqfj46hgph" path="res://Art/effects/oreSparkle/oreSparkle8.png" id="23_e52i5"]
+[ext_resource type="Texture2D" uid="uid://cuwxgn84j80yt" path="res://Art/effects/oreSparkle/oreSparkle9.png" id="24_3kv60"]
+[ext_resource type="Texture2D" uid="uid://c3whmdj85us13" path="res://Art/effects/oreSparkle/oreSparkle10.png" id="25_uioge"]
+[ext_resource type="Texture2D" uid="uid://0f74tr8ldtnk" path="res://Art/effects/oreSparkle/oreSparkle11.png" id="26_3lr55"]
+[ext_resource type="Texture2D" uid="uid://cwxvo3wp1v2td" path="res://Art/effects/oreSparkle/oreSparkle12.png" id="27_6qt4s"]
+[ext_resource type="Texture2D" uid="uid://dx6rtosdftgso" path="res://Art/effects/oreSparkle/oreSparkle13.png" id="28_iatpi"]
+[ext_resource type="Texture2D" uid="uid://bcn3bkp2x611l" path="res://Art/effects/oreSparkle/oreSparkle14.png" id="29_o8dtq"]
+[ext_resource type="Texture2D" uid="uid://bx3on66havihi" path="res://Art/effects/oreSparkle/oreSparkle15.png" id="30_6mtlb"]
+[ext_resource type="Texture2D" uid="uid://b4nhum5egb25c" path="res://Art/effects/oreSparkle/oreSparkle16.png" id="31_8ro6g"]
+[ext_resource type="Texture2D" uid="uid://d1kgulfxkmm4v" path="res://Art/effects/oreSparkle/oreSparkle17.png" id="32_bd0iu"]
+[ext_resource type="Texture2D" uid="uid://01fjyy3uii0k" path="res://Art/effects/oreSparkle/oreSparkle18.png" id="33_0dece"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nj345"]
 size = Vector2(8, 9)
@@ -80,6 +98,68 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_guist"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_jx63j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_avrbf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_o1gt2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_np0ff")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_ko32j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_pg3aa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_ouoyk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_e52i5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_3kv60")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_uioge")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_3lr55")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_6qt4s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_iatpi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_o8dtq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_6mtlb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_8ro6g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_bd0iu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_0dece")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
 [node name="OreBody" type="RigidBody2D"]
 z_index = 3
 collision_layer = 4
@@ -104,6 +184,11 @@ frame_progress = 1.0
 
 [node name="oreSprite" type="Sprite2D" parent="."]
 texture = ExtResource("15_g344r")
+
+[node name="Sparkles" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_guist")
+autoplay = "default"
+frame_progress = 0.66695756
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="animation_finished" from="Animation" to="." method="_on_animation_animation_finished"]

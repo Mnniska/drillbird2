@@ -23,6 +23,19 @@ func GetOre():
 	else:
 		push_warning("Tried to access a null oretype")
 
+func CalculateOreSparkle():
+	
+	
+	var selfValue:float= float(oreType.value)
+	
+	SetSparkly(selfValue>=GlobalVariables.currentImpressedValue)
+	
+func SetSparkly(sparkly:bool):
+	if sparkly:
+		$Sparkles.show()
+	else:
+		$Sparkles.hide()
+
 func SetOreType(ore:abstract_ore,_cooldown:bool,placedByGhost:bool=false):
 	if(oreType==null):
 		
@@ -35,6 +48,9 @@ func SetOreType(ore:abstract_ore,_cooldown:bool,placedByGhost:bool=false):
 		
 		if placedByGhost:
 			gravity_scale=0
+			
+		CalculateOreSparkle()
+
 	pass
 
 func CooldownAnimation():

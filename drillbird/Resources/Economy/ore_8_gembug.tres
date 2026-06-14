@@ -7,6 +7,6 @@
 script = ExtResource("1_x7x7x")
 ID = 7
 value = 20
-weight = 8
+weight = 5
 texture = ExtResource("2_x7x7x")
 name = "TombstoneGem"

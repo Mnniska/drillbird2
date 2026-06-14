@@ -35,6 +35,11 @@ var ghostActive:bool=true
 var displayPopups:bool=true
 var totalOres:int=200
 var oresFound:int=0
+
+var currentImpressedValue:float=0:
+	set(value):currentImpressedValue=value
+	get:return currentImpressedValue
+
 var currentWorld:int=1:
 	get:
 		return currentWorld

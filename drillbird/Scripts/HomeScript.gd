@@ -38,6 +38,8 @@ func _ready() -> void:
 	
 	pass
 
+func GetProgressTowardsHatching():
+	return EggHandler.GetProgressTowardsHatching()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 
@@ -107,7 +109,7 @@ func _on_interact_button_end_day_button_pressed() -> void:
 	GoToBed()
 	pass # Replace with function body.
 
-
+var latestSellValues:Array[float]
 #SELLING ORES
 func _on_sell_ore_collider_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
 	SellOre(body)
@@ -120,7 +122,9 @@ func SellOre(_ore:Node2D):
 		HeartEnteredCollider(_ore)
 		return
 		pass
-		
+	
+	
+	
 	oresBeingSold+=1	
 	GlobalVariables.GivePlayerMoney( oreType.value)
 	moneyUI.text=str(GlobalVariables.playerMoney)+"xp"

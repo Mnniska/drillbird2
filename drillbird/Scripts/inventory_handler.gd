@@ -97,13 +97,37 @@ func PlayerDied(playerPos:Vector2):
 	DropOresRequest(playerPos,Vector2(0,0),true)
 
 
+var latestSellValues:Array[float]
 
+func AddOreToShortermMemory(oreType:abstract_ore):
+	
+	latestSellValues.append(oreType.value)
+	
+	var totalValue:float=1
+	var totalNumbers:float=0
+	
+	for value in latestSellValues:
+		totalValue+=value
+		totalNumbers+=1
+	
+	var average= totalValue/totalNumbers
+	
+	GlobalVariables.currentImpressedValue=average
+	
+	while latestSellValues.size()>5:
+		latestSellValues.pop_at(0)
+	
+	$Label.text="impressed treshhold: "+str(GlobalVariables.currentImpressedValue)
+
+	
 
 
 func AddOreRequest(ore:abstract_ore):
 	
 	if currentWeight >= maxWeight:
 		return false
+	
+	AddOreToShortermMemory(ore)
 	
 	currentWeight = min(maxWeight,currentWeight+ore.weight) #increase weight
 		

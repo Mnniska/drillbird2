@@ -189,7 +189,6 @@ oreRegions = Array[ExtResource("3_kqsbu")]([ExtResource("4_a7g1c"), ExtResource(
 oreList = Array[ExtResource("11_amln7")]([ExtResource("12_d5m4n"), ExtResource("13_ltu22"), ExtResource("14_tf4n7"), ExtResource("15_18uxr"), ExtResource("16_amtt6"), ExtResource("17_kiayt"), ExtResource("18_7alhe"), ExtResource("19_4p3ut")])
 
 [node name="OreRegions" type="Node2D" parent="TilemapOres"]
-visible = false
 script = ExtResource("19_o5x6c")
 
 [node name="OreArea_tutorial" type="Area2D" parent="TilemapOres/OreRegions"]
