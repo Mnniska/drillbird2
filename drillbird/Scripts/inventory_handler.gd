@@ -117,7 +117,6 @@ func AddOreToShortermMemory(oreType:abstract_ore):
 	while latestSellValues.size()>5:
 		latestSellValues.pop_at(0)
 	
-	$Label.text="impressed treshhold: "+str(GlobalVariables.currentImpressedValue)
 
 	
 

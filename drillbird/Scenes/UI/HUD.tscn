@@ -191,12 +191,6 @@ bbcode_enabled = true
 text = "[right]0/1200 kg"
 text_direction = 1
 
-[node name="Label" type="Label" parent="topUI/InventoryHandler"]
-offset_left = -290.0
-offset_top = 45.0
-offset_right = -250.0
-offset_bottom = 68.0
-
 [node name="LightHandler" type="Node2D" parent="topUI"]
 position = Vector2(3.90244, 1)
 script = ExtResource("2_01nkd")
