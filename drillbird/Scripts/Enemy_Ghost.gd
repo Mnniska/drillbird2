@@ -2,8 +2,8 @@ extends Node2D
 class_name ghost
 var hauntedObject:Node2D
 var playerPos:Vector2
-@export var MINSPEED:float=2.8
-@export var MAXSPEED:float=5
+@export var MINSPEED:float=2
+@export var MAXSPEED:float=6
 @export var slowestSpeedDist:float=16*3
 @export var fastestSpeedDist:float=16*6
 @export var returnHearSpeedTime:float=4
@@ -140,17 +140,16 @@ func HauntObject(delta:float):
 	else:
 		returnHearSpeedCount=0
 	
-	var s=speed*delta*returnHeartMult
 	
 	var directionVector=global_position - hauntedObject.global_position
 	var normalizedDirectionVector=directionVector.normalized()
 	var movementVector= normalizedDirectionVector*-1
 	
-	velocity=velocity.move_toward(speed*movementVector,2)
+	velocity=velocity.move_toward(speed*movementVector*returnHeartMult*delta*20,0.01)
+	global_position+=velocity
 	
-	
-	global_position.x = move_toward(global_position.x, hauntedObject.global_position.x, s)
-	global_position.y = move_toward(global_position.y, hauntedObject.global_position.y, s)
+	#global_position.x = move_toward(global_position.x, hauntedObject.global_position.x, s)
+	#global_position.y = move_toward(global_position.y, hauntedObject.global_position.y, s)
 	
 	if lastpos.x-position.x<0:
 		$sprite.flip_h=true
@@ -177,8 +176,7 @@ func HauntObject(delta:float):
 			else:
 				Disappear()
 
-func ApplyAcceleration(movementVector:Vector2,speed:float):
-	var velocity:Vector2 = velocity.move_toward(speed*movementVector,ACCELERATION)
+
 
 func PickupHeart(heart:Node2D):
 	state=states.RETURN_HEART
