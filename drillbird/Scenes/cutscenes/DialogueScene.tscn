@@ -41,7 +41,11 @@ grow_vertical = 0
 size_flags_vertical = 8
 alignment = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/HBoxContainer"]
 light_mask = 0
 visibility_layer = 4
 clip_contents = true
@@ -50,7 +54,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 8
 theme_override_styles/panel = SubResource("StyleBoxTexture_m30m7")
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/PanelContainer"]
 light_mask = 0
 visibility_layer = 4
 layout_mode = 2
@@ -59,24 +63,16 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="text" type="RichTextLabel" parent="VBoxContainer/PanelContainer/MarginContainer"]
+[node name="text" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/PanelContainer/MarginContainer"]
 light_mask = 0
 visibility_layer = 4
-custom_minimum_size = Vector2(260, 0)
+custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 size_flags_vertical = 8
 theme = ExtResource("3_s0e8w")
 theme_override_colors/default_color = Color(0.19374472, 0.060779914, 0.22031766, 1)
 bbcode_enabled = true
-text = "elease [/wave]to experience the rest
-
-You can continue exploring the upper parts for as long as you like. 
-[center]You've reached the border of Drillbirds demo!
-
-Please check out the [wave]full release [/wave]to experience the rest
-
-You can continue exploring the upper parts for as long as you like. 
-"
+text = "hello"
 fit_content = true
 
 [node name="TextureRect" type="TextureRect" parent="."]

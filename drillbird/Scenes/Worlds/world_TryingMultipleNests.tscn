@@ -1054,6 +1054,9 @@ soulOre = ExtResource("42_deunn")
 
 [node name="SaintDialoguePlayer" parent="WorldScripts/SaintTech" instance=ExtResource("41_ek4iq")]
 
+[node name="text" parent="WorldScripts/SaintTech/SaintDialoguePlayer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer" index="0"]
+custom_minimum_size = Vector2(202.32, 0)
+
 [node name="playerCollider" parent="WorldScripts/SaintTech/SaintDialoguePlayer" index="2"]
 position = Vector2(0, 23)
 

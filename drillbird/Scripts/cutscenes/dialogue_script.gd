@@ -1,10 +1,11 @@
 extends Node2D
+class_name dialogue_player
 
 signal dialogueFinished
 signal aboutToPlay
 
 @onready var dialogueContainter=$VBoxContainer
-@onready var text:RichTextLabel=$VBoxContainer/PanelContainer/MarginContainer/text
+@onready var text:RichTextLabel=$VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/text
 @export var linesToPlay:Array[String]
 
 @onready var continueSymbolText:RichTextLabel=$HBoxContainer/iconHolder/text_icon
@@ -31,7 +32,11 @@ func StartDialogue():
 
 
 func ContinueDialogue():
-	text.text=tr(linesToPlay[currentLineIndex]) %str(GlobalVariables.daysBeforeDemonKillsEgg- GlobalVariables.currentDay)
+	var _text=tr(linesToPlay[currentLineIndex]) %str(GlobalVariables.daysBeforeDemonKillsEgg- GlobalVariables.currentDay)
+	text.text=_text
+	$VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/text.custom_minimum_size= Vector2(min(220,_text.length()*6),0)
+
+	
 	continueSymbolText.text="[center]"+GlobalSymbolRegister.GetStringDecoded("(sing)",true)
 	await GlobalVariables.playerSang
 	
