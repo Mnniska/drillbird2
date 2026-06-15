@@ -34,7 +34,9 @@ func StartDialogue():
 func ContinueDialogue():
 	var _text=tr(linesToPlay[currentLineIndex]) %str(GlobalVariables.daysBeforeDemonKillsEgg- GlobalVariables.currentDay)
 	text.text=_text
-	$VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/text.custom_minimum_size= Vector2(min(220,_text.length()*6),0)
+	var boxSize=Vector2(min(220,_text.length()*6),0)
+	$VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/text.custom_minimum_size= boxSize
+	$HBoxContainer.position.x=boxSize.x/2
 
 	
 	continueSymbolText.text="[center]"+GlobalSymbolRegister.GetStringDecoded("(sing)",true)
