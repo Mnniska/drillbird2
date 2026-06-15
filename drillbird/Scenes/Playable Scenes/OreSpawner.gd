@@ -26,7 +26,7 @@ func TrySpawnOreFromEnvironment(location:Vector2i):
 
 
 
-func SpawnOreAtLocation(location:Vector2,ore:abstract_ore,velocity:Vector2,cooldown:bool,placedByGhost:bool=false):
+func SpawnOreAtLocation(location:Vector2,ore:abstract_ore,velocity:Vector2,cooldown:bool=true,placedByGhost:bool=false):
 	var scene = load("res://Scenes/Objects and Enemies/Object_Ore.tscn") # Will load when the script is instanced.
 	var node = scene.instantiate()
 	
@@ -34,6 +34,7 @@ func SpawnOreAtLocation(location:Vector2,ore:abstract_ore,velocity:Vector2,coold
 	
 	add_child(node)
 	#Give ore velocity here - shoooould be possible? 
+	
 	
 	node.apply_central_impulse(velocity)
 	node.add_to_group("ores")

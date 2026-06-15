@@ -1,4 +1,4 @@
-[gd_scene load_steps=87 format=4 uid="uid://boh3yjorqn4xa"]
+[gd_scene load_steps=88 format=4 uid="uid://boh3yjorqn4xa"]
 
 [ext_resource type="TileSet" uid="uid://grpd2pyu7pgk" path="res://Resources/MainTileset.tres" id="1_4c1b3"]
 [ext_resource type="Script" uid="uid://cfd6ggts8pqma" path="res://Scripts/Level Generation/tilemap_environment.gd" id="2_27on7"]
@@ -30,6 +30,7 @@
 [ext_resource type="PackedScene" uid="uid://dgb113k7sw22l" path="res://Scenes/cutscenes/DialogueScene.tscn" id="41_ek4iq"]
 [ext_resource type="Script" uid="uid://cqcesbsoaesaf" path="res://Scripts/cutscenes/script_saintDialogueTech.gd" id="41_fbqey"]
 [ext_resource type="Theme" uid="uid://bfr5y4lo7m1ux" path="res://Resources/Fonts/fontTheme.tres" id="42_7lr64"]
+[ext_resource type="Resource" uid="uid://c7fpe614cioq5" path="res://Resources/Economy/ore_SOUL.tres" id="42_deunn"]
 [ext_resource type="Script" uid="uid://cg5f1k2sm50v" path="res://Scenes/Playable Scenes/ghost_manager.gd" id="44_lkrvv"]
 [ext_resource type="PackedScene" uid="uid://cltb8lx463vak" path="res://Scenes/UI/cloud_counter.tscn" id="45_hxyd4"]
 [ext_resource type="Script" uid="uid://wt5lb26lttrj" path="res://Scripts/WorldScripting.gd" id="45_tod36"]
@@ -181,7 +182,6 @@ tile_set = ExtResource("1_4c1b3")
 script = ExtResource("2_27on7")
 
 [node name="TilemapOres" type="TileMapLayer" parent="."]
-visible = false
 z_index = 1
 tile_map_data = PackedByteArray("AAAnAEAAAAACAAAAAAAdAAYABgACAAAAAAAFAFYAAAACAAAAAAAMAGYAAAACAAEAAAAMAGAAAAABAAEAAAALAFkAAAACAAAAAABAAAIBAAAFAAAAAAAZAIUAAAADAAEAAAAOAIMAAAADAAEAAAD9/4EAAAADAAEAAABIAIsAAAAAAAAAAAA6AIwAAAAAAAAAAAA7AIsAAAAAAAAAAAAqAIoAAAAAAAAAAAAoAIkAAAAAAAAAAAAoAJIAAAAAAAAAAAANAIIAAAADAAEAAAC9/yoAAAAGAAAAAADN/yIAAAAGAAAAAAAJAAMAAAAAAAAAAAAQAOr/AAADAAAAAAAJABMAAAAAAAAAAADv/xcAAAAAAAAAAADt/xcAAAAAAAAAAADt/xoAAAAAAAAAAAA=")
 tile_set = ExtResource("1_4c1b3")
@@ -190,6 +190,7 @@ oreRegions = Array[ExtResource("3_kqsbu")]([ExtResource("4_a7g1c"), ExtResource(
 oreList = Array[ExtResource("11_amln7")]([ExtResource("12_d5m4n"), ExtResource("13_ltu22"), ExtResource("14_tf4n7"), ExtResource("15_18uxr"), ExtResource("16_amtt6"), ExtResource("17_kiayt"), ExtResource("18_7alhe"), ExtResource("19_4p3ut")])
 
 [node name="OreRegions" type="Node2D" parent="TilemapOres"]
+visible = false
 script = ExtResource("19_o5x6c")
 
 [node name="OreArea_tutorial" type="Area2D" parent="TilemapOres/OreRegions"]
@@ -1049,11 +1050,15 @@ dialogueWhenInTime = Array[String](["saint_pitch_1", "saint_pitch_2", "saint_pit
 dialogueWhenEggNotReady = Array[String](["saint_pitch_eggnothatched_1", "saint_pitch_eggnothatched_2", "saint_pitch_eggnothatched_3"])
 dialogueWhenEggReady = Array[String](["saint_pitch_eggready_1", "saint_pitch_eggready_2"])
 greetingLineAfterFirstIntroduction = Array[String](["saint_greeting_eggready"])
+soulOre = ExtResource("42_deunn")
 
 [node name="SaintDialoguePlayer" parent="WorldScripts/SaintTech" instance=ExtResource("41_ek4iq")]
 
 [node name="playerCollider" parent="WorldScripts/SaintTech/SaintDialoguePlayer" index="2"]
 position = Vector2(0, 23)
+
+[node name="oreSpawnLocation" type="Node2D" parent="WorldScripts/SaintTech"]
+position = Vector2(0, 12)
 
 [node name="PlayerSpawnLocations" type="Node2D" parent="."]
 visible = false

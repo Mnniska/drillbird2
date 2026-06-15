@@ -2,18 +2,6 @@
 
 [ext_resource type="Script" uid="uid://bphsgqehx7lcn" path="res://Scripts/object_ore.gd" id="1_nfnfk"]
 [ext_resource type="Resource" uid="uid://ns6ggxikg7cb" path="res://Resources/collidable_ore.tres" id="2_ncxvb"]
-[ext_resource type="Texture2D" uid="uid://cm6brf3xofttr" path="res://Art/Collectibles/Ore_idle1.png" id="3_my8hc"]
-[ext_resource type="Texture2D" uid="uid://blbf04fbcty8k" path="res://Art/Collectibles/Ore_idle2.png" id="4_5wg1l"]
-[ext_resource type="Texture2D" uid="uid://vbgushuifb6n" path="res://Art/Collectibles/Ore_idle3.png" id="5_nhk6p"]
-[ext_resource type="Texture2D" uid="uid://bcjwce13n0fol" path="res://Art/Collectibles/Ore_idle4.png" id="6_ur42j"]
-[ext_resource type="Texture2D" uid="uid://07wffqw8mdx5" path="res://Art/Collectibles/Ore_spawn1.png" id="7_u2dvn"]
-[ext_resource type="Texture2D" uid="uid://bsbvo0m63rbtk" path="res://Art/Collectibles/Ore_spawn3.png" id="8_hl6ov"]
-[ext_resource type="Texture2D" uid="uid://dgoy0r4c15vr7" path="res://Art/Collectibles/Ore_spawn5.png" id="9_bjagy"]
-[ext_resource type="Texture2D" uid="uid://up8tksm5gril" path="res://Art/Collectibles/Ore_spawn6.png" id="10_ysomf"]
-[ext_resource type="Texture2D" uid="uid://p70pe7mektqd" path="res://Art/Collectibles/Ore_spawn7.png" id="11_cnsm0"]
-[ext_resource type="Texture2D" uid="uid://t4j836wbw1bi" path="res://Art/Collectibles/Ore_spawn8.png" id="12_opu10"]
-[ext_resource type="Texture2D" uid="uid://ba2i5n1rb82gf" path="res://Art/Collectibles/Ore_spawn9.png" id="13_0yk14"]
-[ext_resource type="Texture2D" uid="uid://beujfy2hpmdxi" path="res://Art/Collectibles/Ore_spawn10.png" id="14_6cji8"]
 [ext_resource type="Texture2D" uid="uid://bjo3ij85d33yx" path="res://Art/Collectibles/ore_gold.png" id="15_g344r"]
 [ext_resource type="Texture2D" uid="uid://duk4pkt06ntmc" path="res://Art/effects/oreSparkle/oreSparkle1.png" id="16_jx63j"]
 [ext_resource type="Texture2D" uid="uid://dq8cesj7o6p3f" path="res://Art/effects/oreSparkle/oreSparkle2.png" id="17_avrbf"]
@@ -21,82 +9,33 @@
 [ext_resource type="Texture2D" uid="uid://3mp4lno1wbh" path="res://Art/effects/oreSparkle/oreSparkle4.png" id="19_np0ff"]
 [ext_resource type="Texture2D" uid="uid://cg76yugmolgm3" path="res://Art/effects/oreSparkle/oreSparkle5.png" id="20_ko32j"]
 [ext_resource type="Texture2D" uid="uid://dfft3k1p1yu6t" path="res://Art/effects/oreSparkle/oreSparkle6.png" id="21_pg3aa"]
+[ext_resource type="Texture2D" uid="uid://cllbthmwfsaxx" path="res://Art/Collectibles/ore_4_star.png" id="22_jx63j"]
 [ext_resource type="Texture2D" uid="uid://b6q44wkgdfxbl" path="res://Art/effects/oreSparkle/oreSparkle7.png" id="22_ouoyk"]
+[ext_resource type="Texture2D" uid="uid://b11br0tugyx10" path="res://Art/Collectibles/ore_6.png" id="23_avrbf"]
 [ext_resource type="Texture2D" uid="uid://cjokqfj46hgph" path="res://Art/effects/oreSparkle/oreSparkle8.png" id="23_e52i5"]
 [ext_resource type="Texture2D" uid="uid://cuwxgn84j80yt" path="res://Art/effects/oreSparkle/oreSparkle9.png" id="24_3kv60"]
+[ext_resource type="Texture2D" uid="uid://c2gbkkabp54v" path="res://Art/Collectibles/ore_gembug.png" id="24_o1gt2"]
+[ext_resource type="Texture2D" uid="uid://c1a6277712y7w" path="res://Art/Collectibles/ore_2_blue.png" id="25_np0ff"]
 [ext_resource type="Texture2D" uid="uid://c3whmdj85us13" path="res://Art/effects/oreSparkle/oreSparkle10.png" id="25_uioge"]
 [ext_resource type="Texture2D" uid="uid://0f74tr8ldtnk" path="res://Art/effects/oreSparkle/oreSparkle11.png" id="26_3lr55"]
+[ext_resource type="Texture2D" uid="uid://cwvy2kg6pkkfl" path="res://Art/Collectibles/ore_1_pebble.png" id="26_ko32j"]
 [ext_resource type="Texture2D" uid="uid://cwxvo3wp1v2td" path="res://Art/effects/oreSparkle/oreSparkle12.png" id="27_6qt4s"]
+[ext_resource type="Texture2D" uid="uid://gvnhgn5vrd5e" path="res://Art/Collectibles/ore_3_red.png" id="27_pg3aa"]
 [ext_resource type="Texture2D" uid="uid://dx6rtosdftgso" path="res://Art/effects/oreSparkle/oreSparkle13.png" id="28_iatpi"]
+[ext_resource type="Texture2D" uid="uid://urdvwrertnti" path="res://Art/Collectibles/ore_saintsoul/saintsoul1.png" id="28_ouoyk"]
+[ext_resource type="Texture2D" uid="uid://ico8qhojjo8m" path="res://Art/Collectibles/ore_saintsoul/saintsoul2.png" id="29_e52i5"]
 [ext_resource type="Texture2D" uid="uid://bcn3bkp2x611l" path="res://Art/effects/oreSparkle/oreSparkle14.png" id="29_o8dtq"]
+[ext_resource type="Texture2D" uid="uid://c6br8mgc3qswr" path="res://Art/Collectibles/ore_saintsoul/saintsoul3.png" id="30_3kv60"]
 [ext_resource type="Texture2D" uid="uid://bx3on66havihi" path="res://Art/effects/oreSparkle/oreSparkle15.png" id="30_6mtlb"]
 [ext_resource type="Texture2D" uid="uid://b4nhum5egb25c" path="res://Art/effects/oreSparkle/oreSparkle16.png" id="31_8ro6g"]
+[ext_resource type="Texture2D" uid="uid://b7ipb3fq7r0xg" path="res://Art/Collectibles/ore_saintsoul/saintsoul4.png" id="31_uioge"]
+[ext_resource type="Texture2D" uid="uid://b13h5etmhrqyw" path="res://Art/Collectibles/ore_saintsoul/saintsoul5.png" id="32_3lr55"]
 [ext_resource type="Texture2D" uid="uid://d1kgulfxkmm4v" path="res://Art/effects/oreSparkle/oreSparkle17.png" id="32_bd0iu"]
 [ext_resource type="Texture2D" uid="uid://01fjyy3uii0k" path="res://Art/effects/oreSparkle/oreSparkle18.png" id="33_0dece"]
+[ext_resource type="Texture2D" uid="uid://blq3gp6hww7hl" path="res://Art/Collectibles/ore_tombstone.png" id="33_6qt4s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nj345"]
 size = Vector2(8, 9)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_wnmh3"]
-animations = [{
-"frames": [{
-"duration": 8.0,
-"texture": ExtResource("3_my8hc")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_5wg1l")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_nhk6p")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_ur42j")
-}, {
-"duration": 12.0,
-"texture": ExtResource("3_my8hc")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_5wg1l")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_nhk6p")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_ur42j")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 10.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("7_u2dvn")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_hl6ov")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_bjagy")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10_ysomf")
-}, {
-"duration": 1.0,
-"texture": ExtResource("11_cnsm0")
-}, {
-"duration": 1.0,
-"texture": ExtResource("12_opu10")
-}, {
-"duration": 1.0,
-"texture": ExtResource("13_0yk14")
-}, {
-"duration": 1.0,
-"texture": ExtResource("14_6cji8")
-}],
-"loop": false,
-"name": &"spawn",
-"speed": 12.0
-}]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_guist"]
 animations = [{
@@ -160,6 +99,109 @@ animations = [{
 "speed": 8.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_iatpi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("22_jx63j")
+}],
+"loop": true,
+"name": &"Brandgulium",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("23_avrbf")
+}],
+"loop": true,
+"name": &"Diamond",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"FinalHeart",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("24_o1gt2")
+}],
+"loop": true,
+"name": &"Gembug",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_g344r")
+}],
+"loop": true,
+"name": &"Gold",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("25_np0ff")
+}],
+"loop": true,
+"name": &"Lapis",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("26_ko32j")
+}],
+"loop": true,
+"name": &"Pebbelite",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("27_pg3aa")
+}],
+"loop": true,
+"name": &"Ruby",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 6.0,
+"texture": ExtResource("28_ouoyk")
+}, {
+"duration": 4.0,
+"texture": ExtResource("29_e52i5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_3kv60")
+}, {
+"duration": 5.0,
+"texture": ExtResource("31_uioge")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_3kv60")
+}, {
+"duration": 6.0,
+"texture": ExtResource("32_3lr55")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_3kv60")
+}],
+"loop": true,
+"name": &"SaintSoul",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("33_6qt4s")
+}],
+"loop": true,
+"name": &"TombstoneGem",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"null",
+"speed": 5.0
+}]
+
 [node name="OreBody" type="RigidBody2D"]
 z_index = 3
 collision_layer = 4
@@ -174,21 +216,14 @@ ObjectInfo = ExtResource("2_ncxvb")
 position = Vector2(0, 3.5)
 shape = SubResource("RectangleShape2D_nj345")
 
-[node name="Animation" type="AnimatedSprite2D" parent="."]
-visible = false
-sprite_frames = SubResource("SpriteFrames_wnmh3")
-animation = &"spawn"
-autoplay = "spawn"
-frame = 7
-frame_progress = 1.0
-
-[node name="oreSprite" type="Sprite2D" parent="."]
-texture = ExtResource("15_g344r")
-
 [node name="Sparkles" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_guist")
 autoplay = "default"
 frame_progress = 0.66695756
 
+[node name="oreVisual" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_iatpi")
+animation = &"SaintSoul"
+autoplay = "null"
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="animation_finished" from="Animation" to="." method="_on_animation_animation_finished"]

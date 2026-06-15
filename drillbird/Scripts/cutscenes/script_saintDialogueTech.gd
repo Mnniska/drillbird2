@@ -7,7 +7,7 @@ extends Node2D
 @export var dialogueWhenEggReady:Array[String]
 
 @export var greetingLineAfterFirstIntroduction:Array[String]
-
+@export var soulOre:abstract_ore
 
 @onready var dialoguePlayer=$SaintDialoguePlayer
 
@@ -17,6 +17,8 @@ var hasGreetedPlayer:bool=false
 func _ready() -> void:
 	dialoguePlayer.connect("aboutToPlay",UpdateDialogue)
 	
+	await GlobalVariables.SetupComplete
+	SpawnSaintOre()
 	pass # Replace with function body.
 
 func UpdateDialogue():
@@ -68,3 +70,8 @@ func UpdateDialogue():
 	
 	dialoguePlayer.linesToPlay=dialogueToPlay
 	pass
+
+func SpawnSaintOre():
+	var oreSpawner:ore_manager=GlobalVariables.MainSceneReferenceConnector.ref_oreTilemap
+	var location = $oreSpawnLocation.global_position
+	oreSpawner.SpawnOreAtLocation(location,soulOre,Vector2(0,0),true,false)

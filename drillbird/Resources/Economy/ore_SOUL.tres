@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="abstract_ore" load_steps=3 format=3 uid="uid://c7fpe614cioq5"]
+
+[ext_resource type="Script" uid="uid://bmcaxciswx4yo" path="res://Scripts/Abstract scripts/abstract_ore.gd" id="1_tnx77"]
+[ext_resource type="Texture2D" uid="uid://urdvwrertnti" path="res://Art/Collectibles/ore_saintsoul/saintsoul1.png" id="2_tnx77"]
+
+[resource]
+script = ExtResource("1_tnx77")
+ID = 11
+weight = 10
+texture = ExtResource("2_tnx77")
+name = "SaintSoul"

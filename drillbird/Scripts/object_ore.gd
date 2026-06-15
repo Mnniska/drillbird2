@@ -2,7 +2,7 @@ extends RigidBody2D
 @onready var anim: AnimatedSprite2D =$Animation
 @export var ObjectInfo:abstract_collidable
 @export var oreType:abstract_ore
-@onready var oreSprite:Sprite2D = $oreSprite
+@onready var oreAnim:AnimatedSprite2D=$oreVisual
 var cooldown:bool=false
 var cooldownTime:float=2
 var MoveTarget:Vector2
@@ -40,7 +40,10 @@ func SetOreType(ore:abstract_ore,_cooldown:bool,placedByGhost:bool=false):
 	if(oreType==null):
 		
 		oreType=ore
-		oreSprite.texture=oreType.texture
+		
+		oreAnim.animation=ore.name
+		oreAnim.play()
+		
 		cooldown=_cooldown
 		
 		if cooldown:
@@ -61,9 +64,9 @@ func CooldownAnimation():
 	var timeKeeper=0
 	
 	while cooldown:
-		oreSprite.self_modulate=Color(1,1,1,b)
+		oreAnim.self_modulate=Color(1,1,1,b)
 		await get_tree().create_timer(time).timeout
-		oreSprite.self_modulate=Color(1,1,1,a)
+		oreAnim.self_modulate=Color(1,1,1,a)
 		await get_tree().create_timer(time).timeout
 		
 		timeKeeper+=time*2
