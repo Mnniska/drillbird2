@@ -112,6 +112,8 @@ func PlayerDroppedHeartInUnproperPlace(heart:Node2D):
 	UpdateMusic(false)
 	pass
 
+var velocity:Vector2=Vector2(0,0)
+
 func HauntObject(delta:float):
 	
 	#This means that the heart has been picked up by the player, so ghost will follow them instead
@@ -140,6 +142,13 @@ func HauntObject(delta:float):
 	
 	var s=speed*delta*returnHeartMult
 	
+	var directionVector=global_position - hauntedObject.global_position
+	var normalizedDirectionVector=directionVector.normalized()
+	var movementVector= normalizedDirectionVector*-1
+	
+	velocity=velocity.move_toward(speed*movementVector,2)
+	
+	
 	global_position.x = move_toward(global_position.x, hauntedObject.global_position.x, s)
 	global_position.y = move_toward(global_position.y, hauntedObject.global_position.y, s)
 	
@@ -167,7 +176,10 @@ func HauntObject(delta:float):
 				NewHaunting(parent.player)
 			else:
 				Disappear()
-	
+
+func ApplyAcceleration(movementVector:Vector2,speed:float):
+	var velocity:Vector2 = velocity.move_toward(speed*movementVector,ACCELERATION)
+
 func PickupHeart(heart:Node2D):
 	state=states.RETURN_HEART
 	isCarryingHeart=true
