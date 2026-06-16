@@ -3,6 +3,7 @@ class_name ore_manager
 @export var oreRegions: Array[abstract_ore_region]
 @export var oreList:Array[abstract_ore]
 signal signal_heartSpawned(heart:Node2D)
+signal signal_soulSpawned(soul:Node2D)
 
 
 func TrySpawnOreFromEnvironment(location:Vector2i):
@@ -42,6 +43,10 @@ func SpawnOreAtLocation(location:Vector2,ore:abstract_ore,velocity:Vector2,coold
 	node.SetOreType(ore,cooldown,placedByGhost)
 	if ore.ID==10:
 		signal_heartSpawned.emit(node)
+		
+	if ore.ID==11:
+		signal_soulSpawned.emit(node)
+
 
 
 func GetLeftoverOres():

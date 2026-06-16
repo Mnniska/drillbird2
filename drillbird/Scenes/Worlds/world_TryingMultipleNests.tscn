@@ -1,4 +1,4 @@
-[gd_scene load_steps=87 format=4 uid="uid://boh3yjorqn4xa"]
+[gd_scene load_steps=88 format=4 uid="uid://boh3yjorqn4xa"]
 
 [ext_resource type="TileSet" uid="uid://grpd2pyu7pgk" path="res://Resources/MainTileset.tres" id="1_4c1b3"]
 [ext_resource type="Script" uid="uid://cfd6ggts8pqma" path="res://Scripts/Level Generation/tilemap_environment.gd" id="2_27on7"]
@@ -35,6 +35,7 @@
 [ext_resource type="Script" uid="uid://wt5lb26lttrj" path="res://Scripts/WorldScripting.gd" id="45_tod36"]
 [ext_resource type="PackedScene" uid="uid://bgtl1cgl35wcl" path="res://Scenes/Objects and Enemies/tutorial_message.tscn" id="46_frxdj"]
 [ext_resource type="Texture2D" uid="uid://chdi1d0vsqy66" path="res://Art/environment/UniqueAssets/flowerCaveCarving.png" id="47_2vwp1"]
+[ext_resource type="Script" uid="uid://c8r71eyb8t58b" path="res://Scripts/demon_manager.gd" id="47_deunn"]
 [ext_resource type="PackedScene" uid="uid://dk8bw20ua5emk" path="res://Scenes/Tools/ambience_node.tscn" id="48_os30j"]
 [ext_resource type="AudioStream" uid="uid://cygmw124vctks" path="res://Audio/Ambience/ambience_surface.mp3" id="49_mabke"]
 [ext_resource type="AudioStream" uid="uid://ca6u3h185adqy" path="res://Audio/Music/Drillbird_Tutorial.mp3" id="50_37db0"]
@@ -1134,6 +1135,38 @@ collision_layer = 0
 collision_mask = 16
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="GhostManager/GhostAcceptanceArea"]
+position = Vector2(18.25, -14)
+shape = SubResource("RectangleShape2D_fbqey")
+
+[node name="DemonManager" type="Node2D" parent="."]
+position = Vector2(-962, 2487)
+script = ExtResource("47_deunn")
+heartOreReference = ExtResource("42_deunn")
+
+[node name="HeartsRightfulPlaceArea" type="Area2D" parent="DemonManager"]
+visible = false
+position = Vector2(234, 1371)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DemonManager/HeartsRightfulPlaceArea"]
+position = Vector2(0, 2.5)
+shape = SubResource("RectangleShape2D_hxyd4")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="DemonManager/HeartsRightfulPlaceArea"]
+position = Vector2(731, -3891)
+shape = SubResource("RectangleShape2D_ek4iq")
+
+[node name="warningLocation" type="Node2D" parent="DemonManager"]
+position = Vector2(234, 1334)
+
+[node name="GhostAcceptanceArea" type="Area2D" parent="DemonManager"]
+visible = false
+position = Vector2(936, -2528)
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="DemonManager/GhostAcceptanceArea"]
 position = Vector2(18.25, -14)
 shape = SubResource("RectangleShape2D_fbqey")
 

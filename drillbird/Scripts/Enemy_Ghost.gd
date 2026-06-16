@@ -24,7 +24,7 @@ var musicProgress:float=0
 var heart_misplaced:bool=true
 var heart_playerHasHeart:bool=false
 
-var parent:ghost_manager
+var parent:Node2D
 
 var isPersuingHeart:bool=false
 var isPlayingChaseMusic:bool=false
@@ -162,7 +162,11 @@ func HauntObject(delta:float):
 	
 	if state==states.CHASE_HEART:
 		if distanceToObject<1:
-			if hauntedObject.GetOre().ID==10:
+			
+			var oreToPickup:int=10
+			if isDemon:oreToPickup=11
+			
+			if hauntedObject.GetOre().ID==oreToPickup:
 				PickupHeart(hauntedObject)
 
 				return
@@ -202,7 +206,7 @@ func DealDamage(amount:int):
 	
 	pass
 
-func GiveParentReference(_parent:ghost_manager,_isDemon:bool=false):
+func GiveParentReference(_parent:Node2D,_isDemon:bool=false):
 	parent = _parent
 	SetupDemon(_isDemon)
 	pass

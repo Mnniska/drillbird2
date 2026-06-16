@@ -3,6 +3,7 @@ class_name inventory_handler
 
 signal signal_pickedUpHeart
 signal signal_droppedHeart(heart:Node2D)
+signal signal_pickedUpSoul
 
 """
 The inventory_handler has an array of available inventory slots. When the player picks up a new ore, 
@@ -144,6 +145,9 @@ func AddOreRequest(ore:abstract_ore):
 
 	if ore.ID==10:
 		signal_pickedUpHeart.emit()
+	
+	if ore.ID==11:
+		signal_pickedUpSoul.emit()
 	
 	return true
 

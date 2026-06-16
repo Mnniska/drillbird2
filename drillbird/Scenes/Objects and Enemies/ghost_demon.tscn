@@ -208,7 +208,7 @@ z_index = 1
 sprite_frames = SubResource("SpriteFrames_c18y6")
 animation = &"demon_idle"
 autoplay = "idle"
-frame_progress = 0.44220924
+frame_progress = 0.89797324
 
 [node name="GhostMusic" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_w6agm")

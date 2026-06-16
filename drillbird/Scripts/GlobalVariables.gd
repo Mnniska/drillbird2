@@ -31,7 +31,8 @@ var totalEnemies=0
 var deadEnemies=0
 var PlayerController:CharacterBody2D
 var heartInEgg:bool=false
-var ghostActive:bool=true
+var ghostActive:bool=true #this is a help setting from olden times
+var demonActive:bool=true
 var displayPopups:bool=true
 var totalOres:int=200
 var oresFound:int=0
