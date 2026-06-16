@@ -2,6 +2,9 @@ extends Node2D
 class_name ghost
 var hauntedObject:Node2D
 var playerPos:Vector2
+
+@onready var dissapointed_demon=preload("res://Scenes/Objects and Enemies/dissapointed_demon.tscn")
+
 @export var MINSPEED:float=2
 @export var MAXSPEED:float=6
 @export var slowestSpeedDist:float=16*3
@@ -33,7 +36,8 @@ var isPlayingChaseMusic:bool=false
 @onready var musicplayer=$GhostMusic
 
 enum states{CHASE_PLAYER,CHASE_HEART,RETURN_HEART,DISAPPEARING}
-var state:states=states.CHASE_PLAYER
+var state:states=states.CHASE_PLAYER:
+	set(value):state=value
 
 var isDemon:bool=false
 
@@ -161,6 +165,7 @@ func HauntObject(delta:float):
 	lastpos=Vector2(position.x,position.y)
 	
 	if state==states.CHASE_HEART:
+		
 		if distanceToObject<1:
 			
 			var oreToPickup:int=10
@@ -169,7 +174,7 @@ func HauntObject(delta:float):
 			if hauntedObject.GetOre().ID==oreToPickup:
 				PickupHeart(hauntedObject)
 
-				return
+
 	
 	if state==states.RETURN_HEART:
 		if distanceToObject<1:
@@ -182,15 +187,21 @@ func HauntObject(delta:float):
 			else:
 				Disappear()
 
-
-
 func PickupHeart(heart:Node2D):
 	state=states.RETURN_HEART
 	isCarryingHeart=true
+	
+	if isDemon: #spawn a demon anim that is dissapointed, hopefully
+		var node:Node2D=dissapointed_demon.instantiate()
+		node.transform.origin=self.global_position
+		get_parent().add_child(node)
+	
 	if isDemon:
-		anim.animation="idle_demon_heart"
+		anim.animation="idle_demon_heart" #Demon turns into the ore escaping
+
 	else:
 		anim.animation="idle_heart"
+		
 	NewHaunting(parent.HeartRightfulPlace)
 	heart.queue_free()
 
@@ -258,4 +269,23 @@ func _on_player_checker_body_shape_entered(body_rid: RID, body: Node2D, body_sha
 
 func _on_light_checker_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
 	Disappear()
+	pass # Replace with function body.
+
+
+func _on_ore_checker_body_entered(body: Node2D) -> void:
+	
+	if body.get_script()==object_ore:
+		var ore:object_ore=body
+		if ore.oreType.ID==11:
+			ore.SetStressed(true) #if the ore is the saint, tell saint to be stressed lol
+
+	
+	pass # Replace with function body.
+
+
+func _on_ore_checker_body_exited(body: Node2D) -> void:
+	if body.get_script()==object_ore:
+		var ore:object_ore=body
+		if ore.oreType.ID==11:
+			ore.SetStressed(false)
 	pass # Replace with function body.

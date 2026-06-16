@@ -1,0 +1,103 @@
+[gd_scene load_steps=24 format=3 uid="uid://dxn3g2n7l3veo"]
+
+[ext_resource type="Script" uid="uid://sncqftpy1xl7" path="res://Scripts/Enemies/dessapointed_demon.gd" id="1_1o8o8"]
+[ext_resource type="Texture2D" uid="uid://bbaadlriiiyi3" path="res://Art/characters/Demon Ghost/demonGhost_idle1.png" id="2_rg51s"]
+[ext_resource type="Texture2D" uid="uid://blbt07velloh4" path="res://Art/characters/Demon Ghost/demonGhost_idle2.png" id="3_ahvsw"]
+[ext_resource type="Texture2D" uid="uid://c2x7ihhmejyh4" path="res://Art/characters/Demon Ghost/demonGhost_idle3.png" id="4_svgqo"]
+[ext_resource type="Texture2D" uid="uid://c4aemf356wp7k" path="res://Art/characters/Demon Ghost/demonGhost_idle4.png" id="5_gtux4"]
+[ext_resource type="Texture2D" uid="uid://b6jam8y8mlhqh" path="res://Art/characters/Demon Ghost/demonGhost_idle5.png" id="6_u3ep3"]
+[ext_resource type="Texture2D" uid="uid://xuhcw5qd1xir" path="res://Art/characters/Demon Ghost/demonGhost_idle6.png" id="7_dy1sc"]
+[ext_resource type="Texture2D" uid="uid://b0a2ulguitbjo" path="res://Art/characters/Demon Ghost/demonGhost_idle7.png" id="8_26cmu"]
+[ext_resource type="Texture2D" uid="uid://kpqtpbbl6bik" path="res://Art/characters/Demon Ghost/demon_despawn_calm1.png" id="9_gw8lo"]
+[ext_resource type="Texture2D" uid="uid://c7jnufauhj0ek" path="res://Art/characters/Demon Ghost/demon_despawn_calm2.png" id="10_0mjw7"]
+[ext_resource type="Texture2D" uid="uid://dwpq7y5v54j45" path="res://Art/characters/Demon Ghost/demon_despawn_calm3.png" id="11_ff8jf"]
+[ext_resource type="Texture2D" uid="uid://bcxs332inu63q" path="res://Art/characters/Demon Ghost/demon_despawn_calm4.png" id="12_vcckk"]
+[ext_resource type="Texture2D" uid="uid://7eidy0nucr07" path="res://Art/characters/Demon Ghost/demon_despawn_calm5.png" id="13_f1aqi"]
+[ext_resource type="Texture2D" uid="uid://ckwikmosv6d66" path="res://Art/characters/Demon Ghost/demon_despawn_calm6.png" id="14_d4wfj"]
+[ext_resource type="Texture2D" uid="uid://bqnj2n0iq28kh" path="res://Art/characters/Demon Ghost/demon_despawn_calm7.png" id="15_5bf5q"]
+[ext_resource type="Texture2D" uid="uid://cm0vrp1gayxqk" path="res://Art/characters/Demon Ghost/demon_despawn_calm8.png" id="16_ttghy"]
+[ext_resource type="Texture2D" uid="uid://dmbt5uesxfpn7" path="res://Art/characters/Demon Ghost/demon_despawn_calm9.png" id="17_fpot0"]
+[ext_resource type="Texture2D" uid="uid://c076d11ptejfw" path="res://Art/characters/Demon Ghost/demon_despawn_calm10.png" id="18_xg0ix"]
+[ext_resource type="Texture2D" uid="uid://dfrgn5y3bsn8p" path="res://Art/characters/Demon Ghost/demon_despawn_calm11.png" id="19_wjj11"]
+[ext_resource type="Texture2D" uid="uid://bhhksras1qwf3" path="res://Art/characters/Demon Ghost/demon_despawn_calm12.png" id="20_du36n"]
+[ext_resource type="Texture2D" uid="uid://by7ej76k34v6p" path="res://Art/characters/Demon Ghost/demon_despawn_calm13.png" id="21_f0bsh"]
+[ext_resource type="Texture2D" uid="uid://c12wevwl20s1w" path="res://Art/characters/Demon Ghost/demon_despawn_calm14.png" id="22_27bpn"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r1e1v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_rg51s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ahvsw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_svgqo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_gtux4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_u3ep3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_dy1sc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_26cmu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_gw8lo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_0mjw7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_ff8jf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_vcckk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_f1aqi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_d4wfj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_5bf5q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_ttghy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_fpot0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_xg0ix")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_wjj11")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_du36n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_f0bsh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_27bpn")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="DessapointedDemon" type="Node2D"]
+script = ExtResource("1_1o8o8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_r1e1v")
+autoplay = "default"
+frame_progress = 0.22175938

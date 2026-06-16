@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://splm2us27kop"]
+[gd_scene load_steps=48 format=3 uid="uid://splm2us27kop"]
 
 [ext_resource type="Script" uid="uid://bphsgqehx7lcn" path="res://Scripts/object_ore.gd" id="1_nfnfk"]
 [ext_resource type="Resource" uid="uid://ns6ggxikg7cb" path="res://Resources/collidable_ore.tres" id="2_ncxvb"]
@@ -33,6 +33,17 @@
 [ext_resource type="Texture2D" uid="uid://d1kgulfxkmm4v" path="res://Art/effects/oreSparkle/oreSparkle17.png" id="32_bd0iu"]
 [ext_resource type="Texture2D" uid="uid://01fjyy3uii0k" path="res://Art/effects/oreSparkle/oreSparkle18.png" id="33_0dece"]
 [ext_resource type="Texture2D" uid="uid://blq3gp6hww7hl" path="res://Art/Collectibles/ore_tombstone.png" id="33_6qt4s"]
+[ext_resource type="Texture2D" uid="uid://dp4p54bl52l7l" path="res://Art/Collectibles/ore_saintsoul/ore_saintSoul_charging1.png" id="34_6qt4s"]
+[ext_resource type="Texture2D" uid="uid://iilexl34wmeu" path="res://Art/Collectibles/ore_saintsoul/ore_saintSoul_charging4.png" id="35_iatpi"]
+[ext_resource type="Texture2D" uid="uid://bf5nmupvtjtyd" path="res://Art/Collectibles/ore_saintsoul/ore_saintSoul_escape1.png" id="36_o8dtq"]
+[ext_resource type="Texture2D" uid="uid://ri50p2iskinm" path="res://Art/Collectibles/ore_saintsoul/ore_saintSoul_escape2.png" id="37_6mtlb"]
+[ext_resource type="Texture2D" uid="uid://dinq58v15fxbd" path="res://Art/Collectibles/ore_saintsoul/ore_saintSoul_escape3.png" id="38_8ro6g"]
+[ext_resource type="Texture2D" uid="uid://cmiepm3b8gs1q" path="res://Art/Collectibles/ore_saintsoul/ore_saintSoul_escape4.png" id="39_bd0iu"]
+[ext_resource type="Texture2D" uid="uid://c1g6gdlk070hm" path="res://Art/Collectibles/ore_saintsoul/ore_saintSoul_escape5.png" id="40_0dece"]
+[ext_resource type="Texture2D" uid="uid://3m74ithpnr03" path="res://Art/Collectibles/ore_saintsoul/ore_saintSoul_escape6.png" id="41_guist"]
+[ext_resource type="Texture2D" uid="uid://djp2o47qbk7xq" path="res://Art/Collectibles/ore_saintsoul/ore_saintSoul_escape7.png" id="42_ers3s"]
+[ext_resource type="Texture2D" uid="uid://bi806jmkv8kqm" path="res://Art/Collectibles/ore_saintsoul/ore_saintSoul_stressed1.png" id="43_h2ibg"]
+[ext_resource type="Texture2D" uid="uid://dh8jgtufbintg" path="res://Art/Collectibles/ore_saintsoul/ore_saintSoul_stressed2.png" id="44_skyjy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nj345"]
 size = Vector2(8, 9)
@@ -200,6 +211,67 @@ animations = [{
 "loop": true,
 "name": &"null",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 0.5,
+"texture": ExtResource("34_6qt4s")
+}, {
+"duration": 0.5,
+"texture": ExtResource("35_iatpi")
+}, {
+"duration": 0.5,
+"texture": ExtResource("34_6qt4s")
+}, {
+"duration": 0.5,
+"texture": ExtResource("35_iatpi")
+}, {
+"duration": 0.5,
+"texture": ExtResource("34_6qt4s")
+}, {
+"duration": 0.5,
+"texture": ExtResource("35_iatpi")
+}, {
+"duration": 0.5,
+"texture": ExtResource("34_6qt4s")
+}, {
+"duration": 0.5,
+"texture": ExtResource("35_iatpi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_o8dtq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_6mtlb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_8ro6g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_bd0iu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_0dece")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_guist")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_ers3s")
+}],
+"loop": false,
+"name": &"saint_escape",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("43_h2ibg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_skyjy")
+}],
+"loop": true,
+"name": &"saint_stressed",
+"speed": 3.0
 }]
 
 [node name="OreBody" type="RigidBody2D"]
@@ -223,7 +295,9 @@ frame_progress = 0.66695756
 
 [node name="oreVisual" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_iatpi")
-animation = &"SaintSoul"
+animation = &"saint_escape"
 autoplay = "null"
+frame = 14
+frame_progress = 1.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

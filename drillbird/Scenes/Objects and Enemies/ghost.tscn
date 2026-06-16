@@ -38,7 +38,7 @@ debug_color = Color(0.739368, 0.415576, 0.568864, 0.42)
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 z_index = 1
 sprite_frames = ExtResource("5_1csy7")
-animation = &"demon_idle"
+animation = &"idle_demon_heart"
 autoplay = "idle"
 
 [node name="GhostMusic" type="AudioStreamPlayer2D" parent="."]

@@ -1,4 +1,5 @@
 extends RigidBody2D
+class_name object_ore
 @onready var anim: AnimatedSprite2D =$Animation
 @export var ObjectInfo:abstract_collidable
 @export var oreType:abstract_ore
@@ -8,6 +9,9 @@ var cooldownTime:float=2
 var MoveTarget:Vector2
 var isBeingSuckedUp:bool=false
 var isStatic:bool=false
+signal finishedEscapeAnimation
+
+var isEscaping:bool=false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -106,6 +110,22 @@ func _on_animation_animation_finished() -> void:
 	anim.animation="idle"
 	pass # Replace with function body.
 
+func SetStressed(stressed:bool):
+	if oreType.ID!=11:
+		return
+	
+	if stressed:
+		anim.animation="saint_stressed"
+	else:
+		anim.animation="SaintSoul"
+	
+func PlayDemonEscapeAnim():
+
+	isEscaping=true
+	#anim.play("saint_escape")
+	await get_tree().create_timer(0.6).timeout
+	finishedEscapeAnimation.emit()
+	isEscaping=false
 
 func _on_body_entered(_body: Node) -> void:
 	SoundManager.PlaySoundAtLocation(global_position,abstract_SoundEffectSetting.SoundEffectEnum.ORE_LAND)

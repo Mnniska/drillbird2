@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://b2iabfqu07uoc"]
+[gd_scene load_steps=56 format=3 uid="uid://b2iabfqu07uoc"]
 
 [ext_resource type="Script" uid="uid://dmrdoi3ncqal2" path="res://Scripts/Enemy_Ghost.gd" id="1_u324o"]
 [ext_resource type="Script" uid="uid://bgy5cf01m25xs" path="res://Scripts/Abstract scripts/abstract_collidable.gd" id="2_7t44l"]
@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://85hm8k25l5uw" path="res://Art/characters/Ghost/ghost_fadeaway15.png" id="19_ncoin"]
 [ext_resource type="Texture2D" uid="uid://dmu1gw3q6qvh8" path="res://Art/characters/Ghost/ghost_fadeaway16.png" id="20_3jb1k"]
 [ext_resource type="Texture2D" uid="uid://bbaadlriiiyi3" path="res://Art/characters/Demon Ghost/demonGhost_idle1.png" id="21_7woiu"]
+[ext_resource type="Texture2D" uid="uid://dhrvhcsf7e45a" path="res://Art/effects/empty.png" id="21_vr803"]
 [ext_resource type="Texture2D" uid="uid://cfqueon1nbitt" path="res://Art/characters/Ghost/ghost_idle1.png" id="21_x4iw4"]
 [ext_resource type="Texture2D" uid="uid://blbt07velloh4" path="res://Art/characters/Demon Ghost/demonGhost_idle2.png" id="22_6j67n"]
 [ext_resource type="Texture2D" uid="uid://d1ojgl3ssl7jx" path="res://Art/characters/Ghost/ghost_idle2.png" id="22_tcywh"]
@@ -39,6 +40,15 @@
 [ext_resource type="Texture2D" uid="uid://c7im0flypwrsn" path="res://Art/characters/Ghost/ghost_withHeart5.png" id="30_30rxr"]
 [ext_resource type="Texture2D" uid="uid://d0mgpvcbw60ds" path="res://Art/characters/Ghost/ghost_withHeart6.png" id="31_071k6"]
 [ext_resource type="Theme" uid="uid://bfr5y4lo7m1ux" path="res://Resources/Fonts/fontTheme.tres" id="32_q8ums"]
+[ext_resource type="Texture2D" uid="uid://ylrv8w303u0x" path="res://Art/characters/Demon Ghost/demon_idle_anticipate1.png" id="42_f5g27"]
+[ext_resource type="Texture2D" uid="uid://ded3jt150vikp" path="res://Art/characters/Demon Ghost/demon_idle_anticipate2.png" id="43_7hfd5"]
+[ext_resource type="Texture2D" uid="uid://byr2ex4lscdoh" path="res://Art/characters/Demon Ghost/demon_idle_anticipate3.png" id="44_lma8b"]
+[ext_resource type="Texture2D" uid="uid://by8anv7huww6a" path="res://Art/characters/Demon Ghost/demon_idle_anticipate4.png" id="45_0vd7t"]
+[ext_resource type="Texture2D" uid="uid://bgjib5brarhot" path="res://Art/characters/Demon Ghost/demon_idle_anticipate5.png" id="46_mksr0"]
+[ext_resource type="Texture2D" uid="uid://da24u8t7ri1v3" path="res://Art/characters/Demon Ghost/demon_idle_anticipate6.png" id="47_33hkq"]
+[ext_resource type="Texture2D" uid="uid://co68r8yeffrux" path="res://Art/characters/Demon Ghost/demon_idle_anticipate7.png" id="48_d7qo6"]
+[ext_resource type="Texture2D" uid="uid://ctyrqx8bnrcol" path="res://Art/characters/Demon Ghost/demon_SaintReturning1.png" id="49_6awly"]
+[ext_resource type="Texture2D" uid="uid://ddmpr4l2aye6v" path="res://Art/characters/Demon Ghost/demon_SaintReturning2.png" id="50_2usvy"]
 
 [sub_resource type="Resource" id="Resource_dqcsu"]
 script = ExtResource("2_7t44l")
@@ -102,10 +112,13 @@ animations = [{
 "name": &"death",
 "speed": 10.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("21_vr803")
+}],
 "loop": true,
-"name": &"demon_death",
-"speed": 5.0
+"name": &"demon_dissappointment",
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -133,10 +146,42 @@ animations = [{
 "name": &"demon_idle",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("42_f5g27")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_7hfd5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_lma8b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_0vd7t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_mksr0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_33hkq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48_d7qo6")
+}],
+"loop": true,
+"name": &"demon_idle_anticipate",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("49_6awly")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50_2usvy")
+}],
 "loop": true,
 "name": &"demon_idle_heart",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -188,6 +233,9 @@ radius = 15.0333
 [sub_resource type="CircleShape2D" id="CircleShape2D_xx5tm"]
 radius = 26.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_vr803"]
+radius = 86.0
+
 [node name="Ghost" type="CharacterBody2D"]
 z_index = 6
 collision_layer = 2048
@@ -206,9 +254,8 @@ debug_color = Color(0.739368, 0.415576, 0.568864, 0.42)
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 z_index = 1
 sprite_frames = SubResource("SpriteFrames_c18y6")
-animation = &"demon_idle"
+animation = &"demon_idle_heart"
 autoplay = "idle"
-frame_progress = 0.89797324
 
 [node name="GhostMusic" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_w6agm")
@@ -238,5 +285,14 @@ offset_right = 35.0
 offset_bottom = -8.0
 theme = ExtResource("32_q8ums")
 
+[node name="oreChecker" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="oreChecker"]
+shape = SubResource("CircleShape2D_vr803")
+
 [connection signal="body_shape_entered" from="PlayerChecker" to="." method="_on_player_checker_body_shape_entered"]
 [connection signal="area_shape_entered" from="LightChecker" to="." method="_on_light_checker_area_shape_entered"]
+[connection signal="body_entered" from="oreChecker" to="." method="_on_ore_checker_body_entered"]
+[connection signal="body_exited" from="oreChecker" to="." method="_on_ore_checker_body_exited"]
