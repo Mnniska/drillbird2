@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://vd1oghkdp3nq"]
+[gd_scene load_steps=12 format=3 uid="uid://vd1oghkdp3nq"]
 
 [ext_resource type="Script" uid="uid://dmrdoi3ncqal2" path="res://Scripts/Enemy_Ghost.gd" id="1_0nsmt"]
 [ext_resource type="Script" uid="uid://bgy5cf01m25xs" path="res://Scripts/Abstract scripts/abstract_collidable.gd" id="2_tg5lq"]
@@ -19,6 +19,9 @@ radius = 15.0333
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xx5tm"]
 radius = 26.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1csy7"]
+radius = 10.198039
 
 [node name="Ghost2" type="CharacterBody2D"]
 z_index = 6
@@ -69,5 +72,14 @@ offset_right = 35.0
 offset_bottom = -8.0
 theme = ExtResource("9_scd0l")
 
+[node name="OreChecker" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OreChecker"]
+shape = SubResource("CircleShape2D_1csy7")
+
 [connection signal="body_shape_entered" from="PlayerChecker" to="." method="_on_player_checker_body_shape_entered"]
 [connection signal="area_shape_entered" from="LightChecker" to="." method="_on_light_checker_area_shape_entered"]
+[connection signal="body_entered" from="OreChecker" to="." method="_on_ore_checker_body_entered"]
+[connection signal="body_exited" from="OreChecker" to="." method="_on_ore_checker_body_exited"]

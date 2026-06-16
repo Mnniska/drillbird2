@@ -1,6 +1,5 @@
 extends RigidBody2D
 class_name object_ore
-@onready var anim: AnimatedSprite2D =$Animation
 @export var ObjectInfo:abstract_collidable
 @export var oreType:abstract_ore
 @onready var oreAnim:AnimatedSprite2D=$oreVisual
@@ -107,7 +106,7 @@ func MoveTowardsHome(pos:Vector2):
 	pass
 
 func _on_animation_animation_finished() -> void:
-	anim.animation="idle"
+	oreAnim.animation="idle"
 	pass # Replace with function body.
 
 func SetStressed(stressed:bool):
@@ -115,17 +114,14 @@ func SetStressed(stressed:bool):
 		return
 	
 	if stressed:
-		anim.animation="saint_stressed"
+		oreAnim.animation="saint_stressed"
 	else:
-		anim.animation="SaintSoul"
+		oreAnim.animation="SaintSoul"
 	
 func PlayDemonEscapeAnim():
 
 	isEscaping=true
-	#anim.play("saint_escape")
-	await get_tree().create_timer(0.6).timeout
-	finishedEscapeAnimation.emit()
-	isEscaping=false
+	oreAnim.animation="saint_escape"
 
 func _on_body_entered(_body: Node) -> void:
 	SoundManager.PlaySoundAtLocation(global_position,abstract_SoundEffectSetting.SoundEffectEnum.ORE_LAND)
