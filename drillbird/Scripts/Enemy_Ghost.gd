@@ -35,6 +35,8 @@ var isPlayingChaseMusic:bool=false
 enum states{CHASE_PLAYER,CHASE_HEART,RETURN_HEART,DISAPPEARING}
 var state:states=states.CHASE_PLAYER
 
+var isDemon:bool=false
+
 func GetCollType():
 	return collType
 
@@ -181,7 +183,10 @@ func HauntObject(delta:float):
 func PickupHeart(heart:Node2D):
 	state=states.RETURN_HEART
 	isCarryingHeart=true
-	anim.animation="idle_heart"
+	if isDemon:
+		anim.animation="idle_demon_heart"
+	else:
+		anim.animation="idle_heart"
 	NewHaunting(parent.HeartRightfulPlace)
 	heart.queue_free()
 
@@ -197,9 +202,19 @@ func DealDamage(amount:int):
 	
 	pass
 
-func GiveParentReference(_parent:ghost_manager):
+func GiveParentReference(_parent:ghost_manager,_isDemon:bool=false):
 	parent = _parent
+	SetupDemon(_isDemon)
 	pass
+
+func SetupDemon(_isDemon:bool):
+	isDemon=_isDemon
+	if isDemon:
+		anim.animation="demon_idle"
+		anim.play()
+	else:
+		anim.animation="idle"
+		anim.play()
 
 func Disappear(useAnimation:bool=true):
 	if state!=states.DISAPPEARING:
@@ -207,7 +222,10 @@ func Disappear(useAnimation:bool=true):
 		state=states.DISAPPEARING
 		
 		if useAnimation:
-			anim.animation="death"
+			if isDemon:
+				anim.animation="demon_death"
+			else:
+				anim.animation="death"
 			anim.play()
 			
 			#in theory awaits??
@@ -223,10 +241,6 @@ func NewHaunting(object:Node2D):
 
 func lerp(a,b,t):
 	return (1 - t) * a + t * b
-
-
-
-
 
 func _on_player_checker_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
 	if body==$".":

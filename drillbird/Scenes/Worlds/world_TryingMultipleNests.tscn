@@ -1,4 +1,4 @@
-[gd_scene load_steps=88 format=4 uid="uid://boh3yjorqn4xa"]
+[gd_scene load_steps=87 format=4 uid="uid://boh3yjorqn4xa"]
 
 [ext_resource type="TileSet" uid="uid://grpd2pyu7pgk" path="res://Resources/MainTileset.tres" id="1_4c1b3"]
 [ext_resource type="Script" uid="uid://cfd6ggts8pqma" path="res://Scripts/Level Generation/tilemap_environment.gd" id="2_27on7"]
@@ -29,7 +29,6 @@
 [ext_resource type="Texture2D" uid="uid://cdfdcp4kqa8fb" path="res://Art/environment/UniqueAssets/Masoleum.png" id="25_4p3ut"]
 [ext_resource type="PackedScene" uid="uid://dgb113k7sw22l" path="res://Scenes/cutscenes/DialogueScene.tscn" id="41_ek4iq"]
 [ext_resource type="Script" uid="uid://cqcesbsoaesaf" path="res://Scripts/cutscenes/script_saintDialogueTech.gd" id="41_fbqey"]
-[ext_resource type="Theme" uid="uid://bfr5y4lo7m1ux" path="res://Resources/Fonts/fontTheme.tres" id="42_7lr64"]
 [ext_resource type="Resource" uid="uid://c7fpe614cioq5" path="res://Resources/Economy/ore_SOUL.tres" id="42_deunn"]
 [ext_resource type="Script" uid="uid://cg5f1k2sm50v" path="res://Scenes/Playable Scenes/ghost_manager.gd" id="44_lkrvv"]
 [ext_resource type="PackedScene" uid="uid://cltb8lx463vak" path="res://Scenes/UI/cloud_counter.tscn" id="45_hxyd4"]
@@ -1100,13 +1099,6 @@ texture = ExtResource("58_b5rgw")
 
 [node name="placeholder_saint" type="Node2D" parent="."]
 position = Vector2(-777, 3801)
-
-[node name="Label" type="Label" parent="placeholder_saint"]
-offset_right = 40.0
-offset_bottom = 23.0
-theme = ExtResource("42_7lr64")
-text = "You meet the saint here, 
-but I haven't implemented them yet ;) "
 
 [node name="FlowerCaveCarving" type="Sprite2D" parent="."]
 z_index = -1
