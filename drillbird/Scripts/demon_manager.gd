@@ -72,6 +72,7 @@ func SoulSpawned(heart:Node2D):
 	if !ghostSpawned:
 		SpawnDemon()
 	ghostInScene.PlayerDroppedHeartInUnproperPlace(heart)
+	heart.SetStressed(true)
 	
 	pass
 	

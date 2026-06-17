@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://b2iabfqu07uoc"]
+[gd_scene load_steps=55 format=3 uid="uid://b2iabfqu07uoc"]
 
 [ext_resource type="Script" uid="uid://dmrdoi3ncqal2" path="res://Scripts/Enemy_Ghost.gd" id="1_u324o"]
 [ext_resource type="Script" uid="uid://bgy5cf01m25xs" path="res://Scripts/Abstract scripts/abstract_collidable.gd" id="2_7t44l"]
@@ -233,9 +233,6 @@ radius = 15.0333
 [sub_resource type="CircleShape2D" id="CircleShape2D_xx5tm"]
 radius = 26.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_vr803"]
-radius = 86.0
-
 [node name="Ghost" type="CharacterBody2D"]
 z_index = 6
 collision_layer = 2048
@@ -254,7 +251,7 @@ debug_color = Color(0.739368, 0.415576, 0.568864, 0.42)
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 z_index = 1
 sprite_frames = SubResource("SpriteFrames_c18y6")
-animation = &"demon_idle_heart"
+animation = &"demon_idle_anticipate"
 autoplay = "idle"
 
 [node name="GhostMusic" type="AudioStreamPlayer2D" parent="."]
@@ -285,14 +282,5 @@ offset_right = 35.0
 offset_bottom = -8.0
 theme = ExtResource("32_q8ums")
 
-[node name="oreChecker" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="oreChecker"]
-shape = SubResource("CircleShape2D_vr803")
-
 [connection signal="body_shape_entered" from="PlayerChecker" to="." method="_on_player_checker_body_shape_entered"]
 [connection signal="area_shape_entered" from="LightChecker" to="." method="_on_light_checker_area_shape_entered"]
-[connection signal="body_entered" from="oreChecker" to="." method="_on_ore_checker_body_entered"]
-[connection signal="body_exited" from="oreChecker" to="." method="_on_ore_checker_body_exited"]

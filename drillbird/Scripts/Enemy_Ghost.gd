@@ -104,7 +104,7 @@ func GameIsBeingSaved():
 	if state==states.RETURN_HEART:
 		parent.DropHeartInRightfulPlace()
 		isCarryingHeart=false
-	Disappear()
+	Disappear(!isDemon)
 
 func PlayerPickedUpHeart():
 	NewHaunting(parent.player)
@@ -213,7 +213,7 @@ func PickupHeart(heart:Node2D):
 		self.global_position=heart.global_position
 	
 	if isDemon:
-		anim.animation="idle_demon_heart" #Demon turns into the ore escaping
+		anim.animation="demon_idle_heart" #Demon turns into the ore escaping
 
 	else:
 		anim.animation="idle_heart"
@@ -254,7 +254,7 @@ func Disappear(useAnimation:bool=true):
 		
 		if useAnimation:
 			if isDemon:
-				anim.animation="demon_death"
+				anim.animation="demon_dissappointment"
 			else:
 				anim.animation="death"
 			anim.play()
@@ -274,15 +274,65 @@ func lerp(a,b,t):
 	return (1 - t) * a + t * b
 
 func _on_player_checker_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
-	if body==$".":
+	if body==$"." or state==states.DISAPPEARING:
 		return
 
+	if isDemon:
+		if state==states.RETURN_HEART:
+			return
+		
 	body.DealDamage(1)
 	
-
-	
-
-
 func _on_light_checker_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
 	Disappear()
+	pass # Replace with function body.
+
+
+var amountOfTargetsInChecker:int=0
+
+func UpdateSpookyFace():
+	if state==states.RETURN_HEART or state==states.DISAPPEARING:
+		return
+
+	
+	var frame=min(anim.frame,6)#hardcoded 6 since the idle anim has 7 frames in total
+	
+	if amountOfTargetsInChecker>0:
+		anim.animation="demon_idle_anticipate"
+
+	else:
+		anim.animation="demon_idle"
+
+		
+
+func _on_ore_player_checker_body_entered(body: Node2D) -> void:
+	
+	if !isDemon:
+		return
+	
+	if body.get_script()==player_script:
+		amountOfTargetsInChecker+=1
+		UpdateSpookyFace()
+	
+	if body.get_script()==object_ore:
+		if body.oreType.ID==11:
+			amountOfTargetsInChecker+=1
+			UpdateSpookyFace()
+	
+	pass # Replace with function body.
+
+
+func _on_ore_player_checker_body_exited(body: Node2D) -> void:
+	
+	if !isDemon:
+		return
+	
+	if body.get_script()==player_script:
+		amountOfTargetsInChecker-=1
+		UpdateSpookyFace()
+	
+	if body.get_script()==object_ore:
+		if body.oreType.ID==11:
+			amountOfTargetsInChecker-=1
+			UpdateSpookyFace()
 	pass # Replace with function body.
