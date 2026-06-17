@@ -20,7 +20,7 @@ func _ready() -> void:
 	dialoguePlayer.connect("aboutToPlay",UpdateDialogue)
 	
 	await GlobalVariables.SetupComplete
-	SpawnSaintOre()
+	
 	pass # Replace with function body.
 
 func UpdateDialogue():

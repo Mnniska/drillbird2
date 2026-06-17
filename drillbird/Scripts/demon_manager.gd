@@ -102,16 +102,7 @@ func SoulPickedUpByPlayer():
 	ghostInScene.PlayerPickedUpHeart()
 	pass
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	if !GlobalVariables.demonActive:
-			return
-	if ghostIsComing and !ghostSpawned:
-		ghostTimeCounter+=delta
-		if ghostTimeCounter>TimeBeforeGhostComes:
-			SpawnDemon()
-			ghostIsComing=false
-	pass
+
 	
 	
 func playerLightStatusChanged():
