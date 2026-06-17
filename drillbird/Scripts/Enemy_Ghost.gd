@@ -175,7 +175,7 @@ func HauntObject(delta:float):
 				if hauntedObject.GetOre().ID==10:
 					PickupHeart(hauntedObject)
 		else:
-			if distanceToObject<50 and !isPickingUpSoul:
+			if distanceToObject<70 and !isPickingUpSoul:
 				if hauntedObject.GetOre().ID==11:
 					PickupSoul(hauntedObject)
 

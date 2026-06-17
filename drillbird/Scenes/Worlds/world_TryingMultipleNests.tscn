@@ -1064,7 +1064,6 @@ position = Vector2(0, 23)
 position = Vector2(0, 12)
 
 [node name="PlayerSpawnLocations" type="Node2D" parent="."]
-visible = false
 
 [node name="OriginalSpawnPos" type="Sprite2D" parent="PlayerSpawnLocations"]
 position = Vector2(-922, 1049)
@@ -1087,15 +1086,15 @@ position = Vector2(0, -77)
 texture = ExtResource("58_b5rgw")
 
 [node name="Spawnpos_LastThird" type="Sprite2D" parent="PlayerSpawnLocations"]
-position = Vector2(26, 3582)
+position = Vector2(150, 2003)
 texture = ExtResource("58_b5rgw")
 
 [node name="Spawnpos_FlowerTutorial" type="Sprite2D" parent="PlayerSpawnLocations"]
-position = Vector2(895, 2375)
+position = Vector2(1097, 1426)
 texture = ExtResource("58_b5rgw")
 
 [node name="Spawnpos_bottom" type="Sprite2D" parent="PlayerSpawnLocations"]
-position = Vector2(-902, 2608)
+position = Vector2(-417, 3869)
 texture = ExtResource("58_b5rgw")
 
 [node name="placeholder_saint" type="Node2D" parent="."]

@@ -17,6 +17,7 @@ var ref_respawnPointCave:Node2D
 var ref_secretTilemap
 var ref_oreTilemap
 var ref_environmentTilemap
+var ref_playerTeleportLocations
 
 
 
@@ -29,5 +30,7 @@ func SetupSpawnedWorldReferences():
 	ref_oreTilemap=$"../WorldSpawn/TilemapOres"
 	ref_environmentTilemap=$"../WorldSpawn/TilemapEnvironment"
 	ref_respawnPointCave=$"../WorldSpawn/WorldScripts/Respawn_caveOfResurrection"
+	ref_playerTeleportLocations=$"../WorldSpawn/PlayerSpawnLocations"
+	
 	
 	pass

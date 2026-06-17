@@ -90,10 +90,8 @@ var closeFlowers:Array[climb_flower]
 
 func _ready() -> void:
 	
-	if $"../WorldSpawn/PlayerSpawnLocations"!=null:
-		for child:Node2D in $"../WorldSpawn/PlayerSpawnLocations".get_children():
-			DebugTeleportLocations.append(child.global_position)
-		currentTeleportationIndex=0
+	
+
 	
 	Update_Animations("idle")
 	debugLine.points.clear()
@@ -102,6 +100,14 @@ func _ready() -> void:
 	UpdateCollisions(collisionstates.grounded)
 	
 	GlobalVariables.PlayerController=self
+	
+	await GlobalVariables.SetupComplete
+	var test=GlobalVariables.MainSceneReferenceConnector.ref_playerTeleportLocations
+	if test!=null:
+		for child:Node2D in GlobalVariables.MainSceneReferenceConnector.ref_playerTeleportLocations.get_children():
+			DebugTeleportLocations.append(child.global_position)
+		currentTeleportationIndex=0
+	pass
 
 var collstate:collisionstates=collisionstates.debug
 enum collisionstates{grounded,flying,falling,debug}
@@ -850,7 +856,7 @@ func _on_detector_body_entered(body: Node2D) -> void:
 	
 	if collider.type==collider.types.ORE:
 		
-		if !body.cooldown:
+		if !body.cooldown and !body.isEscaping:
 			var oretype = body.oreType
 			if oreInventory.AddOreRequest(oretype):
 				body.queue_free()

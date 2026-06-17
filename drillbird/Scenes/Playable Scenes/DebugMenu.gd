@@ -38,14 +38,6 @@ var count:int=0
 func _process(delta: float) -> void:
 	
 
-	if Input.is_key_pressed(KEY_5) and cooldownCounter<=0:
-		var p=GlobalVariables.PlayerController
-		var spawner=GlobalVariables.MainSceneReferenceConnector.ref_objectSpawner
-		spawner.CreateTile(p.global_position+Vector2(16,0),spawner.tileTypes.sand)
-		count+=1
-		cooldownCounter=0.3
-	
-
 	cooldownCounter-=delta
 	
 			

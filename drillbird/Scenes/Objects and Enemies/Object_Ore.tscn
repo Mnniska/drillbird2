@@ -295,9 +295,7 @@ frame_progress = 0.66695756
 
 [node name="oreVisual" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_iatpi")
-animation = &"saint_escape"
+animation = &"Brandgulium"
 autoplay = "null"
-frame = 14
-frame_progress = 1.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
