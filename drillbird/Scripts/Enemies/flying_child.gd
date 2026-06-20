@@ -22,10 +22,12 @@ var energy:float=20
 @export var initialJumpCost:float=10
 @export var continuedJumpCost:float=2
 
+var eatTimer:float=0
 
-enum States{IDLE,JUMPING,FALLING,INACTIVE,GROWN}
+
+enum States{IDLE,JUMPING,FALLING,INACTIVE,GROWN,EATING}
 var state:States=States.IDLE
-
+@export var isDemon:bool=false
 
 @export var maxFuelRefillRate:float=5
 @export var maxJumpTime=0.6
@@ -49,6 +51,8 @@ var hasFullyEvolved:bool=false
 @export var evolveTextString:String
 
 var isChilling:bool=true
+
+
 
 func _ready() -> void:
 	evolveText.text="[center][shake] "+GlobalSymbolRegister.GetStringDecoded(tr("credits_evolve_popup"))
@@ -76,6 +80,11 @@ func _physics_process(delta: float) -> void:
 		GrownUpdate(delta)
 		return
 	
+	if state==States.EATING:
+		eatTimer-=delta
+		if eatTimer<=0:
+			state=States.IDLE
+	
 	if holdTime>0:
 		holdTime-=delta
 		if holdTime<=0:
@@ -97,6 +106,7 @@ func _physics_process(delta: float) -> void:
 	velocity.x=max(-maxHorizontalSpeed,velocity.x)
 	velocity.y=clampf(velocity.y,-maxVerticalSpeed,maxVerticalSpeed)
 
+
 	if Input.is_action_just_pressed("jump"):
 		if state!=States.JUMPING:
 			initiateJump(0)
@@ -117,6 +127,7 @@ func _physics_process(delta: float) -> void:
 			state=States.FALLING
 		else:
 			state=States.IDLE
+
 
 
 	if state!=States.JUMPING:
@@ -235,8 +246,10 @@ func initiateJump(_holdtime:float):
 		simulatedJumpPressed=true
 		holdTime=_holdtime
 	velocity.y=-jumpHeight
-	animator.animation="up"
-	animator.play()
+	
+	if eatTimer<=0:
+		animator.animation="up"
+		animator.play()
 	pass
 	
 func continueJump(delta:float):
@@ -268,6 +281,8 @@ func UpdateAnimations():
 				animator.animation="up"
 			States.FALLING:
 				animator.animation="down"
+			States.EATING:
+				animator.animation="eat"
 	
 		lastAnimatedState=state
 
@@ -278,4 +293,12 @@ func _on_star_fragment_checker_area_shape_entered(area_rid: RID, area: Area2D, a
 	if !starfragment.dead:
 		energy+=starfragment.worth
 		starfragment.DestroySelfAfterAnimation()
+		
+		if isDemon:
+			animator.play("eat")
+			state=States.EATING
+			eatTimer=1
+			self.global_position=starfragment.global_position
+			#velocity.y=velocity.y*0.3
+		
 	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://bw7u10067jspx"]
+[gd_scene load_steps=49 format=3 uid="uid://bw7u10067jspx"]
 
 [ext_resource type="Script" uid="uid://ca4w6ig3glmqw" path="res://Scripts/Enemies/flying_child.gd" id="1_w3q35"]
 [ext_resource type="Texture2D" uid="uid://cgxkdks7kbtrr" path="res://Art/effects/CharacterEffects/child evolving shine/childEvolveLightEffect1.png" id="2_vu6yo"]
@@ -14,14 +14,22 @@
 [ext_resource type="Texture2D" uid="uid://cx1mhsd4aeaty" path="res://Art/characters/child/demonchild/demonChildFlying_falling2.png" id="12_ygwqx"]
 [ext_resource type="Texture2D" uid="uid://dmkwmrn8nil0x" path="res://Art/characters/child/demonchild/demonChildFlying_falling3.png" id="13_kbqja"]
 [ext_resource type="Texture2D" uid="uid://kwu047xsyawb" path="res://Art/characters/child/demonchild/demonChildFlying_falling4.png" id="14_eatsa"]
+[ext_resource type="Texture2D" uid="uid://bgxd8v346wo7j" path="res://Art/characters/child/demonchild/demonchild_eat1.png" id="15_0do5j"]
 [ext_resource type="Texture2D" uid="uid://c5gtm2501w2nn" path="res://Art/characters/child/childTransform1.png" id="15_4a3wo"]
 [ext_resource type="Texture2D" uid="uid://dyuypli6hw1bc" path="res://Art/characters/child/childTransform2.png" id="16_cdt6r"]
+[ext_resource type="Texture2D" uid="uid://br4ka26xodbkt" path="res://Art/characters/child/demonchild/demonchild_eat2.png" id="16_ssfds"]
 [ext_resource type="Texture2D" uid="uid://5xfnofxnvv44" path="res://Art/characters/child/childTransform3.png" id="17_6rul3"]
+[ext_resource type="Texture2D" uid="uid://0tmgd6ni47r8" path="res://Art/characters/child/demonchild/demonchild_eat3.png" id="17_kjm33"]
 [ext_resource type="Texture2D" uid="uid://benwcrncm31vd" path="res://Art/characters/child/childTransform4.png" id="18_jlof3"]
+[ext_resource type="Texture2D" uid="uid://bh7hueue7bm2k" path="res://Art/characters/child/demonchild/demonchild_eat4.png" id="18_wh0p5"]
+[ext_resource type="Texture2D" uid="uid://b01inibcxvs5g" path="res://Art/characters/child/demonchild/demonchild_eat5.png" id="19_4a3wo"]
 [ext_resource type="Texture2D" uid="uid://bjokyq38ohtb" path="res://Art/characters/child/childTransform5.png" id="19_7rydr"]
+[ext_resource type="Texture2D" uid="uid://b0uiers8mc0gu" path="res://Art/characters/child/demonchild/demonchild_eat6.png" id="20_cdt6r"]
 [ext_resource type="Texture2D" uid="uid://v2dnbkx38vc0" path="res://Art/characters/child/childTransform6.png" id="20_flqhi"]
+[ext_resource type="Texture2D" uid="uid://crgmw17tqmtrk" path="res://Art/characters/child/demonchild/demonchild_eat7.png" id="21_6rul3"]
 [ext_resource type="Texture2D" uid="uid://chb7twjxwwowa" path="res://Art/characters/child/childTransform7.png" id="21_iqet5"]
 [ext_resource type="Texture2D" uid="uid://blkhlvnkhbbcc" path="res://Art/characters/child/childTransform8.png" id="22_5c0e7"]
+[ext_resource type="Texture2D" uid="uid://dpll23330oqu" path="res://Art/characters/child/demonchild/demonchild_eat8.png" id="22_jlof3"]
 [ext_resource type="Texture2D" uid="uid://1kp5dwu85k61" path="res://Art/characters/child/childTransform9.png" id="23_apki1"]
 [ext_resource type="Texture2D" uid="uid://bkwp85ifbeu5t" path="res://Art/characters/child/childTransform10.png" id="24_twwsy"]
 [ext_resource type="Texture2D" uid="uid://dla5au3xs16f4" path="res://Art/characters/child/childTransform11.png" id="25_y0dlx"]
@@ -95,6 +103,35 @@ animations = [{
 "loop": false,
 "name": &"down",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_0do5j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_ssfds")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_kjm33")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_wh0p5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_4a3wo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_cdt6r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_6rul3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_jlof3")
+}],
+"loop": false,
+"name": &"eat",
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 7.5,
@@ -185,6 +222,7 @@ collision_mask = 0
 script = ExtResource("1_w3q35")
 initialJumpCost = 6.0
 continuedJumpCost = 0.5
+isDemon = true
 maxFuelRefillRate = 3.5
 
 [node name="anim_evolve_shine" type="AnimatedSprite2D" parent="."]
@@ -195,8 +233,9 @@ frame_progress = 1.0
 
 [node name="Animator" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_kjm33")
-animation = &"idle"
+animation = &"eat"
 autoplay = "idle"
+frame_progress = 1.0
 
 [node name="text_evolve" type="Label" parent="."]
 offset_right = 40.0

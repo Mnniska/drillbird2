@@ -1,6 +1,6 @@
 [gd_scene load_steps=25 format=3 uid="uid://bmpaycayn64qf"]
 
-[ext_resource type="Script" path="res://Scripts/cutscenes/star_fragment.gd" id="1_o42e1"]
+[ext_resource type="Script" uid="uid://bg2ewp7myhrwg" path="res://Scripts/cutscenes/star_fragment.gd" id="1_o42e1"]
 [ext_resource type="Texture2D" uid="uid://cn7v52cmd8485" path="res://Art/Collectibles/starbit/starbit_explode1.png" id="2_3r6bs"]
 [ext_resource type="Texture2D" uid="uid://ctiifbdx88nn8" path="res://Art/Collectibles/starbit/starbit_idle1.png" id="2_fp745"]
 [ext_resource type="Texture2D" uid="uid://b266g1y4xvj5e" path="res://Art/Collectibles/starbit/starbit_idle2.png" id="3_hvloq"]

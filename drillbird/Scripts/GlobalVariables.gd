@@ -58,6 +58,8 @@ func GetCurrentEnding()->endings:
 	if !CursedMode:
 		return endings.normal
 	else:
+		return endings.cursed_bad #TODO:Remove this lol
+		
 		if GlobalVariables.currentDay <= GlobalVariables.daysBeforeDemonKillsEgg:
 			return endings.cursed_true
 		else:
@@ -209,7 +211,6 @@ func AddXPFromKill(enemy:abstract_enemy):
 	SteamHandler.IncreaseEnemyDeaths()
 	GivePlayerMoney(amount,false)
 	return amount
-	pass
 
 func SetPlayerUpgradeLevel(upgradeType:typeEnum,_upgradeLevel:int):
 	match upgradeType:

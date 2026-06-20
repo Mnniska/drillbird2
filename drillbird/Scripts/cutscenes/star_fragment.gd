@@ -8,6 +8,8 @@ class_name star_fragment
 var speed=0
 var dead:bool=false
 
+var idle_animation="idle"
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	speed=randf_range(speedMax,speedMin)
@@ -24,11 +26,20 @@ func _process(delta: float) -> void:
 	
 	pass
 
+func SetScared(scared:bool):
+	if scared:
+		idle_animation="idle_scared"
+	else:
+		idle_animation="idle"
+
+	
+	pass
+
 func DestroySelfAfterAnimation():
 	dead=true
 	anim.animation="collect"
 	SoundManager.PlaySoundAtLocation(global_position,abstract_SoundEffectSetting.SoundEffectEnum.HOME_GIVEORE_POFF)
 	anim.play("collect")
 	speed=speed*0.2
-	await get_tree().create_timer(0.8).timeout
+	await anim.animation_finished
 	queue_free()	

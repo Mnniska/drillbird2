@@ -648,6 +648,7 @@ animations = [{
 
 [node name="FlyingCredits" type="Node"]
 script = ExtResource("1_xtpho")
+debugSkipCredits = true
 
 [node name="BG_base" type="Sprite2D" parent="."]
 light_mask = 0
@@ -824,6 +825,8 @@ texture = ExtResource("14_yjti0")
 script = ExtResource("15_ob5l2")
 minTimeBeforeSpawn = 0.8
 maxTimeBeforeSpawn = 2.0
+minTimeBeforeSpawn_CURSED = 2.0
+maxTimeBeforeSpawn_CURSED = 6.0
 
 [node name="Line2D" type="Line2D" parent="ValueSpawner"]
 position = Vector2(205, -78.83475)
@@ -845,6 +848,7 @@ position = Vector2(-160, -111)
 
 [node name="cutscene_earthDying" type="Node2D" parent="."]
 visible = false
+z_index = 4
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="cutscene_earthDying"]
 sprite_frames = SubResource("SpriteFrames_uyb8h")

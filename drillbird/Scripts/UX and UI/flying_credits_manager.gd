@@ -31,6 +31,8 @@ var cloudsVisible:bool=true
 var cloudsVisibleLerper:float=0
 var isTransitioningToMainAgain:bool=false
 
+var ending:GlobalVariables.endings
+
 func _process(delta: float) -> void:
 			
 
@@ -54,6 +56,8 @@ func SetEnergyMeterVisible(visible:bool,instant:bool=true):
 
 func _ready() -> void:
 	
+	ending=GlobalVariables.GetCurrentEnding()
+	
 	SetEnergyMeterVisible(false)
 	text_growth.text=tr("credits_growth")
 	HUD.SetState(HUD.menuStates.CREDITS)
@@ -63,34 +67,38 @@ func _ready() -> void:
 	$Credits.hide()
 	await get_tree().create_timer(3).timeout
 	
-	var path=childRef
-	if GlobalVariables.CursedMode:
+	var path
+	
+	if ending==GlobalVariables.endings.normal:
+		path=childRef
+	
+	if ending==GlobalVariables.endings.cursed_bad:
 		path=childDemonRef
 	
-	flyer=path.instantiate()
-	flyer.transform.origin=$ChildSpawnPos.position
-	add_child(flyer)
-	flyer.Activate(%UI_LightSlider)
-	
-	flyer.hasEvolved.connect(_on_flying_child_has_evolved)
-	flyer.hasEvolvedOffScreen.connect(_on_flying_child_has_evolved_off_screen)
-	flyer.canEvolveUpdate.connect(_on_flying_child_can_evolve_update)
+	if path: #only spawn child in normal and bad ending. True ending has no child
+		flyer=path.instantiate()
+		flyer.transform.origin=$ChildSpawnPos.position
+		add_child(flyer)
+		flyer.Activate(%UI_LightSlider)
+		
+		flyer.hasEvolved.connect(_on_flying_child_has_evolved)
+		flyer.hasEvolvedOffScreen.connect(_on_flying_child_has_evolved_off_screen)
+		flyer.canEvolveUpdate.connect(_on_flying_child_can_evolve_update)
 
 	await get_tree().create_timer(4).timeout
 
 	if debugSkipCredits:
 		valueSpawner.active=true
 		SetCloudsVisible(false)
-		flyer.energy=100
+		flyer.energy=50
+		SetEnergyMeterVisible(true)
+
 		
 	else:
 		$Credits.show()
 		SetCloudsVisible(true)
 		credits.StartScrolling()
 		credits.signal_credits_finished.connect(CreditsFinished)
-		
-
-
 
 func CreditsFinished():
 	valueSpawner.active=true
@@ -103,7 +111,9 @@ func SetCloudsVisible(visible:bool):
 
 
 func _on_player_detector_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
-	flyer.initiateJump(randf_range(0.3,0.6))
+	
+	if flyer:
+		flyer.initiateJump(randf_range(0.3,0.6))
 	pass # Replace with function body.
 
 
@@ -133,21 +143,26 @@ func PlayEarthDyingCutscene():
 	cutscene.show()
 	anim.play("earth_dying")
 	await anim.animation_finished
-	#do stuff
+	ShowStats()
 
 
 func _on_flying_child_has_evolved_off_screen() -> void:
 	if isTransitioningToMainAgain:
 		return
 	isTransitioningToMainAgain=true
-	var anim:AnimationPlayer=$AnimationPlayer
-	anim.play("fall")
+		
+	if ending==GlobalVariables.endings.normal:
+		var anim:AnimationPlayer=$AnimationPlayer
+		anim.play("fall")
+		
+		#Todo, play some kind of sound here :3
+		#SoundManager.PlaySoundAtLocation($Camera2D.position,abstract_SoundEffectSetting.SoundEffectEnum.INTRO_CUTSCENE_SCENE2)
+		SoundManager.PlaySoundAtLocation($Camera2D.position,abstract_SoundEffectSetting.SoundEffectEnum.FINAL_FALL)
+		await get_tree().create_timer(7).timeout
+		ShowStats()
 	
-	#Todo, play some kind of sound here :3
-	#SoundManager.PlaySoundAtLocation($Camera2D.position,abstract_SoundEffectSetting.SoundEffectEnum.INTRO_CUTSCENE_SCENE2)
-	SoundManager.PlaySoundAtLocation($Camera2D.position,abstract_SoundEffectSetting.SoundEffectEnum.FINAL_FALL)
-	await get_tree().create_timer(7).timeout
-	ShowStats()
+	if ending==GlobalVariables.endings.cursed_bad:
+		PlayEarthDyingCutscene()
 
 func ShowStats():
 	var stats = $"Final stats"

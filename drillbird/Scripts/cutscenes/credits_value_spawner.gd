@@ -1,11 +1,15 @@
 extends Node2D
 
 var starFragmentPath=preload("res://Scenes/Objects and Enemies/star_fragment.tscn")
+var childFragmentPath=preload("res://Scenes/Objects and Enemies/star_fragment_birdEdition.tscn")
 
 @onready var line = $Line2D
 
 @export var minTimeBeforeSpawn:float=4
 @export var maxTimeBeforeSpawn:float=8
+
+@export var minTimeBeforeSpawn_CURSED:float=6
+@export var maxTimeBeforeSpawn_CURSED:float=10
 var timeBeforeSpawn:float=5
 var spawnCounter:float=0
 var active:bool=false
@@ -25,12 +29,21 @@ func _process(delta: float) -> void:
 	spawnCounter+=delta
 	if spawnCounter>=timeBeforeSpawn:
 		spawnCounter=0
-		timeBeforeSpawn=randf_range(maxTimeBeforeSpawn,minTimeBeforeSpawn)
+		
+		if GlobalVariables.CursedMode:
+			timeBeforeSpawn=randf_range(maxTimeBeforeSpawn_CURSED,minTimeBeforeSpawn_CURSED)
+		else:
+			timeBeforeSpawn=randf_range(maxTimeBeforeSpawn,minTimeBeforeSpawn)
 		SpawnNewFragment()
 	pass
 
 func SpawnNewFragment():
-	var node=starFragmentPath.instantiate()
+	
+	var node
+	if GlobalVariables.CursedMode:
+		node=childFragmentPath.instantiate()
+	else:
+		node=starFragmentPath.instantiate()
 	add_child(node)
 	
 	var rand=randf_range(0,160)
