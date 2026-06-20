@@ -34,6 +34,9 @@ var isTransitioningToMainAgain:bool=false
 func _process(delta: float) -> void:
 			
 
+	if Input.is_action_just_pressed("debug_tab"):
+		PlayEarthDyingCutscene()
+	
 	if musicVolume!=musicTargetVolume:
 		musicVolume= lerpf(musicVolume,musicTargetVolume,delta)
 		var vol=lerpf(musicMinVolume,musicMaxVolume,musicVolume)
@@ -121,6 +124,16 @@ func TriggerFinalZinger():
 	await get_tree().create_timer(13).timeout
 	musicTargetVolume=0.85
 	
+
+func PlayEarthDyingCutscene():
+	
+	var cutscene:Node2D = $cutscene_earthDying
+	var anim:AnimatedSprite2D=$cutscene_earthDying/AnimatedSprite2D
+	
+	cutscene.show()
+	anim.play("earth_dying")
+	await anim.animation_finished
+	#do stuff
 
 
 func _on_flying_child_has_evolved_off_screen() -> void:

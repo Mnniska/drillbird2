@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://chmegxltn4stt"]
+[gd_scene load_steps=84 format=3 uid="uid://chmegxltn4stt"]
 
 [ext_resource type="Script" uid="uid://bnixc6n4rvat7" path="res://Scripts/UX and UI/flying_credits_manager.gd" id="1_xtpho"]
 [ext_resource type="Texture2D" uid="uid://d0ot502nge360" path="res://Art/environment/SpaceBackground/background_space_spaceLayer.png" id="3_a3sr5"]
@@ -37,7 +37,34 @@
 [ext_resource type="PackedScene" uid="uid://l6j5lsi56hrl" path="res://Scenes/UI/credits.tscn" id="28_nqrmd"]
 [ext_resource type="Script" uid="uid://dqmsrp6k08ysx" path="res://Scripts/Tools/credits_camera.gd" id="28_ox56h"]
 [ext_resource type="AudioStream" uid="uid://bwynx1ih755ll" path="res://Audio/Music/Drillbird Theme.mp3" id="33_ca1sj"]
+[ext_resource type="Texture2D" uid="uid://4xxmo4fov4qg" path="res://Art/cutscenes/Earth Dying/cutscene_earthMurder1.png" id="39_207dg"]
 [ext_resource type="PackedScene" uid="uid://ddgttu2odky5f" path="res://Scenes/UI/final_stats.tscn" id="40_dvi8g"]
+[ext_resource type="Texture2D" uid="uid://bdct3v72l7wnd" path="res://Art/cutscenes/Earth Dying/cutscene_earthMurder2.png" id="40_ktqlp"]
+[ext_resource type="Texture2D" uid="uid://c588vt02io0w8" path="res://Art/cutscenes/Earth Dying/cutscene_earthMurder3.png" id="41_x1pin"]
+[ext_resource type="Texture2D" uid="uid://ci7k8mdt0akpp" path="res://Art/cutscenes/Earth Dying/cutscene_earthMurder4.png" id="42_rdnce"]
+[ext_resource type="Texture2D" uid="uid://conpx0e67h1gt" path="res://Art/cutscenes/Earth Dying/cutscene_earthMurder5.png" id="43_8vuh6"]
+[ext_resource type="Texture2D" uid="uid://ccd0a73oifrvs" path="res://Art/cutscenes/Earth Dying/cutscene_earthMurder6.png" id="44_lokmq"]
+[ext_resource type="Texture2D" uid="uid://dhrox6t7jq2qi" path="res://Art/cutscenes/Earth Dying/cutscene_earthMurder7.png" id="45_qp4py"]
+[ext_resource type="Texture2D" uid="uid://b14yxerj1big2" path="res://Art/cutscenes/Earth Dying/cutscene_earthMurder8.png" id="46_dfmnr"]
+[ext_resource type="Texture2D" uid="uid://dqnq3l6p2g11t" path="res://Art/cutscenes/Earth Dying/cutscene_earthMurder9.png" id="47_nb46p"]
+[ext_resource type="Texture2D" uid="uid://bsjnaqoerbicf" path="res://Art/cutscenes/Earth Dying/cutscene_earthMurder10.png" id="48_2i8vp"]
+[ext_resource type="Texture2D" uid="uid://bocfo6bg5ir32" path="res://Art/cutscenes/Earth Dying/cutscene_earthMurder11.png" id="49_hfxmj"]
+[ext_resource type="Texture2D" uid="uid://2e2aj3niwww1" path="res://Art/cutscenes/Earth Dying/cutscene_earthMurder12.png" id="50_5s3jw"]
+[ext_resource type="Texture2D" uid="uid://cm7pep72ej6rq" path="res://Art/cutscenes/Earth Dying/cutscene_earthMurder13.png" id="51_q3uic"]
+[ext_resource type="Texture2D" uid="uid://bttdngq0803y5" path="res://Art/cutscenes/Earth Dying/cutscene_earthMurder14.png" id="52_lj1k8"]
+[ext_resource type="Texture2D" uid="uid://cvimpxxy8v3d0" path="res://Art/cutscenes/Earth Dying/cutscene_earthMurder15.png" id="53_wie72"]
+[ext_resource type="Texture2D" uid="uid://bk2y1v0ljx86c" path="res://Art/cutscenes/Earth Dying/cutscene_earthMurder16.png" id="54_fr5pb"]
+[ext_resource type="Texture2D" uid="uid://b4xc836rptqyx" path="res://Art/cutscenes/Earth Dying/cutscene_earthMurder17.png" id="55_px2g5"]
+[ext_resource type="Texture2D" uid="uid://d14j06p5yecdj" path="res://Art/cutscenes/Earth Dying/cutscene_earthMurder18.png" id="56_4tqpx"]
+[ext_resource type="Texture2D" uid="uid://btd08vusk1chv" path="res://Art/cutscenes/Earth Dying/cutscene_earthMurder19.png" id="57_6hg7g"]
+[ext_resource type="Texture2D" uid="uid://d0idl20dtrx1x" path="res://Art/cutscenes/Earth Dying/cutscene_earthMurder20.png" id="58_7kqwd"]
+[ext_resource type="Texture2D" uid="uid://dgdm0lacyqqd6" path="res://Art/cutscenes/Earth Dying/cutscene_earthMurder21.png" id="59_3gv7p"]
+[ext_resource type="Texture2D" uid="uid://cbfonofanmfsp" path="res://Art/cutscenes/Earth Dying/cutscene_earthMurder22.png" id="60_2nxbg"]
+[ext_resource type="Texture2D" uid="uid://bu8v6xw3p73w6" path="res://Art/cutscenes/Earth Dying/cutscene_earthMurder23.png" id="61_kv8ji"]
+[ext_resource type="Texture2D" uid="uid://b34irchhdbmls" path="res://Art/cutscenes/Earth Dying/cutscene_earthMurder24.png" id="62_m8v3j"]
+[ext_resource type="Texture2D" uid="uid://fdaqyfvivcve" path="res://Art/cutscenes/Earth Dying/cutscene_earthMurder25.png" id="63_kboef"]
+[ext_resource type="Texture2D" uid="uid://uxsk3gfexguc" path="res://Art/cutscenes/Earth Dying/cutscene_earthMurder26.png" id="64_wmlto"]
+[ext_resource type="Texture2D" uid="uid://bf3noark6ojqj" path="res://Art/cutscenes/Earth Dying/cutscene_earthMurder27.png" id="65_821tw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uva2n"]
 shader = ExtResource("3_nxjs3")
@@ -354,6 +381,271 @@ expand_margin_right = 2.0
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_uyb8h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("39_207dg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 10.0,
+"texture": ExtResource("39_207dg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_ktqlp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_x1pin")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_rdnce")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_8vuh6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_lokmq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_qp4py")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_dfmnr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_nb46p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48_2i8vp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("49_hfxmj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50_5s3jw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("51_q3uic")
+}, {
+"duration": 1.0,
+"texture": ExtResource("52_lj1k8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("53_wie72")
+}, {
+"duration": 1.0,
+"texture": ExtResource("54_fr5pb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("55_px2g5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("56_4tqpx")
+}, {
+"duration": 9.0,
+"texture": ExtResource("57_6hg7g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("58_7kqwd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("59_3gv7p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("60_2nxbg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("61_kv8ji")
+}, {
+"duration": 1.0,
+"texture": ExtResource("62_m8v3j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("63_kboef")
+}, {
+"duration": 1.0,
+"texture": ExtResource("64_wmlto")
+}, {
+"duration": 1.0,
+"texture": ExtResource("65_821tw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("59_3gv7p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("60_2nxbg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("61_kv8ji")
+}, {
+"duration": 1.0,
+"texture": ExtResource("62_m8v3j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("63_kboef")
+}, {
+"duration": 1.0,
+"texture": ExtResource("64_wmlto")
+}, {
+"duration": 1.0,
+"texture": ExtResource("65_821tw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("59_3gv7p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("60_2nxbg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("61_kv8ji")
+}, {
+"duration": 1.0,
+"texture": ExtResource("62_m8v3j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("63_kboef")
+}, {
+"duration": 1.0,
+"texture": ExtResource("64_wmlto")
+}, {
+"duration": 1.0,
+"texture": ExtResource("65_821tw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("59_3gv7p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("60_2nxbg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("61_kv8ji")
+}, {
+"duration": 1.0,
+"texture": ExtResource("62_m8v3j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("63_kboef")
+}, {
+"duration": 1.0,
+"texture": ExtResource("64_wmlto")
+}, {
+"duration": 1.0,
+"texture": ExtResource("65_821tw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("59_3gv7p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("60_2nxbg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("61_kv8ji")
+}, {
+"duration": 1.0,
+"texture": ExtResource("62_m8v3j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("63_kboef")
+}, {
+"duration": 1.0,
+"texture": ExtResource("64_wmlto")
+}, {
+"duration": 1.0,
+"texture": ExtResource("65_821tw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("59_3gv7p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("60_2nxbg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("61_kv8ji")
+}, {
+"duration": 1.0,
+"texture": ExtResource("62_m8v3j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("63_kboef")
+}, {
+"duration": 1.0,
+"texture": ExtResource("64_wmlto")
+}, {
+"duration": 1.0,
+"texture": ExtResource("65_821tw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("59_3gv7p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("60_2nxbg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("61_kv8ji")
+}, {
+"duration": 1.0,
+"texture": ExtResource("62_m8v3j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("63_kboef")
+}, {
+"duration": 1.0,
+"texture": ExtResource("64_wmlto")
+}, {
+"duration": 1.0,
+"texture": ExtResource("65_821tw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("59_3gv7p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("60_2nxbg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("61_kv8ji")
+}, {
+"duration": 1.0,
+"texture": ExtResource("62_m8v3j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("63_kboef")
+}, {
+"duration": 1.0,
+"texture": ExtResource("64_wmlto")
+}, {
+"duration": 1.0,
+"texture": ExtResource("65_821tw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("59_3gv7p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("60_2nxbg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("61_kv8ji")
+}, {
+"duration": 1.0,
+"texture": ExtResource("62_m8v3j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("63_kboef")
+}, {
+"duration": 1.0,
+"texture": ExtResource("64_wmlto")
+}, {
+"duration": 1.0,
+"texture": ExtResource("65_821tw")
+}],
+"loop": false,
+"name": &"earth_dying",
+"speed": 5.0
+}]
+
 [node name="FlyingCredits" type="Node"]
 script = ExtResource("1_xtpho")
 
@@ -550,5 +842,12 @@ script = ExtResource("22_sgrwg")
 visible = false
 z_index = 5
 position = Vector2(-160, -111)
+
+[node name="cutscene_earthDying" type="Node2D" parent="."]
+visible = false
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="cutscene_earthDying"]
+sprite_frames = SubResource("SpriteFrames_uyb8h")
+animation = &"earth_dying"
 
 [connection signal="body_shape_entered" from="PlayerDetector" to="." method="_on_player_detector_body_shape_entered"]
