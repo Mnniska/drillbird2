@@ -1,6 +1,5 @@
-[gd_scene load_steps=105 format=4 uid="uid://bccoqdt4pl042"]
+[gd_scene load_steps=104 format=4 uid="uid://bccoqdt4pl042"]
 
-[ext_resource type="PackedScene" uid="uid://dgb113k7sw22l" path="res://Scenes/cutscenes/DialogueScene.tscn" id="1_8ohpj"]
 [ext_resource type="TileSet" uid="uid://grpd2pyu7pgk" path="res://Resources/MainTileset.tres" id="1_ewpql"]
 [ext_resource type="Script" uid="uid://ddqrep1nrk25j" path="res://Scenes/Playable Scenes/OreSpawner.gd" id="2_4fr2f"]
 [ext_resource type="Script" uid="uid://pnk5fvwki8h3" path="res://Scripts/Abstract scripts/abstract_ore_region.gd" id="3_7p4f3"]
@@ -183,22 +182,6 @@ size = Vector2(609, 220)
 size = Vector2(609, 220)
 
 [node name="WorldSpawn" type="Node"]
-
-[node name="Dialogue" parent="." instance=ExtResource("1_8ohpj")]
-position = Vector2(982, -125)
-linesToPlay = Array[String](["demondeal_1", "demondeal_2", "demondeal_3", "demondeal_4", "demondeal_5", "demondeal_6", "demondeal_7", "demondeal_8", "demondeal_9", "demondeal_10", "demondeal_11"])
-
-[node name="TextureRect" parent="Dialogue" index="1"]
-offset_left = 11.0
-offset_top = -24.0
-offset_right = 53.0
-offset_bottom = -8.0
-
-[node name="playerCollider" parent="Dialogue" index="2"]
-position = Vector2(0, 34)
-
-[node name="CollisionShape2D" parent="Dialogue/playerCollider" index="0"]
-position = Vector2(23, -16.5)
 
 [node name="Tilemap_Background" type="TileMapLayer" parent="."]
 light_mask = 0
@@ -1507,7 +1490,7 @@ position = Vector2(0, -77)
 texture = ExtResource("58_2epxp")
 
 [node name="Spawnpos_LastThird" type="Sprite2D" parent="PlayerSpawnLocations"]
-position = Vector2(249, 1835)
+position = Vector2(826, -120)
 texture = ExtResource("58_2epxp")
 
 [node name="Spawnpos_FlowerTutorial" type="Sprite2D" parent="PlayerSpawnLocations"]
@@ -1519,7 +1502,7 @@ position = Vector2(-902, 2608)
 texture = ExtResource("58_2epxp")
 
 [node name="Demon cave" type="Node2D" parent="."]
-position = Vector2(970, -81)
+position = Vector2(970, -80)
 
 [node name="Demon" parent="Demon cave" node_paths=PackedStringArray("demonCutscene") instance=ExtResource("61_7p4f3")]
 position = Vector2(17, -76)
@@ -1542,6 +1525,7 @@ limit_bottom = true
 shape = SubResource("RectangleShape2D_8lf0q")
 
 [node name="ReincarnationCutscene" parent="Demon cave" instance=ExtResource("62_vhuqd")]
+visible = false
 position = Vector2(13, -75)
 
 [node name="CameraLerpDestination" parent="Demon cave/ReincarnationCutscene" index="1"]
@@ -1598,7 +1582,6 @@ shape = SubResource("RectangleShape2D_6gcm5")
 [connection signal="body_shape_entered" from="PlayerSpawnLocations/PlayerLocationSaver" to="PlayerSpawnLocations/PlayerLocationSaver" method="_on_body_shape_entered"]
 [connection signal="buttonPressed" from="Demon cave/Demon/InteractButton_acceptDeal" to="Demon cave/Demon" method="_on_interact_button_accept_deal_button_pressed"]
 
-[editable path="Dialogue"]
 [editable path="WorldScripts/Tutorial_DropOres"]
 [editable path="WorldScripts/Tutorial_Flower"]
 [editable path="WorldScripts/Tutorial_LongDrill"]
@@ -1621,5 +1604,6 @@ shape = SubResource("RectangleShape2D_6gcm5")
 [editable path="WorldScripts/CameraLimiter_hub"]
 [editable path="WorldScripts/CameraLimiter2"]
 [editable path="Demon cave/Demon"]
+[editable path="Demon cave/Demon/Demon Dialogue"]
 [editable path="Demon cave/CameraLimiter"]
 [editable path="Demon cave/ReincarnationCutscene"]

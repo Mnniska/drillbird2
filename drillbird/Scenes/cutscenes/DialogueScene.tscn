@@ -138,4 +138,6 @@ texture = ExtResource("7_8pch8")
 stretch_mode = 3
 flip_h = true
 
+[node name="sound" type="AudioStreamPlayer2D" parent="."]
+
 [connection signal="body_entered" from="playerCollider" to="." method="_on_player_collider_body_entered"]

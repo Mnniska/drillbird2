@@ -6,7 +6,11 @@ signal aboutToPlay
 
 @onready var dialogueContainter=$VBoxContainer
 @onready var text:RichTextLabel=$VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/text
-@export var linesToPlay:Array[String]
+@export var linesToPlayOld:Array[String]
+@onready var soundPlayer:AudioStreamPlayer2D=$sound
+@export var animatorToAnimate:AnimatedSprite2D
+
+@export var linesToPlay:Array[abs_dialogue_line]
 
 @onready var continueSymbolText:RichTextLabel=$HBoxContainer/iconHolder/text_icon
 
@@ -32,14 +36,24 @@ func StartDialogue():
 
 
 func ContinueDialogue():
-	var _text=tr(linesToPlay[currentLineIndex]) %str(GlobalVariables.daysBeforeDemonKillsEgg- GlobalVariables.currentDay)
+	var _text=tr(linesToPlay[currentLineIndex].lineToPlay) %str(GlobalVariables.daysBeforeDemonKillsEgg- GlobalVariables.currentDay)
 	text.text=_text
 	var boxSize=Vector2(min(220,_text.length()*6),0)
+	
+	#Set continue button to right side if dialogue box, it changes size depending on spacing
 	$VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/text.custom_minimum_size= boxSize
 	$HBoxContainer.position.x=boxSize.x/2
 
 	
 	continueSymbolText.text="[center]"+GlobalSymbolRegister.GetStringDecoded("(sing)",true)
+	
+	#Animation stuff 
+	if linesToPlay[currentLineIndex].animToPlay!=null and animatorToAnimate!=null:
+		animatorToAnimate.animation=linesToPlay[currentLineIndex].animToPlay
+	
+	#sound
+	if linesToPlay[currentLineIndex].soundToPlay!=null:
+		pass
 	await GlobalVariables.playerSang
 	
 	if currentLineIndex<linesToPlay.size()-1:
