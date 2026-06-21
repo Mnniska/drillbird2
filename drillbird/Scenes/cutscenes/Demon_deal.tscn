@@ -1,6 +1,5 @@
-[gd_scene load_steps=37 format=3 uid="uid://pavkdcthm8ws"]
+[gd_scene load_steps=50 format=3 uid="uid://pavkdcthm8ws"]
 
-[ext_resource type="Texture2D" uid="uid://c70bauf5rw6pt" path="res://Art/cutscenes/demons_deal/demon_chilling.png" id="1_eqpmf"]
 [ext_resource type="Script" uid="uid://d45ns0beee5y" path="res://Scenes/cutscenes/demon_deal.gd" id="1_k42kg"]
 [ext_resource type="Texture2D" uid="uid://hj8hotfteydg" path="res://Art/cutscenes/demons_deal/demon_deco.png" id="2_jrp17"]
 [ext_resource type="Texture2D" uid="uid://b3sophtwny0iv" path="res://Art/cutscenes/demons_deal/demon deal dialogue sprites/dialogue_demon_egg1.png" id="2_obutm"]
@@ -12,16 +11,30 @@
 [ext_resource type="Texture2D" uid="uid://cucac30qweiih" path="res://Art/cutscenes/demons_deal/demon deal dialogue sprites/dialogue_demon_eggSAD2.png" id="5_48hbt"]
 [ext_resource type="Texture2D" uid="uid://t0np5v56anao" path="res://Art/UI/square.png" id="6_irdy8"]
 [ext_resource type="Texture2D" uid="uid://caadi1ow8gkfm" path="res://Art/cutscenes/demons_deal/demon deal dialogue sprites/dialogue_demon_giggle1.png" id="6_nvamj"]
+[ext_resource type="Texture2D" uid="uid://dif3neio7ymip" path="res://Art/cutscenes/demons_deal/demon deal dialogue sprites/dialogue_demon_flex1.png" id="6_piulm"]
 [ext_resource type="Texture2D" uid="uid://2xidorn8blnd" path="res://Art/UI/UI_bubble_iconHolder.png" id="7_fhtd8"]
 [ext_resource type="Texture2D" uid="uid://cm3rjr8r5pdbf" path="res://Art/cutscenes/demons_deal/demon deal dialogue sprites/dialogue_demon_giggle2.png" id="7_lkuq6"]
+[ext_resource type="Texture2D" uid="uid://d4hersurf4ycr" path="res://Art/cutscenes/demons_deal/demon deal dialogue sprites/dialogue_demon_flex2.png" id="7_sxwr6"]
+[ext_resource type="Texture2D" uid="uid://cg0i4lbe0upv" path="res://Art/cutscenes/demons_deal/demon deal dialogue sprites/dialogue_demon_hard1.png" id="8_4ifl1"]
 [ext_resource type="Texture2D" uid="uid://bvtd87mo25snw" path="res://Art/UI/UI_rest_arrow_dark.png" id="8_27w7g"]
+[ext_resource type="Texture2D" uid="uid://kle3msh8ac4c" path="res://Art/cutscenes/demons_deal/demon deal dialogue sprites/dialogue_demon_neutral1.png" id="8_idowm"]
 [ext_resource type="Texture2D" uid="uid://1hy32yargekh" path="res://Art/UI/UI_rest_arrow_light.png" id="9_7muv3"]
+[ext_resource type="Texture2D" uid="uid://b0fmoanwfwxrm" path="res://Art/cutscenes/demons_deal/demon deal dialogue sprites/dialogue_demon_neutral3.png" id="9_d5u4h"]
 [ext_resource type="Texture2D" uid="uid://b4dy0r25beqss" path="res://Art/cutscenes/demons_deal/demon deal dialogue sprites/dialogue_demon_wave1.png" id="9_idowm"]
+[ext_resource type="Texture2D" uid="uid://diiq3jrsbdylx" path="res://Art/cutscenes/demons_deal/demon deal dialogue sprites/dialogue_demon_scared1.png" id="9_nvamj"]
+[ext_resource type="Texture2D" uid="uid://dh8mo4o0w7whm" path="res://Art/cutscenes/demons_deal/demon deal dialogue sprites/dialogue_demon_hard2.png" id="9_tdsl0"]
+[ext_resource type="Texture2D" uid="uid://jj7wvnjtfgkb" path="res://Art/cutscenes/demons_deal/demon deal dialogue sprites/dialogue_demon_neutral2.png" id="10_2s8cm"]
 [ext_resource type="Texture2D" uid="uid://c80a30ei83kif" path="res://Art/cutscenes/demons_deal/demon deal dialogue sprites/dialogue_demon_wave2.png" id="10_d5u4h"]
+[ext_resource type="Texture2D" uid="uid://5bl0sm7agcjn" path="res://Art/cutscenes/demons_deal/demon deal dialogue sprites/dialogue_demon_scared2.png" id="10_lkuq6"]
+[ext_resource type="Texture2D" uid="uid://bbuvlk65s4aya" path="res://Art/cutscenes/demons_deal/demon deal dialogue sprites/dialogue_demon_hard3.png" id="10_piulm"]
 [ext_resource type="PackedScene" uid="uid://dgb113k7sw22l" path="res://Scenes/cutscenes/DialogueScene.tscn" id="11_2ms83"]
 [ext_resource type="Texture2D" uid="uid://db1ci8ovjqasu" path="res://Art/cutscenes/demons_deal/demon deal dialogue sprites/dialogue_demon_wave3.png" id="11_2s8cm"]
+[ext_resource type="Texture2D" uid="uid://buv0lvlj4pqvp" path="res://Art/cutscenes/demons_deal/demon deal dialogue sprites/dialogue_demon_scared3.png" id="11_idowm"]
+[ext_resource type="Texture2D" uid="uid://c6621mmpaaki8" path="res://Art/cutscenes/demons_deal/demon deal dialogue sprites/dialogue_demon_hard4.png" id="11_sxwr6"]
 [ext_resource type="Texture2D" uid="uid://bbyaia1x8nqf7" path="res://Art/cutscenes/demons_deal/demon deal dialogue sprites/dialogue_demon_wave4.png" id="12_05lqi"]
+[ext_resource type="Texture2D" uid="uid://dnfjsmvv7imrl" path="res://Art/cutscenes/demons_deal/demon deal dialogue sprites/dialogue_demon_scared4.png" id="12_d5u4h"]
 [ext_resource type="Script" uid="uid://cgfipa53cvc6d" path="res://Scripts/Abstract scripts/abstract_dialogueLine.gd" id="12_irdy8"]
+[ext_resource type="Texture2D" uid="uid://d0236g4qhkio" path="res://Art/cutscenes/demons_deal/demon deal dialogue sprites/dialogue_demon_hard5.png" id="12_mgqgk"]
 [ext_resource type="Texture2D" uid="uid://dwcaiyb0cv6wt" path="res://Art/cutscenes/demons_deal/demon deal dialogue sprites/dialogue_demon_wave5.png" id="13_6r3wy"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jrp17"]
@@ -49,19 +62,30 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_piulm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_sxwr6")
+}],
+"loop": true,
+"name": &"flex",
+"speed": 1.5
+}, {
+"frames": [{
 "duration": 2.0,
 "texture": ExtResource("6_nvamj")
 }, {
 "duration": 1.0,
 "texture": ExtResource("7_lkuq6")
 }, {
-"duration": 3.0,
+"duration": 2.0,
 "texture": ExtResource("6_nvamj")
 }, {
 "duration": 1.0,
 "texture": ExtResource("7_lkuq6")
 }, {
-"duration": 11.0,
+"duration": 4.0,
 "texture": ExtResource("6_nvamj")
 }, {
 "duration": 1.0,
@@ -85,10 +109,98 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_eqpmf")
+"texture": ExtResource("8_4ifl1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_tdsl0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_piulm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_sxwr6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_4ifl1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_tdsl0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_piulm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_sxwr6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_4ifl1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_tdsl0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_piulm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_mgqgk")
+}],
+"loop": true,
+"name": &"hard",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_idowm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_d5u4h")
+}, {
+"duration": 2.0,
+"texture": ExtResource("10_2s8cm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_idowm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_d5u4h")
+}, {
+"duration": 2.0,
+"texture": ExtResource("8_idowm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_d5u4h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_idowm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_d5u4h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_idowm")
+}, {
+"duration": 0.5,
+"texture": ExtResource("9_d5u4h")
 }],
 "loop": true,
 "name": &"neutral",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_nvamj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_lkuq6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_idowm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_d5u4h")
+}],
+"loop": true,
+"name": &"scared",
 "speed": 5.0
 }, {
 "frames": [{
@@ -162,27 +274,31 @@ metadata/_custom_type_script = "uid://cgfipa53cvc6d"
 [sub_resource type="Resource" id="Resource_ixbr2"]
 script = ExtResource("12_irdy8")
 lineToPlay = "demondeal_5"
-animToPlay = "neutral"
+animToPlay = "scared"
 metadata/_custom_type_script = "uid://cgfipa53cvc6d"
 
 [sub_resource type="Resource" id="Resource_obutm"]
 script = ExtResource("12_irdy8")
 lineToPlay = "demondeal_6"
+animToPlay = "neutral"
 metadata/_custom_type_script = "uid://cgfipa53cvc6d"
 
 [sub_resource type="Resource" id="Resource_csrp6"]
 script = ExtResource("12_irdy8")
 lineToPlay = "demondeal_7"
+animToPlay = "neutral"
 metadata/_custom_type_script = "uid://cgfipa53cvc6d"
 
 [sub_resource type="Resource" id="Resource_wosyy"]
 script = ExtResource("12_irdy8")
 lineToPlay = "demondeal_8"
+animToPlay = "hard"
 metadata/_custom_type_script = "uid://cgfipa53cvc6d"
 
 [sub_resource type="Resource" id="Resource_48hbt"]
 script = ExtResource("12_irdy8")
 lineToPlay = "demondeal_9"
+animToPlay = "flex"
 metadata/_custom_type_script = "uid://cgfipa53cvc6d"
 
 [sub_resource type="Resource" id="Resource_nvamj"]
@@ -203,8 +319,9 @@ script = ExtResource("1_k42kg")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = -2
 sprite_frames = SubResource("SpriteFrames_jrp17")
-animation = &"neutral"
+animation = &"giggle"
 autoplay = "neutral"
+frame_progress = 0.31633958
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_jrp17")
