@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://splm2us27kop"]
+[gd_scene load_steps=49 format=3 uid="uid://splm2us27kop"]
 
 [ext_resource type="Script" uid="uid://bphsgqehx7lcn" path="res://Scripts/object_ore.gd" id="1_nfnfk"]
 [ext_resource type="Resource" uid="uid://ns6ggxikg7cb" path="res://Resources/collidable_ore.tres" id="2_ncxvb"]
@@ -34,6 +34,7 @@
 [ext_resource type="Texture2D" uid="uid://01fjyy3uii0k" path="res://Art/effects/oreSparkle/oreSparkle18.png" id="33_0dece"]
 [ext_resource type="Texture2D" uid="uid://blq3gp6hww7hl" path="res://Art/Collectibles/ore_tombstone.png" id="33_6qt4s"]
 [ext_resource type="Texture2D" uid="uid://dp4p54bl52l7l" path="res://Art/Collectibles/ore_saintsoul/ore_saintSoul_charging1.png" id="34_6qt4s"]
+[ext_resource type="Texture2D" uid="uid://dhrvhcsf7e45a" path="res://Art/effects/empty.png" id="34_iatpi"]
 [ext_resource type="Texture2D" uid="uid://iilexl34wmeu" path="res://Art/Collectibles/ore_saintsoul/ore_saintSoul_charging4.png" id="35_iatpi"]
 [ext_resource type="Texture2D" uid="uid://bf5nmupvtjtyd" path="res://Art/Collectibles/ore_saintsoul/ore_saintSoul_escape1.png" id="36_o8dtq"]
 [ext_resource type="Texture2D" uid="uid://ri50p2iskinm" path="res://Art/Collectibles/ore_saintsoul/ore_saintSoul_escape2.png" id="37_6mtlb"]
@@ -207,7 +208,10 @@ animations = [{
 "name": &"TombstoneGem",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("34_iatpi")
+}],
 "loop": true,
 "name": &"null",
 "speed": 5.0
@@ -295,7 +299,7 @@ frame_progress = 0.66695756
 
 [node name="oreVisual" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_iatpi")
-animation = &"Brandgulium"
+animation = &"null"
 autoplay = "null"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

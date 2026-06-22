@@ -57,6 +57,10 @@ func Setup():
 	#TODO: Egg state should initially be EMPTY and change to growing after the egg spawning cutscene
 	if eggState==eggStates.GROWING:
 		UpdateSizeBasedOnSaveData()
+	
+	if eggState==eggStates.NOTHING:
+		floorGabbagoo.UpdateGooProgress(GetProgressTowardsHatching(),true)
+
 		
 	SetupEggTexture()
 
