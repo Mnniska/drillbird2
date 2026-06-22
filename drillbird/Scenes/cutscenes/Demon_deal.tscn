@@ -425,19 +425,5 @@ position = Vector2(0, 10)
 animatorToAnimate = NodePath("../AnimatedSprite2D")
 linesToPlay = Array[ExtResource("12_irdy8")]([SubResource("Resource_fhtd8"), SubResource("Resource_27w7g"), SubResource("Resource_7muv3"), SubResource("Resource_5vaff"), SubResource("Resource_ixbr2"), SubResource("Resource_obutm"), SubResource("Resource_csrp6"), SubResource("Resource_wosyy"), SubResource("Resource_48hbt"), SubResource("Resource_nvamj"), SubResource("Resource_lkuq6")])
 
-[node name="TextureRect" parent="Demon Dialogue" index="1"]
-offset_left = 11.0
-offset_top = -24.0
-offset_right = 53.0
-offset_bottom = -8.0
-
-[node name="playerCollider" parent="Demon Dialogue" index="2"]
-position = Vector2(0, 59)
-
-[node name="CollisionShape2D" parent="Demon Dialogue/playerCollider" index="0"]
-position = Vector2(23, -16.5)
-
 [connection signal="body_shape_entered" from="dealAcceptanceArea" to="." method="_on_deal_acceptance_area_body_shape_entered"]
 [connection signal="body_shape_exited" from="dealAcceptanceArea" to="." method="_on_deal_acceptance_area_body_shape_exited"]
-
-[editable path="Demon Dialogue"]
