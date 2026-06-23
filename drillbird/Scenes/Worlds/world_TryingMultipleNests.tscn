@@ -1,4 +1,4 @@
-[gd_scene load_steps=113 format=4 uid="uid://boh3yjorqn4xa"]
+[gd_scene load_steps=116 format=4 uid="uid://boh3yjorqn4xa"]
 
 [ext_resource type="TileSet" uid="uid://grpd2pyu7pgk" path="res://Resources/MainTileset.tres" id="1_4c1b3"]
 [ext_resource type="Script" uid="uid://cfd6ggts8pqma" path="res://Scripts/Level Generation/tilemap_environment.gd" id="2_27on7"]
@@ -45,6 +45,7 @@
 [ext_resource type="AudioStream" uid="uid://cygmw124vctks" path="res://Audio/Ambience/ambience_surface.mp3" id="49_mabke"]
 [ext_resource type="AudioStream" uid="uid://ca6u3h185adqy" path="res://Audio/Music/Drillbird_Tutorial.mp3" id="50_37db0"]
 [ext_resource type="AudioStream" uid="uid://dthita0bprf8s" path="res://Audio/Ambience/ambience_caves_3.mp3" id="51_qn05c"]
+[ext_resource type="PackedScene" uid="uid://d40eeljl4myo" path="res://Scenes/Tools/sound_modifier_zone.tscn" id="53_07mf6"]
 [ext_resource type="AudioStream" uid="uid://dmvpadlkjti3i" path="res://Audio/Ambience/ambience_caves_1.mp3" id="53_im7r6"]
 [ext_resource type="AudioStream" uid="uid://4ftagi7vl8ky" path="res://Audio/Ambience/Drillbird_Mausoleum_Simbelmynë.mp3" id="54_runf8"]
 [ext_resource type="PackedScene" uid="uid://bjaykfdp1s4y" path="res://Scenes/Objects and Enemies/Torch_scene.tscn" id="55_sum6w"]
@@ -266,6 +267,12 @@ metadata/_custom_type_script = "uid://cgfipa53cvc6d"
 script = ExtResource("43_wpyq2")
 lineToPlay = "saint_greeting_eggready"
 metadata/_custom_type_script = "uid://cgfipa53cvc6d"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fwoml"]
+size = Vector2(257, 216.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4c1b3"]
+size = Vector2(151.5, 132.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aulbw"]
 size = Vector2(73, 20)
@@ -1191,6 +1198,29 @@ position = Vector2(0, 23)
 [node name="oreSpawnLocation" type="Node2D" parent="WorldScripts/SaintTech"]
 position = Vector2(0, 12)
 
+[node name="AudioReverbAreas" type="Node2D" parent="WorldScripts"]
+visible = false
+
+[node name="SoundModifierZone" parent="WorldScripts/AudioReverbAreas" instance=ExtResource("53_07mf6")]
+position = Vector2(-681, 259)
+
+[node name="CollisionShape2D" parent="WorldScripts/AudioReverbAreas/SoundModifierZone/Area2D" index="0"]
+position = Vector2(217.5, 94.5)
+
+[node name="SoundModifierZone2" parent="WorldScripts/AudioReverbAreas" instance=ExtResource("53_07mf6")]
+position = Vector2(196, 239)
+
+[node name="CollisionShape2D" parent="WorldScripts/AudioReverbAreas/SoundModifierZone2/Area2D" index="0"]
+position = Vector2(126.5, 93.25)
+shape = SubResource("RectangleShape2D_fwoml")
+
+[node name="SoundModifierZone3" parent="WorldScripts/AudioReverbAreas" instance=ExtResource("53_07mf6")]
+position = Vector2(-396, 128)
+
+[node name="CollisionShape2D" parent="WorldScripts/AudioReverbAreas/SoundModifierZone3/Area2D" index="0"]
+position = Vector2(69.25, 40.75)
+shape = SubResource("RectangleShape2D_4c1b3")
+
 [node name="PlayerSpawnLocations" type="Node2D" parent="."]
 
 [node name="OriginalSpawnPos" type="Sprite2D" parent="PlayerSpawnLocations"]
@@ -1362,3 +1392,6 @@ position = Vector2(22, -448)
 [editable path="WorldScripts/PlayerTeleporter"]
 [editable path="WorldScripts/CameraLimiter2"]
 [editable path="WorldScripts/SaintTech/SaintDialoguePlayer"]
+[editable path="WorldScripts/AudioReverbAreas/SoundModifierZone"]
+[editable path="WorldScripts/AudioReverbAreas/SoundModifierZone2"]
+[editable path="WorldScripts/AudioReverbAreas/SoundModifierZone3"]

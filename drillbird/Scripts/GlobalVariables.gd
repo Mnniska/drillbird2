@@ -53,6 +53,13 @@ signal vibrationSettingChanged(value:bool)
 
 enum endings{normal,cursed_bad,cursed_true}
 
+signal signal_playerIsReverbingChanged(value:bool)
+var playerIsReverbing:bool=false:
+	get:return playerIsReverbing
+	set(value):
+		playerIsReverbing=value 
+		signal_playerIsReverbingChanged.emit(playerIsReverbing)
+
 func GetCurrentEnding()->endings:
 	
 	if !CursedMode:

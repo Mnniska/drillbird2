@@ -7,9 +7,11 @@ class_name sound_manager
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	
+	GlobalVariables.signal_playerIsReverbingChanged.connect(SetReverbActive)
 	pass # Replace with function body.
 
+func SetReverbActive(active:bool):
+	AudioServer.set_bus_effect_enabled(1,0,active) #disable/enable the "reverb" property on the SFX bus
 
 	
 func CreatePersistentSound(location:Vector2,type:abstract_SoundEffectSetting.SoundEffectEnum):
