@@ -1,4 +1,4 @@
-[gd_scene load_steps=90 format=4 uid="uid://boh3yjorqn4xa"]
+[gd_scene load_steps=113 format=4 uid="uid://boh3yjorqn4xa"]
 
 [ext_resource type="TileSet" uid="uid://grpd2pyu7pgk" path="res://Resources/MainTileset.tres" id="1_4c1b3"]
 [ext_resource type="Script" uid="uid://cfd6ggts8pqma" path="res://Scripts/Level Generation/tilemap_environment.gd" id="2_27on7"]
@@ -27,11 +27,14 @@
 [ext_resource type="Script" uid="uid://c2wk7fxs4omts" path="res://Scripts/Tools/secret_unveiler.gd" id="23_cmjss"]
 [ext_resource type="Texture2D" uid="uid://bi6q51sklyetd" path="res://Art/environment/SpaceBackground/background_space_allLayers.png" id="24_cvidi"]
 [ext_resource type="Texture2D" uid="uid://cdfdcp4kqa8fb" path="res://Art/environment/UniqueAssets/Masoleum.png" id="25_4p3ut"]
+[ext_resource type="Texture2D" uid="uid://bodb4jffgcyu8" path="res://Art/environment/solid_decorations/spritesheet_decorations.png" id="26_rsp8n"]
+[ext_resource type="Texture2D" uid="uid://d1qxa15w23lvo" path="res://Art/environment/solid_decorations/spritesheet_bigdeco.png" id="27_ky6nw"]
 [ext_resource type="AudioStream" uid="uid://boffuus632gep" path="res://Audio/Music/mus_ambience_cursed1.mp3" id="35_uvdj5"]
 [ext_resource type="AudioStream" uid="uid://dnymvsyyp1xqy" path="res://Audio/Music/mus_Saints_Theme.mp3" id="38_uvdj5"]
 [ext_resource type="PackedScene" uid="uid://dgb113k7sw22l" path="res://Scenes/cutscenes/DialogueScene.tscn" id="41_ek4iq"]
 [ext_resource type="Script" uid="uid://cqcesbsoaesaf" path="res://Scripts/cutscenes/script_saintDialogueTech.gd" id="41_fbqey"]
 [ext_resource type="Resource" uid="uid://c7fpe614cioq5" path="res://Resources/Economy/ore_SOUL.tres" id="42_deunn"]
+[ext_resource type="Script" uid="uid://cgfipa53cvc6d" path="res://Scripts/Abstract scripts/abstract_dialogueLine.gd" id="43_wpyq2"]
 [ext_resource type="Script" uid="uid://cg5f1k2sm50v" path="res://Scenes/Playable Scenes/ghost_manager.gd" id="44_lkrvv"]
 [ext_resource type="PackedScene" uid="uid://cltb8lx463vak" path="res://Scenes/UI/cloud_counter.tscn" id="45_hxyd4"]
 [ext_resource type="Script" uid="uid://wt5lb26lttrj" path="res://Scripts/WorldScripting.gd" id="45_tod36"]
@@ -81,6 +84,28 @@ size = Vector2(20, 69)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_deunn"]
 size = Vector2(135, 74.5)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mjto2"]
+texture = ExtResource("26_rsp8n")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_07mf6"]
+texture = ExtResource("27_ky6nw")
+texture_region_size = Vector2i(36, 36)
+0:0/0 = 0
+1:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_kqsbu"]
+tile_size = Vector2i(2, 2)
+sources/0 = SubResource("TileSetAtlasSource_mjto2")
+sources/3 = SubResource("TileSetAtlasSource_07mf6")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4e7ml"]
 size = Vector2(179, 146)
@@ -156,6 +181,91 @@ size = Vector2(812.375, 270.75)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y375v"]
 size = Vector2(777.4375, 1255.5)
+
+[sub_resource type="Resource" id="Resource_hwkne"]
+script = ExtResource("43_wpyq2")
+lineToPlay = "saint_toolate"
+metadata/_custom_type_script = "uid://cgfipa53cvc6d"
+
+[sub_resource type="Resource" id="Resource_ky6nw"]
+script = ExtResource("43_wpyq2")
+lineToPlay = "saint_toolate2"
+metadata/_custom_type_script = "uid://cgfipa53cvc6d"
+
+[sub_resource type="Resource" id="Resource_07mf6"]
+script = ExtResource("43_wpyq2")
+lineToPlay = "saint_pitch_1"
+metadata/_custom_type_script = "uid://cgfipa53cvc6d"
+
+[sub_resource type="Resource" id="Resource_wu0h8"]
+script = ExtResource("43_wpyq2")
+lineToPlay = "saint_pitch_2"
+metadata/_custom_type_script = "uid://cgfipa53cvc6d"
+
+[sub_resource type="Resource" id="Resource_rsp8n"]
+script = ExtResource("43_wpyq2")
+lineToPlay = "saint_pitch_3"
+metadata/_custom_type_script = "uid://cgfipa53cvc6d"
+
+[sub_resource type="Resource" id="Resource_4hcbm"]
+script = ExtResource("43_wpyq2")
+lineToPlay = "saint_pitch_4"
+metadata/_custom_type_script = "uid://cgfipa53cvc6d"
+
+[sub_resource type="Resource" id="Resource_t28s3"]
+script = ExtResource("43_wpyq2")
+lineToPlay = "saint_pitch_5"
+metadata/_custom_type_script = "uid://cgfipa53cvc6d"
+
+[sub_resource type="Resource" id="Resource_fwoml"]
+script = ExtResource("43_wpyq2")
+lineToPlay = "saint_pitch_6"
+metadata/_custom_type_script = "uid://cgfipa53cvc6d"
+
+[sub_resource type="Resource" id="Resource_4c1b3"]
+script = ExtResource("43_wpyq2")
+lineToPlay = "saint_pitch_7"
+metadata/_custom_type_script = "uid://cgfipa53cvc6d"
+
+[sub_resource type="Resource" id="Resource_mjto2"]
+script = ExtResource("43_wpyq2")
+lineToPlay = "saint_pitch_8"
+metadata/_custom_type_script = "uid://cgfipa53cvc6d"
+
+[sub_resource type="Resource" id="Resource_kqsbu"]
+script = ExtResource("43_wpyq2")
+lineToPlay = "saint_pitch_9"
+metadata/_custom_type_script = "uid://cgfipa53cvc6d"
+
+[sub_resource type="Resource" id="Resource_a7g1c"]
+script = ExtResource("43_wpyq2")
+lineToPlay = "saint_pitch_eggnothatched_1"
+metadata/_custom_type_script = "uid://cgfipa53cvc6d"
+
+[sub_resource type="Resource" id="Resource_116rv"]
+script = ExtResource("43_wpyq2")
+lineToPlay = "saint_pitch_eggnothatched_2"
+metadata/_custom_type_script = "uid://cgfipa53cvc6d"
+
+[sub_resource type="Resource" id="Resource_i6y5g"]
+script = ExtResource("43_wpyq2")
+lineToPlay = "saint_pitch_eggnothatched_3"
+metadata/_custom_type_script = "uid://cgfipa53cvc6d"
+
+[sub_resource type="Resource" id="Resource_vgx01"]
+script = ExtResource("43_wpyq2")
+lineToPlay = "saint_pitch_eggready_1"
+metadata/_custom_type_script = "uid://cgfipa53cvc6d"
+
+[sub_resource type="Resource" id="Resource_ex40c"]
+script = ExtResource("43_wpyq2")
+lineToPlay = "saint_pitch_eggready_2"
+metadata/_custom_type_script = "uid://cgfipa53cvc6d"
+
+[sub_resource type="Resource" id="Resource_7fw44"]
+script = ExtResource("43_wpyq2")
+lineToPlay = "saint_greeting_eggready"
+metadata/_custom_type_script = "uid://cgfipa53cvc6d"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aulbw"]
 size = Vector2(73, 20)
@@ -718,6 +828,11 @@ position = Vector2(3.5, -20.25)
 shape = SubResource("RectangleShape2D_deunn")
 debug_color = Color(0.327678, 0.609635, 0.381774, 0.42)
 
+[node name="tilemap_decorations" type="TileMapLayer" parent="."]
+position = Vector2(1, 3)
+tile_map_data = PackedByteArray("AABQ/gwCAAAGAAAAAAAk/gwCAAAGAAAAAABc/gUCAAAHAAAAAAAU/uwBAAAGAAAAAAAB/hUCAAAHAAAAAADs/RQCAAAGAAAAAABI/gwCAAAGAAAAAAAx/ucBAwAAAAAAAAA2/twBAAAGAAAAAAAu/twBAAAGAAAAAAAm/twBAAAGAAAAAAAn/uIBAAAEAAAAAAAy/tsBAAAGAAAAAAAr/tsBAAAGAAAAAACr/fwBAAAGAAAAAACk/dUBAAAHAAAAAAB7/d0BAAAHAAAAAADD/UUBAAAHAAAAAADb/TEBAAAEAAAAAABI/ucAAwAAAAAAAACY/ucAAwABAAAAAACT/tsAAAAGAAAAAACb/twAAAAGAAAAAACX/twAAAAHAAAAAABN/t0AAAAHAAAAAABF/t0AAAAHAAAAAABb/ukAAAAEAAAAAACq/iwBAAAGAAAAAACi/iwBAAAGAAAAAACa/iwBAAAGAAAAAACz/iUBAAAHAAAAAABr/iQBAAAGAAAAAABb/i0BAAAHAAAAAACP/h8AAwABAAAAAACd/h8AAwAAAAAAAABb/h8AAwAAAAAAAACh/hMAAAAGAAAAAACZ/hUAAAAHAAAAAACR/hUAAAAHAAAAAACK/hUAAAAHAAAAAACD/hUAAAAHAAAAAABj/hUAAAAHAAAAAABb/hUAAAAHAAAAAABT/hUAAAAHAAAAAABz/i8AAAAEAAAAAACq/kwAAAAGAAAAAACi/kwAAAAGAAAAAADz/lUAAAAHAAAAAADa/wIAAAACAAAAAADN/wIAAAABAAAAAADA/woAAAACAAAAAAA+AAoAAAACAAAAAAAyAAIAAAABAAAAAACR/woAAAABAAAAAAD7AE0AAAAHAAAAAADjAFwAAAAGAAAAAADLACUAAAAHAAAAAAA=")
+tile_set = SubResource("TileSet_kqsbu")
+
 [node name="decorations" type="Node2D" parent="."]
 z_index = -5
 texture_repeat = 2
@@ -736,6 +851,9 @@ region_rect = Rect2(0, 0, 8000, 8000)
 z_index = 10
 position = Vector2(704, 3777)
 texture = ExtResource("25_4p3ut")
+
+[node name="deco_TutorialCave" type="Node2D" parent="decorations"]
+z_index = 5
 
 [node name="WorldScripts" type="Node" parent="."]
 script = ExtResource("45_tod36")
@@ -1055,11 +1173,11 @@ position = Vector2(-922, 1050)
 [node name="SaintTech" type="Node2D" parent="WorldScripts"]
 position = Vector2(-728, 3846)
 script = ExtResource("41_fbqey")
-dialogueWhenTooLate = Array[String](["saint_toolate", "saint_toolate2"])
-dialogueWhenInTime = Array[String](["saint_pitch_1", "saint_pitch_2", "saint_pitch_3", "saint_pitch_4", "saint_pitch_5", "saint_pitch_6", "saint_pitch_7", "saint_pitch_8", "saint_pitch_9"])
-dialogueWhenEggNotReady = Array[String](["saint_pitch_eggnothatched_1", "saint_pitch_eggnothatched_2", "saint_pitch_eggnothatched_3"])
-dialogueWhenEggReady = Array[String](["saint_pitch_eggready_1", "saint_pitch_eggready_2"])
-greetingLineAfterFirstIntroduction = Array[String](["saint_greeting_eggready"])
+dialogueWhenTooLate = Array[ExtResource("43_wpyq2")]([SubResource("Resource_hwkne"), SubResource("Resource_ky6nw")])
+dialogueWhenInTime = Array[ExtResource("43_wpyq2")]([SubResource("Resource_07mf6"), SubResource("Resource_wu0h8"), SubResource("Resource_rsp8n"), SubResource("Resource_4hcbm"), SubResource("Resource_t28s3"), SubResource("Resource_fwoml"), SubResource("Resource_4c1b3"), SubResource("Resource_mjto2"), SubResource("Resource_kqsbu")])
+dialogueWhenEggNotReady = Array[ExtResource("43_wpyq2")]([SubResource("Resource_a7g1c"), SubResource("Resource_116rv"), SubResource("Resource_i6y5g")])
+dialogueWhenEggReady = Array[ExtResource("43_wpyq2")]([SubResource("Resource_vgx01"), SubResource("Resource_ex40c")])
+greetingLineAfterFirstIntroduction = Array[ExtResource("43_wpyq2")]([SubResource("Resource_7fw44")])
 soulOre = ExtResource("42_deunn")
 
 [node name="SaintDialoguePlayer" parent="WorldScripts/SaintTech" instance=ExtResource("41_ek4iq")]

@@ -1,12 +1,15 @@
 extends Node2D
 
-@export var dialogueWhenTooLate:Array[String]
-@export var dialogueWhenInTime:Array[String]
 
-@export var dialogueWhenEggNotReady:Array[String]
-@export var dialogueWhenEggReady:Array[String]
+@export var dialogueWhenTooLate:Array[abs_dialogue_line]
+@export var dialogueWhenInTime:Array[abs_dialogue_line]
 
-@export var greetingLineAfterFirstIntroduction:Array[String]
+@export var dialogueWhenEggNotReady:Array[abs_dialogue_line]
+@export var dialogueWhenEggReady:Array[abs_dialogue_line]
+
+@export var greetingLineAfterFirstIntroduction:Array[abs_dialogue_line]
+
+
 @export var soulOre:abstract_ore
 
 @onready var dialoguePlayer=$SaintDialoguePlayer
@@ -25,7 +28,7 @@ func _ready() -> void:
 
 func UpdateDialogue():
 	
-	var dialogueToPlay:Array[String]
+	var dialogueToPlay:Array[abs_dialogue_line]
 	
 	if GlobalVariables.currentDay <= GlobalVariables.daysBeforeDemonKillsEgg: #if saint isn't dead yet
 		
@@ -50,33 +53,13 @@ func UpdateDialogue():
 			for line in dialogueWhenEggNotReady:
 				dialogueToPlay.append(line)
 		
-
-		#TODO: Make saint react to if the player has already inserted the heart? lol
-		
-			#todo: Deal with if player has gotten the ordinary heart into the egg lol
-		
-		#Pitch for saint and demon dialogue tech:
-		#Create POSES with looping 3 frame anims that sell them
-		#Via dialogue, can select which POSE to play. Game removes the [POSE] text from the dialogue line
-		#Characters instantly switch to new pose when told.
-		#Could add a delay if needed but not required
-		
-		#but does dialogue fit in with the poses? the box is pretty big! 
-		#let's create some mockups :) 
-		
-		#TODO: Spawn a SAINT HEART after the dialogue if valid
-		#Saint heart.. 
-		#works like a normal heart
-		#Could maybe have more stuff chase player if they have it - or imbed the ghost with goo power lol 
-		
 	else:
 		dialogueToPlay=dialogueWhenTooLate
 		saintState=saintStates.saint_dead
 	
 	dialoguePlayer.linesToPlay=dialogueToPlay
 	dialoguePlayer.dialogueFinished.connect(dialogueFinished)
-	pass
-
+	
 func dialogueFinished():
 	
 	if saintState==saintStates.saint_alive_egg_ready:
