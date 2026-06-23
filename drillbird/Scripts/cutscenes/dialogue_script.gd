@@ -43,7 +43,10 @@ func ContinueDialogue():
 	#Set continue button to right side if dialogue box, it changes size depending on spacing
 	$VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/text.custom_minimum_size= boxSize
 	$HBoxContainer.position.x=boxSize.x/2
-
+	
+	if linesToPlay[currentLineIndex].soundToPlay:
+		soundPlayer.stream=linesToPlay[currentLineIndex].soundToPlay
+		soundPlayer.play()
 	
 	continueSymbolText.text="[center]"+GlobalSymbolRegister.GetStringDecoded("(sing)",true)
 	
@@ -63,6 +66,7 @@ func ContinueDialogue():
 		hide()
 		dialogueFinished.emit()
 	pass
+
 
 
 func _on_player_collider_body_entered(body: Node2D) -> void:
