@@ -1,8 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://be64k05qgrrwf"]
+[gd_scene load_steps=22 format=3 uid="uid://be64k05qgrrwf"]
 
 [ext_resource type="Script" uid="uid://di1m5bij23orx" path="res://Scripts/Enemies/enemy_tombstone.gd" id="1_h0uaq"]
 [ext_resource type="Script" uid="uid://cokuso80w54cc" path="res://Scripts/Abstract scripts/abstract_enemy.gd" id="2_2bc15"]
-[ext_resource type="Texture2D" uid="uid://c3jur2w2lq52b" path="res://Art/characters/Tombstone and ghast/ghast_tombstone.png" id="2_e0vw0"]
 [ext_resource type="Resource" uid="uid://dgw0dbxymu88d" path="res://Resources/Economy/ore_7_tombstone.tres" id="2_fjvxw"]
 [ext_resource type="Texture2D" uid="uid://cf7dyqj4onpbr" path="res://Art/characters/Tombstone and ghast/ghast_tombstone_terrain_dirt1.png" id="3_02la1"]
 [ext_resource type="Texture2D" uid="uid://dg4q4uwjpi1gm" path="res://Art/characters/Tombstone and ghast/ghast_tombstone_terrain_solid.png" id="3_lu0aa"]
@@ -11,6 +10,12 @@
 [ext_resource type="Texture2D" uid="uid://cw56l4r57wvyj" path="res://Art/characters/Tombstone and ghast/tombstone_terrain_dirt2.png" id="6_8kpy8"]
 [ext_resource type="Texture2D" uid="uid://cldqkuw04tcem" path="res://Art/characters/Tombstone and ghast/tombstone_terrain_dirt3.png" id="7_ifuid"]
 [ext_resource type="PackedScene" uid="uid://2lykflhwivex" path="res://Scenes/observer.tscn" id="8_csbx4"]
+[ext_resource type="Texture2D" uid="uid://blxt83bruk5lm" path="res://Art/characters/Tombstone and ghast/ghast_tombstone1.png" id="10_qnlff"]
+[ext_resource type="Texture2D" uid="uid://bdd3g0japxvtl" path="res://Art/characters/Tombstone and ghast/ghast_tombstone2.png" id="11_6yfko"]
+[ext_resource type="Texture2D" uid="uid://diaxo4j0rucj0" path="res://Art/characters/Tombstone and ghast/ghast_tombstone3.png" id="12_vno3n"]
+[ext_resource type="Texture2D" uid="uid://cpxsrkcaaugka" path="res://Art/characters/Tombstone and ghast/ghast_tombstone4.png" id="13_7csy5"]
+[ext_resource type="Texture2D" uid="uid://bfyl851o0i4rv" path="res://Art/characters/Tombstone and ghast/ghast_tombstone5.png" id="14_fegsh"]
+[ext_resource type="Texture2D" uid="uid://1vx4sdaqwp2e" path="res://Art/characters/Tombstone and ghast/ghast_tombstone6.png" id="15_eyi5q"]
 
 [sub_resource type="Resource" id="Resource_f1yn1"]
 script = ExtResource("2_2bc15")
@@ -25,6 +30,32 @@ metadata/_custom_type_script = "uid://bgy5cf01m25xs"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y8cxp"]
 size = Vector2(14, 5)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ixt8b"]
+animations = [{
+"frames": [{
+"duration": 6.0,
+"texture": ExtResource("10_qnlff")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_6yfko")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_vno3n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_7csy5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_fegsh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_eyi5q")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 8.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4hyg0"]
 size = Vector2(10, 7)
@@ -42,11 +73,15 @@ collType = SubResource("Resource_fjvxw")
 position = Vector2(0, 6.5)
 shape = SubResource("RectangleShape2D_y8cxp")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Tombstone_anim" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 2)
-texture = ExtResource("2_e0vw0")
+sprite_frames = SubResource("SpriteFrames_ixt8b")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.58388
 
 [node name="Sprite_front" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(0, 2)
 texture = ExtResource("3_02la1")
 
@@ -68,8 +103,7 @@ hit_from_inside = true
 position = Vector2(0, 17)
 
 [node name="Ghost path" type="Line2D" parent="."]
-visible = false
-points = PackedVector2Array(14, -12, 0, -18, -14, -12, -19, 0, -17, 14, 0, 19, 16, 14, 20, 0)
+points = PackedVector2Array(17, -14, 0, -20, -16, -14, -22, 0, -20, 16, 0, 24, 19, 16, 24, 0)
 closed = true
 width = 2.0
 

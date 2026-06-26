@@ -7,10 +7,9 @@ var spawnedGhast:ghast=null
 
 var oreSpawner:ore_manager
 @export var oreToSpawn:abstract_ore
-@onready var tombstoneSpikes=$Sprite_spikes
 
 @export var terrainSprites:Array[CompressedTexture2D]
-
+@onready var tombstone_visuals=$Tombstone_anim
 
 func GetCollType():
 	return collType
@@ -69,7 +68,7 @@ func SpawnGhast():
 	spawnedGhast=ghastInstance
 
 func TurnEnemyOff(spawnOre:bool=false):
-	$Sprite2D.hide()
+	tombstone_visuals.hide()
 	$Sprite_front.hide()
 	#should prolly do a proper destroy anim as well but w/e for now
 
