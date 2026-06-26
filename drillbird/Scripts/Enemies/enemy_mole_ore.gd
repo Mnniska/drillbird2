@@ -4,7 +4,7 @@ extends Base_Enemy
 @export var oreToSpawn:abstract_ore
 
 @onready var spawnedCollider= preload("res://Scenes/Objects and Enemies/mole_ore_collider.tscn")
-const SPEED = 5
+const SPEED = 4
 const DISTANCE_TO_FEEL_SAFE = 16*3
 const DISTANCE_BEFORE_SPAWNING_NEW_COLLIDER:float=16*5
 
@@ -15,7 +15,7 @@ const DISTANCE_BEFORE_SPAWNING_NEW_COLLIDER:float=16*5
 @onready var sweatParticles:GPUParticles2D=$sweatParticles
 
 var bodyToEscapeFrom:Node2D=null
-enum States{IDLE,ESCAPING,DYING}
+enum States{IDLE,ESCAPING,DYING,GOINGTOIDLE}
 var desperate:bool=false
 var desperateEscapeCounter:float=0
 var state:States=States.IDLE
@@ -71,6 +71,13 @@ func _physics_process(_delta: float) -> void:
 			vibrate=false
 			_anim="idle"
 			pass
+		States.GOINGTOIDLE:
+			_anim="gotoidle"
+			vibrate=false
+			velocity=Vector2(0,0)
+			
+			if sprite.animation=="gotoidle" and sprite.frame==3:
+				state=States.IDLE
 		States.ESCAPING:
 			vibrate=true
 			
@@ -82,8 +89,7 @@ func _physics_process(_delta: float) -> void:
 
 				
 			if bodyToEscapeFrom==null:
-				print_debug("no body to escape from")
-				state=States.IDLE
+				state=States.GOINGTOIDLE
 				return
 				
 			var movementV=GetMovementVector(bodyToEscapeFrom.global_position)
@@ -109,7 +115,7 @@ func _physics_process(_delta: float) -> void:
 				sweatParticles.emitting=false
 			
 			if distanceToPlayer>=DISTANCE_TO_FEEL_SAFE:
-				state=States.IDLE
+				state=States.GOINGTOIDLE
 			
 			if global_position.distance_to(positionOfLastColliderSpawn)>DISTANCE_BEFORE_SPAWNING_NEW_COLLIDER:
 				CreateCollidersOnEmptySpaces(GetTilemap())
@@ -229,7 +235,7 @@ func GetMovementVector(_targetPosGlobal:Vector2):
 	return normalizedDirectionVector
 
 func _on_detection_area_body_shape_entered(_body_rid: RID, body: Node2D, _body_shape_index: int, _local_shape_index: int) -> void:
-	if state==States.IDLE:
+	if state==States.IDLE or state==States.GOINGTOIDLE:
 		state=States.ESCAPING
 		bodyToEscapeFrom=body
 		detectAnimCounter=detectAnimTime

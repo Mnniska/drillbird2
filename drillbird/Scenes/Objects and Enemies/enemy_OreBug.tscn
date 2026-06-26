@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://4ea053k7e4d0"]
+[gd_scene load_steps=29 format=3 uid="uid://4ea053k7e4d0"]
 
 [ext_resource type="Script" uid="uid://ogag6wxgn0y5" path="res://Scripts/Enemies/enemy_mole_ore.gd" id="1_lxrrl"]
 [ext_resource type="Resource" uid="uid://bsqq3gk506g23" path="res://Resources/Economy/ore_8_gembug.tres" id="2_esx0y"]
@@ -8,10 +8,13 @@
 [ext_resource type="Texture2D" uid="uid://b2p03ymduc2yx" path="res://Art/characters/WalkingGem/orebug_detect2.png" id="6_esx0y"]
 [ext_resource type="Texture2D" uid="uid://cic1pev4x63fa" path="res://Art/characters/WalkingGem/orebug_detect3.png" id="7_u2ywa"]
 [ext_resource type="Texture2D" uid="uid://ctw42ovspj6l1" path="res://Art/characters/WalkingGem/orebug_detect4.png" id="8_8f6ss"]
-[ext_resource type="Texture2D" uid="uid://bpfkpo70qg7q2" path="res://Art/characters/WalkingGem/orebug_idle.png" id="9_djpnf"]
+[ext_resource type="Texture2D" uid="uid://d2jqj85002g5n" path="res://Art/characters/WalkingGem/orebug_goToIdle1.png" id="9_6fuec"]
 [ext_resource type="Texture2D" uid="uid://nnk1ungeobry" path="res://Art/characters/WalkingGem/orebug_walk_legs1.png" id="10_u10jr"]
+[ext_resource type="Texture2D" uid="uid://cy8e3yjqf3co2" path="res://Art/characters/WalkingGem/orebug_goToIdle2.png" id="10_uaqdy"]
 [ext_resource type="Texture2D" uid="uid://d20r1dm7ctgve" path="res://Art/characters/WalkingGem/orebug_walk_legs2.png" id="11_6fuec"]
-[ext_resource type="Texture2D" uid="uid://8g2gbviw4akj" path="res://Art/characters/WalkingGem/orebug_move_still.png" id="12_esx0y"]
+[ext_resource type="Texture2D" uid="uid://cc0f7mqfb1avi" path="res://Art/characters/WalkingGem/orebug_goToIdle3.png" id="11_brsnl"]
+[ext_resource type="Texture2D" uid="uid://dswu05e7t5xfv" path="res://Art/characters/WalkingGem/orebug_goToIdle4.png" id="12_l0g62"]
+[ext_resource type="Texture2D" uid="uid://dqbqf10pnlgxv" path="res://Art/characters/WalkingGem/orebug_walk_legs3.png" id="12_u2ywa"]
 [ext_resource type="Texture2D" uid="uid://bju5usiyibau1" path="res://Art/characters/WalkingGem/orebug_walk_body.png" id="12_uaqdy"]
 [ext_resource type="Texture2D" uid="uid://n358d6p58gl3" path="res://Art/characters/WalkingGem/orebug_eyeball.png" id="13_brsnl"]
 [ext_resource type="Texture2D" uid="uid://bq5jlqj1k670" path="res://Art/characters/WalkingGem/sweatdrop.png" id="15_u2ywa"]
@@ -55,7 +58,24 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("9_djpnf")
+"texture": ExtResource("9_6fuec")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_uaqdy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_brsnl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_l0g62")
+}],
+"loop": false,
+"name": &"gotoidle",
+"speed": 1.5
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_l0g62")
 }],
 "loop": true,
 "name": &"idle",
@@ -67,6 +87,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("11_6fuec")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_u2ywa")
 }],
 "loop": true,
 "name": &"walk",
@@ -74,7 +97,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("12_esx0y")
+"texture": ExtResource("10_u10jr")
 }],
 "loop": true,
 "name": &"walk_still",
@@ -113,7 +136,7 @@ collision_layer = 4096
 collision_mask = 4096
 script = ExtResource("1_lxrrl")
 oreToSpawn = ExtResource("2_esx0y")
-maximumEyeMovement = 0.3
+maximumEyeMovement = 0.2
 collType = SubResource("Resource_vulfi")
 enemyInfo = SubResource("Resource_lvi2v")
 
@@ -129,7 +152,7 @@ shape = SubResource("CircleShape2D_1bo6n")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_wcs4h")
-animation = &"walk_still"
+animation = &"gotoidle"
 autoplay = "idle"
 
 [node name="body" type="Sprite2D" parent="."]
