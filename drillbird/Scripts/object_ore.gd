@@ -40,7 +40,7 @@ func SetSparkly(sparkly:bool):
 	else:
 		$Sparkles.hide()
 
-func SetOreType(ore:abstract_ore,_cooldown:bool,placedByGhost:bool=false):
+func SetOreType(ore:abstract_ore,_cooldown:bool,placedByGhost:bool=false,customCooldown:float=-1):
 	if(oreType==null):
 		
 		oreType=ore
@@ -51,7 +51,10 @@ func SetOreType(ore:abstract_ore,_cooldown:bool,placedByGhost:bool=false):
 		cooldown=_cooldown
 		
 		if cooldown:
-			CooldownAnimation()
+			if customCooldown!=-1:
+				CooldownAnimation(customCooldown)
+			else:			
+				CooldownAnimation()
 		
 		if placedByGhost:
 			gravity_scale=0
@@ -60,7 +63,7 @@ func SetOreType(ore:abstract_ore,_cooldown:bool,placedByGhost:bool=false):
 
 	pass
 
-func CooldownAnimation():
+func CooldownAnimation(length:float=cooldownTime):
 	
 	var a=1.0
 	var b = 0.5
@@ -74,7 +77,7 @@ func CooldownAnimation():
 		await get_tree().create_timer(time).timeout
 		
 		timeKeeper+=time*2
-		if timeKeeper>cooldownTime:
+		if timeKeeper>length:
 			cooldown=false
 	
 func DealDamage(_amount:int,spawnCorpse:bool=false):

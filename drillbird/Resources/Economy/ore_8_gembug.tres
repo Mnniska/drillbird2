@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="abstract_ore" load_steps=3 format=3 uid="uid://bsqq3gk506g23"]
 
 [ext_resource type="Script" uid="uid://bmcaxciswx4yo" path="res://Scripts/Abstract scripts/abstract_ore.gd" id="1_x7x7x"]
-[ext_resource type="Texture2D" uid="uid://c2gbkkabp54v" path="res://Art/Collectibles/ore_gembug.png" id="2_x7x7x"]
+[ext_resource type="Texture2D" uid="uid://crutl68a3bol7" path="res://Art/characters/WalkingGem/gembug_ore.png" id="2_x7x7x"]
 
 [resource]
 script = ExtResource("1_x7x7x")

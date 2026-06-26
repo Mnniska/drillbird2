@@ -146,9 +146,10 @@ func HandleVisuals(_animToPlay:String):
 		
 		
 
+@export var maximumEyeMovement:float=0.5
 func AdjustBodyEyePosition():
 	var maximumBodyMovement:float=2
-	var maximumEyeMovement:float=0.5
+
 	
 	var vector=(bodyToEscapeFrom.global_position-global_position).normalized()
 	#should return a vector with length 1
@@ -181,7 +182,7 @@ func RestingBlockDestroyed():
 	#destroy this bad boi
 	
 	var spawner:ore_manager = GlobalVariables.MainSceneReferenceConnector.ref_oreTilemap
-	spawner.SpawnOreAtLocation(global_position,oreToSpawn,Vector2(0,-100),true)
+	spawner.SpawnOreAtLocation(global_position,oreToSpawn,Vector2(0,-100),true,false,0.6)
 	
 	for n in collidersForEmptySpaces:
 		n.queue_free()

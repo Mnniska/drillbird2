@@ -113,6 +113,7 @@ collision_layer = 4096
 collision_mask = 4096
 script = ExtResource("1_lxrrl")
 oreToSpawn = ExtResource("2_esx0y")
+maximumEyeMovement = 0.3
 collType = SubResource("Resource_vulfi")
 enemyInfo = SubResource("Resource_lvi2v")
 
