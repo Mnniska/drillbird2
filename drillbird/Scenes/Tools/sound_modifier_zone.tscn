@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://3t35qwwu0lak" path="res://Scripts/Tools/sound_modifier_zone.gd" id="1_jnsih"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ssm0g"]
-size = Vector2(299, 227)
+size = Vector2(493, 209)
 
 [node name="SoundModifierZone" type="Node2D"]
 script = ExtResource("1_jnsih")
