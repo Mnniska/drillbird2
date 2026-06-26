@@ -78,7 +78,7 @@ position = Vector2(0, 2)
 sprite_frames = SubResource("SpriteFrames_ixt8b")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.58388
+frame_progress = 0.55691564
 
 [node name="Sprite_front" type="Sprite2D" parent="."]
 visible = false
@@ -103,6 +103,7 @@ hit_from_inside = true
 position = Vector2(0, 17)
 
 [node name="Ghost path" type="Line2D" parent="."]
+visible = false
 points = PackedVector2Array(17, -14, 0, -20, -16, -14, -22, 0, -20, 16, 0, 24, 19, 16, 24, 0)
 closed = true
 width = 2.0
