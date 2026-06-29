@@ -1,41 +1,196 @@
-[gd_scene load_steps=11 format=3 uid="uid://jyjdyb81qdfe"]
+[gd_scene load_steps=31 format=3 uid="uid://jyjdyb81qdfe"]
 
 [ext_resource type="Script" uid="uid://b6kabfe51hcxe" path="res://Scripts/cutscenes/script_reincarnation_cutscene.gd" id="1_nq7hg"]
+[ext_resource type="Texture2D" uid="uid://b1aaiv4n2i22e" path="res://Art/cutscenes/demons_deal/demondeal29.png" id="2_1q027"]
 [ext_resource type="Texture2D" uid="uid://cxv0romo5ab6g" path="res://Art/cutscenes/demons_deal/demondeal_chilling.png" id="2_go0gl"]
-[ext_resource type="Texture2D" uid="uid://vi80jrugiprj" path="res://Art/cutscenes/demons_deal/demondeal_hold.png" id="3_378jb"]
-[ext_resource type="Texture2D" uid="uid://c32f3yv3slrjs" path="res://Art/cutscenes/demons_deal/demondeal_grab.png" id="4_likn4"]
-[ext_resource type="Texture2D" uid="uid://b85q4k8fjwd3a" path="res://Art/cutscenes/demons_deal/demondeal_burning1.png" id="5_go0gl"]
-[ext_resource type="Texture2D" uid="uid://detsj7jvtrbt4" path="res://Art/cutscenes/demons_deal/demondeal_burning2.png" id="6_dvgcw"]
-[ext_resource type="Texture2D" uid="uid://hh7wk85h1xst" path="res://Art/cutscenes/demons_deal/demondeal_burning3.png" id="7_pmfbf"]
-[ext_resource type="Texture2D" uid="uid://c2w5k45fdyo2t" path="res://Art/cutscenes/demons_deal/demondeal_burning4.png" id="8_vxfqb"]
-[ext_resource type="Texture2D" uid="uid://dc3au4jc7k4hg" path="res://Art/cutscenes/demons_deal/demondeal_burning5.png" id="9_7ritc"]
+[ext_resource type="Texture2D" uid="uid://clfvlrv66c7hy" path="res://Art/cutscenes/demons_deal/demondeal30.png" id="3_vjq1m"]
+[ext_resource type="Texture2D" uid="uid://cfx24bqp308v7" path="res://Art/cutscenes/demons_deal/demondeal31.png" id="4_1ldgj"]
+[ext_resource type="Texture2D" uid="uid://jb0uv6wghl7" path="res://Art/cutscenes/demons_deal/demondeal32.png" id="5_018v7"]
+[ext_resource type="Texture2D" uid="uid://bvvsursdsdsjb" path="res://Art/cutscenes/demons_deal/demondeal33.png" id="6_wj1e6"]
+[ext_resource type="Texture2D" uid="uid://dvpl3p0efovem" path="res://Art/cutscenes/demons_deal/demondeal34.png" id="7_ccd7o"]
+[ext_resource type="Texture2D" uid="uid://dl67kevlct5hk" path="res://Art/cutscenes/demons_deal/demondeal35.png" id="8_tkdmm"]
+[ext_resource type="Texture2D" uid="uid://bqdap3reefxlj" path="res://Art/cutscenes/demons_deal/demondeal36.png" id="9_yfvha"]
+[ext_resource type="Texture2D" uid="uid://dxmgol4ev756d" path="res://Art/cutscenes/demons_deal/demondeal37.png" id="10_ho7aw"]
+[ext_resource type="Texture2D" uid="uid://c77jmyv0htjf6" path="res://Art/cutscenes/demons_deal/demondeal38.png" id="11_dcq8a"]
+[ext_resource type="Texture2D" uid="uid://cvscfyp7rriwk" path="res://Art/cutscenes/demons_deal/demondeal39.png" id="12_bc13a"]
+[ext_resource type="Texture2D" uid="uid://40udevb1ydog" path="res://Art/cutscenes/demons_deal/demondeal40.png" id="13_y51t6"]
+[ext_resource type="Texture2D" uid="uid://ber0qie6nn5tt" path="res://Art/cutscenes/demons_deal/demondeal41.png" id="14_ypoty"]
+[ext_resource type="Texture2D" uid="uid://cm2b5cdila3tn" path="res://Art/cutscenes/demons_deal/demondeal42.png" id="15_m1ydd"]
+[ext_resource type="Texture2D" uid="uid://cnql3jum02n6i" path="res://Art/cutscenes/demons_deal/demondeal43.png" id="16_e0ajw"]
+[ext_resource type="Texture2D" uid="uid://bog3vfs0bx3km" path="res://Art/cutscenes/demons_deal/demondeal44.png" id="17_ypocr"]
+[ext_resource type="Texture2D" uid="uid://c67ms87vcg4x5" path="res://Art/cutscenes/demons_deal/demondeal45.png" id="18_isudr"]
+[ext_resource type="Texture2D" uid="uid://dk55wmvkdhqkq" path="res://Art/cutscenes/demons_deal/demondeal46.png" id="19_dwcjg"]
+[ext_resource type="Texture2D" uid="uid://b22suib88v1nr" path="res://Art/cutscenes/demons_deal/demondeal47.png" id="20_1saxo"]
+[ext_resource type="Texture2D" uid="uid://bq3ulbcflyq13" path="res://Art/cutscenes/demons_deal/demondeal48.png" id="21_qo576"]
+[ext_resource type="Texture2D" uid="uid://cymocgxp433he" path="res://Art/cutscenes/demons_deal/demondeal49.png" id="22_guq1b"]
+[ext_resource type="Texture2D" uid="uid://b2sy2pvtri5wi" path="res://Art/cutscenes/demons_deal/demondeal50.png" id="23_bo451"]
+[ext_resource type="Texture2D" uid="uid://c6hij13m5bipf" path="res://Art/cutscenes/demons_deal/demondeal51.png" id="24_hobwe"]
+[ext_resource type="Texture2D" uid="uid://dxcmok01fqynd" path="res://Art/cutscenes/demons_deal/demondeal52.png" id="25_mspau"]
+[ext_resource type="Texture2D" uid="uid://dxfv8jjgwgt7o" path="res://Art/cutscenes/demons_deal/demondeal53.png" id="26_wrcll"]
+[ext_resource type="Texture2D" uid="uid://dywc8t4oq0pmm" path="res://Art/cutscenes/demons_deal/demondeal54.png" id="27_nc6cr"]
+[ext_resource type="Texture2D" uid="uid://csqfpscj4ic15" path="res://Art/cutscenes/demons_deal/demondeal55.png" id="28_jvcm5"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1o7nw"]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_go0gl")
+"duration": 5.0,
+"texture": ExtResource("2_1q027")
+}, {
+"duration": 2.0,
+"texture": ExtResource("3_vjq1m")
+}, {
+"duration": 2.0,
+"texture": ExtResource("4_1ldgj")
+}, {
+"duration": 2.0,
+"texture": ExtResource("3_vjq1m")
+}, {
+"duration": 2.0,
+"texture": ExtResource("4_1ldgj")
+}, {
+"duration": 2.0,
+"texture": ExtResource("3_vjq1m")
+}, {
+"duration": 2.0,
+"texture": ExtResource("4_1ldgj")
 }, {
 "duration": 3.0,
-"texture": ExtResource("4_likn4")
+"texture": ExtResource("5_018v7")
 }, {
-"duration": 10.0,
-"texture": ExtResource("3_378jb")
+"duration": 5.0,
+"texture": ExtResource("6_wj1e6")
 }, {
-"duration": 4.0,
-"texture": ExtResource("5_go0gl")
+"duration": 2.0,
+"texture": ExtResource("7_ccd7o")
 }, {
-"duration": 4.0,
-"texture": ExtResource("6_dvgcw")
+"duration": 2.0,
+"texture": ExtResource("8_tkdmm")
 }, {
-"duration": 4.0,
-"texture": ExtResource("7_pmfbf")
+"duration": 5.0,
+"texture": ExtResource("9_yfvha")
 }, {
-"duration": 4.0,
-"texture": ExtResource("8_vxfqb")
+"duration": 0.2,
+"texture": ExtResource("10_ho7aw")
 }, {
-"duration": 10.0,
-"texture": ExtResource("9_7ritc")
+"duration": 0.2,
+"texture": ExtResource("11_dcq8a")
+}, {
+"duration": 0.2,
+"texture": ExtResource("10_ho7aw")
+}, {
+"duration": 0.2,
+"texture": ExtResource("11_dcq8a")
+}, {
+"duration": 0.2,
+"texture": ExtResource("10_ho7aw")
+}, {
+"duration": 0.2,
+"texture": ExtResource("11_dcq8a")
+}, {
+"duration": 0.2,
+"texture": ExtResource("10_ho7aw")
+}, {
+"duration": 0.2,
+"texture": ExtResource("11_dcq8a")
+}, {
+"duration": 0.2,
+"texture": ExtResource("10_ho7aw")
+}, {
+"duration": 0.2,
+"texture": ExtResource("11_dcq8a")
+}, {
+"duration": 0.2,
+"texture": ExtResource("10_ho7aw")
+}, {
+"duration": 0.2,
+"texture": ExtResource("11_dcq8a")
+}, {
+"duration": 0.2,
+"texture": ExtResource("10_ho7aw")
+}, {
+"duration": 0.2,
+"texture": ExtResource("11_dcq8a")
+}, {
+"duration": 0.2,
+"texture": ExtResource("10_ho7aw")
+}, {
+"duration": 0.2,
+"texture": ExtResource("11_dcq8a")
+}, {
+"duration": 0.2,
+"texture": ExtResource("10_ho7aw")
+}, {
+"duration": 0.2,
+"texture": ExtResource("11_dcq8a")
+}, {
+"duration": 0.2,
+"texture": ExtResource("10_ho7aw")
+}, {
+"duration": 0.2,
+"texture": ExtResource("11_dcq8a")
+}, {
+"duration": 0.2,
+"texture": ExtResource("10_ho7aw")
+}, {
+"duration": 0.2,
+"texture": ExtResource("11_dcq8a")
+}, {
+"duration": 0.2,
+"texture": ExtResource("10_ho7aw")
+}, {
+"duration": 7.0,
+"texture": ExtResource("12_bc13a")
+}, {
+"duration": 7.0,
+"texture": ExtResource("13_y51t6")
+}, {
+"duration": 7.0,
+"texture": ExtResource("14_ypoty")
+}, {
+"duration": 5.0,
+"texture": ExtResource("15_m1ydd")
+}, {
+"duration": 5.0,
+"texture": ExtResource("16_e0ajw")
+}, {
+"duration": 3.0,
+"texture": ExtResource("17_ypocr")
+}, {
+"duration": 3.0,
+"texture": ExtResource("18_isudr")
+}, {
+"duration": 3.0,
+"texture": ExtResource("19_dwcjg")
+}, {
+"duration": 3.0,
+"texture": ExtResource("20_1saxo")
+}, {
+"duration": 3.0,
+"texture": ExtResource("21_qo576")
+}, {
+"duration": 3.0,
+"texture": ExtResource("22_guq1b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_bo451")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_hobwe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_mspau")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_wrcll")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_nc6cr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_jvcm5")
+}, {
+"duration": 0.8,
+"texture": ExtResource("11_dcq8a")
 }],
 "loop": false,
 "name": &"demon_murder",
@@ -55,7 +210,6 @@ z_index = -2
 script = ExtResource("1_nq7hg")
 
 [node name="animation" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, 1)
 sprite_frames = SubResource("SpriteFrames_1o7nw")
 animation = &"demon_murder"
 autoplay = "idle"
