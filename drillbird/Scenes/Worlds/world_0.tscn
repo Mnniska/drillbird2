@@ -1528,6 +1528,7 @@ limit_bottom = true
 shape = SubResource("RectangleShape2D_8lf0q")
 
 [node name="ReincarnationCutscene" parent="Demon cave" instance=ExtResource("62_vhuqd")]
+z_index = 10
 position = Vector2(13, -75)
 
 [node name="CameraLerpDestination" parent="Demon cave/ReincarnationCutscene" index="1"]

@@ -1,8 +1,7 @@
-[gd_scene load_steps=31 format=3 uid="uid://jyjdyb81qdfe"]
+[gd_scene load_steps=30 format=3 uid="uid://jyjdyb81qdfe"]
 
 [ext_resource type="Script" uid="uid://b6kabfe51hcxe" path="res://Scripts/cutscenes/script_reincarnation_cutscene.gd" id="1_nq7hg"]
 [ext_resource type="Texture2D" uid="uid://b1aaiv4n2i22e" path="res://Art/cutscenes/demons_deal/demondeal29.png" id="2_1q027"]
-[ext_resource type="Texture2D" uid="uid://cxv0romo5ab6g" path="res://Art/cutscenes/demons_deal/demondeal_chilling.png" id="2_go0gl"]
 [ext_resource type="Texture2D" uid="uid://clfvlrv66c7hy" path="res://Art/cutscenes/demons_deal/demondeal30.png" id="3_vjq1m"]
 [ext_resource type="Texture2D" uid="uid://cfx24bqp308v7" path="res://Art/cutscenes/demons_deal/demondeal31.png" id="4_1ldgj"]
 [ext_resource type="Texture2D" uid="uid://jb0uv6wghl7" path="res://Art/cutscenes/demons_deal/demondeal32.png" id="5_018v7"]
@@ -197,8 +196,8 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_go0gl")
+"duration": 5.0,
+"texture": ExtResource("2_1q027")
 }],
 "loop": false,
 "name": &"idle",
@@ -211,7 +210,7 @@ script = ExtResource("1_nq7hg")
 
 [node name="animation" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_1o7nw")
-animation = &"demon_murder"
+animation = &"idle"
 autoplay = "idle"
 
 [node name="CameraLerpDestination" type="Node2D" parent="."]

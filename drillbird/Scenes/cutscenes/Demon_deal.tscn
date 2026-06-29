@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://pavkdcthm8ws"]
+[gd_scene load_steps=61 format=3 uid="uid://pavkdcthm8ws"]
 
 [ext_resource type="Script" uid="uid://d45ns0beee5y" path="res://Scenes/cutscenes/demon_deal.gd" id="1_k42kg"]
 [ext_resource type="Texture2D" uid="uid://hj8hotfteydg" path="res://Art/cutscenes/demons_deal/demon_deco.png" id="2_jrp17"]
@@ -36,6 +36,13 @@
 [ext_resource type="Script" uid="uid://cgfipa53cvc6d" path="res://Scripts/Abstract scripts/abstract_dialogueLine.gd" id="12_irdy8"]
 [ext_resource type="Texture2D" uid="uid://d0236g4qhkio" path="res://Art/cutscenes/demons_deal/demon deal dialogue sprites/dialogue_demon_hard5.png" id="12_mgqgk"]
 [ext_resource type="Texture2D" uid="uid://dwcaiyb0cv6wt" path="res://Art/cutscenes/demons_deal/demon deal dialogue sprites/dialogue_demon_wave5.png" id="13_6r3wy"]
+[ext_resource type="Texture2D" uid="uid://3kp0t7aqcmap" path="res://Art/cutscenes/demons_deal/demon deal dialogue sprites/dialogue_demon_helpingDemon1.png" id="15_2h3nq"]
+[ext_resource type="Texture2D" uid="uid://o8s6pguisybb" path="res://Art/cutscenes/demons_deal/demon deal dialogue sprites/dialogue_demon_helpingDemon2.png" id="16_fley0"]
+[ext_resource type="Texture2D" uid="uid://dwq1d2xphqhje" path="res://Art/cutscenes/demons_deal/demon deal dialogue sprites/dialogue_demon_helpingDemon3.png" id="17_lcao0"]
+[ext_resource type="Texture2D" uid="uid://th0cdiy6oxbw" path="res://Art/cutscenes/demons_deal/demon deal dialogue sprites/demon_soundGood1.png" id="25_3kgd4"]
+[ext_resource type="Texture2D" uid="uid://cnht7jhyk3a5h" path="res://Art/cutscenes/demons_deal/demon deal dialogue sprites/demon_soundGood2.png" id="26_r1scq"]
+[ext_resource type="Texture2D" uid="uid://dakny0a64eu85" path="res://Art/cutscenes/demons_deal/demon deal dialogue sprites/demon_stepUp1.png" id="27_c88hw"]
+[ext_resource type="Texture2D" uid="uid://2m226srkbh3q" path="res://Art/cutscenes/demons_deal/demon deal dialogue sprites/demon_stepUp2.png" id="28_5n2wq"]
 [ext_resource type="AudioStream" uid="uid://xw3qn3kl3rsj" path="res://Audio/SFX/demon_voices/demon_1.wav" id="37_l23hh"]
 [ext_resource type="AudioStream" uid="uid://x6j6eerkwxwh" path="res://Audio/SFX/demon_voices/demon_voice_2.wav" id="38_1ued8"]
 [ext_resource type="AudioStream" uid="uid://b6f87drs4c2by" path="res://Audio/SFX/demon_voices/demon_voice_3.wav" id="39_7qmk3"]
@@ -154,6 +161,47 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("15_2h3nq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_fley0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_2h3nq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_fley0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_2h3nq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_fley0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_2h3nq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_fley0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_lcao0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_fley0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_2h3nq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_fley0")
+}],
+"loop": true,
+"name": &"help",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("8_idowm")
 }, {
 "duration": 1.0,
@@ -206,6 +254,28 @@ animations = [{
 "loop": true,
 "name": &"scared",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 14.0,
+"texture": ExtResource("25_3kgd4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_r1scq")
+}],
+"loop": true,
+"name": &"soundgood",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("27_c88hw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_5n2wq")
+}],
+"loop": true,
+"name": &"stepup",
+"speed": 2.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -317,14 +387,14 @@ metadata/_custom_type_script = "uid://cgfipa53cvc6d"
 [sub_resource type="Resource" id="Resource_nvamj"]
 script = ExtResource("12_irdy8")
 lineToPlay = "demondeal_10"
-animToPlay = "giggle"
+animToPlay = "soundgood"
 soundToPlay = ExtResource("39_7qmk3")
 metadata/_custom_type_script = "uid://cgfipa53cvc6d"
 
 [sub_resource type="Resource" id="Resource_lkuq6"]
 script = ExtResource("12_irdy8")
 lineToPlay = "demondeal_11"
-animToPlay = "neutral"
+animToPlay = "stepup"
 soundToPlay = ExtResource("40_2h3nq")
 metadata/_custom_type_script = "uid://cgfipa53cvc6d"
 
@@ -334,9 +404,9 @@ script = ExtResource("1_k42kg")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = -2
 sprite_frames = SubResource("SpriteFrames_jrp17")
-animation = &"giggle"
+animation = &"stepup"
 autoplay = "neutral"
-frame_progress = 0.31633958
+frame_progress = 0.679011
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_jrp17")
