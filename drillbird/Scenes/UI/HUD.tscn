@@ -153,7 +153,7 @@ _data = {
 [node name="HUD" type="CanvasLayer"]
 layer = 10
 script = ExtResource("1_u1olj")
-version = "[rainbow]v1.0972[/rainbow][p]2026-06-12"
+version = "[rainbow]v1.098 - ending 1 finished[/rainbow][p]2026-07-01"
 scene_credits = ExtResource("2_lsdg3")
 scene_main = ExtResource("3_wspqp")
 
@@ -335,7 +335,7 @@ scroll_active = false
 layout_mode = 0
 offset_left = -155.0
 offset_top = 70.0
-offset_right = -72.0
+offset_right = 34.0
 offset_bottom = 112.0
 theme = ExtResource("15_nxi4s")
 theme_override_colors/default_color = Color(1, 1, 1, 0.807843)
