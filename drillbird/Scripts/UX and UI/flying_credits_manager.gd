@@ -59,7 +59,12 @@ func _ready() -> void:
 	ending=GlobalVariables.GetCurrentEnding()
 	
 	SetEnergyMeterVisible(false)
-	text_growth.text=tr("credits_growth")
+	
+	if GlobalVariables.CursedMode:
+		text_growth.text=tr("credits_growth_cursed")
+	else:
+		text_growth.text=tr("credits_growth")
+		
 	HUD.SetState(HUD.menuStates.CREDITS)
 	music.finished.connect(music.play)
 	

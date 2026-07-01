@@ -55,7 +55,7 @@ var isChilling:bool=true
 
 
 func _ready() -> void:
-	evolveText.text="[center][shake] "+GlobalSymbolRegister.GetStringDecoded(tr("credits_evolve_popup"))
+	evolveText.text="[center][shake] "+GlobalSymbolRegister.GetStringDecoded(tr(evolveTextString))
 	evolveText.hide()
 	hide()
 	
@@ -155,6 +155,10 @@ func GrownUpdate(delta:float):
 	
 	if hasFullyEvolved:
 		velocity.y+=gravity*delta*2.5
+		
+		if isDemon:
+			velocity.y+=gravity*delta*30
+		
 	UpdateAnimations()
 	move_and_slide()
 	
@@ -179,7 +183,7 @@ func SetCanEvolve(canEvolve:bool,triggerSignal:bool=true):
 		canEvolveUpdate.emit(canEvolve)
 	evolutionPossible=canEvolve
 	if evolutionPossible:
-		evolveText.text="[center][shake] "+GlobalSymbolRegister.GetStringDecoded(tr("credits_evolve_popup"))
+		evolveText.text="[center][shake] "+GlobalSymbolRegister.GetStringDecoded(tr(evolveTextString))
 		evolveText.show()
 		
 		if position.y>10:
@@ -210,10 +214,12 @@ func GrowUp():
 	state=States.GROWN
 	animator.animation="growup"
 	animator.play()
-	shake=true
-	await get_tree().create_timer(1.5).timeout
-	shake=false
-	evolveShine.play()
+	
+	if !GlobalVariables.CursedMode:
+		shake=true
+		await get_tree().create_timer(1.5).timeout
+		shake=false
+		evolveShine.play()
 	
 	
 	if GlobalVariables.useVibration:
@@ -226,8 +232,9 @@ func GrowUp():
 	
 	await get_tree().create_timer(3).timeout
 	
-	animator.animation="adult_fall"
-	animator.play()
+	if !GlobalVariables.CursedMode:
+		animator.animation="adult_fall"
+		animator.play()
 	
 	
 func _on_animator_animation_finished() -> void:

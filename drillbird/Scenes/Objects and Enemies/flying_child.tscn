@@ -185,6 +185,7 @@ script = ExtResource("1_xqyjr")
 initialJumpCost = 6.0
 continuedJumpCost = 0.5
 maxFuelRefillRate = 3.5
+evolveTextString = "credits_evolve_popup"
 
 [node name="anim_evolve_shine" type="AnimatedSprite2D" parent="."]
 position = Vector2(3, -13)
