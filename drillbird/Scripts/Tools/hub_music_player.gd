@@ -17,6 +17,10 @@ var volume_dream:float=0
 @export var mus_idle_beginning:AudioStreamMP3
 @export var mus_idle_end:AudioStreamMP3
 
+@export var mus_cursed_idle1:AudioStreamMP3
+@export var mus_cursed_idle2:AudioStreamMP3
+@export var mus_cursed_idle3:AudioStreamMP3
+
 
 enum musicStates{IDLE, DREAM, FINALE}
 var musicState:musicStates=musicStates.IDLE
@@ -38,10 +42,20 @@ func SetupComplete():
 
 func UpdateIdleMusic():
 	
-	if GlobalVariables.totalEGGsperienceGained>200:
-		player_idle.stream=mus_idle_end
+	
+	if !GlobalVariables.CursedMode:
+		if GlobalVariables.totalEGGsperienceGained>200:
+			player_idle.stream=mus_idle_end
+		else:
+			player_idle.stream=mus_idle_beginning
 	else:
-		player_idle.stream=mus_idle_beginning
+		if GlobalVariables.totalEGGsperienceGained<200:
+			player_idle.stream=mus_cursed_idle1
+		elif GlobalVariables.totalEGGsperienceGained<700:
+			player_idle.stream=mus_cursed_idle2
+		else:
+			player_idle.stream=mus_cursed_idle3
+
 	
 	player_idle.play()
 	
