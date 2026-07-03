@@ -9,6 +9,7 @@ var lightBulbArray:Array[Sprite2D]
 
 #Time variables
 @export var time_TimerLength:int=135
+@export var time_TimerLength_Additionalbulb:int=60
 @export var time_DrillMultiplier:float=2
 #todo: Figure out if this is how you wanna do time
 var time_Countdown:float
@@ -55,6 +56,19 @@ func RequestRefillHealthWithLight():
 		return true
 	return false
 	
+func GetCurrentlyActiveLightbulbDuration()->int:
+	#There will be 1 lightbulb in the lightbulb array per upgrade level
+	#so no upgrades left means zero, which means yahoo
+		
+	var there_is_a_reserve_bulb_lol:bool=false
+	for n in lightBulbArray:
+		if n.active:
+			there_is_a_reserve_bulb_lol=true
+	
+	if there_is_a_reserve_bulb_lol:
+		return time_TimerLength_Additionalbulb
+	else:
+		return time_TimerLength
 
 func SetupLightFunctionality():
 	outOfLight=false
@@ -68,9 +82,13 @@ func SetupLightFunctionality():
 		n.queue_free()
 	lightBulbArray.clear()
 	
-	time_Countdown=time_TimerLength
+	#this is setting the countdown for the current bulb
+	#If we want variable bulbs we need to check which bulb this is and 
+	#map it to the current upgrade 
 
 		#create lightbulbs depending on player upgrade lvl
+		#The game will create 1 lightbulb PER ADDITIONAL upgrade level
+		#this is cuz the base light is not a lightbulb - it is a UI slider
 	for n in GlobalVariables.upgradeLevel_light:
 		var scene = load("res://Scenes/UI/lightbulb.tscn") 
 		var node = scene.instantiate()
@@ -80,6 +98,9 @@ func SetupLightFunctionality():
 		
 		node.transform.origin = offset
 		add_child(node)
+	
+		time_Countdown=GetCurrentlyActiveLightbulbDuration()
+	
 	UpdateLightbulbLocations()
 	if GlobalVariables.upgradeLevel_light==0:
 		darknessClose=true
@@ -97,7 +118,7 @@ func UpdateLightbulbLocations():
 	var bulbOffset=8
 	
 	var sliderlocation:int=0
-	var startingOffset:int=((lightBulbArray.size()*bulbOffset)+lightSliderOffset)/2
+	var startingOffset:int=floor(((float(lightBulbArray.size())*bulbOffset)+lightSliderOffset)/2)
 
 	
 	var index:int =0 
@@ -127,9 +148,8 @@ func GetNextLightbulb():
 	for n in lightBulbArray:
 		if n.active:
 			n.SetActive(false)
-			time_Countdown=time_TimerLength
+			time_Countdown=GetCurrentlyActiveLightbulbDuration()
 			foundBulb=true
-			
 			break
 	
 	for n in lightBulbArray:
@@ -177,12 +197,12 @@ func _process(delta: float) -> void:
 		if internal_upd_counter>internal_upd_interval:
 			internal_upd_counter=0
 			
-			var progress=float(time_Countdown/time_TimerLength)
+			var progress=float(time_Countdown/GetCurrentlyActiveLightbulbDuration())
 			
 			#The light sliders last 10% is hidden behind the border, so I am artificially having the light bar end at 10 instead of 0
-			var min=0
-			var max = LightSlider.max_value
-			var value= (max-min)*progress+min
+			var _min=0
+			var _max = LightSlider.max_value
+			var value= (_max-_min)*progress+_min
 			LightSlider.value=value
 			
 			if darknessClose:
@@ -220,7 +240,8 @@ func RefillLight():
 	for n in lightBulbArray:
 		n.SetActive(true)
 	
-	time_Countdown=time_TimerLength
+	time_Countdown=GetCurrentlyActiveLightbulbDuration()
+
 	LightSlider.value=100
 	darknessClose = GlobalVariables.upgradeLevel_light==0
 	PlayerLight.SetLight(1)

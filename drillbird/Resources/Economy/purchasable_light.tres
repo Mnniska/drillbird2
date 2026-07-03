@@ -32,7 +32,7 @@ power = 5
 
 [sub_resource type="Resource" id="Resource_cj6b0"]
 script = ExtResource("2_c8a6s")
-cost = 150
+cost = 200
 power = 6
 
 [resource]
