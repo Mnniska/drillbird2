@@ -38,10 +38,6 @@ func PlayCutscene():
 	
 
 func AnimationFinished():
-	if player:
-		player.show()
-	
-	camera.followPlayer()
 	
 	cutscene_finished.emit()
 	pass

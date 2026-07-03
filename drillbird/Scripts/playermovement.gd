@@ -103,7 +103,6 @@ func _ready() -> void:
 	
 	GlobalVariables.PlayerController=self
 	
-	isCursedMode=GlobalVariables.CursedMode #double check this is set correctly
 	
 	await GlobalVariables.SetupComplete
 	var test=GlobalVariables.MainSceneReferenceConnector.ref_playerTeleportLocations
@@ -111,7 +110,8 @@ func _ready() -> void:
 		for child:Node2D in GlobalVariables.MainSceneReferenceConnector.ref_playerTeleportLocations.get_children():
 			DebugTeleportLocations.append(child.global_position)
 		currentTeleportationIndex=0
-	pass
+	isCursedMode=GlobalVariables.CursedMode #double check this is set correctly
+
 
 var collstate:collisionstates=collisionstates.debug
 enum collisionstates{grounded,flying,falling,debug}

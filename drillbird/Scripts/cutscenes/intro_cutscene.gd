@@ -54,6 +54,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		isPlaying=false
 		GlobalVariables.PlayerController.TriggerDazed()
 		#this is a pretty lmao way to trigger the dazed state but I will take it
+		#seb 9 months later: I agree
 
 	
 func PlayScene(anim:int):

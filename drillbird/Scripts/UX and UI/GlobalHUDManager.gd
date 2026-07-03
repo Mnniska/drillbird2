@@ -105,13 +105,11 @@ func UpdateHUDPosition(show:bool):
 
 func _process(delta: float) -> void:
 	
-	if Input.is_action_just_pressed("debug_tab") and Input.is_action_pressed("escape") and GlobalVariables.DebugEnabled:
+	
+	
+	if Input.is_action_just_pressed("debug_tab") and GlobalVariables.DebugEnabled:
 		
-		if sceneState==sceneStates.MAIN:
-			SetSceneState(sceneStates.CREDITS,true)
-			
-		elif sceneState==sceneStates.CREDITS:
-			SetSceneState(sceneStates.MAIN,true)
+		pass
 			
 
 	
@@ -207,12 +205,16 @@ func ResetGameToCursedMode():
 	sceneState=sceneStates.MAIN
 	#GlobalVariables.ResetSaveData()
 	%InventoryHandler.SellOres() #is this really correct? 
-	$TransitionToMain.play("FadeBack")
-	await get_tree().create_timer(0.05).timeout
+	$TransitionToMain.play("FadeToBlack")
+	await get_tree().create_timer(2).timeout
 	var scene = GlobalVariables.MainSceneReferenceConnector.mainScene
 	scene.get_tree().change_scene_to_packed(scene_main)
 	GlobalVariables.InitialSetup=true
 	await GlobalVariables.SetupComplete
+	GlobalVariables.PlayerController.TriggerDazed()
+
+	$TransitionToMain.play("FadeBackFromBlack")
+
 
 
 func SetSceneState(state:sceneStates,debug:bool=false,resetSaveData:bool=true):
