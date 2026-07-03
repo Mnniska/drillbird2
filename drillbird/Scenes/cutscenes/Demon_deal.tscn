@@ -1,7 +1,6 @@
-[gd_scene load_steps=61 format=3 uid="uid://pavkdcthm8ws"]
+[gd_scene load_steps=60 format=3 uid="uid://pavkdcthm8ws"]
 
 [ext_resource type="Script" uid="uid://d45ns0beee5y" path="res://Scenes/cutscenes/demon_deal.gd" id="1_k42kg"]
-[ext_resource type="Texture2D" uid="uid://hj8hotfteydg" path="res://Art/cutscenes/demons_deal/demon_deco.png" id="2_jrp17"]
 [ext_resource type="Texture2D" uid="uid://b3sophtwny0iv" path="res://Art/cutscenes/demons_deal/demon deal dialogue sprites/dialogue_demon_egg1.png" id="2_obutm"]
 [ext_resource type="Texture2D" uid="uid://bkwykhuoqlo4g" path="res://Art/cutscenes/demons_deal/demon deal dialogue sprites/dialogue_demon_egg2.png" id="3_csrp6"]
 [ext_resource type="Script" uid="uid://k3dtn10lqd2y" path="res://Scripts/UX and UI/button_hold.gd" id="3_geugr"]
@@ -407,9 +406,6 @@ sprite_frames = SubResource("SpriteFrames_jrp17")
 animation = &"stepup"
 autoplay = "neutral"
 frame_progress = 0.679011
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_jrp17")
 
 [node name="InteractButton_acceptDeal" type="Node2D" parent="."]
 z_index = 2

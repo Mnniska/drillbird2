@@ -252,6 +252,7 @@ text_direction = 1
 [node name="LightHandler" type="Node2D" parent="topUI"]
 position = Vector2(3.90244, 1)
 script = ExtResource("2_01nkd")
+time_TimerLength_Additionalbulb = 90
 time_DrillMultiplier = 3.0
 
 [node name="LightSliderParent" type="Node2D" parent="topUI/LightHandler"]

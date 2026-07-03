@@ -1,4 +1,4 @@
-[gd_scene load_steps=105 format=4 uid="uid://bccoqdt4pl042"]
+[gd_scene load_steps=109 format=4 uid="uid://bccoqdt4pl042"]
 
 [ext_resource type="TileSet" uid="uid://grpd2pyu7pgk" path="res://Resources/MainTileset.tres" id="1_ewpql"]
 [ext_resource type="Script" uid="uid://ddqrep1nrk25j" path="res://Scenes/Playable Scenes/OreSpawner.gd" id="2_4fr2f"]
@@ -60,8 +60,12 @@
 [ext_resource type="Texture2D" uid="uid://gixivpytn5wl" path="res://Art/UI/HUD/UI_LightBar_bulb.png" id="58_2epxp"]
 [ext_resource type="Script" uid="uid://c1prdu3y8gwht" path="res://Scripts/Tools/player_location_saver.gd" id="59_m4a0a"]
 [ext_resource type="PackedScene" uid="uid://pavkdcthm8ws" path="res://Scenes/cutscenes/Demon_deal.tscn" id="61_7p4f3"]
+[ext_resource type="Texture2D" uid="uid://b665b0usnnb10" path="res://Art/environment/cursed decorations/demon cave/demoncave_background.png" id="62_l20pv"]
 [ext_resource type="PackedScene" uid="uid://jyjdyb81qdfe" path="res://Scenes/cutscenes/reincarnation_cutscene.tscn" id="62_vhuqd"]
+[ext_resource type="Texture2D" uid="uid://cur5l3ht1u2rr" path="res://Art/environment/cursed decorations/demon cave/demoncave_forground.png" id="63_6gcm5"]
+[ext_resource type="PackedScene" uid="uid://dlxy45hfa3rdq" path="res://Scenes/Effects/slime_dropper.tscn" id="63_8ohpj"]
 [ext_resource type="Script" uid="uid://cg5f1k2sm50v" path="res://Scenes/Playable Scenes/ghost_manager.gd" id="63_vhuqd"]
+[ext_resource type="Texture2D" uid="uid://ddgtvxo5j4m4h" path="res://Art/environment/cursed decorations/demon cave/demoncave_op.png" id="64_wej47"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xeuju"]
 size = Vector2(647.5, 728)
@@ -1520,13 +1524,10 @@ position = Vector2(964, -82)
 position = Vector2(17, -74)
 demonCutscene = NodePath("../ReincarnationCutscene")
 
-[node name="Sprite2D" parent="Demon cave/Demon" index="1"]
-position = Vector2(3, -1)
-
-[node name="InteractButton_acceptDeal" parent="Demon cave/Demon" index="2"]
+[node name="InteractButton_acceptDeal" parent="Demon cave/Demon" index="1"]
 position = Vector2(-25, 6)
 
-[node name="dealAcceptanceArea" parent="Demon cave/Demon" index="3"]
+[node name="dealAcceptanceArea" parent="Demon cave/Demon" index="2"]
 position = Vector2(-29, 55)
 collision_layer = 0
 collision_mask = 16
@@ -1548,6 +1549,29 @@ position = Vector2(13, -75)
 
 [node name="CameraLerpDestination" parent="Demon cave/ReincarnationCutscene" index="1"]
 position = Vector2(16, 0)
+
+[node name="Demon Cave decorations" type="Node2D" parent="Demon cave"]
+
+[node name="background" type="Sprite2D" parent="Demon cave/Demon Cave decorations"]
+z_index = -2
+position = Vector2(-8, -82)
+texture = ExtResource("62_l20pv")
+
+[node name="forground" type="Sprite2D" parent="Demon cave/Demon Cave decorations"]
+z_index = 1
+position = Vector2(-8, -82)
+texture = ExtResource("63_6gcm5")
+
+[node name="ceiling" type="Sprite2D" parent="Demon cave/Demon Cave decorations"]
+z_index = 1
+position = Vector2(-8, -82)
+texture = ExtResource("64_wej47")
+
+[node name="Slime dropper" parent="Demon cave/Demon Cave decorations" instance=ExtResource("63_8ohpj")]
+position = Vector2(-46, -129)
+
+[node name="Slime dropper2" parent="Demon cave/Demon Cave decorations" instance=ExtResource("63_8ohpj")]
+position = Vector2(-100, -70)
 
 [node name="GhostManager" type="Node2D" parent="."]
 position = Vector2(-962, 2487)

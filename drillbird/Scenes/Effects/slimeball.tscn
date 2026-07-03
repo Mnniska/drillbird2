@@ -1,0 +1,75 @@
+[gd_scene load_steps=11 format=3 uid="uid://dhudfeyl6v51t"]
+
+[ext_resource type="Script" uid="uid://d4ndmeg85qlfy" path="res://Scripts/effects/slimeball.gd" id="1_r5ss0"]
+[ext_resource type="Texture2D" uid="uid://q6sj4w42oycs" path="res://Art/environment/cursed decorations/slime dropper/slimeball2.png" id="2_pjghk"]
+[ext_resource type="Texture2D" uid="uid://dsnmfkmnrptff" path="res://Art/environment/cursed decorations/slime dropper/slimeball3.png" id="3_kk7fe"]
+[ext_resource type="Texture2D" uid="uid://f6i2jqsmykex" path="res://Art/environment/cursed decorations/slime dropper/slimeball4.png" id="4_rx832"]
+[ext_resource type="Texture2D" uid="uid://csc6huwpf85yi" path="res://Art/environment/cursed decorations/slime dropper/slimeball5.png" id="5_erck7"]
+[ext_resource type="Texture2D" uid="uid://byicen1exw4rt" path="res://Art/environment/cursed decorations/slime dropper/slimeball6.png" id="6_lde2v"]
+[ext_resource type="Texture2D" uid="uid://p7eriw0eqno5" path="res://Art/environment/cursed decorations/slime dropper/slimeball8.png" id="7_2x0ce"]
+[ext_resource type="Texture2D" uid="uid://cu0nxkghy0lpq" path="res://Art/environment/cursed decorations/slime dropper/slimeball1.png" id="8_iev2s"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lto8t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_pjghk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_kk7fe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_rx832")
+}],
+"loop": false,
+"name": &"falling",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_erck7")
+}, {
+"duration": 2.0,
+"texture": ExtResource("6_lde2v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_2x0ce")
+}],
+"loop": false,
+"name": &"land",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_iev2s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_pjghk")
+}],
+"loop": false,
+"name": &"spawn",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r5ss0"]
+size = Vector2(6, 5)
+
+[node name="Slimeball" type="RigidBody2D"]
+collision_layer = 0
+gravity_scale = 0.2
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("1_r5ss0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_lto8t")
+animation = &"land"
+autoplay = "spawn"
+frame = 2
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4.5)
+shape = SubResource("RectangleShape2D_r5ss0")
+
+[connection signal="body_entered" from="." to="." method="_on_rigid_body_2d_body_entered"]

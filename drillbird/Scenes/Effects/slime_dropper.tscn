@@ -1,0 +1,110 @@
+[gd_scene load_steps=21 format=3 uid="uid://dlxy45hfa3rdq"]
+
+[ext_resource type="Script" uid="uid://bheawx6wufb0y" path="res://Scripts/effects/dropping_goo.gd" id="1_5w1dk"]
+[ext_resource type="Texture2D" uid="uid://dbm1ns31ojgdp" path="res://Art/environment/cursed decorations/slime dropper/slime_dropper7.png" id="3_b6qos"]
+[ext_resource type="Texture2D" uid="uid://dq4qj1raqa6np" path="res://Art/environment/cursed decorations/slime dropper/slime_dropper8.png" id="4_70khn"]
+[ext_resource type="Texture2D" uid="uid://c6w4eqyc4unlq" path="res://Art/environment/cursed decorations/slime dropper/slime_dropper9.png" id="5_gibab"]
+[ext_resource type="Texture2D" uid="uid://b5b6gxh7rufpp" path="res://Art/environment/cursed decorations/slime dropper/slime_dropper10.png" id="6_pqvg0"]
+[ext_resource type="Texture2D" uid="uid://cwd2vqfxnisrm" path="res://Art/environment/cursed decorations/slime dropper/slime_dropper11.png" id="7_ik3rt"]
+[ext_resource type="Texture2D" uid="uid://bptevrbuu03gp" path="res://Art/environment/cursed decorations/slime dropper/slime_dropper12.png" id="8_dhee1"]
+[ext_resource type="Texture2D" uid="uid://calhvna86bgt8" path="res://Art/environment/cursed decorations/slime dropper/slime_dropper13.png" id="9_6ne2h"]
+[ext_resource type="Texture2D" uid="uid://c7mojmq85ybd0" path="res://Art/environment/cursed decorations/slime dropper/slime_dropper14.png" id="10_lwvse"]
+[ext_resource type="Texture2D" uid="uid://cor4uao63gbba" path="res://Art/environment/cursed decorations/slime dropper/slime_dropper15.png" id="11_gki5r"]
+[ext_resource type="Texture2D" uid="uid://c0f1ox80f5863" path="res://Art/environment/cursed decorations/slime dropper/slime_dropper16.png" id="12_1778h"]
+[ext_resource type="Texture2D" uid="uid://d0rjncnf8fue5" path="res://Art/environment/cursed decorations/slime dropper/slime_dropper17.png" id="13_m1lhn"]
+[ext_resource type="Texture2D" uid="uid://dn854846p0uj2" path="res://Art/environment/cursed decorations/slime dropper/slime_dropper18.png" id="14_tfvmk"]
+[ext_resource type="Texture2D" uid="uid://dayt5q3jvb87p" path="res://Art/environment/cursed decorations/slime dropper/slime_dropper19.png" id="15_30tox"]
+[ext_resource type="Texture2D" uid="uid://dwj1yausg1gv" path="res://Art/environment/cursed decorations/slime dropper/slime_dropper1.png" id="16_8sjt4"]
+[ext_resource type="Texture2D" uid="uid://c76gvc1g1fx8p" path="res://Art/environment/cursed decorations/slime dropper/slime_dropper2.png" id="17_uv4pp"]
+[ext_resource type="Texture2D" uid="uid://bbvcbr8152x4h" path="res://Art/environment/cursed decorations/slime dropper/slime_dropper3.png" id="18_m4mfa"]
+[ext_resource type="Texture2D" uid="uid://da54htydibnv1" path="res://Art/environment/cursed decorations/slime dropper/slime_dropper4.png" id="19_441q7"]
+[ext_resource type="Texture2D" uid="uid://b6m6hcty8n4c6" path="res://Art/environment/cursed decorations/slime dropper/slime_dropper5.png" id="20_bdecf"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8k5kw"]
+animations = [{
+"frames": [{
+"duration": 0.5,
+"texture": ExtResource("3_b6qos")
+}, {
+"duration": 0.5,
+"texture": ExtResource("4_70khn")
+}, {
+"duration": 0.5,
+"texture": ExtResource("5_gibab")
+}, {
+"duration": 0.5,
+"texture": ExtResource("6_pqvg0")
+}, {
+"duration": 0.5,
+"texture": ExtResource("7_ik3rt")
+}, {
+"duration": 0.5,
+"texture": ExtResource("8_dhee1")
+}, {
+"duration": 0.5,
+"texture": ExtResource("9_6ne2h")
+}, {
+"duration": 0.5,
+"texture": ExtResource("10_lwvse")
+}, {
+"duration": 0.5,
+"texture": ExtResource("11_gki5r")
+}, {
+"duration": 0.5,
+"texture": ExtResource("12_1778h")
+}, {
+"duration": 0.5,
+"texture": ExtResource("13_m1lhn")
+}, {
+"duration": 0.5,
+"texture": ExtResource("14_tfvmk")
+}, {
+"duration": 0.5,
+"texture": ExtResource("15_30tox")
+}],
+"loop": false,
+"name": &"drop_drop",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 4.0,
+"texture": ExtResource("16_8sjt4")
+}, {
+"duration": 4.0,
+"texture": ExtResource("17_uv4pp")
+}, {
+"duration": 4.0,
+"texture": ExtResource("18_m4mfa")
+}, {
+"duration": 4.0,
+"texture": ExtResource("19_441q7")
+}, {
+"duration": 10.0,
+"texture": ExtResource("20_bdecf")
+}],
+"loop": false,
+"name": &"drop_prepare",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_8sjt4")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="Slime dropper" type="Node2D"]
+script = ExtResource("1_5w1dk")
+minTimeBeforeDrop = 4.0
+maxTimeBeforeDrop = 12.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 20)
+sprite_frames = SubResource("SpriteFrames_8k5kw")
+animation = &"drop_prepare"
+autoplay = "idle"
+
+[node name="slimeballSpawnPos" type="Node2D" parent="."]
+position = Vector2(-1, 13)
