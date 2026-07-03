@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=3 uid="uid://e3titjk1as46"]
+[gd_scene load_steps=106 format=3 uid="uid://e3titjk1as46"]
 
 [ext_resource type="Script" uid="uid://dgpttuofehi6x" path="res://Scripts/playermovement.gd" id="1_llgr2"]
 [ext_resource type="Texture2D" uid="uid://dqsglx1jll3rm" path="res://Art/effects/BirdyLightEffect1.png" id="2_65ywu"]
@@ -27,31 +27,64 @@
 [ext_resource type="Texture2D" uid="uid://b4oe7gr5h25gw" path="res://Art/characters/Drillbird/anim_Run1.png" id="9_aurpt"]
 [ext_resource type="Texture2D" uid="uid://bmfwcjvm3dwbc" path="res://Art/characters/Drillbird/anim_drill/anim_WalkingDrillSide4.png" id="9_tox0r"]
 [ext_resource type="Texture2D" uid="uid://cghvbkkjjm3i7" path="res://Art/characters/Drillbird/anim_Run2.png" id="10_1ey0x"]
-[ext_resource type="Texture2D" uid="uid://dhwtml1wxpbo1" path="res://Art/characters/Drillbird/player_get_up1.png" id="10_e20mu"]
-[ext_resource type="Texture2D" uid="uid://e38g4th4rtjl" path="res://Art/characters/Drillbird/player_get_up2.png" id="11_r433t"]
+[ext_resource type="Texture2D" uid="uid://dhwtml1wxpbo1" path="res://Art/characters/Drillbird/Sleep/player_get_up1.png" id="10_e20mu"]
+[ext_resource type="Texture2D" uid="uid://dc6xcavj5gw5u" path="res://Art/characters/Drillbird/Sleep/player_sleeping_cursed1.png" id="11_ketbw"]
+[ext_resource type="Texture2D" uid="uid://e38g4th4rtjl" path="res://Art/characters/Drillbird/Sleep/player_get_up2.png" id="11_r433t"]
 [ext_resource type="Texture2D" uid="uid://dweivlq7fn3n7" path="res://Art/characters/Drillbird/anim_drill/drilling_up1.png" id="11_rpkpv"]
 [ext_resource type="Texture2D" uid="uid://br6j25q4duhb6" path="res://Art/characters/Drillbird/anim_Run3.png" id="11_tqmmp"]
-[ext_resource type="Texture2D" uid="uid://dgi7xal2a2uh4" path="res://Art/characters/Drillbird/player_get_up3.png" id="12_1fq4g"]
+[ext_resource type="Texture2D" uid="uid://dgi7xal2a2uh4" path="res://Art/characters/Drillbird/Sleep/player_get_up3.png" id="12_1fq4g"]
+[ext_resource type="Texture2D" uid="uid://wfrinp117efn" path="res://Art/characters/Drillbird/Sleep/player_sleeping_cursed2.png" id="12_4grkl"]
 [ext_resource type="Texture2D" uid="uid://djl1lyu63ma4" path="res://Art/characters/Drillbird/anim_drill/drilling_up2.png" id="12_jhmal"]
 [ext_resource type="Texture2D" uid="uid://dcfyr4savlsgk" path="res://Art/characters/Drillbird/fall.png" id="12_mu8wo"]
 [ext_resource type="Texture2D" uid="uid://bne1hheyw13my" path="res://Art/characters/Drillbird/birdy_idle_up.png" id="13_5fdn4"]
+[ext_resource type="Texture2D" uid="uid://c7omgvttegt05" path="res://Art/characters/Drillbird/Sleep/player_sleeping_cursed3.png" id="13_6yrdb"]
 [ext_resource type="Texture2D" uid="uid://dufocv1m0ls2c" path="res://Art/characters/Drillbird/anim_Run5.png" id="13_bbiad"]
 [ext_resource type="Texture2D" uid="uid://b5y5oga8h7unq" path="res://Art/characters/Drillbird/anim_drill/drilling_up3.png" id="13_l6jly"]
 [ext_resource type="Texture2D" uid="uid://btw4mhm0vj4o0" path="res://Art/characters/Drillbird/anim_drill/drilling_up4.png" id="14_q53v3"]
+[ext_resource type="Texture2D" uid="uid://dfp5w14fekst3" path="res://Art/characters/Drillbird/Sleep/player_sleeping_cursed4.png" id="14_ue0p1"]
+[ext_resource type="Texture2D" uid="uid://coumh6wmf8ftg" path="res://Art/characters/Drillbird/Sleep/player_sleeping_cursed5.png" id="15_isbcs"]
 [ext_resource type="Texture2D" uid="uid://bf6xvwpcefybx" path="res://Art/characters/Drillbird/anim_drill/drilling_up5.png" id="15_j087g"]
 [ext_resource type="Texture2D" uid="uid://81n1lnktnc8q" path="res://Art/characters/Drillbird/jump.png" id="16_2l53o"]
+[ext_resource type="Texture2D" uid="uid://c0n5wvtuals0m" path="res://Art/characters/Drillbird/Sleep/player_sleeping_cursed6.png" id="16_142e3"]
 [ext_resource type="Texture2D" uid="uid://bcsxl1c2pss7d" path="res://Art/characters/Drillbird/anim_drill/drilling_up6.png" id="16_ex31u"]
+[ext_resource type="Texture2D" uid="uid://c5nqmlq55y3pa" path="res://Art/characters/Drillbird/Sleep/player_sleeping_cursed7.png" id="17_ts2c8"]
 [ext_resource type="Texture2D" uid="uid://b0w45mdcwkfkc" path="res://Art/characters/Drillbird/anim_drill/drilling_up7.png" id="17_x8kt8"]
 [ext_resource type="Texture2D" uid="uid://d0fswexrw2wu5" path="res://Art/characters/Drillbird/anim_drill/drilling_up8.png" id="18_a6x6k"]
+[ext_resource type="Texture2D" uid="uid://cjom8mmts5vk4" path="res://Art/characters/Drillbird/Sleep/player_sleeping_cursed8.png" id="18_hcgbs"]
+[ext_resource type="Texture2D" uid="uid://dkfjuipl5deg7" path="res://Art/characters/Drillbird/Sleep/player_sleeping_cursed9.png" id="19_mpfyg"]
+[ext_resource type="Texture2D" uid="uid://pw4v74co0usn" path="res://Art/characters/Drillbird/Sleep/player_sleeping_cursed10.png" id="20_un823"]
+[ext_resource type="Texture2D" uid="uid://doqi65qkekenv" path="res://Art/characters/Drillbird/Sleep/player_sleeping_cursed11.png" id="21_aclic"]
+[ext_resource type="Texture2D" uid="uid://ymgvbe473kqn" path="res://Art/characters/Drillbird/Sleep/player_sleeping_cursed14.png" id="22_0y64g"]
 [ext_resource type="Texture2D" uid="uid://bcgi21gdpsssy" path="res://Art/effects/sprite_jumpCrystal1.png" id="22_o05ot"]
 [ext_resource type="Texture2D" uid="uid://cttmuwrkyqgjq" path="res://Art/effects/sprite_jumpCrystal2.png" id="23_6w68x"]
 [ext_resource type="Texture2D" uid="uid://c4kbqht4juyov" path="res://Art/characters/Drillbird/anim_drill/drilling_down_fall.png" id="23_fmdch"]
+[ext_resource type="Texture2D" uid="uid://d2wh6n47sa4yq" path="res://Art/characters/Drillbird/Sleep/player_sleeping_cursed13.png" id="23_ramv3"]
 [ext_resource type="Texture2D" uid="uid://bdnsaxsutvhq8" path="res://Art/effects/sprite_jumpCrystal3.png" id="24_nofj5"]
 [ext_resource type="Texture2D" uid="uid://d1fxkvrdmxu4l" path="res://Art/effects/sprite_jumpCrystal4.png" id="25_ehp6o"]
+[ext_resource type="Texture2D" uid="uid://cino4k13k3srb" path="res://Art/characters/Drillbird/Sleep/player_sleeping_getup_cursed1.png" id="26_hseb1"]
+[ext_resource type="Texture2D" uid="uid://cunlpxrv0aqle" path="res://Art/characters/Drillbird/Sleep/player_sleeping_getup_cursed2.png" id="27_vinow"]
+[ext_resource type="Texture2D" uid="uid://cq8d0cxjca0fe" path="res://Art/characters/Drillbird/Sleep/player_sleeping_getup_cursed3.png" id="28_awsf5"]
+[ext_resource type="Texture2D" uid="uid://eodka874lm71" path="res://Art/characters/Drillbird/Sleep/player_sleeping_getup_cursed4.png" id="29_v84ne"]
+[ext_resource type="Texture2D" uid="uid://pp7vfvearu3q" path="res://Art/characters/Drillbird/Sleep/player_sleeping_getup_cursed5.png" id="30_4pcjl"]
+[ext_resource type="Texture2D" uid="uid://bc80dqml8h42x" path="res://Art/characters/Drillbird/Sleep/player_sleeping_getup_cursed6.png" id="31_3ath1"]
 [ext_resource type="Texture2D" uid="uid://bevem4o77nqs8" path="res://Art/characters/Drillbird/birdy_dropOres.png" id="31_ouow2"]
+[ext_resource type="Texture2D" uid="uid://bl0m48g0oi2jd" path="res://Art/characters/Drillbird/Sleep/player_sleeping_getup_cursed7.png" id="32_pgf6i"]
 [ext_resource type="Texture2D" uid="uid://5wrxmdf1hats" path="res://Art/characters/Drillbird/birdie_flowerFly.png" id="32_shida"]
+[ext_resource type="Texture2D" uid="uid://bk4h4nqd051c7" path="res://Art/characters/Drillbird/Sleep/player_sleeping_getup_cursed8.png" id="33_bvt37"]
+[ext_resource type="Texture2D" uid="uid://dktiearce7d1r" path="res://Art/characters/Drillbird/Sleep/player_sleeping_getup_cursed9.png" id="34_kt3hj"]
+[ext_resource type="Texture2D" uid="uid://cujcjbstg8rkx" path="res://Art/characters/Drillbird/Sleep/player_sleeping_getup_cursed10.png" id="35_2jrev"]
+[ext_resource type="Texture2D" uid="uid://y1ujdsbqsr2a" path="res://Art/characters/Drillbird/Sleep/player_sleeping_getup_cursed11.png" id="36_5j7nw"]
+[ext_resource type="Texture2D" uid="uid://cj8oynvit7a7d" path="res://Art/characters/Drillbird/Sleep/player_sleeping_getup_cursed12.png" id="37_mrkcr"]
+[ext_resource type="Texture2D" uid="uid://b1vf7kky6tavq" path="res://Art/characters/Drillbird/Sleep/player_sleeping_getup_cursed13.png" id="38_78kn1"]
 [ext_resource type="Theme" uid="uid://bfr5y4lo7m1ux" path="res://Resources/Fonts/fontTheme.tres" id="38_sekb7"]
+[ext_resource type="Texture2D" uid="uid://vo5dj8r724s4" path="res://Art/characters/Drillbird/Sleep/player_sleeping_getup_cursed14.png" id="39_nwtn4"]
+[ext_resource type="Texture2D" uid="uid://chh3wmjg5eifu" path="res://Art/characters/Drillbird/Sleep/player_sleeping_getup_cursed15.png" id="40_hl8o5"]
+[ext_resource type="Texture2D" uid="uid://ddbp68kgejjdw" path="res://Art/characters/Drillbird/Sleep/player_sleeping_getup_cursed16.png" id="41_v8gx6"]
 [ext_resource type="Texture2D" uid="uid://bd5m5ms4ce8w0" path="res://Art/characters/Drillbird/jump_spikebounce.png" id="42_57lvd"]
+[ext_resource type="Texture2D" uid="uid://dytqecpkawapu" path="res://Art/characters/Drillbird/Sleep/player_sleeping_getup_cursed17.png" id="42_vlr8u"]
+[ext_resource type="Texture2D" uid="uid://oinvdrxfhoqd" path="res://Art/characters/Drillbird/Sleep/player_sleeping_getup_cursed18.png" id="43_fip0x"]
+[ext_resource type="Texture2D" uid="uid://0yrcyrshcl5r" path="res://Art/characters/Drillbird/Sleep/player_sleeping_getup_cursed19.png" id="44_4tc2f"]
+[ext_resource type="Texture2D" uid="uid://cqjtjfmvqsxqt" path="res://Art/characters/Drillbird/Sleep/player_sleeping_getup_cursed20.png" id="45_u5w1p"]
 [ext_resource type="Texture2D" uid="uid://b2w6djhyvdnru" path="res://Art/characters/Drillbird/birdy_sing_fly.png" id="48_vq3lt"]
 [ext_resource type="Texture2D" uid="uid://c6eyhxxyuul2g" path="res://Art/characters/Drillbird/birdy_sing_stand.png" id="49_pukcj"]
 
@@ -135,6 +168,53 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
+"duration": 5.0,
+"texture": ExtResource("11_ketbw")
+}, {
+"duration": 0.5,
+"texture": ExtResource("12_4grkl")
+}, {
+"duration": 0.5,
+"texture": ExtResource("13_6yrdb")
+}, {
+"duration": 0.5,
+"texture": ExtResource("14_ue0p1")
+}, {
+"duration": 0.5,
+"texture": ExtResource("15_isbcs")
+}, {
+"duration": 0.5,
+"texture": ExtResource("16_142e3")
+}, {
+"duration": 0.5,
+"texture": ExtResource("17_ts2c8")
+}, {
+"duration": 0.5,
+"texture": ExtResource("18_hcgbs")
+}, {
+"duration": 0.5,
+"texture": ExtResource("19_mpfyg")
+}, {
+"duration": 0.5,
+"texture": ExtResource("20_un823")
+}, {
+"duration": 8.0,
+"texture": ExtResource("21_aclic")
+}, {
+"duration": 0.5,
+"texture": ExtResource("22_0y64g")
+}, {
+"duration": 10.0,
+"texture": ExtResource("23_ramv3")
+}, {
+"duration": 0.5,
+"texture": ExtResource("22_0y64g")
+}],
+"loop": true,
+"name": &"dazed_cursed",
+"speed": 5.0
+}, {
+"frames": [{
 "duration": 1.5,
 "texture": ExtResource("10_e20mu")
 }, {
@@ -153,6 +233,71 @@ animations = [{
 "loop": false,
 "name": &"dazed_get_up",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 2.0,
+"texture": ExtResource("26_hseb1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_vinow")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_awsf5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_v84ne")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_4pcjl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_3ath1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_pgf6i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_bvt37")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_kt3hj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_2jrev")
+}, {
+"duration": 2.0,
+"texture": ExtResource("36_5j7nw")
+}, {
+"duration": 4.0,
+"texture": ExtResource("37_mrkcr")
+}, {
+"duration": 4.0,
+"texture": ExtResource("38_78kn1")
+}, {
+"duration": 4.0,
+"texture": ExtResource("39_nwtn4")
+}, {
+"duration": 4.0,
+"texture": ExtResource("40_hl8o5")
+}, {
+"duration": 10.0,
+"texture": ExtResource("41_v8gx6")
+}, {
+"duration": 10.0,
+"texture": ExtResource("42_vlr8u")
+}, {
+"duration": 10.0,
+"texture": ExtResource("43_fip0x")
+}, {
+"duration": 10.0,
+"texture": ExtResource("44_4tc2f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_u5w1p")
+}],
+"loop": false,
+"name": &"dazed_get_up_cursed",
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -453,7 +598,7 @@ process_material = SubResource("ParticleProcessMaterial_s5mli")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 2
 sprite_frames = SubResource("SpriteFrames_3vbtj")
-animation = &"sing_stand"
+animation = &"dazed_get_up_cursed"
 autoplay = "idle"
 
 [node name="jumpCrystal1" type="AnimatedSprite2D" parent="AnimatedSprite2D"]

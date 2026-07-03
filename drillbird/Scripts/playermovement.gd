@@ -88,6 +88,8 @@ var closeFlowers:Array[climb_flower]
 @onready var healthManager=HUD.HUD_healthManager
 @onready var ObjectSpawner:object_spawner=$"../ObjectSpawner"
 
+var isCursedMode:bool=false
+
 func _ready() -> void:
 	
 	
@@ -100,6 +102,8 @@ func _ready() -> void:
 	UpdateCollisions(collisionstates.grounded)
 	
 	GlobalVariables.PlayerController=self
+	
+	isCursedMode=GlobalVariables.CursedMode #double check this is set correctly
 	
 	await GlobalVariables.SetupComplete
 	var test=GlobalVariables.MainSceneReferenceConnector.ref_playerTeleportLocations
@@ -133,8 +137,6 @@ func UpdateCollisions(_state:collisionstates):
 			collider_grounded.disabled=true
 
 func _physics_process(delta: float) -> void:
-
-
 
 	if Input.is_action_just_pressed("debug_1"):
 		if GlobalVariables.DebugEnabled:
@@ -358,9 +360,11 @@ func DazedMovement(delta:float,currentAnim:String):
 			GetUp()
 
 	if isgettingup:
-		return "dazed_get_up"	
+		if isCursedMode: return "dazed_get_up_cursed"
+		else: return "dazed_get_up"	
 	else:
-		return "dazed"
+		if isCursedMode: return "dazed_cursed"
+		else: return "dazed"
 
 func StopWalkSound():
 	pass
@@ -368,7 +372,11 @@ func StopWalkSound():
 func GetUp():
 	if !isgettingup:
 		isgettingup=true
-		await get_tree().create_timer(4).timeout
+		
+		var timeToWait:float=4
+		if isCursedMode: timeToWait=6.9
+		
+		await get_tree().create_timer(timeToWait).timeout
 		state=States.IDLE
 		SoundManager.PlaySoundAtLocation(global_position,abstract_SoundEffectSetting.SoundEffectEnum.PLAYER_WAKEUP)
 		isgettingup=false

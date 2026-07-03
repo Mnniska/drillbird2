@@ -173,6 +173,7 @@ animations = [{
 radius = 7.071068
 
 [node name="Ghast" type="CharacterBody2D"]
+z_index = 1
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_o5qkd")
