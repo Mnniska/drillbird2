@@ -1,4 +1,4 @@
-[gd_scene load_steps=104 format=4 uid="uid://bccoqdt4pl042"]
+[gd_scene load_steps=105 format=4 uid="uid://bccoqdt4pl042"]
 
 [ext_resource type="TileSet" uid="uid://grpd2pyu7pgk" path="res://Resources/MainTileset.tres" id="1_ewpql"]
 [ext_resource type="Script" uid="uid://ddqrep1nrk25j" path="res://Scenes/Playable Scenes/OreSpawner.gd" id="2_4fr2f"]
@@ -159,6 +159,9 @@ size = Vector2(2257, 979)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mstut"]
 radius = 784.23
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8lf0q"]
+radius = 223.05605
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1iuvu"]
 size = Vector2(714.375, 341.75)
@@ -1432,6 +1435,15 @@ range = 200
 position = Vector2(-341, -32)
 shape = SubResource("CircleShape2D_mstut")
 
+[node name="DemonCaveTorch" parent="WorldScripts" instance=ExtResource("55_lcofy")]
+visible = false
+position = Vector2(993, -150)
+range = 200
+
+[node name="CollisionShape2D" parent="WorldScripts/DemonCaveTorch/Area2D" index="0"]
+position = Vector2(13, 9)
+shape = SubResource("CircleShape2D_8lf0q")
+
 [node name="CameraLimiter" parent="WorldScripts" instance=ExtResource("56_h3y7k")]
 position = Vector2(-1154, 361)
 limit_top = true
@@ -1605,6 +1617,7 @@ shape = SubResource("RectangleShape2D_6gcm5")
 [editable path="WorldScripts/AmbiencePlayers/AmbienceNode_cave2"]
 [editable path="WorldScripts/AmbiencePlayers/AmbienceNode_graveyard"]
 [editable path="WorldScripts/TutorialTorch"]
+[editable path="WorldScripts/DemonCaveTorch"]
 [editable path="WorldScripts/CameraLimiter"]
 [editable path="WorldScripts/CameraLimiter/PlayerTeleporter"]
 [editable path="WorldScripts/CameraLimiter_hub"]

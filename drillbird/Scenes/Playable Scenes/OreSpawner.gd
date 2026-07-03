@@ -5,6 +5,8 @@ class_name ore_manager
 signal signal_heartSpawned(heart:Node2D)
 signal signal_soulSpawned(soul:Node2D)
 
+func GetOreRegions():
+	return $OreRegions
 
 func TrySpawnOreFromEnvironment(location:Vector2i):
 	

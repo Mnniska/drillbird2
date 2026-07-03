@@ -2,7 +2,7 @@ extends Node2D
 @export var menu:Array[abstract_debugMenuOption]
 var currentMenu:Array[abstract_debugMenuOption]
 @onready var textshown = $RichTextLabel
-@onready var OreRegions=$"../WorldSpawn/TilemapOres/OreRegions"
+var OreRegions
 var textstring:String=""
 var currentSelection:int=0
 var Active:bool=false
@@ -25,7 +25,9 @@ var debugUnlockTimeourCounter:float=0
 func _ready() -> void:
 	currentMenu=menu
 	debugAvailable = GlobalVariables.DebugEnabled
-		
+	
+	await GlobalVariables.SetupComplete
+	OreRegions= GlobalVariables.MainSceneReferenceConnector.ref_oreTilemap.GetOreRegions()
 	pass # Replace with function body.
 
 func SelectionLogic():
