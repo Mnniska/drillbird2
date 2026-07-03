@@ -1,8 +1,8 @@
 extends Node2D
 
 #BUTTONS
-@onready var SellButton= $InteractButton_depositOres
-@onready var RestButton:button_hold = $InteractButton_EndDay
+@onready var SellButton= $ButtonHolder/InteractButton_depositOres
+@onready var RestButton:button_hold = $ButtonHolder/InteractButton_EndDay
 @onready var HatchEggButton:button_hold = $InteractButton_HatchEgg
 
 @onready var inventory = HUD.HUD_InventoryManager
@@ -175,6 +175,7 @@ func FinalHeartPlaced(amount:int):
 func OreFinishedSelling(amount:int):
 	oresBeingSold-=1
 	EggHandler.UpdateSize(EggHandler.oldXP+amount)
+	$ButtonHolder.UpdateButtonPosition(EggHandler.GetProgressTowardsHatching())
 	
 	if oresBeingSold<=0:
 		await get_tree().create_timer(1).timeout
