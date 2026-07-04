@@ -66,7 +66,7 @@ alpha_curve = SubResource("CurveTexture_7oyuw")
 radius = 7.071068
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kuoiw"]
-radius = 22.022715
+radius = 25.019993
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bjs6x"]
 animations = [{

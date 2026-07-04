@@ -104,10 +104,11 @@ position = Vector2(0, 17)
 
 [node name="Ghost path" type="Line2D" parent="."]
 visible = false
-points = PackedVector2Array(17, -14, 0, -20, -16, -14, -22, 0, -20, 16, 0, 24, 19, 16, 24, 0)
+points = PackedVector2Array(38, -35, 0, -52, -37, -36, -54, 0, -41, 39, 0, 56, 39, 41, 55, 0)
 closed = true
 width = 2.0
 
 [connection signal="body_shape_entered" from="Collider" to="." method="_on_collider_body_shape_entered"]
 [connection signal="body_shape_exited" from="Collider" to="." method="_on_collider_body_shape_exited"]
+[connection signal="BlockBeingDrilled" from="Observer" to="." method="_on_observer_block_being_drilled"]
 [connection signal="BlockDestroyed" from="Observer" to="." method="_on_observer_block_destroyed"]

@@ -132,3 +132,11 @@ func _on_observer_block_destroyed() -> void:
 	TurnEnemyOff(true)
 	
 	pass # Replace with function body.
+
+
+func _on_observer_block_being_drilled(drilled: bool) -> void:
+	if spawnedGhast!=null:
+		spawnedGhast.TombstonebeingDrilled()
+	
+	
+	pass # Replace with function body.

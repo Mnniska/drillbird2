@@ -130,6 +130,9 @@ func LostTarget():
 	
 	pass
 
+func TombstonebeingDrilled():
+	TargetLocationGlobal=parentTombstone.global_position
+
 func NewTarget(body:Node2D):
 	
 	if global_position.distance_to(parentTombstone.global_position)>=PERSUIT_LENGTH:

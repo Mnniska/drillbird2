@@ -1,6 +1,7 @@
 extends Node2D
 class_name observerScript
 signal BlockDestroyed
+signal BlockBeingDrilled(drilled:bool)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -11,6 +12,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
+func SetBlockDrilled(isDrilled:bool):
+	BlockBeingDrilled.emit(isDrilled)
 
 func ObservedBlockDestroyed():
 	BlockDestroyed.emit()

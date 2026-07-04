@@ -94,7 +94,7 @@ func NewTarget(drill_position:Vector2i):
 			
 			if n.terrainIdentifier==affectedTile.terrain:
 				MaterialChanged.emit(n) #emit signal that the player is drilling new mat
-		
+				CheckObservers(cellLocation,observerCalls.digging_start)
 		var tilehealth=0
 		#<0 indicates player is drilling a solid tile
 		if GetHealthForTerrain(affectedTile.terrain)>0:
@@ -202,7 +202,7 @@ func DestroyTile(position_in_grid:Vector2i,playEffect:bool,allowSolidDestruction
 	OreSpawner.TrySpawnOreFromEnvironment(position_in_grid)
 
 	destroyed_tiles.append(position_in_grid)
-	CheckObservers(position_in_grid)
+	CheckObservers(position_in_grid,observerCalls.destroyed)
 	GlobalVariables.TileDestroyed.emit(position_in_grid,tilemap)
 	return true
 
@@ -266,8 +266,8 @@ func SpawnDestroyEffect(position:Vector2i,terrain:abstract_terrain_info,bits:int
 
 
 
-
-func CheckObservers(location:Vector2i):
+enum observerCalls{destroyed,digging_start,digging_end}
+func CheckObservers(location:Vector2i,call:observerCalls):
 	var pos=to_local(tilemap.map_to_local(location))
 	ObserverRaycast.position=pos
 	ObserverRaycast.force_raycast_update()
@@ -282,5 +282,11 @@ func CheckObservers(location:Vector2i):
 #after all is done, remove the objects from ray's exception.
 	for obj in objects_collide:
 		ObserverRaycast.remove_exception( obj )
-		obj.ObservedBlockDestroyed()
+		
+		if call==observerCalls.destroyed:
+			obj.ObservedBlockDestroyed()
+		elif call==observerCalls.digging_start:
+			obj.SetBlockDrilled(true)
+		elif call==observerCalls.digging_end:
+			obj.SetBlockDrilled(false)
 		#Maybe delete the observer? Or do we need it more? 

@@ -12,7 +12,12 @@ var lightBulbArray:Array[Sprite2D]
 @export var time_TimerLength_Additionalbulb:int=60
 @export var time_DrillMultiplier:float=2
 #todo: Figure out if this is how you wanna do time
-var time_Countdown:float
+var time_Countdown:float:
+	get:return time_Countdown
+	set(value): 
+		time_Countdown=value
+		if value <=0:
+			print_debug("oh dear")
 var darknessClose:bool=false
 var maxSize:int=75
 var minSize:int=1
@@ -148,9 +153,10 @@ func GetNextLightbulb():
 	for n in lightBulbArray:
 		if n.active:
 			n.SetActive(false)
-			time_Countdown=GetCurrentlyActiveLightbulbDuration()
 			foundBulb=true
 			break
+	
+	time_Countdown=GetCurrentlyActiveLightbulbDuration()
 	
 	for n in lightBulbArray:
 		if n.active:
