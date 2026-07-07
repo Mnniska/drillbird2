@@ -128,7 +128,6 @@ func SaveGame(showgamesavedtext:bool=true):
 	if GlobalVariables.currentDay>1 and showgamesavedtext:
 		Savetext.Activate(GlobalVariables.currentDay)
 	
-	pass
 
 func SaveLeftoverOres():
 	var a = OreSpawner.GetLeftoverOres()

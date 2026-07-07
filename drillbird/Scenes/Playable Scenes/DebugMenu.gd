@@ -206,7 +206,9 @@ func ExecuteAction(action:String):
 			GlobalVariables.SetPlayerUpgradeLevel(lightE,upgrade)
 			
 		"save_game":
+			GlobalVariables.currentDay+=1
 			$"../..".SaveGame()
+
 		"reset_save_data":
 			$"../..".ResetSaveData()
 		

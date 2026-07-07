@@ -28,6 +28,7 @@ func _ready() -> void:
 
 func UpdateDialogue():
 	
+	
 	var dialogueToPlay:Array[abs_dialogue_line]
 	
 	if GlobalVariables.currentDay <= GlobalVariables.daysBeforeDemonKillsEgg: #if saint isn't dead yet
