@@ -1,4 +1,4 @@
-[gd_scene load_steps=136 format=4 uid="uid://boh3yjorqn4xa"]
+[gd_scene load_steps=135 format=4 uid="uid://boh3yjorqn4xa"]
 
 [ext_resource type="TileSet" uid="uid://grpd2pyu7pgk" path="res://Resources/MainTileset.tres" id="1_4c1b3"]
 [ext_resource type="Script" uid="uid://cfd6ggts8pqma" path="res://Scripts/Level Generation/tilemap_environment.gd" id="2_27on7"]
@@ -41,9 +41,8 @@
 [ext_resource type="PackedScene" uid="uid://bgtl1cgl35wcl" path="res://Scenes/Objects and Enemies/tutorial_message.tscn" id="46_frxdj"]
 [ext_resource type="Texture2D" uid="uid://chdi1d0vsqy66" path="res://Art/environment/UniqueAssets/flowerCaveCarving.png" id="47_2vwp1"]
 [ext_resource type="Script" uid="uid://c8r71eyb8t58b" path="res://Scripts/demon_manager.gd" id="47_deunn"]
-[ext_resource type="Texture2D" uid="uid://dmhsiyk6uty6d" path="res://Art/UI/speechTail_side.png" id="48_1phw1"]
 [ext_resource type="Texture2D" uid="uid://c0rj8keueqylg" path="res://Art/environment/cursed decorations/saint cave/goosource.png" id="48_116rv"]
-[ext_resource type="Script" uid="uid://4hm6lnw7f8f1" path="res://Scripts/cutscenes/saintcave_goo.gd" id="48_i6y5g"]
+[ext_resource type="Script" path="res://Scripts/cutscenes/saintcave_goo.gd" id="48_i6y5g"]
 [ext_resource type="PackedScene" uid="uid://dk8bw20ua5emk" path="res://Scenes/Tools/ambience_node.tscn" id="48_os30j"]
 [ext_resource type="PackedScene" uid="uid://dlxy45hfa3rdq" path="res://Scenes/Effects/slime_dropper.tscn" id="49_i6y5g"]
 [ext_resource type="AudioStream" uid="uid://cygmw124vctks" path="res://Audio/Ambience/ambience_surface.mp3" id="49_mabke"]
@@ -53,7 +52,7 @@
 [ext_resource type="AudioStream" uid="uid://dthita0bprf8s" path="res://Audio/Ambience/ambience_caves_3.mp3" id="51_qn05c"]
 [ext_resource type="Texture2D" uid="uid://gvyge5bgrlci" path="res://Art/environment/cursed decorations/saint cave/gooprogress_3.png" id="52_7fw44"]
 [ext_resource type="Texture2D" uid="uid://m0m20befxja8" path="res://Art/environment/cursed decorations/saint cave/gooprogress_4.png" id="53_1phw1"]
-[ext_resource type="PackedScene" uid="uid://d40eeljl4myo" path="res://Scenes/Tools/sound_modifier_zone.tscn" id="53_07mf6"]
+[ext_resource type="PackedScene" path="res://Scenes/Tools/sound_modifier_zone.tscn" id="53_07mf6"]
 [ext_resource type="AudioStream" uid="uid://dmvpadlkjti3i" path="res://Audio/Ambience/ambience_caves_1.mp3" id="53_im7r6"]
 [ext_resource type="Texture2D" uid="uid://tnnri161scpy" path="res://Art/environment/cursed decorations/saint cave/gooprogress_5.png" id="54_amln7"]
 [ext_resource type="AudioStream" uid="uid://4ftagi7vl8ky" path="res://Audio/Ambience/Drillbird_Mausoleum_Simbelmynë.mp3" id="54_runf8"]
@@ -1330,30 +1329,21 @@ dialogueWhenEggReady = Array[ExtResource("43_wpyq2")]([SubResource("Resource_vgx
 greetingLineAfterFirstIntroduction = Array[ExtResource("43_wpyq2")]([SubResource("Resource_7fw44")])
 soulOre = ExtResource("42_deunn")
 
-[node name="SaintDialoguePlayer" parent="WorldScripts/SaintTech" node_paths=PackedStringArray("animatorToAnimate") instance=ExtResource("41_ek4iq")]
-position = Vector2(-29, -5)
+[node name="Dialogue" parent="WorldScripts/SaintTech" node_paths=PackedStringArray("animatorToAnimate") instance=ExtResource("41_ek4iq")]
+position = Vector2(23, 7)
 animatorToAnimate = NodePath("../saint")
 
-[node name="VBoxContainer" parent="WorldScripts/SaintTech/SaintDialoguePlayer" index="0"]
-offset_right = 81.0
+[node name="TextureRect" parent="WorldScripts/SaintTech/Dialogue" index="1"]
+scale = Vector2(-1, 1)
 
-[node name="text" parent="WorldScripts/SaintTech/SaintDialoguePlayer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer" index="0"]
-custom_minimum_size = Vector2(91.535, 0)
-text = "hellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohello"
+[node name="playerCollider" parent="WorldScripts/SaintTech/Dialogue" index="2"]
+position = Vector2(20, 42)
 
-[node name="TextureRect" parent="WorldScripts/SaintTech/SaintDialoguePlayer" index="1"]
-offset_left = 24.0
-offset_top = -78.0
-offset_right = 66.0
-offset_bottom = -58.0
-texture = ExtResource("48_1phw1")
-stretch_mode = 2
-
-[node name="playerCollider" parent="WorldScripts/SaintTech/SaintDialoguePlayer" index="2"]
-position = Vector2(0, 23)
+[node name="CollisionShape2D" parent="WorldScripts/SaintTech/Dialogue/playerCollider" index="0"]
+position = Vector2(-44.5, -16.5)
 
 [node name="oreSpawnLocation" type="Node2D" parent="WorldScripts/SaintTech"]
-position = Vector2(0, 12)
+position = Vector2(-1, 33)
 
 [node name="Goo deco" type="Node2D" parent="WorldScripts/SaintTech"]
 script = ExtResource("48_i6y5g")
@@ -1381,9 +1371,10 @@ collision_mask = 16
 shape = SubResource("RectangleShape2D_i6y5g")
 
 [node name="saint" type="AnimatedSprite2D" parent="WorldScripts/SaintTech"]
-position = Vector2(0, -28)
+position = Vector2(-19, 9)
+scale = Vector2(-1, 1)
 sprite_frames = SubResource("SpriteFrames_1phw1")
-animation = &"null"
+animation = &"neutral"
 autoplay = "null"
 
 [node name="AudioReverbAreas" type="Node2D" parent="WorldScripts"]
@@ -1440,7 +1431,7 @@ position = Vector2(895, 2375)
 texture = ExtResource("58_b5rgw")
 
 [node name="Spawnpos_bottom" type="Sprite2D" parent="PlayerSpawnLocations"]
-position = Vector2(-902, 2608)
+position = Vector2(-195, 3695)
 texture = ExtResource("58_b5rgw")
 
 [node name="placeholder_saint" type="Node2D" parent="."]
@@ -1484,13 +1475,13 @@ position = Vector2(18.25, -14)
 shape = SubResource("RectangleShape2D_fbqey")
 
 [node name="DemonManager" type="Node2D" parent="."]
+visible = false
 position = Vector2(-962, 2487)
 script = ExtResource("47_deunn")
 heartOreReference = ExtResource("42_deunn")
 
 [node name="HeartsRightfulPlaceArea" type="Area2D" parent="DemonManager"]
-visible = false
-position = Vector2(234, 1371)
+position = Vector2(105, 1391)
 collision_layer = 0
 collision_mask = 4
 
@@ -1582,7 +1573,7 @@ position = Vector2(22, -448)
 [editable path="WorldScripts/CameraLimiter3"]
 [editable path="WorldScripts/PlayerTeleporter"]
 [editable path="WorldScripts/CameraLimiter2"]
-[editable path="WorldScripts/SaintTech/SaintDialoguePlayer"]
+[editable path="WorldScripts/SaintTech/Dialogue"]
 [editable path="WorldScripts/AudioReverbAreas/SoundModifierZone"]
 [editable path="WorldScripts/AudioReverbAreas/SoundModifierZone2"]
 [editable path="WorldScripts/AudioReverbAreas/SoundModifierZone3"]

@@ -12,7 +12,7 @@ extends Node2D
 
 @export var soulOre:abstract_ore
 
-@onready var dialoguePlayer=$SaintDialoguePlayer
+@onready var dialoguePlayer=$Dialogue
 
 var hasGreetedPlayer:bool=false
 enum saintStates{saint_dead,saint_alive_egg_not_ready,saint_alive_egg_ready}
@@ -43,7 +43,10 @@ func UpdateDialogue():
 			#enum eggStates{NOTHING,GROWING,FINALFORM_NO_HEART,FINALFORM_HEART,FINALCUTSCENE}
 
 		#If egg is ready 
-		if GlobalVariables.eggState==2:
+		#TODO: Handle if player has given egg the heart lol
+		#For now it just continues as normal
+		#Should prolly be possible to replace heart w saint ore?
+		if GlobalVariables.eggState==2 or GlobalVariables.eggState==3:
 			saintState=saintStates.saint_alive_egg_ready
 			for line in dialogueWhenEggReady:
 				dialogueToPlay.append(line)
