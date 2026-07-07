@@ -133,9 +133,10 @@ func SetEggState(_state:eggStates):
 			
 	GlobalVariables.eggState=eggState
 
-func TransitionToFinalFormWithHeart():
+func TransitionToFinalFormWithHeart(isSoul:bool=false):
 	SetEggState(eggStates.FINALFORM_HEART)	
 	finalFormEgg.RecieveHeartCutscene()
+	finalFormEgg.ReceiveSoulCutscene()
 
 
 

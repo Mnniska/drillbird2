@@ -121,8 +121,10 @@ func SellOre(_ore:Node2D):
 	if oreType.ID==10:
 		HeartEnteredCollider(_ore)
 		return
-		pass
 	
+	if oreType.ID==11:
+		#If SOUL enters the collider
+		HeartEnteredCollider(_ore,true)
 	
 	
 	oresBeingSold+=1	
@@ -135,7 +137,7 @@ func SellOre(_ore:Node2D):
 	_ore.queue_free()
 	state=states.SELLING
 
-func HeartEnteredCollider(_heart:Node2D):
+func HeartEnteredCollider(_heart:Node2D,_isSoul:bool=false):
 	
 	if EggHandler.eggState==EggHandler.eggStates.FINALFORM_NO_HEART:
 		
@@ -145,12 +147,15 @@ func HeartEnteredCollider(_heart:Node2D):
 		visualizer.global_position=_heart.global_position
 		visualizer.Setup(_heart.GetOre(), $Eggs/Egg_FinalForm.GetFinalHeartPosition(),1)
 		visualizer.isFinalHeart=true
-		visualizer.finishedSelling.connect(FinalHeartPlaced)
+		if _isSoul:
+			visualizer.finishedSelling.connect(FinalSoulPlaced)
+		else:
+			visualizer.finishedSelling.connect(FinalHeartPlaced)
+
 		
 		_heart.queue_free()
 
 	
-		print_debug("Got the heart and I was WAITING FOR IT")
 	
 	if EggHandler.eggState==EggHandler.eggStates.GROWING:
 		var node:text_bubble=TextBubble.instantiate()
@@ -164,6 +169,11 @@ func HeartEnteredCollider(_heart:Node2D):
 		push_error("Error occured in HomeScript - have transitioned into FInalFormHeart but there is an additional heart")
 	
 	pass
+
+func FinalSoulPlaced():
+	EggHandler.TransitionToFinalFormWithHeart(true)
+	state=states.IDLE
+	CheckState()
 
 func FinalHeartPlaced(amount:int):
 	EggHandler.TransitionToFinalFormWithHeart()

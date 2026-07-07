@@ -324,6 +324,11 @@ animations = [{
 "name": &"final_form_idle",
 "speed": 5.0
 }, {
+"frames": [],
+"loop": true,
+"name": &"final_form_with_SOUL_idle",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 8.0,
 "texture": ExtResource("37_7hxtm")
@@ -873,15 +878,16 @@ animation = &"hatch"
 z_index = 1
 position = Vector2(-2, -40)
 sprite_frames = SubResource("SpriteFrames_dcmve")
-animation = &"hatch"
+animation = &"final_form_idle"
 autoplay = "final_form_with_heart_idle"
+frame_progress = 0.546025
 
 [node name="AnimatedSprite2D_cursed" type="AnimatedSprite2D" parent="."]
 z_index = 1
 material = SubResource("ShaderMaterial_4l23s")
 position = Vector2(-2, -40)
 sprite_frames = SubResource("SpriteFrames_q5a4i")
-animation = &"go_to_final_form"
+animation = &"final_form_with_SOUL_idle"
 autoplay = "final_form_with_heart_idle"
 
 [node name="FinalHeartPosition" type="Node2D" parent="."]

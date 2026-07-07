@@ -174,6 +174,12 @@ func TransitionToFinalForm():
 	
 	pass
 
+func ReceiveSoulCutscene():
+	finalFormState=finalFormStates.FINAL_HEART
+	GetAnimator().animation="final_form_with_SOUL_idle"
+	GetAnimator().play()
+	pass
+
 func RecieveHeartCutscene():
 	finalFormState=finalFormStates.FINAL_HEART
 	GetAnimator().animation="final_form_with_heart_idle"
