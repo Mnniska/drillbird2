@@ -10,6 +10,7 @@ class_name abstract_savegame
 #Key variables needed to save game
 @export var currentDay:int=1
 @export var eggState:int=0 
+@export var cursed_hasGivenSoulToEgg:bool=false
 
 @export var playerSpawnPosition:Vector2=Vector2(0,0)
 @export var health:int=2

@@ -95,7 +95,7 @@ func SaveGame(showgamesavedtext:bool=true):
 	#Saves the time the game was last saved. used for warning users b4 discarding savedata
 	PlayerData.timeLastSaved = Time.get_unix_time_from_system() #captures the initial unix time
 	GlobalVariables.timeLastSaved=PlayerData.timeLastSaved
-	
+	PlayerData.cursed_hasGivenSoulToEgg=GlobalVariables.playerHasGivenSoulToEgg
 	
 	PlayerData.upgrade_drill=GlobalVariables.upgradeLevel_drill
 	PlayerData.upgrade_health=GlobalVariables.upgradeLevel_health
@@ -237,6 +237,7 @@ func LoadGame(worldToLoad:int=-1):
 	GlobalVariables.CursedMode=PlayerData.isInCursedMode
 
 
+
 	worldSpawner.SpawnWorld(PlayerData.worldToSpawn)
 	SetupWorldReferences()
 	
@@ -265,6 +266,7 @@ func LoadGame(worldToLoad:int=-1):
 	
 func SetGlobalVariablesToLoadedGame():
 	
+	GlobalVariables.playerHasGivenSoulToEgg = PlayerData.cursed_hasGivenSoulToEgg
 	GlobalVariables.totalOres=PlayerData.totalOres
 	GlobalVariables.oresFound=PlayerData.oresFound
 	GlobalVariables.upgradeLevel_light=PlayerData.upgrade_light

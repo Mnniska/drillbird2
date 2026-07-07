@@ -60,14 +60,15 @@ var playerIsReverbing:bool=false:
 		playerIsReverbing=value 
 		signal_playerIsReverbingChanged.emit(playerIsReverbing)
 
+var playerHasGivenSoulToEgg:bool=false #todo, change this when soul is received
+
 func GetCurrentEnding()->endings:
 	
 	if !CursedMode:
 		return endings.normal
 	else:
-		return endings.cursed_bad #TODO:Remove this lol
 		
-		if GlobalVariables.currentDay <= GlobalVariables.daysBeforeDemonKillsEgg:
+		if GlobalVariables.currentDay <= GlobalVariables.daysBeforeDemonKillsEgg and playerHasGivenSoulToEgg:
 			return endings.cursed_true
 		else:
 			return endings.cursed_bad

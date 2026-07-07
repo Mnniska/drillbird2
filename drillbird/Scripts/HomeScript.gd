@@ -153,6 +153,7 @@ func HeartEnteredCollider(_heart:Node2D,_isSoul:bool=false):
 		visualizer.isFinalHeart=true
 		if _isSoul:
 			visualizer.finishedSelling.connect(FinalSoulPlaced)
+			GlobalVariables.playerHasGivenSoulToEgg=true
 		else:
 			visualizer.finishedSelling.connect(FinalHeartPlaced)
 
@@ -174,7 +175,7 @@ func HeartEnteredCollider(_heart:Node2D,_isSoul:bool=false):
 	
 	pass
 
-func FinalSoulPlaced():
+func FinalSoulPlaced(amount:int):
 	EggHandler.TransitionToFinalFormWithHeart(true)
 	state=states.IDLE
 	CheckState()
