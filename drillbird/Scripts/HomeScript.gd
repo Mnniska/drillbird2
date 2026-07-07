@@ -83,7 +83,7 @@ func UpdateButtons():
 		states.SELL:
 			SellButton.SetActive(true)
 			RestButton.SetActive(false)
-			if EggHandler.eggState==EggHandler.eggStates.FINALFORM_HEART:
+			if EggHandler.eggState==EggHandler.eggStates.FINALFORM_HEART or EggHandler.eggState==EggHandler.eggStates.FINALFORM_SOUL:
 				HatchEggButton.SetActive(true)
 		states.SELLING:
 
@@ -94,7 +94,7 @@ func UpdateButtons():
 
 			if !justWokeUp:
 				RestButton.SetActive(true)
-				if EggHandler.eggState==EggHandler.eggStates.FINALFORM_HEART:
+				if EggHandler.eggState==EggHandler.eggStates.FINALFORM_HEART or EggHandler.eggState==EggHandler.eggStates.FINALFORM_SOUL:
 					HatchEggButton.SetActive(true)
 			SellButton.SetActive(false)
 	
@@ -138,6 +138,10 @@ func SellOre(_ore:Node2D):
 	state=states.SELLING
 
 func HeartEnteredCollider(_heart:Node2D,_isSoul:bool=false):
+	
+	if _isSoul and EggHandler.eggState==EggHandler.eggStates.FINALFORM_HEART:
+		EggHandler.eggState=EggHandler.eggStates.FINALFORM_NO_HEART
+		#cheat to replace heart with soul if heart is already in
 	
 	if EggHandler.eggState==EggHandler.eggStates.FINALFORM_NO_HEART:
 		

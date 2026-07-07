@@ -5,7 +5,7 @@ signal FinalHeartPlaced
 #When getitng ores -> Check how much progress to state and SCALE the egg 
 #up to target as one gets closer to state. When entering next state, switch sprite
 
-enum eggStates{NOTHING,GROWING,FINALFORM_NO_HEART,FINALFORM_HEART,FINALCUTSCENE}
+enum eggStates{NOTHING,GROWING,FINALFORM_NO_HEART,FINALFORM_HEART,FINALCUTSCENE,FINALFORM_SOUL}
 var eggState=eggStates.NOTHING
 @onready var gooAnimHandler:goo_egg_animator=$"Goo anims"
 
@@ -129,14 +129,21 @@ func SetEggState(_state:eggStates):
 			$nest_front.hide()
 			hideEggs()
 			finalFormEgg.SetState(finalFormEgg.finalFormStates.FINAL_HATCHING)
-			pass
+		eggStates.FINALFORM_SOUL:
+			hideEggs()
+			finalFormEgg.SetState(finalFormEgg.finalFormStates.FINAL_SOUL)
+			gooAnimHandler.SetGooState(gooAnimHandler.gooStates.big)
 			
 	GlobalVariables.eggState=eggState
 
 func TransitionToFinalFormWithHeart(isSoul:bool=false):
-	SetEggState(eggStates.FINALFORM_HEART)	
-	finalFormEgg.RecieveHeartCutscene()
-	finalFormEgg.ReceiveSoulCutscene()
+	
+	if !isSoul:
+		finalFormEgg.RecieveHeartCutscene()
+		SetEggState(eggStates.FINALFORM_HEART)
+	else:
+		finalFormEgg.ReceiveSoulCutscene()
+		SetEggState(eggStates.FINALFORM_SOUL)
 
 
 

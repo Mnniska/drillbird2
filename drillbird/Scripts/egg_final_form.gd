@@ -9,6 +9,7 @@ var isShaking:bool=false:
 		isShaking=value 
 		cursedModePlayer.isShaking=value
 
+var carriesSOUL:bool=false
 var shakeAmount:float=1.8
 
 @onready var animator_normal=$AnimatedSprite2D
@@ -22,7 +23,7 @@ var shakeAmount:float=1.8
 
 enum endings{NORMAL,CURSED_BAD,CURSED_TRUE}
 
-enum finalFormStates{FINAL_INACTIVE,FINAL_HEARTLESS,FINAL_HEART,FINAL_HATCHING}
+enum finalFormStates{FINAL_INACTIVE,FINAL_HEARTLESS,FINAL_HEART,FINAL_HATCHING,FINAL_SOUL}
 var finalFormState:finalFormStates=finalFormStates.FINAL_HEARTLESS
 
 	
@@ -63,7 +64,11 @@ func SetState(_state:finalFormStates):
 			GetAnimator().animation="final_form_idle"
 
 			pass
+		finalFormStates.FINAL_SOUL:
+			GetAnimator().animation="final_form_with_SOUL_idle"
+			show()
 		finalFormStates.FINAL_HEART:
+			
 			GetAnimator().animation="final_form_with_heart_idle"
 
 			show()
@@ -175,7 +180,7 @@ func TransitionToFinalForm():
 	pass
 
 func ReceiveSoulCutscene():
-	finalFormState=finalFormStates.FINAL_HEART
+	finalFormState=finalFormStates.FINAL_SOUL
 	GetAnimator().animation="final_form_with_SOUL_idle"
 	GetAnimator().play()
 	pass
