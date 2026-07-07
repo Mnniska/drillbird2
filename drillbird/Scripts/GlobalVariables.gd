@@ -157,7 +157,10 @@ var playerLightStatus:playerLightStatusEnum=playerLightStatusEnum.LIT_BYPLAYER:
 	get:
 		return playerLightStatus
 	set(value):
+
 		playerLightStatus=value
+		if playerLightStatus==playerLightStatusEnum.DARK:
+			print_debug("dark")
 		playerLightStatusChange.emit()
 		
 

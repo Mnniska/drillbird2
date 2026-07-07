@@ -104,7 +104,7 @@ func SetupLightFunctionality():
 		node.transform.origin = offset
 		add_child(node)
 	
-		time_Countdown=GetCurrentlyActiveLightbulbDuration()
+	time_Countdown=GetCurrentlyActiveLightbulbDuration()
 	
 	UpdateLightbulbLocations()
 	if GlobalVariables.upgradeLevel_light==0:
@@ -156,7 +156,8 @@ func GetNextLightbulb():
 			foundBulb=true
 			break
 	
-	time_Countdown=GetCurrentlyActiveLightbulbDuration()
+	if foundBulb:
+		time_Countdown=GetCurrentlyActiveLightbulbDuration()
 	
 	for n in lightBulbArray:
 		if n.active:
