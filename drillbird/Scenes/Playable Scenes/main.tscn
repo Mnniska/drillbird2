@@ -1,4 +1,4 @@
-[gd_scene load_steps=82 format=3 uid="uid://d2wv7igie5stg"]
+[gd_scene load_steps=83 format=3 uid="uid://d2wv7igie5stg"]
 
 [ext_resource type="Script" uid="uid://c0pdu2cqd60yv" path="res://Scenes/Playable Scenes/SaveManager.gd" id="1_iickb"]
 [ext_resource type="PackedScene" uid="uid://0iy1qmgd0p6y" path="res://Scenes/TileCrack.tscn" id="2_c10yv"]
@@ -196,10 +196,15 @@ name = "reset_save_data_enemies_and_tiles"
 script = ExtResource("48_cl8sw")
 name = "Go_to_credits"
 
+[sub_resource type="Resource" id="Resource_u7byq"]
+script = ExtResource("48_cl8sw")
+name = "go_to_cursed_mode_start"
+metadata/_custom_type_script = "uid://kwgl6ngw7cq2"
+
 [sub_resource type="Resource" id="Resource_o5w6h"]
 script = ExtResource("48_cl8sw")
 name = "Saving and Loading"
-options = Array[ExtResource("48_cl8sw")]([SubResource("Resource_7ffnp"), SubResource("Resource_321et"), SubResource("Resource_sgi1m"), SubResource("Resource_m7lwc")])
+options = Array[ExtResource("48_cl8sw")]([SubResource("Resource_7ffnp"), SubResource("Resource_321et"), SubResource("Resource_sgi1m"), SubResource("Resource_m7lwc"), SubResource("Resource_u7byq")])
 isAction = false
 
 [sub_resource type="Resource" id="Resource_p5f3n"]

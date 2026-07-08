@@ -214,6 +214,10 @@ func ExecuteAction(action:String):
 		
 		"reset_save_data_enemies_and_tiles":
 			$"../..".ResetSaveData(true)
+			
+		"go_to_cursed_mode_start":
+			$"../..".ChangeToCursedMode() #reset save data 
+			HUD.ResetGameToCursedMode() #tell scene to change
 		
 		"Cycle World":
 			GlobalVariables.MainSceneReferenceConnector.ref_WorldSpawner.CycleWorld()
