@@ -14,7 +14,7 @@ var currentLine=0
 var defaultScrollSpeed=15
 var scrollSpeed:float=0
 var scrollAcc:float=0.1
-var maxScrollSpeed:float=80
+var maxScrollSpeed:float=120
 
 var scrolling:bool=false
 var creditsDone:bool=false

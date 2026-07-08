@@ -93,10 +93,7 @@ func _ready() -> void:
 	await get_tree().create_timer(4).timeout
 
 	if debugSkipCredits:
-		valueSpawner.active=true
-		SetCloudsVisible(false)
-		flyer.energy=50
-		SetEnergyMeterVisible(true)
+		CreditsFinished()
 
 		
 	else:
@@ -106,9 +103,13 @@ func _ready() -> void:
 		credits.signal_credits_finished.connect(CreditsFinished)
 
 func CreditsFinished():
-	valueSpawner.active=true
-	SetCloudsVisible(false)
-	SetEnergyMeterVisible(true)
+	if ending==GlobalVariables.endings.cursed_true:
+		#TODO: here we should show the final scene with birdy and the parent
+		ShowStats()
+	else:
+		valueSpawner.active=true
+		SetCloudsVisible(false)
+		SetEnergyMeterVisible(true)
 
 func SetCloudsVisible(visible:bool):
 	backgroundClouds.showParallax=visible

@@ -648,7 +648,6 @@ animations = [{
 
 [node name="FlyingCredits" type="Node"]
 script = ExtResource("1_xtpho")
-debugSkipCredits = true
 
 [node name="BG_base" type="Sprite2D" parent="."]
 light_mask = 0

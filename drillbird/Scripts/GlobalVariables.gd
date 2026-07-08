@@ -68,7 +68,7 @@ func GetCurrentEnding()->endings:
 		return endings.normal
 	else:
 		
-		if GlobalVariables.currentDay <= GlobalVariables.daysBeforeDemonKillsEgg and playerHasGivenSoulToEgg:
+		if  playerHasGivenSoulToEgg:
 			return endings.cursed_true
 		else:
 			return endings.cursed_bad
