@@ -51,9 +51,12 @@ func BlockDestroyed():
 	
 	pass
 
+var isRespawning:bool=false
 func _process(delta: float) -> void:
 	if blockExists:
 		return
+	
+	
 	
 	if playerCollidersInArea>0:
 		respawnCounter=0
@@ -61,12 +64,27 @@ func _process(delta: float) -> void:
 		respawnCounter+=delta
 		
 	if respawnCounter>timeToRespawn:
-		respawnCounter=0
-		UpdateAnim("respawn")
-		await get_tree().create_timer(0.2).timeout
-		RespawnTile()
+		if GetIsThereSomeoneOnTile(): #if someone's in the tile, extend the timer
+			respawnCounter=0
+		else:
+			if !isRespawning: #ensure function is enterd once since I use timers in process lol
+				isRespawning=true
+				respawnCounter=0
+				UpdateAnim("respawn")
+				await get_tree().create_timer(0.2).timeout
+				if !GetIsThereSomeoneOnTile():
+					RespawnTile()
+					isRespawning=false
+				else: 
+					UpdateAnim("idle") #handle if player goes into respawn block right b4 it respawns
+					respawnCounter=0
+					isRespawning=false
+
 		
-	
+
+func GetIsThereSomeoneOnTile()->bool:
+	var bodies:Array[Node2D]= $playerChecker.get_overlapping_bodies()
+	return bodies.size()>0
 
 func RespawnTile():
 	if tileCreator:
@@ -74,13 +92,3 @@ func RespawnTile():
 		if showDebug: print_debug("block respawned lol")
 		blockExists=true
 	pass
-
-
-func _on_player_checker_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
-	playerCollidersInArea+=1
-	pass # Replace with function body.
-
-
-func _on_player_checker_body_shape_exited(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
-	playerCollidersInArea-=1
-	pass # Replace with function body.

@@ -18,7 +18,6 @@
 [ext_resource type="Texture2D" uid="uid://bgy1vxkqr7l4n" path="res://Art/Objects/respawn tile/respawn_tile_respawn7.png" id="15_eseri"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xday0"]
-size = Vector2(12, 12)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_w2aud"]
 animations = [{
@@ -87,7 +86,7 @@ animations = [{
 
 [node name="RespawningBlock" type="Node2D"]
 script = ExtResource("1_xday0")
-timeToRespawn = 1.5
+timeToRespawn = 2.5
 
 [node name="playerChecker" type="Area2D" parent="."]
 collision_layer = 0
@@ -107,7 +106,7 @@ theme = ExtResource("4_h2cdx")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_w2aud")
-animation = &"respawn"
+animation = &"idle"
 autoplay = "inactive"
 
 [connection signal="body_shape_entered" from="playerChecker" to="." method="_on_player_checker_body_shape_entered"]
