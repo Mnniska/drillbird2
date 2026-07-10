@@ -7,7 +7,7 @@ var soundEchoCounter:float=0
 @export var soundEchoTimer:float=2
 var shouldEcho:bool=false
 @export var inactive_wetness=0
-@export var active_wetness=0.3
+@export var active_wetness=0.1
 
 var reverbeffect:AudioEffectReverb
 
