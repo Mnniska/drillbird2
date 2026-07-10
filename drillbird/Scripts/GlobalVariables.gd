@@ -53,12 +53,7 @@ signal vibrationSettingChanged(value:bool)
 
 enum endings{normal,cursed_bad,cursed_true}
 
-signal signal_playerIsReverbingChanged(value:bool) #what on earth does this mean lol
-var playerIsReverbing:bool=false:
-	get:return playerIsReverbing
-	set(value):
-		playerIsReverbing=value 
-		signal_playerIsReverbingChanged.emit(playerIsReverbing)
+
 
 var playerHasGivenSoulToEgg:bool=false #todo, change this when soul is received
 

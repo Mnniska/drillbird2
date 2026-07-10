@@ -7,7 +7,6 @@ class_name sound_manager
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	GlobalVariables.signal_playerIsReverbingChanged.connect(SetReverbActive)
 	pass # Replace with function body.
 
 func SetReverbActive(active:bool):
