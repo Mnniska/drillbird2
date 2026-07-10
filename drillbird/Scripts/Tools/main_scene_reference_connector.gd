@@ -18,7 +18,7 @@ var ref_secretTilemap
 var ref_oreTilemap
 var ref_environmentTilemap
 var ref_playerTeleportLocations
-
+var ref_backgroundHandler:background_handler
 
 
 func _ready() -> void:
@@ -31,6 +31,7 @@ func SetupSpawnedWorldReferences():
 	ref_environmentTilemap=$"../WorldSpawn/TilemapEnvironment"
 	ref_respawnPointCave=$"../WorldSpawn/WorldScripts/Respawn_caveOfResurrection"
 	ref_playerTeleportLocations=$"../WorldSpawn/PlayerSpawnLocations"
+	ref_backgroundHandler=$"../WorldSpawn/decorations/BackgroundHandler"
 	
 	
 	pass

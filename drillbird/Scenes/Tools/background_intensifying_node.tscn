@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://bmci28vis4j5e"]
+
+[ext_resource type="Script" uid="uid://dqd2g1ioylbjf" path="res://Scripts/Environment and art/GlobalVariables.gd" id="1_g76vl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jas30"]
+size = Vector2(549, 344)
+
+[node name="BackgroundIntensifyingNode" type="Area2D"]
+collision_layer = 0
+collision_mask = 16
+script = ExtResource("1_g76vl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_jas30")
+debug_color = Color(0.7921569, 0.38431373, 0.5019608, 0.13333334)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
