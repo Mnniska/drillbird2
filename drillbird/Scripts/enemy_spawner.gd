@@ -57,10 +57,12 @@ func LoadEnemySpawns(spawnpos:Array[Vector2i],enemytype:Array[int],enemyDead:Arr
 		enemy.type=enemytype[n]
 		
 		enemy.dead=enemyDead[n]
-		enemy.spawnedFromCorpse=spawnedFromCorpse[n]
+		if spawnedFromCorpse.size()<spawnpos.size(): #In old savefiles there's no value for spawnedfromcorpse which creates issues
+			enemy.spawnedFromCorpse=false
+		else:
+			enemy.spawnedFromCorpse=spawnedFromCorpse[n]
 		
-		if enemy.spawnedFromCorpse:
-			print_debug("yo spawned from corpse lol")
+
 
 		
 		loadedEnemiesList.append(enemy)
