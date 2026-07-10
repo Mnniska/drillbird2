@@ -176,6 +176,12 @@ func SetLightPosition():
 	pass
 
 
+var darknessVeryClose:bool=false: 
+	get: return darknessVeryClose
+	set(value): 
+		if value !=darknessVeryClose:
+			darknessVeryClose=value
+			GlobalVariables.MainSceneReferenceConnector.ref_backgroundHandler.LightRequestsIntensity(value)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -214,6 +220,11 @@ func _process(delta: float) -> void:
 			
 			if darknessClose:
 				PlayerLight.SetLight(progress)
+				
+				if progress<0.6:
+					darknessVeryClose=true
+				else:
+					darknessVeryClose=false
 				if progress<0.2:
 					hasWarnedPlayer=true
 					#This bool triggers a function to warn the player
