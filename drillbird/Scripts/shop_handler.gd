@@ -8,6 +8,8 @@ signal ShopClosed
 @export var UI_purchasables:Array[PanelContainer]
 
 @export var abstract_purchasables:Array[abstract_purchasable]
+@export var abstract_purchasables_cursed:Array[abstract_purchasable]
+
 @onready var text_continue=$VBoxContainer/Button_continue/placement_node/BoxContainer/PanelContainer/MarginContainer/text
 var shopActive:bool=false
 #playerstats 
@@ -30,10 +32,15 @@ func SetupShop():
 	moneyUI.text=str(GlobalVariables.playerMoney)+" "+tr("HUD_experience")
 	for n in UI_purchasables:
 		if index!=UI_purchasables.size()-1: #The last item is not setup since it's a simple btn
-			n.Setup(abstract_purchasables[index])
+			n.Setup(GetPurchasablesArray()[index])
 		n.SetSelected( index==currentSelection)
 		index+=1
 
+func GetPurchasablesArray()->Array[abstract_purchasable]:
+	if GlobalVariables.CursedMode:
+		return abstract_purchasables_cursed
+	else:
+		return abstract_purchasables
 
 
 func SetActive(active:bool):
@@ -87,10 +94,10 @@ func AttemptPurchaseSelectedItem():
 	if UI_purchasables[currentSelection].AttemptToPurchase():
 		
 		moneyUI.text=str(GlobalVariables.playerMoney)+" xp"
-		var type = abstract_purchasables[currentSelection].type
+		var type = GetPurchasablesArray()[currentSelection].type
 		var playerUpgradeLvl=GlobalVariables.GetPlayerUpgradeLevel(type)
 		
-		var upgrade= abstract_purchasables[currentSelection].items[playerUpgradeLvl+1]
+		var upgrade= GetPurchasablesArray()[currentSelection].items[playerUpgradeLvl+1]
 		if upgrade!=null:
 			GlobalVariables.SetPlayerUpgradeLevel(type,playerUpgradeLvl+1)
 			UI_purchasables[currentSelection].UpdateStats()
@@ -122,8 +129,8 @@ func _process(delta: float) -> void:
 
 	if changeDone:
 		if currentSelection<0:
-			currentSelection=abstract_purchasables.size()-1
-		if currentSelection>abstract_purchasables.size()-1:
+			currentSelection=GetPurchasablesArray().size()-1
+		if currentSelection>GetPurchasablesArray().size()-1:
 			currentSelection=0
 		UpdateShop()
 	

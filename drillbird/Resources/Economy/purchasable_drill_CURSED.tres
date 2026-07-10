@@ -1,0 +1,53 @@
+[gd_resource type="Resource" script_class="abstract_purchasable" load_steps=12 format=3 uid="uid://h5fuvqsqpm4g"]
+
+[ext_resource type="Script" uid="uid://doyq1a7gm2yb2" path="res://Scripts/Abstract scripts/abstract_item_upgrade.gd" id="1_7lbw2"]
+[ext_resource type="Script" uid="uid://w0qofym04h1b" path="res://Scripts/Abstract scripts/abstract_purchasable.gd" id="2_mx48s"]
+
+[sub_resource type="Resource" id="Resource_xkjob"]
+metadata/__load_path__ = "res://Art/ui/Shop/UI_Shop_icon_drill.png"
+
+[sub_resource type="Resource" id="Resource_ldy6v"]
+script = ExtResource("1_7lbw2")
+power = 2
+
+[sub_resource type="Resource" id="Resource_nookp"]
+script = ExtResource("1_7lbw2")
+cost = 12
+power = 3
+
+[sub_resource type="Resource" id="Resource_aum1u"]
+script = ExtResource("1_7lbw2")
+cost = 20
+power = 4
+
+[sub_resource type="Resource" id="Resource_l4iij"]
+script = ExtResource("1_7lbw2")
+cost = 45
+power = 6
+
+[sub_resource type="Resource" id="Resource_gki13"]
+script = ExtResource("1_7lbw2")
+cost = 75
+power = 9
+
+[sub_resource type="Resource" id="Resource_pvcil"]
+script = ExtResource("1_7lbw2")
+cost = 110
+power = 12
+
+[sub_resource type="Resource" id="Resource_ebrrr"]
+script = ExtResource("1_7lbw2")
+cost = 165
+power = 14
+
+[sub_resource type="Resource" id="Resource_h8c8f"]
+script = ExtResource("1_7lbw2")
+cost = 300
+power = 16
+
+[resource]
+script = ExtResource("2_mx48s")
+icon = SubResource("Resource_xkjob")
+itemNameID = "shop_drill_header"
+itemDescriptionID = "shop_drill_desc"
+items = Array[ExtResource("1_7lbw2")]([SubResource("Resource_ldy6v"), SubResource("Resource_nookp"), SubResource("Resource_aum1u"), SubResource("Resource_l4iij"), SubResource("Resource_gki13"), SubResource("Resource_pvcil"), SubResource("Resource_ebrrr"), SubResource("Resource_h8c8f")])

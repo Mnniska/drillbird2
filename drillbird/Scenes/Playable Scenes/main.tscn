@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=3 uid="uid://d2wv7igie5stg"]
+[gd_scene load_steps=89 format=3 uid="uid://d2wv7igie5stg"]
 
 [ext_resource type="Script" uid="uid://c0pdu2cqd60yv" path="res://Scenes/Playable Scenes/SaveManager.gd" id="1_iickb"]
 [ext_resource type="PackedScene" uid="uid://0iy1qmgd0p6y" path="res://Scenes/TileCrack.tscn" id="2_c10yv"]
@@ -17,10 +17,15 @@
 [ext_resource type="Resource" uid="uid://k3uc1fryuwfc" path="res://Resources/Economy/ore_5.tres" id="17_ytjr0"]
 [ext_resource type="Script" uid="uid://bwsdw1libacyi" path="res://Scripts/Abstract scripts/abstract_terrain_info.gd" id="20_cqxjh"]
 [ext_resource type="Resource" uid="uid://biejw6c2k7wry" path="res://Resources/Economy/ore_HEART.tres" id="22_nstd1"]
+[ext_resource type="Resource" uid="uid://bkuxef2wcvn5l" path="res://Resources/Economy/purchasable_inventory_CURSED.tres" id="25_ihr0r"]
+[ext_resource type="Resource" uid="uid://dd3l03svdn1jj" path="res://Resources/Economy/purchasable_light_CURSED.tres" id="26_7cj76"]
 [ext_resource type="Script" uid="uid://c2d8xkmgrklnw" path="res://Scripts/shop_handler.gd" id="26_mk1t6"]
+[ext_resource type="Resource" uid="uid://xe01kifhlpm1" path="res://Resources/Economy/purchasable_health_CURSED.tres" id="27_026ak"]
 [ext_resource type="Script" uid="uid://w0qofym04h1b" path="res://Scripts/Abstract scripts/abstract_purchasable.gd" id="27_hx1y5"]
 [ext_resource type="Resource" uid="uid://b26ws3o4u42p3" path="res://Resources/Economy/purchasable_inventory.tres" id="28_iowjc"]
+[ext_resource type="Resource" uid="uid://h5fuvqsqpm4g" path="res://Resources/Economy/purchasable_drill_CURSED.tres" id="28_ngrbp"]
 [ext_resource type="Resource" uid="uid://cgdqluba62y80" path="res://Resources/Economy/purchasable_light.tres" id="29_cp1r6"]
+[ext_resource type="Script" uid="uid://doyq1a7gm2yb2" path="res://Scripts/Abstract scripts/abstract_item_upgrade.gd" id="29_pj5xf"]
 [ext_resource type="Resource" uid="uid://e48vh7omjgqd" path="res://Resources/purchasable_ContinueButton.tres" id="30_4yogw"]
 [ext_resource type="Texture2D" uid="uid://fsljdsvdyr3v" path="res://Art/UI/Shop/UI_Shop_DreamBackground.png" id="30_okg02"]
 [ext_resource type="Resource" uid="uid://dd3l8ir1bmcm5" path="res://Resources/Economy/purchasable_health.tres" id="30_yx4wb"]
@@ -51,6 +56,13 @@ width = 260
 height = 220
 fill = 1
 fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Resource" id="Resource_5sm2g"]
+script = ExtResource("27_hx1y5")
+onlyAButton = true
+itemNameID = "shop_awaken"
+itemDescriptionID = "shop_awaken"
+metadata/_custom_type_script = "uid://w0qofym04h1b"
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_vj11c"]
 particles_animation = true
@@ -292,6 +304,7 @@ scale = Vector2(2, 2)
 script = ExtResource("26_mk1t6")
 UI_purchasables = [NodePath("VBoxContainer/Purchasable1"), NodePath("VBoxContainer/Purchasable2"), NodePath("VBoxContainer/Purchasable3"), NodePath("VBoxContainer/Purchasable4"), NodePath("VBoxContainer/Button_continue")]
 abstract_purchasables = Array[ExtResource("27_hx1y5")]([ExtResource("28_iowjc"), ExtResource("29_cp1r6"), ExtResource("30_yx4wb"), ExtResource("31_4ia3e"), ExtResource("30_4yogw")])
+abstract_purchasables_cursed = Array[ExtResource("27_hx1y5")]([ExtResource("25_ihr0r"), ExtResource("26_7cj76"), ExtResource("27_026ak"), ExtResource("28_ngrbp"), SubResource("Resource_5sm2g")])
 
 [node name="ShopBackground" type="Sprite2D" parent="Camera2D/ShopHandler"]
 z_index = -3

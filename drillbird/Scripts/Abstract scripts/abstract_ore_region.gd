@@ -29,6 +29,3 @@ func GetOreToSpawn():
 	#code stolen from the internets - supposedly returns an ore based on the random percentages ;) 
 	return potentialOres[randi() % spawnChances.size()]
 	
-	potentialOres.pick_random()
-	
-	pass

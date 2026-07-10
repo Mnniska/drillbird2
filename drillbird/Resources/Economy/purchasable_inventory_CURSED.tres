@@ -1,0 +1,49 @@
+[gd_resource type="Resource" script_class="abstract_purchasable" load_steps=11 format=3 uid="uid://bkuxef2wcvn5l"]
+
+[ext_resource type="Script" uid="uid://doyq1a7gm2yb2" path="res://Scripts/Abstract scripts/abstract_item_upgrade.gd" id="1_k4icf"]
+[ext_resource type="Script" uid="uid://w0qofym04h1b" path="res://Scripts/Abstract scripts/abstract_purchasable.gd" id="2_oo4or"]
+
+[sub_resource type="Resource" id="Resource_q8hyr"]
+metadata/__load_path__ = "res://Art/ui/Shop/UI_Shop_icon_inventory.png"
+
+[sub_resource type="Resource" id="Resource_ldy6v"]
+script = ExtResource("1_k4icf")
+power = 8
+
+[sub_resource type="Resource" id="Resource_nookp"]
+script = ExtResource("1_k4icf")
+cost = 20
+power = 12
+
+[sub_resource type="Resource" id="Resource_aum1u"]
+script = ExtResource("1_k4icf")
+cost = 24
+power = 20
+
+[sub_resource type="Resource" id="Resource_l4iij"]
+script = ExtResource("1_k4icf")
+cost = 45
+power = 35
+
+[sub_resource type="Resource" id="Resource_d0rec"]
+script = ExtResource("1_k4icf")
+cost = 70
+power = 50
+
+[sub_resource type="Resource" id="Resource_2oane"]
+script = ExtResource("1_k4icf")
+cost = 98
+power = 70
+
+[sub_resource type="Resource" id="Resource_c3jjj"]
+script = ExtResource("1_k4icf")
+cost = 200
+power = 120
+
+[resource]
+script = ExtResource("2_oo4or")
+type = 1
+icon = SubResource("Resource_q8hyr")
+itemNameID = "shop_inventory_header"
+itemDescriptionID = "shop_inventory_desc"
+items = Array[ExtResource("1_k4icf")]([SubResource("Resource_ldy6v"), SubResource("Resource_nookp"), SubResource("Resource_aum1u"), SubResource("Resource_l4iij"), SubResource("Resource_d0rec"), SubResource("Resource_2oane"), SubResource("Resource_c3jjj")])

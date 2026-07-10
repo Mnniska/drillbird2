@@ -1,0 +1,49 @@
+[gd_resource type="Resource" script_class="abstract_purchasable" load_steps=11 format=3 uid="uid://xe01kifhlpm1"]
+
+[ext_resource type="Script" uid="uid://doyq1a7gm2yb2" path="res://Scripts/Abstract scripts/abstract_item_upgrade.gd" id="1_0s8rw"]
+[ext_resource type="Script" uid="uid://w0qofym04h1b" path="res://Scripts/Abstract scripts/abstract_purchasable.gd" id="2_d0e2y"]
+
+[sub_resource type="Resource" id="Resource_3ltva"]
+metadata/__load_path__ = "res://Art/ui/HUD/Health/HUD_Health_full.png"
+
+[sub_resource type="Resource" id="Resource_ldy6v"]
+script = ExtResource("1_0s8rw")
+power = 2
+
+[sub_resource type="Resource" id="Resource_nookp"]
+script = ExtResource("1_0s8rw")
+cost = 20
+power = 3
+
+[sub_resource type="Resource" id="Resource_aum1u"]
+script = ExtResource("1_0s8rw")
+cost = 40
+power = 4
+
+[sub_resource type="Resource" id="Resource_l4iij"]
+script = ExtResource("1_0s8rw")
+cost = 55
+power = 5
+
+[sub_resource type="Resource" id="Resource_kmln2"]
+script = ExtResource("1_0s8rw")
+cost = 70
+power = 6
+
+[sub_resource type="Resource" id="Resource_yo3mh"]
+script = ExtResource("1_0s8rw")
+cost = 120
+power = 7
+
+[sub_resource type="Resource" id="Resource_uqv7b"]
+script = ExtResource("1_0s8rw")
+cost = 330
+power = 8
+
+[resource]
+script = ExtResource("2_d0e2y")
+type = 2
+icon = SubResource("Resource_3ltva")
+itemNameID = "shop_health_header"
+itemDescriptionID = "shop_health_desc"
+items = Array[ExtResource("1_0s8rw")]([SubResource("Resource_ldy6v"), SubResource("Resource_nookp"), SubResource("Resource_aum1u"), SubResource("Resource_l4iij"), SubResource("Resource_kmln2"), SubResource("Resource_yo3mh"), SubResource("Resource_uqv7b")])
