@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c6eyhxxyuul2g"
-path="res://.godot/imported/birdy_sing_stand.png-c9766b774fe49b3ae08265722e502ce5.ctex"
+uid="uid://dh0hqr4sdhxar"
+path="res://.godot/imported/birdy_sing_left.png-60409591fcc9725f43e2c4f572f5c9e4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/characters/Drillbird/birdy_sing_stand.png"
-dest_files=["res://.godot/imported/birdy_sing_stand.png-c9766b774fe49b3ae08265722e502ce5.ctex"]
+source_file="res://Art/characters/Drillbird/sing/birdy_sing_left.png"
+dest_files=["res://.godot/imported/birdy_sing_left.png-60409591fcc9725f43e2c4f572f5c9e4.ctex"]
 
 [params]
 
