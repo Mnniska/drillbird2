@@ -1,4 +1,4 @@
-[gd_scene load_steps=162 format=4 uid="uid://boh3yjorqn4xa"]
+[gd_scene load_steps=166 format=4 uid="uid://boh3yjorqn4xa"]
 
 [ext_resource type="TileSet" uid="uid://grpd2pyu7pgk" path="res://Resources/MainTileset.tres" id="1_4c1b3"]
 [ext_resource type="Script" uid="uid://cfd6ggts8pqma" path="res://Scripts/Level Generation/tilemap_environment.gd" id="2_27on7"]
@@ -29,6 +29,8 @@
 [ext_resource type="Texture2D" uid="uid://cdfdcp4kqa8fb" path="res://Art/environment/UniqueAssets/Masoleum.png" id="25_4p3ut"]
 [ext_resource type="Texture2D" uid="uid://bodb4jffgcyu8" path="res://Art/environment/solid_decorations/spritesheet_decorations.png" id="26_rsp8n"]
 [ext_resource type="Texture2D" uid="uid://d1qxa15w23lvo" path="res://Art/environment/solid_decorations/spritesheet_bigdeco.png" id="27_ky6nw"]
+[ext_resource type="Texture2D" uid="uid://coctsm7lx02sl" path="res://Art/environment/cursed decorations/spritesheet_gooDeco_ceiling.png" id="27_tf4n7"]
+[ext_resource type="Texture2D" uid="uid://dlmidabf6ckth" path="res://Art/environment/cursed decorations/spritesheet_gooDeco_floor.png" id="28_18uxr"]
 [ext_resource type="Script" uid="uid://bq0v4m6swtjpv" path="res://Scripts/Background_handler.gd" id="29_amln7"]
 [ext_resource type="Texture2D" uid="uid://dpxx08t6deixd" path="res://Art/environment/CursedBackground/background_cursed.png" id="31_d5m4n"]
 [ext_resource type="Texture2D" uid="uid://j0046doy534g" path="res://Art/environment/CursedBackground/background_cursed_muted.png" id="31_ltu22"]
@@ -114,6 +116,28 @@ texture = ExtResource("26_rsp8n")
 6:0/0 = 0
 7:0/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_amtt6"]
+texture = ExtResource("27_tf4n7")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kiayt"]
+texture = ExtResource("28_18uxr")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_07mf6"]
 texture = ExtResource("27_ky6nw")
 texture_region_size = Vector2i(36, 36)
@@ -124,6 +148,8 @@ texture_region_size = Vector2i(36, 36)
 tile_size = Vector2i(2, 2)
 sources/0 = SubResource("TileSetAtlasSource_mjto2")
 sources/3 = SubResource("TileSetAtlasSource_07mf6")
+sources/1 = SubResource("TileSetAtlasSource_amtt6")
+sources/2 = SubResource("TileSetAtlasSource_kiayt")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d5m4n"]
 size = Vector2(593, 555)
@@ -1054,7 +1080,7 @@ debug_color = Color(0.327678, 0.609635, 0.381774, 0.42)
 [node name="tilemap_decorations" type="TileMapLayer" parent="."]
 z_index = 1
 position = Vector2(1, 3)
-tile_map_data = PackedByteArray("AABQ/gwCAAAGAAAAAAAk/gwCAAAGAAAAAABc/gUCAAAHAAAAAAAU/uwBAAAGAAAAAAAB/hUCAAAHAAAAAADs/RQCAAAGAAAAAABI/gwCAAAGAAAAAAAx/ucBAwAAAAAAAAA2/twBAAAGAAAAAAAu/twBAAAGAAAAAAAm/twBAAAGAAAAAAAn/uIBAAAEAAAAAAAy/tsBAAAGAAAAAAAr/tsBAAAGAAAAAACr/fwBAAAGAAAAAACk/dUBAAAHAAAAAAB7/d0BAAAHAAAAAADD/UUBAAAHAAAAAADb/TEBAAAEAAAAAABI/ucAAwAAAAAAAACY/ucAAwABAAAAAACT/tsAAAAGAAAAAACb/twAAAAGAAAAAACX/twAAAAHAAAAAABN/t0AAAAHAAAAAABF/t0AAAAHAAAAAABb/ukAAAAEAAAAAACq/iwBAAAGAAAAAACi/iwBAAAGAAAAAACa/iwBAAAGAAAAAACz/iUBAAAHAAAAAABr/iQBAAAGAAAAAABb/i0BAAAHAAAAAACP/h8AAwABAAAAAACd/h8AAwAAAAAAAABb/h8AAwAAAAAAAACh/hMAAAAGAAAAAACZ/hUAAAAHAAAAAACR/hUAAAAHAAAAAACK/hUAAAAHAAAAAACD/hUAAAAHAAAAAABj/hUAAAAHAAAAAABb/hUAAAAHAAAAAABT/hUAAAAHAAAAAABz/i8AAAAEAAAAAACq/kwAAAAGAAAAAACi/kwAAAAGAAAAAADz/lUAAAAHAAAAAADa/wIAAAACAAAAAADN/wIAAAABAAAAAADA/woAAAACAAAAAAA+AAoAAAACAAAAAAAyAAIAAAABAAAAAACR/woAAAABAAAAAAD7AE0AAAAHAAAAAADjAFwAAAAGAAAAAADLACUAAAAHAAAAAACW/koAAAAAAAAAAABP/koAAAAAAAAAAAA//koAAAAAAAAAAABH/koAAAACAAAAAADg/jcAAwABAAAAAAA=")
+tile_map_data = PackedByteArray("AABQ/gwCAAAGAAAAAAAk/gwCAAAGAAAAAABc/gUCAAAHAAAAAAAU/uwBAAAGAAAAAAAB/hUCAAAHAAAAAADs/RQCAAAGAAAAAABI/gwCAAAGAAAAAAAx/ucBAwAAAAAAAAA2/twBAAAGAAAAAAAu/twBAAAGAAAAAAAm/twBAAAGAAAAAAAn/uIBAAAEAAAAAAAy/tsBAAAGAAAAAAAr/tsBAAAGAAAAAACr/fwBAAAGAAAAAACk/dUBAAAHAAAAAAB7/d0BAAAHAAAAAADD/UUBAAAHAAAAAADb/TEBAAAEAAAAAABI/ucAAwAAAAAAAACY/ucAAwABAAAAAACT/tsAAAAGAAAAAACb/twAAAAGAAAAAACX/twAAAAHAAAAAABN/t0AAAAHAAAAAABF/t0AAAAHAAAAAABb/ukAAAAEAAAAAACq/iwBAAAGAAAAAACi/iwBAAAGAAAAAACa/iwBAAAGAAAAAACz/iUBAAAHAAAAAABr/iQBAAAGAAAAAABb/i0BAAAHAAAAAACP/h8AAwABAAAAAACd/h8AAwAAAAAAAABb/h8AAwAAAAAAAACh/hMAAAAGAAAAAACZ/hUAAAAHAAAAAACR/hUAAAAHAAAAAACK/hUAAAAHAAAAAACD/hUAAAAHAAAAAABj/hUAAAAHAAAAAABb/hUAAAAHAAAAAABT/hUAAAAHAAAAAABz/i8AAAAEAAAAAACq/kwAAAAGAAAAAACi/kwAAAAGAAAAAADz/lUAAAAHAAAAAADa/wIAAAACAAAAAADN/wIAAAABAAAAAADA/woAAAACAAAAAAA+AAoAAAACAAAAAAAyAAIAAAABAAAAAACR/woAAAABAAAAAAD7AE0AAAAHAAAAAADjAFwAAAAGAAAAAADLACUAAAAHAAAAAACW/koAAAAAAAAAAABP/koAAAAAAAAAAAA//koAAAAAAAAAAABH/koAAAACAAAAAADg/jcAAwABAAAAAABr/zoAAQADAAAAAABe/zoAAQABAAAAAABl/zoAAQACAAAAAABj/1UAAgACAAAAAABT/2UAAgABAAAAAABT/2IAAgADAAAAAAA=")
 tile_set = SubResource("TileSet_kqsbu")
 
 [node name="decorations" type="Node2D" parent="."]
