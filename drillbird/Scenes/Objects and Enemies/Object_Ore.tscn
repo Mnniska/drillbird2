@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://splm2us27kop"]
+[gd_scene load_steps=50 format=3 uid="uid://splm2us27kop"]
 
 [ext_resource type="Script" uid="uid://bphsgqehx7lcn" path="res://Scripts/object_ore.gd" id="1_nfnfk"]
 [ext_resource type="Resource" uid="uid://ns6ggxikg7cb" path="res://Resources/collidable_ore.tres" id="2_ncxvb"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://b11br0tugyx10" path="res://Art/Collectibles/ore_6.png" id="23_avrbf"]
 [ext_resource type="Texture2D" uid="uid://cjokqfj46hgph" path="res://Art/effects/oreSparkle/oreSparkle8.png" id="23_e52i5"]
 [ext_resource type="Texture2D" uid="uid://crutl68a3bol7" path="res://Art/characters/WalkingGem/gembug_ore.png" id="23_iatpi"]
+[ext_resource type="Texture2D" uid="uid://d3l8icmbqa1gu" path="res://Art/Collectibles/ore_heart.png" id="23_o8dtq"]
 [ext_resource type="Texture2D" uid="uid://cuwxgn84j80yt" path="res://Art/effects/oreSparkle/oreSparkle9.png" id="24_3kv60"]
 [ext_resource type="Texture2D" uid="uid://c1a6277712y7w" path="res://Art/Collectibles/ore_2_blue.png" id="25_np0ff"]
 [ext_resource type="Texture2D" uid="uid://c3whmdj85us13" path="res://Art/effects/oreSparkle/oreSparkle10.png" id="25_uioge"]
@@ -129,7 +130,10 @@ animations = [{
 "name": &"Diamond",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("23_o8dtq")
+}],
 "loop": true,
 "name": &"FinalHeart",
 "speed": 5.0
@@ -299,7 +303,7 @@ frame_progress = 0.66695756
 
 [node name="oreVisual" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_iatpi")
-animation = &"Gembug"
+animation = &"FinalHeart"
 autoplay = "null"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

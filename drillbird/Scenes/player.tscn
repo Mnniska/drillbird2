@@ -1,4 +1,4 @@
-[gd_scene load_steps=106 format=3 uid="uid://e3titjk1as46"]
+[gd_scene load_steps=112 format=3 uid="uid://e3titjk1as46"]
 
 [ext_resource type="Script" uid="uid://dgpttuofehi6x" path="res://Scripts/playermovement.gd" id="1_llgr2"]
 [ext_resource type="Texture2D" uid="uid://dqsglx1jll3rm" path="res://Art/effects/BirdyLightEffect1.png" id="2_65ywu"]
@@ -85,8 +85,14 @@
 [ext_resource type="Texture2D" uid="uid://oinvdrxfhoqd" path="res://Art/characters/Drillbird/Sleep/player_sleeping_getup_cursed18.png" id="43_fip0x"]
 [ext_resource type="Texture2D" uid="uid://0yrcyrshcl5r" path="res://Art/characters/Drillbird/Sleep/player_sleeping_getup_cursed19.png" id="44_4tc2f"]
 [ext_resource type="Texture2D" uid="uid://cqjtjfmvqsxqt" path="res://Art/characters/Drillbird/Sleep/player_sleeping_getup_cursed20.png" id="45_u5w1p"]
-[ext_resource type="Texture2D" uid="uid://b2w6djhyvdnru" path="res://Art/characters/Drillbird/birdy_sing_fly.png" id="48_vq3lt"]
-[ext_resource type="Texture2D" uid="uid://c6eyhxxyuul2g" path="res://Art/characters/Drillbird/birdy_sing_stand.png" id="49_pukcj"]
+[ext_resource type="Texture2D" uid="uid://b2w6djhyvdnru" path="res://Art/characters/Drillbird/sing/birdy_sing_fly.png" id="48_vq3lt"]
+[ext_resource type="Texture2D" uid="uid://c6eyhxxyuul2g" path="res://Art/characters/Drillbird/sing/birdy_sing_stand.png" id="49_pukcj"]
+[ext_resource type="Texture2D" uid="uid://bcj5x160a1amh" path="res://Art/characters/Drillbird/sing/birdy_sing_down.png" id="81_isbcs"]
+[ext_resource type="Texture2D" uid="uid://dh0hqr4sdhxar" path="res://Art/characters/Drillbird/sing/birdy_sing_left.png" id="83_142e3"]
+[ext_resource type="Texture2D" uid="uid://dnjbgbgqvwy88" path="res://Art/characters/Drillbird/sing/birdy_sing_right.png" id="85_ts2c8"]
+[ext_resource type="Texture2D" uid="uid://b2s4cib5qq3dl" path="res://Art/characters/Drillbird/sing/birdy_sing_up.png" id="86_hcgbs"]
+[ext_resource type="AudioStream" uid="uid://djvf0l6g4ebrk" path="res://Audio/SFX/singing/sound_sing_loop.wav" id="92_ts2c8"]
+[ext_resource type="Script" uid="uid://cf66wgki8w057" path="res://Scripts/player_sing_sound_script.gd" id="93_hcgbs"]
 
 [sub_resource type="Resource" id="Resource_0yo8f"]
 script = ExtResource("2_o5iaf")
@@ -481,6 +487,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("81_isbcs")
+}],
+"loop": true,
+"name": &"sing_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("48_vq3lt")
 }],
 "loop": true,
@@ -489,10 +503,34 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("83_142e3")
+}],
+"loop": true,
+"name": &"sing_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("49_pukcj")
 }],
 "loop": true,
-"name": &"sing_stand",
+"name": &"sing_neutral",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("85_ts2c8")
+}],
+"loop": true,
+"name": &"sing_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("86_hcgbs")
+}],
+"loop": true,
+"name": &"sing_up",
 "speed": 5.0
 }]
 
@@ -598,7 +636,7 @@ process_material = SubResource("ParticleProcessMaterial_s5mli")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 2
 sprite_frames = SubResource("SpriteFrames_3vbtj")
-animation = &"dazed_get_up_cursed"
+animation = &"sing_down"
 autoplay = "idle"
 
 [node name="jumpCrystal1" type="AnimatedSprite2D" parent="AnimatedSprite2D"]
@@ -695,6 +733,12 @@ horizontal_alignment = 1
 
 [node name="CreateFlowerTimer" type="Timer" parent="."]
 wait_time = 2.5
+
+[node name="singingSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("92_ts2c8")
+pitch_scale = 1.3
+bus = &"Sfx"
+script = ExtResource("93_hcgbs")
 
 [connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_looped"]
 [connection signal="body_shape_entered" from="BlockBelowChecker" to="." method="_on_block_below_checker_body_shape_entered"]

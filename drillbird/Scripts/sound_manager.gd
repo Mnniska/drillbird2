@@ -3,15 +3,39 @@ class_name sound_manager
 
 @export var SOUND_EFFECTS:Array[abstract_SoundEffectSetting]
 
+var soundEchoCounter:float=0
+@export var soundEchoTimer:float=2
+var shouldEcho:bool=false
+@export var inactive_wetness=0
+@export var active_wetness=0.1
 
+var reverbeffect:AudioEffectReverb
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	GlobalVariables.signal_playerIsReverbingChanged.connect(SetReverbActive)
+	reverbeffect = AudioServer.get_bus_effect(1,0)
+
+	
 	pass # Replace with function body.
 
+func _process(delta: float) -> void:
+	
+	
+	if shouldEcho and soundEchoCounter < soundEchoTimer:
+		soundEchoCounter=min(soundEchoTimer,soundEchoCounter+delta)
+		var progress = soundEchoCounter/soundEchoTimer
+		reverbeffect.wet=active_wetness*progress
+		
+	if !shouldEcho and soundEchoCounter>0:
+		soundEchoCounter=max(0,soundEchoCounter-delta)
+		var progress = soundEchoCounter/soundEchoTimer
+		reverbeffect.wet=active_wetness*progress
+	
+	
+
 func SetReverbActive(active:bool):
-	AudioServer.set_bus_effect_enabled(1,0,active) #disable/enable the "reverb" property on the SFX bus
+	shouldEcho=active
+
 
 	
 func CreatePersistentSound(location:Vector2,type:abstract_SoundEffectSetting.SoundEffectEnum):

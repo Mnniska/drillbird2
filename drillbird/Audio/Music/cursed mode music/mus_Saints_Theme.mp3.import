@@ -3,12 +3,12 @@
 importer="mp3"
 type="AudioStreamMP3"
 uid="uid://dnymvsyyp1xqy"
-path="res://.godot/imported/mus_Saints_Theme.mp3-1afcf92f6598e0c1f47d8eb12bab78c7.mp3str"
+path="res://.godot/imported/mus_Saints_Theme.mp3-93174fc5d52e146151e14f87d55ead0e.mp3str"
 
 [deps]
 
-source_file="res://Audio/MUSIC/cursed mode music/mus_Saints_Theme.mp3"
-dest_files=["res://.godot/imported/mus_Saints_Theme.mp3-1afcf92f6598e0c1f47d8eb12bab78c7.mp3str"]
+source_file="res://Audio/Music/cursed mode music/mus_Saints_Theme.mp3"
+dest_files=["res://.godot/imported/mus_Saints_Theme.mp3-93174fc5d52e146151e14f87d55ead0e.mp3str"]
 
 [params]
 

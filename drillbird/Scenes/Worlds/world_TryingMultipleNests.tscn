@@ -1,4 +1,4 @@
-[gd_scene load_steps=145 format=4 uid="uid://boh3yjorqn4xa"]
+[gd_scene load_steps=162 format=4 uid="uid://boh3yjorqn4xa"]
 
 [ext_resource type="TileSet" uid="uid://grpd2pyu7pgk" path="res://Resources/MainTileset.tres" id="1_4c1b3"]
 [ext_resource type="Script" uid="uid://cfd6ggts8pqma" path="res://Scripts/Level Generation/tilemap_environment.gd" id="2_27on7"]
@@ -45,7 +45,7 @@
 [ext_resource type="Texture2D" uid="uid://chdi1d0vsqy66" path="res://Art/environment/UniqueAssets/flowerCaveCarving.png" id="47_2vwp1"]
 [ext_resource type="Script" uid="uid://c8r71eyb8t58b" path="res://Scripts/demon_manager.gd" id="47_deunn"]
 [ext_resource type="Texture2D" uid="uid://c0rj8keueqylg" path="res://Art/environment/cursed decorations/saint cave/goosource.png" id="48_116rv"]
-[ext_resource type="Script" path="res://Scripts/cutscenes/saintcave_goo.gd" id="48_i6y5g"]
+[ext_resource type="Script" uid="uid://4hm6lnw7f8f1" path="res://Scripts/cutscenes/saintcave_goo.gd" id="48_i6y5g"]
 [ext_resource type="PackedScene" uid="uid://dk8bw20ua5emk" path="res://Scenes/Tools/ambience_node.tscn" id="48_os30j"]
 [ext_resource type="PackedScene" uid="uid://dlxy45hfa3rdq" path="res://Scenes/Effects/slime_dropper.tscn" id="49_i6y5g"]
 [ext_resource type="AudioStream" uid="uid://cygmw124vctks" path="res://Audio/Ambience/ambience_surface.mp3" id="49_mabke"]
@@ -55,7 +55,6 @@
 [ext_resource type="AudioStream" uid="uid://dthita0bprf8s" path="res://Audio/Ambience/ambience_caves_3.mp3" id="51_qn05c"]
 [ext_resource type="Texture2D" uid="uid://gvyge5bgrlci" path="res://Art/environment/cursed decorations/saint cave/gooprogress_3.png" id="52_7fw44"]
 [ext_resource type="Texture2D" uid="uid://m0m20befxja8" path="res://Art/environment/cursed decorations/saint cave/gooprogress_4.png" id="53_1phw1"]
-[ext_resource type="PackedScene" path="res://Scenes/Tools/sound_modifier_zone.tscn" id="53_07mf6"]
 [ext_resource type="AudioStream" uid="uid://dmvpadlkjti3i" path="res://Audio/Ambience/ambience_caves_1.mp3" id="53_im7r6"]
 [ext_resource type="Texture2D" uid="uid://tnnri161scpy" path="res://Art/environment/cursed decorations/saint cave/gooprogress_5.png" id="54_amln7"]
 [ext_resource type="AudioStream" uid="uid://4ftagi7vl8ky" path="res://Audio/Ambience/Drillbird_Mausoleum_Simbelmynë.mp3" id="54_runf8"]
@@ -70,6 +69,7 @@
 [ext_resource type="Script" uid="uid://c1prdu3y8gwht" path="res://Scripts/Tools/player_location_saver.gd" id="59_h2kei"]
 [ext_resource type="Texture2D" uid="uid://bhqs8nw2qwetp" path="res://Art/cutscenes/saint dialogue/saint_neutral2.png" id="60_7fw44"]
 [ext_resource type="Texture2D" uid="uid://dhrvhcsf7e45a" path="res://Art/effects/empty.png" id="61_7fw44"]
+[ext_resource type="Script" uid="uid://y7mx7snbnuu" path="res://Scripts/sound/sound_cave_echo_handler.gd" id="65_ltu22"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xeuju"]
 size = Vector2(816.75, 1246)
@@ -421,11 +421,62 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fwoml"]
-size = Vector2(257, 216.5)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7alhe"]
+size = Vector2(133, 131)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4c1b3"]
-size = Vector2(151.5, 132.5)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ktad8"]
+size = Vector2(723, 319)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_248rv"]
+size = Vector2(380, 319)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n1ix1"]
+size = Vector2(557, 163)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cmjss"]
+size = Vector2(441, 261)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cvidi"]
+size = Vector2(83.5, 90)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o5x6c"]
+size = Vector2(197, 203)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4q3aj"]
+size = Vector2(114, 186.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i4wtj"]
+size = Vector2(197, 280)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7kq07"]
+size = Vector2(356, 376)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n5lex"]
+size = Vector2(201, 161)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_umxpl"]
+size = Vector2(615, 311)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d84u7"]
+size = Vector2(615, 677)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_62fva"]
+size = Vector2(267, 207)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7lbv8"]
+size = Vector2(364, 447)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p3e50"]
+size = Vector2(798, 447)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wv678"]
+size = Vector2(267, 53)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l3ttj"]
+size = Vector2(316, 522)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oiq5h"]
+size = Vector2(267, 202)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aulbw"]
 size = Vector2(73, 20)
@@ -1043,6 +1094,7 @@ region_enabled = true
 region_rect = Rect2(0, 0, 8000, 8000)
 
 [node name="intensifiers" type="Node2D" parent="decorations/BackgroundHandler"]
+visible = false
 z_index = 10
 
 [node name="Area2D" type="Area2D" parent="decorations/BackgroundHandler/intensifiers"]
@@ -1489,26 +1541,187 @@ autoplay = "null"
 
 [node name="AudioReverbAreas" type="Node2D" parent="WorldScripts"]
 visible = false
+script = ExtResource("65_ltu22")
 
-[node name="SoundModifierZone" parent="WorldScripts/AudioReverbAreas" instance=ExtResource("53_07mf6")]
-position = Vector2(-681, 259)
+[node name="Area2D" type="Area2D" parent="WorldScripts/AudioReverbAreas"]
+position = Vector2(-386, 139)
+collision_layer = 0
+collision_mask = 16
 
-[node name="CollisionShape2D" parent="WorldScripts/AudioReverbAreas/SoundModifierZone/Area2D" index="0"]
-position = Vector2(217.5, 94.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldScripts/AudioReverbAreas/Area2D"]
+position = Vector2(58.5, 21.5)
+shape = SubResource("RectangleShape2D_7alhe")
+debug_color = Color(0.8182749, 0.35536513, 0.5143219, 0.41960785)
 
-[node name="SoundModifierZone2" parent="WorldScripts/AudioReverbAreas" instance=ExtResource("53_07mf6")]
-position = Vector2(196, 239)
+[node name="Area2D6" type="Area2D" parent="WorldScripts/AudioReverbAreas"]
+position = Vector2(-848, 705)
+collision_layer = 0
+collision_mask = 16
 
-[node name="CollisionShape2D" parent="WorldScripts/AudioReverbAreas/SoundModifierZone2/Area2D" index="0"]
-position = Vector2(126.5, 93.25)
-shape = SubResource("RectangleShape2D_fwoml")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldScripts/AudioReverbAreas/Area2D6"]
+position = Vector2(353.5, 115.5)
+shape = SubResource("RectangleShape2D_ktad8")
+debug_color = Color(0.8182749, 0.35536513, 0.5143219, 0.41960785)
 
-[node name="SoundModifierZone3" parent="WorldScripts/AudioReverbAreas" instance=ExtResource("53_07mf6")]
-position = Vector2(-396, 128)
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="WorldScripts/AudioReverbAreas/Area2D6"]
+position = Vector2(378, 424)
+shape = SubResource("RectangleShape2D_248rv")
+debug_color = Color(0.8182749, 0.35536513, 0.5143219, 0.41960785)
 
-[node name="CollisionShape2D" parent="WorldScripts/AudioReverbAreas/SoundModifierZone3/Area2D" index="0"]
-position = Vector2(69.25, 40.75)
-shape = SubResource("RectangleShape2D_4c1b3")
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="WorldScripts/AudioReverbAreas/Area2D6"]
+position = Vector2(-258.5, 313.5)
+shape = SubResource("RectangleShape2D_n1ix1")
+debug_color = Color(0.8182749, 0.35536513, 0.5143219, 0.41960785)
+
+[node name="Area2D3" type="Area2D" parent="WorldScripts/AudioReverbAreas"]
+position = Vector2(-704, 328)
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldScripts/AudioReverbAreas/Area2D3"]
+position = Vector2(257.5, 56.5)
+shape = SubResource("RectangleShape2D_cmjss")
+debug_color = Color(0.8182749, 0.35536513, 0.5143219, 0.41960785)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="WorldScripts/AudioReverbAreas/Area2D3"]
+position = Vector2(36.75, 13)
+shape = SubResource("RectangleShape2D_cvidi")
+debug_color = Color(0.8182749, 0.35536513, 0.5143219, 0.41960785)
+
+[node name="Area2D2" type="Area2D" parent="WorldScripts/AudioReverbAreas"]
+position = Vector2(215, 367)
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldScripts/AudioReverbAreas/Area2D2"]
+position = Vector2(90.5, -14.5)
+shape = SubResource("RectangleShape2D_o5x6c")
+debug_color = Color(0.8182749, 0.35536513, 0.5143219, 0.41960785)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="WorldScripts/AudioReverbAreas/Area2D2"]
+position = Vector2(148, -131.75)
+shape = SubResource("RectangleShape2D_4q3aj")
+debug_color = Color(0.8182749, 0.35536513, 0.5143219, 0.41960785)
+
+[node name="Area2D4" type="Area2D" parent="WorldScripts/AudioReverbAreas"]
+position = Vector2(240, 534)
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldScripts/AudioReverbAreas/Area2D4"]
+position = Vector2(90.5, 24)
+shape = SubResource("RectangleShape2D_i4wtj")
+debug_color = Color(0.8182749, 0.35536513, 0.5143219, 0.41960785)
+
+[node name="Area2D5" type="Area2D" parent="WorldScripts/AudioReverbAreas"]
+position = Vector2(302, 921)
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldScripts/AudioReverbAreas/Area2D5"]
+position = Vector2(170, -101)
+shape = SubResource("RectangleShape2D_7kq07")
+debug_color = Color(0.8182749, 0.35536513, 0.5143219, 0.41960785)
+
+[node name="Area2D7" type="Area2D" parent="WorldScripts/AudioReverbAreas"]
+position = Vector2(305, 1351)
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldScripts/AudioReverbAreas/Area2D7"]
+position = Vector2(92.5, 6.5)
+shape = SubResource("RectangleShape2D_n5lex")
+debug_color = Color(0.8182749, 0.35536513, 0.5143219, 0.41960785)
+
+[node name="Area2D8" type="Area2D" parent="WorldScripts/AudioReverbAreas"]
+position = Vector2(-692, 1843)
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldScripts/AudioReverbAreas/Area2D8"]
+position = Vector2(299.5, 81.5)
+shape = SubResource("RectangleShape2D_umxpl")
+debug_color = Color(0.8182749, 0.35536513, 0.5143219, 0.41960785)
+
+[node name="Area2D11" type="Area2D" parent="WorldScripts/AudioReverbAreas"]
+position = Vector2(-683, 2303)
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldScripts/AudioReverbAreas/Area2D11"]
+position = Vector2(299.5, 264.5)
+shape = SubResource("RectangleShape2D_d84u7")
+debug_color = Color(0.8182749, 0.35536513, 0.5143219, 0.41960785)
+
+[node name="Area2D9" type="Area2D" parent="WorldScripts/AudioReverbAreas"]
+position = Vector2(541, 1977)
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldScripts/AudioReverbAreas/Area2D9"]
+position = Vector2(125.5, 50.5)
+shape = SubResource("RectangleShape2D_62fva")
+debug_color = Color(0.8182749, 0.35536513, 0.5143219, 0.41960785)
+
+[node name="Area2D12" type="Area2D" parent="WorldScripts/AudioReverbAreas"]
+position = Vector2(386, 2595)
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldScripts/AudioReverbAreas/Area2D12"]
+position = Vector2(174, 170.5)
+shape = SubResource("RectangleShape2D_7lbv8")
+debug_color = Color(0.8182749, 0.35536513, 0.5143219, 0.41960785)
+
+[node name="Area2D13" type="Area2D" parent="WorldScripts/AudioReverbAreas"]
+position = Vector2(-1042, 3660)
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldScripts/AudioReverbAreas/Area2D13"]
+position = Vector2(391, 170.5)
+shape = SubResource("RectangleShape2D_p3e50")
+debug_color = Color(0.8182749, 0.35536513, 0.5143219, 0.41960785)
+
+[node name="Area2D14" type="Area2D" parent="WorldScripts/AudioReverbAreas"]
+position = Vector2(372, 3994)
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldScripts/AudioReverbAreas/Area2D14"]
+position = Vector2(391, 170.5)
+shape = SubResource("RectangleShape2D_p3e50")
+debug_color = Color(0.8182749, 0.35536513, 0.5143219, 0.41960785)
+
+[node name="Area2D10" type="Area2D" parent="WorldScripts/AudioReverbAreas"]
+position = Vector2(1086, 1496)
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldScripts/AudioReverbAreas/Area2D10"]
+position = Vector2(126, 3.5)
+shape = SubResource("RectangleShape2D_wv678")
+debug_color = Color(0.8182749, 0.35536513, 0.5143219, 0.41960785)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="WorldScripts/AudioReverbAreas/Area2D10"]
+position = Vector2(300, 281)
+shape = SubResource("RectangleShape2D_l3ttj")
+debug_color = Color(0.8182749, 0.35536513, 0.5143219, 0.41960785)
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="WorldScripts/AudioReverbAreas/Area2D10"]
+position = Vector2(430, 800)
+shape = SubResource("RectangleShape2D_l3ttj")
+debug_color = Color(0.8182749, 0.35536513, 0.5143219, 0.41960785)
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="WorldScripts/AudioReverbAreas/Area2D10"]
+position = Vector2(128, 957)
+shape = SubResource("RectangleShape2D_l3ttj")
+debug_color = Color(0.8182749, 0.35536513, 0.5143219, 0.41960785)
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="WorldScripts/AudioReverbAreas/Area2D10"]
+position = Vector2(145.5, 321)
+shape = SubResource("RectangleShape2D_oiq5h")
+debug_color = Color(0.8182749, 0.35536513, 0.5143219, 0.41960785)
 
 [node name="PlayerSpawnLocations" type="Node2D" parent="."]
 
@@ -1687,6 +1900,3 @@ position = Vector2(22, -448)
 [editable path="WorldScripts/PlayerTeleporter"]
 [editable path="WorldScripts/CameraLimiter2"]
 [editable path="WorldScripts/SaintTech/Dialogue"]
-[editable path="WorldScripts/AudioReverbAreas/SoundModifierZone"]
-[editable path="WorldScripts/AudioReverbAreas/SoundModifierZone2"]
-[editable path="WorldScripts/AudioReverbAreas/SoundModifierZone3"]

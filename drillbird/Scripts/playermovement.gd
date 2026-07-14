@@ -237,20 +237,107 @@ func DroppingOresMovement(delta:float,currentAnim:String):
 		
 	return "drop_ores"
 
+enum singingDirectionEnum {neutral,left,up,right,down}
+var singingDirection:singingDirectionEnum
+var latestPressedDirection:singingDirectionEnum
+var pressedDirections:Array[singingDirectionEnum]
+
+@export var singSoundStart:AudioStream
+@export var singSoundLoop:AudioStream
+var singingPitch:float=0
+@onready var singingAudioPlayer:AudioStreamPlayer2D=$singingSound
+var singingTimer:float=0
+var justStartedSinging=true
+
 func SingingMovement(delta:float,currentAnim:String):
+
+	if justStartedSinging:
+		singingAudioPlayer.play()
+		justStartedSinging=false
+
+	if !Input.is_action_pressed("sing"):
+		state=States.IDLE
+		justStartedSinging=true
+		singingAudioPlayer.stop()
+		return "sing_stand"
 	
-	velocity.y=0
+	
+	if !is_on_floor():
+		velocity.y=0
+
+		singingCounter+=delta
+		if singingCounter>singingTimeWhenAirborne:
+			singingCounter=0
+			#state=States.IDLE
+		return "sing_fly"
+
 	velocity.x=velocity.x*0.9
 	
-	singingCounter+=delta
-	if singingCounter>singingTimeWhenAirborne:
-		singingCounter=0
-		state=States.IDLE
+
 	
-	if is_on_floor():
-		return "sing_stand"
+	pressedDirections.clear()
+	if Input.is_action_pressed("left"):
+		pressedDirections.append(singingDirectionEnum.left)
+		
+	if Input.is_action_pressed("up"):
+		pressedDirections.append(singingDirectionEnum.up)
+	if Input.is_action_pressed("right"):
+		pressedDirections.append(singingDirectionEnum.right)
+	if Input.is_action_pressed("down"):
+		pressedDirections.append(singingDirectionEnum.down)
+	
+	if Input.is_action_just_pressed("left"):
+		latestPressedDirection=singingDirectionEnum.left
+	if Input.is_action_just_pressed("up"):
+		latestPressedDirection=singingDirectionEnum.up
+	if Input.is_action_just_pressed("right"):
+		latestPressedDirection=singingDirectionEnum.right
+	if Input.is_action_just_pressed("down"):
+		latestPressedDirection=singingDirectionEnum.down
+	
+	if pressedDirections.size()==0:
+		singingDirection=singingDirectionEnum.neutral
 	else:
-		return "sing_fly"
+		if pressedDirections.has(latestPressedDirection):
+			singingDirection= latestPressedDirection
+		else:
+			singingDirection= pressedDirections[0]
+		
+	
+	var pitch:float=1
+	var stringToReturn
+	match singingDirection:
+		singingDirectionEnum.neutral:
+			
+			stringToReturn= "sing_neutral"
+		singingDirectionEnum.left:
+			
+			pitch = 0.9
+			
+			if playerAnim.flip_h:
+				stringToReturn= "sing_right"
+			else:
+				stringToReturn= "sing_left"
+		singingDirectionEnum.up:
+			pitch=1.2
+			stringToReturn= "sing_up"
+			
+		singingDirectionEnum.right:
+			pitch=1.1
+			
+			if playerAnim.flip_h:
+				stringToReturn= "sing_left"
+			else:
+				stringToReturn= "sing_right"
+		singingDirectionEnum.down:
+			pitch=0.7
+			stringToReturn= "sing_down"
+	
+	singingAudioPlayer.pitch_scale=pitch
+	return stringToReturn
+
+	
+
 
 func FlowerMovement(delta:float,currentAnim:String):
 	
@@ -735,9 +822,10 @@ func SetLightEffectActive(active:bool):
 	if facingDir == Directions.LEFT or facingDir == Directions.RIGHT:
 		lightEffect.flip_h = !facing_right
 
+@onready var playerAnim:AnimatedSprite2D=$AnimatedSprite2D
 func Update_Animations(newanim):
 
-	var playerAnim:AnimatedSprite2D=$AnimatedSprite2D
+
 
 	if playerDrillingSolid:
 		if !player_is_drilling_tile:
