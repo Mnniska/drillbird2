@@ -911,6 +911,7 @@ position = Vector2(-2, -83)
 animation = &"hatch"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
 z_index = 1
 position = Vector2(-2, -40)
 sprite_frames = SubResource("SpriteFrames_dcmve")
@@ -923,9 +924,8 @@ z_index = 1
 material = SubResource("ShaderMaterial_4l23s")
 position = Vector2(-2, -40)
 sprite_frames = SubResource("SpriteFrames_q5a4i")
-animation = &"final_form_with_SOUL_idle"
+animation = &"go_to_final_form"
 autoplay = "final_form_with_heart_idle"
-frame_progress = 0.3431121
 
 [node name="FinalHeartPosition" type="Node2D" parent="."]
 z_index = 1
