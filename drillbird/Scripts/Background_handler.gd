@@ -8,7 +8,7 @@ class_name background_handler
 @onready var background_back:Sprite2D=$Sprite_HUBBackground_back
 @onready var background_front:Sprite2D=$Sprite_HUBBackground_front
 
-var timeToTween:float=1
+@export var timeToTween:float=2
 var tweenCounter:float=0
 var showFront:bool=false
 
