@@ -29,7 +29,7 @@ func _ready() -> void:
 func BirdySleep(_sleeping:bool):
 	if _sleeping and !sleeping:
 		GoToSleep()
-	elif sleeping:
+	elif !sleeping:
 		WakeUp()	
 
 
@@ -65,7 +65,8 @@ func _physics_process(delta: float) -> void:
 
 
 	if state==States.WALK:
-		if showdebuglabel: debuglabel.text="walking"
+		if showdebuglabel: 
+			debuglabel.text="walking"
 		_anim="run"
 		
 		velocity.x = direction * SPEED
@@ -85,6 +86,7 @@ func _physics_process(delta: float) -> void:
 	if state==States.WAIT:
 		if showdebuglabel: debuglabel.text="wait"
 		_anim="idle"
+		velocity.x=0
 		waitCounter+=delta
 		if waitCounter>timeInWait:
 			waitCounter=0
@@ -107,7 +109,7 @@ func _physics_process(delta: float) -> void:
 		isFalling=false
 	
 	if isFalling:
-		debuglabel="falling"
+		debuglabel.text="falling"
 		_anim="fall"
 		
 		velocity.x=0
@@ -135,18 +137,19 @@ func GoToSleep():
 	if rand>0.8:
 		cuteSleeper=true
 		
-	
-	anim.play("goingtosleep")
-	await anim.animation_finished
+	if goingToSleep:
+		anim.play("goingtosleep")
+		await anim.animation_finished
 	
 	waitTime = randf()*0.5
 	
 	await get_tree().create_timer(waitTime).timeout
 	
-	#we can set goingtosleep to false to ignore the timer if cloud wakes up fast
 	if goingToSleep:
-		goingToSleep=false
-		sleeping=true
+		#we can set goingtosleep to false to ignore the timer if cloud wakes up fast
+		if goingToSleep:
+			goingToSleep=false
+			sleeping=true
 
 
 func UpdateSleepAnim():
