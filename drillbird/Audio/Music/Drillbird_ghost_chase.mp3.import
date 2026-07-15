@@ -3,12 +3,12 @@
 importer="mp3"
 type="AudioStreamMP3"
 uid="uid://dd6lou4smcfdt"
-path="res://.godot/imported/Drillbird_ghost_chase.mp3-e7846b02ef556fdd7cee11abca72dd12.mp3str"
+path="res://.godot/imported/Drillbird_ghost_chase.mp3-c68530f54ff4d8d8a1bc23368203d5f9.mp3str"
 
 [deps]
 
-source_file="res://Audio/Music/Drillbird_ghost_chase.mp3"
-dest_files=["res://.godot/imported/Drillbird_ghost_chase.mp3-e7846b02ef556fdd7cee11abca72dd12.mp3str"]
+source_file="res://Audio/MUSIC/Drillbird_ghost_chase.mp3"
+dest_files=["res://.godot/imported/Drillbird_ghost_chase.mp3-c68530f54ff4d8d8a1bc23368203d5f9.mp3str"]
 
 [params]
 

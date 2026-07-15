@@ -3,12 +3,12 @@
 importer="mp3"
 type="AudioStreamMP3"
 uid="uid://bbft4s7juh1cf"
-path="res://.godot/imported/Nesting Cursed Mode 1.mp3-eaca52357de39b683dc643980ee76737.mp3str"
+path="res://.godot/imported/Nesting Cursed Mode 1.mp3-4182da4b033f912b8e09c2ee6eba47e7.mp3str"
 
 [deps]
 
-source_file="res://Audio/Music/cursed mode music/Nesting Cursed Mode 1.mp3"
-dest_files=["res://.godot/imported/Nesting Cursed Mode 1.mp3-eaca52357de39b683dc643980ee76737.mp3str"]
+source_file="res://Audio/MUSIC/cursed mode music/Nesting Cursed Mode 1.mp3"
+dest_files=["res://.godot/imported/Nesting Cursed Mode 1.mp3-4182da4b033f912b8e09c2ee6eba47e7.mp3str"]
 
 [params]
 

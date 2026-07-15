@@ -3,12 +3,12 @@
 importer="mp3"
 type="AudioStreamMP3"
 uid="uid://ca6u3h185adqy"
-path="res://.godot/imported/Drillbird_Tutorial.mp3-87a40b88e4df2bc2d34f7639e5cdcdcb.mp3str"
+path="res://.godot/imported/Drillbird_Tutorial.mp3-85f1b426e9a58fde288549617c9fc7ba.mp3str"
 
 [deps]
 
-source_file="res://Audio/Music/Drillbird_Tutorial.mp3"
-dest_files=["res://.godot/imported/Drillbird_Tutorial.mp3-87a40b88e4df2bc2d34f7639e5cdcdcb.mp3str"]
+source_file="res://Audio/MUSIC/Drillbird_Tutorial.mp3"
+dest_files=["res://.godot/imported/Drillbird_Tutorial.mp3-85f1b426e9a58fde288549617c9fc7ba.mp3str"]
 
 [params]
 
