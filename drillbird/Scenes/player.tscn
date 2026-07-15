@@ -746,3 +746,4 @@ script = ExtResource("93_hcgbs")
 [connection signal="body_entered" from="Detector" to="." method="_on_detector_body_entered"]
 [connection signal="body_exited" from="Detector" to="." method="_on_detector_body_exited"]
 [connection signal="timeout" from="CreateFlowerTimer" to="." method="_on_create_flower_timer_timeout"]
+[connection signal="finished" from="singingSound" to="singingSound" method="_on_finished"]

@@ -245,33 +245,35 @@ var pressedDirections:Array[singingDirectionEnum]
 @export var singSoundStart:AudioStream
 @export var singSoundLoop:AudioStream
 var singingPitch:float=0
-@onready var singingAudioPlayer:AudioStreamPlayer2D=$singingSound
 var singingTimer:float=0
 var justStartedSinging=true
+@onready var singScript:singing_script=$singingSound
 
 func SingingMovement(delta:float,currentAnim:String):
 
-	if justStartedSinging:
-		singingAudioPlayer.play()
+	if justStartedSinging and is_on_floor():
+		singScript.StartSinging()
 		justStartedSinging=false
 
 	if !Input.is_action_pressed("sing"):
 		state=States.IDLE
 		justStartedSinging=true
-		singingAudioPlayer.stop()
+		singScript.StopSinging()
 		return "sing_stand"
 	
+	velocity.x=velocity.x*0.9
 	
 	if !is_on_floor():
-		velocity.y=0
+		velocity.y=min(0.1,velocity.y*0.95)
 
 		singingCounter+=delta
 		if singingCounter>singingTimeWhenAirborne:
 			singingCounter=0
-			#state=States.IDLE
+			state=States.IDLE
+			singScript.StopSinging()
 		return "sing_fly"
 
-	velocity.x=velocity.x*0.9
+	
 	
 
 	
@@ -303,8 +305,8 @@ func SingingMovement(delta:float,currentAnim:String):
 		else:
 			singingDirection= pressedDirections[0]
 		
-	
-	var pitch:float=1
+	singScript.UpdateSingDirection(singingDirection)
+
 	var stringToReturn
 	match singingDirection:
 		singingDirectionEnum.neutral:
@@ -312,28 +314,23 @@ func SingingMovement(delta:float,currentAnim:String):
 			stringToReturn= "sing_neutral"
 		singingDirectionEnum.left:
 			
-			pitch = 0.9
 			
 			if playerAnim.flip_h:
 				stringToReturn= "sing_right"
 			else:
 				stringToReturn= "sing_left"
 		singingDirectionEnum.up:
-			pitch=1.2
 			stringToReturn= "sing_up"
 			
 		singingDirectionEnum.right:
-			pitch=1.1
 			
 			if playerAnim.flip_h:
 				stringToReturn= "sing_left"
 			else:
 				stringToReturn= "sing_right"
 		singingDirectionEnum.down:
-			pitch=0.7
 			stringToReturn= "sing_down"
 	
-	singingAudioPlayer.pitch_scale=pitch
 	return stringToReturn
 
 	
@@ -487,6 +484,7 @@ func RegularMovement(delta:float,currentAnim:String):
 	
 	if Input.is_action_just_pressed("sing"):
 		state=States.SINGING
+		#singing start sound effect
 		SoundManager.PlaySoundAtLocation(global_position,abstract_SoundEffectSetting.SoundEffectEnum.PLAYER_WAKEUP)
 		if GlobalVariables:
 			GlobalVariables.playerSang.emit()
