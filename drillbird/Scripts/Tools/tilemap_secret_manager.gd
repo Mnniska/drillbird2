@@ -9,6 +9,7 @@ var amountOfRemovalsDone:int=0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	show()
 	pass # Replace with function body.
 
 #the target tile is added to the action queue 
