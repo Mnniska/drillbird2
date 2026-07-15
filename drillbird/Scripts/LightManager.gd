@@ -181,7 +181,8 @@ var darknessVeryClose:bool=false:
 	set(value): 
 		if value !=darknessVeryClose:
 			darknessVeryClose=value
-			GlobalVariables.MainSceneReferenceConnector.ref_backgroundHandler.LightRequestsIntensity(value)
+			if GlobalVariables.CursedMode:
+				GlobalVariables.MainSceneReferenceConnector.ref_backgroundHandler.LightRequestsIntensity(value)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
