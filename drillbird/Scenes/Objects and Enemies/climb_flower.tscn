@@ -89,7 +89,7 @@ collider = SubResource("Resource_eoj21")
 SPEED = 115.0
 timeUntilFast = 3.0
 heightToGetAchievement = 90.0
-flowerGrowTimer = 4.0
+flowerGrowTimer = 2.0
 
 [node name="base" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 16)

@@ -11,6 +11,10 @@ var lightBulbArray:Array[Sprite2D]
 @export var time_TimerLength:int=135
 @export var time_TimerLength_Additionalbulb:int=60
 @export var time_DrillMultiplier:float=2
+@export var time_FlowerCreationMultiplier:float=4
+
+var flowerIsBeingCreated:bool=false
+
 #todo: Figure out if this is how you wanna do time
 var time_Countdown:float:
 	get:return time_Countdown
@@ -40,6 +44,7 @@ var textBubblePath=preload("res://Scenes/UI/text_bubble.tscn")
 @onready var PlayerLight
 @onready var LightSlider:Slider=$LightSliderParent/UI_LightSlider
 @onready var DrillLightParticle=$LightSliderParent/Particle_DrillLight
+@onready var DrillingLightParticle_FLOWER=$LightSliderParent/Particle_DrillLight/Particle_DrillLight_flower
 
 var gamePaused:bool=true
 
@@ -51,6 +56,12 @@ func _ready() -> void:
 	#wait for game data to be loaded b4 accessing save data to set up light
 	GlobalVariables.SetupComplete.connect(SetupLightFunctionality)
 	GlobalVariables.PlayerIsDrillingTileChanged.connect(_on_player_signal_is_drilling_tile_changed)
+	GlobalVariables.signal_FlowerBeingCreatedChanged.connect(FlowerIsBeingCreatedChanged)
+
+func FlowerIsBeingCreatedChanged(value:bool):
+	flowerIsBeingCreated=value
+	
+	pass
 
 func GamePausedChange(paused:bool):
 	gamePaused=paused
@@ -198,11 +209,17 @@ func _process(delta: float) -> void:
 	if time_Countdown>0:
 		var multiplier:float=1
 		if playerIsDrillingTile:
-			multiplier=time_DrillMultiplier
+			if flowerIsBeingCreated:
+				multiplier=time_FlowerCreationMultiplier
+				DrillingLightParticle_FLOWER.emitting=true
+
+			else:
+				multiplier=time_DrillMultiplier
 			SetLightPosition()
-			$LightSliderParent/Particle_DrillLight.emitting=true
+			DrillLightParticle.emitting=true #need a huge-ass light for flower multiplier
 		else:
-			$LightSliderParent/Particle_DrillLight.emitting=false
+			DrillLightParticle.emitting=false
+			DrillingLightParticle_FLOWER.emitting=false
 		time_Countdown-=delta*multiplier
 		
 
@@ -238,7 +255,8 @@ func _process(delta: float) -> void:
 			if !GetNextLightbulb():
 				signal_pitch_dark.emit()
 				outOfLight=true
-				$LightSliderParent/Particle_DrillLight.emitting=false
+				DrillLightParticle.emitting=false
+				DrillingLightParticle_FLOWER.emitting=false
 				UpdatePlayerLightStatus()
 			pass
 	pass

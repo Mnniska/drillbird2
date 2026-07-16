@@ -126,6 +126,7 @@ func DealDamage(value:int,spawnCorpse:bool=true): #MUST HAVE
 		#TODO: Fancy kill animation
 
 func GoToSleep():
+	return
 	state=States.SLEEPING
 	goingToSleep=true
 

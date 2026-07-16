@@ -13,6 +13,14 @@ signal birdyIsSleeping(bool)
 var save_file_path = "user://save/"
 var save_file_name="DrillbirdPlayerSave.tres"
 
+var flowerIsBeingCreated:bool:
+	get:return flowerIsBeingCreated
+	set(value):
+		if value!=flowerIsBeingCreated:
+			flowerIsBeingCreated=value
+			signal_FlowerBeingCreatedChanged.emit(flowerIsBeingCreated)
+signal signal_FlowerBeingCreatedChanged(bool)
+
 var MainSceneReferenceConnector:main_scene_reference_connector
 var CreditsSceneReferenceConnector:credits_scene_reference_connector
 var playerSpawnPos:Vector2

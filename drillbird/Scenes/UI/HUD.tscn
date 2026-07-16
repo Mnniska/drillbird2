@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://bxacqh1cbwxw5"]
+[gd_scene load_steps=49 format=3 uid="uid://bxacqh1cbwxw5"]
 
 [ext_resource type="Script" uid="uid://cqw1bn227bamc" path="res://Scripts/UX and UI/GlobalHUDManager.gd" id="1_u1olj"]
 [ext_resource type="Texture2D" uid="uid://cp6xuvmo0rguj" path="res://Art/UI/HUD/UI_BlackBorder.png" id="1_vcacc"]
@@ -72,8 +72,32 @@ spread = 46.8
 initial_velocity_max = 52.89
 gravity = Vector3(0, 90, 0)
 scale_curve = SubResource("CurveTexture_c1j2j")
-hue_variation_min = -0.89
-hue_variation_max = -0.77
+color = Color(1, 0.77254903, 0, 1)
+hue_variation_min = 0.079999976
+hue_variation_max = 0.079999976
+
+[sub_resource type="Curve" id="Curve_dlptc"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.831395, 0.626374), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_cg6gh"]
+curve = SubResource("Curve_dlptc")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_iub3o"]
+particle_flag_rotate_y = true
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(3, 1, 1)
+angle_min = -242.3
+angle_max = 207.7
+direction = Vector3(0, -1, 0)
+spread = 46.8
+initial_velocity_max = 105.13
+gravity = Vector3(0, 90, 0)
+scale_curve = SubResource("CurveTexture_cg6gh")
+color = Color(0.99970144, 0.15233159, 0.10914645, 1)
+hue_variation_min = 0.079999976
+hue_variation_max = 0.079999976
 
 [sub_resource type="Resource" id="Resource_jrvhg"]
 script = ExtResource("20_hlahx")
@@ -254,6 +278,7 @@ position = Vector2(3.90244, 1)
 script = ExtResource("2_01nkd")
 time_TimerLength_Additionalbulb = 90
 time_DrillMultiplier = 3.0
+time_FlowerCreationMultiplier = 10.0
 
 [node name="LightSliderParent" type="Node2D" parent="topUI/LightHandler"]
 
@@ -284,6 +309,16 @@ lifetime = 0.3
 explosiveness = 0.26
 randomness = 1.0
 process_material = SubResource("ParticleProcessMaterial_44yp2")
+
+[node name="Particle_DrillLight_flower" type="GPUParticles2D" parent="topUI/LightHandler/LightSliderParent/Particle_DrillLight"]
+z_index = 2
+position = Vector2(-3.8146973e-06, -1.0975647)
+emitting = false
+amount = 20
+lifetime = 0.3
+explosiveness = 0.26
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_iub3o")
 
 [node name="Label" type="Label" parent="topUI/LightHandler"]
 offset_left = -27.55

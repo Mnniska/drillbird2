@@ -31,7 +31,12 @@ var PlayerAttached:bool=false
 
 @export var flowerGrowTimer:float=3
 var flowerGrowCount:float=0
-var isBeingNurtured:bool=false
+var isBeingNurtured:bool=false:
+	get:return isBeingNurtured
+	set(value):
+		if value!=isBeingNurtured:
+			isBeingNurtured=value
+			GlobalVariables.flowerIsBeingCreated=isBeingNurtured
 @onready var FlowerRootAnim:AnimatedSprite2D=$base
 
 var hasGottenAchievement:bool=false
@@ -79,6 +84,7 @@ func Update_Growing(delta:float):
 		
 			if !raycast.is_colliding():
 				SetHasBlossomed(true)
+				isBeingNurtured=false
 			else:
 				flowerGrowCount=flowerGrowTimer
 	else:
@@ -143,6 +149,7 @@ func Update_Active(delta:float):
 	
 	
 func SetHasBlossomed(hasBlossomed:bool,playsound:bool=true):
+	
 	if hasBlossomed:
 		if playsound:
 			SoundManager.PlaySoundAtLocation(global_position,abstract_SoundEffectSetting.SoundEffectEnum.FLOWER_GROW_JINGLE)
