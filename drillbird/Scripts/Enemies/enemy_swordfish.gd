@@ -15,6 +15,7 @@ var direction:float=1
 @export var reactionTime:float=1.2
 @export var timeInWait:float=0.4
 @export var timeBeforeTurning:float=0.2
+@export var showDebugInfo:bool=false
 var turningCounter:float=0
 var waitCounter=0
 var speed:Vector2=Vector2(0,0)
@@ -34,7 +35,10 @@ var BlockDestroyer:crack_script
 
 func _ready() -> void:
 	GlobalVariables.TileDestroyed.connect(TileWasDestroyed)
-	
+	if showDebugInfo:
+		$Label.show()
+	else:
+		$Label.hide()
 func DebugShowMessage(text:String):
 	
 	var textBubbleInstance=textbubble.instantiate()
@@ -100,6 +104,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 	if state==States.WALK:
+		anim.speed_scale=1
 		animToPlay="run"
 		
 		velocity.x = direction * SPEED
@@ -119,6 +124,7 @@ func _physics_process(delta: float) -> void:
 	if state==States.WAIT:
 		animToPlay="idle"
 		waitCounter+=delta
+		anim.speed_scale=1
 		if waitCounter>timeInWait:
 			waitCounter=0
 			state=States.WALK
@@ -126,6 +132,7 @@ func _physics_process(delta: float) -> void:
 	if state==States.DETECT:
 		animToPlay="detect"
 		velocity.x=0
+		anim.speed_scale=1
 		pass
 		#I don't think I need to do a lot here except play the detect anim
 
@@ -133,7 +140,7 @@ func _physics_process(delta: float) -> void:
 		animToPlay="sprint"
 		velocity.x=direction*ATTACK_SPEED
 		SetFlyingSoundActive(true)
-		
+		anim.speed_scale=1
 		
 
 	if state==States.DAZED:

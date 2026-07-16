@@ -3,12 +3,12 @@
 importer="mp3"
 type="AudioStreamMP3"
 uid="uid://bwynx1ih755ll"
-path="res://.godot/imported/Drillbird Theme.mp3-61d0b38a7c4a8f6da17aaacbeba7b1f0.mp3str"
+path="res://.godot/imported/Drillbird Theme.mp3-7789de60c32495fb07f91d0cc012d4a0.mp3str"
 
 [deps]
 
-source_file="res://Audio/MUSIC/Drillbird Theme.mp3"
-dest_files=["res://.godot/imported/Drillbird Theme.mp3-61d0b38a7c4a8f6da17aaacbeba7b1f0.mp3str"]
+source_file="res://Audio/Music/Drillbird Theme.mp3"
+dest_files=["res://.godot/imported/Drillbird Theme.mp3-7789de60c32495fb07f91d0cc012d4a0.mp3str"]
 
 [params]
 
