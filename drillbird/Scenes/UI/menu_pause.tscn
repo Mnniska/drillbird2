@@ -11,13 +11,13 @@ options = [NodePath("Return"), NodePath("Options"), NodePath("Undo Day"), NodePa
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.396078)
-position = Vector2(164, 117.5)
-scale = Vector2(1.36719, 15.6875)
+position = Vector2(190.00002, 108.00001)
+scale = Vector2(1.484375, 13.625001)
 texture = ExtResource("2_6r7dd")
 
 [node name="Header" type="RichTextLabel" parent="."]
 offset_top = 26.0
-offset_right = 321.0
+offset_right = 379.0
 offset_bottom = 106.0
 theme = ExtResource("3_44x14")
 theme_override_constants/line_separation = 2
@@ -26,17 +26,17 @@ text = "[center]Paused
 day 3"
 
 [node name="Return" parent="." instance=ExtResource("4_vbmoi")]
-position = Vector2(159, 97)
+position = Vector2(191, 97)
 optionName = "Return"
 localizationID = "options_return"
 
 [node name="Options" parent="." instance=ExtResource("4_vbmoi")]
-position = Vector2(159, 120)
+position = Vector2(191, 120)
 optionName = "Options"
 localizationID = "menu_options"
 
 [node name="Undo Day" parent="." node_paths=PackedStringArray("extraConfirmzationMessage") instance=ExtResource("4_vbmoi")]
-position = Vector2(159, 145)
+position = Vector2(191, 145)
 optionName = "Undo Day"
 localizationID = "menu_undo"
 RequireExtraConfirmation = true
@@ -44,7 +44,7 @@ extraConfirmzationMessage = NodePath("../QuitConfirmation")
 extraConfirmationMessageLocalizationID = "menu_undo_confirm"
 
 [node name="Quit Game2" parent="." instance=ExtResource("4_vbmoi")]
-position = Vector2(159, 170)
+position = Vector2(191, 170)
 optionName = "Quit Game"
 localizationID = "menu_quit"
 
@@ -57,10 +57,10 @@ theme = ExtResource("3_44x14")
 bbcode_enabled = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-offset_left = 7.0
-offset_top = 101.0
-offset_right = 189.0
-offset_bottom = 224.0
+offset_left = 5.0
+offset_top = 90.0
+offset_right = 187.0
+offset_bottom = 213.0
 size_flags_vertical = 8
 alignment = 2
 
@@ -70,15 +70,17 @@ size_flags_vertical = 8
 theme = ExtResource("3_44x14")
 theme_override_constants/line_separation = 2
 bbcode_enabled = true
-text = "[color=gray](jump) = jump [p](drill) = Drill blocks[p](inventory) = Drop ores"
+text = "[color=gray](jump) = jump [p](drill) = Drill blocks[p](inventory) = Drop ores
+"
 fit_content = true
 
 [node name="QuitConfirmation" type="RichTextLabel" parent="."]
 visible = false
 z_index = 10
 clip_contents = false
+offset_left = 26.0
 offset_top = 186.0
-offset_right = 321.0
+offset_right = 347.0
 offset_bottom = 266.0
 theme = ExtResource("3_44x14")
 theme_override_colors/default_color = Color(1, 1, 1, 1)
@@ -93,6 +95,6 @@ scroll_active = false
 modulate = Color(1, 1, 1, 0.43529412)
 z_index = 9
 z_as_relative = false
-position = Vector2(158, 121)
-scale = Vector2(1.36719, 15.6875)
+position = Vector2(166.5, 121)
+scale = Vector2(1.6523439, 15.6875)
 texture = ExtResource("2_6r7dd")

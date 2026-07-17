@@ -23,8 +23,8 @@ BaseMenu = [NodePath("Return2"), NodePath("ToggleFullscreen"), NodePath("Audio O
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.396078)
-position = Vector2(-0.999994, 5.49999)
-scale = Vector2(1.73438, 20.4375)
+position = Vector2(24.99997, -21.500004)
+scale = Vector2(3.4687498, 31.562502)
 texture = ExtResource("2_eej8b")
 
 [node name="Return2" parent="." instance=ExtResource("2_x5nw2")]
