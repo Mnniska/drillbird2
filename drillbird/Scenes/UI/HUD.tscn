@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://bxacqh1cbwxw5"]
+[gd_scene load_steps=51 format=3 uid="uid://bxacqh1cbwxw5"]
 
 [ext_resource type="Script" uid="uid://cqw1bn227bamc" path="res://Scripts/UX and UI/GlobalHUDManager.gd" id="1_u1olj"]
 [ext_resource type="Texture2D" uid="uid://cp6xuvmo0rguj" path="res://Art/UI/HUD/UI_BlackBorder.png" id="1_vcacc"]
@@ -232,6 +232,12 @@ _data = {
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_okkph"]
 
+[sub_resource type="Curve" id="Curve_cg6gh"]
+
+[sub_resource type="CurveTexture" id="CurveTexture_iub3o"]
+width = 40
+curve = SubResource("Curve_cg6gh")
+
 [node name="HUD" type="CanvasLayer"]
 layer = 10
 script = ExtResource("1_u1olj")
@@ -355,7 +361,7 @@ texture = ExtResource("14_a35vt")
 
 [node name="HealthUIHandler" type="Node2D" parent="topUI"]
 z_index = 2
-position = Vector2(-149, 0)
+position = Vector2(-137, 0)
 script = ExtResource("9_uhcmx")
 HealthUpgrades = ExtResource("10_3kqti")
 
@@ -463,7 +469,6 @@ visible = false
 position = Vector2(191, 118)
 
 [node name="PAUSE" parent="." instance=ExtResource("24_p58jt")]
-visible = false
 
 [node name="TransitionToMain" type="AnimationPlayer" parent="."]
 libraries = {
@@ -539,6 +544,22 @@ texture = ExtResource("28_tc67a")
 [node name="Credits" parent="credits parent" instance=ExtResource("29_llwrf")]
 material = SubResource("CanvasItemMaterial_okkph")
 position = Vector2(168, 0)
+
+[node name="PermanentDarkness" type="TextureRect" parent="."]
+z_index = 100
+offset_right = 40.0
+offset_bottom = 220.0
+texture = SubResource("CurveTexture_iub3o")
+
+[node name="PermanentDarkness2" type="TextureRect" parent="."]
+z_index = 100
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 220.0
+grow_horizontal = 0
+texture = SubResource("CurveTexture_iub3o")
 
 [connection signal="NewGame" from="MainMenu" to="." method="_on_main_menu_new_game"]
 [connection signal="press_options" from="MainMenu" to="." method="_on_main_menu_press_options"]

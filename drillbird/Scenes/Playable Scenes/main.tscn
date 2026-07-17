@@ -1,4 +1,4 @@
-[gd_scene load_steps=89 format=3 uid="uid://d2wv7igie5stg"]
+[gd_scene load_steps=87 format=3 uid="uid://d2wv7igie5stg"]
 
 [ext_resource type="Script" uid="uid://c0pdu2cqd60yv" path="res://Scenes/Playable Scenes/SaveManager.gd" id="1_iickb"]
 [ext_resource type="PackedScene" uid="uid://0iy1qmgd0p6y" path="res://Scenes/TileCrack.tscn" id="2_c10yv"]
@@ -84,13 +84,6 @@ texture_margin_left = 4.0
 texture_margin_top = 4.0
 texture_margin_right = 4.0
 texture_margin_bottom = 4.0
-
-[sub_resource type="Gradient" id="Gradient_8jrys"]
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(0, 0, 0, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_ea32y"]
-gradient = SubResource("Gradient_8jrys")
 
 [sub_resource type="Resource" id="Resource_enldq"]
 script = ExtResource("48_cl8sw")
@@ -379,12 +372,6 @@ text = "Awaken"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="darkness" type="Sprite2D" parent="Camera2D"]
-visible = false
-z_index = 2
-scale = Vector2(5.21875, 970)
-texture = SubResource("GradientTexture1D_ea32y")
-
 [node name="DebugFunctionality" type="Node2D" parent="Camera2D"]
 z_index = 6
 scale = Vector2(2, 2)
@@ -425,6 +412,7 @@ script = ExtResource("35_54gud")
 lightTexture = ExtResource("36_yw5ht")
 lightSource = NodePath("light_full")
 minLight = 0.25
+maxLight = 0.85
 
 [node name="light_full" type="PointLight2D" parent="PlayerDarkness"]
 blend_mode = 2
