@@ -66,7 +66,7 @@ func GetValueOfOresForRegion(regionID:int):
 
 func GetRegionIdentifierFromLocation(tilemapPos:Vector2i,tilemap:TileMapLayer):
 	
-	var num:int=0
+	var num:int=1
 
 	var globalLoc=to_global(tilemap.map_to_local(tilemapPos))
 	

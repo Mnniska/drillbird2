@@ -191,7 +191,10 @@ func GenerateObjectsAndEnemiesFromTilemap():
 				
 			#Here, we wanna create an ORE SPRITE that matches the current ore region
 			var oreRegion:int=GetRelevantOreRegion(tileLoc)
-			oreTilemap.set_cell(tileLoc,0,Vector2i(oreRegion,randi_range(0,2)),0) #Sets cell to be one of the ores. The random is to select between the variants
+			
+			#here we set the ore tilemap to have the correct ore. I reduce the oreRegion number by 1 - this is because the oreRegion data needs to start at 1 due to 
+			#info stores in tiles are 0 by default - but the tile location starts at 0. This allows the values in the oreRegions in the scene to be the same as the oreRegion resources
+			oreTilemap.set_cell(tileLoc,0,Vector2i(oreRegion-1,randi_range(0,2)),0) #Sets tilemap cell to be one of the ores. The random is to select between the variants
 			
 			
 			
@@ -226,6 +229,7 @@ func GenerateObjectsAndEnemiesFromTilemap():
 
 
 	#All of this is done to ensure the tiles connect beautifully 
+	#..it's not working lol
 	var terrains:Array[abstract_tileCollection]
 
 	for indvidualtile in tilesToUpdateTerrainOn:

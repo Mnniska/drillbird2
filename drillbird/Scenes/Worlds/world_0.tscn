@@ -260,7 +260,6 @@ oreRegions = Array[ExtResource("3_7p4f3")]([ExtResource("4_8lf0q"), ExtResource(
 oreList = Array[ExtResource("11_01olm")]([ExtResource("12_1otom"), ExtResource("13_jhrgr"), ExtResource("14_lu4fm"), ExtResource("15_gjsnf"), ExtResource("16_s1hdx"), ExtResource("17_4fb2i"), ExtResource("18_krviu")])
 
 [node name="OreRegions" type="Node2D" parent="TilemapOres"]
-visible = false
 script = ExtResource("19_rht7v")
 
 [node name="OreArea_tutorial" type="Area2D" parent="TilemapOres/OreRegions"]
@@ -279,6 +278,7 @@ position = Vector2(-107, 38)
 collision_layer = 64
 collision_mask = 64
 script = ExtResource("20_5cnti")
+terrainIdentifier = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TilemapOres/OreRegions/OreArea0"]
 position = Vector2(256.75, 28)
@@ -290,7 +290,7 @@ position = Vector2(56, 290)
 collision_layer = 64
 collision_mask = 64
 script = ExtResource("20_5cnti")
-terrainIdentifier = 1
+terrainIdentifier = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TilemapOres/OreRegions/OreArea"]
 position = Vector2(98.5, 335)
@@ -302,7 +302,7 @@ position = Vector2(171, 1034)
 collision_layer = 64
 collision_mask = 64
 script = ExtResource("20_5cnti")
-terrainIdentifier = 2
+terrainIdentifier = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TilemapOres/OreRegions/OreArea2"]
 position = Vector2(-19, 18)
@@ -313,7 +313,7 @@ position = Vector2(57, 769)
 collision_layer = 64
 collision_mask = 64
 script = ExtResource("20_5cnti")
-terrainIdentifier = 3
+terrainIdentifier = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TilemapOres/OreRegions/OreArea3"]
 position = Vector2(30.5, 798)
@@ -325,7 +325,7 @@ position = Vector2(1148, 2347)
 collision_layer = 64
 collision_mask = 64
 script = ExtResource("20_5cnti")
-terrainIdentifier = 3
+terrainIdentifier = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TilemapOres/OreRegions/OreArea_flowerCave"]
 position = Vector2(17, 83)
@@ -337,7 +337,7 @@ position = Vector2(-26, 2232)
 collision_layer = 64
 collision_mask = 64
 script = ExtResource("20_5cnti")
-terrainIdentifier = 4
+terrainIdentifier = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TilemapOres/OreRegions/OreArea4"]
 position = Vector2(-762, 305)
@@ -1540,6 +1540,7 @@ shape = SubResource("RectangleShape2D_y375v")
 position = Vector2(-616, 520)
 
 [node name="PlayerSpawnLocations" type="Node2D" parent="."]
+visible = false
 
 [node name="OriginalSpawnPos" type="Sprite2D" parent="PlayerSpawnLocations"]
 position = Vector2(-616, 520)
