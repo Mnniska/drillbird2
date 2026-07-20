@@ -1,4 +1,4 @@
-[gd_scene load_steps=112 format=3 uid="uid://e3titjk1as46"]
+[gd_scene load_steps=110 format=3 uid="uid://e3titjk1as46"]
 
 [ext_resource type="Script" uid="uid://dgpttuofehi6x" path="res://Scripts/playermovement.gd" id="1_llgr2"]
 [ext_resource type="Texture2D" uid="uid://dqsglx1jll3rm" path="res://Art/effects/BirdyLightEffect1.png" id="2_65ywu"]
@@ -61,8 +61,6 @@
 [ext_resource type="Texture2D" uid="uid://d2wh6n47sa4yq" path="res://Art/characters/Drillbird/Sleep/player_sleeping_cursed13.png" id="23_ramv3"]
 [ext_resource type="Texture2D" uid="uid://bdnsaxsutvhq8" path="res://Art/effects/sprite_jumpCrystal3.png" id="24_nofj5"]
 [ext_resource type="Texture2D" uid="uid://d1fxkvrdmxu4l" path="res://Art/effects/sprite_jumpCrystal4.png" id="25_ehp6o"]
-[ext_resource type="Texture2D" uid="uid://cino4k13k3srb" path="res://Art/characters/Drillbird/Sleep/player_sleeping_getup_cursed1.png" id="26_hseb1"]
-[ext_resource type="Texture2D" uid="uid://cunlpxrv0aqle" path="res://Art/characters/Drillbird/Sleep/player_sleeping_getup_cursed2.png" id="27_vinow"]
 [ext_resource type="Texture2D" uid="uid://cq8d0cxjca0fe" path="res://Art/characters/Drillbird/Sleep/player_sleeping_getup_cursed3.png" id="28_awsf5"]
 [ext_resource type="Texture2D" uid="uid://eodka874lm71" path="res://Art/characters/Drillbird/Sleep/player_sleeping_getup_cursed4.png" id="29_v84ne"]
 [ext_resource type="Texture2D" uid="uid://pp7vfvearu3q" path="res://Art/characters/Drillbird/Sleep/player_sleeping_getup_cursed5.png" id="30_4pcjl"]
@@ -241,12 +239,6 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 2.0,
-"texture": ExtResource("26_hseb1")
-}, {
-"duration": 1.0,
-"texture": ExtResource("27_vinow")
-}, {
 "duration": 1.0,
 "texture": ExtResource("28_awsf5")
 }, {
@@ -636,7 +628,7 @@ process_material = SubResource("ParticleProcessMaterial_s5mli")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 2
 sprite_frames = SubResource("SpriteFrames_3vbtj")
-animation = &"sing_down"
+animation = &"dazed_get_up_cursed"
 autoplay = "idle"
 
 [node name="jumpCrystal1" type="AnimatedSprite2D" parent="AnimatedSprite2D"]

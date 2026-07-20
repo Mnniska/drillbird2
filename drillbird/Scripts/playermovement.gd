@@ -138,6 +138,10 @@ func UpdateCollisions(_state:collisionstates):
 
 func _physics_process(delta: float) -> void:
 
+	if Input.is_key_pressed(KEY_5) and GlobalVariables.DebugEnabled and state!=States.DAZED:
+		state=States.DAZED
+		GetUp()
+
 	if Input.is_action_just_pressed("debug_1"):
 		if GlobalVariables.DebugEnabled:
 		
@@ -259,7 +263,7 @@ func SingingMovement(delta:float,currentAnim:String):
 		state=States.IDLE
 		justStartedSinging=true
 		singScript.StopSinging()
-		return "sing_stand"
+		return "sing_neutral"
 	
 	velocity.x=velocity.x*0.9
 	
@@ -438,8 +442,9 @@ func TriggerDazed():
 	
 
 func DazedMovement(delta:float,currentAnim:String):
-	
-	if Input.is_action_just_pressed("jump") or Input.is_action_just_pressed("left")or Input.is_action_just_pressed("right") or Input.is_action_just_pressed("up") or Input.is_action_just_pressed("down") or Input.is_action_just_pressed("drill"):
+	#removed for trailer, make it return!
+	# or Input.is_action_just_pressed("left")or Input.is_action_just_pressed("right") or Input.is_action_just_pressed("up") or Input.is_action_just_pressed("down") or Input.is_action_just_pressed("drill")
+	if Input.is_action_just_pressed("jump"):
 		if !isgettingup:
 			GetUp()
 
@@ -454,6 +459,9 @@ func StopWalkSound():
 	pass
 
 func GetUp():
+	
+	
+	
 	if !isgettingup:
 		isgettingup=true
 		
