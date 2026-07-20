@@ -28,9 +28,9 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	
 	if Input.is_action_just_pressed("up") and Input.is_action_pressed("debug_tab") and GlobalVariables.DebugEnabled:
-		SetZoomLevel(zoom.x+0.1)
+		SetZoomLevel(zoom.x+1)
 	if Input.is_action_just_pressed("down") and Input.is_action_pressed("debug_tab") and GlobalVariables.DebugEnabled:
-		SetZoomLevel(zoom.x-0.1)
+		SetZoomLevel(zoom.x-1)
 	
 	match state:
 		states.WAITING:

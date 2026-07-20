@@ -374,6 +374,7 @@ vertical_alignment = 1
 
 [node name="DebugFunctionality" type="Node2D" parent="Camera2D"]
 z_index = 6
+position = Vector2(34, 12)
 scale = Vector2(2, 2)
 script = ExtResource("47_igpia")
 menu = Array[ExtResource("48_cl8sw")]([SubResource("Resource_dq3mr"), SubResource("Resource_5ornm"), SubResource("Resource_77at3"), SubResource("Resource_v3nii"), SubResource("Resource_co6uo"), SubResource("Resource_o5w6h"), SubResource("Resource_x06hp"), SubResource("Resource_gh5xl")])

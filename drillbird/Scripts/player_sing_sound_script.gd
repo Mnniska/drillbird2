@@ -4,10 +4,12 @@ var currentPitch:float=1
 var targetPitch:float=1
 var singDirection:player_script.singingDirectionEnum
 var isSinging:bool=false
-
+@export var enabled:bool=false
 
 
 func StartSinging():
+	if !enabled:
+		return
 	isSinging=true
 	await get_tree().create_timer(0.1).timeout
 	if isSinging:
