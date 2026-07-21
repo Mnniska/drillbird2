@@ -380,6 +380,7 @@ scale = Vector2(0.997063, 1)
 texture = ExtResource("1_vcacc")
 
 [node name="UI_Death" parent="." instance=ExtResource("18_6hqox")]
+position = Vector2(189, 89)
 
 [node name="MainMenu" type="Control" parent="."]
 layout_mode = 3
