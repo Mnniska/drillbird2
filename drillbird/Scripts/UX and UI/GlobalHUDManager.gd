@@ -11,6 +11,7 @@ extends CanvasLayer
 @onready var PauseMenu=$PAUSE
 @onready var SpeedrunTimer=$SpeedrunTimer
 
+
 signal signal_menuStateChanged
 enum menuStates{MAIN,PAUSE,OPTIONS,PLAY,CREDITS}
 var state:menuStates=menuStates.MAIN:
@@ -22,6 +23,8 @@ var previousMenuState:menuStates
 
 enum sceneStates{MAIN,CREDITS}
 var sceneState:sceneStates=sceneStates.MAIN
+
+
 
 
 #HUD manager vars
@@ -42,6 +45,7 @@ var pos_bottom_hidden:Vector2
 
 @export var scene_credits:PackedScene
 @export var scene_main:PackedScene
+
 
 
 # Called when the node enters the scene tree for the first time.

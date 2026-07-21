@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://bxacqh1cbwxw5"]
+[gd_scene load_steps=58 format=3 uid="uid://bxacqh1cbwxw5"]
 
 [ext_resource type="Script" uid="uid://cqw1bn227bamc" path="res://Scripts/UX and UI/GlobalHUDManager.gd" id="1_u1olj"]
 [ext_resource type="Texture2D" uid="uid://cp6xuvmo0rguj" path="res://Art/UI/HUD/UI_BlackBorder.png" id="1_vcacc"]
@@ -30,6 +30,12 @@
 [ext_resource type="Script" uid="uid://bl87tjhhsl7nt" path="res://Scripts/Tools/speedrun_timer.gd" id="27_rs6d6"]
 [ext_resource type="Texture2D" uid="uid://bi6q51sklyetd" path="res://Art/environment/SpaceBackground/background_space_allLayers.png" id="28_tc67a"]
 [ext_resource type="PackedScene" uid="uid://l6j5lsi56hrl" path="res://Scenes/UI/credits.tscn" id="29_llwrf"]
+[ext_resource type="Texture2D" uid="uid://uismcxuwh2vx" path="res://Art/cutscenes/lightningLol1.png" id="31_lyj15"]
+[ext_resource type="Texture2D" uid="uid://dnvrfulf0rvaq" path="res://Art/cutscenes/lightningLol2.png" id="32_l2igo"]
+[ext_resource type="Texture2D" uid="uid://dfrkow8a7yvqf" path="res://Art/cutscenes/lightningLol3.png" id="33_ralih"]
+[ext_resource type="Texture2D" uid="uid://dlu6ymb81jtm6" path="res://Art/cutscenes/lightningLol4.png" id="34_p5q14"]
+[ext_resource type="Texture2D" uid="uid://dem4k6l4pf0wj" path="res://Art/cutscenes/lightningLol5.png" id="35_q4d15"]
+[ext_resource type="Texture2D" uid="uid://fwku7w3qfcra" path="res://Art/cutscenes/lightningLol6.png" id="36_pyhjf"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_ese10"]
 
@@ -237,6 +243,32 @@ _data = {
 [sub_resource type="CurveTexture" id="CurveTexture_iub3o"]
 width = 40
 curve = SubResource("Curve_cg6gh")
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t7fi5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("31_lyj15")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_l2igo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_ralih")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_p5q14")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_q4d15")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_pyhjf")
+}],
+"loop": false,
+"name": &"default",
+"speed": 8.0
+}]
 
 [node name="HUD" type="CanvasLayer"]
 layer = 10
@@ -561,6 +593,14 @@ offset_left = -40.0
 offset_bottom = 220.0
 grow_horizontal = 0
 texture = SubResource("CurveTexture_iub3o")
+
+[node name="lightningeffect" type="AnimatedSprite2D" parent="."]
+visible = false
+z_index = 100
+position = Vector2(194, 110)
+sprite_frames = SubResource("SpriteFrames_t7fi5")
+frame = 5
+frame_progress = 1.0
 
 [connection signal="NewGame" from="MainMenu" to="." method="_on_main_menu_new_game"]
 [connection signal="press_options" from="MainMenu" to="." method="_on_main_menu_press_options"]

@@ -1578,6 +1578,7 @@ texture = ExtResource("58_2epxp")
 position = Vector2(964, -82)
 
 [node name="Demon" parent="Demon cave" node_paths=PackedStringArray("demonCutscene") instance=ExtResource("61_7p4f3")]
+visible = false
 z_index = 1
 position = Vector2(17, -74)
 demonCutscene = NodePath("../ReincarnationCutscene")
@@ -1602,6 +1603,7 @@ limit_bottom = true
 shape = SubResource("RectangleShape2D_8lf0q")
 
 [node name="ReincarnationCutscene" parent="Demon cave" instance=ExtResource("62_vhuqd")]
+visible = false
 z_index = 10
 position = Vector2(13, -75)
 

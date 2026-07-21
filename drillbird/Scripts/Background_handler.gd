@@ -7,7 +7,7 @@ class_name background_handler
 
 @onready var background_back:Sprite2D=$Sprite_HUBBackground_back
 @onready var background_front:Sprite2D=$Sprite_HUBBackground_front
-
+@export var setupForCursedModeTrailer:bool=false
 @export var timeToTween:float=2
 var tweenCounter:float=0
 var showFront:bool=false
@@ -23,12 +23,15 @@ func _ready() -> void:
 	
 	var children:Array[Node] = $intensifiers.get_children()
 	
-	for collider in children:
-		var coll:Area2D=collider
-		coll.body_entered.connect(PlayerEnteredACollider)
-		coll.body_exited.connect(PlayerExitedACollider)
+	if !setupForCursedModeTrailer:
+		for collider in children:
+			var coll:Area2D=collider
+			coll.body_entered.connect(PlayerEnteredACollider)
+			coll.body_exited.connect(PlayerExitedACollider)
 	
 func LightRequestsIntensity(intense:bool):
+	if setupForCursedModeTrailer:
+		return
 	if intense:
 		objectsRequestingIntenseBackground+=1
 	else:
@@ -55,6 +58,18 @@ func SetCursedMode(cursed:bool):
 		background_back.texture=background_cursed_back
 		background_front.texture=background_cursed_front
 
+var isUsingNormalBG:bool=true
+func SwitchToCursedModeBackground():
+	background_front.show()
+	
+	isUsingNormalBG=!isUsingNormalBG
+		
+	
+	if isUsingNormalBG:
+		background_front.texture=background_normal
+	else:
+		background_front.texture=background_cursed_front
+
 
 func UpdateAfterColliderChange():
 	if objectsRequestingIntenseBackground>0:
@@ -67,7 +82,9 @@ func SetShowBackgroundFrontLayer(_front_active:bool):
 	showFront=_front_active
 
 func _process(delta: float) -> void:
-	
+	if setupForCursedModeTrailer:
+		return
+		
 	if showFront and tweenCounter>timeToTween:
 		return
 	if !showFront and tweenCounter<=0:

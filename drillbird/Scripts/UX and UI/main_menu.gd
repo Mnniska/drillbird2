@@ -24,9 +24,15 @@ var fadeCounter:float=2
 
 # Called when the node enters the scene tree for the first time.
 
+@onready var lightning:AnimatedSprite2D=$"../lightningeffect"
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
+
+
+	if Input.is_key_pressed(KEY_6):
+		TrailerShowCursedModeStuff()
 	
 
 	UpdateMenuOpacity(delta)
@@ -208,7 +214,20 @@ func UpdateMenuFade(progress:float):
 	
 	var color=Color(Color.WHITE,progress)
 	self.modulate=color
-	
-		
 
+var isShowingCursedMode:bool=false
+func TrailerShowCursedModeStuff():
+	if isShowingCursedMode:
+		return
+	else:
+		isShowingCursedMode=true
+		
+	lightning.show()
+	lightning.play()
+	await get_tree().create_timer(0.1).timeout
+	GlobalVariables.MainSceneReferenceConnector.ref_backgroundHandler.SwitchToCursedModeBackground()
+	GlobalVariables.PlayerController.GetUp()
 	
+	
+	await get_tree().create_timer(1).timeout
+	isShowingCursedMode=false

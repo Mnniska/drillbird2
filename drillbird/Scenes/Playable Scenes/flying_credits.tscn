@@ -1,4 +1,4 @@
-[gd_scene load_steps=84 format=3 uid="uid://chmegxltn4stt"]
+[gd_scene load_steps=101 format=3 uid="uid://chmegxltn4stt"]
 
 [ext_resource type="Script" uid="uid://bnixc6n4rvat7" path="res://Scripts/UX and UI/flying_credits_manager.gd" id="1_xtpho"]
 [ext_resource type="Texture2D" uid="uid://d0ot502nge360" path="res://Art/environment/SpaceBackground/background_space_spaceLayer.png" id="3_a3sr5"]
@@ -65,6 +65,19 @@
 [ext_resource type="Texture2D" uid="uid://fdaqyfvivcve" path="res://Art/cutscenes/Earth Dying/cutscene_earthMurder25.png" id="63_kboef"]
 [ext_resource type="Texture2D" uid="uid://uxsk3gfexguc" path="res://Art/cutscenes/Earth Dying/cutscene_earthMurder26.png" id="64_wmlto"]
 [ext_resource type="Texture2D" uid="uid://bf3noark6ojqj" path="res://Art/cutscenes/Earth Dying/cutscene_earthMurder27.png" id="65_821tw"]
+[ext_resource type="Texture2D" uid="uid://bd1st08xumoud" path="res://Art/cutscenes/true ending final picture/drillbird_with_coffee_base1.png" id="66_lj1k8"]
+[ext_resource type="Texture2D" uid="uid://cgjh6oe73e1h2" path="res://Art/cutscenes/true ending final picture/drillbird_with_coffee_base2.png" id="67_wie72"]
+[ext_resource type="Texture2D" uid="uid://buwqardrd5evf" path="res://Art/cutscenes/true ending final picture/drillbird_with_coffee_base3.png" id="68_fr5pb"]
+[ext_resource type="Texture2D" uid="uid://coiocf1w5m8ee" path="res://Art/cutscenes/true ending final picture/drillbird_with_coffee_base4.png" id="69_px2g5"]
+[ext_resource type="Texture2D" uid="uid://dag1cst0dkg6q" path="res://Art/cutscenes/true ending final picture/drillbird_with_coffee_base5.png" id="70_4tqpx"]
+[ext_resource type="Texture2D" uid="uid://b8p61supa5iti" path="res://Art/cutscenes/true ending final picture/drillbird_with_coffee_base6.png" id="71_6hg7g"]
+[ext_resource type="Texture2D" uid="uid://k2ttavcttab4" path="res://Art/cutscenes/true ending final picture/drillbird_with_coffee_base7.png" id="72_7kqwd"]
+[ext_resource type="Texture2D" uid="uid://q78bsg07sx61" path="res://Art/cutscenes/true ending final picture/drillbird_with_coffee_base8.png" id="73_3gv7p"]
+[ext_resource type="Texture2D" uid="uid://drmn7kawp16yu" path="res://Art/cutscenes/true ending final picture/drillbird_with_coffee_base9.png" id="74_2nxbg"]
+[ext_resource type="Texture2D" uid="uid://mm5hnpkjwa6x" path="res://Art/cutscenes/true ending final picture/drillbird_with_coffee_ONLY_COFFEE_SMOKE1.png" id="75_kv8ji"]
+[ext_resource type="Texture2D" uid="uid://goj73shgll7n" path="res://Art/cutscenes/true ending final picture/drillbird_with_coffee_ONLY_COFFEE_SMOKE2.png" id="76_m8v3j"]
+[ext_resource type="Texture2D" uid="uid://dn3jnmyntnj0i" path="res://Art/cutscenes/true ending final picture/drillbird_with_coffee_ONLY_COFFEE_SMOKE3.png" id="77_kboef"]
+[ext_resource type="Texture2D" uid="uid://cbk8ti1482f2t" path="res://Art/cutscenes/true ending final picture/drillbird_with_coffee_ONLY_COFFEE_SMOKE4.png" id="78_wmlto"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uva2n"]
 shader = ExtResource("3_nxjs3")
@@ -646,6 +659,66 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_821tw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("66_lj1k8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("67_wie72")
+}, {
+"duration": 1.0,
+"texture": ExtResource("68_fr5pb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("69_px2g5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("70_4tqpx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("71_6hg7g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("72_7kqwd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("73_3gv7p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("74_2nxbg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5vatw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("75_kv8ji")
+}, {
+"duration": 1.0,
+"texture": ExtResource("76_m8v3j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("77_kboef")
+}, {
+"duration": 1.0,
+"texture": ExtResource("78_wmlto")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="Curve" id="Curve_osxyg"]
+
+[sub_resource type="CurveTexture" id="CurveTexture_l53ye"]
+curve = SubResource("Curve_osxyg")
+
 [node name="FlyingCredits" type="Node"]
 script = ExtResource("1_xtpho")
 
@@ -846,11 +919,34 @@ z_index = 5
 position = Vector2(-160, -111)
 
 [node name="cutscene_earthDying" type="Node2D" parent="."]
-visible = false
 z_index = 4
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="cutscene_earthDying"]
 sprite_frames = SubResource("SpriteFrames_uyb8h")
 animation = &"earth_dying"
+
+[node name="cutscene_ChillingWithCoffee" type="Node2D" parent="."]
+z_index = 4
+
+[node name="base" type="AnimatedSprite2D" parent="cutscene_ChillingWithCoffee"]
+sprite_frames = SubResource("SpriteFrames_821tw")
+autoplay = "default"
+frame = 2
+frame_progress = 0.6528773
+
+[node name="smoke" type="AnimatedSprite2D" parent="cutscene_ChillingWithCoffee"]
+sprite_frames = SubResource("SpriteFrames_5vatw")
+autoplay = "default"
+frame_progress = 0.4756457
+
+[node name="darkness blocker" type="Sprite2D" parent="cutscene_ChillingWithCoffee"]
+position = Vector2(-277.99997, -6.375)
+scale = Vector2(1, 274.74997)
+texture = SubResource("CurveTexture_l53ye")
+
+[node name="darkness blocker2" type="Sprite2D" parent="cutscene_ChillingWithCoffee"]
+position = Vector2(278.00003, -6)
+scale = Vector2(1, 274.74997)
+texture = SubResource("CurveTexture_l53ye")
 
 [connection signal="body_shape_entered" from="PlayerDetector" to="." method="_on_player_detector_body_shape_entered"]
