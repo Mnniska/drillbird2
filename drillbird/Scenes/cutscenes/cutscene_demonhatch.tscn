@@ -1,4 +1,4 @@
-[gd_scene load_steps=333 format=3 uid="uid://1codt4oivfrh"]
+[gd_scene load_steps=374 format=3 uid="uid://1codt4oivfrh"]
 
 [ext_resource type="Script" uid="uid://bdp4ofq34bcvf" path="res://Scripts/cutscenes/cutscene_demonhatch.gd" id="1_xrmd2"]
 [ext_resource type="Texture2D" uid="uid://xvqkhrf0uqfk" path="res://Art/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest2.png" id="2_81c15"]
@@ -292,43 +292,84 @@
 [ext_resource type="Texture2D" uid="uid://sfpwayth7bei" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding141.png" id="327_mwbor"]
 [ext_resource type="Texture2D" uid="uid://bjqbjnb5aowkt" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding142.png" id="328_q6kab"]
 [ext_resource type="Texture2D" uid="uid://cx7qalduris0g" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding143.png" id="329_uea5m"]
+[ext_resource type="Texture2D" uid="uid://3d2drkt888yh" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding181.png" id="330_n7y41"]
 [ext_resource type="Texture2D" uid="uid://c26ntngkpui2l" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding144.png" id="330_xo1mb"]
+[ext_resource type="Texture2D" uid="uid://nje62rtd21mr" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding182.png" id="331_2bo4e"]
 [ext_resource type="Texture2D" uid="uid://c3kpl12w6j3d2" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding145.png" id="331_ouig4"]
+[ext_resource type="Texture2D" uid="uid://o072ll0g1h8" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding183.png" id="332_680tc"]
 [ext_resource type="Texture2D" uid="uid://ebcrg8jupp57" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding146.png" id="332_il1q8"]
 [ext_resource type="Texture2D" uid="uid://dii4xki1ubtmd" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding147.png" id="333_060rk"]
+[ext_resource type="Texture2D" uid="uid://btfj17rsiasvd" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding184.png" id="333_dysuw"]
+[ext_resource type="Texture2D" uid="uid://dlsctf57n411a" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding185.png" id="334_58mi8"]
 [ext_resource type="Texture2D" uid="uid://4wsvibchyn66" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding148.png" id="334_noebd"]
+[ext_resource type="Texture2D" uid="uid://234y6v1goxuk" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding186.png" id="335_ctc8n"]
 [ext_resource type="Texture2D" uid="uid://bqxhjkydabhcq" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding149.png" id="335_uaj4h"]
 [ext_resource type="Texture2D" uid="uid://ct7e61etqf8o1" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding150.png" id="336_g4c7q"]
+[ext_resource type="Texture2D" uid="uid://dns7nq6sept5j" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding187.png" id="336_nptul"]
+[ext_resource type="Texture2D" uid="uid://bjyfvrvjjg0wm" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding188.png" id="337_b5xh4"]
 [ext_resource type="Texture2D" uid="uid://7628xijg6nn6" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding151.png" id="337_o53fe"]
 [ext_resource type="Texture2D" uid="uid://cwy5t4cum4x1n" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding152.png" id="338_us68u"]
+[ext_resource type="Texture2D" uid="uid://cmlml3tauofi0" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding189.png" id="338_xbw72"]
 [ext_resource type="Texture2D" uid="uid://cqhm8p7uf3xu0" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding153.png" id="339_4wthh"]
+[ext_resource type="Texture2D" uid="uid://bitc1v17t1gyf" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding190.png" id="339_k4n2s"]
+[ext_resource type="Texture2D" uid="uid://dnl1rs3khet1" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding191.png" id="340_8n3wr"]
 [ext_resource type="Texture2D" uid="uid://wuypabstd3uv" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding154.png" id="340_j3o0r"]
+[ext_resource type="Texture2D" uid="uid://cx6v204mp7p8j" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding192.png" id="341_4v7en"]
 [ext_resource type="Texture2D" uid="uid://tgka7pvjqxgn" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding155.png" id="341_votru"]
 [ext_resource type="Texture2D" uid="uid://dvcscepwbf3xh" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding156.png" id="342_4yhfe"]
+[ext_resource type="Texture2D" uid="uid://dw52411nacpjm" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding193.png" id="342_ead07"]
 [ext_resource type="Texture2D" uid="uid://0j2xgktmu66v" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding157.png" id="343_5tlr2"]
+[ext_resource type="Texture2D" uid="uid://3kv60f7bhs68" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding194.png" id="343_bvklw"]
+[ext_resource type="Texture2D" uid="uid://d1btf63e7w3eu" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding195.png" id="344_ehu7d"]
 [ext_resource type="Texture2D" uid="uid://dcie8aw85wdwx" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding158.png" id="344_fkv2g"]
 [ext_resource type="Texture2D" uid="uid://b48de7jn1t3rl" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding159.png" id="345_dadma"]
+[ext_resource type="Texture2D" uid="uid://diwhlnwlo0r1o" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding196.png" id="345_p4ya4"]
+[ext_resource type="Texture2D" uid="uid://c8cbw6cgyulkc" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding197.png" id="346_fjnor"]
 [ext_resource type="Texture2D" uid="uid://kmgo1fplavun" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding160.png" id="346_tr8kt"]
+[ext_resource type="Texture2D" uid="uid://dt7tg17j3a7bh" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding198.png" id="347_ofo2d"]
 [ext_resource type="Texture2D" uid="uid://5s4axxdy0o8" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding161.png" id="347_p4ndj"]
+[ext_resource type="Texture2D" uid="uid://wy7eq5aolcwe" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding199.png" id="348_clyd4"]
 [ext_resource type="Texture2D" uid="uid://bhxkldcei152a" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding162.png" id="348_w0f06"]
+[ext_resource type="Texture2D" uid="uid://bheiaf6b1irp7" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding200.png" id="349_7ifdl"]
 [ext_resource type="Texture2D" uid="uid://dpgpcnyu2lmg1" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding163.png" id="349_81han"]
+[ext_resource type="Texture2D" uid="uid://cd7bp5cw6d2ar" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding201.png" id="350_hd3jf"]
 [ext_resource type="Texture2D" uid="uid://cmutljgxsppit" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding164.png" id="350_nhpdm"]
+[ext_resource type="Texture2D" uid="uid://dd8qwhn8aadwv" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding202.png" id="351_77ksd"]
 [ext_resource type="Texture2D" uid="uid://tf2xhappciqw" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding165.png" id="351_y35pa"]
 [ext_resource type="Texture2D" uid="uid://bf2r3g2p8ui1a" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding166.png" id="352_og3pw"]
+[ext_resource type="Texture2D" uid="uid://d23hs8n43mxt1" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding203.png" id="352_p5ia6"]
 [ext_resource type="Texture2D" uid="uid://cff27cutq2jlx" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding167.png" id="353_f22w4"]
+[ext_resource type="Texture2D" uid="uid://b4dqhwldspnnl" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding204.png" id="353_svtvk"]
 [ext_resource type="Texture2D" uid="uid://ds7wqvq2j3hub" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding168.png" id="354_c5vb6"]
+[ext_resource type="Texture2D" uid="uid://bv2g02l8e7one" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding205.png" id="354_j3hg8"]
+[ext_resource type="Texture2D" uid="uid://nfyjxnl61q7l" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding206.png" id="355_ccfrr"]
 [ext_resource type="Texture2D" uid="uid://faaxvlumli1n" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding169.png" id="355_lw8iw"]
+[ext_resource type="Texture2D" uid="uid://c0gf1mbajsj3k" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding207.png" id="356_56qfv"]
 [ext_resource type="Texture2D" uid="uid://kff0m4fv1ixx" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding170.png" id="356_nm2pw"]
 [ext_resource type="Texture2D" uid="uid://co6r0hu0l6wff" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding171.png" id="357_fd1ap"]
+[ext_resource type="Texture2D" uid="uid://cnc7boo5r5s6i" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding208.png" id="357_n346x"]
+[ext_resource type="Texture2D" uid="uid://vbcqkut7mbfv" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding209.png" id="358_5tgjo"]
 [ext_resource type="Texture2D" uid="uid://2po6cvc2ynw4" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding172.png" id="358_nbyrr"]
 [ext_resource type="Texture2D" uid="uid://dxgxddq7u4lew" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding173.png" id="359_2t6ss"]
+[ext_resource type="Texture2D" uid="uid://bi64d8a3gx56u" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding210.png" id="359_lcb4s"]
+[ext_resource type="Texture2D" uid="uid://tv86nyo0hrhq" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding211.png" id="360_f2pco"]
 [ext_resource type="Texture2D" uid="uid://clw2bdp0gr4u5" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding174.png" id="360_xbq2h"]
+[ext_resource type="Texture2D" uid="uid://ccy6skk68f8n8" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding212.png" id="361_2a2ve"]
 [ext_resource type="Texture2D" uid="uid://c1t30ituohwt" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding175.png" id="361_te4ju"]
+[ext_resource type="Texture2D" uid="uid://bk7g750uh6brl" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding213.png" id="362_6i5na"]
 [ext_resource type="Texture2D" uid="uid://dvox2ed81f83p" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding176.png" id="362_fcd8u"]
+[ext_resource type="Texture2D" uid="uid://chq7l1owioud5" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding214.png" id="363_7n3cl"]
 [ext_resource type="Texture2D" uid="uid://buqecgxwfclkd" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding177.png" id="363_ie2pu"]
 [ext_resource type="Texture2D" uid="uid://6uo0fpmqkaeu" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding178.png" id="364_5a8m3"]
+[ext_resource type="Texture2D" uid="uid://xhbo4b36u2bf" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding215.png" id="364_q78bh"]
 [ext_resource type="Texture2D" uid="uid://cbki2i0q8cxv5" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding179.png" id="365_eyk6s"]
+[ext_resource type="Texture2D" uid="uid://6wb26eyxfh70" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding216.png" id="365_pdmd7"]
 [ext_resource type="Texture2D" uid="uid://3yg2ghqy2m8l" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding180.png" id="366_8yvwh"]
+[ext_resource type="Texture2D" uid="uid://balx5iaewlvan" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding217.png" id="366_vbnfb"]
+[ext_resource type="Texture2D" uid="uid://wk0ff1f76ait" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding218.png" id="367_jxyqj"]
+[ext_resource type="Texture2D" uid="uid://cw7052jgxiwk4" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding219.png" id="368_eqq7j"]
+[ext_resource type="Texture2D" uid="uid://byte22ioflrj7" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding220.png" id="369_h1rnq"]
+[ext_resource type="Texture2D" uid="uid://bjbg8rfn0hrk5" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding221.png" id="370_1kkqa"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rqs4q"]
 animations = [{
@@ -1372,6 +1413,129 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("366_8yvwh")
+}, {
+"duration": 10.0,
+"texture": ExtResource("330_n7y41")
+}, {
+"duration": 1.0,
+"texture": ExtResource("331_2bo4e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("332_680tc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("333_dysuw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("334_58mi8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("335_ctc8n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("336_nptul")
+}, {
+"duration": 1.0,
+"texture": ExtResource("337_b5xh4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("338_xbw72")
+}, {
+"duration": 10.0,
+"texture": ExtResource("339_k4n2s")
+}, {
+"duration": 2.0,
+"texture": ExtResource("340_8n3wr")
+}, {
+"duration": 2.0,
+"texture": ExtResource("341_4v7en")
+}, {
+"duration": 2.0,
+"texture": ExtResource("342_ead07")
+}, {
+"duration": 2.0,
+"texture": ExtResource("343_bvklw")
+}, {
+"duration": 2.0,
+"texture": ExtResource("344_ehu7d")
+}, {
+"duration": 2.0,
+"texture": ExtResource("345_p4ya4")
+}, {
+"duration": 10.0,
+"texture": ExtResource("346_fjnor")
+}, {
+"duration": 8.0,
+"texture": ExtResource("347_ofo2d")
+}, {
+"duration": 8.0,
+"texture": ExtResource("348_clyd4")
+}, {
+"duration": 8.0,
+"texture": ExtResource("349_7ifdl")
+}, {
+"duration": 8.0,
+"texture": ExtResource("350_hd3jf")
+}, {
+"duration": 8.0,
+"texture": ExtResource("351_77ksd")
+}, {
+"duration": 8.0,
+"texture": ExtResource("352_p5ia6")
+}, {
+"duration": 8.0,
+"texture": ExtResource("353_svtvk")
+}, {
+"duration": 8.0,
+"texture": ExtResource("354_j3hg8")
+}, {
+"duration": 20.0,
+"texture": ExtResource("355_ccfrr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("356_56qfv")
+}, {
+"duration": 10.0,
+"texture": ExtResource("357_n346x")
+}, {
+"duration": 6.0,
+"texture": ExtResource("358_5tgjo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("359_lcb4s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("360_f2pco")
+}, {
+"duration": 1.0,
+"texture": ExtResource("361_2a2ve")
+}, {
+"duration": 1.0,
+"texture": ExtResource("362_6i5na")
+}, {
+"duration": 2.0,
+"texture": ExtResource("363_7n3cl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("364_q78bh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("365_pdmd7")
+}, {
+"duration": 3.0,
+"texture": ExtResource("366_vbnfb")
+}, {
+"duration": 3.0,
+"texture": ExtResource("367_jxyqj")
+}, {
+"duration": 3.0,
+"texture": ExtResource("368_eqq7j")
+}, {
+"duration": 15.0,
+"texture": ExtResource("369_h1rnq")
+}, {
+"duration": 10.0,
+"texture": ExtResource("370_1kkqa")
 }],
 "loop": false,
 "name": &"hatch",
@@ -1387,11 +1551,15 @@ animation = &"crack"
 autoplay = "idle"
 
 [node name="Demonchild" type="AnimatedSprite2D" parent="."]
+visible = false
 position = Vector2(0, -2)
 sprite_frames = SubResource("SpriteFrames_g1ll0")
 autoplay = "default"
 
 [node name="True Ending" type="AnimatedSprite2D" parent="."]
+visible = false
 sprite_frames = SubResource("SpriteFrames_x8nhd")
 animation = &"hatch"
 autoplay = "default"
+frame = 220
+frame_progress = 1.0

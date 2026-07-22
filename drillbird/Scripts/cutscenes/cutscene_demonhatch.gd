@@ -33,6 +33,7 @@ func PlayGoodEnding():
 	anim_egg.play("crack")
 
 	await get_tree().create_timer(2.4).timeout
+	anim_TrueEnding.show()
 	anim_BadEnding.play("default")	
 	anim_TrueEnding.play("hatch")
 	await anim_TrueEnding.animation_finished
@@ -42,11 +43,11 @@ func PlayGoodEnding():
 	
 
 func PlayBadEnding():
-	
+	anim_egg.show()
 	anim_egg.play("crack")
 	
 	await get_tree().create_timer(2.4).timeout
-	
+	anim_BadEnding.show()
 	anim_BadEnding.play("hatch")
 	
 	await anim_BadEnding.animation_finished
