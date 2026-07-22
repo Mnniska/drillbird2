@@ -1,4 +1,4 @@
-[gd_scene load_steps=94 format=3 uid="uid://chmegxltn4stt"]
+[gd_scene load_steps=87 format=3 uid="uid://chmegxltn4stt"]
 
 [ext_resource type="Script" uid="uid://bnixc6n4rvat7" path="res://Scripts/UX and UI/flying_credits_manager.gd" id="1_xtpho"]
 [ext_resource type="Texture2D" uid="uid://d0ot502nge360" path="res://Art/environment/SpaceBackground/background_space_spaceLayer.png" id="3_a3sr5"]
@@ -65,15 +65,8 @@
 [ext_resource type="Texture2D" uid="uid://fdaqyfvivcve" path="res://Art/cutscenes/Earth Dying/cutscene_earthMurder25.png" id="63_kboef"]
 [ext_resource type="Texture2D" uid="uid://uxsk3gfexguc" path="res://Art/cutscenes/Earth Dying/cutscene_earthMurder26.png" id="64_wmlto"]
 [ext_resource type="Texture2D" uid="uid://bf3noark6ojqj" path="res://Art/cutscenes/Earth Dying/cutscene_earthMurder27.png" id="65_821tw"]
-[ext_resource type="Texture2D" uid="uid://cwebgvfmve18d" path="res://Art/cutscenes/true_ending_child_cuddle/drillbird_with_coffee_base1.png" id="66_2i8vp"]
-[ext_resource type="Texture2D" uid="uid://dj8slhtlll6n5" path="res://Art/cutscenes/true_ending_child_cuddle/drillbird_with_coffee_base2.png" id="67_hfxmj"]
-[ext_resource type="Texture2D" uid="uid://cnsdi5ci5lib2" path="res://Art/cutscenes/true_ending_child_cuddle/drillbird_with_coffee_base3.png" id="68_5s3jw"]
-[ext_resource type="Texture2D" uid="uid://cpd2ok6w3avr5" path="res://Art/cutscenes/true_ending_child_cuddle/drillbird_with_coffee_base4.png" id="69_q3uic"]
-[ext_resource type="Texture2D" uid="uid://b5ktib0dfcgd2" path="res://Art/cutscenes/true_ending_child_cuddle/drillbird_with_coffee_base5.png" id="70_lj1k8"]
-[ext_resource type="Texture2D" uid="uid://btj5i2vdbat05" path="res://Art/cutscenes/true_ending_child_cuddle/drillbird_with_coffee_base6.png" id="71_wie72"]
-[ext_resource type="Texture2D" uid="uid://dw48o6ghusnc2" path="res://Art/cutscenes/true_ending_child_cuddle/drillbird_with_coffee_base7.png" id="72_fr5pb"]
-[ext_resource type="Texture2D" uid="uid://8eefgcj5y2i7" path="res://Art/cutscenes/true_ending_child_cuddle/drillbird_with_coffee_base8.png" id="73_px2g5"]
-[ext_resource type="Texture2D" uid="uid://2xy4pu2v4j1c" path="res://Art/cutscenes/true_ending_child_cuddle/drillbird_with_coffee_base9.png" id="74_4tqpx"]
+[ext_resource type="Texture2D" uid="uid://b7of214cyb66u" path="res://Art/cutscenes/true_ending_child_cuddle/truending_finalScreen.png" id="66_ktqlp"]
+[ext_resource type="Texture2D" uid="uid://bi6q51sklyetd" path="res://Art/environment/SpaceBackground/background_space_allLayers.png" id="66_x1pin"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uva2n"]
 shader = ExtResource("3_nxjs3")
@@ -659,31 +652,7 @@ animations = [{
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("66_2i8vp")
-}, {
-"duration": 1.0,
-"texture": ExtResource("67_hfxmj")
-}, {
-"duration": 1.0,
-"texture": ExtResource("68_5s3jw")
-}, {
-"duration": 1.0,
-"texture": ExtResource("69_q3uic")
-}, {
-"duration": 1.0,
-"texture": ExtResource("70_lj1k8")
-}, {
-"duration": 1.0,
-"texture": ExtResource("71_wie72")
-}, {
-"duration": 1.0,
-"texture": ExtResource("72_fr5pb")
-}, {
-"duration": 1.0,
-"texture": ExtResource("73_px2g5")
-}, {
-"duration": 1.0,
-"texture": ExtResource("74_4tqpx")
+"texture": ExtResource("66_ktqlp")
 }],
 "loop": true,
 "name": &"default",
@@ -899,8 +868,26 @@ animation = &"earth_dying"
 
 [node name="cutscene_child_survives" type="Node2D" parent="."]
 z_index = 4
+position = Vector2(746, 17)
+
+[node name="Sprite2D" type="Sprite2D" parent="cutscene_child_survives"]
+position = Vector2(-41, -11)
+texture = ExtResource("66_x1pin")
+
+[node name="Sprite2D2" type="Sprite2D" parent="cutscene_child_survives"]
+position = Vector2(-41, -266)
+texture = ExtResource("3_a3sr5")
+
+[node name="Sprite2D3" type="Sprite2D" parent="cutscene_child_survives"]
+position = Vector2(-41, -521)
+texture = ExtResource("3_a3sr5")
 
 [node name="base" type="AnimatedSprite2D" parent="cutscene_child_survives"]
 sprite_frames = SubResource("SpriteFrames_6hg7g")
+
+[node name="cameraInitialLerpPos" type="Node2D" parent="cutscene_child_survives"]
+position = Vector2(0, -525)
+
+[node name="cameraTargetLerpPos" type="Node2D" parent="cutscene_child_survives"]
 
 [connection signal="body_shape_entered" from="PlayerDetector" to="." method="_on_player_detector_body_shape_entered"]

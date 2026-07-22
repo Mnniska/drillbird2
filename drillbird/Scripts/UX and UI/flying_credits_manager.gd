@@ -32,7 +32,7 @@ var cloudsVisibleLerper:float=0
 var isTransitioningToMainAgain:bool=false
 
 var ending:GlobalVariables.endings
-
+var cameraDefaultPosition:Vector2
 func _process(delta: float) -> void:
 			
 
@@ -54,7 +54,10 @@ func SetEnergyMeterVisible(visible:bool,instant:bool=true):
 	
 	pass
 
+@onready var camera = $Camera2D
 func _ready() -> void:
+	
+	cameraDefaultPosition=camera.position
 	
 	ending=GlobalVariables.GetCurrentEnding()
 	
@@ -68,9 +71,10 @@ func _ready() -> void:
 	HUD.SetState(HUD.menuStates.CREDITS)
 	music.finished.connect(music.play)
 	
-	$Camera2D.CameraInitialLerp()
+	camera.CameraInitialLerp()
 	$Credits.hide()
-	await get_tree().create_timer(3).timeout
+	if ending!=GlobalVariables.endings.cursed_true:
+		await get_tree().create_timer(3).timeout
 	
 	var path
 	
@@ -105,7 +109,8 @@ func _ready() -> void:
 func CreditsFinished():
 	if ending==GlobalVariables.endings.cursed_true:
 		#TODO: here we should show the final scene with birdy and the parent
-		ShowStats()
+		PlayTrueEndingCutscene()
+
 	else:
 		valueSpawner.active=true
 		SetCloudsVisible(false)
@@ -135,11 +140,21 @@ func TriggerFinalZinger():
 	
 	
 	hasEvolved=true
-	SoundManager.PlaySoundAtLocation($Camera2D.global_position,abstract_SoundEffectSetting.SoundEffectEnum.DRILLBIRD_OUTRO_ZINGER)
+	SoundManager.PlaySoundAtLocation(camera.global_position,abstract_SoundEffectSetting.SoundEffectEnum.DRILLBIRD_OUTRO_ZINGER)
 	
 	await get_tree().create_timer(13).timeout
 	musicTargetVolume=0.85
 	
+func PlayTrueEndingCutscene():
+	
+	camera.TrueEndingCameraLerp()
+	
+	var cutscene:Node2D=$cutscene_child_survives
+	var anim:AnimatedSprite2D=$cutscene_child_survives/base
+	cutscene.show()
+	anim.play()
+	await get_tree().create_timer(8).timeout #should probably just await input here instead 
+	ShowStats()
 
 func PlayEarthDyingCutscene():
 	
@@ -163,14 +178,17 @@ func _on_flying_child_has_evolved_off_screen() -> void:
 		
 		#Todo, play some kind of sound here :3
 		#SoundManager.PlaySoundAtLocation($Camera2D.position,abstract_SoundEffectSetting.SoundEffectEnum.INTRO_CUTSCENE_SCENE2)
-		SoundManager.PlaySoundAtLocation($Camera2D.position,abstract_SoundEffectSetting.SoundEffectEnum.FINAL_FALL)
+		SoundManager.PlaySoundAtLocation(camera.position,abstract_SoundEffectSetting.SoundEffectEnum.FINAL_FALL)
 		await get_tree().create_timer(7).timeout
 		ShowStats()
 	
 	if ending==GlobalVariables.endings.cursed_bad:
 		PlayEarthDyingCutscene()
+	
 
 func ShowStats():
+	camera.position=cameraDefaultPosition
+	
 	var stats = $"Final stats"
 	stats.DisplaySebsMessage()
 	stats.statsFinished.connect(StatsFinished)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8eefgcj5y2i7"
-path="res://.godot/imported/drillbird_with_coffee_base8.png-1c7b09716fa7027ea48cf7dc19400c22.ctex"
+uid="uid://b7of214cyb66u"
+path="res://.godot/imported/truending_finalScreen.png-b619f92613fbfd2bc488f074401821b9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/cutscenes/true_ending_child_cuddle/drillbird_with_coffee_base8.png"
-dest_files=["res://.godot/imported/drillbird_with_coffee_base8.png-1c7b09716fa7027ea48cf7dc19400c22.ctex"]
+source_file="res://Art/cutscenes/true_ending_child_cuddle/truending_finalScreen.png"
+dest_files=["res://.godot/imported/truending_finalScreen.png-b619f92613fbfd2bc488f074401821b9.ctex"]
 
 [params]
 
