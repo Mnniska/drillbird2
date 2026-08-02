@@ -11,6 +11,8 @@ enum gooStates{no,big,waitingForHeart}
 func _ready() -> void:
 	pass # Replace with function body.
 
+func EggIshatching():
+	currentState=gooStates.no
 
 func finishedGooAnim():
 	if currentState==gooStates.no:

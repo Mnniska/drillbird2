@@ -143,7 +143,7 @@ func HatchEgg():
 		cursedModePlayer.PlayGoodEnding()
 		cursedModePlayer.FinishedCutscene.connect(HatchCutsceneFinished)
 		
-		#TODO: Add true ending lol
+		
 	
 	if useVibration:Input.start_joy_vibration(GlobalSymbolRegister.currentController,0.8,0.8,1)	
 	
@@ -154,6 +154,8 @@ func HatchEgg():
 	await get_tree().create_timer(1.3).timeout
 	
 	HUD.SpeedrunTimer.finishSpeedrun()
+	$"../../floor gabbagoo".RemoveGooFromEggHatch()
+	$"..".SetNestVisible(false) #TODO: Prettier anim?
 	
 	#handled here because the timer stops here
 	if HUD.SpeedrunTimer.time< SteamHandler.stat_ach_speed_fastest:

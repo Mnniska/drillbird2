@@ -1551,15 +1551,13 @@ animation = &"crack"
 autoplay = "idle"
 
 [node name="Demonchild" type="AnimatedSprite2D" parent="."]
-visible = false
 position = Vector2(0, -2)
 sprite_frames = SubResource("SpriteFrames_g1ll0")
 autoplay = "default"
 
 [node name="True Ending" type="AnimatedSprite2D" parent="."]
-visible = false
 sprite_frames = SubResource("SpriteFrames_x8nhd")
 animation = &"hatch"
 autoplay = "default"
-frame = 220
-frame_progress = 1.0
+frame = 37
+frame_progress = 0.012059893

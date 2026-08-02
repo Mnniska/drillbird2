@@ -199,22 +199,30 @@ func OreFinishedSelling(amount:int):
 	
 	pass
 
+@onready var cameraPositionEndingCutscene:Node2D=$cameraPositionEndingCutscene
+
 func HatchEgg():
 	MusicPlayer.shouldPlayMusic=false
 	
 	#save here so that we preseve the stats
 	GlobalVariables.MainSceneReferenceConnector.mainScene.SaveGame(false)
 	await get_tree().create_timer(0.03).timeout
-	#Adding a timer because apparently saving waits 0.2 seconds before doing its thing lol
-	
+	#Adding a timer because apparently saving waits 0.02 seconds before doing its thing lol
+	$"Eggs/Goo anims".EggIshatching()
 	Player.hide()
-	EggHandler.SetEggState(EggHandler.eggStates.FINALCUTSCENE)
-	state=states.FINALCUTSCENE
-	Camera.StartNewLerp(CameraLerpPosition.position, 0.5)
+	EggHandler.SetEggState(EggHandler.eggStates.FINALCUTSCENE) #this will play the final cutscene
+	state=states.FINALCUTSCENE #this makes the HOME script just chill out n ignore btn inputs
+	Camera.StartNewLerp(cameraPositionEndingCutscene.position, 0.5)
 	GlobalVariables.playerStatus=GlobalVariables.playerStatusEnum.SHOP
 	
 	
+	
 	pass
+	
+
+
+
+	
 
 func EggFinishedHatching():
 	HUD.SetSceneState(HUD.sceneStates.CREDITS)

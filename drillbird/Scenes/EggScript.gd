@@ -85,7 +85,6 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func SetNestVisible(visible:bool):
 	if visible:
 		nest_front.show()
