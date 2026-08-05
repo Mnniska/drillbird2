@@ -8,8 +8,6 @@ var dumbCounter:float=0
 var playerIsInZone:bool=false
 var playerIsTrulyInZone:bool=false
 
-
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -51,10 +49,7 @@ func UpdateSprite():
 	if waitingForPlayerToLeave:
 		sprite.texture=gooSprites[currentProgress]
 		waitingForPlayerToLeave=false
-
-func RemoveGooFromEggHatch():
-	#TODO: Need a cool anim here? make it swoosh away in a nice way 
-	hide()
+	
 	
 func _on_player_checker_body_shape_exited(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
 	playerIsInZone=false

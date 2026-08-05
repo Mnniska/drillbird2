@@ -941,8 +941,8 @@ autoplay = "default"
 z_index = 1
 position = Vector2(-2, -83)
 sprite_frames = SubResource("SpriteFrames_ovqsl")
-animation = &"wait"
 autoplay = "default"
+frame_progress = 0.600367
 
 [node name="Area2D" type="Area2D" parent="Anim_hatching_drillbird"]
 

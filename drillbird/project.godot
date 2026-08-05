@@ -30,6 +30,7 @@ SteamHandler="*res://Scenes/Tools/scene_SteamHandler.tscn"
 
 window/size/viewport_width=320
 window/size/viewport_height=216
+window/size/mode=4
 window/size/window_width_override=640
 window/size/window_height_override=448
 window/stretch/mode="viewport"

@@ -28,7 +28,6 @@ func GetDemonEgg()->Node2D:
 func PrepareHatching():
 	anim_egg.play("waiting")
 	anim_BadEnding.play("waiting")
-	anim_BadEnding.show()
 
 func PlayGoodEnding():
 	anim_egg.play("crack")
