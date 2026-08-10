@@ -202,8 +202,22 @@ func OreFinishedSelling(amount:int):
 func HatchEgg():
 	MusicPlayer.shouldPlayMusic=false
 	
-	#save here so that we preseve the stats
+	#save here so that we preseve the stats and save the METADATA
+
+	#Update the global variables ending varibles - this is saved into the metadata folder when the game is saved and used to determine whether player has access to cursed mode
+	var ending:GlobalVariables.endings=GlobalVariables.GetCurrentEnding()
+	match ending:
+		GlobalVariables.endings.normal:
+			GlobalVariables.normalEndingFound=true
+		GlobalVariables.endings.cursed_bad:
+			GlobalVariables.cursedModeBadEndingFound=true
+		GlobalVariables.endings.cursed_true:
+			GlobalVariables.cursedModeTrueEndingFound=true
+	
 	GlobalVariables.MainSceneReferenceConnector.mainScene.SaveGame(false)
+	
+	
+	
 	await get_tree().create_timer(0.03).timeout
 	#Adding a timer because apparently saving waits 0.2 seconds before doing its thing lol
 	

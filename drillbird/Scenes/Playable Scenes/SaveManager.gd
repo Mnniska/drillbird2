@@ -18,8 +18,10 @@ var oreAreas
 
 @onready var save_file_path = GlobalVariables.save_file_path
 @onready var save_file_name= GlobalVariables.save_file_name
+@onready var save_metadata_file_name=GlobalVariables.save_metadata_file_name
 
 var PlayerData=abstract_savegame.new()
+var metaSaveData=abstract_savegame_metadata.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -27,16 +29,6 @@ func _ready() -> void:
 	LoadGame(PlayerData.worldToSpawn)
 	#Todo: load based on current savefile
 	
-	#When starting the game, game should check if there's a previous save
-	#This could be saved in a meta savedata file, OR we could have a checkbox
-	#in each savefile to indicate "last used" 
-	#When loading game - if the world being loaded hasn't been played yet,
-	#the game should generate a new savefile..or I could do that at startup instead, and make as many savefiles as there are worlds..?
-	#Dunno, that might be useful in case I wanna pull info from the world data, 
-	#IE playtimes, completion rate, etc? But that data might suit better in a metafile? 
-	#Maybe a fun next step is to create a "select world" interface accessed from the main menu, 
-	#and have that hook up to this? 
-	#You can do this bud! soon you'll get to design whole new worlds :) 
 
 	
 	
@@ -128,6 +120,7 @@ func SaveGame(showgamesavedtext:bool=true):
 	if GlobalVariables.currentDay>1 and showgamesavedtext:
 		Savetext.Activate(GlobalVariables.currentDay)
 	
+	SaveMetaData()
 
 func SaveLeftoverOres():
 	var a = OreSpawner.GetLeftoverOres()
@@ -227,12 +220,35 @@ func SetupWorldReferences():
 	oreAreas=$WorldSpawn/TilemapOres/OreRegions
 	
 	pass
+	
+func SaveMetaData():
+	
+	#TODO: Make sure to save whenever player discovers a new ending
+	
+	metaSaveData.normalEndingFound=GlobalVariables.normalEndingFound
+	metaSaveData.cursedModeBadEndingFound=GlobalVariables.cursedModeBadEndingFound
+	metaSaveData.cursedModeTrueEndingFound=GlobalVariables.cursedModeTrueEndingFound
+	metaSaveData.test="it has been saved"
+	ResourceSaver.save(metaSaveData,save_file_path+save_metadata_file_name)
+
+
+func LoadMetadata():
+	
+	#If there's saved metadata it is accessed here, if not the default values are used. 
+	if ResourceLoader.load(save_file_path+save_metadata_file_name)!=null:
+		metaSaveData=ResourceLoader.load(save_file_path+save_metadata_file_name)
+		
+	GlobalVariables.normalEndingFound= metaSaveData.normalEndingFound
+	GlobalVariables.cursedModeBadEndingFound= metaSaveData.cursedModeBadEndingFound
+	GlobalVariables.cursedModeTrueEndingFound= metaSaveData.cursedModeTrueEndingFound
 
 func LoadGame(worldToLoad:int=-1):
 	ResourceLoader.CACHE_MODE_IGNORE
+	
+	LoadMetadata()
+	
 	if ResourceLoader.load(save_file_path+save_file_name)!=null:
 		PlayerData=ResourceLoader.load(save_file_path+save_file_name)
-	
 	
 	GlobalVariables.CursedMode=PlayerData.isInCursedMode
 

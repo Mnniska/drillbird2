@@ -8,17 +8,37 @@ var dialogueFinished:bool=false
 
 @onready var dialoguePlayer:dialogue_player=$"Demon Dialogue"
 
+
+@export var dialouge_playerNotReady:Array[abs_dialogue_line]
+@export var dialouge_ready:Array[abs_dialogue_line]
+@export var debugIgnoreWhetherEggHasBeenHatched:bool=false
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	button.SetActive(false)
 	dialoguePlayer.dialogueFinished.connect(SetDialogueFinished)
+	dialoguePlayer.aboutToPlay.connect(DialogueAboutToPlay)
 	
-	pass # Replace with function body.
+	await GlobalVariables.SetupComplete
+	hasHatchedEgg=GlobalVariables.normalEndingFound
+	if debugIgnoreWhetherEggHasBeenHatched:
+		hasHatchedEgg=true
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+@export var hasHatchedEgg:bool=false
+
+func DialogueAboutToPlay():
+	#updates the demon dialogue depending on if player has hatched eggg before or not
+	
+	var _linesToPlay:Array[abs_dialogue_line]
+	if hasHatchedEgg:
+		_linesToPlay=dialouge_ready
+	else:
+		_linesToPlay=dialouge_playerNotReady
+	
+	dialoguePlayer.linesToPlay=_linesToPlay
+
+	
 
 func SetDialogueFinished():
 	dialogueFinished=true
@@ -26,15 +46,19 @@ func SetDialogueFinished():
 
 
 func _on_deal_acceptance_area_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
+	if !hasHatchedEgg:
+		return
 	bodiesInAcceptanceArea+=1
 	
-	button.SetActive(bodiesInAcceptanceArea>0 and dialogueFinished)
+	button.SetActive(bodiesInAcceptanceArea>0 and dialogueFinished and hasHatchedEgg)
 	pass # Replace with function body.
 
 
 func _on_deal_acceptance_area_body_shape_exited(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
+
+		
 	bodiesInAcceptanceArea-=1
-	button.SetActive(bodiesInAcceptanceArea>0 and dialogueFinished)
+	button.SetActive(bodiesInAcceptanceArea>0 and dialogueFinished and hasHatchedEgg)
 	pass # Replace with function body.
 
 

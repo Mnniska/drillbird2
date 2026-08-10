@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://pavkdcthm8ws"]
+[gd_scene load_steps=73 format=3 uid="uid://pavkdcthm8ws"]
 
 [ext_resource type="Script" uid="uid://d45ns0beee5y" path="res://Scenes/cutscenes/demon_deal.gd" id="1_k42kg"]
 [ext_resource type="Texture2D" uid="uid://b3sophtwny0iv" path="res://Art/cutscenes/demons_deal/demon deal dialogue sprites/dialogue_demon_egg1.png" id="2_obutm"]
@@ -39,13 +39,156 @@
 [ext_resource type="Texture2D" uid="uid://o8s6pguisybb" path="res://Art/cutscenes/demons_deal/demon deal dialogue sprites/dialogue_demon_helpingDemon2.png" id="16_fley0"]
 [ext_resource type="Texture2D" uid="uid://dwq1d2xphqhje" path="res://Art/cutscenes/demons_deal/demon deal dialogue sprites/dialogue_demon_helpingDemon3.png" id="17_lcao0"]
 [ext_resource type="Texture2D" uid="uid://th0cdiy6oxbw" path="res://Art/cutscenes/demons_deal/demon deal dialogue sprites/demon_soundGood1.png" id="25_3kgd4"]
+[ext_resource type="Texture2D" uid="uid://d2tti4hjpfvqj" path="res://Art/cutscenes/demons_deal/demon deal dialogue sprites/demon_playernod1.png" id="26_5n2wq"]
 [ext_resource type="Texture2D" uid="uid://cnht7jhyk3a5h" path="res://Art/cutscenes/demons_deal/demon deal dialogue sprites/demon_soundGood2.png" id="26_r1scq"]
 [ext_resource type="Texture2D" uid="uid://dakny0a64eu85" path="res://Art/cutscenes/demons_deal/demon deal dialogue sprites/demon_stepUp1.png" id="27_c88hw"]
+[ext_resource type="Texture2D" uid="uid://c04dmahgd6l11" path="res://Art/cutscenes/demons_deal/demon deal dialogue sprites/demon_playernod2.png" id="27_nlfd6"]
 [ext_resource type="Texture2D" uid="uid://2m226srkbh3q" path="res://Art/cutscenes/demons_deal/demon deal dialogue sprites/demon_stepUp2.png" id="28_5n2wq"]
+[ext_resource type="Texture2D" uid="uid://bogailaun6h6c" path="res://Art/cutscenes/demons_deal/demon deal dialogue sprites/demon_playernod3.png" id="28_7uo74"]
+[ext_resource type="Texture2D" uid="uid://k34x350ph4sv" path="res://Art/cutscenes/demons_deal/demon deal dialogue sprites/demon_playernod4.png" id="29_grfww"]
 [ext_resource type="AudioStream" uid="uid://xw3qn3kl3rsj" path="res://Audio/SFX/demon_voices/demon_1.wav" id="37_l23hh"]
 [ext_resource type="AudioStream" uid="uid://x6j6eerkwxwh" path="res://Audio/SFX/demon_voices/demon_voice_2.wav" id="38_1ued8"]
 [ext_resource type="AudioStream" uid="uid://b6f87drs4c2by" path="res://Audio/SFX/demon_voices/demon_voice_3.wav" id="39_7qmk3"]
 [ext_resource type="AudioStream" uid="uid://dkl6evwthwsd8" path="res://Audio/SFX/demon_voices/demon_voice_4.wav" id="40_2h3nq"]
+
+[sub_resource type="Resource" id="Resource_jllmd"]
+script = ExtResource("12_irdy8")
+lineToPlay = "demondeal_reject_1"
+animToPlay = "wave"
+soundToPlay = ExtResource("40_2h3nq")
+metadata/_custom_type_script = "uid://cgfipa53cvc6d"
+
+[sub_resource type="Resource" id="Resource_3kgd4"]
+script = ExtResource("12_irdy8")
+lineToPlay = "demondeal_reject_2"
+animToPlay = "giggle"
+soundToPlay = ExtResource("37_l23hh")
+metadata/_custom_type_script = "uid://cgfipa53cvc6d"
+
+[sub_resource type="Resource" id="Resource_r1scq"]
+script = ExtResource("12_irdy8")
+lineToPlay = "demondeal_reject_3"
+animToPlay = "neutral"
+soundToPlay = ExtResource("38_1ued8")
+metadata/_custom_type_script = "uid://cgfipa53cvc6d"
+
+[sub_resource type="Resource" id="Resource_c88hw"]
+script = ExtResource("12_irdy8")
+lineToPlay = "demondeal_reject_4"
+animToPlay = "egg_sad"
+soundToPlay = ExtResource("39_7qmk3")
+metadata/_custom_type_script = "uid://cgfipa53cvc6d"
+
+[sub_resource type="Resource" id="Resource_5n2wq"]
+script = ExtResource("12_irdy8")
+lineToPlay = "demondeal_reject_5"
+animToPlay = "egg"
+soundToPlay = ExtResource("37_l23hh")
+metadata/_custom_type_script = "uid://cgfipa53cvc6d"
+
+[sub_resource type="Resource" id="Resource_xtd3p"]
+script = ExtResource("12_irdy8")
+lineToPlay = "demondeal_reject_5b"
+animToPlay = "egg_sad"
+metadata/_custom_type_script = "uid://cgfipa53cvc6d"
+
+[sub_resource type="Resource" id="Resource_nlfd6"]
+script = ExtResource("12_irdy8")
+lineToPlay = "demondeal_reject_6"
+animToPlay = "playernod"
+soundToPlay = ExtResource("38_1ued8")
+metadata/_custom_type_script = "uid://cgfipa53cvc6d"
+
+[sub_resource type="Resource" id="Resource_7uo74"]
+script = ExtResource("12_irdy8")
+lineToPlay = "demondeal_reject_7"
+animToPlay = "neutral"
+soundToPlay = ExtResource("40_2h3nq")
+metadata/_custom_type_script = "uid://cgfipa53cvc6d"
+
+[sub_resource type="Resource" id="Resource_fhtd8"]
+script = ExtResource("12_irdy8")
+lineToPlay = "demondeal_1"
+animToPlay = "wave"
+soundToPlay = ExtResource("37_l23hh")
+metadata/_custom_type_script = "uid://cgfipa53cvc6d"
+
+[sub_resource type="Resource" id="Resource_27w7g"]
+script = ExtResource("12_irdy8")
+lineToPlay = "demondeal_2"
+animToPlay = "neutral"
+soundToPlay = ExtResource("38_1ued8")
+metadata/_custom_type_script = "uid://cgfipa53cvc6d"
+
+[sub_resource type="Resource" id="Resource_grfww"]
+script = ExtResource("12_irdy8")
+lineToPlay = "demondeal_2_b"
+animToPlay = "giggle"
+soundToPlay = ExtResource("40_2h3nq")
+metadata/_custom_type_script = "uid://cgfipa53cvc6d"
+
+[sub_resource type="Resource" id="Resource_7muv3"]
+script = ExtResource("12_irdy8")
+lineToPlay = "demondeal_3"
+animToPlay = "egg"
+soundToPlay = ExtResource("39_7qmk3")
+metadata/_custom_type_script = "uid://cgfipa53cvc6d"
+
+[sub_resource type="Resource" id="Resource_5vaff"]
+script = ExtResource("12_irdy8")
+lineToPlay = "demondeal_4"
+animToPlay = "egg_sad"
+soundToPlay = ExtResource("40_2h3nq")
+metadata/_custom_type_script = "uid://cgfipa53cvc6d"
+
+[sub_resource type="Resource" id="Resource_ixbr2"]
+script = ExtResource("12_irdy8")
+lineToPlay = "demondeal_5"
+animToPlay = "scared"
+soundToPlay = ExtResource("39_7qmk3")
+metadata/_custom_type_script = "uid://cgfipa53cvc6d"
+
+[sub_resource type="Resource" id="Resource_obutm"]
+script = ExtResource("12_irdy8")
+lineToPlay = "demondeal_6"
+animToPlay = "neutral"
+soundToPlay = ExtResource("40_2h3nq")
+metadata/_custom_type_script = "uid://cgfipa53cvc6d"
+
+[sub_resource type="Resource" id="Resource_csrp6"]
+script = ExtResource("12_irdy8")
+lineToPlay = "demondeal_7"
+animToPlay = "neutral"
+soundToPlay = ExtResource("38_1ued8")
+metadata/_custom_type_script = "uid://cgfipa53cvc6d"
+
+[sub_resource type="Resource" id="Resource_wosyy"]
+script = ExtResource("12_irdy8")
+lineToPlay = "demondeal_8"
+animToPlay = "hard"
+soundToPlay = ExtResource("37_l23hh")
+metadata/_custom_type_script = "uid://cgfipa53cvc6d"
+
+[sub_resource type="Resource" id="Resource_48hbt"]
+script = ExtResource("12_irdy8")
+lineToPlay = "demondeal_9"
+animToPlay = "flex"
+soundToPlay = ExtResource("38_1ued8")
+metadata/_custom_type_script = "uid://cgfipa53cvc6d"
+
+[sub_resource type="Resource" id="Resource_nvamj"]
+script = ExtResource("12_irdy8")
+lineToPlay = "demondeal_10"
+animToPlay = "soundgood"
+soundToPlay = ExtResource("39_7qmk3")
+metadata/_custom_type_script = "uid://cgfipa53cvc6d"
+
+[sub_resource type="Resource" id="Resource_lkuq6"]
+script = ExtResource("12_irdy8")
+lineToPlay = "demondeal_11"
+animToPlay = "stepup"
+soundToPlay = ExtResource("40_2h3nq")
+metadata/_custom_type_script = "uid://cgfipa53cvc6d"
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jrp17"]
 animations = [{
@@ -239,6 +382,23 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("26_5n2wq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_nlfd6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_7uo74")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_grfww")
+}],
+"loop": true,
+"name": &"playernod",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("9_nvamj")
 }, {
 "duration": 1.0,
@@ -320,92 +480,17 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k42kg"]
 
-[sub_resource type="Resource" id="Resource_fhtd8"]
-script = ExtResource("12_irdy8")
-lineToPlay = "demondeal_1"
-animToPlay = "wave"
-soundToPlay = ExtResource("37_l23hh")
-metadata/_custom_type_script = "uid://cgfipa53cvc6d"
-
-[sub_resource type="Resource" id="Resource_27w7g"]
-script = ExtResource("12_irdy8")
-lineToPlay = "demondeal_2"
-animToPlay = "giggle"
-soundToPlay = ExtResource("38_1ued8")
-metadata/_custom_type_script = "uid://cgfipa53cvc6d"
-
-[sub_resource type="Resource" id="Resource_7muv3"]
-script = ExtResource("12_irdy8")
-lineToPlay = "demondeal_3"
-animToPlay = "egg"
-soundToPlay = ExtResource("39_7qmk3")
-metadata/_custom_type_script = "uid://cgfipa53cvc6d"
-
-[sub_resource type="Resource" id="Resource_5vaff"]
-script = ExtResource("12_irdy8")
-lineToPlay = "demondeal_4"
-animToPlay = "egg_sad"
-soundToPlay = ExtResource("40_2h3nq")
-metadata/_custom_type_script = "uid://cgfipa53cvc6d"
-
-[sub_resource type="Resource" id="Resource_ixbr2"]
-script = ExtResource("12_irdy8")
-lineToPlay = "demondeal_5"
-animToPlay = "scared"
-soundToPlay = ExtResource("39_7qmk3")
-metadata/_custom_type_script = "uid://cgfipa53cvc6d"
-
-[sub_resource type="Resource" id="Resource_obutm"]
-script = ExtResource("12_irdy8")
-lineToPlay = "demondeal_6"
-animToPlay = "neutral"
-soundToPlay = ExtResource("40_2h3nq")
-metadata/_custom_type_script = "uid://cgfipa53cvc6d"
-
-[sub_resource type="Resource" id="Resource_csrp6"]
-script = ExtResource("12_irdy8")
-lineToPlay = "demondeal_7"
-animToPlay = "neutral"
-soundToPlay = ExtResource("38_1ued8")
-metadata/_custom_type_script = "uid://cgfipa53cvc6d"
-
-[sub_resource type="Resource" id="Resource_wosyy"]
-script = ExtResource("12_irdy8")
-lineToPlay = "demondeal_8"
-animToPlay = "hard"
-soundToPlay = ExtResource("37_l23hh")
-metadata/_custom_type_script = "uid://cgfipa53cvc6d"
-
-[sub_resource type="Resource" id="Resource_48hbt"]
-script = ExtResource("12_irdy8")
-lineToPlay = "demondeal_9"
-animToPlay = "flex"
-soundToPlay = ExtResource("38_1ued8")
-metadata/_custom_type_script = "uid://cgfipa53cvc6d"
-
-[sub_resource type="Resource" id="Resource_nvamj"]
-script = ExtResource("12_irdy8")
-lineToPlay = "demondeal_10"
-animToPlay = "soundgood"
-soundToPlay = ExtResource("39_7qmk3")
-metadata/_custom_type_script = "uid://cgfipa53cvc6d"
-
-[sub_resource type="Resource" id="Resource_lkuq6"]
-script = ExtResource("12_irdy8")
-lineToPlay = "demondeal_11"
-animToPlay = "stepup"
-soundToPlay = ExtResource("40_2h3nq")
-metadata/_custom_type_script = "uid://cgfipa53cvc6d"
-
 [node name="Demon" type="Node2D"]
 script = ExtResource("1_k42kg")
+dialouge_playerNotReady = Array[ExtResource("12_irdy8")]([SubResource("Resource_jllmd"), SubResource("Resource_3kgd4"), SubResource("Resource_r1scq"), SubResource("Resource_c88hw"), SubResource("Resource_5n2wq"), SubResource("Resource_xtd3p"), SubResource("Resource_nlfd6"), SubResource("Resource_7uo74")])
+dialouge_ready = Array[ExtResource("12_irdy8")]([SubResource("Resource_fhtd8"), SubResource("Resource_27w7g"), SubResource("Resource_grfww"), SubResource("Resource_7muv3"), SubResource("Resource_5vaff"), SubResource("Resource_ixbr2"), SubResource("Resource_obutm"), SubResource("Resource_csrp6"), SubResource("Resource_wosyy"), SubResource("Resource_48hbt"), SubResource("Resource_nvamj"), SubResource("Resource_lkuq6")])
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = -2
 sprite_frames = SubResource("SpriteFrames_jrp17")
-animation = &"stepup"
+animation = &"playernod"
 autoplay = "neutral"
-frame_progress = 0.679011
+frame_progress = 0.03750871
 
 [node name="InteractButton_acceptDeal" type="Node2D" parent="."]
 z_index = 2
@@ -504,7 +589,6 @@ shape = SubResource("RectangleShape2D_k42kg")
 [node name="Demon Dialogue" parent="." node_paths=PackedStringArray("animatorToAnimate") instance=ExtResource("11_2ms83")]
 position = Vector2(0, 10)
 animatorToAnimate = NodePath("../AnimatedSprite2D")
-linesToPlay = Array[ExtResource("12_irdy8")]([SubResource("Resource_fhtd8"), SubResource("Resource_27w7g"), SubResource("Resource_7muv3"), SubResource("Resource_5vaff"), SubResource("Resource_ixbr2"), SubResource("Resource_obutm"), SubResource("Resource_csrp6"), SubResource("Resource_wosyy"), SubResource("Resource_48hbt"), SubResource("Resource_nvamj"), SubResource("Resource_lkuq6")])
 
 [connection signal="body_shape_entered" from="dealAcceptanceArea" to="." method="_on_deal_acceptance_area_body_shape_entered"]
 [connection signal="body_shape_exited" from="dealAcceptanceArea" to="." method="_on_deal_acceptance_area_body_shape_exited"]

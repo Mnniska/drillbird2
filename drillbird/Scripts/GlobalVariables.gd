@@ -12,6 +12,7 @@ signal birdyIsSleeping(bool)
 
 var save_file_path = "user://save/"
 var save_file_name="DrillbirdPlayerSave.tres"
+var save_metadata_file_name="DrillbirdSavefileMetadata.tres"
 
 var flowerIsBeingCreated:bool:
 	get:return flowerIsBeingCreated
@@ -44,6 +45,11 @@ var demonActive:bool=true
 var displayPopups:bool=true
 var totalOres:int=200
 var oresFound:int=0
+
+var normalEndingFound:bool=false
+var cursedModeBadEndingFound:bool=false
+var cursedModeTrueEndingFound:bool=false
+
 
 var currentImpressedValue:float=0:
 	set(value):currentImpressedValue=value
