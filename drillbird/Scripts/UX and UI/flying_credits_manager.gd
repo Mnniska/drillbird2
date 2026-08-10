@@ -34,10 +34,6 @@ var isTransitioningToMainAgain:bool=false
 var ending:GlobalVariables.endings
 var cameraDefaultPosition:Vector2
 func _process(delta: float) -> void:
-			
-
-	if Input.is_action_just_pressed("debug_tab"):
-		PlayEarthDyingCutscene()
 	
 	if musicVolume!=musicTargetVolume:
 		musicVolume= lerpf(musicVolume,musicTargetVolume,delta)

@@ -245,6 +245,7 @@ continuedJumpCost = 0.5
 isDemon = true
 maxFuelRefillRate = 3.5
 evolveTextString = "credits_evolve_popup_cursed"
+debugAllowSkipping = true
 
 [node name="anim_evolve_shine" type="AnimatedSprite2D" parent="."]
 position = Vector2(3, -13)

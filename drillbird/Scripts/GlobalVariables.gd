@@ -69,7 +69,7 @@ enum endings{normal,cursed_bad,cursed_true}
 
 
 
-var playerHasGivenSoulToEgg:bool=false #todo, change this when soul is received
+var playerHasGivenSoulToEgg:bool=false
 
 func GetCurrentEnding()->endings:
 		

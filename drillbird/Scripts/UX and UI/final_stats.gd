@@ -47,7 +47,12 @@ func _ready() -> void:
 		DisplaySebsMessage()
 
 func TranslateMessages():
-	SebsMessage.text=tr("credits_thanks_for_playing")
+	
+	if GlobalVariables.GetCurrentEnding()==GlobalVariables.endings.cursed_bad and !GlobalVariables.cursedModeTrueEndingFound:
+		SebsMessage.text=tr("credits_saints_plea")
+		isShowingSaintsPlea=true #makes text slower
+	else:
+		SebsMessage.text=tr("credits_thanks_for_playing")
 	choiceMessage.text=tr(finalchoicetext_erase)
 	text_header.text=tr("credits_stats_header")
 
@@ -134,6 +139,7 @@ func hidestuff():
 	StatsParent.hide()
 	choiceMessage.hide()
 
+var isShowingSaintsPlea:bool=false
 func DisplaySebsMessage():
 	TranslateMessages()
 	hidestuff()
@@ -143,7 +149,9 @@ func DisplaySebsMessage():
 	state=states.seb
 	StatsParent.hide()
 	SebsMessage.show()
-	TypewriteText(SebsMessage)
+	
+
+	TypewriteText(SebsMessage,isShowingSaintsPlea)
 	
 	#give achievement here since all game content is over
 	SteamHandler.TryUnlockAchievement("ach_finish")
@@ -197,11 +205,14 @@ func UpdateFinalChoiceText():
 
 
 var typewriteTotalTime:float
-func TypewriteText(label:RichTextLabel):
+func TypewriteText(label:RichTextLabel,extraSlow:bool=false):
 	
 	#todo: Change text wiritng to be a percentage instead, let text delay be dictated by character number. 
 	labelToTypewrite=label
 	typewriteTotalTime= labelToTypewrite.get_total_character_count()/typewriteCharsPerSecond
+	if extraSlow:
+		typewriteTotalTime=typewriteTotalTime*2
+
 	isTypeWriting=true
 	typewriteTimer=0
 	

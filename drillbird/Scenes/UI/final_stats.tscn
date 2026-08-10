@@ -19,6 +19,7 @@ position = Vector2(144, 123)
 texture = ExtResource("2_7c53m")
 
 [node name="STATS" type="Node2D" parent="."]
+visible = false
 
 [node name="logo" type="Sprite2D" parent="STATS"]
 position = Vector2(161, 38)
@@ -107,13 +108,21 @@ visible_characters_behavior = 1
 script = ExtResource("5_54jkk")
 
 [node name="Sebs message" type="RichTextLabel" parent="."]
-visible = false
 offset_top = 67.0
 offset_right = 320.0
 offset_bottom = 224.0
 theme = ExtResource("1_ogkgr")
 theme_override_colors/default_color = Color(0.933333, 0.901961, 0.831373, 1)
 bbcode_enabled = true
+text = "[center]There is another way
+
+Together, we can [wave]break the cycle[/wave]..
+
+Find me at the bottom of the world
+
+/[img]res://Art/UI/Symbols/icon_saint.png[/img]
+
+[wave][rainbow]Continue[/rainbow][/wave]"
 
 [node name="choice" type="RichTextLabel" parent="."]
 visible = false

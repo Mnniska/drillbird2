@@ -51,7 +51,7 @@ var hasFullyEvolved:bool=false
 @export var evolveTextString:String
 
 var isChilling:bool=true
-
+@export var debugAllowSkipping:bool=false
 
 
 func _ready() -> void:
@@ -69,6 +69,12 @@ func _physics_process(delta: float) -> void:
 	
 	if isChilling:
 		return
+		
+	if Input.is_action_just_pressed("debug_1") and debugAllowSkipping:
+		evolutionPossible=true
+		GrowUp()
+
+	
 	
 	if evolutionPossible and Input.is_action_just_pressed("interact"):
 		GrowUp()
