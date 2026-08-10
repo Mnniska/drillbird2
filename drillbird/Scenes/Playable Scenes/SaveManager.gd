@@ -238,7 +238,6 @@ func SaveMetaData():
 	metaSaveData.normalEndingFound=GlobalVariables.normalEndingFound
 	metaSaveData.cursedModeBadEndingFound=GlobalVariables.cursedModeBadEndingFound
 	metaSaveData.cursedModeTrueEndingFound=GlobalVariables.cursedModeTrueEndingFound
-	metaSaveData.test="it has been saved"
 	ResourceSaver.save(metaSaveData,save_file_path+save_metadata_file_name)
 
 

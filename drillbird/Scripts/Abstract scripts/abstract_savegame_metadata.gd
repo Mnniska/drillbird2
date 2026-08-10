@@ -8,7 +8,6 @@ class_name abstract_savegame_metadata
 #2. The credit final stats scene needs to show how many endings the player has unlocked
 
 
-@export var test:String="not changed"
 @export var normalEndingFound:bool=false
 @export var cursedModeBadEndingFound:bool=false
 @export var cursedModeTrueEndingFound:bool=false
