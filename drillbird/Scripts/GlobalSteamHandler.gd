@@ -40,7 +40,7 @@ func _ready() -> void:
 
 func TryUnlockAchievement(_name:String):
 	if !Steam.isSteamRunning():
-		print_debug("Cannot unlock achievement "+_name+" since I cannot connect to Steam!")
+		print_debug("Cannot unlock achievement "+_name+" since Steam is not running!")
 		return
 	
 	var status= Steam.getAchievement(_name)
@@ -59,4 +59,15 @@ func TryUnlockAchievement(_name:String):
 	
 	
 	pass
+	
+func GetDoesPlayerHaveAchievement(_name:String)->bool:
+	if !Steam.isSteamRunning():
+		print_debug("Cannot check if player has achievement "+_name+" since Steam is not running!")
+		return false
+		
+	var status= Steam.getAchievement(_name)
+	if status["achieved"]:
+		return true
+	else:
+		return false
 	

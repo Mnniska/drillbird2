@@ -122,6 +122,16 @@ func SaveGame(showgamesavedtext:bool=true):
 	
 	SaveMetaData()
 
+func CheckIfPlayerHasFinishedGameViaAchievements():
+	#since I haven't added the metadata earlier, this is a backup for players who's finished the game before
+	#At startup, we check if the player has the achievement for finishing the game b4. if they do, set the "finished normal ending" value to true
+	#There's an edge case where players who play offline may not have access to this data, let's investigate if this is an issue
+	pass
+	var hasFinished=SteamHandler.GetDoesPlayerHaveAchievement("ach_finish")
+	if hasFinished:
+		GlobalVariables.normalEndingFound=true
+		#don't set to false if steam achievement disagrees, we may wanna set it manually for debug purposes
+
 func SaveLeftoverOres():
 	var a = OreSpawner.GetLeftoverOres()
 	var ids=a[0]
@@ -241,6 +251,9 @@ func LoadMetadata():
 	GlobalVariables.normalEndingFound= metaSaveData.normalEndingFound
 	GlobalVariables.cursedModeBadEndingFound= metaSaveData.cursedModeBadEndingFound
 	GlobalVariables.cursedModeTrueEndingFound= metaSaveData.cursedModeTrueEndingFound
+	CheckIfPlayerHasFinishedGameViaAchievements()
+
+
 
 func LoadGame(worldToLoad:int=-1):
 	ResourceLoader.CACHE_MODE_IGNORE
