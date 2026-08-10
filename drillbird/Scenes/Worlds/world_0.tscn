@@ -1,4 +1,4 @@
-[gd_scene load_steps=118 format=4 uid="uid://bccoqdt4pl042"]
+[gd_scene load_steps=135 format=4 uid="uid://bccoqdt4pl042"]
 
 [ext_resource type="TileSet" uid="uid://grpd2pyu7pgk" path="res://Resources/MainTileset.tres" id="1_ewpql"]
 [ext_resource type="Script" uid="uid://ddqrep1nrk25j" path="res://Scenes/Playable Scenes/OreSpawner.gd" id="2_4fr2f"]
@@ -70,6 +70,11 @@
 [ext_resource type="PackedScene" uid="uid://dlxy45hfa3rdq" path="res://Scenes/Effects/slime_dropper.tscn" id="63_8ohpj"]
 [ext_resource type="Script" uid="uid://cg5f1k2sm50v" path="res://Scenes/Playable Scenes/ghost_manager.gd" id="63_vhuqd"]
 [ext_resource type="Texture2D" uid="uid://ddgtvxo5j4m4h" path="res://Art/environment/cursed decorations/demon cave/demoncave_op.png" id="64_wej47"]
+[ext_resource type="Script" uid="uid://cgfipa53cvc6d" path="res://Scripts/Abstract scripts/abstract_dialogueLine.gd" id="65_4fb2i"]
+[ext_resource type="AudioStream" uid="uid://xw3qn3kl3rsj" path="res://Audio/SFX/demon_voices/demon_1.wav" id="66_krviu"]
+[ext_resource type="AudioStream" uid="uid://x6j6eerkwxwh" path="res://Audio/SFX/demon_voices/demon_voice_2.wav" id="67_rht7v"]
+[ext_resource type="AudioStream" uid="uid://dkl6evwthwsd8" path="res://Audio/SFX/demon_voices/demon_voice_4.wav" id="68_5cnti"]
+[ext_resource type="AudioStream" uid="uid://b6f87drs4c2by" path="res://Audio/SFX/demon_voices/demon_voice_3.wav" id="69_wdj75"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xeuju"]
 size = Vector2(647.5, 728)
@@ -225,6 +230,90 @@ size = Vector2(1878, 543.75)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aulbw"]
 size = Vector2(73, 20)
+
+[sub_resource type="Resource" id="Resource_fhtd8"]
+script = ExtResource("65_4fb2i")
+lineToPlay = "demondeal_1"
+animToPlay = "wave"
+soundToPlay = ExtResource("66_krviu")
+metadata/_custom_type_script = "uid://cgfipa53cvc6d"
+
+[sub_resource type="Resource" id="Resource_27w7g"]
+script = ExtResource("65_4fb2i")
+lineToPlay = "demondeal_2"
+animToPlay = "giggle"
+soundToPlay = ExtResource("67_rht7v")
+metadata/_custom_type_script = "uid://cgfipa53cvc6d"
+
+[sub_resource type="Resource" id="Resource_eiy16"]
+script = ExtResource("65_4fb2i")
+lineToPlay = "demondeal_2_b"
+animToPlay = "giggle"
+soundToPlay = ExtResource("68_5cnti")
+metadata/_custom_type_script = "uid://cgfipa53cvc6d"
+
+[sub_resource type="Resource" id="Resource_7muv3"]
+script = ExtResource("65_4fb2i")
+lineToPlay = "demondeal_3"
+animToPlay = "egg"
+soundToPlay = ExtResource("69_wdj75")
+metadata/_custom_type_script = "uid://cgfipa53cvc6d"
+
+[sub_resource type="Resource" id="Resource_5vaff"]
+script = ExtResource("65_4fb2i")
+lineToPlay = "demondeal_4"
+animToPlay = "egg_sad"
+soundToPlay = ExtResource("68_5cnti")
+metadata/_custom_type_script = "uid://cgfipa53cvc6d"
+
+[sub_resource type="Resource" id="Resource_ixbr2"]
+script = ExtResource("65_4fb2i")
+lineToPlay = "demondeal_5"
+animToPlay = "scared"
+soundToPlay = ExtResource("69_wdj75")
+metadata/_custom_type_script = "uid://cgfipa53cvc6d"
+
+[sub_resource type="Resource" id="Resource_obutm"]
+script = ExtResource("65_4fb2i")
+lineToPlay = "demondeal_6"
+animToPlay = "neutral"
+soundToPlay = ExtResource("68_5cnti")
+metadata/_custom_type_script = "uid://cgfipa53cvc6d"
+
+[sub_resource type="Resource" id="Resource_csrp6"]
+script = ExtResource("65_4fb2i")
+lineToPlay = "demondeal_7"
+animToPlay = "neutral"
+soundToPlay = ExtResource("67_rht7v")
+metadata/_custom_type_script = "uid://cgfipa53cvc6d"
+
+[sub_resource type="Resource" id="Resource_wosyy"]
+script = ExtResource("65_4fb2i")
+lineToPlay = "demondeal_8"
+animToPlay = "hard"
+soundToPlay = ExtResource("66_krviu")
+metadata/_custom_type_script = "uid://cgfipa53cvc6d"
+
+[sub_resource type="Resource" id="Resource_48hbt"]
+script = ExtResource("65_4fb2i")
+lineToPlay = "demondeal_9"
+animToPlay = "flex"
+soundToPlay = ExtResource("67_rht7v")
+metadata/_custom_type_script = "uid://cgfipa53cvc6d"
+
+[sub_resource type="Resource" id="Resource_nvamj"]
+script = ExtResource("65_4fb2i")
+lineToPlay = "demondeal_10"
+animToPlay = "soundgood"
+soundToPlay = ExtResource("69_wdj75")
+metadata/_custom_type_script = "uid://cgfipa53cvc6d"
+
+[sub_resource type="Resource" id="Resource_lkuq6"]
+script = ExtResource("65_4fb2i")
+lineToPlay = "demondeal_11"
+animToPlay = "stepup"
+soundToPlay = ExtResource("68_5cnti")
+metadata/_custom_type_script = "uid://cgfipa53cvc6d"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8lf0q"]
 size = Vector2(982.75, 182)
@@ -1589,6 +1678,9 @@ position = Vector2(-25, 6)
 position = Vector2(-29, 55)
 collision_layer = 0
 collision_mask = 16
+
+[node name="Demon Dialogue" parent="Demon cave/Demon" index="3"]
+linesToPlay = Array[ExtResource("65_4fb2i")]([SubResource("Resource_fhtd8"), SubResource("Resource_27w7g"), SubResource("Resource_eiy16"), SubResource("Resource_7muv3"), SubResource("Resource_5vaff"), SubResource("Resource_ixbr2"), SubResource("Resource_obutm"), SubResource("Resource_csrp6"), SubResource("Resource_wosyy"), SubResource("Resource_48hbt"), SubResource("Resource_nvamj"), SubResource("Resource_lkuq6")])
 
 [node name="playerCollider" parent="Demon cave/Demon/Demon Dialogue" index="2"]
 position = Vector2(0, 59)

@@ -12,6 +12,7 @@ signal aboutToPlay
 
 @export var linesToPlay:Array[abs_dialogue_line]
 
+@onready var continueSymbolParent:HBoxContainer=$HBoxContainer
 @onready var continueSymbolText:RichTextLabel=$HBoxContainer/iconHolder/text_icon
 
 #could also make a dialogue script and have an array of those if we want same dialogue script to alter betweeen diff dialogues
@@ -19,11 +20,17 @@ signal aboutToPlay
 var dialogueHasPlayed:bool=false
 
 var currentLineIndex:int=0
+var waitingForPlayer:bool=false
+
 
 @export var onlyPlayOnce:bool=true
 
+@export var timeBeforeShowingButton:float=6
+var counterBeforeShowingButton:float=0
+
 func _ready() -> void:
 	hide()
+
 
 func StartDialogue():
 	aboutToPlay.emit()
@@ -32,10 +39,29 @@ func StartDialogue():
 	show()
 	
 	ContinueDialogue()
-	pass
 
+
+
+func _process(delta: float) -> void:
+
+	counterBeforeShowingButton+=delta
+	if counterBeforeShowingButton>timeBeforeShowingButton:
+		SetShowContinueButton(true)
+
+
+func SetShowContinueButton(show:bool):
+	if show:
+		continueSymbolParent.show()
+	else:
+		continueSymbolParent.hide()
 
 func ContinueDialogue():
+	if currentLineIndex==0:
+		SetShowContinueButton(true)
+	else:
+		SetShowContinueButton(false)
+	counterBeforeShowingButton=0
+	
 	var _text=tr(linesToPlay[currentLineIndex].lineToPlay) %str(GlobalVariables.daysBeforeDemonKillsEgg- GlobalVariables.currentDay)
 	text.text=_text
 	var boxSize=Vector2(min(220,_text.length()*6),0)
@@ -57,6 +83,8 @@ func ContinueDialogue():
 	#sound
 	if linesToPlay[currentLineIndex].soundToPlay!=null:
 		pass
+		
+	
 	await GlobalVariables.playerSang
 	
 	if currentLineIndex<linesToPlay.size()-1:
@@ -66,6 +94,8 @@ func ContinueDialogue():
 		hide()
 		dialogueFinished.emit()
 	pass
+	
+	
 
 
 
