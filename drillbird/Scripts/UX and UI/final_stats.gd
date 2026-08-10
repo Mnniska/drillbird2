@@ -110,7 +110,20 @@ func DisplayStats():
 	if SteamHandler.count_enemyDeaths<=SteamHandler.stat_ach_pacifist:
 		SteamHandler.TryUnlockAchievement("ach_pacifist")
 	
-	statsarray[4].DisplayStat("[center][wave][rainbow]"+tr("credits_stats_continue"),"")	
+	
+	text_statinfo=tr("credits_stats_endingsFound")
+	var endingsFound:int=0
+	if GlobalVariables.normalEndingFound:
+		endingsFound+=1
+	if GlobalVariables.cursedModeBadEndingFound:
+		endingsFound+=1
+	if GlobalVariables.cursedModeTrueEndingFound:
+		endingsFound+=1
+	text_statresult=str(endingsFound)+"/3"
+	
+	statsarray[4].DisplayStat(text_statinfo,text_statresult)
+	
+	statsarray[5].DisplayStat("[center][wave][rainbow]"+tr("credits_stats_continue"),"")	
 	
 	statsPageBusyLol=false
 #	TypewriteText(statsMessage)

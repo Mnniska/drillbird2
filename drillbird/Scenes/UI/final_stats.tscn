@@ -12,7 +12,7 @@ script = ExtResource("1_bixtf")
 typewriteCharsPerSecond = 30.0
 finalchoicetext_erase = "credits_reset_save_data_erasedata"
 finalchoicetext_goback = "credits_reset_save_data_goback"
-statsarray = [NodePath("STATS/stats_message"), NodePath("STATS/stats_message2"), NodePath("STATS/stats_message3"), NodePath("STATS/stats_message4"), NodePath("STATS/stats_message_ CONTINUE")]
+statsarray = [NodePath("STATS/stats_message"), NodePath("STATS/stats_message2"), NodePath("STATS/stats_message3"), NodePath("STATS/stats_message4"), NodePath("STATS/stats_message5"), NodePath("STATS/stats_message_ CONTINUE")]
 
 [node name="bg" type="Sprite2D" parent="."]
 position = Vector2(144, 123)
@@ -80,6 +80,18 @@ theme = ExtResource("1_ogkgr")
 theme_override_colors/default_color = Color(0.933333, 0.901961, 0.831373, 1)
 bbcode_enabled = true
 text = "Enemies killed: 120"
+visible_characters_behavior = 1
+script = ExtResource("5_54jkk")
+
+[node name="stats_message5" type="RichTextLabel" parent="STATS"]
+offset_left = 30.0
+offset_top = 176.0
+offset_right = 319.0
+offset_bottom = 197.0
+theme = ExtResource("1_ogkgr")
+theme_override_colors/default_color = Color(0.933333, 0.901961, 0.831373, 1)
+bbcode_enabled = true
+text = "Endings found: X/3"
 visible_characters_behavior = 1
 script = ExtResource("5_54jkk")
 
