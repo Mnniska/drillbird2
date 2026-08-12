@@ -2106,7 +2106,7 @@ position = Vector2(-10, -35)
 sprite_frames = SubResource("SpriteFrames_1phw1")
 animation = &"saint_pitch_eggready_3"
 autoplay = "null"
-frame_progress = 0.7002486
+frame_progress = 0.10542463
 
 [node name="InteractButton_talkToSaint" type="Node2D" parent="WorldScripts/SaintTech"]
 z_index = 5

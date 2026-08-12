@@ -70,6 +70,9 @@ func UpdateDialogueAfterInitialInteraction():
 func UpdateDialogue():
 	#called when dialogue is about to play, updates it to current dialogue needs
 	
+	#if bird interacts with the button, should add a dialogue that greets the player
+	#althoygh should probably check if the player has properly exited the cave 
+	
 	var dialogueToPlay:Array[abs_dialogue_line]
 	
 	if GlobalVariables.currentDay <= GlobalVariables.daysBeforeDemonKillsEgg: #if saint isn't dead yet
