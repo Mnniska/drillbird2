@@ -10,7 +10,7 @@ const DISTANCE_BEFORE_SPAWNING_NEW_COLLIDER:float=16*5
 
 @onready var detectionArea=$"Detection area"
 @onready var sprite=$sprite
-@onready var bodysprite=$body
+@onready var bodysprite:AnimatedSprite2D=$body
 @onready var eyesprite=$eyeball
 @onready var sweatParticles:GPUParticles2D=$sweatParticles
 
@@ -26,7 +26,7 @@ var positionOfLastColliderSpawn:Vector2
 var tilemap:TileMapLayer
 var vibrate:bool=false
 
-var detectAnimTime:float=0.5
+var detectAnimTime:float=0.2
 var detectAnimCounter:float=0
 
 func _ready() -> void:
@@ -35,9 +35,16 @@ func _ready() -> void:
 
 	await GlobalVariables.SetupComplete
 	CreateCollidersOnEmptySpaces(GetTilemap())
-	sweatParticles.emitting=false
+	SetScared(false)
 
+func SetScared(scared:bool):
 
+	sweatParticles.emitting=scared
+	if scared:
+		bodysprite.animation="scared"
+	else:
+		bodysprite.animation="normal"
+		
 func GetTilemap()->TileMapLayer:
 	if tilemap:
 		return tilemap
@@ -81,10 +88,14 @@ func _physics_process(_delta: float) -> void:
 		States.ESCAPING:
 			vibrate=true
 			
-			if positionLastFrame.distance_to(position)>0.2:
-				_anim="walk"
+			if detectAnimCounter>0:
+				detectAnimCounter-=_delta
+				_anim="detect"
 			else:
-				_anim="walk_still"
+				if positionLastFrame.distance_to(position)>0.2:
+					_anim="walk"
+				else:
+					_anim="walk_still"
 
 
 				
@@ -94,10 +105,12 @@ func _physics_process(_delta: float) -> void:
 				
 			var movementV=GetMovementVector(bodyToEscapeFrom.global_position)
 			velocity+=movementV*SPEED
+			if detectAnimCounter>0:
+				velocity=velocity*0.5
 			
 			var randomness=5
 			if desperate:
-				randomness=15
+				randomness=20
 			
 			var p = randf_range(-randomness,randomness)
 			var y =randf_range(-randomness,randomness)
@@ -109,10 +122,10 @@ func _physics_process(_delta: float) -> void:
 			
 			if distanceToPlayer<25:
 				desperate=true
-				sweatParticles.emitting=true
+				SetScared(true)
 			else:
 				desperate=false
-				sweatParticles.emitting=false
+				SetScared(false)
 			
 			if distanceToPlayer>=DISTANCE_TO_FEEL_SAFE:
 				state=States.GOINGTOIDLE
@@ -225,10 +238,6 @@ func CreateCollidersOnEmptySpaces(_tilemap:TileMapLayer):
 	
 
 
-	
-	
-	pass
-
 func GetMovementVector(_targetPosGlobal:Vector2):
 	var directionVector=global_position - _targetPosGlobal
 	var normalizedDirectionVector=directionVector.normalized()
@@ -240,4 +249,3 @@ func _on_detection_area_body_shape_entered(_body_rid: RID, body: Node2D, _body_s
 		bodyToEscapeFrom=body
 		detectAnimCounter=detectAnimTime
 	
-	pass # Replace with function body.

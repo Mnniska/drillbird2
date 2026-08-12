@@ -4,10 +4,8 @@
 [ext_resource type="Resource" uid="uid://bsqq3gk506g23" path="res://Resources/Economy/ore_8_gembug.tres" id="2_esx0y"]
 [ext_resource type="Script" uid="uid://bgy5cf01m25xs" path="res://Scripts/Abstract scripts/abstract_collidable.gd" id="2_jvrxm"]
 [ext_resource type="Script" uid="uid://cokuso80w54cc" path="res://Scripts/Abstract scripts/abstract_enemy.gd" id="3_xg40v"]
-[ext_resource type="Texture2D" uid="uid://cpor0xcmil2fv" path="res://Art/characters/WalkingGem/orebug_detect1.png" id="5_djpnf"]
-[ext_resource type="Texture2D" uid="uid://b2p03ymduc2yx" path="res://Art/characters/WalkingGem/orebug_detect2.png" id="6_esx0y"]
-[ext_resource type="Texture2D" uid="uid://cic1pev4x63fa" path="res://Art/characters/WalkingGem/orebug_detect3.png" id="7_u2ywa"]
-[ext_resource type="Texture2D" uid="uid://ctw42ovspj6l1" path="res://Art/characters/WalkingGem/orebug_detect4.png" id="8_8f6ss"]
+[ext_resource type="Texture2D" uid="uid://dct8urwkxasan" path="res://Art/characters/WalkingGem/orebug_detect1.png" id="5_djpnf"]
+[ext_resource type="Texture2D" uid="uid://dhtfj3qp0nv4r" path="res://Art/characters/WalkingGem/orebug_detect2.png" id="6_esx0y"]
 [ext_resource type="Texture2D" uid="uid://d2jqj85002g5n" path="res://Art/characters/WalkingGem/orebug_goToIdle1.png" id="9_6fuec"]
 [ext_resource type="Texture2D" uid="uid://nnk1ungeobry" path="res://Art/characters/WalkingGem/orebug_walk_legs1.png" id="10_u10jr"]
 [ext_resource type="Texture2D" uid="uid://cy8e3yjqf3co2" path="res://Art/characters/WalkingGem/orebug_goToIdle2.png" id="10_uaqdy"]
@@ -18,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://bju5usiyibau1" path="res://Art/characters/WalkingGem/orebug_walk_body.png" id="12_uaqdy"]
 [ext_resource type="Texture2D" uid="uid://n358d6p58gl3" path="res://Art/characters/WalkingGem/orebug_eyeball.png" id="13_brsnl"]
 [ext_resource type="Texture2D" uid="uid://bq5jlqj1k670" path="res://Art/characters/WalkingGem/sweatdrop.png" id="15_u2ywa"]
+[ext_resource type="Texture2D" uid="uid://cjc1gxjyc4gfn" path="res://Art/characters/WalkingGem/orebug_body_scared.png" id="15_u10jr"]
 
 [sub_resource type="Resource" id="Resource_vulfi"]
 script = ExtResource("2_jvrxm")
@@ -45,14 +44,8 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("6_esx0y")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_u2ywa")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_8f6ss")
 }],
-"loop": true,
+"loop": false,
 "name": &"detect",
 "speed": 8.0
 }, {
@@ -104,6 +97,25 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_6fuec"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_uaqdy")
+}],
+"loop": true,
+"name": &"normal",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_u10jr")
+}],
+"loop": true,
+"name": &"scared",
+"speed": 5.0
+}]
+
 [sub_resource type="Curve" id="Curve_8f6ss"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.21979435, 0), 0.0, 0.0, 0, 0, Vector2(0.25192803, 0.99700874), 0.0, 0.0, 0, 0, Vector2(0.8946015, 0.9790612), 0.0, 0.0, 0, 0, Vector2(0.9897172, 0.024850488), 0.0, 0.0, 0, 0]
 point_count = 5
@@ -152,12 +164,14 @@ shape = SubResource("CircleShape2D_1bo6n")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_wcs4h")
-animation = &"gotoidle"
+animation = &"detect"
 autoplay = "idle"
 
-[node name="body" type="Sprite2D" parent="."]
+[node name="body" type="AnimatedSprite2D" parent="."]
 visible = false
-texture = ExtResource("12_uaqdy")
+sprite_frames = SubResource("SpriteFrames_6fuec")
+animation = &"normal"
+frame_progress = 0.45967442
 
 [node name="eyeball" type="Sprite2D" parent="."]
 visible = false

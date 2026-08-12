@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cic1pev4x63fa"
-path="res://.godot/imported/orebug_detect3.png-e333f86ad45a988b973aa3964d620582.ctex"
+uid="uid://cjc1gxjyc4gfn"
+path="res://.godot/imported/orebug_body_scared.png-deaf3c2d736a5421c61edc382346cce5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/characters/WalkingGem/orebug_detect3.png"
-dest_files=["res://.godot/imported/orebug_detect3.png-e333f86ad45a988b973aa3964d620582.ctex"]
+source_file="res://Art/characters/WalkingGem/orebug_body_scared.png"
+dest_files=["res://.godot/imported/orebug_body_scared.png-deaf3c2d736a5421c61edc382346cce5.ctex"]
 
 [params]
 
