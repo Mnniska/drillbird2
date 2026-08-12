@@ -174,7 +174,7 @@ autoplay = "idle"
 visible = false
 sprite_frames = SubResource("SpriteFrames_6fuec")
 animation = &"normal"
-frame_progress = 0.7642646
+frame_progress = 0.48080903
 
 [node name="eyeball" type="Sprite2D" parent="."]
 visible = false

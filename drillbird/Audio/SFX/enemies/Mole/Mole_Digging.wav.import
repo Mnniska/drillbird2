@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://3p27n1sww8x2"
-path="res://.godot/imported/Mole_Digging.wav-4cf0fc1a5aecd259e730fee0cf7f64a3.sample"
+uid="uid://dg4b6r8mlupyh"
+path="res://.godot/imported/mole_digging.wav-cf730203addb4a2dab3a565fbf61b9a8.sample"
 
 [deps]
 
-source_file="res://Audio/SFX/enemies/Mole/Mole_Digging.wav"
-dest_files=["res://.godot/imported/Mole_Digging.wav-4cf0fc1a5aecd259e730fee0cf7f64a3.sample"]
+source_file="res://Audio/SFX/enemies/Mole/mole_digging.wav"
+dest_files=["res://.godot/imported/mole_digging.wav-cf730203addb4a2dab3a565fbf61b9a8.sample"]
 
 [params]
 

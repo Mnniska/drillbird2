@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://dndnueljbo1m6"
-path="res://.godot/imported/Mole_Detect.wav-e20e85842a4a340b39096d934f6583f2.sample"
+uid="uid://b24ttanl6wjda"
+path="res://.godot/imported/mole_detect.wav-7be007b229292cefbebef9491ebdeef0.sample"
 
 [deps]
 
-source_file="res://Audio/SFX/enemies/Mole/Mole_Detect.wav"
-dest_files=["res://.godot/imported/Mole_Detect.wav-e20e85842a4a340b39096d934f6583f2.sample"]
+source_file="res://Audio/SFX/enemies/Mole/mole_detect.wav"
+dest_files=["res://.godot/imported/mole_detect.wav-7be007b229292cefbebef9491ebdeef0.sample"]
 
 [params]
 

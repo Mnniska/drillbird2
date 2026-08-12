@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://ctycu0t4qclfx"
-path="res://.godot/imported/Mole_land.wav-bcc9f674136baa89a1cf78d638c17194.sample"
+uid="uid://bwm1x1r8reqqc"
+path="res://.godot/imported/mole_land.wav-452ce915f003849bb7f11d9a6b324dad.sample"
 
 [deps]
 
-source_file="res://Audio/SFX/enemies/Mole/Mole_land.wav"
-dest_files=["res://.godot/imported/Mole_land.wav-bcc9f674136baa89a1cf78d638c17194.sample"]
+source_file="res://Audio/SFX/enemies/Mole/mole_land.wav"
+dest_files=["res://.godot/imported/mole_land.wav-452ce915f003849bb7f11d9a6b324dad.sample"]
 
 [params]
 

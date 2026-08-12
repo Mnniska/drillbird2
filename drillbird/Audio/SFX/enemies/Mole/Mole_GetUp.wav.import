@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://i6pqx47kdhmo"
-path="res://.godot/imported/Mole_GetUp.wav-fb56f3a1e1be72ea893d0c30858fe071.sample"
+uid="uid://ucnciyg5054p"
+path="res://.godot/imported/mole_getUp.wav-96e0970f56f02e6e45afcdae256f7f9c.sample"
 
 [deps]
 
-source_file="res://Audio/SFX/enemies/Mole/Mole_GetUp.wav"
-dest_files=["res://.godot/imported/Mole_GetUp.wav-fb56f3a1e1be72ea893d0c30858fe071.sample"]
+source_file="res://Audio/SFX/enemies/Mole/mole_getUp.wav"
+dest_files=["res://.godot/imported/mole_getUp.wav-96e0970f56f02e6e45afcdae256f7f9c.sample"]
 
 [params]
 
