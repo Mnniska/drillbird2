@@ -18,7 +18,7 @@ axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s0e8w"]
-size = Vector2(120, 53)
+size = Vector2(58, 53)
 
 [node name="Dialogue" type="Node2D"]
 z_index = 6
@@ -72,10 +72,10 @@ size_flags_vertical = 8
 theme = ExtResource("3_s0e8w")
 theme_override_colors/default_color = Color(0.19374472, 0.060779914, 0.22031766, 1)
 bbcode_enabled = true
-text = "hello"
+text = "hi"
 fit_content = true
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="tail" type="TextureRect" parent="."]
 light_mask = 0
 visibility_layer = 4
 z_index = -2
@@ -85,6 +85,13 @@ offset_right = 21.0
 offset_bottom = -5.0
 texture = ExtResource("4_nccay")
 stretch_mode = 5
+flip_h = true
+
+[node name="tailLeftPosition" type="Node2D" parent="."]
+position = Vector2(-135, -25)
+
+[node name="tailCenterPosition" type="Node2D" parent="."]
+position = Vector2(-135, -25)
 
 [node name="playerCollider" type="Area2D" parent="."]
 collision_layer = 0
