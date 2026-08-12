@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://4ea053k7e4d0"]
+[gd_scene load_steps=32 format=3 uid="uid://4ea053k7e4d0"]
 
 [ext_resource type="Script" uid="uid://ogag6wxgn0y5" path="res://Scripts/Enemies/enemy_mole_ore.gd" id="1_lxrrl"]
 [ext_resource type="Resource" uid="uid://bsqq3gk506g23" path="res://Resources/Economy/ore_8_gembug.tres" id="2_esx0y"]
@@ -17,6 +17,9 @@
 [ext_resource type="Texture2D" uid="uid://n358d6p58gl3" path="res://Art/characters/WalkingGem/orebug_eyeball.png" id="13_brsnl"]
 [ext_resource type="Texture2D" uid="uid://bq5jlqj1k670" path="res://Art/characters/WalkingGem/sweatdrop.png" id="15_u2ywa"]
 [ext_resource type="Texture2D" uid="uid://cjc1gxjyc4gfn" path="res://Art/characters/WalkingGem/orebug_body_scared.png" id="15_u10jr"]
+[ext_resource type="PackedScene" uid="uid://csw4ibce4mwsc" path="res://Scenes/sound_looper.tscn" id="18_brsnl"]
+[ext_resource type="Resource" uid="uid://d233cs6ljqc3n" path="res://Audio/SFX/enemies/gembug/sfx_gembug_walking.tres" id="19_l0g62"]
+[ext_resource type="Resource" uid="uid://dcvtd25o42ef8" path="res://Audio/SFX/enemies/gembug/sfx_gembug_scared.tres" id="20_wrj2u"]
 
 [sub_resource type="Resource" id="Resource_vulfi"]
 script = ExtResource("2_jvrxm")
@@ -171,7 +174,7 @@ autoplay = "idle"
 visible = false
 sprite_frames = SubResource("SpriteFrames_6fuec")
 animation = &"normal"
-frame_progress = 0.45967442
+frame_progress = 0.7642646
 
 [node name="eyeball" type="Sprite2D" parent="."]
 visible = false
@@ -181,5 +184,11 @@ texture = ExtResource("13_brsnl")
 emitting = false
 texture = ExtResource("15_u2ywa")
 process_material = SubResource("ParticleProcessMaterial_brsnl")
+
+[node name="soundloop_walk" parent="." instance=ExtResource("18_brsnl")]
+soundEffect = ExtResource("19_l0g62")
+
+[node name="soundloop_scared" parent="." instance=ExtResource("18_brsnl")]
+soundEffect = ExtResource("20_wrj2u")
 
 [connection signal="body_shape_entered" from="Detection area" to="." method="_on_detection_area_body_shape_entered"]

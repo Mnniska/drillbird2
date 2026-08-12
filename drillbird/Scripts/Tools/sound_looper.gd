@@ -16,8 +16,8 @@ func Play():
 	pass
 
 func Stop():
-	
-	audioPlayer.stop()
+	if audioPlayer.playing:
+		audioPlayer.stop()
 	
 	pass
 

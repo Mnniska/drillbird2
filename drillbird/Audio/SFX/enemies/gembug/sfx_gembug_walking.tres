@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="abstract_SoundEffectSetting" load_steps=3 format=3 uid="uid://d233cs6ljqc3n"]
+
+[ext_resource type="Script" uid="uid://dwatvj6f4edl5" path="res://Scripts/Abstract scripts/abstract_SoundEffectSetting.gd" id="1_fss0d"]
+[ext_resource type="AudioStream" uid="uid://dp6ld0vgt5aky" path="res://Audio/SFX/enemies/gembug/sfx_gembug_walking.wav" id="2_4eo5s"]
+
+[resource]
+script = ExtResource("1_fss0d")
+type = 60
+sound_effect = ExtResource("2_4eo5s")
+volume = 5
+pitch_randomness = 0.1
+audioBus = 1

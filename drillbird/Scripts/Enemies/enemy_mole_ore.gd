@@ -14,6 +14,9 @@ const DISTANCE_BEFORE_SPAWNING_NEW_COLLIDER:float=16*5
 @onready var eyesprite=$eyeball
 @onready var sweatParticles:GPUParticles2D=$sweatParticles
 
+@onready var soundloop_walk=$soundloop_walk
+@onready var soundloop_scared=$soundloop_scared
+
 var bodyToEscapeFrom:Node2D=null
 enum States{IDLE,ESCAPING,DYING,GOINGTOIDLE}
 var desperate:bool=false
@@ -29,6 +32,8 @@ var vibrate:bool=false
 var detectAnimTime:float=0.2
 var detectAnimCounter:float=0
 
+var scaredTimer:float=0
+
 func _ready() -> void:
 	GlobalVariables.TileDestroyed.connect(PlayerDestroyedTile)
 
@@ -42,8 +47,13 @@ func SetScared(scared:bool):
 	sweatParticles.emitting=scared
 	if scared:
 		bodysprite.animation="scared"
+		soundloop_scared.Play()
+
 	else:
 		bodysprite.animation="normal"
+		soundloop_scared.Stop()
+
+		
 		
 func GetTilemap()->TileMapLayer:
 	if tilemap:
@@ -68,7 +78,6 @@ func Setup(info:abstract_enemy): #MUST HAVE
 	
 	
 
-
 func _physics_process(_delta: float) -> void:
 	
 	var _anim:String=sprite.animation
@@ -82,6 +91,8 @@ func _physics_process(_delta: float) -> void:
 			_anim="gotoidle"
 			vibrate=false
 			velocity=Vector2(0,0)
+			soundloop_walk.Stop()
+
 			
 			if sprite.animation=="gotoidle" and sprite.frame==3:
 				state=States.IDLE
@@ -94,8 +105,10 @@ func _physics_process(_delta: float) -> void:
 			else:
 				if positionLastFrame.distance_to(position)>0.2:
 					_anim="walk"
+					soundloop_walk.Play()
 				else:
 					_anim="walk_still"
+					soundloop_walk.Stop()
 
 
 				
@@ -110,7 +123,7 @@ func _physics_process(_delta: float) -> void:
 			
 			var randomness=5
 			if desperate:
-				randomness=20
+				randomness=15
 			
 			var p = randf_range(-randomness,randomness)
 			var y =randf_range(-randomness,randomness)
@@ -122,8 +135,12 @@ func _physics_process(_delta: float) -> void:
 			
 			if distanceToPlayer<25:
 				desperate=true
-				SetScared(true)
+				scaredTimer+=_delta
+				if scaredTimer>0.8:
+					
+					SetScared(true)
 			else:
+				scaredTimer=0
 				desperate=false
 				SetScared(false)
 			
@@ -142,11 +159,14 @@ func _physics_process(_delta: float) -> void:
 	HandleVisuals(_anim)
 
 	
-	positionLastFrame=position #must be called before move_and_slide but after functions that need it
-		
+
+	
+	positionLastFrame=position #must be called before move_and_slide and after functions that need it
 	move_and_slide()
 	
-	
+
+func UpdateWalkSound():
+	pass
 
 func HandleVisuals(_animToPlay:String):
 	if sprite.animation!=_animToPlay:
@@ -195,13 +215,12 @@ func PlayerDestroyedTile(tilemapCoord:Vector2i,_tilemap:TileMapLayer):
 
 func RestingBlockDestroyed():
 	
-	#TODO:
-	#spawn a mole maybe??
-	#Spawn an appropiate ore
-	#destroy this bad boi
 	
 	var spawner:ore_manager = GlobalVariables.MainSceneReferenceConnector.ref_oreTilemap
 	spawner.SpawnOreAtLocation(global_position,oreToSpawn,Vector2(0,-100),true,false,0.6)
+	
+	SoundManager.PlaySoundAtLocation(self.global_position,abstract_SoundEffectSetting.SoundEffectEnum.GEMBUG_DEATH)
+
 	
 	for n in collidersForEmptySpaces:
 		n.queue_free()
@@ -248,4 +267,5 @@ func _on_detection_area_body_shape_entered(_body_rid: RID, body: Node2D, _body_s
 		state=States.ESCAPING
 		bodyToEscapeFrom=body
 		detectAnimCounter=detectAnimTime
+		SoundManager.PlaySoundAtLocation(self.global_position,abstract_SoundEffectSetting.SoundEffectEnum.GEMBUG_DETECT)
 	

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="abstract_SoundEffectSetting" load_steps=3 format=3 uid="uid://c2xpt8q4omrr5"]
+
+[ext_resource type="Script" uid="uid://dwatvj6f4edl5" path="res://Scripts/Abstract scripts/abstract_SoundEffectSetting.gd" id="1_7w1jk"]
+[ext_resource type="AudioStream" uid="uid://4cpuvcbhm7du" path="res://Audio/SFX/enemies/gembug/sfx_gembug_death.wav" id="2_7w1jk"]
+
+[resource]
+script = ExtResource("1_7w1jk")
+type = 62
+sound_effect = ExtResource("2_7w1jk")
+volume = 5
+pitch_randomness = 0.1
+audioBus = 1

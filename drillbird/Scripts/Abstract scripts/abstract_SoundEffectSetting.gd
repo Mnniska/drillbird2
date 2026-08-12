@@ -73,7 +73,12 @@ enum SoundEffectEnum
 	MOLE_DETECT,
 	MOLE_DIG,
 	MOLE_LAND,
-	MOLE_GETUP
+	MOLE_GETUP,
+	
+	GEMBUG_DETECT,
+	GEMBUG_WALKING,
+	GEMBUG_SCARED,
+	GEMBUG_DEATH
 }
 
 @export_range(0,10) var limit:int=5
