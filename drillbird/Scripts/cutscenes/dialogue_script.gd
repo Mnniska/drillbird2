@@ -18,6 +18,7 @@ signal aboutToPlay
 @export var saintTalking:bool=false
 
 @export var maxBoxWidth:int=220
+@export var startViaCollider:bool=true
 
 #could also make a dialogue script and have an array of those if we want same dialogue script to alter betweeen diff dialogues
 
@@ -149,6 +150,9 @@ func ContinueDialogue():
 
 
 func _on_player_collider_body_entered(body: Node2D) -> void:
+	
+	if !startViaCollider:
+		return
 	
 	if !dialogueHasPlayed or !onlyPlayOnce:
 		StartDialogue()

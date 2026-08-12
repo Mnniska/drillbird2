@@ -1,4 +1,4 @@
-[gd_scene load_steps=226 format=4 uid="uid://boh3yjorqn4xa"]
+[gd_scene load_steps=232 format=4 uid="uid://boh3yjorqn4xa"]
 
 [ext_resource type="TileSet" uid="uid://grpd2pyu7pgk" path="res://Resources/MainTileset.tres" id="1_4c1b3"]
 [ext_resource type="Script" uid="uid://ddqrep1nrk25j" path="res://Scenes/Playable Scenes/OreSpawner.gd" id="2_mjto2"]
@@ -124,6 +124,11 @@
 [ext_resource type="Texture2D" uid="uid://cddcacwqoioqh" path="res://Art/cutscenes/saint dialogue/saint_dialogue_eggready_2_mysoul.png" id="113_boksq"]
 [ext_resource type="Texture2D" uid="uid://besqbnj0fb5h8" path="res://Art/cutscenes/saint dialogue/saint_dialogue_eggready_3_domybest.png" id="114_7dhub"]
 [ext_resource type="Texture2D" uid="uid://bt58uy28hkhoy" path="res://Art/cutscenes/saint dialogue/saint_dialogue_eggready_0_greeting.png" id="115_iaoeq"]
+[ext_resource type="Texture2D" uid="uid://shw5k6xi8jrf" path="res://Art/UI/UI_bubble_iconHolder_leftSide.png" id="119_wmhgi"]
+[ext_resource type="Texture2D" uid="uid://2xidorn8blnd" path="res://Art/UI/UI_bubble_iconHolder.png" id="120_c37r1"]
+[ext_resource type="Theme" uid="uid://bfr5y4lo7m1ux" path="res://Resources/Fonts/fontTheme.tres" id="121_uauat"]
+[ext_resource type="Texture2D" uid="uid://t0np5v56anao" path="res://Art/UI/square.png" id="122_kp4vu"]
+[ext_resource type="Texture2D" uid="uid://bpp3u6kqc1pyv" path="res://Art/UI/UI_bubble_end_left.png" id="123_kieua"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xeuju"]
 size = Vector2(816.75, 1246)
@@ -798,6 +803,9 @@ animations = [{
 "name": &"saint_pitch_eggready_3",
 "speed": 5.0
 }]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wmhgi"]
+size = Vector2(43, 57)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7alhe"]
 size = Vector2(133, 131)
@@ -1893,6 +1901,7 @@ soulOre = ExtResource("42_deunn")
 position = Vector2(95, -11)
 animatorToAnimate = NodePath("../saint")
 saintTalking = true
+startViaCollider = false
 
 [node name="playerCollider" parent="WorldScripts/SaintTech/Dialogue" index="4"]
 position = Vector2(-62, 43)
@@ -1933,6 +1942,85 @@ position = Vector2(-10, -35)
 sprite_frames = SubResource("SpriteFrames_1phw1")
 animation = &"despawn"
 autoplay = "null"
+
+[node name="InteractButton_talkToSaint" type="Node2D" parent="WorldScripts/SaintTech"]
+z_index = 5
+position = Vector2(0, -27)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="WorldScripts/SaintTech/InteractButton_talkToSaint"]
+offset_left = -53.0
+offset_top = -21.0
+offset_right = 51.0
+offset_bottom = 19.0
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="bg_left" type="TextureRect" parent="WorldScripts/SaintTech/InteractButton_talkToSaint/HBoxContainer"]
+self_modulate = Color(1, 1, 1, 0.678431)
+z_index = 6
+layout_mode = 2
+texture = ExtResource("119_wmhgi")
+stretch_mode = 3
+
+[node name="iconHolder" type="TextureRect" parent="WorldScripts/SaintTech/InteractButton_talkToSaint/HBoxContainer"]
+self_modulate = Color(1, 1, 1, 0.678431)
+z_index = 6
+layout_mode = 2
+texture = ExtResource("120_c37r1")
+stretch_mode = 3
+
+[node name="text_icon" type="RichTextLabel" parent="WorldScripts/SaintTech/InteractButton_talkToSaint/HBoxContainer/iconHolder"]
+z_index = 7
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 12.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("121_uauat")
+bbcode_enabled = true
+text = "[outline_size={2}](O)"
+
+[node name="text_feedEgg" type="Label" parent="WorldScripts/SaintTech/InteractButton_talkToSaint/HBoxContainer"]
+z_index = 6
+layout_mode = 2
+theme = ExtResource("121_uauat")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "listen"
+vertical_alignment = 1
+
+[node name="bg_text_hold" type="TextureRect" parent="WorldScripts/SaintTech/InteractButton_talkToSaint/HBoxContainer/text_feedEgg"]
+self_modulate = Color(1, 1, 1, 0.678431)
+z_index = 7
+z_as_relative = false
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("122_kp4vu")
+
+[node name="bg_right" type="TextureRect" parent="WorldScripts/SaintTech/InteractButton_talkToSaint/HBoxContainer"]
+self_modulate = Color(1, 1, 1, 0.678431)
+z_index = 6
+layout_mode = 2
+texture = ExtResource("123_kieua")
+stretch_mode = 3
+flip_h = true
+
+[node name="DialogueTriggerArea" type="Area2D" parent="WorldScripts/SaintTech"]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldScripts/SaintTech/DialogueTriggerArea"]
+position = Vector2(-0.5, 17)
+shape = SubResource("RectangleShape2D_wmhgi")
 
 [node name="AudioReverbAreas" type="Node2D" parent="WorldScripts"]
 visible = false
@@ -2265,6 +2353,8 @@ position = Vector2(22, -448)
 [connection signal="body_entered" from="decorations/BackgroundHandler/intensifiers/Area2D3" to="decorations/BackgroundHandler" method="_on_area_2d_body_entered"]
 [connection signal="area_entered" from="WorldScripts/SaintTech/Goo deco/Area2D" to="WorldScripts/SaintTech/Goo deco" method="_player_entered_cave_entrance"]
 [connection signal="body_entered" from="WorldScripts/SaintTech/Goo deco/Area2D" to="WorldScripts/SaintTech/Goo deco" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="WorldScripts/SaintTech/DialogueTriggerArea" to="WorldScripts/SaintTech" method="_on_dialogue_trigger_area_body_entered"]
+[connection signal="body_exited" from="WorldScripts/SaintTech/DialogueTriggerArea" to="WorldScripts/SaintTech" method="_on_dialogue_trigger_area_body_exited"]
 [connection signal="body_shape_entered" from="PlayerSpawnLocations/PlayerLocationSaver" to="PlayerSpawnLocations/PlayerLocationSaver" method="_on_body_shape_entered"]
 
 [editable path="WorldScripts/Tutorial_DropOres"]
