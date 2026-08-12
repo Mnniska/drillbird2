@@ -1,4 +1,4 @@
-[gd_scene load_steps=232 format=4 uid="uid://boh3yjorqn4xa"]
+[gd_scene load_steps=273 format=4 uid="uid://boh3yjorqn4xa"]
 
 [ext_resource type="TileSet" uid="uid://grpd2pyu7pgk" path="res://Resources/MainTileset.tres" id="1_4c1b3"]
 [ext_resource type="Script" uid="uid://ddqrep1nrk25j" path="res://Scenes/Playable Scenes/OreSpawner.gd" id="2_mjto2"]
@@ -92,15 +92,6 @@
 [ext_resource type="Texture2D" uid="uid://chkirfqro6na3" path="res://Art/cutscenes/saint dialogue/saint_dialogue_spawn15.png" id="81_bni6r"]
 [ext_resource type="Texture2D" uid="uid://cxdl0c6o65jaf" path="res://Art/cutscenes/saint dialogue/saint_dialogue_spawn16.png" id="82_lmdxg"]
 [ext_resource type="Texture2D" uid="uid://byi86u4sh004j" path="res://Art/cutscenes/saint dialogue/saint_dialogue_spawn17.png" id="83_aoav7"]
-[ext_resource type="Texture2D" uid="uid://dgk1rqi6vpjue" path="res://Art/cutscenes/saint dialogue/saint_dialogue_1_OH.png" id="84_iqrgf"]
-[ext_resource type="Texture2D" uid="uid://blq7wx5r5abmn" path="res://Art/cutscenes/saint dialogue/saint_dialogue_2_tinybird.png" id="85_r7k54"]
-[ext_resource type="Texture2D" uid="uid://82q7uqemcg6h" path="res://Art/cutscenes/saint dialogue/saint_dialogue_3_demondeal.png" id="86_tcj5q"]
-[ext_resource type="Texture2D" uid="uid://0d842nwoalcr" path="res://Art/cutscenes/saint dialogue/saint_dialogue_4_inhabitingbodies.png" id="87_47h8n"]
-[ext_resource type="Texture2D" uid="uid://btdxkuoqhv7cy" path="res://Art/cutscenes/saint dialogue/saint_dialogue_5_yourchild.png" id="88_vdgok"]
-[ext_resource type="Texture2D" uid="uid://cudmrwy1eve7r" path="res://Art/cutscenes/saint dialogue/saint_dialogue_6_Icanhelp.png" id="89_kghq6"]
-[ext_resource type="Texture2D" uid="uid://bqvx5k68pdswr" path="res://Art/cutscenes/saint dialogue/saint_dialogue_7_darknessout.png" id="90_mvcm0"]
-[ext_resource type="Texture2D" uid="uid://cyanigeubivc4" path="res://Art/cutscenes/saint dialogue/saint_dialogue_8_warnyou.png" id="91_2osy1"]
-[ext_resource type="Texture2D" uid="uid://4obxsbb0bat0" path="res://Art/cutscenes/saint dialogue/saint_dialogue_9_helpme.png" id="92_07nk2"]
 [ext_resource type="Texture2D" uid="uid://cpwqkdyky4u0b" path="res://Art/cutscenes/saint dialogue/saint_dialogue_despawn1.png" id="93_ufcqc"]
 [ext_resource type="Texture2D" uid="uid://qklxtrqiu8xo" path="res://Art/cutscenes/saint dialogue/saint_dialogue_despawn2.png" id="94_ouwi3"]
 [ext_resource type="Texture2D" uid="uid://b5fs8yvnv57du" path="res://Art/cutscenes/saint dialogue/saint_dialogue_despawn3.png" id="95_v3lew"]
@@ -108,27 +99,77 @@
 [ext_resource type="Texture2D" uid="uid://bo55djl5aor87" path="res://Art/cutscenes/saint dialogue/saint_dialogue_despawn5.png" id="97_wrwsc"]
 [ext_resource type="Texture2D" uid="uid://cvikn8to6obk1" path="res://Art/cutscenes/saint dialogue/saint_dialogue_despawn6.png" id="98_tsbjo"]
 [ext_resource type="Texture2D" uid="uid://2cwkgfvbl7hp" path="res://Art/cutscenes/saint dialogue/saint_dialogue_despawn7.png" id="99_x1wdk"]
+[ext_resource type="Texture2D" uid="uid://ci1l2huo42w4t" path="res://Art/cutscenes/saint dialogue/saint_dialogue_despawn17.png" id="100_boksq"]
 [ext_resource type="Texture2D" uid="uid://bj84ceb77yrnt" path="res://Art/cutscenes/saint dialogue/saint_dialogue_despawn8.png" id="100_kapk0"]
+[ext_resource type="Texture2D" uid="uid://bhngbfp6b2540" path="res://Art/cutscenes/saint dialogue/saint_dialogue_despawn18.png" id="101_7dhub"]
 [ext_resource type="Texture2D" uid="uid://dybca2sefc2gj" path="res://Art/cutscenes/saint dialogue/saint_dialogue_despawn9.png" id="101_744aq"]
+[ext_resource type="Texture2D" uid="uid://g33s8b00mka0" path="res://Art/cutscenes/saint dialogue/saint_dialogue_despawn19.png" id="102_iaoeq"]
 [ext_resource type="Texture2D" uid="uid://ci8lc7s00qlt7" path="res://Art/cutscenes/saint dialogue/saint_dialogue_despawn10.png" id="102_q0wn8"]
 [ext_resource type="Texture2D" uid="uid://4rrp0v7kfdgn" path="res://Art/cutscenes/saint dialogue/saint_dialogue_despawn11.png" id="103_4hcwe"]
+[ext_resource type="Texture2D" uid="uid://sjqpltrg07fs" path="res://Art/cutscenes/saint dialogue/saint_dialogue_despawn20.png" id="103_wa7p4"]
 [ext_resource type="Texture2D" uid="uid://ctubd1oj7k2md" path="res://Art/cutscenes/saint dialogue/saint_dialogue_despawn12.png" id="104_4y0o0"]
+[ext_resource type="Texture2D" uid="uid://dhd73dasepb1j" path="res://Art/cutscenes/saint dialogue/saint_dialogue_despawn21.png" id="104_e5q8v"]
+[ext_resource type="Texture2D" uid="uid://cmhybf1x2i77f" path="res://Art/cutscenes/saint dialogue/saint_dialogue_despawn22.png" id="105_13734"]
 [ext_resource type="Texture2D" uid="uid://ctkq8ikcmloko" path="res://Art/cutscenes/saint dialogue/saint_dialogue_despawn13.png" id="105_qn6ye"]
+[ext_resource type="Texture2D" uid="uid://j7koy0ycv1g4" path="res://Art/cutscenes/saint dialogue/saint_dialogue_despawn23.png" id="106_3k5r4"]
 [ext_resource type="Texture2D" uid="uid://dswfsij244yux" path="res://Art/cutscenes/saint dialogue/saint_dialogue_despawn14.png" id="106_cb03j"]
 [ext_resource type="Texture2D" uid="uid://co8hhvajc3qsl" path="res://Art/cutscenes/saint dialogue/saint_dialogue_despawn15.png" id="107_2vmor"]
+[ext_resource type="Texture2D" uid="uid://cu5lgq4sl60lt" path="res://Art/cutscenes/saint dialogue/saint_dialogue_despawn24.png" id="107_bmf2b"]
 [ext_resource type="Texture2D" uid="uid://dardfdm4q7eub" path="res://Art/cutscenes/saint dialogue/saint_dialogue_despawn16.png" id="108_eu663"]
-[ext_resource type="Texture2D" uid="uid://uwurrokownbv" path="res://Art/cutscenes/saint dialogue/saint_dialogue_eggnothatched_1_bob.png" id="109_l63v0"]
-[ext_resource type="Texture2D" uid="uid://cw84a8mkqdvpo" path="res://Art/cutscenes/saint dialogue/saint_dialogue_eggnothatched_2_onlyXdays.png" id="110_n0xp3"]
-[ext_resource type="Texture2D" uid="uid://df41gvc7pxa88" path="res://Art/cutscenes/saint dialogue/saint_dialogue_eggnothatched_3_comeback.png" id="111_p3o0l"]
-[ext_resource type="Texture2D" uid="uid://c8wwo1carkkru" path="res://Art/cutscenes/saint dialogue/saint_dialogue_eggready_1_eggready.png" id="112_22g2n"]
-[ext_resource type="Texture2D" uid="uid://cddcacwqoioqh" path="res://Art/cutscenes/saint dialogue/saint_dialogue_eggready_2_mysoul.png" id="113_boksq"]
-[ext_resource type="Texture2D" uid="uid://besqbnj0fb5h8" path="res://Art/cutscenes/saint dialogue/saint_dialogue_eggready_3_domybest.png" id="114_7dhub"]
-[ext_resource type="Texture2D" uid="uid://bt58uy28hkhoy" path="res://Art/cutscenes/saint dialogue/saint_dialogue_eggready_0_greeting.png" id="115_iaoeq"]
+[ext_resource type="Texture2D" uid="uid://3b7mit2dc0ly" path="res://Art/cutscenes/saint dialogue/saint_dialogue_despawn25.png" id="108_nj3k5"]
+[ext_resource type="Texture2D" uid="uid://btcgyuv3iiqrc" path="res://Art/cutscenes/saint dialogue/saint_dialogue_eggready_0_greeting1.png" id="112_kkev7"]
+[ext_resource type="Texture2D" uid="uid://ctpeko6jnksuh" path="res://Art/cutscenes/saint dialogue/saint_dialogue_eggready_0_greeting2.png" id="113_iowsn"]
+[ext_resource type="Texture2D" uid="uid://bogsyc0e67uij" path="res://Art/cutscenes/saint dialogue/saint_dialogue_eggready_0_greeting3.png" id="114_i3d60"]
+[ext_resource type="Texture2D" uid="uid://bd0j2d8qobsnp" path="res://Art/cutscenes/saint dialogue/saint_dialogue_1_OH1.png" id="115_bm75n"]
+[ext_resource type="Texture2D" uid="uid://ciywj6jh1ijql" path="res://Art/cutscenes/saint dialogue/saint_dialogue_1_OH2.png" id="116_pdloc"]
+[ext_resource type="Texture2D" uid="uid://b0jk00a6qnu0e" path="res://Art/cutscenes/saint dialogue/saint_dialogue_1_OH3.png" id="117_hv8wm"]
+[ext_resource type="Texture2D" uid="uid://bm0kajfvyxums" path="res://Art/cutscenes/saint dialogue/saint_dialogue_2_tinybird1.png" id="118_qm5mn"]
+[ext_resource type="Texture2D" uid="uid://de8jrsd5ghkob" path="res://Art/cutscenes/saint dialogue/saint_dialogue_2_tinybird2.png" id="119_qt066"]
 [ext_resource type="Texture2D" uid="uid://shw5k6xi8jrf" path="res://Art/UI/UI_bubble_iconHolder_leftSide.png" id="119_wmhgi"]
 [ext_resource type="Texture2D" uid="uid://2xidorn8blnd" path="res://Art/UI/UI_bubble_iconHolder.png" id="120_c37r1"]
+[ext_resource type="Texture2D" uid="uid://b6mtymuh0n8f6" path="res://Art/cutscenes/saint dialogue/saint_dialogue_2_tinybird3.png" id="120_hu0pu"]
+[ext_resource type="Texture2D" uid="uid://x86nlfab2h6i" path="res://Art/cutscenes/saint dialogue/saint_dialogue_3_demondeal1.png" id="121_by7yb"]
 [ext_resource type="Theme" uid="uid://bfr5y4lo7m1ux" path="res://Resources/Fonts/fontTheme.tres" id="121_uauat"]
+[ext_resource type="Texture2D" uid="uid://ci5ry782ucg4p" path="res://Art/cutscenes/saint dialogue/saint_dialogue_3_demondeal2.png" id="122_c2dmb"]
 [ext_resource type="Texture2D" uid="uid://t0np5v56anao" path="res://Art/UI/square.png" id="122_kp4vu"]
+[ext_resource type="Texture2D" uid="uid://dc0mfqj2bxdwg" path="res://Art/cutscenes/saint dialogue/saint_dialogue_3_demondeal3.png" id="123_cnffe"]
 [ext_resource type="Texture2D" uid="uid://bpp3u6kqc1pyv" path="res://Art/UI/UI_bubble_end_left.png" id="123_kieua"]
+[ext_resource type="Texture2D" uid="uid://4aoblwm3ie3p" path="res://Art/cutscenes/saint dialogue/saint_dialogue_4_inhabitingbodies1.png" id="124_g2bfq"]
+[ext_resource type="Texture2D" uid="uid://qgl08e5txji8" path="res://Art/cutscenes/saint dialogue/saint_dialogue_4_inhabitingbodies2.png" id="125_prifu"]
+[ext_resource type="Texture2D" uid="uid://cfja3ss07q8d8" path="res://Art/cutscenes/saint dialogue/saint_dialogue_4_inhabitingbodies3.png" id="126_valj2"]
+[ext_resource type="Texture2D" uid="uid://dbi8x1x874r6k" path="res://Art/cutscenes/saint dialogue/saint_dialogue_5_yourchild1.png" id="127_vo767"]
+[ext_resource type="Texture2D" uid="uid://dbemyy4p3wp7k" path="res://Art/cutscenes/saint dialogue/saint_dialogue_5_yourchild2.png" id="128_olri2"]
+[ext_resource type="Texture2D" uid="uid://5ekf3b04nupe" path="res://Art/cutscenes/saint dialogue/saint_dialogue_5_yourchild3.png" id="129_y4cws"]
+[ext_resource type="Texture2D" uid="uid://cpggqjn0jtbee" path="res://Art/cutscenes/saint dialogue/saint_dialogue_6_Icanhelp1.png" id="130_f5gqe"]
+[ext_resource type="Texture2D" uid="uid://5vginwc348p2" path="res://Art/cutscenes/saint dialogue/saint_dialogue_6_Icanhelp2.png" id="131_l5hi8"]
+[ext_resource type="Texture2D" uid="uid://bi87jc7o01gtm" path="res://Art/cutscenes/saint dialogue/saint_dialogue_6_Icanhelp3.png" id="132_lgfwq"]
+[ext_resource type="Texture2D" uid="uid://k4pe10ern2gi" path="res://Art/cutscenes/saint dialogue/saint_dialogue_7_darknessout1.png" id="133_lphjg"]
+[ext_resource type="Texture2D" uid="uid://bojtcqvlnow6w" path="res://Art/cutscenes/saint dialogue/saint_dialogue_7_darknessout2.png" id="134_di1y3"]
+[ext_resource type="Texture2D" uid="uid://30y0gxvso64q" path="res://Art/cutscenes/saint dialogue/saint_dialogue_7_darknessout3.png" id="135_436uj"]
+[ext_resource type="Texture2D" uid="uid://c4xbq0lb140bn" path="res://Art/cutscenes/saint dialogue/saint_dialogue_8_warnyou1.png" id="136_vwwm6"]
+[ext_resource type="Texture2D" uid="uid://dvjmtqiscbhdc" path="res://Art/cutscenes/saint dialogue/saint_dialogue_8_warnyou2.png" id="137_i1r24"]
+[ext_resource type="Texture2D" uid="uid://sweko3xsetag" path="res://Art/cutscenes/saint dialogue/saint_dialogue_8_warnyou3.png" id="138_rhoh0"]
+[ext_resource type="Texture2D" uid="uid://b2ospucswx77y" path="res://Art/cutscenes/saint dialogue/saint_dialogue_9_helpme1.png" id="139_qlpw0"]
+[ext_resource type="Texture2D" uid="uid://in05hgejwe3p" path="res://Art/cutscenes/saint dialogue/saint_dialogue_9_helpme2.png" id="140_ttbn8"]
+[ext_resource type="Texture2D" uid="uid://wmijxubiotxd" path="res://Art/cutscenes/saint dialogue/saint_dialogue_9_helpme3.png" id="141_hjcbl"]
+[ext_resource type="Texture2D" uid="uid://j5w7t7ifkusd" path="res://Art/cutscenes/saint dialogue/saint_dialogue_eggnothatched_1_bob1.png" id="142_34wka"]
+[ext_resource type="Texture2D" uid="uid://dsclve42xpye1" path="res://Art/cutscenes/saint dialogue/saint_dialogue_eggnothatched_1_bob2.png" id="143_iajho"]
+[ext_resource type="Texture2D" uid="uid://lnlns6cvw2nl" path="res://Art/cutscenes/saint dialogue/saint_dialogue_eggnothatched_1_bob3.png" id="144_eq2a0"]
+[ext_resource type="Texture2D" uid="uid://ut3qqnn2vloh" path="res://Art/cutscenes/saint dialogue/saint_dialogue_eggnothatched_2_onlyXdays1.png" id="145_4l21n"]
+[ext_resource type="Texture2D" uid="uid://cwtyb47i8o02k" path="res://Art/cutscenes/saint dialogue/saint_dialogue_eggnothatched_2_onlyXdays2.png" id="146_e7tup"]
+[ext_resource type="Texture2D" uid="uid://dw6w0d6b72qur" path="res://Art/cutscenes/saint dialogue/saint_dialogue_eggnothatched_2_onlyXdays3.png" id="147_4tedc"]
+[ext_resource type="Texture2D" uid="uid://ec8mhjfrn83u" path="res://Art/cutscenes/saint dialogue/saint_dialogue_eggnothatched_3_comeback1.png" id="148_tb5v2"]
+[ext_resource type="Texture2D" uid="uid://b4voc6678ulla" path="res://Art/cutscenes/saint dialogue/saint_dialogue_eggnothatched_3_comeback2.png" id="149_qp3wx"]
+[ext_resource type="Texture2D" uid="uid://cjuqskm5cvfc7" path="res://Art/cutscenes/saint dialogue/saint_dialogue_eggnothatched_3_comeback3.png" id="150_hug32"]
+[ext_resource type="Texture2D" uid="uid://c5ljmp1gh3cym" path="res://Art/cutscenes/saint dialogue/saint_dialogue_eggready_1_eggready1.png" id="151_di42n"]
+[ext_resource type="Texture2D" uid="uid://bxrhfbf7ucq28" path="res://Art/cutscenes/saint dialogue/saint_dialogue_eggready_1_eggready2.png" id="152_b5iq0"]
+[ext_resource type="Texture2D" uid="uid://cxt16nt4ouhj5" path="res://Art/cutscenes/saint dialogue/saint_dialogue_eggready_1_eggready3.png" id="153_3pvvq"]
+[ext_resource type="Texture2D" uid="uid://bg7oyrv4bbqhe" path="res://Art/cutscenes/saint dialogue/saint_dialogue_eggready_2_mysoul1.png" id="154_5swrc"]
+[ext_resource type="Texture2D" uid="uid://d4i14galjj8f8" path="res://Art/cutscenes/saint dialogue/saint_dialogue_eggready_2_mysoul2.png" id="155_krjpi"]
+[ext_resource type="Texture2D" uid="uid://rgnlsmtgw87" path="res://Art/cutscenes/saint dialogue/saint_dialogue_eggready_2_mysoul3.png" id="156_0ndxv"]
+[ext_resource type="Texture2D" uid="uid://83muajbnmb1y" path="res://Art/cutscenes/saint dialogue/saint_dialogue_eggready_3_domybest1.png" id="157_gnr7e"]
+[ext_resource type="Texture2D" uid="uid://dbwdqhmljwyth" path="res://Art/cutscenes/saint dialogue/saint_dialogue_eggready_3_domybest2.png" id="158_ax7lw"]
+[ext_resource type="Texture2D" uid="uid://d1hqv77nowig4" path="res://Art/cutscenes/saint dialogue/saint_dialogue_eggready_3_domybest3.png" id="159_i2e67"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xeuju"]
 size = Vector2(816.75, 1246)
@@ -604,10 +645,10 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 4.0,
+"duration": 1.0,
 "texture": ExtResource("93_ufcqc")
 }, {
-"duration": 2.0,
+"duration": 1.0,
 "texture": ExtResource("94_ouwi3")
 }, {
 "duration": 1.0,
@@ -651,6 +692,33 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("108_eu663")
+}, {
+"duration": 1.0,
+"texture": ExtResource("100_boksq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("101_7dhub")
+}, {
+"duration": 1.0,
+"texture": ExtResource("102_iaoeq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("103_wa7p4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("104_e5q8v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("105_13734")
+}, {
+"duration": 1.0,
+"texture": ExtResource("106_3k5r4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("107_bmf2b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("108_nj3k5")
 }],
 "loop": false,
 "name": &"despawn",
@@ -677,7 +745,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("115_iaoeq")
+"texture": ExtResource("112_kkev7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("113_iowsn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("114_i3d60")
 }],
 "loop": true,
 "name": &"saint_greeting_eggready",
@@ -685,7 +759,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("84_iqrgf")
+"texture": ExtResource("115_bm75n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("116_pdloc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("117_hv8wm")
 }],
 "loop": true,
 "name": &"saint_pitch_1",
@@ -693,7 +773,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("85_r7k54")
+"texture": ExtResource("118_qm5mn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("119_qt066")
+}, {
+"duration": 1.0,
+"texture": ExtResource("120_hu0pu")
 }],
 "loop": true,
 "name": &"saint_pitch_2",
@@ -701,7 +787,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("86_tcj5q")
+"texture": ExtResource("121_by7yb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("122_c2dmb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("123_cnffe")
 }],
 "loop": true,
 "name": &"saint_pitch_3",
@@ -709,7 +801,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("87_47h8n")
+"texture": ExtResource("124_g2bfq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("125_prifu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("126_valj2")
 }],
 "loop": true,
 "name": &"saint_pitch_4",
@@ -717,7 +815,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("88_vdgok")
+"texture": ExtResource("127_vo767")
+}, {
+"duration": 1.0,
+"texture": ExtResource("128_olri2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("129_y4cws")
 }],
 "loop": true,
 "name": &"saint_pitch_5",
@@ -725,7 +829,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("89_kghq6")
+"texture": ExtResource("130_f5gqe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("131_l5hi8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("132_lgfwq")
 }],
 "loop": true,
 "name": &"saint_pitch_6",
@@ -733,7 +843,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("90_mvcm0")
+"texture": ExtResource("133_lphjg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("134_di1y3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("135_436uj")
 }],
 "loop": true,
 "name": &"saint_pitch_7",
@@ -741,7 +857,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("91_2osy1")
+"texture": ExtResource("136_vwwm6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("137_i1r24")
+}, {
+"duration": 1.0,
+"texture": ExtResource("138_rhoh0")
 }],
 "loop": true,
 "name": &"saint_pitch_8",
@@ -749,7 +871,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("92_07nk2")
+"texture": ExtResource("139_qlpw0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("140_ttbn8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("141_hjcbl")
 }],
 "loop": true,
 "name": &"saint_pitch_9",
@@ -757,7 +885,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("109_l63v0")
+"texture": ExtResource("142_34wka")
+}, {
+"duration": 1.0,
+"texture": ExtResource("143_iajho")
+}, {
+"duration": 1.0,
+"texture": ExtResource("144_eq2a0")
 }],
 "loop": true,
 "name": &"saint_pitch_eggnothatched_1",
@@ -765,7 +899,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("110_n0xp3")
+"texture": ExtResource("145_4l21n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("146_e7tup")
+}, {
+"duration": 1.0,
+"texture": ExtResource("147_4tedc")
 }],
 "loop": true,
 "name": &"saint_pitch_eggnothatched_2",
@@ -773,7 +913,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("111_p3o0l")
+"texture": ExtResource("148_tb5v2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("149_qp3wx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("150_hug32")
 }],
 "loop": true,
 "name": &"saint_pitch_eggnothatched_3",
@@ -781,7 +927,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("112_22g2n")
+"texture": ExtResource("151_di42n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("152_b5iq0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("153_3pvvq")
 }],
 "loop": true,
 "name": &"saint_pitch_eggready_1",
@@ -789,7 +941,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("113_boksq")
+"texture": ExtResource("154_5swrc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("155_krjpi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("156_0ndxv")
 }],
 "loop": true,
 "name": &"saint_pitch_eggready_2",
@@ -797,7 +955,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("114_7dhub")
+"texture": ExtResource("157_gnr7e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("158_ax7lw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("159_i2e67")
 }],
 "loop": true,
 "name": &"saint_pitch_eggready_3",
@@ -1940,8 +2104,9 @@ shape = SubResource("RectangleShape2D_i6y5g")
 [node name="saint" type="AnimatedSprite2D" parent="WorldScripts/SaintTech"]
 position = Vector2(-10, -35)
 sprite_frames = SubResource("SpriteFrames_1phw1")
-animation = &"despawn"
+animation = &"saint_pitch_eggready_3"
 autoplay = "null"
+frame_progress = 0.7002486
 
 [node name="InteractButton_talkToSaint" type="Node2D" parent="WorldScripts/SaintTech"]
 z_index = 5
