@@ -63,6 +63,7 @@ func _process(delta: float) -> void:
 		
 func UpdateDialogueAfterInitialInteraction():
 	
+	await get_tree().create_timer(0.02).timeout #adding a timer so that the dialogue script does not think ther player is singing when dialogue starts
 	UpdateDialogue() #this wikll automatically set the dialogue depending on the eggs status
 	dialoguePlayer.StartDialogue()
 	isTalking=true #this is set to false when dialogue finishes - uses to hide the interact btn
@@ -70,8 +71,7 @@ func UpdateDialogueAfterInitialInteraction():
 func UpdateDialogue():
 	#called when dialogue is about to play, updates it to current dialogue needs
 	
-	#if bird interacts with the button, should add a dialogue that greets the player
-	#althoygh should probably check if the player has properly exited the cave 
+	
 	
 	var dialogueToPlay:Array[abs_dialogue_line]
 	
@@ -82,8 +82,12 @@ func UpdateDialogue():
 			dialogueToPlay=dialogueWhenInTime
 			hasGreetedPlayer=true
 			currentState=States.spawned
+			saintShouldSayHello=false
 		else:
-			dialogueToPlay.append(greetingLineAfterFirstIntroduction)
+			if saintShouldSayHello:
+				saintShouldSayHello=false
+				for line in greetingLineAfterFirstIntroduction:
+					dialogueToPlay.append(line)
 			#enum eggStates{NOTHING,GROWING,FINALFORM_NO_HEART,FINALFORM_HEART,FINALCUTSCENE}
 
 		#If egg is ready 
@@ -137,6 +141,12 @@ func _on_dialogue_trigger_area_body_entered(_body: Node2D) -> void:
 	playerClose=true
 	pass # Replace with function body.
 
-func _on_dialogue_trigger_area_body_exited(body: Node2D) -> void:
+func _on_dialogue_trigger_area_body_exited(_body: Node2D) -> void:
 	playerClose=false
 	pass # Replace with function body.
+
+var saintShouldSayHello:bool=false
+func _on_player_entering_area_trigger_body_entered(_body: Node2D) -> void:
+	#this trigger is used to make the saint greet the player if they're spawned. If the player talk to he saint multiple times,
+	#we don't want the saint to keep saying hello 
+	saintShouldSayHello=true

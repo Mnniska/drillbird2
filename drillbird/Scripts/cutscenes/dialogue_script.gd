@@ -53,7 +53,6 @@ func SetupDialogueBoxSettings(isSaint:bool):
 		maxBoxWidth=220
 	
 	
-
 func StartDialogue():
 	aboutToPlay.emit()
 	dialogueHasPlayed=true

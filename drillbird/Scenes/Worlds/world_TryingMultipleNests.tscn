@@ -1,4 +1,4 @@
-[gd_scene load_steps=273 format=4 uid="uid://boh3yjorqn4xa"]
+[gd_scene load_steps=274 format=4 uid="uid://boh3yjorqn4xa"]
 
 [ext_resource type="TileSet" uid="uid://grpd2pyu7pgk" path="res://Resources/MainTileset.tres" id="1_4c1b3"]
 [ext_resource type="Script" uid="uid://ddqrep1nrk25j" path="res://Scenes/Playable Scenes/OreSpawner.gd" id="2_mjto2"]
@@ -970,6 +970,8 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wmhgi"]
 size = Vector2(43, 57)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_boksq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7alhe"]
 size = Vector2(133, 131)
@@ -2187,6 +2189,14 @@ collision_mask = 16
 position = Vector2(-0.5, 17)
 shape = SubResource("RectangleShape2D_wmhgi")
 
+[node name="player entering area trigger" type="Area2D" parent="WorldScripts/SaintTech"]
+position = Vector2(210, 47)
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldScripts/SaintTech/player entering area trigger"]
+shape = SubResource("RectangleShape2D_boksq")
+
 [node name="AudioReverbAreas" type="Node2D" parent="WorldScripts"]
 visible = false
 script = ExtResource("65_ltu22")
@@ -2520,6 +2530,7 @@ position = Vector2(22, -448)
 [connection signal="body_entered" from="WorldScripts/SaintTech/Goo deco/Area2D" to="WorldScripts/SaintTech/Goo deco" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="WorldScripts/SaintTech/DialogueTriggerArea" to="WorldScripts/SaintTech" method="_on_dialogue_trigger_area_body_entered"]
 [connection signal="body_exited" from="WorldScripts/SaintTech/DialogueTriggerArea" to="WorldScripts/SaintTech" method="_on_dialogue_trigger_area_body_exited"]
+[connection signal="body_entered" from="WorldScripts/SaintTech/player entering area trigger" to="WorldScripts/SaintTech" method="_on_player_entering_area_trigger_body_entered"]
 [connection signal="body_shape_entered" from="PlayerSpawnLocations/PlayerLocationSaver" to="PlayerSpawnLocations/PlayerLocationSaver" method="_on_body_shape_entered"]
 
 [editable path="WorldScripts/Tutorial_DropOres"]
