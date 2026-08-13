@@ -1,4 +1,4 @@
-[gd_scene load_steps=274 format=4 uid="uid://boh3yjorqn4xa"]
+[gd_scene load_steps=278 format=4 uid="uid://boh3yjorqn4xa"]
 
 [ext_resource type="TileSet" uid="uid://grpd2pyu7pgk" path="res://Resources/MainTileset.tres" id="1_4c1b3"]
 [ext_resource type="Script" uid="uid://ddqrep1nrk25j" path="res://Scenes/Playable Scenes/OreSpawner.gd" id="2_mjto2"]
@@ -585,6 +585,60 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i6y5g"]
 size = Vector2(31, 38)
+
+[sub_resource type="Animation" id="Animation_boksq"]
+resource_name = "move"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("saint:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(0.659754, 0.55478525, 0.61557215),
+"update": 0,
+"values": [-35.0, -33.0, -35.0]
+}
+
+[sub_resource type="Animation" id="Animation_7dhub"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("saint:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-35.0]
+}
+
+[sub_resource type="Animation" id="Animation_iaoeq"]
+resource_name = "stop"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("saint:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-35.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wa7p4"]
+_data = {
+&"RESET": SubResource("Animation_7dhub"),
+&"move": SubResource("Animation_boksq"),
+&"stop": SubResource("Animation_iaoeq")
+}
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1phw1"]
 animations = [{
@@ -2103,12 +2157,16 @@ collision_mask = 16
 [node name="GooUpdateCollider" type="CollisionShape2D" parent="WorldScripts/SaintTech/Goo deco/Area2D"]
 shape = SubResource("RectangleShape2D_i6y5g")
 
+[node name="SaintUpDownAnimator" type="AnimationPlayer" parent="WorldScripts/SaintTech"]
+libraries = {
+&"": SubResource("AnimationLibrary_wa7p4")
+}
+
 [node name="saint" type="AnimatedSprite2D" parent="WorldScripts/SaintTech"]
 position = Vector2(-10, -35)
 sprite_frames = SubResource("SpriteFrames_1phw1")
-animation = &"saint_pitch_eggready_3"
+animation = &"0_spawn"
 autoplay = "null"
-frame_progress = 0.91662526
 
 [node name="InteractButton_talkToSaint" type="Node2D" parent="WorldScripts/SaintTech"]
 z_index = 5

@@ -24,15 +24,25 @@ var isTalking:bool=false
 var hasGreetedPlayer:bool=false
 
 var isCoolingDown:bool=false
-
+@onready var saintAnim:AnimatedSprite2D=$saint
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:	
 	await GlobalVariables.SetupComplete
 	
 	InteractButton.hide()
+	saintAnim.animation_changed.connect(saint_anim_changed)
 	
 var interactButtonShowTimer:float=0
 var playerCanInteract:bool=false
+
+func saint_anim_changed():
+	#used to make saint go up and down using an animationplayer when appropiate 
+	#ideally this should be handled from the animation directly..like adding this script to the animator. but eh it works! 
+	var newAnim=saintAnim.animation
+	if newAnim!="despawn" and newAnim!="0_spawn":
+		$SaintUpDownAnimator.play("move")
+	else:
+		$SaintUpDownAnimator.play("stop")
 
 func _process(delta: float) -> void:
 	
