@@ -224,7 +224,12 @@ func HatchEgg():
 	Player.hide()
 	EggHandler.SetEggState(EggHandler.eggStates.FINALCUTSCENE)
 	state=states.FINALCUTSCENE
-	Camera.StartNewLerp(CameraLerpPosition.position, 0.5)
+	
+	var cameraOffset:Vector2=Vector2(0,0)
+	if ending!=GlobalVariables.endings.normal:
+		cameraOffset=Vector2(0,15)
+	
+	Camera.StartNewLerp(CameraLerpPosition.position+cameraOffset, 0.5) #TODO: Lerp less high in normal mode
 	GlobalVariables.playerStatus=GlobalVariables.playerStatusEnum.SHOP
 	
 	

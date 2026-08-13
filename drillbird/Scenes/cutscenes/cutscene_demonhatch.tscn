@@ -1,4 +1,4 @@
-[gd_scene load_steps=374 format=3 uid="uid://1codt4oivfrh"]
+[gd_scene load_steps=371 format=3 uid="uid://1codt4oivfrh"]
 
 [ext_resource type="Script" uid="uid://bdp4ofq34bcvf" path="res://Scripts/cutscenes/cutscene_demonhatch.gd" id="1_xrmd2"]
 [ext_resource type="Texture2D" uid="uid://xvqkhrf0uqfk" path="res://Art/cutscenes/demonhatch/demonhatch_egg/demonhatch_EggNest2.png" id="2_81c15"]
@@ -257,9 +257,6 @@
 [ext_resource type="Texture2D" uid="uid://eqwmyrrr0124" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding106.png" id="292_kjqn6"]
 [ext_resource type="Texture2D" uid="uid://gt1g8ghfrg4" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding107.png" id="293_j8kia"]
 [ext_resource type="Texture2D" uid="uid://c2a6b4gq6pj0i" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding108.png" id="294_6542l"]
-[ext_resource type="Texture2D" uid="uid://b0hs70gq8kucp" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding109.png" id="295_lh1fn"]
-[ext_resource type="Texture2D" uid="uid://b3i4lokdn5qhs" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding110.png" id="296_h11mu"]
-[ext_resource type="Texture2D" uid="uid://dev3hp7lpa506" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding111.png" id="297_q6leb"]
 [ext_resource type="Texture2D" uid="uid://dexvgtojkrjq2" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding112.png" id="298_ljkq7"]
 [ext_resource type="Texture2D" uid="uid://ltx4vlcltviw" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding113.png" id="299_p88e1"]
 [ext_resource type="Texture2D" uid="uid://bwou3v7stnl6x" path="res://Art/cutscenes/Demon Hatch True Ending/goodEnding114.png" id="300_5ynib"]
@@ -1199,15 +1196,6 @@ animations = [{
 "texture": ExtResource("294_6542l")
 }, {
 "duration": 1.0,
-"texture": ExtResource("295_lh1fn")
-}, {
-"duration": 1.0,
-"texture": ExtResource("296_h11mu")
-}, {
-"duration": 1.0,
-"texture": ExtResource("297_q6leb")
-}, {
-"duration": 1.0,
 "texture": ExtResource("298_ljkq7")
 }, {
 "duration": 1.0,
@@ -1255,28 +1243,28 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("313_w2om6")
 }, {
-"duration": 1.0,
+"duration": 2.0,
 "texture": ExtResource("314_cp8ua")
 }, {
-"duration": 1.0,
+"duration": 2.0,
 "texture": ExtResource("315_eu3cy")
 }, {
-"duration": 1.0,
+"duration": 2.0,
 "texture": ExtResource("316_ssoca")
 }, {
-"duration": 1.0,
+"duration": 2.0,
 "texture": ExtResource("317_kq3qn")
 }, {
-"duration": 1.0,
+"duration": 2.0,
 "texture": ExtResource("318_edjhm")
 }, {
-"duration": 1.0,
+"duration": 2.0,
 "texture": ExtResource("319_xyamc")
 }, {
-"duration": 1.0,
+"duration": 2.0,
 "texture": ExtResource("320_mk5ap")
 }, {
-"duration": 1.0,
+"duration": 4.0,
 "texture": ExtResource("321_iimto")
 }, {
 "duration": 1.0,
@@ -1285,7 +1273,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("323_ymp87")
 }, {
-"duration": 1.0,
+"duration": 2.0,
 "texture": ExtResource("324_3vef7")
 }, {
 "duration": 1.0,
@@ -1546,6 +1534,7 @@ animations = [{
 script = ExtResource("1_xrmd2")
 
 [node name="egg" type="AnimatedSprite2D" parent="."]
+visible = false
 sprite_frames = SubResource("SpriteFrames_rqs4q")
 animation = &"crack"
 autoplay = "idle"
@@ -1557,9 +1546,9 @@ sprite_frames = SubResource("SpriteFrames_g1ll0")
 autoplay = "default"
 
 [node name="True Ending" type="AnimatedSprite2D" parent="."]
-visible = false
+position = Vector2(0, -2)
 sprite_frames = SubResource("SpriteFrames_x8nhd")
 animation = &"hatch"
 autoplay = "default"
-frame = 220
-frame_progress = 1.0
+frame = 193
+frame_progress = 0.5808093

@@ -28,9 +28,12 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	
 	if Input.is_action_just_pressed("up") and Input.is_action_pressed("debug_tab") and GlobalVariables.DebugEnabled:
-		SetZoomLevel(zoom.x+0.1)
+		ZoomIn()
+		
+#		SetZoomLevel(zoom.x+0.1)
 	if Input.is_action_just_pressed("down") and Input.is_action_pressed("debug_tab") and GlobalVariables.DebugEnabled:
-		SetZoomLevel(zoom.x-0.1)
+		ZoomOut()
+#		SetZoomLevel(zoom.x-0.1)
 	
 	match state:
 		states.WAITING:
@@ -43,6 +46,11 @@ func _process(_delta: float) -> void:
 			followPlayer()
 			
 	pass
+
+func ZoomIn():
+	self.zoom=self.zoom + Vector2(1,1)
+func ZoomOut():
+	self.zoom=self.zoom - Vector2(1,1)
 
 func SetZoomLevel(zoom:float):
 	self.zoom=Vector2(zoom,zoom)
