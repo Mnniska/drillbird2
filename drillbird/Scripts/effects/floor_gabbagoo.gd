@@ -30,6 +30,9 @@ func _process(delta: float) -> void:
 		playerIsTrulyInZone=false
 		UpdateSprite()
 
+func HideGooForFinalCutscene():
+	hide()
+
 func UpdateGooProgress(progressToHatching:float,setGooSpriteInstantly:bool=false):
 	
 	if !GlobalVariables.CursedMode:

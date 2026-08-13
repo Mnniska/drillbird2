@@ -11,7 +11,7 @@ var isShaking:bool=false:
 
 var carriesSOUL:bool=false
 var shakeAmount:float=1.8
-
+signal EggCracksOpen
 @onready var animator_normal=$AnimatedSprite2D
 @onready var animator_cursed=$AnimatedSprite2D_cursed
 @onready var hatchAnimation=$Anim_birds_hatching
@@ -155,6 +155,9 @@ func HatchEgg():
 	
 	HUD.SpeedrunTimer.finishSpeedrun()
 	
+	#the nest script listens to this and hides the nest to clear up so player can see final cutscene more easily
+	EggCracksOpen.emit()
+		
 	#handled here because the timer stops here
 	if HUD.SpeedrunTimer.time< SteamHandler.stat_ach_speed_fastest:
 		SteamHandler.TryUnlockAchievement("ach_speed_fastest")

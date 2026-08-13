@@ -915,16 +915,15 @@ visible = false
 z_index = 1
 position = Vector2(-2, -40)
 sprite_frames = SubResource("SpriteFrames_dcmve")
-animation = &"final_form_idle"
+animation = &"hatch"
 autoplay = "final_form_with_heart_idle"
-frame_progress = 0.16225176
 
 [node name="AnimatedSprite2D_cursed" type="AnimatedSprite2D" parent="."]
 z_index = 1
 material = SubResource("ShaderMaterial_4l23s")
 position = Vector2(-2, -40)
 sprite_frames = SubResource("SpriteFrames_q5a4i")
-animation = &"go_to_final_form"
+animation = &"before_final_form"
 autoplay = "final_form_with_heart_idle"
 
 [node name="FinalHeartPosition" type="Node2D" parent="."]
@@ -935,14 +934,15 @@ position = Vector2(-1, -40)
 z_index = 1
 position = Vector2(-2, -83)
 sprite_frames = SubResource("SpriteFrames_lku8d")
+animation = &"wait"
 autoplay = "default"
 
 [node name="Anim_hatching_drillbird" type="AnimatedSprite2D" parent="."]
 z_index = 1
 position = Vector2(-2, -83)
 sprite_frames = SubResource("SpriteFrames_ovqsl")
+animation = &"hatch"
 autoplay = "default"
-frame_progress = 0.600367
 
 [node name="Area2D" type="Area2D" parent="Anim_hatching_drillbird"]
 

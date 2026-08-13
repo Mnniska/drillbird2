@@ -127,14 +127,24 @@ func SetEggState(_state:eggStates):
 		eggStates.FINALCUTSCENE:
 			#THIS WILL likely never be saved, so won't be used. but who knows :) 
 			$nest_front.hide()
+			$nest_back.hide()
 			hideEggs()
+			var goo:goo_egg_animator =$"Goo anims"
+			goo.SetGooState(goo.gooStates.no)
+			
+			
 			finalFormEgg.SetState(finalFormEgg.finalFormStates.FINAL_HATCHING)
+			finalFormEgg.EggCracksOpen.connect(EggHatches)
 		eggStates.FINALFORM_SOUL:
 			hideEggs()
 			finalFormEgg.SetState(finalFormEgg.finalFormStates.FINAL_SOUL)
 			gooAnimHandler.SetGooState(gooAnimHandler.gooStates.big)
 			
 	GlobalVariables.eggState=eggState
+
+func EggHatches():
+
+	$"../floor gabbagoo".HideGooForFinalCutscene()
 
 func TransitionToFinalFormWithHeart(isSoul:bool=false):
 	
