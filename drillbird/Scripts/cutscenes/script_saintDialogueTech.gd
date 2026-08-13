@@ -137,7 +137,7 @@ func dialogueFinished():
 func SpawnSaintOre():
 	var oreSpawner:ore_manager=GlobalVariables.MainSceneReferenceConnector.ref_oreTilemap
 	var location = $oreSpawnLocation.global_position
-	oreSpawner.SpawnOreAtLocation(location,soulOre,Vector2(0,0),true,false)
+	oreSpawner.SpawnOreAtLocation(location,soulOre,Vector2(0,0),true,true)
 
 var playerClose:bool=false
 func _on_dialogue_trigger_area_body_entered(_body: Node2D) -> void:

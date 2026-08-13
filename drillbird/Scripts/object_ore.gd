@@ -40,7 +40,7 @@ func SetSparkly(sparkly:bool):
 	else:
 		$Sparkles.hide()
 
-func SetOreType(ore:abstract_ore,_cooldown:bool,placedByGhost:bool=false,customCooldown:float=-1):
+func SetOreType(ore:abstract_ore,_cooldown:bool,shouldHaveGravityWhenPlaced:bool=false,customCooldown:float=-1):
 	if(oreType==null):
 		
 		oreType=ore
@@ -56,7 +56,7 @@ func SetOreType(ore:abstract_ore,_cooldown:bool,placedByGhost:bool=false,customC
 			else:			
 				CooldownAnimation()
 		
-		if placedByGhost:
+		if shouldHaveGravityWhenPlaced:
 			gravity_scale=0
 			
 		CalculateOreSparkle()

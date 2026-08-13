@@ -2130,7 +2130,7 @@ position = Vector2(-62, 43)
 position = Vector2(-32, -16.5)
 
 [node name="oreSpawnLocation" type="Node2D" parent="WorldScripts/SaintTech"]
-position = Vector2(-1, 33)
+position = Vector2(-1, -1)
 
 [node name="Goo deco" type="Node2D" parent="WorldScripts/SaintTech"]
 script = ExtResource("48_i6y5g")
@@ -2515,22 +2515,21 @@ position = Vector2(18.25, -14)
 shape = SubResource("RectangleShape2D_fbqey")
 
 [node name="DemonManager" type="Node2D" parent="."]
-visible = false
 position = Vector2(-962, 2487)
 script = ExtResource("47_deunn")
 heartOreReference = ExtResource("42_deunn")
 
 [node name="HeartsRightfulPlaceArea" type="Area2D" parent="DemonManager"]
-position = Vector2(105, 1391)
+position = Vector2(105, 1359)
 collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DemonManager/HeartsRightfulPlaceArea"]
-position = Vector2(0, 2.5)
+position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_hxyd4")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="DemonManager/HeartsRightfulPlaceArea"]
-position = Vector2(731, -3891)
+position = Vector2(752, -3893)
 shape = SubResource("RectangleShape2D_ek4iq")
 
 [node name="warningLocation" type="Node2D" parent="DemonManager"]
