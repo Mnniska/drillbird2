@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="abstract_SoundEffectSetting" load_steps=3 format=3 uid="uid://ch6wj8byvptle"]
+
+[ext_resource type="Script" uid="uid://dwatvj6f4edl5" path="res://Scripts/Abstract scripts/abstract_SoundEffectSetting.gd" id="1_1dmqt"]
+[ext_resource type="AudioStream" uid="uid://duol4oepwmimv" path="res://Audio/SFX/enemies/ghast/sound_ghast_idle_loop.wav" id="2_1dmqt"]
+
+[resource]
+script = ExtResource("1_1dmqt")
+type = 65
+sound_effect = ExtResource("2_1dmqt")
+volume = 5
+pitch_randomness = 0.1
+audioBus = 1

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="abstract_SoundEffectSetting" load_steps=3 format=3 uid="uid://bwsy11c5ooxyk"]
+
+[ext_resource type="Script" uid="uid://dwatvj6f4edl5" path="res://Scripts/Abstract scripts/abstract_SoundEffectSetting.gd" id="1_ksxk5"]
+[ext_resource type="AudioStream" uid="uid://b3lelquelgudg" path="res://Audio/SFX/enemies/ghast/sound_ghast_detect.wav" id="2_ksxk5"]
+
+[resource]
+script = ExtResource("1_ksxk5")
+type = 63
+sound_effect = ExtResource("2_ksxk5")
+volume = 5
+pitch_randomness = 0.1
+audioBus = 1

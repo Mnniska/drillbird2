@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="abstract_SoundEffectSetting" load_steps=3 format=3 uid="uid://c1grr0btb2ywu"]
+
+[ext_resource type="Script" uid="uid://dwatvj6f4edl5" path="res://Scripts/Abstract scripts/abstract_SoundEffectSetting.gd" id="1_ygtft"]
+[ext_resource type="AudioStream" uid="uid://jecqmfgjb01b" path="res://Audio/SFX/enemies/ghast/sound_ghast_chasing_loop.wav" id="2_j6aec"]
+
+[resource]
+script = ExtResource("1_ygtft")
+type = 66
+sound_effect = ExtResource("2_j6aec")
+volume = 5
+pitch_randomness = 0.1
+audioBus = 1

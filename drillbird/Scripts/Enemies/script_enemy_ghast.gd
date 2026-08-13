@@ -28,8 +28,16 @@ var targetBody:Node2D=null
 @onready var targetDebug:Node2D=$targetDebug
 @onready var sprite=$sprite
 
-func _physics_process(delta: float) -> void:
+@onready var sound:AudioStreamPlayer2D=$"idle sound player"
+@export var idleSound:AudioStream
+@export var chaseSound:AudioStream
 
+func _ready() -> void:
+
+	UpdateAndPlayLoopingSound(soundStates.idle)
+	$"idle sound player".pitch_scale=randf_range(0.9,1.1)
+
+func _physics_process(delta: float) -> void:
 
 	match state:
 		
@@ -38,6 +46,10 @@ func _physics_process(delta: float) -> void:
 			ApplyFriction()
 			move_and_slide()
 			HandleAnimations("idle")
+			
+	
+			UpdateAndPlayLoopingSound(soundStates.idle)
+			
 			pass
 		States.FOLLOWINGLINE:
 			
@@ -55,6 +67,7 @@ func _physics_process(delta: float) -> void:
 			
 			move_and_slide()
 			HandleAnimations("idle")
+			UpdateAndPlayLoopingSound(soundStates.idle)
 			
 			#If close to target line point, choose next point as target
 			if self.global_position.distance_to(TargetLocationGlobal)<10:
@@ -74,6 +87,7 @@ func _physics_process(delta: float) -> void:
 			ApplyAcceleration(movement,PERSUIT_SPEED)
 			move_and_slide()
 			HandleAnimations("persuit")
+			UpdateAndPlayLoopingSound(soundStates.angry)
 			
 			if global_position.distance_to(parentTombstone.global_position)>PERSUIT_LENGTH:
 				AbortChaseDueToDistance()
@@ -81,11 +95,38 @@ func _physics_process(delta: float) -> void:
 			pass
 		States.SPOTTINGSOMETHING:
 			HandleAnimations("detect")
+			UpdateAndPlayLoopingSound(soundStates.no)
 			ApplyFriction()
 			move_and_slide()
 		States.DESPAWNING:
+			UpdateAndPlayLoopingSound(soundStates.no)
 			ApplyFriction()
 			move_and_slide()
+
+enum soundStates{angry,idle,no}
+var currentSoundState:soundStates=soundStates.idle
+
+func UpdateAndPlayLoopingSound(soundState:soundStates=currentSoundState):
+	currentSoundState=soundState
+	if soundState==soundStates.angry:
+		if sound.stream!=chaseSound:
+			sound.stream=chaseSound
+		if !sound.playing:
+			sound.play()
+	elif soundState==soundStates.idle:
+		if sound.stream!=idleSound:
+			sound.stream=idleSound
+		if !sound.playing:
+			sound.play()
+	elif soundState==soundStates.no:
+		sound.stop()
+
+func _on_idle_sound_player_finished() -> void:
+	UpdateAndPlayLoopingSound()
+	
+
+	
+
 
 func ApplyAcceleration(movementVector:Vector2,speed:float):
 	velocity = velocity.move_toward(speed*movementVector,ACCELERATION)
@@ -139,6 +180,9 @@ func NewTarget(body:Node2D):
 		return
 	
 	state=States.SPOTTINGSOMETHING
+	
+	SoundManager.PlaySoundAtLocation(self.global_position,abstract_SoundEffectSetting.SoundEffectEnum.GHAST_DETECT)
+	
 	await get_tree().create_timer(timeToWaitBeforePersuing).timeout
 	
 	if state==States.DESPAWNING:
@@ -183,8 +227,10 @@ func HandleAnimations(_anim:String):
 
 func Despawn():
 	state=States.DESPAWNING
+	$GPUParticles2D.emitting=false
 	sprite.play("despawn")
 	state=States.DESPAWNING
+	SoundManager.PlaySoundAtLocation(self.global_position,abstract_SoundEffectSetting.SoundEffectEnum.GHAST_DESPAWN)
 	await sprite.animation_finished
 	queue_free()
 
