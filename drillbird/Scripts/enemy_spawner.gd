@@ -364,6 +364,15 @@ func TurnCorpsesIntoTombstones():
 		var posInTilemapCoords=gameTilemap.local_to_map(posInLocalTilemap)
 		var spawnpos=gameTilemap.map_to_local(posInTilemapCoords)
 		
+		var tombstoneIsDuplicate:bool=false
+		for enemy in enemiesToSpawnList:
+			#if there's already a tombstone spawned where the tombstone wants to spawn, don't bother 
+			if enemy.type==enemy.enemyTypes.TOMBSTONE and posInTilemapCoords==enemy.spawnLocation:
+				tombstoneIsDuplicate=true
+		
+		if tombstoneIsDuplicate:
+			continue
+			
 		var tombstoneInstance:tombstone=tombstoneReference.instantiate()
 		tombstoneInstance.transform.origin=spawnpos
 		add_child(tombstoneInstance)
@@ -389,8 +398,6 @@ func TurnCorpsesIntoTombstones():
 
 
 		tombstoneInstance.Setup(tombstoneInfo,false)
-
-		#TODO: Saving needs to handle whether tombstones have spikes or not lol
 
 		spawnedEnemies.append(tombstoneInstance)
 		enemiesToSpawnList.append(tombstoneInstance.enemyInfo)
