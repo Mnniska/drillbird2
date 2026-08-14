@@ -22,6 +22,7 @@ var shouldBeVisible:bool=true
 var timeToFade:float=1
 var fadeCounter:float=2
 
+
 # Called when the node enters the scene tree for the first time.
 
 
@@ -191,6 +192,7 @@ func PressButton():
 		"menu_quit":
 			press_quit.emit()
 	
+@onready var CursedModeText:RichTextLabel=$CursedModeText
 
 func SetShouldBeVisible(_visible:bool):
 	shouldBeVisible=_visible
@@ -198,6 +200,12 @@ func SetShouldBeVisible(_visible:bool):
 	if _visible:
 		menuText.show()
 		active=true
+		
+		if GlobalVariables.CursedMode:
+			CursedModeText.show()
+		else:
+			CursedModeText.hide()
+		
 	
 	else:
 		menuText.hide()
