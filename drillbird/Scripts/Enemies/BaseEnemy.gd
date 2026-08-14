@@ -97,7 +97,7 @@ func Kill(showEffects:bool=true,soundToPlay:abstract_SoundEffectSetting.SoundEff
 		var timeToDie:float=GetCurrentAnimationLength()
 		await get_tree().create_timer(timeToDie).timeout
 	
-	if spawnCorse:
+	if spawnCorse and GlobalVariables.CursedMode:
 		TurnIntoCorpse()
 
 	
