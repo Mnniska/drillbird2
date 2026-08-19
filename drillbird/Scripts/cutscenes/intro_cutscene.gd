@@ -7,9 +7,6 @@ var isPlaying:bool=false
 
 enum cutsceneSounds{ scene1,scene2,scene3 }
 
-var skipTime:float=3
-var skipTimeCounter:float=0
-
 @export var cameraPositions:Array[Node2D]
 var currentpos:int=0
 # Called when the node enters the scene tree for the first time.
@@ -22,22 +19,18 @@ func SetupComplete():
 func GetIsPlaying():
 	return isPlaying
 
-func _process(delta: float) -> void:
-	if !isPlaying:
-		return
-	
-	if Input.is_action_pressed("drill") or Input.is_action_pressed("interact"):
-		skipTimeCounter+=delta
-		if skipTimeCounter>skipTime:
-			_on_animation_player_animation_finished("3")
-			pass
-	else:
-		skipTimeCounter = max(0, skipTimeCounter-delta)
 
+func SkipButtonPressed():
+	if isPlaying:
+		_on_animation_player_animation_finished("3")
+	pass
 
 func Play():
 	isPlaying=true
 	_on_animation_player_animation_finished("")
+	
+	HUD.SetSkipButtonEnabled(true)
+	GlobalVariables.PlayerPressedSkipButton.connect(SkipButtonPressed)
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	
@@ -53,8 +46,11 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		camera.SetFollowPlayer(true)
 		isPlaying=false
 		GlobalVariables.PlayerController.TriggerDazed()
+		HUD.SetSkipButtonEnabled(false)
 		#this is a pretty lmao way to trigger the dazed state but I will take it
 		#seb 9 months later: I agree
+		GlobalVariables.PlayerPressedSkipButton.disconnect(SkipButtonPressed)
+
 
 	
 func PlayScene(anim:int):
