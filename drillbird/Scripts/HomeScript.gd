@@ -36,22 +36,23 @@ var state:states=states.IDLE
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	
+	GlobalVariables.PlayerPressedSkipButton.connect(PlayerPressedSkipButton)
 	pass
 
 func GetProgressTowardsHatching():
 	return EggHandler.GetProgressTowardsHatching()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-
+	
 	UpdateButtons()
 	
-	if fallingAsleep:
-		if Input.is_action_just_pressed("interact"):
-			fallingAsleep=false
-			animSleep.animation="asleep"
-			EnterShop()
 
+func PlayerPressedSkipButton():
 	
+	if fallingAsleep:
+		fallingAsleep=false
+		animSleep.animation="asleep"
+		EnterShop()
 	pass
 
 func CheckState():
@@ -268,6 +269,8 @@ func GoToBed():
 	#hide stuff that only exists in reality
 	Player.hide()
 	
+	
+	HUD.SetSkipButtonEnabled(true)
 	#birdy goes to bed anim
 	animSleep.show()
 	animSleep.animation="layingdown"
@@ -277,6 +280,7 @@ func GoToBed():
 	Camera.StartNewLerp(CameraLerpPosition.position, 0.5)
 	fallingAsleep=true
 	await get_tree().create_timer(3.5).timeout
+	HUD.SetSkipButtonEnabled(false)
 	
 	#Player can also skip the timer by pressing something, so we check if they've done that via this bool
 	if fallingAsleep: EnterShop()
@@ -346,7 +350,7 @@ func PlayLayEggCutscene():
 	nestCutscene.Play()
 	nestCutscene.CutsceneComplete.connect(EggCutsceneFinished)
 	
-func EggCutsceneFinished():
+func EggCutsceneFinished(skipped:bool):
 	state=states.SLEEP
 	UpdateButtons()
 	EggHandler.SetEggState(EggHandler.eggStates.GROWING)
@@ -356,7 +360,8 @@ func EggCutsceneFinished():
 	animSleep.animation="asleep"
 	animSleep.play()
 	
-	await get_tree().create_timer(6).timeout
+	if !skipped:
+		await get_tree().create_timer(6).timeout
 	WakeUp(true,false)
 	
 	await get_tree().create_timer(0.6).timeout

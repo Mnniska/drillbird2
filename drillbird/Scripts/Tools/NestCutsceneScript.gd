@@ -1,5 +1,5 @@
 extends Node2D
-signal CutsceneComplete
+signal CutsceneComplete(skipped:bool)
 
 @onready var anim:AnimationPlayer=$AnimationPlayer
 @onready var birdySpriteframes:AnimatedSprite2D=$birdy
@@ -39,17 +39,20 @@ func _process(delta: float) -> void:
 func VibrateBird():
 	birdVibrate=true
 
+var cameraInSky:bool=false
 func CameraPanToSky():
+	cameraInSky=true
 	GlobalVariables.MainSceneReferenceConnector.camera.StartNewLerp(skyCameraPos,2)
 	await get_tree().create_timer(4).timeout
-	GlobalVariables.MainSceneReferenceConnector.camera.StartNewLerp(nestCameraPos,2)
+	cameraInSky=false
+	if !cutsceneSkipped:
+		GlobalVariables.MainSceneReferenceConnector.camera.StartNewLerp(nestCameraPos,2)
 	
 	#make egg transition to natural rest pos here and save game
 
 	pass
 
-func CameraPanBack():
-	pass
+
 
 func TransitionToCutscene(playerpos:Vector2,_transitionTime:float):
 	
@@ -59,8 +62,22 @@ func TransitionToCutscene(playerpos:Vector2,_transitionTime:float):
 	fakePlayer.show()
 	
 	pass
-
+	
+var cutsceneSkipped:bool=false
+func SkipCutscene():
+	lerpCounter=lerpTime
+	cutsceneSkipped=true
+	
+	if cameraInSky:
+		GlobalVariables.MainSceneReferenceConnector.camera.StartNewLerp(nestCameraPos,1)
+	AnimFinished(true)
+	
+	
+	pass
 func Play():
+	GlobalVariables.PlayerPressedSkipButton.connect(SkipCutscene) #TODO: only show skip button if player has seen cutscene once
+	HUD.SetSkipButtonEnabled(true)
+	
 	birdVibrate=false
 	var transitionTime:float=2
 	TransitionToCutscene(GlobalVariables.PlayerController.global_position,transitionTime)
@@ -71,11 +88,16 @@ func Play():
 	birdySpriteframes.play()
 
 	await get_tree().create_timer(transitionTime).timeout
+	
+	if cutsceneSkipped:
+		return
+		
 	anim.play("play")
 	SoundManager.PlaySoundAtLocation(global_position,abstract_SoundEffectSetting.SoundEffectEnum.SCENE_NESTING)
 	#anim.animation_finished.connect(AnimFinished)
 	
-func AnimFinished():
+func AnimFinished(skipped:bool=false):
 	hide()
-	CutsceneComplete.emit()
+	CutsceneComplete.emit(skipped)
+	HUD.SetSkipButtonEnabled(false)
 	pass

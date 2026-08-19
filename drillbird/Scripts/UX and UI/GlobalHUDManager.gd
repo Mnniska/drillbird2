@@ -298,3 +298,6 @@ func QuitGame():
 	get_tree().quit()
 	
 	pass
+
+func SetSkipButtonEnabled(enable:bool):
+	$SkipButton.SetActive(enable)

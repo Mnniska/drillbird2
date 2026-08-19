@@ -7,6 +7,7 @@ signal playerSang
 signal GameIsBeingReset
 
 signal birdyIsSleeping(bool)
+signal PlayerPressedSkipButton
 
 @export var DebugEnabled:bool=true
 

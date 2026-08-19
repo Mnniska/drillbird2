@@ -302,7 +302,6 @@ animations = [{
 }]
 
 [node name="NestCutscene" type="Node2D"]
-position = Vector2(1, 0)
 script = ExtResource("1_bjev6")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
