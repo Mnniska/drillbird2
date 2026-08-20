@@ -52,6 +52,14 @@ var cursedModeBadEndingFound:bool=false
 var cursedModeTrueEndingFound:bool=false
 
 
+#cutscene memory 
+@export var hasSeenIntro:bool=false
+@export var hasSeenEggLaying:bool=false
+@export var hasSeenDemonDeal:bool=false
+@export var hasSeenEggHatchNormal:bool=false
+@export var hasSeenEggHatchCursedBad:bool=false
+@export var hasSeenEggHatchCursedGood:bool=false
+
 var currentImpressedValue:float=0:
 	set(value):currentImpressedValue=value
 	get:return currentImpressedValue

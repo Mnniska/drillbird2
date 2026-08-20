@@ -65,18 +65,22 @@ func TransitionToCutscene(playerpos:Vector2,_transitionTime:float):
 	
 var cutsceneSkipped:bool=false
 func SkipCutscene():
+	
 	lerpCounter=lerpTime
 	cutsceneSkipped=true
 	
 	if cameraInSky:
 		GlobalVariables.MainSceneReferenceConnector.camera.StartNewLerp(nestCameraPos,1)
 	AnimFinished(true)
+	GlobalVariables.PlayerPressedSkipButton.disconnect(SkipCutscene) 
 	
 	
 	pass
 func Play():
-	GlobalVariables.PlayerPressedSkipButton.connect(SkipCutscene) #TODO: only show skip button if player has seen cutscene once
-	HUD.SetSkipButtonEnabled(true)
+	
+	if GlobalVariables.hasSeenEggLaying:
+		GlobalVariables.PlayerPressedSkipButton.connect(SkipCutscene) #TODO: only show skip button if player has seen cutscene once
+		HUD.SetSkipButtonEnabled(true)
 	
 	birdVibrate=false
 	var transitionTime:float=2
@@ -99,5 +103,7 @@ func Play():
 func AnimFinished(skipped:bool=false):
 	hide()
 	CutsceneComplete.emit(skipped)
+	GlobalVariables.PlayerPressedSkipButton.disconnect(SkipCutscene) 
+	GlobalVariables.hasSeenEggLaying=true
 	HUD.SetSkipButtonEnabled(false)
 	pass

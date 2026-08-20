@@ -69,6 +69,7 @@ func ResetSaveData(onlyResetEnemiesAndTiles:bool=false):
 	ResourceSaver.save(PlayerData,save_file_path+save_file_name)
 
 func ChangeToCursedMode():
+	SaveMetaData() #this is done here because we wanna save the fact that the player has seen the demon cutscene
 	PlayerData=null
 	PlayerData=abstract_savegame.new()
 	
@@ -238,6 +239,15 @@ func SaveMetaData():
 	metaSaveData.normalEndingFound=GlobalVariables.normalEndingFound
 	metaSaveData.cursedModeBadEndingFound=GlobalVariables.cursedModeBadEndingFound
 	metaSaveData.cursedModeTrueEndingFound=GlobalVariables.cursedModeTrueEndingFound
+	
+	metaSaveData.hasSeenIntro=GlobalVariables.hasSeenIntro
+	metaSaveData.hasSeenEggLaying=GlobalVariables.hasSeenEggLaying
+	metaSaveData.hasSeenDemonDeal=GlobalVariables.hasSeenDemonDeal
+	metaSaveData.hasSeenEggHatchNormal=GlobalVariables.hasSeenEggHatchNormal
+	metaSaveData.hasSeenEggHatchCursedBad=GlobalVariables.hasSeenEggHatchCursedBad
+	metaSaveData.hasSeenEggHatchCursedGood=GlobalVariables.hasSeenEggHatchCursedGood
+	
+	
 	ResourceSaver.save(metaSaveData,save_file_path+save_metadata_file_name)
 
 
@@ -250,6 +260,14 @@ func LoadMetadata():
 	GlobalVariables.normalEndingFound= metaSaveData.normalEndingFound
 	GlobalVariables.cursedModeBadEndingFound= metaSaveData.cursedModeBadEndingFound
 	GlobalVariables.cursedModeTrueEndingFound= metaSaveData.cursedModeTrueEndingFound
+	
+	GlobalVariables.hasSeenIntro=metaSaveData.hasSeenIntro
+	GlobalVariables.hasSeenEggLaying=metaSaveData.hasSeenEggLaying
+	GlobalVariables.hasSeenDemonDeal=metaSaveData.hasSeenDemonDeal
+	GlobalVariables.hasSeenEggHatchNormal=metaSaveData.hasSeenEggHatchNormal
+	GlobalVariables.hasSeenEggHatchCursedBad=metaSaveData.hasSeenEggHatchCursedBad
+	GlobalVariables.hasSeenEggHatchCursedGood=metaSaveData.hasSeenEggHatchCursedGood
+	
 	CheckIfPlayerHasFinishedGameViaAchievements()
 
 

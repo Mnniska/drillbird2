@@ -269,8 +269,8 @@ func GoToBed():
 	#hide stuff that only exists in reality
 	Player.hide()
 	
-	
-	HUD.SetSkipButtonEnabled(true)
+	if GlobalVariables.currentDay>1:
+		HUD.SetSkipButtonEnabled(true)
 	#birdy goes to bed anim
 	animSleep.show()
 	animSleep.animation="layingdown"

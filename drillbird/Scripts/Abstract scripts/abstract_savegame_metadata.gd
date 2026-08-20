@@ -11,3 +11,10 @@ class_name abstract_savegame_metadata
 @export var normalEndingFound:bool=false
 @export var cursedModeBadEndingFound:bool=false
 @export var cursedModeTrueEndingFound:bool=false
+
+@export var hasSeenIntro:bool=false
+@export var hasSeenEggLaying:bool=false
+@export var hasSeenDemonDeal:bool=false
+@export var hasSeenEggHatchNormal:bool=false
+@export var hasSeenEggHatchCursedBad:bool=false
+@export var hasSeenEggHatchCursedGood:bool=false

@@ -23,14 +23,20 @@ func GetIsPlaying():
 func SkipButtonPressed():
 	if isPlaying:
 		_on_animation_player_animation_finished("3")
+		
+		#TODO: Have cutscenes remember if they've been played or not
+		#TODO: Add an optional dialogue for the demon in normal mode. 
+		#Speed up time when holding SING??? lmao 
+		#If you haven't finished the game, have them give the player a tip that they can skip cutscenes using "sing"
 	pass
 
 func Play():
 	isPlaying=true
 	_on_animation_player_animation_finished("")
 	
-	HUD.SetSkipButtonEnabled(true)
-	GlobalVariables.PlayerPressedSkipButton.connect(SkipButtonPressed)
+	if GlobalVariables.hasSeenIntro:
+		HUD.SetSkipButtonEnabled(true)
+		GlobalVariables.PlayerPressedSkipButton.connect(SkipButtonPressed)
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	
@@ -49,6 +55,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		HUD.SetSkipButtonEnabled(false)
 		#this is a pretty lmao way to trigger the dazed state but I will take it
 		#seb 9 months later: I agree
+		GlobalVariables.hasSeenIntro=true
 		GlobalVariables.PlayerPressedSkipButton.disconnect(SkipButtonPressed)
 
 
