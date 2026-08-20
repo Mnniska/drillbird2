@@ -26,6 +26,7 @@ func GetDemonEgg()->Node2D:
 	return anim_egg
 
 func PrepareHatching():
+	anim_egg.show()
 	anim_egg.play("waiting")
 	anim_BadEnding.play("waiting")
 	anim_BadEnding.show()

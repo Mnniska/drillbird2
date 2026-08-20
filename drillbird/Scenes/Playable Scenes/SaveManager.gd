@@ -23,13 +23,15 @@ var oreAreas
 var PlayerData=abstract_savegame.new()
 var metaSaveData=abstract_savegame_metadata.new()
 
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	verify_save_directory(save_file_path)
 	LoadGame(PlayerData.worldToSpawn)
 	#Todo: load based on current savefile
 	
-
+	GlobalVariables.signal_MetadataSaveRequested.connect(SaveMetaData)
 	
 	
 	LoadDestroyedTiles()
@@ -234,8 +236,8 @@ func SetupWorldReferences():
 	
 func SaveMetaData():
 	
-	#TODO: Make sure to save whenever player discovers a new ending
-	
+	#The global variable script has a signal called "metadatasaverequested" that connects to this script
+	#the signal is called when updating whether the player has seen a new ending	
 	metaSaveData.normalEndingFound=GlobalVariables.normalEndingFound
 	metaSaveData.cursedModeBadEndingFound=GlobalVariables.cursedModeBadEndingFound
 	metaSaveData.cursedModeTrueEndingFound=GlobalVariables.cursedModeTrueEndingFound

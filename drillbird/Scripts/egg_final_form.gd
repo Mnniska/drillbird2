@@ -77,12 +77,49 @@ func SetState(_state:finalFormStates):
 			HatchEgg()
 			show()
 
-			
+var hatchCutsceneSkipped:bool=false
+func PlayerSkipsHatchCutscene():
+	GlobalVariables.PlayerPressedSkipButton.disconnect(PlayerSkipsHatchCutscene)
+	hatchCutsceneSkipped=true
+	useVibration=false
+	#lerp camera upwards and have game transition to credits
+	var camera:game_camera=GlobalVariables.MainSceneReferenceConnector.camera
+	camera.StartNewLerp(camera.position+Vector2(0,-200),2,3)
+	await get_tree().create_timer(2).timeout
+	signal_hatching_complete.emit()
+	
+	pass
 
 func HatchEgg():
 
 	var ending:GlobalVariables.endings=GlobalVariables.GetCurrentEnding()
-
+	
+	var canSkip:bool=false 
+	
+	
+	#enable skip btn if player has seen ending
+	if ending==GlobalVariables.endings.normal and GlobalVariables.hasSeenEggHatchNormal:
+		canSkip=true
+	if ending==GlobalVariables.endings.cursed_bad and GlobalVariables.hasSeenEggHatchCursedBad:
+		canSkip=true
+	if ending==GlobalVariables.endings.cursed_true and GlobalVariables.hasSeenEggHatchCursedGood:
+		canSkip=true
+	
+	if canSkip:
+		HUD.SetSkipButtonEnabled(true)
+		GlobalVariables.PlayerPressedSkipButton.connect(PlayerSkipsHatchCutscene)
+	
+	match ending: #update whether player has seen an ending or not
+		GlobalVariables.endings.normal:
+			GlobalVariables.hasSeenEggHatchNormal=true
+		GlobalVariables.endings.cursed_bad:
+			GlobalVariables.hasSeenEggHatchCursedBad=true
+		GlobalVariables.endings.cursed_true:
+			GlobalVariables.hasSeenEggHatchCursedGood=true
+	
+	GlobalVariables.signal_MetadataSaveRequested.emit()
+	
+	
 	useVibration=GlobalVariables.useVibration
 
 	
@@ -155,6 +192,10 @@ func HatchEgg():
 	
 	HUD.SpeedrunTimer.finishSpeedrun()
 	
+	if canSkip:
+		HUD.SetSkipButtonEnabled(true)
+		GlobalVariables.PlayerPressedSkipButton.connect(PlayerSkipsHatchCutscene)
+	
 	#the nest script listens to this and hides the nest to clear up so player can see final cutscene more easily
 	EggCracksOpen.emit()
 		
@@ -164,6 +205,10 @@ func HatchEgg():
 
 	
 func HatchCutsceneFinished():
+	if hatchCutsceneSkipped:
+		return
+	GlobalVariables.PlayerPressedSkipButton.disconnect(PlayerSkipsHatchCutscene)
+	
 	var camera:game_camera=GlobalVariables.MainSceneReferenceConnector.camera
 	camera.StartNewLerp(camera.position+Vector2(0,-200),2,3)
 	await get_tree().create_timer(2).timeout

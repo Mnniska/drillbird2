@@ -9,6 +9,9 @@ signal GameIsBeingReset
 signal birdyIsSleeping(bool)
 signal PlayerPressedSkipButton
 
+signal signal_MetadataSaveRequested #the save script in main listens to this signal and saves metadata 
+#called from egg hatch when showing a final cutscene
+
 @export var DebugEnabled:bool=true
 
 var save_file_path = "user://save/"
